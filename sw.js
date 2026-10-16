@@ -1,5 +1,5 @@
 /* Olano service worker: offline-first (PRD F2: POS 100% offline setelah login pertama) */
-var CACHE = "olano-v9";
+var CACHE = "olano-v10";
 var CORE = [
   "./", "index.html", "manifest.json",
   "assets/css/main.css", "assets/js/config.js", "assets/js/shared.js",
@@ -8,7 +8,19 @@ var CORE = [
   "alat/kalkulator-pph-final-umkm.html",
   "alat/kalkulator-hpp-harga-jual.html",
   "alat/kalkulator-biaya-qris.html",
-  "alat/kalkulator-margin-delivery.html"
+  "alat/kalkulator-margin-delivery.html",
+  "assets/daydream/sky-hero.webp",
+  "assets/daydream/grid-overlay.svg",
+  "assets/daydream/cloud-1.webp",
+  "assets/daydream/cloud-2.webp",
+  "assets/daydream/lightleak.webp",
+  "assets/daydream/star-dots.svg",
+  "assets/img/food/foto-ai-kopi-before.webp",
+  "assets/img/food/foto-ai-kopi-after.webp",
+  "assets/img/food/foto-ai-keripik-before.webp",
+  "assets/img/food/foto-ai-keripik-after.webp",
+  "assets/img/food/foto-ai-batik-before.webp",
+  "assets/img/food/foto-ai-batik-after.webp"
 ];
 
 self.addEventListener("install", function (e) {

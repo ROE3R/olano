@@ -150,3 +150,59 @@ Studio desain independen, tema "dreamy / floating ideas". Di render penuh (JS, 2
 - **tnum (tabular-nums)**: Aspekta **tidak support** GSUB tnum (ukur: width '000' == '111' dengan/without tnum). CSS `font-variant-numeric:tabular-nums` tetap dipasang (no-op jika font tidak punya); selisih deviasi dicatat di laporan.
 - **H1 mobile**: B = 52px, tapi brief mensyaratkan max 3 baris di mobile utk H1 40 karakter. clamp(42px mobile -> 87px desktop) dipilih; desktop = B persis, mobile = trade-off terdokumentasi.
 - **Langit**: rgb(13,123,246) B terlalu gelap utk tema terang; diterjemahkan #C9DEFF->#E4EEFF->#FFF (hue sama, intensitas turun). Awan = CSS elips datar radial-gradient (bukan PNG), drift 9s/7.5s (durasi dari B).
+
+
+## ATMOSPHERE SYSTEM v2: sky system thedaydream.studio (diadopsi 2026-10-16)
+
+"Dreamy" daydream BUKAN dari bentuk awan CSS (olano v9 sudah punya elips datar) --
+ia dari LAYER SYSTEM foto: langit fotografis + lightleak screen + bintang +
+komet ambient. Motion = transform-only (cloud-drift 9s/7.5s alternate,
+comet-fly 6.2/7.4/8.6s). Diukur di atas, diadopsi ke olano dengan 2 aturan:
+(1) tema terang: langit foto opacity .42-.5 + veil white-gradient di atasnya
+(basis tetap #C9DEFF->#E4EEFF->#FFF), (2) AA dijaga: veil + grad base bikin
+teks #343C4F tetap AA di atas langit.
+
+### Aset (assets/daydream/, download dari thedaydream.studio, dikompres)
+| File | Ukuran akhir | Peran di olano |
+|---|---|---|
+| sky-hero.webp | 22KB | langit fotograferik 3840x2800 -> 2200x1604, op .5 hero / .42 tool-hero |
+| cloud-1.webp | 67KB | awan foto 1 blur 4px, drift 9s alternate |
+| cloud-2.webp | 54KB | awan foto 2 blur 2px, drift 7.5s alternate-reverse |
+| lightleak.webp | 8KB | light-leak, mix-blend-mode:screen op .85 |
+| grid-overlay.svg | 1KB | radar rings (bukan grid tabel; motif daydream), op .35-.45 |
+| star-dots.svg | 14KB | bintik bintang, op .35 |
+| selection.svg | 10KB | hover selection daydream -- TIDAK dipakai olano |
+
+### Komposisi hero (index.html, .hero-sky, z-index 0 di bawah container z1)
+Sky(photo .5) -> Veil(white grad 180deg .28->.55->.92->#FFF) -> Grid(.45) ->
+Cloud1(.9) -> Cloud2(.9) -> Leak(screen .85) -> Stars(.35) ->
+Comet x3 (c1 6.2s/delay0, c2 7.4s/delay1.1 --s:.6, c3 8.6s/delay2.2 --s:1.3).
+Semua aria-hidden, pointer-events:none, alt="" (non-sensory).
+
+### tool-hero (8 sub-halaman)
+Variant LITE: sky .42 + veil + cloud1 drift + grid .35, tanpa comet/bintang/leak.
+Sistem yang sama, beban lebih ringan (halaman tool fokus kalkulator, bukan atmosfer).
+
+### Motion (diukur dari B, CSS-only, tanpa library -- B pun 0 library global)
+cloud-drift: translateX(0)->translateX(-9vw) 9s linear infinite alternate
+(olano; B pakai -8rem, diadaptasi vw biar konsisten mobile).
+comet-fly: 0% op0 -> 2% op1 -> 35% op0 di (72vw,30vh) 22.6deg, 6.2-8.6s infinite;
+body=grad white, head=dot+box-shadow (bentuk komposisinya diambil, angka diadaptasi).
+
+### Aset foto produk (assets/img/food/, scrape Pexels 2026-10-16)
+Slider before/after AI Foto Produk di umkm.html diganti SVG flat -> foto nyata
+(subjek diverifikasi dari judul halaman Pexels, bukan tebak):
+| Foto | ID Pexels | File |
+|---|---|---|
+| es kopi susu (before/after) | 7937425 "Iced Coffee Drink in a Glass" (Nicola Barts) | foto-ai-kopi-{before,after}.webp 768x960 |
+| keripik/snack (before/after) | 9069272 "A Person Holding a Bowl of Chips" (Yan Krukau) | foto-ai-keripik-{before,after}.webp |
+| batik/kain tenun (before/after) | 31853353 "Close-Up of Colorful Textile Fabric Weave" (Matheus Bertelli) | foto-ai-batik-{before,after}.webp |
+"before" = crop off-center + brightness .92 + saturasi .55 + blur 4px (simulasi
+foto HP amatir); "after" = crop center (simulasi hasil AI). Semuanya Pexels
+lisensi (gratis, boleh komersial, atribusi opsional).
+
+### Constraint yang tetap
+Lighthouse (target): Perf >=90, A11y >=95, CLS <0.1 -- sky system menambah
+~200KB aset (sudah di-cache SW v10; langit hero eager, sisanya lazy).
+prefers-reduced-motion: semua drift/komet dimatikan + komet hidden.
+SEO/fakta/kalkulator/anchor: tidak disentuh.

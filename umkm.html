@@ -34,7 +34,12 @@
 <main id="main">
 <!-- Konten halaman ini: detail fitur UMKM + demo offline + before/after AI foto
      (dipindahkan dari homepage; homepage hanya perkenalan) -->
-<section class="tool-hero"><div class="container">
+<section class="tool-hero"><div class="hero-sky-lite" aria-hidden="true">
+  <img class="l-sky" src="assets/daydream/sky-hero.webp" alt="" width="2200" height="1604" fetchpriority="high">
+  <div class="l-veil"></div>
+  <img class="l-cloud" src="assets/daydream/cloud-1.webp" alt="" width="700" height="434" fetchpriority="low">
+  <img class="l-grid" src="assets/daydream/grid-overlay.svg" alt="" width="1920" height="1280" loading="lazy">
+</div><div class=ontainer">
   <div class="badge"><span class="dot"></span>Kasir UMKM · Offline-first</div>
   <h1 class="mt-4" style="max-width:16ch">Kasir yang tetap jalan walau internet mati.</h1>
   <p class="mt-4" style="color:var(--gray-500);font-size:var(--fs-body-lg);max-width:52ch">App shell &amp; katalog di-cache di perangkat. Transaksi dicatat offline, aman, lalu otomatis tersinkron. Untuk warung, kafe, butik, hingga affiliate.</p>
@@ -91,18 +96,18 @@
     <p class="small mt-4">Geser slider. Hapus latar, ganti studio/marmer/kayu, perbaiki cahaya, tanpa mengubah bentuk produk.</p></div>
     <div class="tools-grid mt-8" data-reveal data-before-after style="max-width:960px;margin:32px auto 0">
       <figure data-before-after style="position:relative;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/5;background:var(--gray-50)">
-        <img data-before src="assets/img/foto-ai-kopi-before.svg" alt="Foto es kopi susu sebelum diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-        <img data-after src="assets/img/foto-ai-kopi-after.svg" alt="Foto es kopi susu setelah diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 50% 0 0)">
+        <img data-before src="assets/img/food/foto-ai-kopi-before.webp" alt="Foto es kopi susu sebelum diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <img data-after src="assets/img/food/foto-ai-kopi-after.webp" alt="Foto es kopi susu setelah diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 50% 0 0)">
         <input type="range" min="0" max="100" value="50" aria-label="Geser untuk membandingkan foto AI" style="position:absolute;left:0;right:0;bottom:12px;width:100%;z-index:2;accent-color:var(--blue-600)">
       </figure>
       <figure data-before-after style="position:relative;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/5;background:var(--gray-50)">
-        <img data-before src="assets/img/foto-ai-keripik-before.svg" alt="Foto keripik sebelum diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-        <img data-after src="assets/img/foto-ai-keripik-after.svg" alt="Foto keripik setelah diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 50% 0 0)">
+        <img data-before src="assets/img/food/foto-ai-keripik-before.webp" alt="Foto keripik sebelum diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <img data-after src="assets/img/food/foto-ai-keripik-after.webp" alt="Foto keripik setelah diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 50% 0 0)">
         <input type="range" min="0" max="100" value="50" aria-label="Geser untuk membandingkan foto AI" style="position:absolute;left:0;right:0;bottom:12px;width:100%;z-index:2;accent-color:var(--blue-600)">
       </figure>
       <figure data-before-after style="position:relative;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/5;background:var(--gray-50)">
-        <img data-before src="assets/img/foto-ai-batik-before.svg" alt="Foto kemeja batik sebelum diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-        <img data-after src="assets/img/foto-ai-batik-after.svg" alt="Foto kemeja batik setelah diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 50% 0 0)">
+        <img data-before src="assets/img/food/foto-ai-batik-before.webp" alt="Foto kemeja batik sebelum diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <img data-after src="assets/img/food/foto-ai-batik-after.webp" alt="Foto kemeja batik setelah diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 50% 0 0)">
         <input type="range" min="0" max="100" value="50" aria-label="Geser untuk membandingkan foto AI" style="position:absolute;left:0;right:0;bottom:12px;width:100%;z-index:2;accent-color:var(--blue-600)">
       </figure>
     </div>

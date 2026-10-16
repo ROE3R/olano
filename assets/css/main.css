@@ -376,7 +376,7 @@ p{max-width:65ch}
 .field input:focus,.field select:focus{outline:none; border-color:var(--blue-600); box-shadow:0 0 0 4px var(--blue-100)}
 .field .hint{font-size:12px; color:var(--gray-500); margin-top:6px; font-family:var(--font-sans)}
 .seg{display:flex; flex-wrap:wrap; gap:8px}
-.seg input{position:absolute; opacity:0; pointer-events:none}
+.seg input{position:absolute; opacity:0; pointer-events:none; left:0; top:0; width:0; height:0}
 .seg label{padding:8px 14px; border:1px solid var(--gray-300); border-radius:var(--r-full);
   font-size:13px; font-weight:500; color:var(--gray-700); cursor:pointer; font-family:var(--font-sans);
   transition:all var(--dur-fast)}
@@ -818,20 +818,50 @@ h1,h2,h3{font-weight:450}
 .logo{font-weight:600}
 .it-serif{font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:0}
 
-/* -- atmosfer: langit B diterjemahkan ke tema terang (hue biru olano).
-   Arah art-director: langit harus terbaca, bukan putih polos; awan = elips
-   datar (bukan blob lingkaran), dominan putih di atas langit biru muda -- */
-@keyframes driftA{to{transform:translate3d(46px,-20px,0)}}
-@keyframes driftB{to{transform:translate3d(-38px,16px,0)}}
+/* -- atmosfer B v2: sky system daydream (ukur 2026-10-16): sky foto + veil
+   + radar rings + 2 cloud foto (blur, drift) + lightleak (screen) +
+   star-dots + 3 comet (transform-only). Foto hari ini di assets/daydream/,
+   gradient asli #C9DEFF->#FFF jadi base anti-AA. Detail: DESIGN-REFERENCE
+   "ATMOSPHERE SYSTEM v2". Motion guard di bawah. -- */
+@keyframes cloud-drift{from{transform:translateX(0)}to{transform:translateX(-9vw)}}
+@keyframes comet-fly{
+  0%{opacity:0;transform:translate(0,0) scale(var(--s,1)) rotate(22.6deg)}
+  2%{opacity:1}
+  35%{opacity:0;transform:translate(72vw,30vh) scale(var(--s,1)) rotate(22.6deg)}
+  100%{opacity:0;transform:translate(72vw,30vh) scale(var(--s,1)) rotate(22.6deg)}
+}
 .hero{background:linear-gradient(180deg,#C9DEFF 0%,#E4EEFF 46%,#FFFFFF 100%)}
-.sky-drift{position:absolute;pointer-events:none;z-index:0}
-.sky-drift.a{left:6%;top:90px;width:60vw;height:15vw;min-height:120px;border-radius:50%;
-  background:radial-gradient(50% 50% at 50% 50%,rgba(255,255,255,.95),rgba(255,255,255,.5) 55%,transparent 78%);
-  animation:driftA 9s ease-in-out infinite alternate}
-.sky-drift.b{right:2%;top:46%;width:46vw;height:11vw;min-height:84px;border-radius:50%;
-  background:radial-gradient(50% 50% at 50% 50%,rgba(255,255,255,.85),rgba(255,255,255,.4) 55%,transparent 78%);
-  animation:driftB 7.5s ease-in-out infinite alternate}
-@media(max-width:900px){.sky-drift.a{width:86vw;height:110px;top:40px}.sky-drift.b{width:74vw;height:80px;top:52%}}
+.hero-sky{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.hero-sky img{position:absolute;pointer-events:none}
+.hero-sky .h-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.5}
+.hero-sky .h-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.28) 0%,rgba(255,255,255,.55) 48%,rgba(255,255,255,.92) 82%,#FFFFFF 100%)}
+.hero-sky .h-grid{top:0;left:50%;transform:translateX(-50%);width:min(1800px,140%);height:72%;object-fit:cover;object-position:top;opacity:.45}
+.hero-sky .h-cloud-1{top:24%;right:-14%;width:min(1200px,72vw);height:auto;filter:blur(4px);animation:cloud-drift 9s linear infinite alternate}
+.hero-sky .h-cloud-2{top:44%;left:-12%;width:min(980px,58vw);height:auto;filter:blur(2px);animation:cloud-drift 7.5s linear infinite alternate-reverse}
+.hero-sky .h-leak{top:-4%;left:0;width:100%;height:auto;object-fit:cover;object-position:top;mix-blend-mode:screen;opacity:.85}
+.hero-sky .h-stars{top:5%;left:50%;transform:translateX(-50%);width:min(1100px,150%);height:auto;opacity:.35}
+.hero-sky .h-comet{position:absolute;height:2px;width:110px;opacity:0;will-change:transform,opacity;animation:comet-fly linear infinite}
+.hero-sky .h-comet i{display:block;width:100%;height:100%;border-radius:3px;background:linear-gradient(270deg,rgba(255,255,255,.65),rgba(255,255,255,0));position:relative}
+.hero-sky .h-comet i::after{content:"";position:absolute;top:0;right:0;width:4px;height:2px;border-radius:2px;background:rgba(255,255,255,.9);box-shadow:0 0 10px 3px rgba(255,255,255,.55)}
+.hero-sky .c1{left:-12%;top:16%;--s:1;animation-duration:6.2s;animation-delay:0s}
+.hero-sky .c2{left:-14%;top:30%;width:90px;--s:.6;animation-duration:7.4s;animation-delay:1.1s}
+.hero-sky .c3{left:-16%;top:44%;width:100px;--s:1.3;animation-duration:8.6s;animation-delay:2.2s}
+.hero .container{position:relative;z-index:1}
+@media(max-width:900px){
+  .hero-sky .h-cloud-1{width:96vw;right:-30%;top:18%}
+  .hero-sky .h-cloud-2{width:84vw;left:-28%;top:48%}
+  .hero-sky .h-stars{width:140%}
+}
+
+/* -- sky LITE utk tool-hero (sub-halaman; foto ringan, tanpa comet) -- */
+.tool-hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#C9DEFF 0%,#E4EEFF 46%,#FFFFFF 100%)}
+.tool-hero .hero-sky-lite{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.tool-hero .hero-sky-lite img{position:absolute;pointer-events:none}
+.tool-hero .l-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.42}
+.tool-hero .l-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.30) 0%,rgba(255,255,255,.55) 48%,rgba(255,255,255,.90) 82%,#FFFFFF 100%)}
+.tool-hero .l-cloud{top:34%;left:-10%;width:min(640px,62vw);height:auto;filter:blur(3px);animation:cloud-drift 9s linear infinite alternate}
+.tool-hero .l-grid{top:0;left:50%;transform:translateX(-50%);width:min(1200px,140%);height:calc(min(1200px,140%)*1280/1920);object-fit:cover;object-position:top;opacity:.35}
+.tool-hero .container{position:relative;z-index:1}
 
 /* -- peran tipe (B) -- */
 .hero h1{font-weight:600;letter-spacing:var(--ls-h1);line-height:1.05;max-width:26ch}
@@ -869,7 +899,9 @@ h1,h2,h3{font-weight:450}
 
 /* -- motion guard (B: transform/opacity saja) -- */
 @media (prefers-reduced-motion:reduce){
-  .sky-drift{animation:none}
+  .hero-sky .h-cloud-1,.hero-sky .h-cloud-2,.hero-sky .h-comet,
+  .tool-hero .l-cloud{animation:none}
+  .hero-sky .h-comet{display:none}
   .hero-inner{animation:none}
   .tagline-pill .spark{animation:none}
 }

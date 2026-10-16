@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -119 1920 1280" fill="none"><g opacity="0.12">
+<circle cx="960" cy="508.115" r="565.5" stroke="white"/>
+<circle cx="960" cy="508" r="612.5" stroke="white"/>
+<circle cx="960" cy="508" r="262.5" stroke="white"/>
+<circle cx="960" cy="508.115" r="155.5" stroke="white"/>
+<line x1="331.644" y1="1135.76" x2="1586.76" y2="-119.356" stroke="white"/>
+<line y1="-0.5" x2="1775" y2="-0.5" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 1587.12 1136.23)" stroke="white"/>
+<line x1="-2" y1="693.5" x2="1920" y2="693.5" stroke="white"/>
+<line x1="347.5" y1="-2" x2="347.5" y2="1161" stroke="white"/>
+<line x1="1573.5" y1="-2" x2="1573.5" y2="1161" stroke="white"/>
+<line y1="322.5" x2="1920" y2="322.5" stroke="white"/>
+</g><defs></defs></svg>
