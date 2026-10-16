@@ -60,8 +60,8 @@
     <picture><source media="(max-width: 759px)" srcset="assets/daydream/sky-hero-m.webp" type="image/webp"><img class="h-sky" src="assets/daydream/sky-hero.webp" alt="" width="2200" height="1604" fetchpriority="high"></picture>
     <div class="h-veil"></div>
     <img class="h-grid" src="assets/daydream/grid-overlay.svg" alt="" width="1920" height="1280">
-    <img class="h-cloud-1" src="assets/daydream/cloud-1.webp" alt="" width="520" fetchpriority="low">
-    <img class="h-cloud-2" src="assets/daydream/cloud-2.webp" alt="" width="520">
+    <img class="h-cloud-1" src="assets/daydream/cloud-1.webp" alt="" width="520" height="322" fetchpriority="low">
+    <img class="h-cloud-2" src="assets/daydream/cloud-2.webp" alt="" width="520" height="308">
     <img class="h-leak" src="assets/daydream/lightleak.webp" alt="" width="1200" height="799">
     <img class="h-stars" src="assets/daydream/star-dots.svg" alt="" width="558" height="303">
     <div class="h-scrim"></div>
@@ -87,21 +87,47 @@
   </div>
 </section>
 
-<!-- ============ 1b. PEMILIH JALUR ============ -->
-<section class="picker" aria-label="Pilih jalur">
+<!-- ============ 1b. ROUTER MODUL ============ -->
+<section class="picker" aria-label="Pilih modul">
   <div class="container">
-    <h2>Pilih jalurmu.</h2>
-    <div class="pick-grid">
-      <a class="pick-card pick-active" href="#fitur">
-        <b>UMKM</b>
-        <p>Kasir offline, QRIS, dan pajak: sudah jalan sekarang.</p>
-        <span class="pick-chip">Jalur utama</span>
+    <h2>Pilih modulmu.</h2>
+    <p class="sub" style="margin:0 0 20px">Olano satu aplikasi untuk tujuh kebutuhan usahamu. Buka yang kamu butuh hari ini.</p>
+    <div class="pick-grid pick-3">
+      <a class="pick-card pick-live" href="kasir.html">
+        <b>Kasir</b>
+        <p>Kasir offline, QRIS, struk, dan stok. Jualan tetap jalan walau internet mati.</p>
+        <span class="pick-chip">Sudah jalan</span>
       </a>
-      <div class="pick-card pick-soon" aria-disabled="true">
-        <b>UGC</b>
-        <p>Jalur ini belum dibuka untuk umum.</p>
+      <a class="pick-card pick-live" href="pajak.html">
+        <b>Pajak</b>
+        <p>Rekap PPh final 0,5% (PP 20/2026) tiap bulan, PDF siap setor, pengingat tanggal.</p>
+        <span class="pick-chip">Sudah jalan</span>
+      </a>
+      <a class="pick-card pick-live" href="website.html">
+        <b>Website</b>
+        <p>50 template toko UMKM, produk tersinkron dari kasir, deploy hari yang sama.</p>
+        <span class="pick-chip">Sudah jalan</span>
+      </a>
+      <a class="pick-card pick-live" href="analisa-delivery.html">
+        <b>Analisa Delivery</b>
+        <p>Margin bersih per pesanan GoFood dan GrabFood setelah komisi 20&ndash;30%.</p>
+        <span class="pick-chip">Sudah jalan</span>
+      </a>
+      <a class="pick-card pick-live" href="ai.html">
+        <b>AI Jaga Margin</b>
+        <p>Bahan naik 10%, mesin harga memberi tiga usul harga. Contoh kecil jalan di browsermu.</p>
+        <span class="pick-chip">Sudah jalan</span>
+      </a>
+      <a class="pick-card pick-soon" href="ugc.html">
+        <b>UGC &amp; Konten</b>
+        <p>Naskah reels, caption, dan foto katalog dibuat dari data kasirmu. Belum dibuka.</p>
         <span class="pick-chip">Segera hadir</span>
-      </div>
+      </a>
+      <a class="pick-card pick-soon" href="automation.html">
+        <b>Automation</b>
+        <p>Reminder stok, rekap bulanan otomatis, notifikasi bahan naik. Belum dibuka.</p>
+        <span class="pick-chip">Segera hadir</span>
+      </a>
     </div>
   </div>
 </section>
@@ -130,7 +156,7 @@
         <span class="illo a169"><img src="assets/img/f-foto-ai.webp" alt="Contoh: foto produk kopi sebelum dan sesudah AI" width="1600" height="900" loading="lazy" decoding="async"></span>
         <span class="ftxt"><h3>AI foto produk</h3><p>Hapus dan ganti latar, perbaiki cahaya, gaya katalog. Bentuk produk tidak berubah.</p></span>
       </a>
-      <a class="feat-card" href="umkm.html">
+      <a class="feat-card" href="ai.html">
         <span class="illo a43">
         <svg viewBox="0 0 320 240" role="img" aria-label="Contoh: tiga usul harga dari AI"><rect width="320" height="240" fill="#FAFBFD"/><rect x="14" y="14" width="292" height="52" rx="10" fill="#fff" stroke="#E8ECF3"/><text x="30" y="45" font-size="14" fill="#0B1220" font-family="Figtree, sans-serif">Es Kopi Susu, Rp22.000</text><text x="296" y="45" font-size="12" fill="#8A5400" text-anchor="end" font-family="Figtree, sans-serif">bahan +12%</text><rect x="14" y="82" width="90" height="34" rx="17" fill="#F4F6FA" stroke="#E8ECF3"/><text x="59" y="103" font-size="12" fill="#343C4F" text-anchor="middle" font-family="Figtree, sans-serif">Aman</text><rect x="114" y="82" width="110" height="34" rx="17" fill="#2453EB"/><text x="169" y="103" font-size="12" fill="#fff" text-anchor="middle" font-family="Figtree, sans-serif">Kompetitif</text><rect x="234" y="82" width="72" height="34" rx="17" fill="#F4F6FA" stroke="#E8ECF3"/><text x="270" y="103" font-size="12" fill="#343C4F" text-anchor="middle" font-family="Figtree, sans-serif">Premium</text><rect x="114" y="126" width="110" height="22" rx="11" fill="#EFF5FF"/><text x="169" y="141" font-size="11" fill="#2453EB" text-anchor="middle" font-family="Figtree, sans-serif">pilihan AI</text><text x="14" y="190" font-size="13" fill="#4E586B" font-family="Figtree, sans-serif">Rp24.000, Rp28.000, Rp32.000</text><text x="14" y="216" font-size="11" fill="#4E586B" font-family="Figtree, sans-serif">contoh, margin 22,4% bersih</text></svg>
         </span>
@@ -281,6 +307,8 @@
         <li><a href="umkm.html">Kasir UMKM</a></li>
         <li><a href="pajak.html">Pajak</a></li>
         <li><a href="website.html">Website</a></li>
+        <li><a href="analisa-delivery.html">Analisa Delivery</a></li>
+        <li><a href="ai.html">AI Jaga Margin</a></li>
         <li><a href="naik-kelas.html">Naik Kelas</a></li></ul></div>
       <div><h3 class="foot-h">Alat Gratis</h3><ul>
         <li><a href="alat/kalkulator-pph-final-umkm.html">PPh Final UMKM</a></li>

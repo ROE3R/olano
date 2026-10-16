@@ -181,6 +181,7 @@ p{max-width:65ch}
 .card.hover{transition:transform var(--dur-base) var(--ease-emphasized), box-shadow var(--dur-base)}
 .card.hover:hover{transform:translateY(-4px); box-shadow:var(--sh-lift); border-color:var(--blue-200)}
 .card.active{border-color:var(--blue-200); box-shadow:0 0 0 4px var(--blue-50)}
+.card .ic{margin-bottom:4px} /* ikon kartu jangan menempel judul */
 .bento{display:grid; gap:var(--sp-4); grid-template-columns:1fr}
 @media(min-width:900px){
   .bento{grid-template-columns:repeat(4,1fr); grid-auto-rows:minmax(180px,auto)}
@@ -392,8 +393,17 @@ p{max-width:65ch}
 .callout b{color:#fff}
 .callout.ok{background:rgba(18,161,80,.15); border-color:rgba(18,161,80,.35); color:#b8f0d0}
 .callout.ok b{color:#5fe89a}
-.callout.warn{background:rgba(232,161,0,.15); border-color:rgba(232,161,0,.4); color:#ffe1a3}
+.callout.warn{background:rgba(232,161,0,.15);border:1px solid rgba(232,161,0,.4); color:#ffe1a3}
 .callout.warn b{color:#ffd75f}
+/* Light-context callout (dipakai di section putih/abu, bukan di dalam .calc-card).
+   Base .callout itu untuk .section-dark (teks terang); di context terang <b>
+   jadi putih -> tak terbaca. Varian .light mengembalikan palet gelap. */
+.callout.light{background:var(--blue-50);border:1px solid var(--blue-100);color:var(--gray-700)}
+.callout.light b{color:var(--ink)}
+.callout.light.ok{background:var(--success-bg);border-color:#bfe4d0;color:#0a5c36}
+.callout.light.ok b{color:#0a5c36}
+.callout.light.warn{background:var(--warning-bg);border-color:#f0d9a6;color:#7a4d00}
+.callout.light.warn b{color:#7a4d00}
 
 /* ============================= POS APP ============================= */
 body.pos-app{background:var(--gray-50); min-height:100vh}
@@ -901,6 +911,13 @@ h1,h2,h3{font-weight:450}
 .pick-active p{color:var(--gray-700)}
 .pick-active .pick-chip{background:var(--blue-600);color:#fff}
 .pick-active:hover{border-color:var(--blue-700)}
+.pick-live{border-color:var(--blue-600);background:var(--blue-50)}
+.pick-live p{color:var(--gray-700)}
+.pick-live .pick-chip{background:var(--blue-600);color:#fff}
+.pick-live:hover{border-color:var(--blue-700)}
+.pick-grid.pick-3{max-width:none}
+@media(min-width:1000px){.pick-grid.pick-3{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:760px) and (max-width:999px){.pick-grid.pick-3{grid-template-columns:repeat(2,1fr)}}
 .pick-soon{cursor:default}
 .pick-soon p{color:var(--gray-500)} /* teks tetap AA (4.68:1), nonaktif ditandai label+bentuk */
 

@@ -1,10 +1,12 @@
 /* Olano service worker: offline-first (PRD F2: POS 100% offline setelah login pertama) */
-var CACHE = "olano-v14";
+var CACHE = "olano-v15";
 var CORE = [
   "./", "index.html", "manifest.json",
   "assets/css/main.css", "assets/js/config.js", "assets/js/shared.js",
   "app/kasir.html",
   "umkm.html", "pajak.html", "website.html", "naik-kelas.html",
+  "tentang.html", "kebijakan-privasi.html", "syarat-ketentuan.html",
+  "ai.html", "analisa-delivery.html", "ugc.html", "automation.html",
   "alat/kalkulator-pph-final-umkm.html",
   "alat/kalkulator-hpp-harga-jual.html",
   "alat/kalkulator-biaya-qris.html",
