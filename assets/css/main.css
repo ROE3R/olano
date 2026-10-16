@@ -29,14 +29,14 @@
   --font-sans:"Geist", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono:"Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* -- type scale (fluid) -- */
-  --fs-display: clamp(2.75rem, 5.5vw + 1rem, 5rem);
-  --fs-h1: clamp(2.125rem, 3vw + 1rem, 3.5rem);
-  --fs-h2: clamp(1.75rem, 2vw + 1rem, 2.625rem);
+  /* -- type scale (fluid; ref sookudo: H2 besar 40-48, body 18, paragraf max 780, ritme lega) -- */
+  --fs-display: clamp(3rem, 6vw + 1rem, 5.5rem);
+  --fs-h1: clamp(2.5rem, 3.4vw + 1rem, 3.75rem);
+  --fs-h2: clamp(2.25rem, 3.2vw + 1rem, 3rem);
   --fs-h3: 1.5rem;
-  --fs-body-lg: 1.1875rem; /* 19 */
-  --fs-body: 1.0625rem;    /* 17 */
-  --fs-small: 0.9375rem;   /* 15 */
+  --fs-body-lg: 1.25rem; /* 20 */
+  --fs-body: 1.125rem;    /* 18 */
+  --fs-small: 0.9375rem;  /* 15 */
   --fs-eyebrow: 0.8125rem; /* 13 */
 
   /* -- spacing (4pt) -- */
@@ -54,10 +54,12 @@
   --sh-card: 0 0 0 1px rgba(20,40,70,.05), 0 1px 3px -1px rgba(20,40,70,.10), 0 10px 24px -14px rgba(20,40,70,.14);
   --sh-lift: 0 0 0 1px rgba(36,83,235,.16), 0 2px 6px -2px rgba(20,40,70,.12), 0 28px 56px -18px rgba(36,83,235,.22);
 
-  /* -- motion -- */
+  /* -- motion --
+     --ease-emphasized = expo-out (cubic-bezier .16,1,.3,1): ref web-ui-patterns,
+     ini easing yang bikin gerakan terasa premium, bukan material-standard. */
   --dur-instant:100ms; --dur-fast:180ms; --dur-base:280ms; --dur-slow:480ms; --dur-story:800ms;
   --ease-standard: cubic-bezier(0.2,0,0,1);
-  --ease-emphasized: cubic-bezier(0.3,0,0,1);
+  --ease-emphasized: cubic-bezier(0.16,1,0.3,1);
   --ease-exit: cubic-bezier(0.4,0,1,1);
 
   /* -- container -- */
@@ -539,9 +541,10 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
 @media(min-width:900px){.statband-grid{grid-template-columns:repeat(3,1fr);gap:0}
 .statband-grid .statb-item+.statb-item{border-left:1px solid var(--gray-300);padding-left:40px}}
 .statb-item b{font-family:var(--font-mono);font-weight:700;font-size:clamp(2.75rem,4.5vw,3.5rem);letter-spacing:-.03em;
-  color:var(--ink);display:flex;align-items:baseline;font-variant-numeric:tabular-nums;line-height:1}
-.statb-item b i{font-style:normal;font-size:.55em;color:var(--blue-600);font-weight:600;margin-left:2px}
-.statb-item span{display:block;font-size:14px;color:var(--gray-500);margin-top:12px;max-width:30ch;line-height:1.5}
+  color:var(--ink);display:inline;font-variant-numeric:tabular-nums;line-height:1}
+.statb-item .unit{font-family:var(--font-mono);font-style:normal;font-weight:600;font-size:clamp(1.5rem,2.5vw,2rem);
+  color:var(--blue-600);margin-left:4px;line-height:1}
+.statb-item span{display:block;font-size:15px;color:var(--gray-500);margin-top:12px;max-width:30ch;line-height:1.5}
 
 /* ============================= EDITORIAL NUMBERED LIST (fitur, bukan kartu) =============================
    R-14/R-05: hierarki via nomor editorial, bukan grid kartu identik; baris = link ke detail. */
@@ -595,6 +598,23 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
 
 /* Focus visible */
 :focus-visible{outline:2px solid var(--blue-600); outline-offset:2px; border-radius:4px}
+
+/* ============================= DETAIL FINISH (ref web-ui-patterns light-corporate) =============================
+   Scrollbar + selection: sinyal kecermatan kecil; anti-AI checklist skill. */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--gray-300);border-radius:999px;border:3px solid var(--white)}
+::-webkit-scrollbar-thumb:hover{background:var(--gray-500)}
+::selection{background:rgba(36,83,235,.14);color:var(--ink)}
+
+/* ============================= H1 WORD-MASK REVEAL =============================
+   Ref ibelick text-reveal pattern: tiap kata muncul dari balik mask, stagger 45ms,
+   expo-out (R-31: one-shot entrance untuk headline, bukan loop). */
+.h-roll{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
+.h-roll>span{display:inline-block;transform:translateY(110%);transition:transform .9s var(--ease-emphasized)}
+[data-reveal].in .h-roll>span{transform:none}
+.h-roll .grad-text{display:inline-block}
+@media (prefers-reduced-motion: reduce){.h-roll>span{transform:none !important}}
 
 /* Utility: skip link */
 .skip{position:absolute; left:-9999px; top:0; background:var(--blue-600); color:#fff; padding:12px 18px;

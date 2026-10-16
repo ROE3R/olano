@@ -99,20 +99,23 @@
      (scene tersembunyi dipicu oleh initHeroScenes, bukan IntersectionObserver). */
   function initSlideNum() {
     document.querySelectorAll("[data-slide-num]").forEach(function (el) {
-      var target = parseInt(el.getAttribute("data-slide-num"), 10) || 0;
+      var raw = el.getAttribute("data-slide-num") || "0";
+      var num = parseFloat(raw) || 0;
       var pre = el.getAttribute("data-prefix") || "";
       var suf = el.getAttribute("data-suffix") || "";
+      var isInt = Number.isInteger(num);
+      // integer: format id-ID (titik ribuan); desimal: koma satu digit ("0,5")
+      var s = isInt ? num.toLocaleString("id-ID") : String(num).replace(".", ",");
       el._slideDone = false;
       if (RM) {
-        el.textContent = pre + target.toLocaleString("id-ID") + suf;
+        el.textContent = pre + s + suf;
         el._slideDone = true;
         return;
       }
-      var s = target.toLocaleString("id-ID"); // mis. "1.240.000"
       var html = (pre ? '<span class="spref">' + pre + "</span>" : "");
       for (var i = 0; i < s.length; i++) {
         var c = s[i];
-        if (c === ".") { html += '<span class="sdot">.</span>'; continue; }
+        if (c === "." || c === ",") { html += '<span class="sdot">' + c + "</span>"; continue; }
         html += '<span class="scol"><span class="sstack" data-final="' + c + '">' +
           "0123456789".split("").map(function (d) { return "<span>" + d + "</span>"; }).join("") +
           "</span></span>";
