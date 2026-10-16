@@ -1,5 +1,5 @@
 /* Olano service worker: offline-first (PRD F2: POS 100% offline setelah login pertama) */
-var CACHE = "olano-v2";
+var CACHE = "olano-v3";
 var CORE = [
   "./", "index.html", "manifest.json",
   "assets/css/main.css", "assets/js/config.js", "assets/js/shared.js",

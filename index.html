@@ -73,11 +73,12 @@
 
       <!-- Mock POS realistis: konten sama persis dengan tampilan kasir Olano -->
       <div class="hero-visual" aria-hidden="true">
+        <div class="pb">
         <div class="phone">
           <div class="notch"></div>
           <div class="screen">
             <div class="mock-top"><span class="mock-outlet">Kopi Senja</span><span class="mock-chip off">Offline · 3 aman</span></div>
-            <div class="mock-stat"><b>Rp1.240.000</b><span>omzet hari ini · 41 transaksi</span></div>
+            <div class="mock-stat"><b data-slide-num="1240000" data-prefix="Rp">Rp1.240.000</b><span>omzet hari ini · 41 transaksi</span></div>
             <div class="mock-row">
               <span class="mock-ic"><svg class="ic"><use href="assets/icons.svg#i-cup"/></svg></span>
               <span class="mock-name">Es Kopi Susu <em>×2</em></span>
@@ -99,6 +100,11 @@
               <span class="mock-val">Rp42.500</span>
             </div>
           </div>
+          <span class="pb-layer" style="--i:0"></span>
+          <span class="pb-layer" style="--i:1"></span>
+          <span class="pb-layer" style="--i:2"></span>
+          <span class="pb-layer" style="--i:3"></span>
+        </div>
         </div>
       </div>
     </div>
@@ -133,32 +139,32 @@
       <h2>Semua yang usahamu butuh, di satu aplikasi.</h2>
     </div>
     <div class="feat-grid stagger" data-reveal>
-      <div class="feat">
+      <div class="feat spot">
         <span class="feat-ic"><svg class="ic"><use href="assets/icons.svg#i-bag"/></svg></span>
         <h3>Kasir offline</h3>
         <p class="small">App shell dan katalog di-cache di perangkat. Kasir tetap melayani saat sinyal hilang.</p>
       </div>
-      <div class="feat">
+      <div class="feat spot">
         <span class="feat-ic"><svg class="ic"><use href="assets/icons.svg#i-qr"/></svg></span>
         <h3>QRIS statis</h3>
         <p class="small">Decode EMVCo dan validasi CRC16, QR tajam, nominal besar. Mikro membayar 0%.</p>
       </div>
-      <div class="feat">
+      <div class="feat spot">
         <span class="feat-ic"><svg class="ic"><use href="assets/icons.svg#i-scan"/></svg></span>
         <h3>Scan tanpa barcode</h3>
         <p class="small">Kamera mengenali produk lewat model di-perangkat. Top-3 kandidat, tap untuk masuk.</p>
       </div>
-      <div class="feat">
+      <div class="feat spot">
         <span class="feat-ic"><svg class="ic"><use href="assets/icons.svg#i-img"/></svg></span>
         <h3>AI foto produk</h3>
         <p class="small">Hapus dan ganti latar, perbaiki cahaya, gaya katalog. Bentuk produk tidak berubah.</p>
       </div>
-      <div class="feat">
+      <div class="feat spot">
         <span class="feat-ic"><svg class="ic"><use href="assets/icons.svg#i-price"/></svg></span>
         <h3>AI penjaga harga</h3>
         <p class="small">Pantau bahan yang naik di atas 10%. Tiga usul harga: Aman, Kompetitif, Premium.</p>
       </div>
-      <div class="feat">
+      <div class="feat spot">
         <span class="feat-ic"><svg class="ic"><use href="assets/icons.svg#i-chart"/></svg></span>
         <h3>Skor kesehatan usaha</h3>
         <p class="small">0 sampai 100 tiap malam: omzet, margin, stok, pajak. Ringkasan mingguan via email.</p>
@@ -179,25 +185,25 @@
       <p class="small mt-4">Empat kalkulator untuk keputusan harian. Gratis, tanpa akun.</p>
     </div>
     <div class="tools-grid stagger" data-reveal>
-      <a class="tool-card" href="alat/kalkulator-pph-final-umkm.html">
+      <a class="tool-card spot" href="alat/kalkulator-pph-final-umkm.html">
         <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-file"/></svg>
         <b>Kalkulator PPh Final</b>
         <span class="small">0,5% atas omzet sesuai PP 20/2026, per jenis wajib pajak.</span>
         <span class="tool-go">Hitung <svg class="ic sm"><use href="assets/icons.svg#i-arrow"/></svg></span>
       </a>
-      <a class="tool-card" href="alat/kalkulator-hpp-harga-jual.html">
+      <a class="tool-card spot" href="alat/kalkulator-hpp-harga-jual.html">
         <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-price"/></svg>
         <b>HPP dan Harga Jual</b>
         <span class="small">BOM per porsi jadi tiga opsi harga dengan margin target.</span>
         <span class="tool-go">Hitung <svg class="ic sm"><use href="assets/icons.svg#i-arrow"/></svg></span>
       </a>
-      <a class="tool-card" href="alat/kalkulator-biaya-qris.html">
+      <a class="tool-card spot" href="alat/kalkulator-biaya-qris.html">
         <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-qr"/></svg>
         <b>Biaya QRIS (MDR)</b>
         <span class="small">Potongan per transaksi dan per bulan, per segmen usaha.</span>
         <span class="tool-go">Hitung <svg class="ic sm"><use href="assets/icons.svg#i-arrow"/></svg></span>
       </a>
-      <a class="tool-card" href="alat/kalkulator-margin-delivery.html">
+      <a class="tool-card spot" href="alat/kalkulator-margin-delivery.html">
         <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-trend"/></svg>
         <b>Margin GoFood/Grab</b>
         <span class="small">Fee, subsidi, dan ongkir jadi analisa untung bersih per pesanan.</span>
@@ -221,7 +227,7 @@
           <a class="btn btn-wa" href="pajak.html">Konsultasi via WhatsApp</a>
         </div>
       </div>
-      <div class="calc-card">
+      <div class="calc-card spot">
         <div class="eyebrow" style="color:var(--blue-300)">Estimasi cepat</div>
         <div class="field mt-4"><label for="tax-wp">Jenis usaha</label>
           <select id="tax-wp">

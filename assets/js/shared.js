@@ -78,6 +78,65 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---------- spotlight hover (ref ibelick spotlight.tsx, port vanilla) ----------
+     Hanya perangkat pointer:fine; set CSS var --mx/--my per elemen .spot. */
+  function initSpotlight() {
+    if (RM) return;
+    var fine = window.matchMedia("(hover:hover) and (pointer:fine)");
+    if (!fine.matches) return;
+    document.querySelectorAll(".spot").forEach(function (el) {
+      el.addEventListener("mousemove", function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        el.style.setProperty("--my", (e.clientY - r.top) + "px");
+      }, { passive: true });
+    });
+  }
+
+  /* ---------- sliding number (ref ibelick sliding-number.tsx, port vanilla) ----------
+     Tiap digit = kolom 0-9 yang bergulir (CSS transition transform) ke angka tujuan.
+     Format titik ribuan statis; gulir sekali saat masuk viewport, lalu diam. */
+  function initSlideNum() {
+    document.querySelectorAll("[data-slide-num]").forEach(function (el) {
+      var target = parseInt(el.getAttribute("data-slide-num"), 10) || 0;
+      var pre = el.getAttribute("data-prefix") || "";
+      if (RM) {
+        el.textContent = pre + target.toLocaleString("id-ID");
+        return;
+      }
+      var s = target.toLocaleString("id-ID"); // mis. "1.240.000"
+      var html = "";
+      for (var i = 0; i < s.length; i++) {
+        var c = s[i];
+        if (c === ".") { html += '<span class="sdot">.</span>'; continue; }
+        html += '<span class="scol"><span class="sstack" data-final="' + c + '">' +
+          "0123456789".split("").map(function (d) { return "<span>" + d + "</span>"; }).join("") +
+          "</span></span>";
+      }
+      el.classList.add("snum");
+      el.innerHTML = pre + html;
+      var stacks = el.querySelectorAll(".sstack");
+      function go() {
+        stacks.forEach(function (st, idx) {
+          var final = parseInt(st.getAttribute("data-final"), 10);
+          // stagger kecil per posisi dari kiri supaya terasa settling, bukan slot-machine
+          st.style.transitionDelay = (idx * 40) + "ms";
+          requestAnimationFrame(function () {
+            st.style.transform = "translateY(-" + final + "em)";
+          });
+        });
+      }
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { go(); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.4 });
+        io.observe(el);
+      } else { go(); }
+    });
+  }
+
   /* ---------- navbar scroll + mobile burger ---------- */
   function initNav() {
     var nav = document.querySelector(".nav");
@@ -196,6 +255,7 @@
 
   function init() {
     initNav(); initReveal(); initCountUp(); initFaq();
+    initSpotlight(); initSlideNum();
     initOfflineDemo(); initMarquee(); initBeforeAfter();
     registerSW();
   }

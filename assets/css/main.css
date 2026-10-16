@@ -50,6 +50,9 @@
   --sh-sm: 0 1px 2px rgba(14,26,74,.06);
   --sh-md: 0 8px 24px -8px rgba(14,26,74,.12);
   --sh-lg: 0 24px 64px -16px rgba(36,83,235,.22);
+  /* Ref Cal.com: ring border + contact shadow + diffused ambient, satu stack (depth dari shadow, bukan dari border tebal) */
+  --sh-card: 0 0 0 1px rgba(20,40,70,.05), 0 1px 3px -1px rgba(20,40,70,.10), 0 10px 24px -14px rgba(20,40,70,.14);
+  --sh-lift: 0 0 0 1px rgba(36,83,235,.16), 0 2px 6px -2px rgba(20,40,70,.12), 0 28px 56px -18px rgba(36,83,235,.22);
 
   /* -- motion -- */
   --dur-instant:100ms; --dur-fast:180ms; --dur-base:280ms; --dur-slow:480ms; --dur-story:800ms;
@@ -170,9 +173,9 @@ p{max-width:65ch}
 
 /* ============================= CARD / BENTO ============================= */
 .card{background:var(--white); border:1px solid var(--gray-100); border-radius:var(--r-lg);
-  padding:var(--sp-6); box-shadow:var(--sh-sm); position:relative;}
+  padding:var(--sp-6); box-shadow:var(--sh-card); position:relative;}
 .card.hover{transition:transform var(--dur-base) var(--ease-emphasized), box-shadow var(--dur-base)}
-.card.hover:hover{transform:translateY(-4px); box-shadow:var(--sh-lg); border-color:var(--blue-200)}
+.card.hover:hover{transform:translateY(-4px); box-shadow:var(--sh-lift); border-color:var(--blue-200)}
 .card.active{border-color:var(--blue-200); box-shadow:0 0 0 4px var(--blue-50)}
 .bento{display:grid; gap:var(--sp-4); grid-template-columns:1fr}
 @media(min-width:900px){
@@ -268,8 +271,9 @@ p{max-width:65ch}
 @media(min-width:700px){.feat-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1000px){.feat-grid{grid-template-columns:repeat(3,1fr)}}
 .feat{background:var(--white);border:1px solid var(--gray-100);border-radius:var(--r-lg);padding:24px;
+  box-shadow:var(--sh-card);
   transition:border-color var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard)}
-.feat:hover{border-color:var(--blue-200);box-shadow:var(--sh-md)}
+.feat:hover{border-color:var(--blue-200);box-shadow:var(--sh-lift)}
 .feat-ic{width:44px;height:44px;border-radius:12px;background:var(--blue-50);color:var(--blue-600);
   display:grid;place-items:center;margin-bottom:16px}
 .feat-ic .ic{width:22px;height:22px}
@@ -280,9 +284,10 @@ p{max-width:65ch}
 @media(min-width:640px){.tools-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1000px){.tools-grid{grid-template-columns:repeat(4,1fr)}}
 .tool-card{display:flex;flex-direction:column;gap:8px;background:var(--white);border:1px solid var(--gray-100);
-  border-radius:var(--r-lg);padding:24px;transition:border-color var(--dur-base) var(--ease-standard),
+  border-radius:var(--r-lg);padding:24px;box-shadow:var(--sh-card);
+  transition:border-color var(--dur-base) var(--ease-standard),
   box-shadow var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-emphasized)}
-.tool-card:hover{border-color:var(--blue-300);box-shadow:var(--sh-md);transform:translateY(-2px)}
+.tool-card:hover{border-color:var(--blue-300);box-shadow:var(--sh-lift);transform:translateY(-2px)}
 .tool-card .ic{width:24px;height:24px;color:var(--blue-600)}
 .tool-card b{font-family:var(--font-display);font-size:1.05rem;letter-spacing:-.01em}
 .tool-go{margin-top:auto;font-size:13px;font-weight:600;color:var(--blue-600);display:inline-flex;align-items:center;gap:4px;
@@ -293,7 +298,7 @@ p{max-width:65ch}
 .tax-grid{display:grid;gap:48px}
 @media(min-width:1024px){.tax-grid{grid-template-columns:1fr 1fr;align-items:start}}
 .calc-card{background:var(--white);border:1px solid var(--gray-100);border-radius:var(--r-xl);
-  padding:32px;box-shadow:var(--sh-md)}
+  padding:32px;box-shadow:var(--sh-card)}
 .calc-out-box{border-top:1px solid var(--gray-100);margin-top:16px;padding-top:16px}
 .calc-card .out-hero b{color:var(--ink);font-size:clamp(1.9rem,3vw,2.5rem)}
 .calc-card .callout{background:var(--blue-50);border:1px solid var(--blue-100);color:var(--gray-700)}
@@ -469,6 +474,36 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
   display:grid; place-items:center; font-size:18px; flex:none; transition:transform var(--dur-base), background var(--dur-base)}
 .faq-item[open] summary .plus{transform:rotate(45deg); background:var(--blue-50)}
 .faq-item .ans{padding:0 0 18px; color:var(--gray-500); font-size:var(--fs-body); line-height:1.65; max-width:60ch}
+
+/* ============================= SPOTLIGHT HOVER =============================
+   Ref ibelick/motion-primitives (spotlight.tsx), port vanilla.
+   Tujuan (R-31): kedalaman pointer-only di kartu interaktif; user-triggered, tidak loop (MOTION dial 2). */
+.spot{position:relative;overflow:hidden}
+.spot::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;
+  transition:opacity var(--dur-base) var(--ease-standard);
+  background:radial-gradient(260px 170px at var(--mx,50%) var(--my,-30%), rgba(59,111,246,.10), rgba(59,111,246,0) 70%)}
+.spot:hover::after{opacity:1}
+@media(hover:none){.spot::after{display:none}}
+
+/* ============================= PROGRESSIVE BLUR =============================
+   Ref ibelick/motion-primitives (progressive-blur.tsx), versi statis CSS.
+   Tujuan (R-31): bottom hero phone larut halus ke value strip di bawahnya; 4 layer blur bertingkat, tidak ada animasi loop. */
+.pb{position:relative}
+.pb-layer{position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to bottom,
+    transparent calc(var(--i)*25%), #000 calc(var(--i)*25% + 22%), #000 calc(var(--i)*25% + 40%), transparent calc(var(--i)*25% + 46%));
+  mask-image:linear-gradient(to bottom,
+    transparent calc(var(--i)*25%), #000 calc(var(--i)*25% + 22%), #000 calc(var(--i)*25% + 40%), transparent calc(var(--i)*25% + 46%));
+  -webkit-backdrop-filter:blur(calc(var(--i)*.5px));backdrop-filter:blur(calc(var(--i)*.5px))}
+
+/* ============================= SLIDING NUMBER =============================
+   Ref ibelick/motion-primitives (sliding-number.tsx), port vanilla: tiap digit jadi kolom yang bergulir ke angka tujuan.
+   Tujuan (R-31, startup-ui-depth lever 3): KPI hero (omzet) jadi elemen terbesar yang terasa hidup; satu kali saat masuk viewport, lalu diam. */
+.snum{font-variant-numeric:tabular-nums}
+.scol{display:inline-block;width:1ch;height:1em;overflow:hidden;position:relative;vertical-align:baseline}
+.scol .sstack{position:absolute;left:0;top:0;width:100%;transition:transform .6s var(--ease-emphasized)}
+.scol .sstack span{display:block;height:1em;line-height:1;text-align:center}
+.snum .sdot{display:inline-block}
 
 /* ============================= MOTION / REVEAL ============================= */
 [data-reveal]{opacity:0; transform:translateY(16px); transition:opacity var(--dur-slow) var(--ease-standard),
