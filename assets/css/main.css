@@ -12,12 +12,12 @@
 
   /* -- neutral -- */
   --white:#FFFFFF; --gray-25:#FAFBFD; --gray-50:#F4F6FA; --gray-100:#E8ECF3;
-  --gray-300:#C3CBD9; --gray-500:#6B7489; --gray-700:#343C4F; --ink:#0B1220;
+  --gray-300:#C3CBD9; --gray-500:#4E586B; --gray-700:#343C4F; --ink:#0B1220;
 
-  /* -- status -- */
-  --success:#12A150; --success-bg:#E7F6EE;
-  --warning:#E8A100; --warning-bg:#FFF4DC;
-  --danger:#E5484D;  --danger-bg:#FDEBEC;
+  /* -- status (di-darken 2026-10-16: semua harus AA di atas bg-nya sendiri) -- */
+  --success:#0E7A3D; --success-bg:#E7F6EE;
+  --warning:#8A5400; --warning-bg:#FFF4DC;
+  --danger:#A3211F;  --danger-bg:#FDEBEC;
 
   /* -- gradients -- */
   --grad-hero: radial-gradient(60% 60% at 70% 20%, #DBE8FE 0%, rgba(255,255,255,0) 70%);
@@ -841,6 +841,9 @@ h1,h2,h3{font-weight:450}
 .hero-sky .h-leak{top:-4%;left:0;width:100%;height:auto;object-fit:cover;object-position:top;mix-blend-mode:screen;opacity:.85}
 .hero-sky .h-stars{top:5%;left:50%;transform:translateX(-50%);width:min(1100px,150%);height:auto;opacity:.35}
 .hero-sky .h-comet{position:absolute;height:2px;width:110px;opacity:0;will-change:transform,opacity;animation:comet-fly linear infinite}
+/* -- scrim zona teks: radial white garansi kontras di titik terburuk (probe 2026-10-16:
+   sub di atas band foto mid 3.18-4.12 tanpa scrim; scrim radial menutup 1200px zona tengah) -- */
+.hero-sky .h-scrim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(62% 52% at 50% 40%,rgba(255,255,255,.72) 0%,rgba(255,255,255,.38) 46%,rgba(255,255,255,0) 72%)}
 .hero-sky .h-comet i{display:block;width:100%;height:100%;border-radius:3px;background:linear-gradient(270deg,rgba(255,255,255,.65),rgba(255,255,255,0));position:relative}
 .hero-sky .h-comet i::after{content:"";position:absolute;top:0;right:0;width:4px;height:2px;border-radius:2px;background:rgba(255,255,255,.9);box-shadow:0 0 10px 3px rgba(255,255,255,.55)}
 .hero-sky .c1{left:-12%;top:16%;--s:1;animation-duration:6.2s;animation-delay:0s}
@@ -859,6 +862,7 @@ h1,h2,h3{font-weight:450}
 .tool-hero .hero-sky-lite img{position:absolute;pointer-events:none}
 .tool-hero .l-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.42}
 .tool-hero .l-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.30) 0%,rgba(255,255,255,.55) 48%,rgba(255,255,255,.90) 82%,#FFFFFF 100%)}
+.tool-hero .l-scrim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(70% 60% at 50% 42%,rgba(255,255,255,.62) 0%,rgba(255,255,255,.30) 50%,rgba(255,255,255,0) 75%)}
 .tool-hero .l-cloud{top:34%;left:-10%;width:min(640px,62vw);height:auto;filter:blur(3px);animation:cloud-drift 9s linear infinite alternate}
 .tool-hero .l-grid{top:0;left:50%;transform:translateX(-50%);width:min(1200px,140%);height:calc(min(1200px,140%)*1280/1920);object-fit:cover;object-position:top;opacity:.35}
 .tool-hero .container{position:relative;z-index:1}
