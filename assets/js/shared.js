@@ -280,6 +280,21 @@
     });
   }
 
+  /* ---------- bencho blocks: progress ring (skor usaha) ---------- */
+  function initRings() {
+    var C = 2 * Math.PI * 28; // r=28
+    document.querySelectorAll("[data-pring]").forEach(function (el) {
+      var val = Math.min(100, Math.max(0, parseInt(el.getAttribute("data-pring"), 10) || 0));
+      var fg = el.querySelector(".fg");
+      if (fg) { fg.style.strokeDasharray = C; fg.style.strokeDashoffset = C; }
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          if (fg) fg.style.strokeDashoffset = C * (1 - val / 100);
+        });
+      });
+    });
+  }
+
   /* ---------- before/after slider foto AI ---------- */
   function initBeforeAfter() {
     document.querySelectorAll("[data-before-after]").forEach(function (ba) {
@@ -306,7 +321,7 @@
   function init() {
     initNav(); initReveal(); initCountUp(); initFaq();
     initSpotlight(); initSlideNum(); initHeroScenes();
-    initOfflineDemo(); initMarquee(); initBeforeAfter();
+    initOfflineDemo(); initMarquee(); initBeforeAfter(); initRings();
     registerSW();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

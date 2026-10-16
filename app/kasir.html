@@ -22,6 +22,7 @@
     <h1>Kopi Senja <span class="outlet">· Demo</span></h1></div>
   </div>
   <span class="pos-status sync" id="status" style="margin-left:auto">Menyinkron…</span>
+  <span class="pos-clock" id="liveclk" aria-hidden="true">--:--</span>
   <a class="btn btn-ghost sm" href="../index.html" style="min-height:40px;font-size:13px">Beranda</a>
 </header>
 
@@ -72,7 +73,12 @@
       <div class="mono" style="font-size:38px;font-weight:700;margin-top:12px" id="qris-amt">Rp0</div>
       <p class="small" style="margin-top:8px;color:var(--gray-500)">QRIS statis · <b>tekan “Sudah dibayar” setelah cek notifikasi PJP</b>.</p>
     </div>
-    <button class="btn btn-primary btn-block btn-lg mt-4" id="confirm-pay">Konfirmasi pembayaran</button>
+    <!-- bencho block: slide to confirm (friksi anti mis-tap di checkout) -->
+    <div class="sld" id="sld" role="button" tabindex="0" aria-label="Geser ke kanan untuk konfirmasi pembayaran">
+      <div class="sld-track"></div>
+      <div class="sld-hint">Geser untuk konfirmasi &middot; Rp<span id="sld-amt">0</span></div>
+      <div class="sld-knob"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    </div>
     <p class="small" style="color:var(--gray-500);margin-top:10px;font-size:12px">Transaksi disimpan offline (client_uuid ULID) &amp; antre sync bila perlu.</p>
   </div>
 </div>
@@ -113,6 +119,7 @@
 </div>
 
 <script src="../assets/js/config.js"></script>
+<div class="toast" id="toast" role="status" aria-live="polite"><span class="t-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span id="toast-msg"></span></div>
 <script>
 (function(){
   var C = window.OLANO_CONFIG, R = window.OLANO;
@@ -172,10 +179,18 @@
   function refreshStatus(){
     if(!navigator.onLine){ setStatus("off", pending); } else { pending = 0; setStatus("on"); }
   }
-  window.addEventListener("online", function(){ refreshStatus(); drain(); });
+  window.addEventListener("online", function(){ drained = false; refreshStatus(); drain(); });
   window.addEventListener("offline", refreshStatus);
+  var drained = false;
   function drain(){
-    setTimeout(function(){ if(navigator.onLine && pending>0){ pending=0; setStatus("sync"); setTimeout(refreshStatus, 900); } }, 600);
+    setTimeout(function(){
+      if(navigator.onLine && pending>0){
+        var n = pending; pending=0; setStatus("sync");
+        if(!drained) toast(n+" transaksi offline sudah tersinkron");
+        drained = true;
+        setTimeout(refreshStatus, 900);
+      }
+    }, 600);
   }
 
   var grid = document.getElementById("produk"), activeCat = "SEMUA";
@@ -278,10 +293,73 @@
     openSheet("sheet-ok");
     if(navigator.vibrate) navigator.vibrate(30);
     animateCheck();
-    if(!navigator.onLine){ pending++; setStatus("off", pending); }
+    if(!navigator.onLine){ pending++; setStatus("off", pending); toast("Offline: "+R.rp(t)+" tercatat di perangkat, antre sinkron"); }
+    else { toast("Transaksi "+R.rp(t)+" tersinkron"); }
     putSale(sale).then(function(){ enqueue(sale); drain(); });
   }
-  document.getElementById("confirm-pay").addEventListener("click", function(){ pay(); });
+  /* ---------- bencho: live clock (blok Time scrubber, versi jam) ---------- */
+  (function(){
+    var clk = document.getElementById("liveclk"); if(!clk) return;
+    function tick(){ clk.textContent = new Date().toLocaleTimeString("id-ID", {hour:"2-digit", minute:"2-digit"}); }
+    tick(); setInterval(tick, 15000);
+  })();
+
+  /* ---------- bencho: toast (blok Notify) ---------- */
+  var toastT = null;
+  function toast(msg){
+    var t = document.getElementById("toast"); if(!t) return;
+    document.getElementById("toast-msg").textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toastT);
+    toastT = setTimeout(function(){ t.classList.remove("show"); }, 2600);
+  }
+
+  /* ---------- bencho: slide to confirm (ganti klik biasa, anti mis-tap) ---------- */
+  var sld = document.getElementById("sld");
+  var sldKnob = sld.querySelector(".sld-knob");
+  var sldDrag = {on:false, x0:0, max:0, done:false};
+  function sldUpdateAmount(){
+    var a = document.getElementById("sld-amt");
+    if(a) a.textContent = R.rp(total());
+  }
+  document.addEventListener("input", function(e){ if(e.target.id==="cash") sldUpdateAmount(); });
+  function sldMax(){ return Math.max(40, sld.offsetWidth - sldKnob.offsetWidth - 10); }
+  sld.addEventListener("pointerdown", function(e){
+    if(sldDrag.done) return;
+    sldDrag.on = true; sldDrag.x0 = e.clientX; sldDrag.max = sldMax();
+    sld.classList.add("armed"); sld.setPointerCapture(e.pointerId);
+  });
+  sld.addEventListener("pointermove", function(e){
+    if(!sldDrag.on) return;
+    var dx = Math.min(Math.max(e.clientX - sldDrag.x0, 0), sldDrag.max);
+    sldKnob.style.transform = "translateX(" + dx + "px)";
+    if(dx >= sldDrag.max * 0.85){
+      sldDrag.done = true; sld.classList.add("on");
+      sldKnob.style.transform = "translateX(" + sldDrag.max + "px)";
+      pay();
+      setTimeout(function(){ // reset buat transaksi berikutnya
+        sldDrag.done = false; sld.classList.remove("on","armed");
+        sldKnob.style.transition = "transform .3s var(--ease-emphasized)";
+        sldKnob.style.transform = "translateX(0)";
+        setTimeout(function(){ sldKnob.style.transition = ""; }, 320);
+      }, 500);
+      sldDrag.on = false;
+    }
+  });
+  ["pointerup","pointercancel"].forEach(function(ev){
+    sld.addEventListener(ev, function(){
+      if(!sldDrag.on || sldDrag.done) return;
+      sldDrag.on = false; sld.classList.remove("armed");
+      sldKnob.style.transition = "transform .3s var(--ease-emphasized)";
+      sldKnob.style.transform = "translateX(0)";
+      setTimeout(function(){ sldKnob.style.transition = ""; }, 320);
+    });
+  });
+  sld.addEventListener("keydown", function(e){ // fallback keyboard (R-32)
+    if(e.key==="Enter" || e.key===" "){ e.preventDefault(); sld.classList.add("on"); pay(); }
+  });
+  sld.addEventListener("focus", sldUpdateAmount);
+  sldUpdateAmount();
 
   function receiptHTML(s){
     var rows = s.items.map(function(i){
