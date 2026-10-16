@@ -206,3 +206,21 @@ Lighthouse (target): Perf >=90, A11y >=95, CLS <0.1 -- sky system menambah
 ~200KB aset (sudah di-cache SW v10; langit hero eager, sisanya lazy).
 prefers-reduced-motion: semua drift/komet dimatikan + komet hidden.
 SEO/fakta/kalkulator/anchor: tidak disentuh.
+
+## v12-v14: harmonisasi warna + mockup tajam (2026-10-16, setelah "blm ok")
+
+Root cause diukur, bukan feeling:
+| Masalah | Ukur | Fix |
+|---|---|---|
+| Sky "pasted", ngga cocok sama blue olano | hue dominan sky ~200-210 (cyan-dreamy) vs #2453EB hue 226 | hue-rotate(30deg) saturate(1.12) di h-sky/l-sky/cloud via CSS filter (non-destruktif); veil diganti tint biru brand (bukan putih murni) |
+| Lightleak neon/rainbow | streak oranye hue 10-15 di lightleak.webp, screen op .85 | saturate(.2) + op .16 -> jadi jejak halus |
+| Font "ngga enak" | CSS minta Aspekta 700/800, file cuma 450/500/600 -> browser synthesize bold (blurry) | unduh ASPEKTA-650.OTF dari daydream, subset woff2 13KB, @font-face range 650-800 -> request 700/800 resolve ke file asli, sintesis mati |
+| Mockup hero muddy/blur | aset lama 21KB 1180x962 + background layer sengaja blur | ganti dengan RENDER PWA ASLI (app/kasir.html 3 item, bar "3 item Rp62.000 Bayar") @2x desktop / @3x mobile tanpa sheet; desktop 1x 23KB LCP + 2x 60KB retina srcset; mobile 1x 19KB + 2x 47KB |
+| Card "AI foto produk" placeholder SVG huruf A | | komposit 16:9 before/after foto kopi nyata (f-foto-ai.webp 38KB, label SEBELUM/SESUDAH) |
+| Crop scan card patah (2.8:1 dipaksa 16:9) | | f-scan16.webp = crop tengah 16:9 (744x419, 8KB) |
+| Bug app: "Rp Rp22.000" di swipe confirm | label statis "Rp" + R.rp() juga prefix "Rp" | static label tanpa Rp; span placeholder "Rp0" |
+| Perf regresi 65 / CLS 0.877 (v13) | decode 4.5MP + clouds 122KB di mobile throttling | clouds ke 520px (74KB total), sky-hero-m.webp 780px (4KB) via <picture> di semua halaman, mockup mobile 1x 390px |
+
+Hasil akhir (LH mobile devtools): **Perf 91 / A11y 100 / CLS 0 / LCP 3.3s / 430KB**.
+SW -> olano-v14. Kontras banner Kembalian #0A5C36 on #E7F6EE = 7.24:1 (AA;
+klaim "kontras jelek" dari vision model qwen gratis salah -- diverifikasi programatik).

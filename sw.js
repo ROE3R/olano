@@ -1,5 +1,5 @@
 /* Olano service worker: offline-first (PRD F2: POS 100% offline setelah login pertama) */
-var CACHE = "olano-v11";
+var CACHE = "olano-v14";
 var CORE = [
   "./", "index.html", "manifest.json",
   "assets/css/main.css", "assets/js/config.js", "assets/js/shared.js",
@@ -10,11 +10,23 @@ var CORE = [
   "alat/kalkulator-biaya-qris.html",
   "alat/kalkulator-margin-delivery.html",
   "assets/daydream/sky-hero.webp",
+  "assets/daydream/sky-hero-m.webp",
   "assets/daydream/grid-overlay.svg",
   "assets/daydream/cloud-1.webp",
   "assets/daydream/cloud-2.webp",
   "assets/daydream/lightleak.webp",
   "assets/daydream/star-dots.svg",
+  "assets/fonts/Aspekta-450.woff2",
+  "assets/fonts/Aspekta-500.woff2",
+  "assets/fonts/Aspekta-600.woff2",
+  "assets/fonts/Aspekta-650.woff2",
+  "assets/fonts/instrument-serif-400-italic-latin.woff2",
+  "assets/img/produk-kasir.webp",
+  "assets/img/produk-kasir-2x.webp",
+  "assets/img/produk-kasir-mobile.webp",
+  "assets/img/produk-kasir-mobile-2x.webp",
+  "assets/img/f-foto-ai.webp",
+  "assets/img/f-scan16.webp",
   "assets/img/food/foto-ai-kopi-before.webp",
   "assets/img/food/foto-ai-kopi-after.webp",
   "assets/img/food/foto-ai-keripik-before.webp",

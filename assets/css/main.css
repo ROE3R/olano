@@ -684,6 +684,9 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
 @font-face{font-family:"Aspekta";font-style:normal;font-weight:450;font-display:swap;src:url("../fonts/Aspekta-450.woff2") format("woff2")}
 @font-face{font-family:"Aspekta";font-style:normal;font-weight:500;font-display:swap;src:url("../fonts/Aspekta-500.woff2") format("woff2")}
 @font-face{font-family:"Aspekta";font-style:normal;font-weight:600;font-display:swap;src:url("../fonts/Aspekta-600.woff2") format("woff2")}
+/* Aspekta 650 (source: thedaydream.studio/fonts, OFL) di-range 650-800:
+   request 700/800 resolve ke file 650 asli, TIDAK font-synthesis (bold palsu) -- */
+@font-face{font-family:"Aspekta";font-style:normal;font-weight:650 800;font-display:swap;src:url("../fonts/Aspekta-650.woff2") format("woff2")}
 /* Instrument Serif italic (OFL, Google Fonts; aksen B) */
 @font-face{font-family:"Instrument Serif";font-style:italic;font-weight:400;font-display:swap;src:url("../fonts/instrument-serif-400-italic-latin.woff2") format("woff2")}
 
@@ -720,8 +723,8 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
 @media(min-width:760px){.hero .sub{font-size:1.125rem;line-height:28px}}
 .hero .cta-row{margin-top:32px;display:flex;justify-content:center}
 .hero-visual{max-width:1180px;margin:56px auto 0;position:relative}
-.hero-visual img{width:100%;height:auto;aspect-ratio:1180/962;border:1px solid var(--gray-100);border-radius:14px;background:#fff;
-  box-shadow:0 0 0 1px rgba(20,40,70,.03), 0 24px 64px -32px rgba(14,26,74,.18)}
+.hero-visual img{width:100%;height:auto;aspect-ratio:1180/962;border:1px solid var(--gray-300);border-radius:14px;background:#fff;
+  box-shadow:0 0 0 1px rgba(20,40,70,.05), 0 28px 72px -20px rgba(14,26,74,.30)}
 @media(max-width:759px){.hero-visual img{aspect-ratio:390/844}} /* gambar mobile 390x844, CLS tetap 0 */
 .hero-visual figcaption{font-size:12px;color:var(--gray-500);text-align:center;margin-top:12px}
 
@@ -833,12 +836,12 @@ h1,h2,h3{font-weight:450}
 .hero{background:linear-gradient(180deg,#C9DEFF 0%,#E4EEFF 46%,#FFFFFF 100%)}
 .hero-sky{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .hero-sky img{position:absolute;pointer-events:none}
-.hero-sky .h-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.5}
-.hero-sky .h-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.28) 0%,rgba(255,255,255,.55) 48%,rgba(255,255,255,.92) 82%,#FFFFFF 100%)}
+.hero-sky .h-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.62;filter:hue-rotate(30deg) saturate(1.12)}
+.hero-sky .h-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(214,229,255,.26) 0%,rgba(228,239,255,.55) 48%,rgba(240,247,255,.92) 82%,#FFFFFF 100%)}
 .hero-sky .h-grid{top:0;left:50%;transform:translateX(-50%);width:min(1800px,140%);height:72%;object-fit:cover;object-position:top;opacity:.45}
-.hero-sky .h-cloud-1{top:24%;right:-14%;width:min(1200px,72vw);height:auto;filter:blur(4px);animation:cloud-drift 9s linear infinite alternate}
-.hero-sky .h-cloud-2{top:44%;left:-12%;width:min(980px,58vw);height:auto;filter:blur(2px);animation:cloud-drift 7.5s linear infinite alternate-reverse}
-.hero-sky .h-leak{top:-4%;left:0;width:100%;height:auto;object-fit:cover;object-position:top;mix-blend-mode:screen;opacity:.85}
+.hero-sky .h-cloud-1{top:24%;right:-14%;width:min(1200px,72vw);height:auto;filter:blur(4px) hue-rotate(30deg) saturate(1.05);animation:cloud-drift 9s linear infinite alternate}
+.hero-sky .h-cloud-2{top:44%;left:-12%;width:min(980px,58vw);height:auto;filter:blur(2px) hue-rotate(30deg) saturate(1.05);animation:cloud-drift 7.5s linear infinite alternate-reverse}
+.hero-sky .h-leak{top:-4%;left:0;width:100%;height:auto;object-fit:cover;object-position:top;mix-blend-mode:screen;opacity:.16;filter:saturate(.2) hue-rotate(30deg)}
 .hero-sky .h-stars{top:5%;left:50%;transform:translateX(-50%);width:min(1100px,150%);height:auto;opacity:.35}
 .hero-sky .h-comet{position:absolute;height:2px;width:110px;opacity:0;will-change:transform,opacity;animation:comet-fly linear infinite}
 /* -- scrim zona teks: radial white garansi kontras di titik terburuk (probe 2026-10-16:
@@ -860,8 +863,8 @@ h1,h2,h3{font-weight:450}
 .tool-hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#C9DEFF 0%,#E4EEFF 46%,#FFFFFF 100%)}
 .tool-hero .hero-sky-lite{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .tool-hero .hero-sky-lite img{position:absolute;pointer-events:none}
-.tool-hero .l-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.42}
-.tool-hero .l-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.30) 0%,rgba(255,255,255,.55) 48%,rgba(255,255,255,.90) 82%,#FFFFFF 100%)}
+.tool-hero .l-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.55;filter:hue-rotate(30deg) saturate(1.12)}
+.tool-hero .l-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(214,229,255,.28) 0%,rgba(228,239,255,.55) 48%,rgba(240,247,255,.90) 82%,#FFFFFF 100%)}
 .tool-hero .l-scrim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(70% 60% at 50% 42%,rgba(255,255,255,.62) 0%,rgba(255,255,255,.30) 50%,rgba(255,255,255,0) 75%)}
 .tool-hero .l-cloud{top:34%;left:-10%;width:min(640px,62vw);height:auto;filter:blur(3px);animation:cloud-drift 9s linear infinite alternate}
 .tool-hero .l-grid{top:0;left:50%;transform:translateX(-50%);width:min(1200px,140%);height:calc(min(1200px,140%)*1280/1920);object-fit:cover;object-position:top;opacity:.35}

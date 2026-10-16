@@ -57,11 +57,11 @@
 <!-- ============ 1. HERO ============ -->
 <section class="hero">
   <div class="hero-sky" aria-hidden="true">
-    <img class="h-sky" src="assets/daydream/sky-hero.webp" alt="" width="2200" height="1604" fetchpriority="high">
+    <picture><source media="(max-width: 759px)" srcset="assets/daydream/sky-hero-m.webp" type="image/webp"><img class="h-sky" src="assets/daydream/sky-hero.webp" alt="" width="2200" height="1604" fetchpriority="high"></picture>
     <div class="h-veil"></div>
     <img class="h-grid" src="assets/daydream/grid-overlay.svg" alt="" width="1920" height="1280">
-    <img class="h-cloud-1" src="assets/daydream/cloud-1.webp" alt="" width="700" fetchpriority="low">
-    <img class="h-cloud-2" src="assets/daydream/cloud-2.webp" alt="" width="700">
+    <img class="h-cloud-1" src="assets/daydream/cloud-1.webp" alt="" width="520" fetchpriority="low">
+    <img class="h-cloud-2" src="assets/daydream/cloud-2.webp" alt="" width="520">
     <img class="h-leak" src="assets/daydream/lightleak.webp" alt="" width="1200" height="799">
     <img class="h-stars" src="assets/daydream/star-dots.svg" alt="" width="558" height="303">
     <div class="h-scrim"></div>
@@ -77,7 +77,8 @@
       <div class="cta-row"><a class="btn btn-primary pill btn-lg" href="kasir.html">Coba Kasir Gratis</a></div>
       <figure class="hero-visual">
         <picture>
-          <source media="(max-width: 759px)" srcset="assets/img/produk-kasir-mobile.webp" type="image/webp">
+          <source media="(max-width: 759px)" srcset="assets/img/produk-kasir-mobile.webp 1x, assets/img/produk-kasir-mobile-2x.webp 2x" type="image/webp">
+          <source media="(min-width: 760px)" srcset="assets/img/produk-kasir.webp 1x, assets/img/produk-kasir-2x.webp 2x" type="image/webp">
           <img src="assets/img/produk-kasir.webp" alt="Tampilan aplikasi kasir Olano: katalog produk, keranjang, dan tombol bayar (data contoh)" width="1180" height="962" fetchpriority="high">
         </picture>
         <figcaption>Data contoh: tampilan aplikasi Olano</figcaption>
@@ -122,13 +123,11 @@
         <span class="ftxt"><h3>QRIS statis</h3><p>0% MDR usaha mikro, decode EMVCo dan validasi CRC16, QR tajam dengan nominal besar.</p></span>
       </a>
       <a class="feat-card" href="umkm.html">
-        <span class="illo a169"><img src="assets/img/f-scan.webp" alt="" width="580" height="326" loading="lazy" decoding="async"></span>
+        <span class="illo a169"><img src="assets/img/f-scan16.webp" alt="" width="744" height="419" loading="lazy" decoding="async"></span>
         <span class="ftxt"><h3>Scan tanpa barcode</h3><p>Kamera mengenali produk lewat model di-perangkat, tap kandidat teratas untuk masuk.</p></span>
       </a>
       <a class="feat-card" href="umkm.html">
-        <span class="illo a43">
-        <svg viewBox="0 0 320 240" role="img" aria-label="Contoh: foto produk sebelum dan sesudah AI"><rect width="320" height="240" fill="#FAFBFD"/><rect x="14" y="14" width="292" height="176" rx="10" fill="#E8ECF3"/><rect x="164" y="14" width="142" height="176" rx="10" fill="#DBE8FE"/><line x1="164" y1="14" x2="164" y2="190" stroke="#2453EB" stroke-width="3"/><circle cx="164" cy="102" r="15" fill="#2453EB"/><path d="M159 102h10M163 98l4 4-4 4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/><g fill="none" stroke="#4E586B" stroke-width="2.5" stroke-linecap="round"><path d="M84 150l20-60 20 60"/><path d="M96 128h30"/></g><g fill="none" stroke="#2453EB" stroke-width="2.5" stroke-linecap="round"><path d="M214 150l20-60 20 60"/><path d="M226 128h30"/></g><rect x="14" y="204" width="74" height="22" rx="11" fill="#E8ECF3"/><text x="51" y="219" font-size="11" fill="#4E586B" text-anchor="middle" font-family="Figtree, sans-serif">SEBELUM</text><rect x="232" y="204" width="74" height="22" rx="11" fill="#DBE8FE"/><text x="269" y="219" font-size="11" fill="#2453EB" text-anchor="middle" font-family="Figtree, sans-serif">SESUDAH</text></svg>
-        </span>
+        <span class="illo a169"><img src="assets/img/f-foto-ai.webp" alt="Contoh: foto produk kopi sebelum dan sesudah AI" width="1600" height="900" loading="lazy" decoding="async"></span>
         <span class="ftxt"><h3>AI foto produk</h3><p>Hapus dan ganti latar, perbaiki cahaya, gaya katalog. Bentuk produk tidak berubah.</p></span>
       </a>
       <a class="feat-card" href="umkm.html">
