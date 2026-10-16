@@ -503,6 +503,74 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
 .scol .sstack span{display:block;height:1em;line-height:1;text-align:center}
 .snum .sdot{display:inline-block}
 
+/* ============================= HERO: PRODUCT FRAME (replaces phone mock) =============================
+   Ref sokudo DNA (product UI visual, bukan gadget mockup) + Coinbase (angka KPI besar, line-height 1.00).
+   Tujuan (R-31): menunjukkan PRODUK, 3 scene = 3 janji (Kasir/QRIS/Pajak); cycle = product demo, bukan dekorasi. */
+.badge-line{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);font-weight:500}
+.pframe{width:100%;max-width:430px;margin:0 auto;background:var(--white);border:1px solid var(--gray-100);
+  border-radius:20px;box-shadow:var(--sh-lift);overflow:hidden}
+.pframe-bar{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--gray-25);border-bottom:1px solid var(--gray-100)}
+.pf-url{font-family:var(--font-mono);font-size:11.5px;color:var(--gray-500);background:#fff;border:1px solid var(--gray-100);
+  border-radius:999px;padding:4px 12px;flex:1;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pf-outlet{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:-.01em}
+.pframe-tabs{display:flex;gap:6px;padding:12px 14px 0}
+.scene-tab{font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:.05em;padding:8px 12px;
+  border-radius:8px;border:1px solid transparent;background:transparent;color:var(--gray-500);
+  transition:all var(--dur-base) var(--ease-standard)}
+.scene-tab.on{background:var(--blue-600);color:#fff}
+.scene-tab:not(.on):hover{color:var(--blue-600);border-color:var(--blue-200);background:var(--blue-50)}
+.pframe-body{padding:14px 16px 18px;min-height:332px;display:flex;flex-direction:column}
+.scene{display:none;flex:1;flex-direction:column}
+.scene.active{display:flex}
+.scene-kpi{display:flex;align-items:baseline;gap:8px;margin:2px 0 14px}
+.scene-kpi .kpi{font-family:var(--font-mono);font-size:34px;font-weight:700;letter-spacing:-.03em;color:var(--ink);line-height:1}
+.snum .spref{font-size:.42em;font-weight:500;color:var(--gray-500);margin-right:2px}
+.snum .ssuf{font-size:.6em;font-weight:600;color:var(--blue-600);margin-left:1px}
+.scene .mock-row{margin-bottom:8px}
+.pf-note{margin-top:auto;padding-top:12px;font-family:var(--font-mono);font-size:10.5px;color:var(--gray-500);
+  border-top:1px solid var(--gray-100);letter-spacing:.02em}
+.pf-cap{margin:0;padding:10px;background:var(--gray-25);border-top:1px solid var(--gray-100);
+  font-family:var(--font-mono);font-size:10.5px;color:var(--gray-500);text-align:center;letter-spacing:.03em}
+
+/* ============================= STAT BAND (angka besar) =============================
+   Ref Coinbase/Cal: klaim jadi angka mono raksasa, tanpa kartu tanpa icon. R-17: angka ini klaim produk (bukan statistik palsu). */
+.statband{background:var(--gray-25);border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100);padding:64px 0}
+.statband-grid{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:900px){.statband-grid{grid-template-columns:repeat(3,1fr);gap:0}
+.statband-grid .statb-item+.statb-item{border-left:1px solid var(--gray-300);padding-left:40px}}
+.statb-item b{font-family:var(--font-mono);font-weight:700;font-size:clamp(2.75rem,4.5vw,3.5rem);letter-spacing:-.03em;
+  color:var(--ink);display:flex;align-items:baseline;font-variant-numeric:tabular-nums;line-height:1}
+.statb-item b i{font-style:normal;font-size:.55em;color:var(--blue-600);font-weight:600;margin-left:2px}
+.statb-item span{display:block;font-size:14px;color:var(--gray-500);margin-top:12px;max-width:30ch;line-height:1.5}
+
+/* ============================= EDITORIAL NUMBERED LIST (fitur, bukan kartu) =============================
+   R-14/R-05: hierarki via nomor editorial, bukan grid kartu identik; baris = link ke detail. */
+.nlist-head{display:grid;gap:12px;margin-bottom:56px}
+@media(min-width:800px){.nlist-head{grid-template-columns:1fr 1fr;align-items:end}
+.nlist-head .small{max-width:36ch;justify-self:end}}
+.nlist{border-top:1px solid var(--gray-100)}
+.nrow{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:26px 0;border-bottom:1px solid var(--gray-100)}
+@media(min-width:800px){.nrow{grid-template-columns:72px 1fr 120px;align-items:baseline}}
+.nrow .no{font-family:var(--font-mono);font-size:14px;font-weight:600;color:var(--gray-300);letter-spacing:.05em;transition:color var(--dur-base)}
+.nrow b{font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-.02em;display:block;transition:color var(--dur-base)}
+.nsub{display:block;font-size:14.5px;color:var(--gray-500);margin-top:4px;max-width:52ch}
+.nlink{display:none}
+@media(min-width:800px){.nlink{display:block;justify-self:end;font-family:var(--font-mono);font-size:12px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--gray-300);transition:color var(--dur-base)}}
+.nrow:hover{background:linear-gradient(90deg,var(--gray-25),transparent 70%)}
+.nrow:hover .no,.nrow:hover .nlink{color:var(--blue-600)}
+.nrow:hover b{color:var(--blue-700)}
+
+/* chip hasil contoh di tool-card (R-38: label "contoh" = placeholder jujur) */
+.tool-out{margin-top:auto;font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.02em;
+  color:var(--gray-700);background:var(--gray-25);border:1px solid var(--gray-100);border-radius:999px;
+  padding:5px 12px;align-self:flex-start;transition:all var(--dur-base)}
+.tool-card:hover .tool-out{background:var(--blue-50);border-color:var(--blue-100);color:var(--blue-700)}
+
+/* dark band: teks ringan di atas navy */
+.section-dark .small{color:#9FB0DA}
+.section-dark .calc-card{box-shadow:var(--sh-lg)}
+
 /* ============================= MOTION / REVEAL ============================= */
 [data-reveal]{opacity:0; transform:translateY(16px); transition:opacity var(--dur-slow) var(--ease-standard),
   transform var(--dur-slow) var(--ease-standard)}

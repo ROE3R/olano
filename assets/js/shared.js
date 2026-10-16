@@ -95,17 +95,21 @@
 
   /* ---------- sliding number (ref ibelick sliding-number.tsx, port vanilla) ----------
      Tiap digit = kolom 0-9 yang bergulir (CSS transition transform) ke angka tujuan.
-     Format titik ribuan statis; gulir sekali saat masuk viewport, lalu diam. */
+     Format titik ribuan statis; gulir sekali lalu diam. Idempoten via _slideDone
+     (scene tersembunyi dipicu oleh initHeroScenes, bukan IntersectionObserver). */
   function initSlideNum() {
     document.querySelectorAll("[data-slide-num]").forEach(function (el) {
       var target = parseInt(el.getAttribute("data-slide-num"), 10) || 0;
       var pre = el.getAttribute("data-prefix") || "";
+      var suf = el.getAttribute("data-suffix") || "";
+      el._slideDone = false;
       if (RM) {
-        el.textContent = pre + target.toLocaleString("id-ID");
+        el.textContent = pre + target.toLocaleString("id-ID") + suf;
+        el._slideDone = true;
         return;
       }
       var s = target.toLocaleString("id-ID"); // mis. "1.240.000"
-      var html = "";
+      var html = (pre ? '<span class="spref">' + pre + "</span>" : "");
       for (var i = 0; i < s.length; i++) {
         var c = s[i];
         if (c === ".") { html += '<span class="sdot">.</span>'; continue; }
@@ -113,19 +117,23 @@
           "0123456789".split("").map(function (d) { return "<span>" + d + "</span>"; }).join("") +
           "</span></span>";
       }
+      if (suf) html += '<span class="ssuf">' + suf + "</span>";
       el.classList.add("snum");
-      el.innerHTML = pre + html;
+      el.innerHTML = html;
       var stacks = el.querySelectorAll(".sstack");
       function go() {
+        if (el._slideDone) return;
+        el._slideDone = true;
         stacks.forEach(function (st, idx) {
           var final = parseInt(st.getAttribute("data-final"), 10);
-          // stagger kecil per posisi dari kiri supaya terasa settling, bukan slot-machine
+          // stagger kecil per posisi: terasa settling, bukan slot-machine
           st.style.transitionDelay = (idx * 40) + "ms";
           requestAnimationFrame(function () {
             st.style.transform = "translateY(-" + final + "em)";
           });
         });
       }
+      el._goSlide = go;
       if ("IntersectionObserver" in window) {
         var io = new IntersectionObserver(function (entries) {
           entries.forEach(function (e) {
@@ -135,6 +143,45 @@
         io.observe(el);
       } else { go(); }
     });
+  }
+
+  /* ---------- hero scene cycle (Kasir/QRIS/Pajak) ----------
+     Tujuan (R-31, MOTION dial 2): product demo - satu loop berpurpose yang memutar
+     3 janji produk; pause saat hover/focus di frame (user pegang kendali), off di
+     perangkat touch (pakai tab manual) dan saat reduced motion. */
+  function initHeroScenes() {
+    var f = document.querySelector("[data-hero-scenes]");
+    if (!f) return;
+    var tabs = f.querySelectorAll(".scene-tab");
+    var scenes = f.querySelectorAll(".scene");
+    if (!tabs.length || !scenes.length) return;
+    var i = 0, timer = null;
+    var fine = window.matchMedia("(hover:hover) and (pointer:fine)");
+    function activate(n) {
+      i = ((n % scenes.length) + scenes.length) % scenes.length;
+      scenes.forEach(function (s, k) { s.classList.toggle("active", k === i); });
+      tabs.forEach(function (t, k) {
+        t.classList.toggle("on", k === i);
+        t.setAttribute("aria-selected", k === i ? "true" : "false");
+      });
+      var kpi = scenes[i].querySelector("[data-slide-num]");
+      if (kpi && kpi._goSlide) kpi._goSlide();
+    }
+    tabs.forEach(function (t, k) {
+      t.addEventListener("click", function () { activate(k); startCycle(); });
+    });
+    function stopCycle() { if (timer) { clearInterval(timer); timer = null; } }
+    function startCycle() {
+      stopCycle();
+      if (RM || !fine.matches) return;
+      timer = setInterval(function () { activate(i + 1); }, 5000);
+    }
+    f.addEventListener("mouseenter", stopCycle);
+    f.addEventListener("mouseleave", startCycle);
+    f.addEventListener("focusin", stopCycle);
+    f.addEventListener("focusout", startCycle);
+    activate(0);
+    startCycle();
   }
 
   /* ---------- navbar scroll + mobile burger ---------- */
@@ -255,7 +302,7 @@
 
   function init() {
     initNav(); initReveal(); initCountUp(); initFaq();
-    initSpotlight(); initSlideNum();
+    initSpotlight(); initSlideNum(); initHeroScenes();
     initOfflineDemo(); initMarquee(); initBeforeAfter();
     registerSW();
   }
