@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kalkulator PPh Final UMKM 0,5%: Gratis | Olano</title>
+<meta name="description" content="Hitung estimasi PPh final 0,5% UMKM sesuai PP 20/2026: omzet tahunan, bebas s.d. Rp500jt untuk orang pribadi, batas Rp4,8M. Gratis, tanpa akun.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#2453EB">
+<link rel="canonical" href="https://olano.xyz/alat/kalkulator-pph-final-umkm.html">
+<meta property="og:title" content="Kalkulator PPh Final UMKM 0,5% (PP 20/2026): Gratis">
+<meta property="og:description" content="Simulasi PPh final, batas omzet Rp500jt &amp; Rp4,8M, per jenis WP. Tanpa akun.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232453EB'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='19' font-weight='800' fill='white' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Kalkulator PPh Final UMKM","url":"https://olano.xyz/alat/kalkulator-pph-final-umkm.html","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"IDR"},"description":"Simulasi PPh final 0,5% sesuai PP 20/2026."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"Menghitung PPh final UMKM","step":[{"@type":"HowToStep","name":"Pilih jenis WP","text":"OP, PT Perorangan, Koperasi, PT, atau CV."},{"@type":"HowToStep","name":"Isi omzet bulanan","text":"Omzet rata-rata per bulan."},{"@type":"HowToStep","name":"Lihat estimasi","text":"PPh final 0,5% per bulan dan progres ke ambang."}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Langsung ke alat</a>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="../index.html"><span class="mark">O</span>Olano</a>
+    <nav class="nav-links" aria-label="Menu"><a href="../pajak.html">Pajak</a><a href="../umkm.html">UMKM</a><a href="../index.html#harga">Harga</a></nav>
+    <div class="nav-cta"><a class="btn btn-primary" href="../kasir.html">Coba Gratis</a></div>
+    <button class="nav-burger" aria-label="Buka menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="nav-mobile"><a href="../index.html">Beranda</a><a href="../pajak.html">Pajak</a><a href="kalkulator-hpp-harga-jual.html">Kalkulator HPP</a><a href="kalkulator-biaya-qris.html">Biaya QRIS</a></nav>
+</header>
+
+<main id="main">
+<section class="tool-hero">
+  <div class="container container-narrow">
+    <div class="badge"><span class="dot"></span>Alat Gratis · PP 20/2026</div>
+    <h1 class="mt-4">Kalkulator PPh Final UMKM 0,5%</h1>
+    <p class="mt-4" style="color:var(--gray-500);font-size:var(--fs-body-lg)">Simulasi pajak final untuk omzet UMKM sesuai PP 20/2026. Orang pribadi bebas s.d. Rp500 juta per tahun; di atasnya 0,5%. Di atas Rp4,8 miliar wajib skema umum. Tanpa akun, tanpa kartu.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:32px">
+  <div class="container">
+    <div class="tool-calc">
+      <!-- FORM -->
+      <div class="calc-form" data-reveal>
+        <div class="field">
+          <label>Jenis Wajib Pajak</label>
+          <div class="seg" id="seg-wp" role="radiogroup" aria-label="Jenis wajib pajak">
+            <input type="radio" id="wp-OP" name="wp" value="OP" checked><label for="wp-OP">Orang Pribadi</label>
+            <input type="radio" id="wp-PTP" name="wp" value="PT_PERORANGAN"><label for="wp-PTP">PT Perorangan</label>
+            <input type="radio" id="wp-KOP" name="wp" value="KOPERASI"><label for="wp-KOP">Koperasi</label>
+            <input type="radio" id="wp-PT" name="wp" value="PT"><label for="wp-PT">PT</label>
+            <input type="radio" id="wp-CV" name="wp" value="CV"><label for="wp-CV">CV / Firma</label>
+          </div>
+          <p class="hint">PT &amp; CV tidak bisa PPh Final sejak PP 20/2026. Gunakan skema umum (pajak atas laba).</p>
+        </div>
+        <div class="field">
+          <label for="omzet">Omzet rata-rata per bulan (Rp)</label>
+          <input id="omzet" type="number" inputmode="numeric" min="0" step="500000" value="75000000">
+        </div>
+        <div class="field" id="wr-fields" hidden>
+          <label>Omzet 12 bulan terakhir (Rp, kumulatif)</label>
+          <input id="omzet-12b" type="number" inputmode="numeric" min="0" step="1000000" value="900000000">
+          <p class="hint">Dipakai bila omzet fluktuatif. Kosongkan untuk memakai omzet bulanan × 12.</p>
+        </div>
+        <label class="fcheck" style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--gray-700);margin:6px 0 14px">
+          <input type="checkbox" id="keluarga" style="margin-top:3px;accent-color:var(--blue-600);width:18px;height:18px">
+          <span><b>Gabungkan omzet bersama anggota keluarga</b> (suami/istri) sesuai aturan PPh final.</span>
+        </label>
+        <div class="field" id="fam-field" hidden>
+          <label for="omzet-keluarga">Omzet keluarga per bulan (Rp)</label>
+          <input id="omzet-keluarga" type="number" inputmode="numeric" min="0" step="500000" value="0">
+        </div>
+        <button class="btn btn-primary btn-block" id="hitung">Hitung estimasi</button>
+        <p class="small mt-4" style="color:var(--gray-500)">Angka dari <span class="mono">config berversi</span> PP 20/2026. Ini simulasi, bukan nasihat pajak.</p>
+      </div>
+
+      <!-- HASIL -->
+      <div class="calc-out" data-reveal aria-live="polite" id="out">
+        <div class="eyebrow" style="color:var(--blue-300)">Hasil simulasi</div>
+        <div class="out-hero mt-4"><b id="r-bulan">Rp31.250</b><span style="color:var(--blue-200);font-size:14px">est. PPh final per bulan</span></div>
+        <div style="margin-top:18px">
+          <div class="out-line"><span>Omzet per bulan</span><span class="val" id="r-omzet-b">Rp75.000.000</span></div>
+          <div class="out-line"><span>Omzet tahunan</span><span class="val" id="r-omzet-t">Rp900.000.000</span></div>
+          <div class="out-line"><span>Dipotong ambang bebas</span><span class="val" id="r-ambang">Rp500.000.000</span></div>
+          <div class="out-line"><span>Dasar PPh final</span><span class="val" id="r-dasar">Rp400.000.000</span></div>
+          <div class="out-line"><span>Estimasi per tahun</span><span class="val" id="r-tahun">Rp2.000.000</span></div>
+        </div>
+        <div class="callout ok mt-6" id="r-verdict"><b>Status aman.</b> Omzet di bawah Rp4,8 miliar, tetap dalam skema final 0,5%.</div>
+        <div class="upsell" style="margin-top:14px;border:1px dashed rgba(255,255,255,.2);border-radius:12px;padding:14px 16px;font-size:13px;color:var(--blue-100);line-height:1.6">
+          <b style="color:#fff">Otomatiskan tiap bulan:</b> Olano rekap omzet dari kasirmu, hitung PPh final, dan kirim checklist setor tanggal 1. <a href="../kasir.html" style="color:#fff;text-decoration:underline;font-weight:600">Coba gratis →</a>
+        </div>
+        <p class="disclaimer" style="font-size:11px;color:var(--blue-300);margin-top:14px;font-family:var(--font-mono)">Estimasi berdasarkan PP 20/2026. Bukan nasihat pajak. Konsultasi tim kami via WhatsApp untuk pelaporan resmi.</p>
+      </div>
+    </div>
+
+    <!-- CARA HITUNG -->
+    <div class="mt-8" data-reveal>
+      <h2 class="mt-2" style="font-size:var(--fs-h3)">Cara menghitung PPh final 0,5%</h2>
+      <div class="grid mt-6" style="grid-template-columns:1fr;gap:16px">
+        <div class="card"><b class="mono" style="color:var(--blue-600)">1</b><p class="small mt-2">Omzet setahun s.d. <b>Rp500 juta</b> (Orang Pribadi): bebas PPh final.</p></div>
+        <div class="card"><b class="mono" style="color:var(--blue-600)">2</b><p class="small mt-2">Di atas Rp500 juta: PPh final 0,5% dari omzet (atau omzet di atas ambang, sesuai status WP-mu).</p></div>
+        <div class="card"><b class="mono" style="color:var(--blue-600)">3</b><p class="small mt-2">Omzet tahunan &gt; <b>Rp4,8 miliar</b>: keluar skema final, wajib pajak umum atas laba.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--gray-25)">
+  <div class="container container-narrow">
+    <h2 style="font-size:var(--fs-h3)" class="text-c" data-reveal>FAQ Kalkulator</h2>
+    <div class="mt-6" data-reveal>
+      <details class="faq-item"><summary>Kapan setor PPh final?<span class="plus">+</span></summary><p class="ans">Bulanan, paling lambat tanggal 10 bulan berikutnya (konfigurasi admin menentukan tanggal jatuh tempo spesifik). Olano mengirim pengingat + kode billing.</p></details>
+      <details class="faq-item"><summary>Apa itu ambang Rp500 juta?<span class="plus">+</span></summary><p class="ans">Pengusaha Orang Pribadi dengan omzet setahun s.d. Rp500 juta dibebaskan PPh final. Mulai Rp500 juta + 1, dikenai 0,5%.</p></details>
+      <details class="faq-item"><summary>Koperasi batasan berapa?<span class="plus">+</span></summary><p class="ans">Koperasi berhak PPh final maks. 4 tahun sejak terdaftar. Setelah itu, skema umum.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="container">
+    <div class="footrow" style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--gray-100)">
+      <a class="logo sm" href="../index.html" style="font-size:15px;color:var(--ink)"><span class="mark" style="width:20px;height:20px;font-size:11px">O</span>Olano</a>
+      <nav style="display:flex;gap:16px;flex-wrap:wrap;font-size:13px"><a href="kalkulator-hpp-harga-jual.html" style="color:var(--gray-500)">HPP &amp; Harga</a><a href="kalkulator-biaya-qris.html" style="color:var(--gray-500)">Biaya QRIS</a><a href="../pajak.html" style="color:var(--gray-500)">Halaman Pajak</a></nav>
+    </div>
+    <p class="small mt-4" style="color:var(--gray-500)">Olano membantu menghitung &amp; menyiapkan pajak. Pelaporan sebagai kuasa wajib pajak dikerjakan mitra berizin. Bukan nasihat hukum atau pajak.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/shared.js"></script>
+<script>
+(function(){
+  var T = window.OLANO_CONFIG.tax;
+  var om = document.getElementById("omzet"), o12 = document.getElementById("omzet-12b"),
+      kel = document.getElementById("keluarga"), fam = document.getElementById("omzet-keluarga");
+  var wpSeg = document.getElementById("seg-wp");
+
+  // toggle fields berdasarkan jenis WP
+  wpSeg.addEventListener("change", function(){
+    var v = wpSeg.querySelector("input:checked").value;
+    document.getElementById("fam-field").hidden = !(v==="OP");
+  });
+  kel.addEventListener("change", function(){
+    document.getElementById("fam-field").hidden = !(kel.checked && wpSeg.querySelector("input:checked").value==="OP");
+    calc();
+  });
+
+  function calc(){
+    var v = wpSeg.querySelector("input:checked").value;
+    var monthly = parseFloat(om.value)||0;
+    var famM = (kel.checked && v==="OP") ? (parseFloat(fam.value)||0) : 0;
+    var t = T.types[v];
+    var res=document.getElementById("r-bulan"), vb=document.getElementById("r-verdict"),
+        olB=document.getElementById("r-omzet-b"), olT=document.getElementById("r-omzet-t"),
+        amb=document.getElementById("r-ambang"), dsr=document.getElementById("r-dasar"),
+        olY=document.getElementById("r-tahun");
+
+    if(!t.final){
+      res.textContent = "n/a";
+      olB.textContent = "skema umum"; olT.textContent = "tidak final"; amb.textContent = "n/a"; dsr.textContent = "n/a"; olY.textContent = "n/a";
+      vb.className = "callout warn mt-6";
+      vb.innerHTML = "<b>"+(v==="CV"?"CV / Firma":"PT")+".</b> Tidak bisa PPh Final 0,5% sejak "+T.ppNumber+". Wajib skema umum berbasis laba. Omzet "+window.OLANO.rp(monthly)+" per bulan. Konsultasikan dengan tim kami.";
+      return;
+    }
+    var base12 = o12.value && parseFloat(o12.value)>0 ? parseFloat(o12.value) : (monthly+famM)*12;
+    var free = (v==="OP") ? T.exemptionOP : 0;
+    var dasar = Math.max(0, base12 - free);
+    var pajakTahun = Math.round(dasar * T.rate);
+    var pajakBulan = Math.round(pajakTahun/12);
+    res.textContent = window.OLANO.rp(pajakBulan);
+    olB.textContent = window.OLANO.rp(monthly+famM);
+    olT.textContent = window.OLANO.rp(base12);
+    amb.textContent = free? window.OLANO.rp(free) : "tidak ada (final penuh)";
+    dsr.textContent = window.OLANO.rp(dasar);
+    olY.textContent = window.OLANO.rp(pajakTahun);
+    if(base12 > T.ceiling){
+      vb.className="callout warn mt-6";
+      vb.innerHTML="<b>Perhatian.</b> Omzet tahunan "+window.OLANO.rp(base12)+" melewati "+window.OLANO.rp(T.ceiling)+". Keluar skema final: wajib beralih ke skema pajak umum (laba). Tim kami bantu migrasi.";
+    } else if(v==="OP" && base12<=free){
+      vb.className="callout ok mt-6";
+      vb.innerHTML="<b>Bebas PPh final.</b> Omzet s.d. "+window.OLANO.rp(free)+" untuk Orang Pribadi dibebaskan pajak final tahun ini.";
+    } else {
+      vb.className="callout ok mt-6";
+      vb.innerHTML="<b>Status aman.</b> Omzet di bawah "+window.OLANO.rp(T.ceiling)+", tetap dalam skema final "+(T.rate*100).toLocaleString("id-ID")+"%.";
+    }
+  }
+
+  document.getElementById("hitung").addEventListener("click", calc);
+  om.addEventListener("input", calc); o12.addEventListener("input", calc); fam.addEventListener("input", calc);
+  calc();
+})();
+</script>
+</body>
+</html>

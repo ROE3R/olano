@@ -1,0 +1,124 @@
+/* OLANO_CONFIG: versioned business rules (PRD §17: jangan hardcode di UI).
+   Ubah angka di sini, bukan di HTML. Naikkan `version` tiap ubah. */
+(function (w) {
+  const OLANO_CONFIG = {
+    version: "2.0.0",
+    brand: { name: "Olano", domain: "olano.xyz" },
+
+    /* --- paket & harga (F6/§6) --- */
+    pricing: {
+      currency: "IDR",
+      gratis: 0,
+      proPerOutlet: 50000,
+      trialDays: 14,
+      jasaPajak: 250000, // Rp250rb+/bln (basic)
+    },
+
+    /* --- kuota AI per outlet per bulan (config berversi) --- */
+    aiQuota: {
+      photoOps: 60,       // F6
+      tanyaMessages: 300, // F9
+      aiCostCeilingPerOutlet: 12500, // target biaya AI ≤ Rp12.5rb
+    },
+
+    /* --- MESIN PAJAK (F10): PP 20/2026 ---
+       PPh Final 0,5% tersedia untuk OP, PT Perorangan, Koperasi
+       dengan omzet tahunan s.d. Rp4,8 miliar. OP bebas s.d. Rp500 juta.
+       PT/CV/Firma TIDAK bisa PPh Final → skema umum (pajak atas laba). */
+    tax: {
+      ppNumber: "PP 20/2026",
+      rate: 0.005,          // 0,5%
+      exemptionOP: 500000000,   // OP bebas s.d. Rp500jt
+      ceiling: 4800000000,      // > Rp4,8M keluar skema final
+      koperasiMaxYears: 4,      // koperasi maks 4 tahun sejak terdaftar
+      effectiveDate: "1 Januari 2026",
+      // batasan per jenis WP
+      types: {
+        OP:          { final: true,  freeUpto: 500000000 },
+        PT_PERORANGAN: { final: true, freeUpto: 0 },
+        KOPERASI:   { final: true, freeUpto: 0, maxYears: 4 },
+        PT:          { final: false },
+        CV:          { final: false },
+        FIRMA:       { final: false },
+        BELUM_TAHU:  { final: false, needEducation: true },
+      },
+      deadlineConfigKey: "tax_rules.deadlines", // diisi admin (F10)
+    },
+
+    /* --- QRIS MDR (F3) berlaku sejak 1 Oktober 2026 ---
+       MDR ditanggung merchant, TIDAK boleh dibebankan ke konsumen. */
+    qrisMDR: {
+      effective: "1 Oktober 2026",
+      mikro:  { limit: 500000,  rate: 0.003 }, // ≤ Rp500rb 0%, > Rp500rb 0,3%
+      kmb:    { limit: 100000,  rate: 0.007 }, // usaha kecil/mdn/besar: ≤ Rp100rb 0%, > Rp100rb 0,7%
+      categories: ["MIKRO", "KMB"],
+      note: "Tarif sejak 1 Okt 2026. MDR ditanggung merchant, jangan dibebankan ke konsumen.",
+      featureFlag_qrisAmountInjection: false, // F3: OFF
+    },
+
+    /* --- HPP / harga jual (F7) --- */
+    pricingAdvice: {
+      scenarios: {
+        aman:       { label: "Aman",       margin: 0.30 },
+        kompetitif: { label: "Kompetitif", margin: 0.20 },
+        premium:    { label: "Premium",    margin: 0.45 },
+      },
+      ingredientRiseAlert: 0.10, // F7: alert bahan naik ≥ 10%, maks 1 email/hari
+    },
+
+    /* --- platform commission (analisa GoFood/Grab, F7 + gofood tool) --- */
+    platform: {
+      commissionRange: { low: 0.20, high: 0.30 },
+      promos: ["GRAB", "GOFOOD"],
+      note: "Komisi platform 20–30% dipotong dari harga jual; HPP tetap. Hitung margin bersih per saluran.",
+    },
+
+    /* --- skor kesehatan (F8) bobot --- */
+    healthWeights: {
+      profitabilitas: 25, tren: 20, arusKas: 20, stok: 15, pencatatan: 10, pajak: 10,
+    },
+    healthGrades: [
+      { min: 80, label: "Sehat" },
+      { min: 60, label: "Cukup" },
+      { min: 40, label: "Perlu perhatian" },
+      { min: 0,  label: "Kritis" },
+    ],
+
+    /* --- WhatsApp layanan (F11): env di production; placeholder di demo --- */
+    wa: {
+      pajak: "6281200000000",  // TODO: NEXT_PUBLIC_WA_PAJAK
+      website: "6281200000000",// TODO: NEXT_PUBLIC_WA_WEBSITE
+      services: ["pajak_rekap", "website_custom"],
+    },
+
+    /* --- POS / offline (F2) --- */
+    pos: {
+      maxProductsGratis: 50,
+      stockWarn: 80,       // % storage
+      clockDriftWarnMin: 5,
+      syncBackoffBase: 1000,
+      currency: "IDR",
+      timezoneExamples: ["WIB", "WITA", "WIT"],
+      payMethods: ["TUNAI", "QRIS", "TRANSFER", "LAINNYA"],
+    },
+  };
+
+  w.OLANO_CONFIG = OLANO_CONFIG;
+
+  /* Helper format: dipindah ke config.js supaya POS PWA bisa jalan offline
+     tanpa bergantung shared.js (yang di-cache terpisah). */
+  w.OLANO = {
+    rp: function (n, dec) {
+      n = Number(n) || 0; dec = dec == null ? 0 : dec;
+      return "Rp" + n.toLocaleString("id-ID", { minimumFractionDigits: dec, maximumFractionDigits: dec });
+    },
+    num: function (n) { return Number(n || 0).toLocaleString("id-ID"); },
+    short: function (n) {
+      n = Number(n) || 0;
+      if (n >= 1e9) return (n / 1e9).toLocaleString("id-ID", { maximumFractionDigits: 1 }) + " M";
+      if (n >= 1e6) return (n / 1e6).toLocaleString("id-ID", { maximumFractionDigits: 1 }) + " jt";
+      if (n >= 1e3) return (n / 1e3).toLocaleString("id-ID", { maximumFractionDigits: 0 }) + " rb";
+      return String(n);
+    }
+  };
+})(typeof window !== "undefined" ? window : globalThis);
