@@ -206,20 +206,124 @@ p{max-width:65ch}
   font-variant-numeric:tabular-nums; display:block; letter-spacing:-0.02em}
 .stat span{font-size:var(--fs-small); color:var(--gray-500)}
 
-/* ============================= FLOATING PHONE MOCK ============================= */
-.phone{width:270px; height:548px; border-radius:44px; background:var(--ink); padding:10px;
-  box-shadow:var(--sh-lg); position:relative}
+/* ============================= ICONS (sprite) ============================= */
+.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:middle;flex:none}
+.ic.sm{width:15px;height:15px}
+
+/* ============================= HERO (perkenalan) ============================= */
+.hero{background:var(--grad-hero);padding:88px 0 72px}
+@media(max-width:900px){.hero{padding:56px 0 48px}}
+.hero-grid{display:grid;gap:56px;align-items:center}
+@media(min-width:1024px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:48px}}
+.hero h1{font-size:var(--fs-display);font-weight:800}
+.sub{font-size:var(--fs-body-lg);color:var(--gray-500);max-width:52ch;line-height:1.6}
+.hero-note{font-size:13px;color:var(--gray-500);font-family:var(--font-mono);letter-spacing:.01em}
+.link-arrow{font-weight:600;color:var(--blue-600);font-size:15px;display:inline-flex;align-items:center;gap:6px;transition:gap var(--dur-base) var(--ease-emphasized)}
+.link-arrow:hover{gap:10px}
+
+/* mock POS (isi sesuai tampilan kasir Olano) */
+.hero-visual{display:grid;place-items:center}
+.hero-visual .phone{box-shadow:0 32px 80px -24px rgba(14,26,74,.35)}
+.hero-visual .screen{padding:40px 14px 14px;display:flex;flex-direction:column;gap:10px}
+.mock-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600}
+.mock-outlet{font-family:var(--font-display)}
+.mock-chip{font-family:var(--font-mono);font-size:11px;font-weight:600;padding:4px 10px;border-radius:var(--r-full)}
+.mock-chip.off{background:var(--warning-bg);color:#8a5a00}
+.mock-stat{background:var(--blue-50);border:1px solid var(--blue-100);border-radius:12px;padding:14px}
+.mock-stat b{font-family:var(--font-mono);font-size:21px;font-weight:700;color:var(--blue-700);letter-spacing:-.02em;display:block;font-variant-numeric:tabular-nums}
+.mock-stat span{font-size:12px;color:var(--gray-500)}
+.mock-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--gray-100);border-radius:12px;background:#fff}
+.mock-ic{width:32px;height:32px;border-radius:8px;background:var(--blue-50);color:var(--blue-600);display:grid;place-items:center}
+.mock-ic .ic{width:16px;height:16px}
+.mock-row.warn .mock-ic{background:var(--warning-bg);color:#b07500}
+.mock-name{flex:1;font-size:12.5px;font-weight:500;color:var(--ink)}
+.mock-name em{font-style:normal;font-family:var(--font-mono);color:var(--gray-500);font-size:11px}
+.mock-tag{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.06em;background:var(--blue-600);color:#fff;padding:2px 7px;border-radius:var(--r-full);vertical-align:1px}
+.mock-val{font-family:var(--font-mono);font-weight:600;font-size:13px;color:var(--ink);font-variant-numeric:tabular-nums}
+.mock-tax{display:flex;align-items:center;gap:10px;padding:12px;background:var(--ink);border-radius:12px}
+.mock-tax .mock-ic{background:rgba(255,255,255,.14);color:var(--blue-300)}
+.mock-tax .mock-name b{display:block;font-size:12px;color:#fff}
+.mock-tax .mock-name small{display:block;font-size:11px;color:var(--gray-300)}
+.mock-tax .mock-val{color:#fff}
+
+/* ============================= VALUE STRIP ============================= */
+.strip{background:var(--gray-25);border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100);padding:8px 0}
+.strip-grid{display:grid;grid-template-columns:1fr}
+.strip-item{display:flex;gap:14px;align-items:flex-start;padding:24px}
+.strip-item .ic{width:24px;height:24px;color:var(--blue-600);margin-top:2px}
+.strip-item b{display:block;font-size:15px;margin-bottom:4px}
+@media(min-width:900px){
+  .strip-grid{grid-template-columns:repeat(3,1fr)}
+  .strip-item+.strip-item{border-left:1px solid var(--gray-100)}
+}
+
+/* ============================= SECTION HEAD / ALT ============================= */
+.section.alt{background:var(--gray-25)}
+.sec-head{max-width:640px;margin-bottom:var(--sp-8)}
+.sec-head .small{max-width:48ch}
+.sec-head.text-c{margin-left:auto;margin-right:auto}
+
+/* ============================= FITUR LIST (tenang, hover warna) ============================= */
+.feat-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:700px){.feat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.feat-grid{grid-template-columns:repeat(3,1fr)}}
+.feat{background:var(--white);border:1px solid var(--gray-100);border-radius:var(--r-lg);padding:24px;
+  transition:border-color var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard)}
+.feat:hover{border-color:var(--blue-200);box-shadow:var(--sh-md)}
+.feat-ic{width:44px;height:44px;border-radius:12px;background:var(--blue-50);color:var(--blue-600);
+  display:grid;place-items:center;margin-bottom:16px}
+.feat-ic .ic{width:22px;height:22px}
+.feat h3{font-size:1.15rem;font-weight:700;margin-bottom:6px}
+
+/* ============================= ALAT GRATIS ============================= */
+.tools-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:640px){.tools-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.tools-grid{grid-template-columns:repeat(4,1fr)}}
+.tool-card{display:flex;flex-direction:column;gap:8px;background:var(--white);border:1px solid var(--gray-100);
+  border-radius:var(--r-lg);padding:24px;transition:border-color var(--dur-base) var(--ease-standard),
+  box-shadow var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-emphasized)}
+.tool-card:hover{border-color:var(--blue-300);box-shadow:var(--sh-md);transform:translateY(-2px)}
+.tool-card .ic{width:24px;height:24px;color:var(--blue-600)}
+.tool-card b{font-family:var(--font-display);font-size:1.05rem;letter-spacing:-.01em}
+.tool-go{margin-top:auto;font-size:13px;font-weight:600;color:var(--blue-600);display:inline-flex;align-items:center;gap:4px;
+  transition:gap var(--dur-base) var(--ease-emphasized)}
+.tool-card:hover .tool-go{gap:8px}
+
+/* ============================= PAJAK + CALC CARD (light) ============================= */
+.tax-grid{display:grid;gap:48px}
+@media(min-width:1024px){.tax-grid{grid-template-columns:1fr 1fr;align-items:start}}
+.calc-card{background:var(--white);border:1px solid var(--gray-100);border-radius:var(--r-xl);
+  padding:32px;box-shadow:var(--sh-md)}
+.calc-out-box{border-top:1px solid var(--gray-100);margin-top:16px;padding-top:16px}
+.calc-card .out-hero b{color:var(--ink);font-size:clamp(1.9rem,3vw,2.5rem)}
+.calc-card .callout{background:var(--blue-50);border:1px solid var(--blue-100);color:var(--gray-700)}
+.calc-card .callout b{color:var(--ink)}
+.calc-card .callout.ok{background:var(--success-bg);border-color:#bfe4d0;color:#0a5c36}
+.calc-card .callout.ok b{color:#0a5c36}
+.calc-card .callout.warn{background:var(--warning-bg);border-color:#f0d9a6;color:#7a4d00}
+.calc-card .callout.warn b{color:#7a4d00}
+
+/* ============================= HARGA ============================= */
+.price-grid{display:grid;grid-template-columns:1fr;gap:20px;max-width:880px;margin:0 auto}
+@media(min-width:760px){.price-grid{grid-template-columns:repeat(2,1fr)}}
+.price-card{background:var(--white);border:1px solid var(--gray-100);border-radius:var(--r-xl);padding:32px;box-shadow:var(--sh-sm)}
+.price-card.active{border-color:var(--blue-200);box-shadow:0 0 0 4px var(--blue-50),var(--sh-md)}
+.price-name{font-family:var(--font-display);font-size:1.1rem;font-weight:700}
+.price-val{display:flex;align-items:baseline;gap:8px;margin:14px 0 20px;font-family:var(--font-mono);
+  font-size:2.25rem;font-weight:700;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.price-list{list-style:none;display:grid;gap:10px;margin:0 0 24px}
+.price-list li{display:flex;gap:10px;align-items:center;font-size:14.5px;color:var(--gray-700)}
+.price-list .ic{color:var(--success)}
+
+/* ============================= CTA (light blue) ============================= */
+.cta{padding:96px 0;background:linear-gradient(180deg,#FFFFFF 0%,var(--blue-50) 100%);border-top:1px solid var(--gray-100)}
+.cta h2{font-size:var(--fs-h1)}
+.cta .sub{margin-left:auto;margin-right:auto}
+/* ============================= PHONE MOCK (base) ============================= */
+.phone{width:272px;height:548px;border-radius:44px;background:var(--ink);padding:10px;box-shadow:var(--sh-lg);position:relative}
 .phone .screen{width:100%; height:100%; background:var(--white); border-radius:34px; overflow:hidden; position:relative}
 .phone .notch{position:absolute; top:10px; left:50%; transform:translateX(-50%); width:90px; height:24px;
   background:var(--ink); border-radius:20px; z-index:3}
-.float-card{position:absolute; background:#fff; border:1px solid var(--gray-100); border-radius:var(--r-md);
-  box-shadow:var(--sh-md); padding:10px 14px; font-size:13px; font-weight:600; z-index:4;
-  display:flex; align-items:center; gap:8px; white-space:nowrap}
-.float-card .ic{width:28px; height:28px; border-radius:8px; display:grid; place-items:center}
-.fc-green .ic{background:var(--success-bg); color:var(--success)}
-.fc-blue .ic{background:var(--blue-50); color:var(--blue-600)}
-.fc-amber .ic{background:var(--warning-bg); color:var(--warning)}
-.float-card small{display:block; font-weight:400; color:var(--gray-500); font-size:11px}
 
 /* ============================= FOOTER ============================= */
 .foot{background:var(--gray-25); border-top:1px solid var(--gray-100); padding:var(--sp-24) 0 var(--sp-8); color:var(--gray-700)}

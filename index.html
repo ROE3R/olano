@@ -20,24 +20,23 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Olano","url":"https://olano.xyz/","description":"Kasir offline + AI penjaga harga & stok + rekap pajak bulanan untuk UMKM Indonesia.","applicationCategory":"BusinessApplication","operatingSystem":"Web, Android, iOS","offers":[{"@type":"Offer","name":"Gratis","price":"0","priceCurrency":"IDR"},{"@type":"Offer","name":"Pro","price":"50000","priceCurrency":"IDR"}]}
 </script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Apakah Olano tetap jalan saat internet mati?","acceptedAnswer":{"@type":"Answer","text":"Ya. App shell dan katalog disimpan di perangkat. Transaksi dicatat offline lalu otomatis tersinkron saat online, tanpa duplikasi."}},{"@type":"Question","name":"QRIS bisa dipakai dari bank apa saja?","acceptedAnswer":{"@type":"Answer","text":"QRIS statis dari PJP mana pun (bank dan e-wallet). Olano decode dan render ulang QR dengan tajam, nominal besar di samping."}},{"@type":"Question","name":"Apa bedanya AI Olano dan konsultan pajak?","acceptedAnswer":{"@type":"Answer","text":"AI menghitung, mengingatkan, dan menyiapkan rekap otomatis. Pelaporan sebagai kuasa wajib pajak dikerjakan tim/mitra berizin via WhatsApp."}},{"@type":"Question","name":"Apakah data saya aman?","acceptedAnswer":{"@type":"Answer","text":"Data disimpan offline-first di perangkat, terenkripsi, terisolasi per tenant, dan Olano mematuhi UU PDP."}}]}
-</script>
 </head>
 <body>
 <a class="skip" href="#main">Langsung ke isi</a>
 
-<!-- ============ NAVBAR ============ -->
+<!-- Homepage = perkenalan saja (7 section). Konten detail pindah ke halaman tujuan:
+     umkm.html (demo offline, before/after, FAQ), website.html (galeri template),
+     naik-kelas.html (multi-outlet). Icon: sprite SVG stroke-tipis, bukan emoji.
+     Motion: reveal + hover; tanpa float/pulse/marquee. -->
+
 <header class="nav" id="nav">
   <div class="container nav-inner">
     <a class="logo" href="index.html" aria-label="Olano beranda"><span class="mark">O</span>Olano</a>
     <nav class="nav-links" aria-label="Menu utama">
-      <a href="umkm.html">UMKM</a>
-      <a href="pajak.html">Pajak</a>
-      <a href="website.html">Website</a>
-      <a href="naik-kelas.html">Naik Kelas</a>
+      <a href="#fitur">Fitur</a>
+      <a href="#alat">Alat Gratis</a>
+      <a href="#pajak">Pajak</a>
       <a href="#harga">Harga</a>
-      <a href="alat/kalkulator-pph-final-umkm.html">Alat Gratis</a>
     </nav>
     <div class="nav-cta">
       <a class="btn btn-ghost" href="kasir.html">Masuk</a>
@@ -46,244 +45,184 @@
     <button class="nav-burger" aria-label="Buka menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
   <nav class="nav-mobile" aria-label="Menu seluler">
-    <a href="umkm.html">UMKM</a>
-    <a href="pajak.html">Pajak</a>
-    <a href="website.html">Website</a>
-    <a href="naik-kelas.html">Naik Kelas</a>
-    <a href="alat/kalkulator-pph-final-umkm.html">Alat Gratis</a>
-    <a href="kasir.html" style="color:var(--blue-600);font-weight:600">Coba Gratis →</a>
+    <a href="#fitur">Fitur</a>
+    <a href="#alat">Alat Gratis</a>
+    <a href="#pajak">Pajak</a>
+    <a href="#harga">Harga</a>
+    <a href="umkm.html">Kasir UMKM</a>
+    <a href="kasir.html" style="color:var(--blue-600);font-weight:600">Coba Gratis</a>
   </nav>
 </header>
 
 <main id="main">
 
-<!-- ============ S1 HERO ============ -->
-<section class="tool-hero" style="position:relative;overflow:hidden">
-  <div class="container" style="position:relative;z-index:1">
-    <div style="display:grid;grid-template-columns:1fr;gap:48px;align-items:center" data-reveal>
-      <div style="max-width:600px">
-        <div class="badge"><span class="dot"></span>BARU · QRIS s.d. Rp500rb kini 0% untuk usaha mikro</div>
-        <h1 class="mt-4" style="font-size:var(--fs-display);font-weight:800">Kasir, website, dan pajak usahamu <span class="grad-text">beres di satu tempat.</span></h1>
-        <p class="mt-4" style="font-size:var(--fs-body-lg);color:var(--gray-500);max-width:54ch">Jualan tetap jalan walau internet mati. AI bantu atur harga, percantik foto produk, dan rekap pajak tiap bulan. Mulai gratis.</p>
-
-        <div class="chooser mt-6">
-          <a class="chooser-card" href="umkm.html">
-            <span class="chooser-ic" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 9h18M5 9v10h14V9M9 9V7a3 3 0 0 1 6 0v2"/></svg>
-            </span>
-            <b>Saya punya usaha</b>
-            <p>Catat jualan, stok, QRIS, dan tahu untungmu.Offline-first.</p>
-          </a>
-          <a class="chooser-card" href="pajak.html">
-            <span class="chooser-ic" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
-            </span>
-            <b>Saya mau urus pajak</b>
-            <p>Rekap PPh final 0,5% tiap bulan, sesuai PP 20/2026.</p>
-          </a>
+<!-- ============ 1. HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid" data-reveal>
+      <div>
+        <div class="badge"><span class="dot"></span>Kasir · QRIS · Pajak, satu aplikasi</div>
+        <h1 class="mt-4">Jualanmu tetap jalan,<br><span class="grad-text">walau internet mati.</span></h1>
+        <p class="sub mt-4">Olano adalah kasir offline untuk UMKM Indonesia: transaksi aman di perangkat, QRIS tanpa biaya untuk usaha mikro, AI menjaga harga dan stok, plus rekap pajak tiap bulan sesuai PP 20/2026.</p>
+        <div class="row wrap mt-6" style="gap:12px">
+          <a class="btn btn-primary btn-lg" href="kasir.html">Coba Kasir Gratis <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a>
+          <a class="link-arrow" href="#pajak">Hitung pajakmu dulu</a>
         </div>
-
-        <p class="small mt-4"><a href="website.html" style="color:var(--blue-600);font-weight:600">Butuh website toko? Lihat 50 template →</a></p>
-        <div class="row wrap mt-4" style="gap:16px">
-          <span class="small" style="display:flex;align-items:center;gap:6px"><b style="color:var(--success)">●</b> Gratis untuk mulai</span>
-          <span class="small" style="display:flex;align-items:center;gap:6px"><b style="color:var(--success)">●</b> Tanpa kartu kredit</span>
-          <span class="small" style="display:flex;align-items:center;gap:6px"><b style="color:var(--success)">●</b> Data terenkripsi</span>
-        </div>
+        <p class="hero-note mt-4">Gratis untuk mulai · Tanpa kartu kredit · Data terenkripsi di perangkatmu</p>
       </div>
 
-      <!-- phone mock + floating cards -->
-      <div style="position:relative;display:grid;place-items:center;min-height:560px" aria-hidden="true">
+      <!-- Mock POS realistis: konten sama persis dengan tampilan kasir Olano -->
+      <div class="hero-visual" aria-hidden="true">
         <div class="phone">
           <div class="notch"></div>
-          <div class="screen" style="padding:44px 16px 16px;font-family:var(--font-sans)">
-            <div class="row spread" style="font-size:13px;font-weight:600"><span>Kopi Senja</span><span class="pos-status off">Offline · 3 aman</span></div>
-            <div class="bento mt-4" style="grid-template-columns:1fr;gap:10px">
-              <div class="card" style="padding:14px;box-shadow:none">
-                <div class="stat"><b>Rp1.240.000</b><span>Omzet hari ini</span></div>
-              </div>
-              <div class="card" style="padding:14px;box-shadow:none">
-                <div class="row"><span style="font-size:34px">☕</span><div style="flex:1"><div style="font-size:13px;font-weight:600">Es Kopi Susu</div><div style="font-size:12px;color:var(--gray-500)" class="mono">Rp22.000 · sisa 4</div></div></div>
-              </div>
-              <div class="card" style="padding:14px;box-shadow:none">
-                <div style="font-size:12px;font-weight:600;color:var(--blue-700);margin-bottom:6px">PPh final 0,5%</div>
-                <div class="stat"><b>Rp42.500</b><span>tenggat 15 Okt · siap lapor</span></div>
-              </div>
+          <div class="screen">
+            <div class="mock-top"><span class="mock-outlet">Kopi Senja</span><span class="mock-chip off">Offline · 3 aman</span></div>
+            <div class="mock-stat"><b>Rp1.240.000</b><span>omzet hari ini · 41 transaksi</span></div>
+            <div class="mock-row">
+              <span class="mock-ic"><svg class="ic"><use href="assets/icons.svg#i-cup"/></svg></span>
+              <span class="mock-name">Es Kopi Susu <em>×2</em></span>
+              <span class="mock-val">Rp44.000</span>
+            </div>
+            <div class="mock-row">
+              <span class="mock-ic"><svg class="ic"><use href="assets/icons.svg#i-cake"/></svg></span>
+              <span class="mock-name">Croissant <em>×1</em></span>
+              <span class="mock-val">Rp18.000</span>
+            </div>
+            <div class="mock-row warn">
+              <span class="mock-ic"><svg class="ic"><use href="assets/icons.svg#i-box"/></svg></span>
+              <span class="mock-name">Stok susu turun 12% <em class="mock-tag">AI</em></span>
+              <span class="mock-val">3 opsi</span>
+            </div>
+            <div class="mock-tax">
+              <span class="mock-ic"><svg class="ic"><use href="assets/icons.svg#i-receipt"/></svg></span>
+              <span class="mock-name"><b>PPh final 0,5%</b><small>estimasi bulan ini</small></span>
+              <span class="mock-val">Rp42.500</span>
             </div>
           </div>
         </div>
-        <div class="float-card fc-green" style="top:60px;left:-10px;animation:floaty 6s ease-in-out infinite">
-          <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></span>
-          <div>QRIS diterima Rp35.000<small>cek notifikasi PJP</small></div>
-        </div>
-        <div class="float-card fc-blue" style="bottom:70px;right:-14px;animation:floaty 6s ease-in-out infinite .8s">
-          <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg></span>
-          <div>Offline · 3 transaksi aman<small>otomatis tersinkron</small></div>
-        </div>
-        <div class="float-card fc-amber" style="bottom:160px;left:-6px;animation:floaty 6s ease-in-out infinite 1.6s">
-          <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
-          <div>Skor bisnis 82<small>Sehat · naik 6 minggu ini</small></div>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ S2 STRIP KEPERAYAAN ============ -->
-<section class="section" style="padding-top:0">
+<!-- ============ 2. VALUE STRIP ============ -->
+<section class="strip">
   <div class="container">
-    <p class="text-c small" style="max-width:52ch;margin:0 auto;color:var(--gray-500);font-size:var(--fs-body)">Dirancang untuk warung, kafe, butik, dan affiliate di seluruh Indonesia.</p>
-    <div class="bento mt-6" style="grid-template-columns:repeat(2,1fr)" data-reveal class="stagger">
-      <div class="card text-c" style="padding:20px"><div class="stat"><b>10</b><span>jenis usaha siap pakai</span></div></div>
-      <div class="card text-c" style="padding:20px"><div class="stat"><b>0%</b><span>biaya QRIS s.d. Rp500rb (mikro)</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ S3 MASALAH → SOLUSI ============ -->
-<section class="section">
-  <div class="container">
-    <div class="text-c" style="max-width:560px;margin:0 auto" data-reveal>
-      <div class="eyebrow">Masalah yang kamu hadapi</div>
-      <h2 class="mt-4">Dari pusing harian, jadi jualan yang rapi.</h2>
-    </div>
-    <div class="grid mt-8" style="grid-template-columns:1fr" data-reveal>
-      <div class="card" style="display:grid;grid-template-columns:1fr;gap:16px">
-        <div class="row" style="gap:14px"><span style="font-size:30px">📵</span><div><b style="font-family:var(--font-display);font-size:1.1rem">Internet mati, antrean panjang.</b><p class="small mt-2">Kasir online nge-freeze pas ramai.</p></div></div>
-        <div class="callout ok" style="background:var(--success-bg);border:1px solid #bfe4d0;color:#0a5c36"><b>Jadi:</b> kasir jalan 100% offline, antrean tetap dilayani, transaksi aman di perangkat.</div>
+    <div class="strip-grid" data-reveal>
+      <div class="strip-item">
+        <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-offline"/></svg>
+        <div><b>100% offline</b><p class="small">Transaksi, stok, QRIS, dan struk jalan tanpa internet. Otomatis tersinkron saat online.</p></div>
       </div>
-      <div class="card" style="display:grid;grid-template-columns:1fr;gap:16px">
-        <div class="row" style="gap:14px"><span style="font-size:30px">📈</span><div><b style="font-family:var(--font-display);font-size:1.1rem">Bahan naik, untung hilang.</b><p class="small mt-2">Harga susu naik 12%, kamu baru tahu sebulan kemudian.</p></div></div>
-        <div class="callout ok" style="background:var(--success-bg);border:1px solid #bfe4d0;color:#0a5c36"><b>Jadi:</b> AI pantau HPP &amp; harga bahan, beri 3 opsi harga yang tetap untung.</div>
+      <div class="strip-item">
+        <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-qr"/></svg>
+        <div><b>QRIS, 0% untuk mikro</b><p class="small">Terima QRIS semua bank dan e-wallet. Transaksi s.d. Rp500rb tanpa biaya MDR.</p></div>
       </div>
-      <div class="card" style="display:grid;grid-template-columns:1fr;gap:16px">
-        <div class="row" style="gap:14px"><span style="font-size:30px">🧾</span><div><b style="font-family:var(--font-display);font-size:1.1rem">Pajak bikin pusing.</b><p class="small mt-2">Aturan PP 20/2026 membingungkan, lapor numpuk.</p></div></div>
-        <div class="callout ok" style="background:var(--success-bg);border:1px solid #bfe4d0;color:#0a5c36"><b>Jadi:</b> rekap bulanan otomatis + checklist setor, tim bantu urus via WhatsApp.</div>
+      <div class="strip-item">
+        <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-receipt"/></svg>
+        <div><b>Pajak siap lapor</b><p class="small">Rekap PPh final 0,5% bulanan sesuai PP 20/2026, checklist setor dikirim email.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ S4 BENTO FITUR ============ -->
-<section class="section" style="background:var(--gray-25)">
+<!-- ============ 3. FITUR ============ -->
+<section class="section" id="fitur">
   <div class="container">
-    <div data-reveal><div class="eyebrow">Fitur</div><h2 class="mt-2">Semua yang usahamu butuh, di satu aplikasi.</h2></div>
-    <div class="bento mt-8">
-      <div class="card span-2x2" data-reveal style="display:flex;flex-direction:column;gap:12px">
-        <div class="bento-visual" style="min-height:150px"><span style="font-size:40px">🏪</span></div>
+    <div class="sec-head" data-reveal>
+      <div class="eyebrow">Fitur</div>
+      <h2>Semua yang usahamu butuh, di satu aplikasi.</h2>
+    </div>
+    <div class="feat-grid stagger" data-reveal>
+      <div class="feat">
+        <span class="feat-ic"><svg class="ic"><use href="assets/icons.svg#i-bag"/></svg></span>
         <h3>Kasir offline</h3>
-        <p class="small">App shell + katalog di-cache. 100% jalan tanpa internet, transaksi aman di perangkat, sync otomatis.</p>
+        <p class="small">App shell dan katalog di-cache di perangkat. Kasir tetap melayani saat sinyal hilang.</p>
       </div>
-      <div class="card span-1x1" data-reveal><div class="bento-visual" style="min-height:80px"><span style="font-size:34px">▦</span></div><h3 class="mt-4">QRIS statis</h3><p class="small mt-2">QR tergambar tajam, nominal besar di samping.</p></div>
-      <div class="card span-1x1" data-reveal><div class="bento-visual" style="min-height:80px"><span style="font-size:34px">📷</span></div><h3 class="mt-4">Scan tanpa barcode</h3><p class="small mt-2">Kamera kenali produkmu, offline.</p></div>
-      <div class="card span-2x1" data-reveal><div class="bento-visual" style="min-height:80px"><span style="font-size:34px">🖼️</span></div><h3 class="mt-4">AI foto produk</h3><p class="small mt-2">Hapus &amp; ganti latar, perbaiki cahaya, gaya katalog.</p></div>
-      <div class="card span-1x1" data-reveal><div class="bento-visual" style="min-height:80px"><span style="font-size:34px">💰</span></div><h3 class="mt-4">AI harga</h3><p class="small mt-2">Monitor bahan, 3 opsi harga.</p></div>
-      <div class="card span-1x1" data-reveal><div class="bento-visual" style="min-height:80px"><span style="font-size:34px">📊</span></div><h3 class="mt-4">Skor bisnis</h3><p class="small mt-2">0–100, dihitung tiap malam.</p></div>
-      <div class="card span-2x1" data-reveal><div class="bento-visual" style="min-height:80px"><span style="font-size:34px">🧾</span></div><h3 class="mt-4">Rekap pajak</h3><p class="small mt-2">Progress ke Rp500jt &amp; Rp4,8M, checklist setor.</p></div>
-      <div class="card span-2x1" data-reveal><div class="bento-visual" style="min-height:80px"><span style="font-size:34px">🌐</span></div><h3 class="mt-4">50 template website</h3><p class="small mt-2">Katalog, menu, link-in-bio, jasa. Bisa diedit.</p></div>
+      <div class="feat">
+        <span class="feat-ic"><svg class="ic"><use href="assets/icons.svg#i-qr"/></svg></span>
+        <h3>QRIS statis</h3>
+        <p class="small">Decode EMVCo dan validasi CRC16, QR tajam, nominal besar. Mikro membayar 0%.</p>
+      </div>
+      <div class="feat">
+        <span class="feat-ic"><svg class="ic"><use href="assets/icons.svg#i-scan"/></svg></span>
+        <h3>Scan tanpa barcode</h3>
+        <p class="small">Kamera mengenali produk lewat model di-perangkat. Top-3 kandidat, tap untuk masuk.</p>
+      </div>
+      <div class="feat">
+        <span class="feat-ic"><svg class="ic"><use href="assets/icons.svg#i-img"/></svg></span>
+        <h3>AI foto produk</h3>
+        <p class="small">Hapus dan ganti latar, perbaiki cahaya, gaya katalog. Bentuk produk tidak berubah.</p>
+      </div>
+      <div class="feat">
+        <span class="feat-ic"><svg class="ic"><use href="assets/icons.svg#i-price"/></svg></span>
+        <h3>AI penjaga harga</h3>
+        <p class="small">Pantau bahan yang naik di atas 10%. Tiga usul harga: Aman, Kompetitif, Premium.</p>
+      </div>
+      <div class="feat">
+        <span class="feat-ic"><svg class="ic"><use href="assets/icons.svg#i-chart"/></svg></span>
+        <h3>Skor kesehatan usaha</h3>
+        <p class="small">0 sampai 100 tiap malam: omzet, margin, stok, pajak. Ringkasan mingguan via email.</p>
+      </div>
+    </div>
+    <div class="row center mt-8" data-reveal>
+      <a class="btn btn-secondary" href="umkm.html">Lihat detail fitur UMKM <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
 
-<!-- ============ S5 DEMO MATIKAN INTERNET ============ -->
-<section class="section">
-  <div class="container" data-reveal data-offline-demo>
-    <div class="text-c" style="max-width:520px;margin:0 auto">
-      <div class="eyebrow">Coba sendiri</div>
-      <h2 class="mt-2">Matikan internetmu. Jualan tetap jalan.</h2>
-      <p class="small mt-4">Tap tombol, lalu ketuk produk di bawah saat offline. Transaksi tetap tercatat aman.</p>
-    </div>
-    <div class="row center mt-6">
-      <button class="btn btn-secondary" data-toggle style="min-width:220px">
-        <span data-toggle-label>Internet: ON</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12a10 10 0 0 1 20 0M6 12a6 6 0 0 1 12 0M12 12v6"/></svg>
-      </button>
-    </div>
-    <div data-stage class="bento mt-6" style="grid-template-columns:repeat(3,1fr)">
-      <button data-tap class="card" style="text-align:center;cursor:pointer"><span style="font-size:36px">☕</span><b style="display:block;margin-top:6px;font-size:14px">Es Kopi</b><span class="mono small">Rp22.000</span></button>
-      <button data-tap class="card" style="text-align:center;cursor:pointer"><span style="font-size:36px">🥐</span><b style="display:block;margin-top:6px;font-size:14px">Croissant</b><span class="mono small">Rp18.000</span></button>
-      <button data-tap class="card" style="text-align:center;cursor:pointer"><span style="font-size:36px">🍰</span><b style="display:block;margin-top:6px;font-size:14px">Kue</b><span class="mono small">Rp15.000</span></button>
-    </div>
-    <div class="row center mt-6" style="justify-content:center">
-      <span class="callout" style="background:var(--blue-50);border:1px solid var(--blue-100);color:var(--blue-700)" data-live></span>
-    </div>
-    <p class="small text-c mt-4" data-safe-wrap style="display:none">✅ <b data-safe-count>0</b> transaksi aman offline</p>
-  </div>
-</section>
-
-<!-- ============ S6 FOTO AI ============ -->
-<section class="section" style="background:var(--gray-25)">
+<!-- ============ 4. ALAT GRATIS ============ -->
+<section class="section alt" id="alat">
   <div class="container">
-    <div data-reveal><div class="eyebrow">AI Foto Produk</div><h2 class="mt-2">Foto katalog, dari HP kamu.</h2>
-    <p class="small mt-4">Geser slider. Hapus latar, ganti studio/marmer/kayu, perbaiki cahaya, tanpa mengubah bentuk produk.</p></div>
-    <div class="grid mt-8" style="grid-template-columns:repeat(3,1fr)" data-reveal data-before-after style="gap:20px">
-      <figure data-before-after style="position:relative;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/5;background:var(--gray-50)">
-        <img data-before src="assets/img/foto-ai-kopi-before.svg" alt="Foto es kopi susu sebelum diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-        <img data-after src="assets/img/foto-ai-kopi-after.svg" alt="Foto es kopi susu setelah diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 50% 0 0)">
-        <input type="range" min="0" max="100" value="50" aria-label="Geser untuk membandingkan foto AI" style="position:absolute;left:0;right:0;bottom:12px;width:100%;z-index:2;accent-color:var(--blue-600)">
-      </figure>
-      <figure data-before-after style="position:relative;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/5;background:var(--gray-50)">
-        <img data-before src="assets/img/foto-ai-keripik-before.svg" alt="Foto keripik sebelum diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-        <img data-after src="assets/img/foto-ai-keripik-after.svg" alt="Foto keripik setelah diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 50% 0 0)">
-        <input type="range" min="0" max="100" value="50" aria-label="Geser untuk membandingkan foto AI" style="position:absolute;left:0;right:0;bottom:12px;width:100%;z-index:2;accent-color:var(--blue-600)">
-      </figure>
-      <figure data-before-after style="position:relative;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/5;background:var(--gray-50)">
-        <img data-before src="assets/img/foto-ai-batik-before.svg" alt="Foto kemeja batik sebelum diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-        <img data-after src="assets/img/foto-ai-batik-after.svg" alt="Foto kemeja batik setelah diedit AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 50% 0 0)">
-        <input type="range" min="0" max="100" value="50" aria-label="Geser untuk membandingkan foto AI" style="position:absolute;left:0;right:0;bottom:12px;width:100%;z-index:2;accent-color:var(--blue-600)">
-      </figure>
+    <div class="sec-head" data-reveal>
+      <div class="eyebrow">Alat gratis</div>
+      <h2>Hitung dulu, baru bayar.</h2>
+      <p class="small mt-4">Empat kalkulator untuk keputusan harian. Gratis, tanpa akun.</p>
+    </div>
+    <div class="tools-grid stagger" data-reveal>
+      <a class="tool-card" href="alat/kalkulator-pph-final-umkm.html">
+        <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-file"/></svg>
+        <b>Kalkulator PPh Final</b>
+        <span class="small">0,5% atas omzet sesuai PP 20/2026, per jenis wajib pajak.</span>
+        <span class="tool-go">Hitung <svg class="ic sm"><use href="assets/icons.svg#i-arrow"/></svg></span>
+      </a>
+      <a class="tool-card" href="alat/kalkulator-hpp-harga-jual.html">
+        <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-price"/></svg>
+        <b>HPP dan Harga Jual</b>
+        <span class="small">BOM per porsi jadi tiga opsi harga dengan margin target.</span>
+        <span class="tool-go">Hitung <svg class="ic sm"><use href="assets/icons.svg#i-arrow"/></svg></span>
+      </a>
+      <a class="tool-card" href="alat/kalkulator-biaya-qris.html">
+        <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-qr"/></svg>
+        <b>Biaya QRIS (MDR)</b>
+        <span class="small">Potongan per transaksi dan per bulan, per segmen usaha.</span>
+        <span class="tool-go">Hitung <svg class="ic sm"><use href="assets/icons.svg#i-arrow"/></svg></span>
+      </a>
+      <a class="tool-card" href="alat/kalkulator-margin-delivery.html">
+        <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-trend"/></svg>
+        <b>Margin GoFood/Grab</b>
+        <span class="small">Fee, subsidi, dan ongkir jadi analisa untung bersih per pesanan.</span>
+        <span class="tool-go">Analisa <svg class="ic sm"><use href="assets/icons.svg#i-arrow"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ============ S7 GALERI TEMPLATE ============ -->
-<section class="section">
+<!-- ============ 5. PAJAK + MINI CALC ============ -->
+<section class="section" id="pajak">
   <div class="container">
-    <div class="row spread wrap" data-reveal style="gap:12px">
-      <div><div class="eyebrow">50 template</div><h2 class="mt-2">Website toko siap dalam 10 menit.</h2></div>
-      <div class="row wrap"><a class="btn btn-secondary" href="website.html">Lihat semua template</a><a class="btn btn-wa" href="alat/kalkulator-hpp-harga-jual.html">Desain custom? Chat kami</a></div>
-    </div>
-    <div data-marquee style="display:grid;grid-template-columns:1fr;gap:16px;margin-top:32px;overflow:hidden" class="mq" aria-label="Galeri template website">
-      <div class="mq-track" data-speed="44" style="display:flex;gap:16px;width:max-content">
-        <!-- row 1 -->
-        <div class="card" style="width:260px;flex:none"><div class="bento-visual" style="min-height:150px"><span style="font-size:30px">🛍️</span></div><b style="display:block;margin-top:8px;font-size:14px">Katalog Butik</b><span class="small">Toko Grid</span></div>
-        <div class="card" style="width:260px;flex:none"><div class="bento-visual" style="min-height:150px"><span style="font-size:30px">🍜</span></div><b style="display:block;margin-top:8px;font-size:14px">Menu Resto</b><span class="small">Menu</span></div>
-        <div class="card" style="width:260px;flex:none"><div class="bento-visual" style="min-height:150px"><span style="font-size:30px">🔗</span></div><b style="display:block;margin-top:8px;font-size:14px">Link-in-bio Affiliate</b><span class="small">Bio</span></div>
-        <div class="card" style="width:260px;flex:none"><div class="bento-visual" style="min-height:150px"><span style="font-size:30px">💆</span></div><b style="display:block;margin-top:8px;font-size:14px">Jasa &amp; Booking</b><span class="small">Booking</span></div>
-        <div class="card" style="width:260px;flex:none"><div class="bento-visual" style="min-height:150px"><span style="font-size:30px">📸</span></div><b style="display:block;margin-top:8px;font-size:14px">Portofolio</b><span class="small">Galeri</span></div>
-      </div>
-      <div class="mq-track" data-speed="50" data-reverse style="display:flex;gap:16px;width:max-content">
-        <div class="card" style="width:260px;flex:none"><div class="bento-visual" style="min-height:150px"><span style="font-size:30px">🎉</span></div><b style="display:block;margin-top:8px;font-size:14px">Promo &amp; Event</b><span class="small">Landing</span></div>
-        <div class="card" style="width:260px;flex:none"><div class="bento-visual" style="min-height:150px"><span style="font-size:30px">🏢</span></div><b style="display:block;margin-top:8px;font-size:14px">Profil Usaha</b><span class="small">Katalog</span></div>
-        <div class="card" style="width:260px;flex:none"><div class="bento-visual" style="min-height:150px"><span style="font-size:30px">🎬</span></div><b style="display:block;margin-top:8px;font-size:14px">Cerita Brand</b><span class="small">Story</span></div>
-        <div class="card" style="width:260px;flex:none"><div class="bento-visual" style="min-height:150px"><span style="font-size:30px">⌚</span></div><b style="display:block;margin-top:8px;font-size:14px">Landing Produk Tunggal</b><span class="small">Landing</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ S8 NAIK KELAS ============ -->
-<section class="section" style="background:var(--gray-25)">
-  <div class="container" data-reveal>
-    <div style="max-width:600px"><div class="eyebrow">Naik Kelas · reverse thinking</div>
-    <h2 class="mt-2">Mulai dari satu warung. Siap sampai sepuluh cabang.</h2>
-    <p class="small mt-4">Diciptakan untuk bisnis besar, dikemas sesederhana mungkin untuk warung. Saat usahamu tumbuh, kamu tidak perlu pindah aplikasi.</p></div>
-    <div class="grid mt-8" style="grid-template-columns:repeat(3,1fr)">
-      <div class="card"><div class="stat"><b>Multi-outlet</b><span>&amp; peran staf</span></div><p class="small mt-4">Katalog pusat, harga per outlet, transfer stok antar outlet, PIN kasir cepat.</p></div>
-      <div class="card"><div class="stat"><b>Tutup shift</b><span>&amp; ekspor akuntan</span></div><p class="small mt-4">Kas awal/akhir, selisih per metode, ekspor CSV/XLSX penjualan &amp; pajak.</p></div>
-      <div class="card"><div class="stat"><b>Pajak PT/CV</b><span>dibantu admin</span></div><p class="small mt-4">Owner beri akses baca berbatas waktu ke tim kami. Bisa dicabut kapan saja, tercatat di audit.</p></div>
-    </div>
-    <div class="row wrap mt-6"><a class="btn btn-primary" href="naik-kelas.html">Lihat Naik Kelas</a><a class="btn btn-wa" href="#">Konsultasi bisnis</a></div>
-  </div>
-</section>
-
-<!-- ============ S9 BAND PAJAK (gelap) + mini kalkulator ============ -->
-<section class="section section-dark" id="pajak-band">
-  <div class="container" data-reveal>
-    <div style="max-width:560px"><div class="eyebrow">PP 20/2026</div>
-    <h2 class="mt-2">Aturan pajak UMKM berubah di 2026. Kami bantu kamu tetap aman.</h2></div>
-    <div class="tool-calc mt-8" style="background:transparent">
+    <div class="tax-grid" data-reveal>
       <div>
-        <div class="eyebrow" style="color:var(--blue-300)">Mini kalkulator</div>
+        <div class="eyebrow">PP 20/2026</div>
+        <h2 class="mt-2">Aturan pajak UMKM berubah di 2026.</h2>
+        <p class="small mt-4">PPh final 0,5% tetap untuk orang pribadi, PT Perorangan, dan koperasi (maks. 4 tahun). Omzet di atas Rp500 juta per tahun (OP) mulai kena; di atas Rp4,8 miliar, keluar skema final. PT dan CV wajib skema umum atas laba.</p>
+        <p class="small mt-4">Olano menghitung dari omzet kasirmu, menyiapkan rekap PDF, dan mengingatkan tanggal setor. Tim kami bantu urus via WhatsApp.</p>
+        <div class="row wrap mt-6" style="gap:12px">
+          <a class="btn btn-secondary" href="pajak.html">Panduan pajak lengkap</a>
+          <a class="btn btn-wa" href="pajak.html">Konsultasi via WhatsApp</a>
+        </div>
+      </div>
+      <div class="calc-card">
+        <div class="eyebrow" style="color:var(--blue-300)">Estimasi cepat</div>
         <div class="field mt-4"><label for="tax-wp">Jenis usaha</label>
           <select id="tax-wp">
             <option value="OP">Orang Pribadi</option>
@@ -294,84 +233,68 @@
           </select>
         </div>
         <div class="field"><label for="tax-omzet">Omzet per bulan (Rp)</label>
-          <input id="tax-omzet" type="number" inputmode="numeric" value="60000000" min="0" step="500000"></div>
-        <p class="small" style="color:var(--blue-200);margin-top:8px">Perhitungan memakai mesin pajak yang sama dengan aplikasi. Estimasi, bukan nasihat pajak.</p>
-      </div>
-      <div class="calc-out" id="tax-out" aria-live="polite">
-        <div class="eyebrow" style="color:var(--blue-300)">Estimasi PPh final</div>
-        <div class="out-hero mt-4"><b id="tax-result">Rp17.500</b><span style="color:var(--blue-200);font-size:14px">per bulan · PPh final 0,5%</span></div>
-        <div class="callout mt-6" id="tax-note"><b>Omzet tahunan Rp720 juta.</b> Di atas Rp500 juta, OP kena PPh final 0,5%. Di bawahnya bebas.</div>
+          <input id="tax-omzet" type="number" inputmode="numeric" value="60000000" min="0" step="500000">
+        </div>
+        <div id="tax-out" aria-live="polite" class="calc-out-box">
+          <div class="out-hero"><b id="tax-result">Rp91.667</b><span class="small" style="color:var(--blue-200)">per bulan · PPh final 0,5%</span></div>
+          <div class="callout" id="tax-note"><b>Omzet tahunan Rp720 juta.</b> Di atas Rp500 juta, OP kena PPh final 0,5%.</div>
+        </div>
+        <p class="hint mt-4" style="color:var(--blue-200)">Estimasi, bukan nasihat pajak. Memakai mesin pajak yang sama dengan aplikasi.</p>
       </div>
     </div>
-    <p class="small mt-6" style="color:var(--blue-300)">Olano membantu menghitung &amp; menyiapkan pajak. Pelaporan sebagai kuasa wajib pajak dikerjakan mitra berizin. Bukan nasihat hukum atau pajak.</p>
   </div>
 </section>
 
-<!-- ============ S10 HARGA ============ -->
-<section class="section" id="harga">
+<!-- ============ 6. HARGA ============ -->
+<section class="section alt" id="harga">
   <div class="container">
-    <div class="text-c" style="max-width:520px;margin:0 auto" data-reveal><div class="eyebrow">Harga</div>
-    <h2 class="mt-2">Gratis untuk mulai.</h2><p class="small mt-4">Bayar hanya kalau kamu mau AI dan tim kami bekerja untukmu.</p></div>
-    <div class="grid mt-8" style="grid-template-columns:1fr" data-reveal>
-      <div class="card" style="max-width:420px">
-        <div class="row spread"><span class="eyebrow">Gratis</span></div>
-        <div class="mt-4"><b class="mono" style="font-size:34px;font-weight:700;color:var(--ink)">Rp0</b><span class="small"> selamanya</span></div>
-        <ul class="small mt-4" style="list-style:none;display:grid;gap:8px">
-          <li>✓ Kasir offline + struk</li><li>✓ QRIS statis + catatan bayar</li>
-          <li>✓ 1 outlet · maks. 50 produk</li><li>✓ Rekap harian via email</li>
-          <li>✓ Kalkulator pajak &amp; analisa GoFood/Grab</li>
-        </ul>
-        <a class="btn btn-primary btn-block mt-6" href="kasir.html">Mulai gratis</a>
-      </div>
-      <div class="card active" style="max-width:420px;border:1px solid var(--blue-200);box-shadow:var(--sh-lg)">
-        <div class="row spread"><span class="eyebrow">Pro</span><span class="badge"><span class="dot"></span>Populer</span></div>
-        <div class="mt-4"><b class="mono" style="font-size:34px;font-weight:700;color:var(--blue-600)">Rp50rb</b><span class="small"> /outlet/bln</span></div>
-        <ul class="small mt-4" style="list-style:none;display:grid;gap:8px">
-          <li>✓ Semua fitur, produk tak terbatas</li><li>✓ AI harga, foto, &amp; Tanya AI (berkuota)</li>
-          <li>✓ Skor kesehatan + ringkasan mingguan</li><li>✓ Mode Naik Kelas multi-outlet</li>
-          <li>✓ Rekap pajak bulanan + akses admin pajak</li>
-        </ul>
-        <a class="btn btn-primary btn-block mt-6" href="kasir.html">Coba 14 hari gratis</a>
-      </div>
+    <div class="sec-head text-c" data-reveal>
+      <div class="eyebrow">Harga</div>
+      <h2>Gratis untuk mulai.</h2>
+      <p class="small mt-4">Bayar hanya kalau kamu mau AI dan tim kami bekerja untukmu.</p>
     </div>
-    <div class="grid mt-4" style="grid-template-columns:1fr;max-width:900px;margin-left:auto;margin-right:auto" data-reveal>
-      <div class="card"><div class="row spread wrap"><b style="font-family:var(--font-display)">Layanan Pajak</b><span class="small">Rp250rb+/bln · tim + AI via WA</span></div>
-        <p class="small mt-2">Rekap &amp; konsultasi bulanan (basic s.d. Rp1 M, Pro Rp1–4,8 M + PPh 21, PKP &gt; Rp4,8 M + PPN).</p>
-        <a class="btn btn-wa mt-4" href="pajak.html">Konsultasi gratis</a></div>
-      <div class="card"><div class="row spread wrap"><b style="font-family:var(--font-display)">Website Custom</b><span class="small">Penawaran via WA</span></div>
-        <p class="small mt-2">Domain sendiri, desain custom, lebih dari 50 template siap.</p>
-        <a class="btn btn-wa mt-4" href="website.html">Diskusikan</a></div>
+    <div class="price-grid stagger" data-reveal>
+      <div class="price-card">
+        <b class="price-name">Gratis</b>
+        <div class="price-val"><span>Rp0</span><span class="small">selamanya</span></div>
+        <ul class="price-list">
+          <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>Kasir offline + struk</li>
+          <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>QRIS statis + catatan bayar</li>
+          <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>1 outlet, maks. 50 produk</li>
+          <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>Rekap harian via email</li>
+        </ul>
+        <a class="btn btn-primary btn-block" href="kasir.html">Mulai gratis</a>
+      </div>
+      <div class="price-card active">
+        <div class="row spread"><b class="price-name">Pro</b><span class="badge"><span class="dot"></span>Populer</span></div>
+        <div class="price-val"><span style="color:var(--blue-600)">Rp50rb</span><span class="small">/outlet/bulan</span></div>
+        <ul class="price-list">
+          <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>Produk tak terbatas</li>
+          <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>AI harga, foto, dan Tanya AI</li>
+          <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>Skor kesehatan + ringkasan mingguan</li>
+          <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>Rekap pajak bulanan + akses admin</li>
+        </ul>
+        <a class="btn btn-primary btn-block" href="kasir.html">Coba 14 hari gratis</a>
+        <p class="hint mt-4">Layanan pajak dan website custom tersedia per penawaran, via WhatsApp.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ S11 FAQ ============ -->
-<section class="section" style="background:var(--gray-25)">
-  <div class="container container-narrow">
-    <div class="text-c" data-reveal><div class="eyebrow">FAQ</div><h2 class="mt-2">Sering ditanya.</h2></div>
-    <div class="mt-8" data-reveal>
-      <details class="faq-item"><summary>Apakah Olano tetap jalan saat internet mati?<span class="plus">+</span></summary><p class="ans">Ya. App shell dan katalog di-cache. Transaksi dicatat offline lalu otomatis tersinkron tanpa duplikasi (pola outbox + backoff).</p></details>
-      <details class="faq-item"><summary>QRIS bisa dipakai dari bank apa saja?<span class="plus">+</span></summary><p class="ans">QRIS statis dari PJP mana pun. Olano decode EMVCo + validasi CRC16, render ulang QR tajam. Konfirmasi pembayaran manual via notifikasi PJP.</p></details>
-      <details class="faq-item"><summary>Apa bedanya AI Olano dan konsultan pajak?<span class="plus">+</span></summary><p class="ans">AI menghitung, mengingatkan, menyiapkan rekap. Pelaporan sebagai kuasa wajib pajak dikerjakan tim/mitra berizin via WhatsApp. AI tidak pernah mengarang angka.</p></details>
-      <details class="faq-item"><summary>Apakah data saya aman?<span class="plus">+</span></summary><p class="ans">Offline-first, terenkripsi, terisolasi per tenant (RLS). Olano patuh UU PDP: consent, ekspor &amp; hapus data, audit log akses admin.</p></details>
-      <details class="faq-item"><summary>Apakah saya bisa berhenti kapan saja?<span class="plus">+</span></summary><p class="ans">Bisa. Data tetap tersimpan, fitur dikunci. Ekspor CSV/XLSX kapan pun.</p></details>
-      <details class="faq-item"><summary>Bagaimana laporan dikirim?<span class="plus">+</span></summary><p class="ans">Via email (kanal satu-satunya): harian, mingguan + skor, rekap pajak bulanan PDF tanggal 1, alert bahan/margin.</p></details>
+<!-- ============ 7. CTA ============ -->
+<section class="cta">
+  <div class="container text-c" data-reveal>
+    <h2>Mulai jualan lebih rapi hari ini.</h2>
+    <p class="sub mt-4">Tanpa kartu, tanpa install. Buka kasir, transaksi pertama dalam 3 menit.</p>
+    <div class="row center mt-6 wrap" style="gap:12px;justify-content:center">
+      <a class="btn btn-primary btn-lg" href="kasir.html">Coba Kasir Gratis <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a>
+      <a class="btn btn-secondary btn-lg" href="umkm.html">Kenali Olano dulu</a>
     </div>
-  </div>
-</section>
-
-<!-- ============ S12 CTA AKHIR (gelap) ============ -->
-<section class="section section-dark" style="text-align:center;position:relative;overflow:hidden">
-  <div class="container" data-reveal>
-    <h2 style="font-size:var(--fs-h1)">Mulai jualan lebih rapi hari ini.</h2>
-    <p class="mt-4" style="color:var(--blue-200);max-width:44ch;margin-left:auto;margin-right:auto">Tanpa kartu, tanpa install. Buka, catat transaksi pertama dalam 3 menit.</p>
-    <div class="row center mt-6 wrap"><a class="btn btn-primary btn-lg" href="kasir.html">Coba Gratis</a><a class="btn btn-lg" style="background:#fff;color:var(--blue-700)" href="pajak.html">Chat Admin</a></div>
   </div>
 </section>
 
 </main>
 
-<!-- ============ FOOTER ============ -->
 <footer class="foot">
   <div class="container">
     <div class="foot-grid">
@@ -379,50 +302,56 @@
         <a class="logo" href="index.html" style="color:var(--ink)"><span class="mark">O</span>Olano</a>
         <p class="legal mt-4">Kasir, website, dan pajak UMKM Indonesia, beres di satu tempat. Tetap jalan walau internet mati.</p>
       </div>
-      <div><h4>Produk</h4><ul><li><a href="umkm.html">Kasir UMKM</a></li><li><a href="pajak.html">Pajak</a></li><li><a href="website.html">Website</a></li><li><a href="naik-kelas.html">Naik Kelas</a></li></ul></div>
-      <div><h4>Alat Gratis</h4><ul><li><a href="alat/kalkulator-pph-final-umkm.html">Kalkulator PPh Final</a></li><li><a href="alat/kalkulator-hpp-harga-jual.html">HPP &amp; Harga Jual</a></li><li><a href="alat/kalkulator-biaya-qris.html">Biaya QRIS</a></li></ul></div>
-      <div><h4>Perusahaan</h4><ul><li><a href="tentang.html">Tentang</a></li><li><a href="kebijakan-privasi.html">Kebijakan Privasi</a></li><li><a href="syarat-ketentuan.html">Syarat &amp; Ketentuan</a></li></ul></div>
+      <div><h4>Produk</h4><ul>
+        <li><a href="umkm.html">Kasir UMKM</a></li>
+        <li><a href="pajak.html">Pajak</a></li>
+        <li><a href="website.html">Website</a></li>
+        <li><a href="naik-kelas.html">Naik Kelas</a></li></ul></div>
+      <div><h4>Alat Gratis</h4><ul>
+        <li><a href="alat/kalkulator-pph-final-umkm.html">PPh Final UMKM</a></li>
+        <li><a href="alat/kalkulator-hpp-harga-jual.html">HPP dan Harga Jual</a></li>
+        <li><a href="alat/kalkulator-biaya-qris.html">Biaya QRIS</a></li>
+        <li><a href="alat/kalkulator-margin-delivery.html">Margin Delivery</a></li></ul></div>
+      <div><h4>Perusahaan</h4><ul>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="kebijakan-privasi.html">Kebijakan Privasi</a></li>
+        <li><a href="syarat-ketentuan.html">Syarat dan Ketentuan</a></li></ul></div>
     </div>
-    <p class="small mt-8" style="color:var(--gray-500)">© 2026 Olano. Olano membantu menghitung &amp; menyiapkan pajak. Pelaporan sebagai kuasa wajib pajak dikerjakan mitra berizin. Bukan nasihat hukum atau pajak.</p>
+    <p class="small mt-8">© 2026 Olano. Olano membantu menghitung dan menyiapkan pajak. Pelaporan sebagai kuasa wajib pajak dikerjakan mitra berizin. Bukan nasihat hukum atau pajak.</p>
   </div>
 </footer>
 
 <script src="assets/js/config.js"></script>
 <script src="assets/js/shared.js"></script>
 <script>
-// S9 mini kalkulator pajak (pakai mesin tax dari config)
+// Mini kalkulator pajak (mesin pajak dari config.js)
 (function(){
-  var cfg = window.OLANO_CONFIG ? window.OLANO_CONFIG.tax : {rate:.005,exemptionOP:5e8,ceiling:48e8,types:{OP:{final:true,freeUpto:5e8}}};
+  var cfg = window.OLANO_CONFIG ? window.OLANO_CONFIG.tax : {rate:.005,exemptionOP:5e8,ceiling:48e8,ppNumber:"PP 20/2026",types:{OP:{final:true,freeUpto:5e8}}};
   var wp = document.getElementById("tax-wp"), om = document.getElementById("tax-omzet"),
       res = document.getElementById("tax-result"), note = document.getElementById("tax-note");
   function calc(){
     var monthly = parseFloat(om.value)||0, annual = monthly*12, t = cfg.types[wp.value]||{};
-    var html, amt;
     if(!t.final){
       res.textContent = "n/a";
-      html = "<b>"+wp.options[wp.selectedIndex].text+".</b> Tidak bisa PPh Final 0,5% sejak "+cfg.ppNumber+". Skema umum berbasis laba. Kami bantu konsultasi via WhatsApp.";
-      note.className = "callout warn mt-6";
-    } else {
-      var free = (wp.value==="OP") ? cfg.exemptionOP : 0;
-      var base = Math.max(0, annual - free);
-      amt = Math.round(base*cfg.rate/12);
-      res.textContent = window.OLANO.rp(amt);
-      var pos = annual>cfg.ceiling ? "Di atas Rp4,8 miliar, keluar skema final: wajib beralih ke skema umum." :
-                (annual<=free ? "Omzet s.d. Rp500 juta untuk OP bebas PPh final 0,5%." : "Kena PPh final 0,5% atas omzet di atas ambang.");
-      note.className = "callout ok mt-6";
-      html = "<b>Omzet tahunan "+window.OLANO.rp(annual)+".</b> "+pos;
+      note.className = "callout warn";
+      note.innerHTML = "<b>"+wp.options[wp.selectedIndex].text+".</b> Tidak bisa PPh Final 0,5% sejak "+(cfg.ppNumber||"PP 20/2026")+". Wajib skema umum berbasis laba. Kami bantu konsultasi.";
+      return;
     }
-    note.innerHTML = html;
+    var free = (wp.value==="OP") ? (t.freeUpto||0) : 0;
+    var base = Math.max(0, annual - free);
+    var amt = Math.round(base*cfg.rate/12);
+    res.textContent = window.OLANO.rp(amt);
+    note.className = "callout ok";
+    if(annual > cfg.ceiling){
+      note.innerHTML = "<b>Omzet tahunan "+window.OLANO.rp(annual)+".</b> Di atas Rp4,8 miliar, keluar skema final: beralih ke skema umum (laba). Tim kami bantu migrasi.";
+    } else if(annual <= free){
+      note.innerHTML = "<b>Omzet tahunan "+window.OLANO.rp(annual)+".</b> Di bawah ambang, bebas PPh final 0,5%.";
+    } else {
+      note.innerHTML = "<b>Omzet tahunan "+window.OLANO.rp(annual)+".</b> Kena PPh final 0,5% atas omzet di atas ambang.";
+    }
   }
   wp.addEventListener("input",calc); om.addEventListener("input",calc); calc();
 })();
 </script>
-<style>
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@media(prefers-reduced-motion:reduce){.float-card{animation:none}}
-.mq-track{will-change:transform}
-.mq-track[data-reverse]{animation-direction:reverse}
-@keyframes mqSlide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-</style>
 </body>
 </html>
