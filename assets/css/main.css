@@ -24,20 +24,24 @@
   --grad-brand: linear-gradient(135deg, #2453EB 0%, #3B6FF6 50%, #6094FA 100%);
   --grad-navy: linear-gradient(180deg, #0E1A4A 0%, #1E328A 100%);
 
-  /* -- fonts -- */
-  --font-display:"Bricolage Grotesque", system-ui, sans-serif;
-  --font-sans:"Geist", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* -- fonts: tipografi = ref B (thedaydream.studio, ukur 16-10): Aspekta utk semua peran
+     + Instrument Serif italic utk aksen. A (sokudo) hanya sumber struktur/komponen. -- */
+  --font-display:"Aspekta", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans:"Aspekta", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif:"Instrument Serif", Georgia, "Times New Roman", serif;
   --font-mono:"Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* -- type scale (fluid; ref sookudo: H2 besar 40-48, body 18, paragraf max 780, ritme lega) -- */
-  --fs-display: clamp(3rem, 6vw + 1rem, 5.5rem);
-  --fs-h1: clamp(2.5rem, 3.4vw + 1rem, 3.75rem);
-  --fs-h2: clamp(2.25rem, 3.2vw + 1rem, 3rem);
-  --fs-h3: 1.5rem;
-  --fs-body-lg: 1.25rem; /* 20 */
-  --fs-body: 1.125rem;    /* 18 */
-  --fs-small: 0.9375rem;  /* 15 */
-  --fs-eyebrow: 0.8125rem; /* 13 */
+  /* -- type scale (ukur B: H1 87/600/ls-0.04em@1440; H2 28.9/450/ls-0.02em;
+     body 16/18 w450; nav 13.3). H1 mobile diskalakan; H2 tetap 29. -- */
+  --fs-display: clamp(2.625rem, 4.1667vw + 1.6875rem, 5.4375rem);
+  --fs-h1: clamp(2.625rem, 4.1667vw + 1.6875rem, 5.4375rem);
+  --fs-h2: 1.8125rem;
+  --fs-h3: 1.25rem;
+  --fs-body-lg: 1.5rem;
+  --fs-body: 1rem;
+  --fs-small: 0.9375rem;
+  --fs-eyebrow: 0.8125rem;
+  --ls-h1: -0.04em; --ls-h2: -0.02em; --ls-body: -0.006em;
 
   /* -- spacing (4pt) -- */
   --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-6:24px; --sp-8:32px;
@@ -334,8 +338,7 @@ p{max-width:65ch}
 .foot{background:var(--gray-25); border-top:1px solid var(--gray-100); padding:var(--sp-24) 0 var(--sp-8); color:var(--gray-700)}
 .foot-grid{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-8)}
 @media(min-width:900px){.foot-grid{grid-template-columns:2fr 1fr 1fr 1fr}}
-.foot h4{font-family:var(--font-sans); font-size:13px; font-weight:600; text-transform:uppercase;
-  letter-spacing:0.05em; color:var(--gray-500); margin-bottom:var(--sp-4)}
+.foot h3.foot-h{font-family:var(--font-sans); font-size:13px; font-weight:600; text-transform:uppercase;letter-spacing:.05em;color:var(--gray-500);margin-bottom:var(--sp-4)}
 .foot ul{list-style:none; display:flex; flex-direction:column; gap:10px}
 .foot a{font-size:var(--fs-small); color:var(--gray-700)}
 .foot a:hover{color:var(--blue-600)}
@@ -671,3 +674,201 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
 .pring.sm .pv{font-size:12px}
 .pring-wrap{display:inline-flex}
 .heat7-wrap{margin:14px 0 4px}
+
+/* ============================= SOKUDO REBUILD v8 =============================
+   Ref: design-ref/DESIGN-REFERENCE.md (ukur sokudo.dev, bukan tebakan).
+   1 family Figtree, kartu border-only tanpa shadow, CTA pill + glow,
+   motion = satu momen load + micro hover. */
+
+/* Aspekta self-host (OFL 1.1, repo ivodolenc/aspekta; ref thedaydream.studio) */
+@font-face{font-family:"Aspekta";font-style:normal;font-weight:450;font-display:swap;src:url("../fonts/Aspekta-450.woff2") format("woff2")}
+@font-face{font-family:"Aspekta";font-style:normal;font-weight:500;font-display:swap;src:url("../fonts/Aspekta-500.woff2") format("woff2")}
+@font-face{font-family:"Aspekta";font-style:normal;font-weight:600;font-display:swap;src:url("../fonts/Aspekta-600.woff2") format("woff2")}
+/* Instrument Serif italic (OFL, Google Fonts; aksen B) */
+@font-face{font-family:"Instrument Serif";font-style:italic;font-weight:400;font-display:swap;src:url("../fonts/instrument-serif-400-italic-latin.woff2") format("woff2")}
+
+/* -- nav: transparan (ukur sokudo: bg transparent, tanpa blur), solid saat scroll -- */
+.nav{background:transparent;border-bottom:1px solid transparent}
+.nav.scrolled{background:var(--white);border-bottom-color:var(--gray-100)}
+.nav-login{font-size:15px;font-weight:400;color:var(--gray-700);min-height:40px;display:inline-flex;align-items:center;
+  padding:0 4px;transition:color .15s var(--ease-standard)}
+.nav-login:hover{color:var(--blue-600)}
+
+/* -- CTA pill (ukur sokudo: h44 pad20 radius-full, border 1px light, glow 0 8px 40px) -- */
+.btn.pill{border-radius:9999px;min-height:44px}
+.btn.pill.btn-primary{box-shadow:0 8px 40px rgba(36,83,235,.28);border:1px solid rgba(255,255,255,.4)}
+.btn.pill.btn-primary:hover{box-shadow:0 10px 48px rgba(36,83,235,.38)}
+.btn.pill:hover .arrow{transform:none} /* tanpa panah dekoratif */
+
+/* -- hero: satu momen load + glow radial di balik visual produk (bentuk ukur sokudo, hue biru) -- */
+@keyframes heroIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes spin360{to{transform:rotate(360deg)}}
+.hero{padding:120px 0 80px;background:var(--white);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;left:50%;top:34%;width:min(1584px,140%);aspect-ratio:1584/926;
+  transform:translate(-50%,-32%);pointer-events:none;
+  background:radial-gradient(50% 46% at 50% 50%, rgba(36,83,235,.16), rgba(36,83,235,.05) 45%, transparent 72%)}
+@media(max-width:900px){.hero{padding:48px 0 48px}}
+.hero-inner{position:relative;animation:heroIn .5s var(--ease-standard) both}
+.tagline-pill{display:inline-flex;align-items:center;gap:8px;background:var(--white);
+  border:1px solid var(--gray-100);border-radius:9999px;padding:8px 16px;
+  font-size:14px;font-weight:500;color:var(--gray-700);box-shadow:var(--sh-sm)}
+.tagline-pill .spark{color:var(--blue-600);animation:spin360 9s linear infinite}
+.tagline-pill .spark *{transform-origin:center}
+.hero h1{font-size:var(--fs-h1);font-weight:700;line-height:1.3;letter-spacing:-.02em;
+  max-width:16ch;margin:28px auto 0;text-wrap:balance}
+.hero .sub{max-width:780px;margin:20px auto 0;font-size:var(--fs-body);line-height:1.55;color:var(--gray-500)}
+@media(min-width:760px){.hero .sub{font-size:1.125rem;line-height:28px}}
+.hero .cta-row{margin-top:32px;display:flex;justify-content:center}
+.hero-visual{max-width:1180px;margin:56px auto 0;position:relative}
+.hero-visual img{width:100%;height:auto;border:1px solid var(--gray-100);border-radius:14px;background:#fff;
+  box-shadow:0 0 0 1px rgba(20,40,70,.03), 0 24px 64px -32px rgba(14,26,74,.18)}
+.hero-visual figcaption{font-size:12px;color:var(--gray-500);text-align:center;margin-top:12px}
+
+/* -- section: ritme ukur sokudo (80 desktop / 64 mobile), surface shift halus -- */
+.section{padding:80px 0}
+@media(max-width:900px){.section{padding:64px 0}}
+.section.alt{background:var(--gray-25)}
+.section.alt-deep{background:var(--gray-50)}
+.section h2{font-weight:600;line-height:1.35;letter-spacing:-.02em;text-wrap:balance}
+.sec-head{margin-bottom:40px;max-width:640px}
+.sec-head .sub{margin-top:14px;max-width:52ch}
+.card-plain{background:var(--white);border:1px solid var(--gray-100);border-radius:16px} /* sistem kartu sokudo: border, tanpa shadow */
+
+/* -- grid fitur: 2 kolom gap 24, ilustrasi + H3 + 1 kalimat (pola ukur sokudo) -- */
+.feat-grid2{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:760px){.feat-grid2{grid-template-columns:repeat(2,1fr)}}
+.feat-card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--gray-100);
+  border-radius:16px;overflow:hidden;transition:border-color .15s var(--ease-standard)}
+.feat-card:hover{border-color:var(--gray-300)}
+.feat-card .illo{width:100%;display:block;background:var(--gray-25);border-bottom:1px solid var(--gray-100)}
+.feat-card .illo img{width:100%;height:100%;object-fit:cover;object-position:top}
+.feat-card .illo.a169{aspect-ratio:16/9}
+.feat-card .illo.a43{aspect-ratio:4/3}
+.feat-card .ftxt{padding:20px 22px 24px}
+.feat-card h3{font-size:1.125rem;font-weight:600;font-family:var(--font-sans);letter-spacing:-.01em}
+.feat-card p{font-size:15px;line-height:1.55;color:var(--gray-500);margin-top:8px;max-width:46ch}
+
+/* -- grid alat: kartu sistem sama, icon (bukan ilustrasi) -- */
+.tool-grid2{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:760px){.tool-grid2{grid-template-columns:repeat(2,1fr)}}
+.tool-card2{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--gray-100);
+  border-radius:16px;padding:22px;transition:border-color .15s var(--ease-standard)}
+.tool-card2:hover{border-color:var(--gray-300)}
+.t-ic{width:40px;height:40px;border-radius:10px;background:var(--blue-50);color:var(--blue-600);
+  display:grid;place-items:center;margin-bottom:14px}
+.t-ic .ic{width:20px;height:20px}
+.tool-card2 h3{font-size:1.125rem;font-weight:600;font-family:var(--font-sans);letter-spacing:-.01em}
+.tool-card2 p{font-size:15px;line-height:1.55;color:var(--gray-500);margin-top:8px}
+.t-out{margin-top:auto;padding-top:14px;font-size:13px;color:var(--gray-700);
+  background:var(--gray-25);border:1px solid var(--gray-100);border-radius:999px;
+  padding:5px 12px;align-self:flex-start;font-variant-numeric:tabular-nums}
+
+/* -- pajak: 3 poin + kalkulator jadi visual (glow radial di balik kartu, hue biru) -- */
+.tax-grid2{display:grid;grid-template-columns:1fr;gap:48px;align-items:start}
+@media(min-width:980px){.tax-grid2{grid-template-columns:1fr 1.05fr;gap:56px}}
+.tax-points{list-style:none;margin:24px 0;display:grid;gap:14px}
+.tax-points li{display:flex;gap:12px;font-size:15px;line-height:1.55;color:var(--gray-700)}
+.tax-points .ic{color:var(--blue-600);margin-top:2px}
+.tax-points b{color:var(--ink)}
+.calc-wrap{position:relative;overflow:hidden}
+.calc-wrap::before{content:"";position:absolute;left:50%;top:50%;width:120%;aspect-ratio:1584/926;
+  transform:translate(-50%,-50%);pointer-events:none;z-index:0;
+  background:radial-gradient(48% 46% at 50% 50%, rgba(36,83,235,.14), rgba(36,83,235,.04) 45%, transparent 72%)}
+.calc-wrap .calc-card{position:relative;z-index:1;box-shadow:none}
+.calc-card{background:var(--white);border:1px solid var(--gray-100);border-radius:16px;padding:28px}
+.calc-card .out-hero b{color:var(--ink);font-size:clamp(1.75rem,3vw,2.25rem);font-family:var(--font-sans);
+  font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.calc-card .calc-out-box{border-top:0;padding-top:0}
+
+/* -- harga: kartu sistem sama (border, tanpa shadow) -- */
+.price-card{background:var(--white);border:1px solid var(--gray-100);border-radius:16px;padding:28px;box-shadow:none}
+.price-card .hint,.price-val .small{color:var(--gray-700)}
+.price-card.active{border-color:var(--blue-600);box-shadow:none;background:var(--blue-50)}
+.price-val{font-family:var(--font-sans);font-variant-numeric:tabular-nums}
+
+/* -- CTA penutup: glow + label kecil + H2 + 1 kalimat + 1 tombol -- */
+.cta2{padding:96px 0 88px;position:relative;overflow:hidden;background:var(--white)}
+.cta2::before{content:"";position:absolute;left:50%;top:46%;width:min(1200px,130%);aspect-ratio:1584/926;
+  transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(50% 48% at 50% 50%, rgba(36,83,235,.15), rgba(36,83,235,.04) 48%, transparent 74%)}
+.cta2 .container{position:relative}
+.cta2 .cta-kicker{display:inline-block;font-size:13px;font-weight:600;color:var(--blue-600);
+  letter-spacing:.04em;text-transform:uppercase}
+.cta2 h2{font-size:var(--fs-h1);font-weight:700;line-height:1.3;margin-top:14px;letter-spacing:-.02em}
+.cta2 .sub{margin-top:14px}
+.cta2 .cta-row{margin-top:32px;display:flex;justify-content:center}
+@media(max-width:700px){.cta2{padding:64px 0}}
+
+/* -- focus & motion guard -- */
+@media (prefers-reduced-motion: reduce){
+  .hero-inner{animation:none}
+  .tagline-pill .spark{animation:none}
+}
+
+/* ==================== B-ATMOSPHERE + PICKER REBUILD v9 ====================
+   Tipografi/motion/atmosfer = ref B (thedaydream.studio, ukur 16-10):
+   Aspekta (bukti ukur: h2 28.9/450/ls-0.02, hero title 87/600/ls-0.04,
+   body 16/18, nav 13.3, aksen Instrument Serif italic), drift lambat
+   6.1-9s (25 animasi CSS infinite di B).
+   Struktur/komponen tetap ref A. Hue tetap biru Olano; bentuk glow dari B. */
+
+body{font-weight:450;letter-spacing:var(--ls-body)}
+h1,h2,h3{font-weight:450}
+.logo{font-weight:600}
+.it-serif{font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:0}
+
+/* -- atmosfer: langit B diterjemahkan ke tema terang (hue biru olano).
+   Arah art-director: langit harus terbaca, bukan putih polos; awan = elips
+   datar (bukan blob lingkaran), dominan putih di atas langit biru muda -- */
+@keyframes driftA{to{transform:translate3d(46px,-20px,0)}}
+@keyframes driftB{to{transform:translate3d(-38px,16px,0)}}
+.hero{background:linear-gradient(180deg,#C9DEFF 0%,#E4EEFF 46%,#FFFFFF 100%)}
+.sky-drift{position:absolute;pointer-events:none;z-index:0}
+.sky-drift.a{left:6%;top:90px;width:60vw;height:15vw;min-height:120px;border-radius:50%;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(255,255,255,.95),rgba(255,255,255,.5) 55%,transparent 78%);
+  animation:driftA 9s ease-in-out infinite alternate}
+.sky-drift.b{right:2%;top:46%;width:46vw;height:11vw;min-height:84px;border-radius:50%;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(255,255,255,.85),rgba(255,255,255,.4) 55%,transparent 78%);
+  animation:driftB 7.5s ease-in-out infinite alternate}
+@media(max-width:900px){.sky-drift.a{width:86vw;height:110px;top:40px}.sky-drift.b{width:74vw;height:80px;top:52%}}
+
+/* -- peran tipe (B) -- */
+.hero h1{font-weight:600;letter-spacing:var(--ls-h1);line-height:1.05;max-width:26ch}
+.hero .sub{font-size:1.8125rem;line-height:1.5;max-width:44ch;margin:28px auto 0;font-weight:450;color:var(--gray-700)}
+@media(max-width:900px){.hero .sub{font-size:1.25rem;line-height:1.5}}
+.section h2{font-weight:450;letter-spacing:var(--ls-h2);line-height:1.15}
+.sec-head{max-width:560px}
+.cta2 h2{font-weight:600;letter-spacing:var(--ls-h1);line-height:1.08}
+.tagline-pill{font-weight:500}
+.feat-card h3,.tool-card2 h3,.pick-card b{letter-spacing:-.02em}
+
+/* -- angka uang: tabular-nums (semua tampilan Rupiah) -- */
+.t-out,.price-val,.out-hero b,.mock-val,.tool-card2 .t-out{font-variant-numeric:tabular-nums}
+
+/* -- PEMBERI JALUR (blok baru satu-satunya; komponen kartu dari ref A:
+     bg putih, border 1px, radius 16, tanpa shadow) -- */
+.picker{padding:44px 0 12px;background:var(--white)}
+@media(max-width:900px){.picker{padding:32px 0 4px}}
+.picker h2{font-size:var(--fs-h2);font-weight:450;letter-spacing:var(--ls-h2);margin:0 0 20px}
+.pick-grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:880px}
+@media(min-width:760px){.pick-grid{grid-template-columns:1fr 1fr}}
+.pick-card{display:flex;flex-direction:column;gap:10px;background:var(--white);
+  border:1px solid var(--gray-100);border-radius:16px;padding:24px;
+  text-decoration:none;color:inherit}
+.pick-card b{font-family:var(--font-display);font-size:1.375rem;font-weight:600}
+.pick-card p{margin:0;font-size:.9375rem;line-height:1.5;color:var(--gray-500)}
+.pick-chip{align-self:flex-start;font-size:12px;font-weight:500;border-radius:9999px;
+  padding:4px 12px;background:var(--gray-100);color:var(--gray-700)}
+.pick-active{border-color:var(--blue-600);background:var(--blue-50)}
+.pick-active p{color:var(--gray-700)}
+.pick-active .pick-chip{background:var(--blue-600);color:#fff}
+.pick-active:hover{border-color:var(--blue-700)}
+.pick-soon{cursor:default}
+.pick-soon p{color:var(--gray-500)} /* teks tetap AA (4.68:1), nonaktif ditandai label+bentuk */
+
+/* -- motion guard (B: transform/opacity saja) -- */
+@media (prefers-reduced-motion:reduce){
+  .sky-drift{animation:none}
+  .hero-inner{animation:none}
+  .tagline-pill .spark{animation:none}
+}
