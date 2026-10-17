@@ -732,6 +732,8 @@
     else okk.hidden = true;
     cart = {}; render(); updateBar(); closeSheet("sheet");
     document.getElementById("receipt").innerHTML = receiptHTML(sale);
+    var okS = document.getElementById("sheet-ok");
+    okS._lastFocus = document.getElementById("q"); /* [pos-fix] P1: fokus sukses kembali ke layar jual (Bayar sudah disabled) */
     openSheet("sheet-ok");
     if(navigator.vibrate) navigator.vibrate(30);
     animateCheck();
@@ -837,12 +839,13 @@
 
   function openSheet(id){
     var s = document.getElementById(id); s.classList.add("open"); document.body.style.overflow = "hidden";
-    s._lastFocus = document.activeElement; /* [pos-fix] P1: simpan fokus utk dikembalikan saat tutup */
+    if(!s._lastFocus) s._lastFocus = document.activeElement; /* [pos-fix] P1: simpan fokus utk dikembalikan saat tutup */
     var f = s.querySelector("button.btn, .panel"); if(f) f.focus();
   }
   function closeSheet(id){
     var s = document.getElementById(id); s.classList.remove("open"); document.body.style.overflow = "";
     if(s._lastFocus && s._lastFocus.focus){ try{ s._lastFocus.focus(); }catch(e){} } /* [pos-fix] P1: fokus kembali ke pemicu, bukan skip-link */
+    s._lastFocus = null;
   }
   /* [pos-fix] P0.6: service worker (reload offline) + banner pembaruan non-modal (brief 5.2.J) */
   (function(){
