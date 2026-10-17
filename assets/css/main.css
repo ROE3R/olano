@@ -940,6 +940,42 @@ h1,h2,h3{font-weight:450}
 .modlist.stagger.in>*{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.modlist.stagger>*{transition:none}}
 
+/* -- Editorial Ledger (P1+P3+P2, garnish P4/P5): rail sticky kiri + kolom angka -- */
+.pick-grid{display:grid;gap:var(--sp-8)}
+.pick-rail h2{font-size:var(--fs-h2);font-weight:450;letter-spacing:var(--ls-h2);margin:10px 0 16px}
+.pick-rail .small{max-width:30ch}
+.pick-count{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;color:var(--gray-500);margin-top:16px}
+/* P5 pick-ghost DIGUGURKAN: draft plan pakai gray-100 (1.18:1) & gray-300 (1.63:1) — keduanya
+   gagal WCAG 1.4.3 utk teks; palet tak punya token 3:1–7:1; P5 opsional demi gate A11y bersih */
+/* chip keluar dari .mcont -> tepat di bawah desc (mobile & tablet) */
+@media(max-width:759px){.modrow .mchip{grid-column:2}}
+@media(min-width:760px) and (max-width:999px){
+  .modrow .mchip{grid-column:2}
+  .modrow .mmeta{grid-column:3;grid-row:1}}
+/* P3: 4 kolom di >=1000px — kolom 3 = chip/angka, kolom 4 = status */
+@media(min-width:1000px){
+  .pick-grid{grid-template-columns:340px 1fr;gap:56px;align-items:start}
+  .pick-rail{position:sticky;top:96px} /* P1 */
+  .modrow{grid-template-columns:56px minmax(0,1fr) minmax(240px,300px) 132px;align-items:center}
+  .modrow .mcont{max-width:52ch}
+  .mchip{white-space:normal;text-overflow:clip;align-self:center;max-width:100%}}
+/* P2: flagship expand — angka besar di kolom data, chip kecil di bawah desc */
+.modrow.fg b{font-size:clamp(1.5rem,2vw,1.625rem)}
+.modrow.fg .mdesc{max-width:48ch}
+.mnum{display:none;font-family:var(--font-mono);font-weight:600;font-size:clamp(1.4rem,2vw,1.75rem);
+  color:var(--blue-600);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+@media(min-width:1000px){
+  .modrow.fg .mnum{display:block;grid-column:3;grid-row:1;align-self:center}
+  .modrow.fg .mmeta{grid-column:4;grid-row:1;align-self:center}
+  .modrow.fg .no{grid-column:1;grid-row:1}
+  .modrow.fg .mcont{grid-column:2;grid-row:1 / span 2}
+  .modrow.fg .mchip{grid-column:2;grid-row:2;justify-self:start;align-self:start;margin-top:2px}}
+/* mobile: chip tanpa ellipsis (angka contoh harus terbaca utuh) */
+@media(max-width:559px){.mchip{white-space:normal;text-overflow:clip}}
+/* P4: row slide — reuse handler magnetic di a.modrow (transform saja, tanpa CLS) */
+@media(hover:hover) and (pointer:fine){
+  .modrow .mcont{transform:translateX(var(--slide,0));transition:transform var(--dur-base) var(--ease-emphasized)}}
+
 /* -- motion guard (B: transform/opacity saja) -- */
 @media (prefers-reduced-motion:reduce){
   .hero-sky .h-cloud-1,.hero-sky .h-cloud-2,.hero-sky .h-comet,

@@ -1,5 +1,5 @@
 /* Olano service worker: offline-first (PRD F2: POS 100% offline setelah login pertama) */
-var CACHE = "olano-v18";
+var CACHE = "olano-v19";
 var CORE = [
   "./", "index.html", "manifest.json", "robots.txt", "sitemap.xml", "llms.txt", "404.html",
   "assets/css/main.css", "assets/js/config.js", "assets/js/shared.js", "assets/js/motion.js",
@@ -34,7 +34,10 @@ var CORE = [
   "assets/img/food/foto-ai-keripik-before.webp",
   "assets/img/food/foto-ai-keripik-after.webp",
   "assets/img/food/foto-ai-batik-before.webp",
-  "assets/img/food/foto-ai-batik-after.webp"
+  "assets/img/food/foto-ai-batik-after.webp",
+  "assets/img/food/tkopi.webp",
+  "assets/img/food/tkeripik.webp",
+  "assets/img/food/tbatik.webp"
 ];
 
 self.addEventListener("install", function (e) {
