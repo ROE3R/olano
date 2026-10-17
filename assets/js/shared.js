@@ -314,7 +314,36 @@
       var sub = location.pathname.indexOf("/") >= 1 && /\/(alat|app)\/?/.test(location.pathname);
       var rel = sub ? "../sw.js" : "sw.js";
       var scope = sub ? "../" : "/";
-      navigator.serviceWorker.register(rel, { scope: scope }).catch(function () {});
+      navigator.serviceWorker.register(rel, { scope: scope, updateViaCache: "none" }).then(function (reg) {
+        // check byte sw.js di SETIAP navigasi (default Chrome = 24 jam -> ini bug "nggak ada bedanya")
+        reg.update().catch(function () {});
+      }).catch(function () {});
+      // SW baru aktif -> tawarin reload, tapi HANYA kalau user bukan di-install pertama
+      // (marker localStorage: controllerchange pertama = install baru, jangan ganggu)
+      window.addEventListener("controllerchange", function () {
+        var returning = false;
+        try { returning = localStorage.getItem("olano-sw-was") === "1"; localStorage.setItem("olano-sw-was", "1"); } catch (e) {}
+        if (!returning) return;
+        var d = document.createElement("div");
+        d.style.cssText = "position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:9999;" +
+          "display:flex;gap:10px;align-items:center;max-width:92%;width:fit-content;" +
+          "background:#0B1B3A;color:#fff;font:600 13px/1.4 system-ui,-apple-system,sans-serif;" +
+          "padding:12px 16px;border-radius:12px;box-shadow:0 8px 24px rgba(11,27,58,.35);";
+        var t = document.createElement("span");
+        t.textContent = "Versi baru Olano tersedia.";
+        var b = document.createElement("button");
+        b.textContent = "Muat ulang";
+        b.style.cssText = "background:#2453EB;color:#fff;border:0;border-radius:8px;" +
+          "padding:8px 14px;font:600 13px system-ui;cursor:pointer;";
+        b.onclick = function () { location.reload(); };
+        var x = document.createElement("button");
+        x.textContent = "\u00d7";
+        x.style.cssText = "background:none;border:0;color:rgba(255,255,255,.6);font:600 16px system-ui;cursor:pointer;padding:4px;";
+        x.onclick = function () { d.remove(); };
+        d.appendChild(t); d.appendChild(b); d.appendChild(x);
+        document.body.appendChild(d);
+        setTimeout(function () { if (d.parentNode) d.remove(); }, 30000);
+      });
     });
   }
 

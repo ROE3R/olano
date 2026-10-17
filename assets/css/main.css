@@ -1222,3 +1222,39 @@ body.home .small b{font-variant-numeric:tabular-nums}
   .foot .legal{font-size:12px; margin-top:8px}
   .foot .small{margin-top:14px; font-size:12px}
 }
+
+/* ============ v28: mode ledger mobile - buang kotak, pakai hairline (homepage, <=759px) ============ */
+@media(max-width:759px){
+  /* TESTIMONI: kutipan hairline, bukan kartu abu */
+  /* specificity: .tst-grid .tst-card (2 class) > base .tst-grid .tst-card karena source-order */
+  .tst-grid .tst-card{background:transparent; border:0; border-radius:0; padding:18px 0;
+    box-shadow:none}
+  .tst-grid .tst-card + .tst-card{border-top:1px dashed var(--gray-300)}
+  .tst-quote{font-size:1.05rem}
+  .tst-avatar{width:32px; height:32px; font-size:12px}
+  .tst-attr b{font-size:13px}
+
+  /* HARGA: ledger 2 baris, bukan 2 kartu */
+  .price-grid{gap:0}
+  .price-card{background:transparent; border:0; border-radius:0; padding:20px 0;
+    box-shadow:none}
+  .price-card + .price-card{border-top:1px dashed var(--gray-300)}
+  .price-card.active{background:transparent; box-shadow:none;
+    border-left:3px solid var(--blue-600); padding-left:16px}
+  .price-card .price-val{font-size:1.9rem}
+  .price-card.active::before{top:-22px; right:4px; padding:2px 8px}
+  #harga .sec-head h2{font-size:clamp(1.5rem,5.6vw,1.75rem)}
+
+  /* PAJAK: kartu kalkulator tetap panggung (kontras navy) tapi lebih rapat */
+  #pajak .calc-card{padding:18px}
+  #pajak .calc-card .out-hero b{font-size:1.75rem}
+
+  /* HERO: gambar lebih kecil lagi, struk tetap */
+  .hero-visual{max-width:244px}
+}
+
+/* ============ v28b: nomor section (01-05) = motif desktop, di mobile cuma noise -> sembunyiin ============ */
+@media(max-width:759px){
+  body.home main>section>.container::before{display:none}
+  body.home .tlist>.item::before{display:none}
+}
