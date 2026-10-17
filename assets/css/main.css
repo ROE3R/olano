@@ -529,6 +529,14 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
   padding:0 16px;font-weight:600;font-size:13px;cursor:pointer;touch-action:manipulation}
 .pos-banner button:active{background:var(--blue-700)}
 
+/* [pos-fix] P1 2026-10-18: "Uang pas" paling menonjol + chip nominal cepat (>=48px) */
+.cash-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.cash-chip{min-height:48px;padding:0 16px;border-radius:var(--r-md);border:1px solid var(--gray-300);
+  background:#fff;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer;touch-action:manipulation}
+.cash-chip:active{background:var(--blue-50);border-color:var(--blue-600)}
+.cash-chip.pas{background:var(--blue-600);border-color:var(--blue-600);color:#fff;font-weight:700;min-width:120px}
+.cash-chip.pas:active{background:var(--blue-700)}
+
 /* ============================= FORMS (general) ============================= */
 .form{display:grid; gap:var(--sp-4)}
 .input{width:100%; min-height:48px; padding:0 var(--sp-4); border:1px solid var(--gray-300); border-radius:var(--r-md);

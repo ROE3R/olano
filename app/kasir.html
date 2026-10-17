@@ -67,7 +67,8 @@
       <button data-m="LAINNYA">Lainnya</button>
     </div>
     <div id="cash-area" class="field"><label for="cash">Tunai diterima (kembalian otomatis)</label>
-      <input id="cash" type="number" inputmode="numeric">
+      <div class="cash-chips" id="cash-chips"></div>
+      <input id="cash" type="text" inputmode="numeric" enterkeyhint="done" autocomplete="off" spellcheck="false">
       <p class="small" id="cash-err" role="alert" style="display:none;color:var(--danger);font-weight:700;margin:8px 0 0">Uang kurang <span id="cash-err-v">0</span> — tambahkan uang atau kurangi item.</p></div>
     <div id="kembali" class="callout light ok" style="display:none;background:var(--success-bg);border:1px solid #bfe4d0;color:#0a5c36;margin:12px 0">Kembalian: <b id="kembali-v">Rp0</b></div>
     <div id="qris-area" style="display:none;text-align:center;padding:8px 0">
@@ -455,8 +456,24 @@
     document.getElementById("cash-area").style.display = "";
     document.getElementById("qris-area").style.display = "none";
     document.getElementById("cash").value = ""; updateKembali();
+    renderCashChips();      /* [pos-fix] P1: chip nominal dihitung dari total */
     sldUpdateAmount();      // sinkronkan label slide-to-confirm ke total (bug P1: sempat Rp0)
     openSheet("sheet");
+  });
+  /* [pos-fix] P1: tombol "Uang pas" paling menonjol + chip nominal cepat (brief 5.2.D) */
+  function renderCashChips(){
+    var t = total(), wrap = document.getElementById("cash-chips"), opts = [];
+    [50000, 100000].forEach(function(v){ if(v > t) opts.push(v); });
+    if(t > 100000) opts.push(Math.ceil(t/50000)*50000);
+    wrap.innerHTML = '<button type="button" class="cash-chip pas" data-cash="pas">Uang pas</button>'
+      + opts.map(function(v){ return '<button type="button" class="cash-chip" data-cash="'+v+'">'+(v/1000)+'rb</button>'; }).join("");
+  }
+  document.getElementById("cash-chips").addEventListener("click", function(e){
+    var b = e.target.closest(".cash-chip"); if(!b) return;
+    var c = document.getElementById("cash");
+    c.value = b.dataset.cash === "pas" ? String(total()) : b.dataset.cash;
+    c.dispatchEvent(new Event("input", {bubbles:true}));
+    updateKembali(); sldUpdateAmount();
   });
   document.querySelectorAll("#pay-methods button").forEach(function(b){
     b.addEventListener("click", function(){
