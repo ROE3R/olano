@@ -537,6 +537,25 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
 .cash-chip.pas{background:var(--blue-600);border-color:var(--blue-600);color:#fff;font-weight:700;min-width:120px}
 .cash-chip.pas:active{background:var(--blue-700)}
 
+/* [pos-fix] P1 2026-10-18: menu header ringkas (satu tombol Menu, bukan 3 aksi di header) */
+.menu-list{display:flex;flex-direction:column}
+.menu-list button,.menu-list a{display:flex;align-items:center;min-height:52px;padding:0 4px;border:0;
+  border-bottom:1px solid var(--gray-100);background:none;font-size:15px;font-weight:600;color:var(--ink);
+  text-align:left;cursor:pointer;text-decoration:none;touch-action:manipulation}
+.menu-list button:active,.menu-list a:active{background:var(--blue-50)}
+.menu-list .danger{color:var(--danger)}
+.menu-list button:last-child,.menu-list a:last-child{border-bottom:0}
+
+/* [pos-fix] P1 2026-10-18: layar H rekap harian (stat ringkas 28px + filter chips + daftar) */
+.rekap-tabs{display:flex;gap:6px}
+.rekap-tabs button{min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--gray-300);
+  background:#fff;font-size:12px;font-weight:600;color:var(--gray-700);cursor:pointer;touch-action:manipulation}
+.rekap-tabs button.on{background:var(--blue-600);border-color:var(--blue-600);color:#fff}
+.rekap-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.rekap-stats .rk{background:var(--gray-50);border-radius:12px;padding:10px 8px;text-align:center}
+.rekap-stats .rk span{display:block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--gray-500)}
+.rekap-stats .rk b{font-family:var(--font-mono);font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)}
+
 /* ============================= FORMS (general) ============================= */
 .form{display:grid; gap:var(--sp-4)}
 .input{width:100%; min-height:48px; padding:0 var(--sp-4); border:1px solid var(--gray-300); border-radius:var(--r-md);

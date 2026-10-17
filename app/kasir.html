@@ -26,10 +26,24 @@
   <span class="pos-status sync" id="status" style="margin-left:auto">Menyinkron…</span>
   <span class="pos-clock" id="liveclk" aria-hidden="true">--:--</span>
   <span class="demo-chip" id="demo-chip" hidden>MODE DEMO</span>
-  <a class="btn btn-primary sm" id="demo-signup" href="login.html" hidden style="min-height:40px;font-size:13px">Buat akun</a>
-  <button class="btn btn-ghost sm" id="logout" style="min-height:40px;font-size:13px">Keluar</button>
-  <a class="btn btn-ghost sm" href="../index.html" style="min-height:40px;font-size:13px">Beranda</a>
+  <button class="btn btn-ghost sm" id="menu-btn" style="min-height:44px;font-size:13px">Menu</button>
 </header>
+
+<!-- menu sheet [pos-fix] P1 -->
+<div class="sheet" id="sheet-menu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <div class="grip"></div>
+    <b style="font-family:var(--font-display);font-size:1.15rem;display:block;margin-bottom:8px">Menu</b>
+    <nav class="menu-list">
+      <button type="button" id="menu-rekap">Rekap harian</button>
+      <button type="button" id="menu-data">Data &amp; cadangan</button>
+      <a id="demo-signup-menu" href="login.html" hidden>Buat akun — data ikut tersimpan online</a>
+      <a href="../index.html">Beranda</a>
+      <button type="button" id="menu-logout" class="danger">Keluar</button>
+    </nav>
+  </div>
+</div>
 
 <div class="pos-search" id="demo">
   <input id="q" type="search" placeholder="Cari produk… (demo: 8 produk)" aria-label="Cari produk">
@@ -114,6 +128,35 @@
       <button class="btn btn-primary btn-block" id="print">Cetak / Bagikan struk</button>
       <button class="btn btn-secondary" data-close>Selesai</button>
     </div>
+  </div>
+</div>
+
+<!-- rekap harian sheet [pos-fix] P1 (layar H) -->
+<div class="sheet" id="sheet-rekap" role="dialog" aria-modal="true" aria-label="Rekap harian">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <div class="grip"></div>
+    <div class="row spread"><b style="font-family:var(--font-display);font-size:1.15rem">Rekap harian</b>
+      <div class="rekap-tabs" id="rekap-tabs">
+        <button type="button" data-range="today" class="on">Hari ini</button>
+        <button type="button" data-range="7">7 hari</button>
+        <button type="button" data-range="30">Bulan ini</button>
+      </div>
+    </div>
+    <div class="rekap-stats" id="rekap-stats"></div>
+    <div id="rekap-list"></div>
+  </div>
+</div>
+
+<!-- data & cadangan sheet [pos-fix] P1 (layar I) -->
+<div class="sheet" id="sheet-data" role="dialog" aria-modal="true" aria-label="Data dan cadangan">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <div class="grip"></div>
+    <b style="font-family:var(--font-display);font-size:1.15rem;display:block;margin-bottom:8px">Data &amp; cadangan</b>
+    <div class="callout light ok" style="margin:0 0 12px"><b id="backup-last">Belum pernah dicadangkan</b></div>
+    <button type="button" class="btn btn-primary btn-block" id="backup-btn">Cadangkan data (unduh berkas)</button>
+    <p class="small" style="color:var(--gray-500);margin-top:10px">Cadangan berisi produk &amp; transaksi di perangkat ini. Simpan berkasnya di tempat aman.</p>
   </div>
 </div>
 
@@ -269,27 +312,94 @@
   var IS_DEMO = false;
   try{ IS_DEMO = localStorage.getItem(DEMO_KEY) === "1" && SESSION.username === "demo"; }catch(e){}
   if(IS_DEMO){
-    var dchip = document.getElementById("demo-chip"), dsign = document.getElementById("demo-signup");
+    var dchip = document.getElementById("demo-chip"), dsign = document.getElementById("demo-signup-menu");
     if(dchip) dchip.hidden = false;
     if(dsign) dsign.hidden = false;
   }
-  document.getElementById("logout").addEventListener("click", function(){
+  document.getElementById("menu-logout").addEventListener("click", function(){
     try{ localStorage.removeItem(SES_KEY); localStorage.removeItem(DEMO_KEY); }catch(e){}
     location.replace("login.html");
   });
+  document.getElementById("menu-btn").addEventListener("click", function(){ openSheet("sheet-menu"); });
+
+  /* ================= rekap harian [pos-fix] P1 (layar H, brief 5.2.H) ================= */
+  var rekapRange = "today", rekapSales = [];
+  function readSales(){
+    return openDB().then(function(db){
+      if(!db) return Promise.resolve([]);
+      return new Promise(function(res){
+        var tx = db.transaction("sales", "readonly");
+        var rq = tx.objectStore("sales").getAll();
+        rq.onsuccess = function(){ res(rq.result || []); };
+        rq.onerror = function(){ res([]); };
+      });
+    });
+  }
+  function renderRekap(){
+    var now = new Date();
+    var from;
+    if(rekapRange === "today"){ from = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime(); }
+    else if(rekapRange === "7"){ from = now.getTime() - 7*864e5; }
+    else { from = new Date(now.getFullYear(), now.getMonth(), 1).getTime(); }
+    var sales = rekapSales.filter(function(s){ return s.ts >= from; });
+    var omzet = sales.reduce(function(a,s){ return a+s.total; }, 0);
+    var qty = sales.reduce(function(a,s){ return a+s.items.reduce(function(b,i){ return b+i.qty; },0); }, 0);
+    document.getElementById("rekap-stats").innerHTML =
+      '<div class="rk"><span>Omzet</span><b>'+R.rp(omzet)+'</b></div>'
+      + '<div class="rk"><span>Transaksi</span><b>'+sales.length+'</b></div>'
+      + '<div class="rk"><span>Item terjual</span><b>'+qty+'</b></div>';
+    var rows = sales.slice().sort(function(a,b){ return b.ts-a.ts; }).slice(0, 30).map(function(s){
+      return '<div class="cart-row"><div class="c-main"><div class="name">'
+        + s.items.map(function(i){ return i.name+" ×"+i.qty; }).join(", ")
+        + '</div><div class="qty">'+new Date(s.ts).toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})+' · '+s.method+'</div></div>'
+        + '<div class="c-actions"><span class="ln">'+R.rp(s.total)+'</span></div></div>';
+    }).join("");
+    document.getElementById("rekap-list").innerHTML = rows || '<p class="small" style="color:var(--gray-500);padding:12px 0">Belum ada transaksi pada rentang ini.</p>';
+  }
+  document.getElementById("menu-rekap").addEventListener("click", function(){
+    readSales().then(function(list){ rekapSales = list; renderRekap(); openSheet("sheet-rekap"); });
+  });
+  document.getElementById("rekap-tabs").addEventListener("click", function(e){
+    var b = e.target.closest("button[data-range]"); if(!b) return;
+    document.querySelectorAll("#rekap-tabs button").forEach(function(x){ x.classList.remove("on"); });
+    b.classList.add("on"); rekapRange = b.dataset.range; renderRekap();
+  });
+
+  /* ================= cadangkan data [pos-fix] P1 (layar I, brief 5.2.I) ================= */
+  document.getElementById("menu-data").addEventListener("click", function(){
+    var last = null;
+    try{ last = localStorage.getItem("olano-last-backup"); }catch(e){}
+    if(last) document.getElementById("backup-last").textContent = "Terakhir dicadangkan: "+last;
+    openSheet("sheet-data");
+  });
+  document.getElementById("backup-btn").addEventListener("click", function(){
+    readSales().then(function(sales){
+      var blob = new Blob([JSON.stringify({app:"olano-pos", at:new Date().toISOString(), sales:sales}, null, 2)], {type:"application/json"});
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "olano-cadangan-"+new Date().toISOString().slice(0,10)+".json";
+      document.body.appendChild(a); a.click(); a.remove();
+      var stamp = new Date().toLocaleString("id-ID");
+      try{ localStorage.setItem("olano-last-backup", stamp); }catch(e){}
+      document.getElementById("backup-last").textContent = "Terakhir dicadangkan: "+stamp;
+      toast("Cadangan diunduh");
+    });
+  });
 
   function openDB(){
+    /* [pos-fix] P1: selalu balikkan Promise (sebelumnya call ke-2 balikin objek DB -> .then error, transaksi ke-2 tidak tersimpan) */
     if(dbp) return dbp;
-    if(typeof indexedDB === "undefined") return Promise.resolve(null);
-    return new Promise(function(res){
+    if(typeof indexedDB === "undefined"){ dbp = Promise.resolve(null); return dbp; }
+    dbp = new Promise(function(res){
       var r = indexedDB.open("olano-pos", 1);
       r.onupgradeneeded = function(e){ var d = e.target.result;
         if(!d.objectStoreNames.contains("sales")) d.createObjectStore("sales", {keyPath:"uuid"});
         if(!d.objectStoreNames.contains("outbox")) d.createObjectStore("outbox", {keyPath:"seq", autoIncrement:true});
       };
-      r.onsuccess = function(){ dbp = r.result; res(dbp); };
-      r.onerror = function(){ dbp = null; res(null); };
+      r.onsuccess = function(){ res(r.result); };
+      r.onerror = function(){ res(null); };
     });
+    return dbp;
   }
   function putSale(sale){
     return openDB().then(function(db){
