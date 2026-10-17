@@ -825,6 +825,27 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
   .mcont{gap:2px}
 }
 
+/* [landing-fix] L22 (2026-10-18): mobile = widget dulu, tembok aturan jadi accordion.
+   >div:first-child display:contents -> h2, accordion, tombol ikut urutan grid:
+   h2 (-2) -> .calc-wrap (-1) -> accordion -> tombol. Desktop >=980 tidak berubah. */
+.rules-acc{margin-top:20px}
+.rules-acc summary{list-style:none; cursor:pointer; display:flex; align-items:center;
+  justify-content:space-between; gap:16px; font-family:var(--font-display); font-weight:600;
+  font-size:1.05rem; letter-spacing:-.01em; color:inherit; min-height:44px; padding:8px 0}
+.rules-acc summary::-webkit-details-marker{display:none}
+.rules-acc .plus{width:28px; height:28px; border-radius:8px; background:rgba(255,255,255,.14); color:#fff;
+  display:grid; place-items:center; font-size:18px; flex:none; line-height:1;
+  transition:transform var(--dur-base), background var(--dur-base)}
+.rules-acc[open] .plus{transform:rotate(45deg); background:rgba(255,255,255,.22)}
+.rules-acc summary:focus-visible{outline:2px solid #93B8FD; outline-offset:2px}
+@media(max-width:979px){
+  .tax-grid2{gap:24px}
+  .tax-grid2 > div:first-child{display:contents}
+  .tax-grid2 > div:first-child > h2{order:-2}
+  .tax-grid2 .calc-wrap{order:-1}
+  .tax-grid2 .rules-acc{margin-top:0}
+}
+
 /* ==================== B-ATMOSPHERE + PICKER REBUILD v9 ====================
    Tipografi/motion/atmosfer = ref B (thedaydream.studio, ukur 16-10):
    Aspekta (bukti ukur: h2 28.9/450/ls-0.02, hero title 87/600/ls-0.04,
