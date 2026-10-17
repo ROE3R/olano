@@ -45,7 +45,7 @@
 
 <!-- bottom bar / cart -->
 <div class="pos-bar" id="bar">
-  <div><div class="small" style="font-size:11px" id="bar-count">0 item</div><div class="sum" id="bar-sum">Rp0</div></div>
+  <button type="button" class="bar-info" id="bar-info" aria-label="Buka keranjang"><span class="small" style="font-size:11px" id="bar-count">0 item</span><span class="sum" id="bar-sum">Rp0</span></button>
   <button class="pos-pay" id="pay" disabled><span>Bayar</span><span id="pay-amt" class="mono">Rp0</span></button>
 </div>
 
@@ -64,7 +64,7 @@
     </div>
     <div id="cash-area" class="field"><label for="cash">Tunai diterima (kembalian otomatis)</label>
       <input id="cash" type="number" inputmode="numeric">
-      <p class="small" id="cash-err" role="alert" style="display:none;color:var(--danger);font-weight:700;margin:8px 0 0">Uang kurang Rp<span id="cash-err-v">0</span> — tambahkan uang atau kurangi item.</p></div>
+      <p class="small" id="cash-err" role="alert" style="display:none;color:var(--danger);font-weight:700;margin:8px 0 0">Uang kurang <span id="cash-err-v">0</span> — tambahkan uang atau kurangi item.</p></div>
     <div id="kembali" class="callout light ok" style="display:none;background:var(--success-bg);border:1px solid #bfe4d0;color:#0a5c36;margin:12px 0">Kembalian: <b id="kembali-v">Rp0</b></div>
     <div id="qris-area" style="display:none;text-align:center;padding:8px 0">
       <div style="width:170px;height:170px;margin:0 auto;background:#fff;border:1px solid var(--gray-300);border-radius:12px;display:grid;place-items:center">
@@ -80,6 +80,19 @@
       <div class="sld-knob"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     </div>
     <p class="small" style="color:var(--gray-500);margin-top:10px;font-size:12px">Transaksi tersimpan offline di perangkat dan dikirim otomatis saat online.</p>
+  </div>
+</div>
+
+<!-- keranjang sheet [pos-fix] P0.3 -->
+<div class="sheet" id="sheet-cart" role="dialog" aria-modal="true" aria-label="Keranjang">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <div class="grip"></div>
+    <div class="row spread"><b style="font-family:var(--font-display);font-size:1.15rem">Keranjang</b>
+      <span class="mono" style="font-weight:700;font-size:18px" id="cart-sum">Rp0</span></div>
+    <div id="cart-rows"></div>
+    <div class="cart-total"><span>Total</span><b id="cart-total">Rp0</b></div>
+    <button class="btn btn-primary btn-block" id="cart-pay">Bayar</button>
   </div>
 </div>
 
@@ -124,7 +137,7 @@
   window.QRCode = QRCode;
   document.dispatchEvent(new CustomEvent("qrcode-ready"));
 </script>
-<div class="toast" id="toast" role="status" aria-live="polite"><span class="t-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span id="toast-msg"></span></div>
+<div class="toast" id="toast" role="status" aria-live="polite"><span class="t-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span id="toast-msg"></span><button type="button" class="toast-undo" id="toast-undo" hidden>Urungkan</button></div>
 <script>
 (function(){
   "use strict";
@@ -364,6 +377,65 @@
   function count(){
     return Object.keys(cart).reduce(function(s,id){ return s+cart[id]; }, 0);
   }
+  /* ---------- keranjang sheet [pos-fix] P0.3 ---------- */
+  var cartLastRemoved = null; /* {id, qty} untuk Undo */
+  function renderCart(){
+    var rows = document.getElementById("cart-rows");
+    var ids = Object.keys(cart);
+    rows.innerHTML = ids.map(function(id){
+      var p = PRODUCTS.find(function(x){ return x.id===id; });
+      return '<div class="cart-row" data-id="'+id+'">'
+        + '<div class="c-main"><div class="name">'+p.name+'</div><div class="qty">'+R.rp(p.price)+'</div></div>'
+        + '<div class="qty-ctrl">'
+        + '<button type="button" data-q="-1" aria-label="Kurangi '+p.name+'">−</button>'
+        + '<b class="c-qty">'+cart[id]+'</b>'
+        + '<button type="button" data-q="1" aria-label="Tambah '+p.name+'">+</button>'
+        + '</div>'
+        + '<div class="c-actions"><span class="ln">'+R.rp(p.price*cart[id])+'</span>'
+        + '<button type="button" class="cart-del" aria-label="Hapus '+p.name+'"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6"/></svg></button></div>'
+        + '</div>';
+    }).join("") || '<p class="small" style="color:var(--gray-500);padding:12px 0">Keranjang kosong.</p>';
+    document.getElementById("cart-sum").textContent = R.rp(total());
+    document.getElementById("cart-total").textContent = R.rp(total());
+  }
+  document.getElementById("cart-rows").addEventListener("click", function(e){
+    var qb = e.target.closest("button[data-q]"); 
+    if(qb){
+      var id = qb.closest(".cart-row").dataset.id, d = parseInt(qb.dataset.q, 10);
+      var p = PRODUCTS.find(function(x){ return x.id===id; });
+      if(d<0 && cart[id]<=1){ removeCartItem(id); return; }
+      cart[id] += d;
+      if(d>0) p.stock--; else p.stock++;
+      renderCart(); updateBar(); return;
+    }
+    var del = e.target.closest(".cart-del");
+    if(del) removeCartItem(del.closest(".cart-row").dataset.id);
+  });
+  function removeCartItem(id){
+    cartLastRemoved = { id: id, qty: cart[id] };
+    var p = PRODUCTS.find(function(x){ return x.id===id; });
+    if(p) p.stock += cart[id];
+    delete cart[id];
+    renderCart(); updateBar();
+    toast("1 produk dihapus", true);
+  }
+  document.getElementById("toast-undo").addEventListener("click", function(){
+    if(!cartLastRemoved) return;
+    var r = cartLastRemoved; cartLastRemoved = null;
+    cart[r.id] = r.qty;
+    var p = PRODUCTS.find(function(x){ return x.id===r.id; });
+    if(p) p.stock -= r.qty;
+    renderCart(); updateBar();
+    document.getElementById("toast-undo").hidden = true;
+  });
+  document.getElementById("bar-info").addEventListener("click", function(){
+    renderCart(); openSheet("sheet-cart");
+  });
+  document.getElementById("cart-pay").addEventListener("click", function(){
+    if(count()===0) return;
+    closeSheet("sheet-cart");
+    document.getElementById("pay").click();
+  });
   function updateBar(){
     document.getElementById("bar-count").textContent = count()+" item";
     document.getElementById("bar-sum").textContent = R.rp(total());
@@ -450,12 +522,13 @@
 
   /* ---------- bencho: toast (blok Notify) ---------- */
   var toastT = null;
-  function toast(msg){
+  function toast(msg, withUndo){
     var t = document.getElementById("toast"); if(!t) return;
     document.getElementById("toast-msg").textContent = msg;
+    document.getElementById("toast-undo").hidden = !withUndo || !cartLastRemoved;
     t.classList.add("show");
     clearTimeout(toastT);
-    toastT = setTimeout(function(){ t.classList.remove("show"); }, 2600);
+    toastT = setTimeout(function(){ t.classList.remove("show"); }, withUndo ? 5000 : 2600);
   }
 
   /* ---------- bencho: slide to confirm (ganti klik biasa, anti mis-tap) ---------- */

@@ -491,6 +491,31 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
 .sld.short{opacity:.45; filter:grayscale(1); pointer-events:none}
 .sld.short .sld-hint{color:var(--danger); font-weight:700}
 
+/* [pos-fix] P0.3 2026-10-18: sheet keranjang — bar-info tap, stepper >=44px, tombol hapus, toast undo */
+.bar-info{background:none;border:0;text-align:left;display:flex;flex-direction:column;gap:2px;min-width:72px;
+  min-height:48px;justify-content:center;cursor:pointer;padding:4px 8px 4px 0;border-radius:8px}
+.bar-info:active{opacity:.6}
+.cart-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--gray-100)}
+.cart-row .c-actions{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.cart-row .c-main{min-width:0}
+.cart-row .name{font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cart-row .qty{font-size:12px;color:var(--gray-500);font-family:var(--font-mono);margin-top:2px}
+.cart-row .c-qty{font-family:var(--font-mono);font-size:15px;min-width:24px;text-align:center;font-variant-numeric:tabular-nums}
+.cart-row .ln{font-family:var(--font-mono);font-weight:600;font-size:14px;font-variant-numeric:tabular-nums}
+.cart-row .qty-ctrl{display:flex;align-items:center;gap:8px}
+.cart-row .qty-ctrl button{width:44px;height:44px;border-radius:10px;border:1px solid var(--gray-300);background:#fff;
+  font-size:20px;display:grid;place-items:center;color:var(--ink);cursor:pointer;touch-action:manipulation}
+.cart-row .qty-ctrl button:active{background:var(--blue-50);border-color:var(--blue-600);color:var(--blue-700)}
+.cart-del{width:44px;height:44px;border:0;background:none;border-radius:10px;display:grid;place-items:center;
+  color:var(--gray-500);cursor:pointer;touch-action:manipulation}
+.cart-del:active{background:var(--danger-bg);color:var(--danger)}
+.cart-total{display:flex;justify-content:space-between;align-items:center;margin:14px 0 12px}
+.cart-total span{font-size:13px;color:var(--gray-500);font-weight:600}
+.cart-total b{font-family:var(--font-mono);font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.toast-undo{background:none;border:0;color:var(--blue-200);font-weight:700;font-size:13px;cursor:pointer;
+  padding:8px 4px;margin:-8px -6px -8px 0;text-transform:uppercase;letter-spacing:.04em}
+.toast-undo:active{opacity:.7}
+
 /* ============================= FORMS (general) ============================= */
 .form{display:grid; gap:var(--sp-4)}
 .input{width:100%; min-height:48px; padding:0 var(--sp-4); border:1px solid var(--gray-300); border-radius:var(--r-md);
