@@ -21,6 +21,8 @@
   </div>
   <span class="pos-status sync" id="status" style="margin-left:auto">Menyinkron…</span>
   <span class="pos-clock" id="liveclk" aria-hidden="true">--:--</span>
+  <span class="demo-chip" id="demo-chip" hidden>MODE DEMO</span>
+  <a class="btn btn-primary sm" id="demo-signup" href="login.html" hidden style="min-height:40px;font-size:13px">Buat akun</a>
   <button class="btn btn-ghost sm" id="logout" style="min-height:40px;font-size:13px">Keluar</button>
   <a class="btn btn-ghost sm" href="../index.html" style="min-height:40px;font-size:13px">Beranda</a>
 </header>
@@ -126,7 +128,7 @@
 (function(){
   "use strict";
   /* ================= AUTH GATE (jalankan sebelum init POS) ================= */
-  var ACC_KEY = "olano-auth-accounts", SES_KEY = "olano-auth-session";
+  var ACC_KEY = "olano-auth-accounts", SES_KEY = "olano-auth-session", DEMO_KEY = "olano-demo-mode";
   function jget(k, d){ try{ var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } }
   function jset(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
   function fnv1a(str){
@@ -150,7 +152,33 @@
     return acc ? s : null; // sesi tanpa akun di perangkat = invalid
   }
   var SESSION = validSession();
-  if(!SESSION){ location.replace("login.html"); return; }
+  if(!SESSION){
+    /* MODE DEMO (v25): #demo atau ?demo=1 tanpa sesi -> buat sesi demo lokal,
+       POS langsung jalan tanpa login. URL dinormalisasi (hash/param dibuang)
+       biar tidak re-trigger. */
+    var wantsDemo = /#demo\b/.test(location.hash) || /[?&]demo=1\b/.test(location.search);
+    if(!wantsDemo){ location.replace("login.html"); return; }
+    var accs = jget(ACC_KEY, {});
+    if(!accs["demo"]){
+      // seed akun demo idempoten (hash FNV-1a + salt, alur sama dengan login.html)
+      var sl = (function(){ var s=""; for(var i=0;i<8;i++) s += "0123456789abcdef"[Math.floor(Math.random()*16)]; return s; })();
+      accs["demo"] = { username:"demo", store:"Kopi Senja", ts: Date.now(), hash: sl + "$" + (function(salt){
+        var h = 0x811c9dc5, s = salt + ":olano:" + salt;
+        for(var i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = (h + (h<<1) + (h<<4) + (h<<7) + (h<<8) + (h<<24)) >>> 0; }
+        return ("0000000" + h.toString(16)).slice(-8);
+      })(sl) };
+      jset(ACC_KEY, accs);
+    }
+    jset(SES_KEY, { username: "demo", ts: Date.now() });
+    try{ localStorage.setItem(DEMO_KEY, "1"); }catch(e){}
+    history.replaceState(null, "", location.pathname + location.search.replace(/([?&])demo=1&?/g, "$1").replace(/[?&]+$/, ""));
+    SESSION = validSession();
+    if(!SESSION){ location.replace("login.html"); return; }
+  }
+  // sesi beneran: buang sisa flag demo (login asli = sesi punya field store dari form login)
+  try{
+    if(localStorage.getItem(DEMO_KEY) === "1" && (SESSION.username !== "demo" || SESSION.store)) localStorage.removeItem(DEMO_KEY);
+  }catch(e){}
 
   /* ================= QRIS DINAMIS (EMVCo + CRC16-CCITT) ================= */
   function crc16ccitt(str){
@@ -217,8 +245,16 @@
   document.getElementById("pos-store").textContent = acc.store || "Kopi Senja";
   document.getElementById("pos-user").textContent = SESSION.username;
   document.getElementById("qris-store-name").textContent = acc.store || "Kopi Senja";
+  /* MODE DEMO (v25): chip status + CTA daftar hanya saat flag demo aktif utk user demo */
+  var IS_DEMO = false;
+  try{ IS_DEMO = localStorage.getItem(DEMO_KEY) === "1" && SESSION.username === "demo"; }catch(e){}
+  if(IS_DEMO){
+    var dchip = document.getElementById("demo-chip"), dsign = document.getElementById("demo-signup");
+    if(dchip) dchip.hidden = false;
+    if(dsign) dsign.hidden = false;
+  }
   document.getElementById("logout").addEventListener("click", function(){
-    try{ localStorage.removeItem(SES_KEY); }catch(e){}
+    try{ localStorage.removeItem(SES_KEY); localStorage.removeItem(DEMO_KEY); }catch(e){}
     location.replace("login.html");
   });
 

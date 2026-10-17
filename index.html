@@ -48,7 +48,7 @@
     </nav>
     <div class="nav-cta">
       <a class="nav-login" href="kasir.html">Masuk</a>
-      <a class="btn btn-primary pill" href="kasir.html">Coba kasir gratis</a>
+      <a class="btn btn-primary pill" href="kasir.html#demo">Coba kasir gratis</a>
     </div>
     <button class="nav-burger" aria-label="Buka menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -59,7 +59,7 @@
     <a href="#harga">Harga</a>
     <a href="umkm.html">Kasir UMKM</a>
     <a class="nav-login" href="kasir.html" style="color:var(--blue-600);font-weight:500">Masuk</a>
-    <a class="btn btn-primary pill" href="kasir.html" style="margin:10px var(--gutter)">Coba kasir gratis</a>
+    <a class="btn btn-primary pill" href="kasir.html#demo" style="margin:10px var(--gutter)">Coba kasir gratis</a>
   </nav>
 </header>
 
@@ -78,20 +78,24 @@
     <div class="hero-inner">
       <h1>Sistem jualan untuk UMKM yang tetap jalan saat internet <em class="it-serif" style="color:var(--blue-800)">mati</em>.</h1>
       <p class="sub">Kasir offline untuk UMKM. Stok &amp; QRIS tercatat, PPh final 0,5% terhitung otomatis.</p>
-      <div class="cta-row"><a class="btn btn-primary pill btn-lg" href="kasir.html">Coba kasir gratis</a></div>
+      <div class="cta-row"><a class="btn btn-primary pill btn-lg" href="kasir.html#demo">Coba kasir gratis</a></div>
       <div class="hero-struk" data-reveal aria-hidden="true">
         <span class="hs-row"><span>QRIS Rp40.000</span><span>MDR 0%</span></span>
         <span class="hs-row"><span>Omzet Rp60.000.000/bln</span><span>PPh 0,5%</span></span>
         <span class="hs-row hs-total"><span>PPh final/bln</span><span>Rp91.667</span></span>
       </div>
-      <figure class="hero-visual">
-        <picture>
-          <source media="(max-width: 759px)" srcset="assets/img/produk-kasir-mobile.webp 1x, assets/img/produk-kasir-mobile-2x.webp 2x" type="image/webp">
-          <source media="(min-width: 760px)" srcset="assets/img/produk-kasir.webp 1x, assets/img/produk-kasir-2x.webp 2x" type="image/webp">
-          <img src="assets/img/produk-kasir.webp" alt="Tampilan aplikasi kasir Olano: katalog produk, keranjang, dan tombol bayar (data contoh)" width="1180" height="962" fetchpriority="high">
-        </picture>
-        <figcaption>Data contoh: tampilan aplikasi Olano</figcaption>
-      </figure>
+      <p class="fnote">Basis: omzet contoh Rp60.000.000/bln &middot; PPh final 0,5% (PP 20/2026) &middot; MDR QRIS mikro 0% (&le;Rp500rb)</p>
+      <a class="hero-visual-link" href="kasir.html#demo" aria-label="Buka demo kasir langsung">
+        <figure class="hero-visual">
+          <picture>
+            <source media="(max-width: 759px)" srcset="assets/img/produk-kasir-mobile.webp 1x, assets/img/produk-kasir-mobile-2x.webp 2x" type="image/webp">
+            <source media="(min-width: 760px)" srcset="assets/img/produk-kasir.webp 1x, assets/img/produk-kasir-2x.webp 2x" type="image/webp">
+            <img src="assets/img/produk-kasir.webp" alt="Tampilan aplikasi kasir Olano: katalog produk, keranjang, dan tombol bayar (data contoh)" width="1180" height="962" fetchpriority="high">
+          </picture>
+          <figcaption>Data contoh: tampilan aplikasi Olano</figcaption>
+        </figure>
+        <span class="hint" aria-hidden="true">Buka demo kasir langsung &rarr;</span>
+      </a>
     </div>
   </div>
   <div class="hero-cue" aria-hidden="true"></div>
@@ -184,6 +188,7 @@
       <li><a class="trow" href="alat/kalkulator-biaya-qris.html"><b>Biaya QRIS (MDR)</b><span class="tval">contoh: Rp0/bln untuk mikro</span><svg class="arr ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a></li>
       <li><a class="trow" href="alat/kalkulator-margin-delivery.html"><b>Margin GoFood/Grab</b><span class="tval">contoh: 22,4% bersih</span><svg class="arr ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a></li>
     </ul>
+    <p class="fnote">Asumsi contoh di atas: PPh Rp91.667/bln dari omzet Rp60.000.000 &middot; QRIS mikro Rp0/bln (&le;Rp500rb) &middot; margin delivery dari komisi 20&ndash;30%</p>
   </div>
 </section>
 
@@ -240,7 +245,7 @@
           <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>1 outlet, maks. 50 produk</li>
           <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>Rekap harian via email</li>
         </ul>
-        <a class="btn btn-primary pill btn-block" href="kasir.html">Mulai gratis</a>
+        <a class="btn btn-primary pill btn-block" href="kasir.html#demo">Mulai gratis</a>
       </div>
       <div class="price-card active">
         <b class="price-name">Pro</b>
@@ -251,7 +256,7 @@
           <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>Skor kesehatan + ringkasan mingguan</li>
           <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>Rekap pajak bulanan + akses admin</li>
         </ul>
-        <a class="btn btn-primary pill btn-block" href="kasir.html">Coba Pro 14 hari gratis</a>
+        <a class="btn btn-primary pill btn-block" href="kasir.html#demo">Coba Pro 14 hari gratis</a>
         <p class="hint" style="margin-top:16px">Layanan pajak dan website custom tersedia per penawaran lewat WhatsApp.</p>
       </div>
     </div>
@@ -259,8 +264,18 @@
     <div class="price-close">
       <h2>Mulai jualan lebih rapi hari ini.</h2>
       <p class="sub">Tanpa kartu, tanpa install. Buka kasir, transaksi pertama dalam 3 menit.</p>
-      <div class="cta-row"><a class="btn btn-primary pill btn-lg" href="kasir.html">Coba kasir gratis</a></div>
+      <div class="cta-row"><a class="btn btn-primary pill btn-lg" href="kasir.html#demo">Coba kasir gratis</a></div>
     </div>
+  </div>
+</section>
+
+<!-- ============ 6. TESTIMONI (placeholder berlabel CONTOH, render dari config.testimonials) ============ -->
+<section class="section" id="testimoni" aria-labelledby="tst-h">
+  <div class="container">
+    <p class="tst-label">CONTOH - tiga cerita di bawah ini contoh tampilan; akan kami ganti dengan pemilik toko yang benar-benar memakai Olano.</p>
+    <div class="eyebrow" style="margin-top:16px">Testimoni</div>
+    <h2 id="tst-h" style="margin-top:8px">Dari warung ke warung.</h2>
+    <div class="tst-grid" id="tst-grid"></div>
   </div>
 </section>
 
@@ -325,6 +340,19 @@
     }
   }
   wp.addEventListener("input",calc); om.addEventListener("input",calc); calc();
+})();
+// Testimoni CONTOH: render dari config.testimonials (satu tempat edit = swap nanti)
+(function(){
+  var T = window.OLANO_CONFIG && window.OLANO_CONFIG.testimonials;
+  var grid = document.getElementById("tst-grid");
+  if(!T || !grid || !T.quotes || !T.quotes.length) return;
+  grid.innerHTML = T.quotes.map(function(q){
+    return '<figure class="tst-card">'
+      + '<span class="tst-avatar" aria-hidden="true">' + (q.initials||"") + '</span>'
+      + '<blockquote class="tst-quote">' + q.quote + '</blockquote>'
+      + '<figcaption class="tst-attr"><b>' + q.name + '</b><span class="store">' + q.store + '</span></figcaption>'
+      + '</figure>';
+  }).join("");
 })();
 </script>
 </body>

@@ -2,7 +2,7 @@
    Ubah angka di sini, bukan di HTML. Naikkan `version` tiap ubah. */
 (function (w) {
   const OLANO_CONFIG = {
-    version: "2.0.0",
+    version: "2.1.0",
     brand: { name: "Olano", domain: "olano.xyz" },
 
     /* --- paket & harga (F6/§6) --- */
@@ -106,9 +106,33 @@
     website: {
       templates: {
         ready: [{ slug: "katalog", name: "Katalog", status: "siap" }],
-        comingSoon: ["menu-resto","link-in-bio","jasa-booking","portofolio","promo-event","profil-usaha","landing-produk","10-keluarga-x-5-varian"],
+        comingSoon: ["menu-resto","link-in-bio","jasa-booking","portofolio","promo-event","profil-usaha","landing-produk"],
+        /* Roadmap keluarga layout: target per bulan, label "Target" (bukan janji). */
+        roadmap: [
+          { slug: "menu-resto",     target: "Nov 2026" },
+          { slug: "link-in-bio",    target: "Nov 2026" },
+          { slug: "jasa-booking",   target: "Des 2026" },
+          { slug: "portofolio",     target: "Des 2026" },
+          { slug: "promo-event",    target: "Jan 2027" },
+          { slug: "profil-usaha",   target: "Jan 2027" },
+          { slug: "landing-produk", target: "Feb 2027" },
+        ],
         totalPlanned: 50,
       },
+    },
+
+    /* --- testimoni: CONTOH berlabel eksplisit, bukan kutipan asli (satu tempat edit = swap) --- */
+    testimonials: {
+      label: "contoh",
+      swapNote: "Ganti dengan kutipan pemilik toko yang benar-benar memakai Olano - satu tempat, tanpa rebuild.",
+      quotes: [
+        { initials: "PD", name: "Pak Darmawan", store: "Kopi Senja",
+          quote: "Nominal pelanggan terisi sendiri di QRIS. Saya tinggal tutup buku di malam hari." },
+        { initials: "MS", name: "Mbak Sari", store: "Keripik Sari",
+          quote: "Internet mati tidak masalah. Stok dan struk tetap tercatat, besok tinggal lanjut." },
+        { initials: "BR", name: "Bu Rina", store: "Batik Rina",
+          quote: "Harga dan stok ada di satu tempat. Tidak ada lagi catatan yang tumpang tindis." },
+      ],
     },
   };
 
