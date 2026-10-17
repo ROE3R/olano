@@ -1,0 +1,10 @@
+{
+  "cleanUrls": false,
+  "redirects": [
+    {
+      "source": "/ugc.html",
+      "destination": "/automation.html",
+      "statusCode": 301
+    }
+  ]
+}

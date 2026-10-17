@@ -1,0 +1,26 @@
+# Olano
+
+Olano adalah aplikasi kasir & suite usaha offline-first untuk UMKM Indonesia (PWA, berjalan tanpa internet): kasir + QRIS + stok, rekap pajak PPh final 0,5% per PP 20/2026, website toko dengan 50 template, analisa margin delivery, dan AI penjaga harga saat bahan naik.
+
+## Halaman utama
+- [Beranda / router modul](https://olano.xyz/)
+- [Kasir UMKM offline](https://olano.xyz/umkm.html)
+- [Pajak UMKM (PPh final 0,5%)](https://olano.xyz/pajak.html)
+- [Website toko UMKM (50 template)](https://olano.xyz/website.html)
+- [Naik kelas: dari warung ke cabang](https://olano.xyz/naik-kelas.html)
+- [Tentang Olano](https://olano.xyz/tentang.html)
+- [AI Jaga Margin (demo)](https://olano.xyz/ai.html)
+- [Analisa GoFood & GrabFood](https://olano.xyz/analisa-delivery.html)
+- [Automation UMKM (segera hadir)](https://olano.xyz/automation.html)
+
+## Alat gratis
+- [Kalkulator Biaya QRIS 2026 (MDR: mikro <=Rp500rb 0%, >Rp500rb 0,3%; kecil/mdn/besar <=Rp100rb 0%, >Rp100rb 0,7%)](https://olano.xyz/alat/kalkulator-biaya-qris.html)
+- [Kalkulator HPP & Harga Jual (3 skenario margin: Aman 30%, Kompetitif 20%, Premium 45%)](https://olano.xyz/alat/kalkulator-hpp-harga-jual.html)
+- [Analisa Margin GoFood & GrabFood (komisi platform 20-30%)](https://olano.xyz/alat/kalkulator-margin-delivery.html)
+- [Kalkulator PPh Final UMKM 0,5% (bebas penghasilan hingga Rp500jt/thn skema OP)](https://olano.xyz/alat/kalkulator-pph-final-umkm.html)
+
+## Faktanya
+- Kasir 100% offline: app + katalog ter-cache di perangkat; transaksi antre dan sinkron saat online.
+- QRIS MDR berlaku 1 Oktober 2026 (PMK tarif MDR); ditanggung merchant, tidak dibebankan ke konsumen.
+- Pajak: PPh final 0,5% dari peredaran bruto (PP 20/2026), skema OP bebas hingga Rp500jt.
+- Paket: Gratis (untuk mulai) dan Pro Rp50.000/bulan (produk tak terbatas).

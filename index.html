@@ -20,7 +20,11 @@
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="assets/css/main.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Olano","url":"https://olano.xyz/","description":"Kasir offline + AI penjaga harga & stok + rekap pajak bulanan untuk UMKM Indonesia.","applicationCategory":"BusinessApplication","operatingSystem":"Web, Android, iOS","offers":[{"@type":"Offer","name":"Gratis","price":"0","priceCurrency":"IDR"},{"@type":"Offer","name":"Pro","price":"50000","priceCurrency":"IDR"}]}
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Organization","@id":"https://olano.xyz/#org","name":"Olano","url":"https://olano.xyz/","logo":"https://olano.xyz/og-image.jpg","description":"Kasir offline + AI penjaga harga & stok + rekap pajak bulanan untuk UMKM Indonesia."},
+ {"@type":"WebSite","@id":"https://olano.xyz/#site","name":"Olano","url":"https://olano.xyz/","inLanguage":"id","publisher":{"@id":"https://olano.xyz/#org"}},
+ {"@type":"SoftwareApplication","name":"Olano","url":"https://olano.xyz/","description":"Kasir offline + AI penjaga harga & stok + rekap pajak bulanan untuk UMKM Indonesia.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":[{"@type":"Offer","name":"Gratis","price":"0","priceCurrency":"IDR"},{"@type":"Offer","name":"Pro","price":"50000","priceCurrency":"IDR","description":"Produk tak terbatas, 60 foto AI/outlet/bulan"}]}
+]}
 </script>
 </head>
 <body>
@@ -95,7 +99,7 @@
         <div class="eyebrow">Modul</div>
         <h2 style="margin-top:10px">Pilih modulmu.</h2>
       </div>
-      <p class="small" style="color:var(--gray-500)">Tujuh modul dalam satu aplikasi, diurutkan dari yang paling sering kamu pakai. Angka di tiap baris contoh nyata dari kalkulator Olano, bukan klaim.</p>
+      <p class="small" style="color:var(--gray-500)">Enam modul dalam satu aplikasi, diurutkan dari yang paling sering kamu pakai. Angka di tiap baris contoh nyata dari kalkulator Olano, bukan klaim.</p>
     </div>
     <div class="modlist stagger" data-reveal>
       <a class="modrow fg" href="kasir.html">
@@ -143,17 +147,8 @@
         </span>
         <span class="mmeta"><span class="mst">Sudah jalan</span><svg class="arr ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></span>
       </a>
-      <a class="modrow soon" href="ugc.html">
-        <span class="no">06</span>
-        <span class="mcont">
-          <b>UGC &amp; Konten</b>
-          <span class="mdesc">Naskah reels, caption, dan foto katalog dibuat dari data kasirmu. Belum dibuka.</span>
-          <span class="mchip">rencana · kuota 60 foto/outlet/bln</span>
-        </span>
-        <span class="mmeta"><span class="mst">Segera hadir</span><svg class="arr ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></span>
-      </a>
       <a class="modrow soon" href="automation.html">
-        <span class="no">07</span>
+        <span class="no">06</span>
         <span class="mcont">
           <b>Automation</b>
           <span class="mdesc">Reminder stok, rekap bulanan otomatis, notifikasi bahan naik. Belum dibuka.</span>
