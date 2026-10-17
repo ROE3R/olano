@@ -242,7 +242,17 @@
             </select>
           </div>
           <div class="field"><label for="tax-omzet">Omzet per bulan (Rp)</label>
-            <input id="tax-omzet" type="number" inputmode="numeric" value="75000000" min="0" step="500000">
+            <div class="omzet-wrap">
+              <span class="omzet-prefix" aria-hidden="true">Rp</span>
+              <input id="tax-omzet" type="text" inputmode="numeric" pattern="[0-9.]*" autocomplete="off" value="75.000.000">
+              <button type="button" class="omzet-clear" id="omzet-clear" aria-label="Bersihkan omzet">&times;</button>
+            </div>
+            <div class="omzet-chips" role="group" aria-label="Isi omzet cepat">
+              <button type="button" data-omzet="10000000">10 jt</button>
+              <button type="button" data-omzet="30000000">30 jt</button>
+              <button type="button" data-omzet="60000000">60 jt</button>
+              <button type="button" data-omzet="100000000">100 jt</button>
+            </div>
           </div>
           <div id="tax-out" aria-live="polite" class="calc-out-box">
             <div class="out-hero"><b id="tax-result">Rp166.667</b><span class="small">per bulan, PPh final 0,5%</span></div>
@@ -358,9 +368,18 @@
 (function(){
   var cfg = window.OLANO_CONFIG ? window.OLANO_CONFIG.tax : {rate:.005,exemptionOP:5e8,ceiling:48e8,ppNumber:"PP 20/2026",types:{OP:{final:true,freeUpto:5e8}}};
   var wp = document.getElementById("tax-wp"), om = document.getElementById("tax-omzet"),
-      res = document.getElementById("tax-result"), note = document.getElementById("tax-note");
+      res = document.getElementById("tax-result"), note = document.getElementById("tax-note"),
+      chips = document.querySelectorAll(".omzet-chips button");
+  /* L24: nilai omzet = digit murni (tampilan berformat "75.000.000"); paste "Rp 60.000.000" dibersihkan */
+  function digitsOf(v){ return String(v).replace(/\D/g, ""); }
+  function omzetValue(){ return Number(digitsOf(om.value)) || 0; }
+  function syncChips(){
+    if(!chips.length) return;
+    var v = String(omzetValue());
+    for(var i=0;i<chips.length;i++) chips[i].classList.toggle("on", chips[i].getAttribute("data-omzet")===v);
+  }
   function calc(){
-    var monthly = parseFloat(om.value)||0, annual = monthly*12, t = cfg.types[wp.value]||{};
+    var monthly = omzetValue(), annual = monthly*12, t = cfg.types[wp.value]||{};
     if(!t.final){
       res.textContent = "n/a";
       note.className = "callout warn";
@@ -381,7 +400,25 @@
 note.innerHTML = "<b>Omzet tahunan "+window.OLANO.rp(annual)+".</b> Dasar kena (di atas ambang) "+window.OLANO.rp(baseShow)+": × 0,5% ÷ 12 = "+window.OLANO.rp(amt)+" per bulan.";
     }
   }
-  wp.addEventListener("input",calc); om.addEventListener("input",calc); calc();
+  wp.addEventListener("input",calc); calc();
+  /* L24: format ribuan LIVE tanpa kursor melompat (kursor jangkar di akhir), tolak non-digit */
+  om.addEventListener("input",function(){
+    var caretAtEnd = om.selectionStart === om.value.length;
+    var d = digitsOf(om.value).replace(/^0+(?=\d)/,"");
+    om.value = d ? Number(d).toLocaleString("id-ID") : "";
+    if(caretAtEnd) om.setSelectionRange(om.value.length, om.value.length);
+    calc();
+  });
+  om.addEventListener("paste",function(){ setTimeout(function(){ om.dispatchEvent(new Event("input")); },0); });
+  /* L24: chip cepat 10/30/60/100 jt + tombol bersihkan */
+  for(var ci=0;ci<chips.length;ci++)(function(btn){
+    btn.addEventListener("click",function(){
+      om.value = Number(btn.getAttribute("data-omzet")).toLocaleString("id-ID");
+      calc(); om.focus();
+    });
+  })(chips[ci]);
+  var clr = document.getElementById("omzet-clear");
+  if(clr) clr.addEventListener("click",function(){ om.value=""; calc(); om.focus(); });
 })();
 // Testimoni CONTOH: render dari config.testimonials (satu tempat edit = swap nanti)
 (function(){

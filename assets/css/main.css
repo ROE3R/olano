@@ -781,6 +781,26 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
   .hero-inner{animation:none}
 }
 
+/* [landing-fix] L24 (2026-10-18): input omzet = prefix "Rp" dalam kolom + tombol clear + chip cepat.
+   Native font/ukuran ikut .field; wrapper absolut jadi prefix/clear tak menambah tinggi layout. */
+.omzet-wrap{position:relative; display:flex; align-items:center}
+.omzet-wrap input{width:100%; min-height:48px; padding:0 44px 0 42px; border:1px solid var(--gray-300);
+  border-radius:var(--r-md); background:var(--white); color:var(--ink); font-family:var(--font-mono);
+  font-size:16px; font-variant-numeric:tabular-nums; transition:border-color var(--dur-fast), box-shadow var(--dur-fast)}
+.omzet-wrap input:focus{outline:none; border-color:var(--blue-600); box-shadow:0 0 0 4px var(--blue-100)}
+.omzet-prefix{position:absolute; left:14px; z-index:1; font-family:var(--font-mono); font-size:15px;
+  font-weight:600; color:var(--gray-500); pointer-events:none}
+.omzet-clear{position:absolute; right:6px; width:36px; height:36px; border:0; border-radius:var(--r-full);
+  background:var(--gray-50); color:var(--gray-500); font-size:18px; line-height:1;
+  display:inline-grid; place-items:center}
+.omzet-clear:hover{background:var(--gray-100); color:var(--ink)}
+.omzet-chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+.omzet-chips button{min-height:40px; padding:0 16px; border:1px solid var(--gray-300); border-radius:var(--r-full);
+  background:var(--white); font-family:var(--font-mono); font-size:13px; font-weight:600; color:var(--gray-700);
+  font-variant-numeric:tabular-nums; transition:border-color var(--dur-fast), background var(--dur-fast), color var(--dur-fast)}
+.omzet-chips button:hover{border-color:var(--blue-400); color:var(--blue-600)}
+.omzet-chips button.on{background:var(--blue-600); border-color:var(--blue-600); color:#fff; box-shadow:var(--sh-sm)}
+
 /* ==================== B-ATMOSPHERE + PICKER REBUILD v9 ====================
    Tipografi/motion/atmosfer = ref B (thedaydream.studio, ukur 16-10):
    Aspekta (bukti ukur: h2 28.9/450/ls-0.02, hero title 87/600/ls-0.04,
