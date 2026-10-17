@@ -1,0 +1,882 @@
+# Copy Inventory — Olano (semua halaman indexable)
+
+Sumber: file HTML statis di /root/olano + template verdict di inline <script> dan assets/js/shared.js.
+Semua teks VERBATIM (tidak dipotong, entity sudah di-unescape, whitespace dirapikan).
+Format entri: `file | elemen | teks`.
+`{..}` = slot dinamis hasil kalkulasi (angka/Rp/%), teks di sekitarnya verbatim.
+
+
+## index.html
+
+Total string: 149
+
+- index.html | META TITLE | Olano: Kasir, website, dan pajak usahamu beres di satu tempat
+- index.html | META DESCRIPTION | Kasir offline + QRIS gratis, AI penjaga harga & stok, rekap pajak bulanan sesuai PP 20/2026. Jualan tetap jalan walau internet mati. Mulai gratis, tanpa kartu.
+- index.html | OG:TITLE | Olano: Kasir, website, dan pajak UMKM di satu tempat
+- index.html | OG:DESCRIPTION | Kasir offline + AI penjaga harga & stok + rekap pajak bulanan. Mulai gratis.
+- index.html | Class copy | Langsung ke isi
+- index.html | Class copy | O
+- index.html | Aria-label | Menu utama
+- index.html | NAV link | Fitur
+- index.html | NAV link | Alat Gratis
+- index.html | NAV link | Pajak
+- index.html | NAV link | Harga
+- index.html | CTA (a.btn/nav-login) | Masuk
+- index.html | CTA (a.btn/nav-login) | Coba Gratis
+- index.html | Aria-label | Menu seluler
+- index.html | NAV link | Fitur
+- index.html | NAV link | Alat Gratis
+- index.html | NAV link | Pajak
+- index.html | NAV link | Harga
+- index.html | NAV link | Kasir UMKM
+- index.html | CTA (a.btn/nav-login) | Masuk
+- index.html | CTA (a.btn/nav-login) | Coba Gratis
+- index.html | Class copy | Kasir. QRIS. Pajak. Satu aplikasi.
+- index.html | H1 | Jualanmu tetap jalan, walau internet mati.
+- index.html | P (tanpa class) | Kasir offline untuk UMKM: jualan, QRIS, dan stok jalan tanpa internet. Rekap pajak bulanan dihitung otomatis sesuai PP 20/2026.
+- index.html | CTA (a.btn/nav-login) | Coba Kasir Gratis
+- index.html | Alt gambar | Tampilan aplikasi kasir Olano: katalog produk, keranjang, dan tombol bayar (data contoh)
+- index.html | Aria-label | Pilih modul
+- index.html | Class copy | Modul
+- index.html | H2 | Pilih modulmu.
+- index.html | P (tanpa class) | Enam modul dalam satu aplikasi, diurutkan dari yang paling sering kamu pakai. Angka di tiap baris contoh nyata dari kalkulator Olano, bukan klaim.
+- index.html | Class copy | 01
+- index.html | B (bold inline) | Kasir
+- index.html | Class copy | Kasir offline, QRIS, struk, dan stok. Jualan tetap jalan walau internet mati.
+- index.html | Class copy | contoh · QRIS Rp40.000 → MDR 0% (mikro)
+- index.html | Class copy | Sudah jalan
+- index.html | Class copy | Sudah jalan
+- index.html | Class copy | 02
+- index.html | B (bold inline) | Pajak
+- index.html | Class copy | Rekap PPh final 0,5% (PP 20/2026) tiap bulan, PDF siap setor, pengingat tanggal.
+- index.html | Class copy | contoh · omzet ≤ Rp500 jt/bln → PPh Rp0,00
+- index.html | Class copy | Sudah jalan
+- index.html | Class copy | Sudah jalan
+- index.html | Class copy | 03
+- index.html | B (bold inline) | Website
+- index.html | Class copy | Toko online dari 50 template UMKM, produk tersinkron dari kasir, deploy hari yang sama.
+- index.html | Class copy | contoh · 10 kategori × 5 varian = 50 template
+- index.html | Class copy | Sudah jalan
+- index.html | Class copy | Sudah jalan
+- index.html | Class copy | 04
+- index.html | B (bold inline) | Analisa Delivery
+- index.html | Class copy | Margin bersih per pesanan GoFood dan GrabFood setelah komisi 20–30% dan promo.
+- index.html | Class copy | contoh · Rp50.000 − komisi 30% − promo Rp3.000 − HPP Rp20.000 → laba Rp12.000
+- index.html | Class copy | Sudah jalan
+- index.html | Class copy | Sudah jalan
+- index.html | Class copy | 05
+- index.html | B (bold inline) | AI Jaga Margin
+- index.html | Class copy | Bahan naik 10%, mesin harga memberi tiga usul harga (aman, kompetitif, premium).
+- index.html | Class copy | contoh · HPP Rp25.000 +10% → usul premium Rp50.000
+- index.html | Class copy | Sudah jalan
+- index.html | Class copy | Sudah jalan
+- index.html | Class copy | 06
+- index.html | B (bold inline) | Automation
+- index.html | Class copy | Reminder stok, rekap bulanan otomatis, notifikasi bahan naik. Belum dibuka.
+- index.html | Class copy | rencana · stok < 80% · bahan naik ≥ 10%
+- index.html | Class copy | Segera hadir
+- index.html | Class copy | Segera hadir
+- index.html | H2 | Semua yang usahamu butuh.
+- index.html | P (tanpa class) | Enam kemampuan inti dalam satu aplikasi. Rincian untuk UMKM ada di halaman Kasir UMKM.
+- index.html | H3 | Kasir offline
+- index.html | P (tanpa class) | App shell dan katalog di-cache di perangkat, sinyal hilang kasir tetap melayani.
+- index.html | H3 | QRIS statis
+- index.html | P (tanpa class) | 0% MDR usaha mikro, decode EMVCo dan validasi CRC16, QR tajam dengan nominal besar.
+- index.html | H3 | Scan tanpa barcode
+- index.html | P (tanpa class) | Kamera mengenali produk lewat model di-perangkat, tap kandidat teratas untuk masuk.
+- index.html | Alt gambar | Contoh: foto produk kopi sebelum dan sesudah AI
+- index.html | H3 | AI foto produk
+- index.html | P (tanpa class) | Hapus dan ganti latar, perbaiki cahaya, gaya katalog. Bentuk produk tidak berubah.
+- index.html | H3 | AI penjaga harga
+- index.html | P (tanpa class) | Bahan naik di atas 10%, AI memberi tiga usul harga: Aman, Kompetitif, Premium.
+- index.html | H3 | Skor kesehatan usaha
+- index.html | P (tanpa class) | Omzet, margin, stok, dan pajak jadi skor 0 sampai 100 tiap malam, ringkasan mingguan via email.
+- index.html | H2 | Hitung dulu, baru bayar.
+- index.html | P (tanpa class) | Empat kalkulator untuk keputusan harian, gratis dan tanpa akun.
+- index.html | H3 | Kalkulator PPh Final
+- index.html | P (tanpa class) | 0,5% atas omzet sesuai PP 20/2026, per jenis wajib pajak.
+- index.html | Class copy | contoh: Rp91.667/bln
+- index.html | H3 | HPP dan Harga Jual
+- index.html | P (tanpa class) | BOM per porsi jadi tiga opsi harga dengan margin target.
+- index.html | Class copy | contoh: 3 opsi harga
+- index.html | H3 | Biaya QRIS (MDR)
+- index.html | P (tanpa class) | Potongan per transaksi dan per bulan, per segmen usaha.
+- index.html | Class copy | contoh: Rp0/bln untuk mikro
+- index.html | H3 | Margin GoFood/Grab
+- index.html | P (tanpa class) | Fee, subsidi, dan ongkir jadi analisa untung bersih per pesanan.
+- index.html | Class copy | contoh: 22,4% bersih
+- index.html | H2 | Aturan pajak UMKM berubah di 2026.
+- index.html | B (bold inline) | PPh final 0,5%
+- index.html | B (bold inline) | Rp500 juta per tahun
+- index.html | B (bold inline) | Rp4,8 miliar
+- index.html | P (tanpa class) | Olano menghitung dari omzet kasirmu, menyiapkan rekap PDF, dan mengingatkan tanggal setor. Tim kami bantu urus via WhatsApp.
+- index.html | CTA (a.btn/nav-login) | Panduan pajak lengkap
+- index.html | Label form | Jenis usaha
+- index.html | Opsi select | Orang Pribadi
+- index.html | Opsi select | PT Perorangan
+- index.html | Opsi select | Koperasi
+- index.html | Opsi select | PT
+- index.html | Opsi select | CV / Firma
+- index.html | Label form | Omzet per bulan (Rp)
+- index.html | Class copy | per bulan, PPh final 0,5%
+- index.html | Class copy | Omzet tahunan Rp720 juta. Di atas Rp500 juta, OP kena PPh final 0,5%.
+- index.html | P (tanpa class) | Estimasi, bukan nasihat pajak. Memakai mesin pajak yang sama dengan aplikasi.
+- index.html | H2 | Gratis untuk mulai.
+- index.html | P (tanpa class) | Bayar hanya kalau kamu mau AI dan tim kami bekerja untukmu. Tanpa kartu kredit, data terenkripsi di perangkatmu.
+- index.html | B (bold inline) | Gratis
+- index.html | Class copy | selamanya
+- index.html | Class copy | Rp0selamanya
+- index.html | CTA (a.btn/nav-login) | Mulai gratis
+- index.html | B (bold inline) | Pro
+- index.html | Class copy | /outlet/bulan
+- index.html | Class copy | Rp50rb/outlet/bulan
+- index.html | CTA (a.btn/nav-login) | Coba 14 hari gratis
+- index.html | P (tanpa class) | Layanan pajak dan website custom tersedia per penawaran, via WhatsApp.
+- index.html | H2 | Mulai jualan lebih rapi hari ini.
+- index.html | P (tanpa class) | Tanpa kartu, tanpa install. Buka kasir, transaksi pertama dalam 3 menit.
+- index.html | CTA (a.btn/nav-login) | Coba Kasir Gratis
+- index.html | Class copy | O
+- index.html | Footer link | OOlano
+- index.html | P (tanpa class) | Kasir, website, dan pajak UMKM Indonesia, beres di satu tempat. Tetap jalan walau internet mati.
+- index.html | H3 | Produk
+- index.html | Footer link | Kasir UMKM
+- index.html | Footer link | Pajak
+- index.html | Footer link | Website
+- index.html | Footer link | Analisa Delivery
+- index.html | Footer link | AI Jaga Margin
+- index.html | Footer link | Naik Kelas
+- index.html | H3 | Alat Gratis
+- index.html | Footer link | PPh Final UMKM
+- index.html | Footer link | HPP dan Harga Jual
+- index.html | Footer link | Biaya QRIS
+- index.html | Footer link | Margin Delivery
+- index.html | H3 | Perusahaan
+- index.html | Footer link | Tentang
+- index.html | Footer link | Kebijakan Privasi
+- index.html | Footer link | Syarat dan Ketentuan
+- index.html | P (tanpa class) | © 2026 Olano. Olano membantu menghitung dan menyiapkan pajak. Pelaporan sebagai kuasa wajib pajak dikerjakan mitra berizin. Bukan nasihat hukum atau pajak.
+- index.html | JS verdict (dinamis) | <b>{jenis WP}.</b> Tidak bisa PPh Final 0,5% sejak {PP 20/2026}. Wajib skema umum berbasis laba. Kami bantu konsultasi.
+- index.html | JS verdict (dinamis) | <b>Omzet tahunan {Rp}.</b> Di atas Rp4,8 miliar, keluar skema final: beralih ke skema umum (laba). Tim kami bantu migrasi.
+- index.html | JS verdict (dinamis) | <b>Omzet tahunan {Rp}.</b> Di bawah ambang, bebas PPh final 0,5%.
+- index.html | JS verdict (dinamis) | <b>Omzet tahunan {Rp}.</b> Kena PPh final 0,5% atas omzet di atas ambang.
+
+## umkm.html
+
+Total string: 99
+
+- umkm.html | META TITLE | Kasir Offline untuk UMKM: Jualan Jalan walau Internet Mati \| Olano
+- umkm.html | META DESCRIPTION | Kasir UMKM offline: POS PWA + QRIS gratis + AI penjaga margin & stok. Transaksi aman di perangkat, sync otomatis. Aplikasi kasir gratis untuk warung, kafe, butik, affiliate.
+- umkm.html | OG:TITLE | Kasir Offline untuk UMKM: Jualan Jalan walau Internet Mati \| Olano
+- umkm.html | OG:DESCRIPTION | Kasir UMKM offline: POS PWA + QRIS gratis + AI penjaga margin & stok. Transaksi aman dicatat di perangkat, sinkron saat online.
+- umkm.html | Class copy | Langsung ke isi
+- umkm.html | Class copy | O
+- umkm.html | NAV link | UMKM
+- umkm.html | NAV link | Pajak
+- umkm.html | NAV link | Website
+- umkm.html | NAV link | Naik Kelas
+- umkm.html | NAV link | Harga
+- umkm.html | CTA (a.btn/nav-login) | Masuk
+- umkm.html | CTA (a.btn/nav-login) | Coba Gratis
+- umkm.html | NAV link | Beranda
+- umkm.html | NAV link | UMKM
+- umkm.html | NAV link | Pajak
+- umkm.html | NAV link | Website
+- umkm.html | NAV link | Naik Kelas
+- umkm.html | NAV link | Coba Gratis
+- umkm.html | Class copy | Kasir UMKM · Offline-first
+- umkm.html | H1 | Kasir yang tetap jalan walau internet mati.
+- umkm.html | P (tanpa class) | App shell & katalog di-cache di perangkat. Transaksi dicatat offline, aman, lalu otomatis tersinkron. Untuk warung, kafe, butik, hingga affiliate.
+- umkm.html | CTA (a.btn/nav-login) | Coba Kasir Gratis
+- umkm.html | CTA (a.btn/nav-login) | Hitung Biaya QRIS
+- umkm.html | H3 | 100% offline
+- umkm.html | Class copy | Online · Offline(n) · Menyinkron
+- umkm.html | P (tanpa class) | Kasir, stok, QRIS, dan struk jalan tanpa internet. Indikator status Online · Offline(n) · Menyinkron selalu terlihat.
+- umkm.html | H3 | Cepat di HP murah
+- umkm.html | P (tanpa class) | Tambah item <50 ms, checkout <300 ms. Pencarian <100 ms untuk 2.000 produk.
+- umkm.html | H3 | Scan tanpa barcode
+- umkm.html | P (tanpa class) | Kamera mengenali produk lewat model di-perangkat. Top-3 kandidat, kasir tap, masuk keranjang. Jalan offline.
+- umkm.html | H3 | AI penjaga untung
+- umkm.html | P (tanpa class) | Peringatan bahan naik >10%, stok habis, selisih kas per shift. Selalu dengan 1 sampai 3 tindakan siap pakai.
+- umkm.html | Class copy | Coba sendiri
+- umkm.html | H2 | Matikan internetmu. Jualan tetap jalan.
+- umkm.html | P (tanpa class) | Tap tombol, lalu ketuk produk di bawah saat offline. Transaksi tetap tercatat aman.
+- umkm.html | BUTTON | Internet: ON
+- umkm.html | BUTTON | Es KopiRp22.000
+- umkm.html | BUTTON | KueRp15.000
+- umkm.html | BUTTON | KeripikRp8.000
+- umkm.html | P (tanpa class) | 0 transaksi aman offline
+- umkm.html | Class copy | AI Foto Produk
+- umkm.html | H2 | Foto katalog, dari HP kamu.
+- umkm.html | P (tanpa class) | Geser slider. Hapus latar, ganti studio/marmer/kayu, perbaiki cahaya, tanpa mengubah bentuk produk.
+- umkm.html | Alt gambar | Foto es kopi susu sebelum diedit AI
+- umkm.html | Alt gambar | Foto es kopi susu setelah diedit AI
+- umkm.html | Alt gambar | Foto keripik sebelum diedit AI
+- umkm.html | Alt gambar | Foto keripik setelah diedit AI
+- umkm.html | Alt gambar | Foto kemeja batik sebelum diedit AI
+- umkm.html | Alt gambar | Foto kemeja batik setelah diedit AI
+- umkm.html | Class copy | QRIS statis
+- umkm.html | H2 | Terima QRIS dari semua bank & e-wallet.
+- umkm.html | P (tanpa class) | Olano decode QRIS EMVCo + validasi CRC16, render ulang QR tajam dengan nominal besar di samping. Konfirmasi pembayaran manual setelah cek notifikasi PJP. UI menampilkannya dengan jelas.
+- umkm.html | B (bold inline) | Tarif MDR (sejak 1 Okt 2026)
+- umkm.html | CTA (a.btn/nav-login) | Hitung
+- umkm.html | Class copy | Usaha Mikro≤ Rp500rb: 0% · > Rp500rb: 0,3%
+- umkm.html | Class copy | Kecil / Mdn / Besar≤ Rp100rb: 0% · > Rp100rb: 0,7%
+- umkm.html | P (tanpa class) | MDR ditanggung merchant, tidak boleh dibebankan ke konsumen.
+- umkm.html | Class copy | Harga
+- umkm.html | H2 | Gratis untuk mulai, Pro per outlet.
+- umkm.html | B (bold inline) | Gratis
+- umkm.html | P (tanpa class) | Kasir offline, QRIS, 1 outlet, maks. 50 produk, ringkasan harian via email.
+- umkm.html | CTA (a.btn/nav-login) | Mulai gratis
+- umkm.html | B (bold inline) | Pro
+- umkm.html | Class copy | Rp50rb/outlet/bln
+- umkm.html | P (tanpa class) | Semua fitur, produk tak terbatas, AI + skor, Mode Naik Kelas, rekap pajak.
+- umkm.html | CTA (a.btn/nav-login) | Coba 14 hari
+- umkm.html | Class copy | FAQ UMKM
+- umkm.html | FAQ question | Apakah kasir tetap jalan kalau internet mati?
+- umkm.html | P (tanpa class) | Ya. Setelah buka pertama kali, app shell & katalog tersimpan di perangkat. Semua transaksi, stok, QRIS, dan struk tetap berfungsi offline.
+- umkm.html | FAQ question | Bagaimana transaksi offline tersinkron?
+- umkm.html | P (tanpa class) | Setiap transaksi memakai client_uuid (ULID) sebagai kunci idempoten, antre di outbox dengan backoff, jadi tidak ada duplikasi saat kembali online.
+- umkm.html | FAQ question | QRIS dari bank mana saja bisa?
+- umkm.html | P (tanpa class) | Semua PJP yang menerbitkan QRIS statis (bank & e-wallet). Olano menampilkan QR + nominal, konfirmasi manual sesuai notifikasi PJP.
+- umkm.html | FAQ question | Apakah bisa multi-cabang?
+- umkm.html | P (tanpa class) | Bisa di Pro via Mode Naik Kelas: multi-outlet, peran staf, transfer stok antar outlet, tutup shift, dan dashboard gabungan.
+- umkm.html | H2 | Siap jualan lebih rapi malam ini?
+- umkm.html | P (tanpa class) | Tanpa kartu. Buka kasir, transaksi pertama dalam 3 menit.
+- umkm.html | CTA (a.btn/nav-login) | Coba Gratis
+- umkm.html | CTA (a.btn/nav-login) | Lihat pajakmu
+- umkm.html | Class copy | O
+- umkm.html | Footer link | OOlano
+- umkm.html | P (tanpa class) | Kasir, website, dan pajak UMKM, beres di satu tempat. Tetap jalan walau internet mati.
+- umkm.html | Footer link | Kasir UMKM
+- umkm.html | Footer link | Pajak
+- umkm.html | Footer link | Website
+- umkm.html | Footer link | Naik Kelas
+- umkm.html | Footer link | Kalkulator PPh Final
+- umkm.html | Footer link | HPP & Harga Jual
+- umkm.html | Footer link | Biaya QRIS
+- umkm.html | Footer link | Margin GoFood/Grab
+- umkm.html | Footer link | Tentang
+- umkm.html | Footer link | Kebijakan Privasi
+- umkm.html | Footer link | Syarat & Ketentuan
+- umkm.html | JS verdict (dinamis) | [assets/js/shared.js] Internet: ON
+- umkm.html | JS verdict (dinamis) | [assets/js/shared.js] Internet: OFF
+- umkm.html | JS verdict (dinamis) | [assets/js/shared.js] Mode online: semua transaksi langsung tersinkron.
+- umkm.html | JS verdict (dinamis) | [assets/js/shared.js] Mode offline: tap produk untuk jualan tetap jalan.
+- umkm.html | JS verdict (dinamis) | [assets/js/shared.js] {n} transaksi aman di perangkat, otomatis tersinkron saat online.
+
+## pajak.html
+
+Total string: 73
+
+- pajak.html | META TITLE | Rekap Pajak UMKM Tiap Bulan sesuai PP 20/2026 \| Olano
+- pajak.html | META DESCRIPTION | Olano bantu rekap PPh final 0,5% UMKM bulanan sesuai PP 20/2026: batas omzet Rp500jt & Rp4,8M, per jenis WP. Tim kami bantu urus via WhatsApp.
+- pajak.html | OG:TITLE | Rekap Pajak UMKM Tiap Bulan sesuai PP 20/2026 \| Olano
+- pajak.html | OG:DESCRIPTION | Olano bantu rekap PPh final 0,5% UMKM bulanan sesuai PP 20/2026: batas omzet Rp500jt & Rp4,8M, siap setor, tim bantu via WhatsApp.
+- pajak.html | Class copy | Langsung ke isi
+- pajak.html | Class copy | O
+- pajak.html | NAV link | UMKM
+- pajak.html | NAV link | Pajak
+- pajak.html | NAV link | Website
+- pajak.html | NAV link | Naik Kelas
+- pajak.html | NAV link | Harga
+- pajak.html | CTA (a.btn/nav-login) | Masuk
+- pajak.html | CTA (a.btn/nav-login) | Coba Gratis
+- pajak.html | NAV link | Beranda
+- pajak.html | NAV link | Pajak
+- pajak.html | NAV link | UMKM
+- pajak.html | NAV link | Website
+- pajak.html | NAV link | Coba Gratis
+- pajak.html | Class copy | Pajak UMKM · PP 20/2026
+- pajak.html | H1 | Rekap pajak UMKM tiap bulan, sesuai aturan terbaru.
+- pajak.html | P (tanpa class) | Aturan PPh final UMKM berubah di 2026. Olano menghitung, mengingatkan, dan menyiapkan rekap. Tim kami bantu urus pelaporan via WhatsApp.
+- pajak.html | CTA (a.btn/nav-login) | Hitung Pajakmu Dulu (Gratis)
+- pajak.html | CTA (a.btn/nav-login) | Konsultasi via WhatsApp
+- pajak.html | Class copy | Aturan per jenis WP
+- pajak.html | H2 | Siapa kena PPh Final 0,5%, siapa tidak.
+- pajak.html | Th tabel | Jenis WP
+- pajak.html | Th tabel | Perlakuan PPh Final
+- pajak.html | Td tabel | Orang Pribadi
+- pajak.html | Td tabel | 0,5% atas omzet. Bebas s.d. Rp500jt/thn. Tanpa batas waktu.
+- pajak.html | Td tabel | PT Perorangan
+- pajak.html | Td tabel | 0,5% atas omzet. Tanpa batas waktu.
+- pajak.html | Td tabel | Koperasi
+- pajak.html | Td tabel | 0,5%, maks. 4 tahun sejak terdaftar.
+- pajak.html | Td tabel | PT / CV / Firma
+- pajak.html | Td tabel | Tidak bisa PPh Final → skema umum (pajak atas laba). Konsultasi wajib.
+- pajak.html | Td tabel | Semua
+- pajak.html | Td tabel | Omzet > Rp4,8 M/thn → keluar skema final, beralih ke skema umum.
+- pajak.html | P (tanpa class) | Sumber: PP 20/2026 (config berversi di mesin pajak Olano). Ini simulasi & edukasi, bukan nasihat pajak.
+- pajak.html | Class copy | Bagaimana Olano membantu
+- pajak.html | H2 | Dari omzet di kasir, ke rekap siap lapor.
+- pajak.html | B (bold inline) | 01
+- pajak.html | H3 | Omzet terkumpul otomatis
+- pajak.html | P (tanpa class) | Dari transaksi POS (per outlet & gabungan) + input manual. Tanpa rekap ulang.
+- pajak.html | B (bold inline) | 02
+- pajak.html | H3 | Estimasi & progres ambang
+- pajak.html | P (tanpa class) | PPh final 0,5% bulanan, kumulatif setahun, bar progres ke Rp500jt & Rp4,8M.
+- pajak.html | B (bold inline) | 03
+- pajak.html | H3 | Checklist setor + PDF
+- pajak.html | P (tanpa class) | Tanggal jatuh tempo dari config. Rekap PDF dikirim via email tanggal 1, plus disclaimers.
+- pajak.html | B (bold inline) | 04
+- pajak.html | H3 | Tim kami urus
+- pajak.html | P (tanpa class) | "Biar admin yang urus rekap & lapor bulan ini" via WhatsApp. Pelaporan oleh mitra berizin.
+- pajak.html | Class copy | Layanan
+- pajak.html | H2 | Biar tim kami yang urus pajak bulan ini.
+- pajak.html | P (tanpa class) | Konsultasi pertama gratis. Olano memberi akses data baca (bisa dicabut kapan pun, tercatat di audit) ke tim pajak untuk mengerjakan rekap resmi Anda.
+- pajak.html | CTA (a.btn/nav-login) | Chat WhatsApp
+- pajak.html | CTA (a.btn/nav-login) | Hubungkan kasirmu
+- pajak.html | Class copy | FAQ Pajak
+- pajak.html | FAQ question | Kapan setor PPh final UMKM?
+- pajak.html | P (tanpa class) | Bulanan, biasanya paling lambat tanggal 10 bulan berikutnya. Tanggal jatuh tempo spesifik disimpan sebagai config oleh admin dan dikirim sebagai pengingat.
+- pajak.html | FAQ question | Apa bedanya omzet Rp500jt dan Rp4,8M?
+- pajak.html | P (tanpa class) | S.d. Rp500jt/thn (Orang Pribadi) bebas PPh final. Di atasnya dikenai 0,5%. Di atas Rp4,8M/thn, keluar skema final dan wajib pajak umum atas laba.
+- pajak.html | FAQ question | Omzet keluarga bisa digabung?
+- pajak.html | P (tanpa class) | Ya. Sesuai aturan PPh final, omzet suami/istri dapat digabungkan. Olano menandai omzet keluarga dalam rekap.
+- pajak.html | FAQ question | PT/CV saya tidak bisa final, lalu?
+- pajak.html | P (tanpa class) | Anda masuk skema umum (pajak atas laba). Olano langsung mengarahkan ke konsultasi tim kami untuk menghitung & melaporkannya benar.
+- pajak.html | Class copy | O
+- pajak.html | Footer link | OOlano
+- pajak.html | Footer link | UMKM
+- pajak.html | Footer link | Website
+- pajak.html | Footer link | Naik Kelas
+- pajak.html | Footer link | Privasi
+- pajak.html | P (tanpa class) | Olano membantu menghitung & menyiapkan pajak. Pelaporan sebagai kuasa wajib pajak dikerjakan mitra berizin. Bukan nasihat hukum atau pajak.
+
+## website.html
+
+Total string: 59
+
+- website.html | META TITLE | Website Toko UMKM Siap dalam 10 Menit: 50 Template \| Olano
+- website.html | META DESCRIPTION | Pilih dari 50 template website UMKM: katalog, menu resto, link-in-bio, jasa, portofolio. Bisa diedit, produk tersinkron dari kasir. Custom domain via WhatsApp.
+- website.html | OG:TITLE | Website Toko UMKM Siap dalam 10 Menit: 50 Template \| Olano
+- website.html | OG:DESCRIPTION | Pilih dari 50 template website UMKM: katalog, menu resto, link-in-bio, jasa, portofolio. Deploy hari yang sama.
+- website.html | Class copy | Langsung ke isi
+- website.html | Class copy | O
+- website.html | NAV link | UMKM
+- website.html | NAV link | Pajak
+- website.html | NAV link | Website
+- website.html | NAV link | Naik Kelas
+- website.html | NAV link | Harga
+- website.html | CTA (a.btn/nav-login) | Masuk
+- website.html | CTA (a.btn/nav-login) | Coba Gratis
+- website.html | NAV link | Beranda
+- website.html | NAV link | Website
+- website.html | NAV link | UMKM
+- website.html | NAV link | Pajak
+- website.html | NAV link | Coba Gratis
+- website.html | Class copy | 50 template · diedit dalam 3 langkah
+- website.html | H1 | Website toko siap dalam 10 menit.
+- website.html | P (tanpa class) | 10 keluarga layout × 5 varian industri. Produk & harga tersinkron langsung dari kasirmu. SEO otomatis: meta, Open Graph, dan schema LocalBusiness.
+- website.html | CTA (a.btn/nav-login) | Pilih Template
+- website.html | CTA (a.btn/nav-login) | Domain sendiri? Chat kami
+- website.html | Class copy | Keluarga layout
+- website.html | B (bold inline) | Katalog
+- website.html | P (tanpa class) | Grid produk, filter, dan detail. Cocok toko fashion, oleh-oleh, hiasan.
+- website.html | B (bold inline) | Menu Resto
+- website.html | P (tanpa class) | Menu dengan harga & foto. Tampilkan cabang bila multi-outlet.
+- website.html | B (bold inline) | Landing Produk Tunggal
+- website.html | P (tanpa class) | Satu produk, satu aksi. Untuk campaign & pre-order.
+- website.html | B (bold inline) | Link-in-bio (Affiliate)
+- website.html | P (tanpa class) | Rapikan banyak link produk. Favor kreator & affiliate.
+- website.html | B (bold inline) | Jasa / Booking
+- website.html | P (tanpa class) | Layanan, jam, dan tombol WhatsApp toko untuk tanya-tanya.
+- website.html | B (bold inline) | Portofolio
+- website.html | P (tanpa class) | Galeri karya. Fotografer, desainer, penjahit, UMKM produk hand-made.
+- website.html | B (bold inline) | Promo / Event
+- website.html | P (tanpa class) | Pengumuman promo, countdown, dan CTA ke kanal WhatsApp.
+- website.html | B (bold inline) | Profil Usaha
+- website.html | P (tanpa class) | Tentang, layanan, kontak, dan peta. Untuk CV & jasa profesional.
+- website.html | Class copy | Cara kerja
+- website.html | H2 | Tiga langkah, tanpa coding.
+- website.html | B (bold inline) | 1
+- website.html | P (tanpa class) | Pilih template. 10 keluarga × 5 varian = 50. Filter per kategori usaha.
+- website.html | B (bold inline) | 2
+- website.html | P (tanpa class) | Edit blok. Teks, foto, warna aksen, font kurasi, urutan & visibilitas. Produk otomatis dari kasir.
+- website.html | B (bold inline) | 3
+- website.html | P (tanpa class) | Publikasi. Render cepat, SEO otomatis, skema LocalBusiness. Contoh: tokosenja.olano.id.
+- website.html | Class copy | Template vs Custom
+- website.html | H2 | Butuh domain sendiri atau desain khusus?
+- website.html | P (tanpa class) | Untuk website custom premium + domain sendiri, tim kami siap mengerjakan. Kosongkan dari brief, desain, sampai deploy.
+- website.html | CTA (a.btn/nav-login) | Diskusikan Custom Website
+- website.html | CTA (a.btn/nav-login) | Pakai Template Gratis
+- website.html | Class copy | O
+- website.html | Footer link | OOlano
+- website.html | Footer link | UMKM
+- website.html | Footer link | Pajak
+- website.html | Footer link | Naik Kelas
+- website.html | P (tanpa class) | Situsmu tayang di domain olano.id · Domain custom adalah layanan via WhatsApp.
+
+## naik-kelas.html
+
+Total string: 53
+
+- naik-kelas.html | META TITLE | Naik Kelas: Dari Warung Pertama Sampai Cabang Kesepuluh \| Olano
+- naik-kelas.html | META DESCRIPTION | Mode Naik Kelas Olano: multi-outlet, peran staf, tutup shift, ekspor akuntan, akses admin pajak. Rancang untuk bisnis besar, kemas sederhana untuk warung.
+- naik-kelas.html | OG:TITLE | Naik Kelas: Dari Warung Pertama Sampai Cabang Kesepuluh \| Olano
+- naik-kelas.html | OG:DESCRIPTION | Mode Naik Kelas Olano: multi-outlet, peran staf, tutup shift, ekspor akuntan, akses admin, dan skor kesehatan usaha.
+- naik-kelas.html | Class copy | Langsung ke isi
+- naik-kelas.html | Class copy | O
+- naik-kelas.html | NAV link | UMKM
+- naik-kelas.html | NAV link | Pajak
+- naik-kelas.html | NAV link | Website
+- naik-kelas.html | NAV link | Naik Kelas
+- naik-kelas.html | NAV link | Harga
+- naik-kelas.html | CTA (a.btn/nav-login) | Masuk
+- naik-kelas.html | CTA (a.btn/nav-login) | Coba Gratis
+- naik-kelas.html | NAV link | Beranda
+- naik-kelas.html | NAV link | Naik Kelas
+- naik-kelas.html | NAV link | UMKM
+- naik-kelas.html | NAV link | Pajak
+- naik-kelas.html | NAV link | Coba Gratis
+- naik-kelas.html | Class copy | Mode Naik Kelas · reverse thinking
+- naik-kelas.html | H1 | Satu aplikasi dari warung pertama sampai cabang kesepuluh.
+- naik-kelas.html | P (tanpa class) | Didesain seolah untuk bisnis besar: multi-outlet, peran staf, audit, ekspor akuntan, lalu dikemas sesederhana mungkin. Usaha kecil masuk mudah; saat tumbuh, tidak perlu pindah aplikasi.
+- naik-kelas.html | CTA (a.btn/nav-login) | Aktifkan Naik Kelas
+- naik-kelas.html | CTA (a.btn/nav-login) | Konsultasi bisnis
+- naik-kelas.html | B (bold inline) | Multi-outlet & peran staf
+- naik-kelas.html | P (tanpa class) | Katalog pusat atau per outlet, harga per outlet, transfer stok antar outlet (ledger), PIN kasir 6 digit untuk perangkat bersama, tetap offline.
+- naik-kelas.html | B (bold inline) | Tutup shift & ekspor akuntan
+- naik-kelas.html | P (tanpa class) | Kas awal/akhir, selisih per metode, ringkasan dikirim email ke owner. Ekspor CSV/XLSX penjualan, pengeluaran, stok, dan rekap pajak per periode.
+- naik-kelas.html | B (bold inline) | Akses admin pajak
+- naik-kelas.html | P (tanpa class) | Owner memberi izin baca berbatas waktu ke tim Olano untuk mengerjakan rekap. Bisa dicabut kapan pun, tercatat di audit log.
+- naik-kelas.html | B (bold inline) | Dashboard gabungan
+- naik-kelas.html | P (tanpa class) | KPI dan skor semua outlet dengan ranking. Trigger otomatis: outlet kedua, jenis WP PT/CV, omzet ≥80% ambang, skor pajak rendah.
+- naik-kelas.html | Class copy | Kapan aktif?
+- naik-kelas.html | H2 | Otomatis saat usahamu tumbuh.
+- naik-kelas.html | P (tanpa class) | Mode ini menyala saat outlet kedua ditambahkan atau jenis WP PT/CV dipilih. Pengguna 1 outlet tidak melihat menu ini; tetap sederhana.
+- naik-kelas.html | B (bold inline) | Owner
+- naik-kelas.html | P (tanpa class) | Semua outlet & laporan.
+- naik-kelas.html | B (bold inline) | Manajer outlet
+- naik-kelas.html | P (tanpa class) | Kontrol cabang: stok, staff, shift.
+- naik-kelas.html | B (bold inline) | Kasir
+- naik-kelas.html | P (tanpa class) | POS + PIN cepat, izin void/diskon.
+- naik-kelas.html | B (bold inline) | Keuangan
+- naik-kelas.html | P (tanpa class) | Laporan & rekap pajak.
+- naik-kelas.html | Class copy | PT / CV
+- naik-kelas.html | H2 | Jenis badan PT/CV? Tim kami bantu skema pajak umumnya.
+- naik-kelas.html | P (tanpa class) | PT & CV tidak bisa PPh final 0,5% sejak PP 20/2026. Olano langsung mengarahkan ke konsultasi skema umum (pajak atas laba), termasuk PPh 21 dan PPN bila omzet di atas ambang.
+- naik-kelas.html | CTA (a.btn/nav-login) | Konsultasi pajak PT/CV
+- naik-kelas.html | CTA (a.btn/nav-login) | Baca aturan lengkap
+- naik-kelas.html | Class copy | O
+- naik-kelas.html | Footer link | OOlano
+- naik-kelas.html | Footer link | UMKM
+- naik-kelas.html | Footer link | Pajak
+- naik-kelas.html | Footer link | Syarat & Ketentuan
+- naik-kelas.html | P (tanpa class) | Mode Naik Kelas termasuk di Pro per outlet. Multi-outlet = MRR naik otomatis, bukan kenaikan harga.
+
+## tentang.html
+
+Total string: 20
+
+- tentang.html | META TITLE | Tentang Olano
+- tentang.html | META DESCRIPTION | Tentang Olano: alat kasir dan suite usaha offline-first untuk UMKM Indonesia. Prinsip: jelas dulu, baru indah.
+- tentang.html | OG:TITLE | Tentang Olano
+- tentang.html | OG:DESCRIPTION | Olano dibuat untuk UMKM Indonesia: kasir offline, QRIS, website, dan rekap pajak dalam satu aplikasi. Jelas dulu, baru indah.
+- tentang.html | Class copy | Langsung ke isi
+- tentang.html | Class copy | O
+- tentang.html | CTA (a.btn/nav-login) | Coba Gratis
+- tentang.html | NAV link | Beranda
+- tentang.html | Class copy | Tentang
+- tentang.html | H1 | Kasir, website, dan pajakmu, beres di satu tempat.
+- tentang.html | P (tanpa class) | Olano dibuat untuk UMKM Indonesia yang jualan harus tetap jalan walau internet mati. Kami rancang seolah untuk bisnis besar, lalu kemas sesederhana mungkin untuk warung. Saat usahamu naik kelas, kamu tidak perlu pindah aplikasi.
+- tentang.html | B (bold inline) | Prinsip kami
+- tentang.html | P (tanpa class) | Jelas dulu, baru indah. Pemilik warung paham dalam 5 detik.
+- tentang.html | B (bold inline) | Offline-first
+- tentang.html | P (tanpa class) | Data tersimpan di perangkatmu, terenkripsi, sinkron saat online.
+- tentang.html | B (bold inline) | UMKM Indonesia
+- tentang.html | P (tanpa class) | Local business, lokal currency, aturan pajak & QRIS Indonesia.
+- tentang.html | CTA (a.btn/nav-login) | Mulai gratis
+- tentang.html | CTA (a.btn/nav-login) | Konsultasi pajak
+- tentang.html | P (tanpa class) | © 2026 Olano
+
+## ai.html
+
+Total string: 58
+
+- ai.html | META TITLE | AI Jaga Margin: Contoh Saran Harga Saat Bahan Naik 10% \| Olano
+- ai.html | META DESCRIPTION | Contoh kecil AI Olano: saat harga bahan naik 10%, mesin harga memberi tiga usul harga. Coba langsung di browser, tanpa akun, data tidak dikirim.
+- ai.html | OG:TITLE | AI Jaga Margin: Contoh Saran Harga Saat Bahan Naik 10%
+- ai.html | OG:DESCRIPTION | Coba logika AI Olano: tiga usul harga saat bahan naik, langsung di browser.
+- ai.html | Class copy | Langsung ke isi
+- ai.html | Class copy | O
+- ai.html | Aria-label | Menu utama
+- ai.html | NAV link | UMKM
+- ai.html | NAV link | Pajak
+- ai.html | NAV link | Website
+- ai.html | NAV link | Naik Kelas
+- ai.html | NAV link | Harga
+- ai.html | CTA (a.btn/nav-login) | Masuk
+- ai.html | CTA (a.btn/nav-login) | Coba Gratis
+- ai.html | Aria-label | Menu seluler
+- ai.html | NAV link | Beranda
+- ai.html | NAV link | UMKM
+- ai.html | NAV link | Pajak
+- ai.html | NAV link | AI Margin
+- ai.html | NAV link | Coba Gratis
+- ai.html | Class copy | Contoh kecil · jalan di browsermu
+- ai.html | H1 | Bahan naik 10%, harga kamu jangan kekorangan.
+- ai.html | P (tanpa class) | Di kasir Olano, saat harga bahan naik, mesin harga menghitung ulang tiga usul harga dari target margin-mu. Contoh di bawah memakai mesin yang sama: isi HPP dan harga jualanmu, lihat sarannya.
+- ai.html | CTA (a.btn/nav-login) | Coba Kasir Gratis
+- ai.html | CTA (a.btn/nav-login) | Lihat Contoh
+- ai.html | Class copy | Coba sekarang
+- ai.html | H2 | AI penjaga margin, versi mini.
+- ai.html | P (tanpa class) | Anggap harga bahan naik 10% (ambang peringatan di Olano). Kalkulasi di bawah menghitung ulang usul harga dari tiga target margin: Aman 30%, Kompetitif 20%, Premium 45%.
+- ai.html | Label form | HPP satu porsi (Rp)
+- ai.html | Label form | Harga jual sekarang (Rp)
+- ai.html | Class copy | Margin sekarang
+- ai.html | B (bold inline) | 63,6%
+- ai.html | Class copy | Margin kalau harga tetap
+- ai.html | B (bold inline) | 60,0%
+- ai.html | Class copy | Aman
+- ai.html | Class copy | Kompetitif
+- ai.html | Class copy | Premium
+- ai.html | P (tanpa class) | Contoh logika Olano Pro. Dikalkulasi di browsermu, tidak ada data yang dikirim. Estimasi, bukan nasihat.
+- ai.html | B (bold inline) | Panjang dari kasirmu
+- ai.html | P (tanpa class) | HPP per produk dihitung dari BOM di aplikasi. Naik harga bahan terdeteksi otomatis saat kamu update harga.
+- ai.html | B (bold inline) | Tiga usul, satu pilihan
+- ai.html | P (tanpa class) | Setiap usul menyebut margin bersih dan risikonya: aman saat bahan naik lagi, atau tipis tapi tetap menyaingi pasar.
+- ai.html | B (bold inline) | Peringatan di batas 10%
+- ai.html | P (tanpa class) | Maksimal satu email per hari (pengaturan default). Tidak ada notifikasi panik, hanya angka yang bisa dipakai ambil keputusan.
+- ai.html | Class copy | O
+- ai.html | Footer link | OOlano
+- ai.html | Footer link | UMKM
+- ai.html | Footer link | Pajak
+- ai.html | Footer link | AI Margin
+- ai.html | P (tanpa class) | AI penjaga harga termasuk paket Pro. Contoh di halaman ini dihitung di perangkatmu.
+- ai.html | JS verdict (dinamis) | Isi harga jual dulu.
+- ai.html | JS verdict (dinamis) | Dua angka di atas sudah dihitung dari HPP {Rp}. Cantumkan berapa kamu jual untuk melihat saran AI.
+- ai.html | JS verdict (dinamis) | Margin akan jatuh di bawah target Aman.
+- ai.html | JS verdict (dinamis) | Naikkan ke {Rp} (Aman, margin 30%) atau minimal {Rp} (Kompetitif, margin 20%) supaya untung tidak menipis.
+- ai.html | JS verdict (dinamis) | Masih bisa, tetapi ruang tipis.
+- ai.html | JS verdict (dinamis) | Harga {Rp} tetap menyisakan margin {%} setelah bahan naik. Usul Olano: naikkan ke {Rp} supaya aman saat bahan naik lagi.
+- ai.html | JS verdict (dinamis) | Harga kamu masih aman.
+- ai.html | JS verdict (dinamis) | Turun dari {%} ke {%} setelah bahan naik 10%, masih di atas target Aman 30%. Pertahankan {Rp} dulu.
+
+## analisa-delivery.html
+
+Total string: 39
+
+- analisa-delivery.html | META TITLE | Analisa GoFood & GrabFood: Margin per Saluran \| Olano
+- analisa-delivery.html | META DESCRIPTION | Komisi platform 20–30% dipotong dari harga jual, HPP tetap. Pahami margin per saluran GoFood/GrabFood, efek promo, dan harga aman sebelum jualan.
+- analisa-delivery.html | OG:TITLE | Analisa GoFood & GrabFood: Margin per Saluran \| Olano
+- analisa-delivery.html | OG:DESCRIPTION | Komisi platform 20–30% dipotong dari harga jual, HPP tetap. Pahami margin per saluran, efek promo, dan rekomendasi harga aman.
+- analisa-delivery.html | Class copy | Langsung ke isi
+- analisa-delivery.html | Class copy | O
+- analisa-delivery.html | NAV link | UMKM
+- analisa-delivery.html | NAV link | Pajak
+- analisa-delivery.html | NAV link | Website
+- analisa-delivery.html | NAV link | Naik Kelas
+- analisa-delivery.html | NAV link | Harga
+- analisa-delivery.html | CTA (a.btn/nav-login) | Masuk
+- analisa-delivery.html | CTA (a.btn/nav-login) | Coba Gratis
+- analisa-delivery.html | NAV link | Beranda
+- analisa-delivery.html | NAV link | Website
+- analisa-delivery.html | NAV link | UMKM
+- analisa-delivery.html | NAV link | Pajak
+- analisa-delivery.html | NAV link | Coba Gratis
+- analisa-delivery.html | Class copy | Modul Olano · GoFood & GrabFood
+- analisa-delivery.html | H1 | Jualan di GoFood & GrabFood tanpa margin siluman.
+- analisa-delivery.html | P (tanpa class) | Komisi platform 20–30% dipotong dari harga jual, HPP tetap. Tambah potongan promo, margin bisa minus per pesanan. Di sini cara membacanya, plus harga aman per saluran.
+- analisa-delivery.html | CTA (a.btn/nav-login) | Hitung margin sekarang
+- analisa-delivery.html | Class copy | Analisa per saluran
+- analisa-delivery.html | H2 | Tiga hal yang menentukan untung di delivery.
+- analisa-delivery.html | B (bold inline) | Komisi platform 20–30%
+- analisa-delivery.html | P (tanpa class) | Dipotong dari harga jual di tiap pesanan. HPP tidak ikut turun, jadi margin bersih selalu lebih tipis dari margin kasar di kasir.
+- analisa-delivery.html | B (bold inline) | Promo yang bikin minus
+- analisa-delivery.html | P (tanpa class) | Potongan promo GoFood/GrabFood mengurangi harga jual. Kalau potongan lebih besar dari margin, tiap pesanan malah menambah rugi.
+- analisa-delivery.html | B (bold inline) | Rekomendasi harga aman
+- analisa-delivery.html | P (tanpa class) | Target margin dari config Olano: Aman 30%, Kompetitif 20%, Premium 45%. Harga per saluran diatur supaya tetap masuk target setelah komisi.
+- analisa-delivery.html | Class copy | Sumber angka. Komisi 20–30% dan skenario margin diambil dari config berversi Olano, sama yang dipakai kalkulator margin.
+- analisa-delivery.html | CTA (a.btn/nav-login) | Hitung margin sekarang
+- analisa-delivery.html | CTA (a.btn/nav-login) | Coba kasir gratis
+- analisa-delivery.html | Class copy | O
+- analisa-delivery.html | Footer link | OOlano
+- analisa-delivery.html | Footer link | UMKM
+- analisa-delivery.html | Footer link | Pajak
+- analisa-delivery.html | Footer link | Naik Kelas
+- analisa-delivery.html | P (tanpa class) | Kasir, QRIS, dan pajak UMKM Indonesia, beres di satu tempat. Tetap jalan walau internet mati.
+
+## automation.html
+
+Total string: 39
+
+- automation.html | META TITLE | Automation UMKM: Stok, Pajak, Harga Bahan \| Olano
+- automation.html | META DESCRIPTION | Modul automation Olano: pengingat stok, rekap pajak bulanan otomatis, dan peringatan harga bahan naik. Masih dikembangkan. Coba pajak dan kasir dulu sekarang.
+- automation.html | OG:TITLE | Automation UMKM: Stok, Pajak, Harga Bahan \| Olano
+- automation.html | OG:DESCRIPTION | Pengingat stok, rekap pajak bulanan otomatis, peringatan harga bahan naik. Masih dikembangkan. Coba pajak dan kasir dulu sekarang.
+- automation.html | Class copy | Langsung ke isi
+- automation.html | Class copy | O
+- automation.html | NAV link | UMKM
+- automation.html | NAV link | Pajak
+- automation.html | NAV link | Website
+- automation.html | NAV link | Naik Kelas
+- automation.html | NAV link | Harga
+- automation.html | CTA (a.btn/nav-login) | Masuk
+- automation.html | CTA (a.btn/nav-login) | Coba Gratis
+- automation.html | NAV link | Beranda
+- automation.html | NAV link | Website
+- automation.html | NAV link | UMKM
+- automation.html | NAV link | Pajak
+- automation.html | NAV link | Coba Gratis
+- automation.html | Class copy | Modul Olano
+- automation.html | H1 | Yang berulang, dikerjakan sistem.
+- automation.html | P (tanpa class) | Pengingat stok, rekap pajak bulanan, dan peringatan harga bahan. Modul automation masih dikembangkan, beberapa bagian sudah jalan lewat alat dan kasir yang ada sekarang.
+- automation.html | Class copy | Segera hadir
+- automation.html | Class copy | Contoh nyata
+- automation.html | H2 | Tiga otomasi yang paling sering diminta.
+- automation.html | B (bold inline) | Reminder stok
+- automation.html | P (tanpa class) | Peringatan saat penyimpanan lokal mendekati batas, config Olano menandai di 80% kapasitas.
+- automation.html | B (bold inline) | Rekap pajak bulanan otomatis
+- automation.html | P (tanpa class) | Omzet terkumpul dari transaksi kasir, dihitung sebagai PPh final 0,5% sesuai PP 20/2026, rekap siap lapor.
+- automation.html | B (bold inline) | Notifikasi harga bahan naik
+- automation.html | P (tanpa class) | Alert saat harga bahan naik 10% atau lebih, dengan batas maksimal 1 email per hari.
+- automation.html | Class copy | Sumber angka. Ambang stok 80%, alert bahan 10%, dan tarif PPh final 0,5% diambil dari config berversi Olano.
+- automation.html | CTA (a.btn/nav-login) | Lihat modul pajak
+- automation.html | CTA (a.btn/nav-login) | Coba kasir gratis
+- automation.html | Class copy | O
+- automation.html | Footer link | OOlano
+- automation.html | Footer link | UMKM
+- automation.html | Footer link | Pajak
+- automation.html | Footer link | Naik Kelas
+- automation.html | P (tanpa class) | Kasir, QRIS, dan pajak UMKM Indonesia, beres di satu tempat. Tetap jalan walau internet mati.
+
+## alat/kalkulator-biaya-qris.html
+
+Total string: 43
+
+- alat/kalkulator-biaya-qris.html | META TITLE | Kalkulator Biaya QRIS 2026 (MDR): Gratis \| Olano
+- alat/kalkulator-biaya-qris.html | META DESCRIPTION | Hitung estimasi biaya MDR QRIS 2026: usaha mikro 0% s.d. Rp500rb, 0,3% di atasnya; usaha kecil/mdn 0,7%. Berlaku sejak 1 Okt 2026. Gratis.
+- alat/kalkulator-biaya-qris.html | OG:TITLE | Kalkulator Biaya QRIS 2026 (MDR): Gratis \| Olano
+- alat/kalkulator-biaya-qris.html | OG:DESCRIPTION | Hitung estimasi biaya MDR QRIS 2026: usaha mikro 0% s.d. Rp500rb, 0,3% di atasnya; usaha kecil 0,2% s.d. Rp5jt.
+- alat/kalkulator-biaya-qris.html | Class copy | Langsung ke alat
+- alat/kalkulator-biaya-qris.html | Class copy | O
+- alat/kalkulator-biaya-qris.html | NAV link | UMKM
+- alat/kalkulator-biaya-qris.html | NAV link | Pajak
+- alat/kalkulator-biaya-qris.html | CTA (a.btn/nav-login) | Coba Gratis
+- alat/kalkulator-biaya-qris.html | NAV link | Beranda
+- alat/kalkulator-biaya-qris.html | NAV link | PPh Final
+- alat/kalkulator-biaya-qris.html | NAV link | HPP & Harga
+- alat/kalkulator-biaya-qris.html | Class copy | Alat Gratis · Tarif 1 Okt 2026
+- alat/kalkulator-biaya-qris.html | H1 | Kalkulator Biaya QRIS (MDR)
+- alat/kalkulator-biaya-qris.html | P (tanpa class) | Estimasi biaya pemrosesan QRIS per transaksi, sesuai tarif yang berlaku sejak 1 Oktober 2026. MDR ditanggung merchant dan tidak boleh dibebankan ke konsumen.
+- alat/kalkulator-biaya-qris.html | Label form | Kategori usaha (pemohon QRIS)
+- alat/kalkulator-biaya-qris.html | Aria-label | Kategori usaha
+- alat/kalkulator-biaya-qris.html | Label form | Usaha Mikro
+- alat/kalkulator-biaya-qris.html | Label form | Kecil / Menengah / Besar
+- alat/kalkulator-biaya-qris.html | P (tanpa class) | Mikro: NIB/UMKM. Kecil-menengah-besar: sesuai klasifikasi Sertifikat Usaha.
+- alat/kalkulator-biaya-qris.html | Label form | Nominal transaksi (Rp)
+- alat/kalkulator-biaya-qris.html | Label form | Transaksi per bulan
+- alat/kalkulator-biaya-qris.html | BUTTON | Hitung biaya
+- alat/kalkulator-biaya-qris.html | Class copy | Biaya QRIS
+- alat/kalkulator-biaya-qris.html | Class copy | MDR per transaksiRp0
+- alat/kalkulator-biaya-qris.html | Class copy | Estimasi per bulanRp0
+- alat/kalkulator-biaya-qris.html | Class copy | Estimasi per tahunRp0
+- alat/kalkulator-biaya-qris.html | Class copy | Gratis (0%). Nominal di bawah batas, MDR mikro 0%.
+- alat/kalkulator-biaya-qris.html | H2 | Tarif MDR QRIS sejak 1 Okt 2026
+- alat/kalkulator-biaya-qris.html | B (bold inline) | Usaha Mikro
+- alat/kalkulator-biaya-qris.html | P (tanpa class) | ≤ Rp500.000 → 0% · > Rp500.000 → 0,3%.
+- alat/kalkulator-biaya-qris.html | B (bold inline) | Usaha Kecil / Menengah / Besar
+- alat/kalkulator-biaya-qris.html | P (tanpa class) | ≤ Rp100.000 → 0% · > Rp100.000 → 0,7%.
+- alat/kalkulator-biaya-qris.html | B (bold inline) | Pengingat penting
+- alat/kalkulator-biaya-qris.html | P (tanpa class) | MDR dipotong dari dana merchant. Tidak boleh dipbebankan ke konsumen. Pastikan namamu di struk/nama PJP benar.
+- alat/kalkulator-biaya-qris.html | Class copy | O
+- alat/kalkulator-biaya-qris.html | Footer link | OOlano
+- alat/kalkulator-biaya-qris.html | Footer link | PPh Final
+- alat/kalkulator-biaya-qris.html | Footer link | HPP
+- alat/kalkulator-biaya-qris.html | P (tanpa class) | Estimasi. Tarif final mengikuti PJP masing-masing & PP/aturan BI terbaru.
+- alat/kalkulator-biaya-qris.html | JS verdict (dinamis) | tarif {%}
+- alat/kalkulator-biaya-qris.html | JS verdict (dinamis) | <b>Gratis (0%).</b> Nominal ≤ {Rp} ({kategori}) kena MDR 0%.
+- alat/kalkulator-biaya-qris.html | JS verdict (dinamis) | <b>MDR {%}.</b> Nominal melebihi batas {Rp}, biaya dipotong merchant. Jangan bebankan ke konsumen.
+
+## alat/kalkulator-hpp-harga-jual.html
+
+Total string: 56
+
+- alat/kalkulator-hpp-harga-jual.html | META TITLE | Kalkulator HPP & Harga Jual: Gratis \| Olano
+- alat/kalkulator-hpp-harga-jual.html | META DESCRIPTION | Hitung HPP otomatis dari resep/BOM, lalu 3 opsi harga jual (Aman, Kompetitif, Premium) dengan alasan. Untuk resto & produsen UMKM. Gratis, tanpa akun.
+- alat/kalkulator-hpp-harga-jual.html | OG:TITLE | Kalkulator HPP & Harga Jual: Gratis \| Olano
+- alat/kalkulator-hpp-harga-jual.html | OG:DESCRIPTION | Hitung HPP otomatis dari resep/BOM, lalu 3 opsi harga jual (Aman, Kompetitif, Premium) dengan margin target.
+- alat/kalkulator-hpp-harga-jual.html | Class copy | Langsung ke alat
+- alat/kalkulator-hpp-harga-jual.html | Class copy | O
+- alat/kalkulator-hpp-harga-jual.html | Aria-label | Menu
+- alat/kalkulator-hpp-harga-jual.html | NAV link | UMKM
+- alat/kalkulator-hpp-harga-jual.html | NAV link | Pajak
+- alat/kalkulator-hpp-harga-jual.html | NAV link | Harga
+- alat/kalkulator-hpp-harga-jual.html | CTA (a.btn/nav-login) | Coba Gratis
+- alat/kalkulator-hpp-harga-jual.html | NAV link | Beranda
+- alat/kalkulator-hpp-harga-jual.html | NAV link | PPh Final
+- alat/kalkulator-hpp-harga-jual.html | NAV link | Biaya QRIS
+- alat/kalkulator-hpp-harga-jual.html | Class copy | Alat Gratis
+- alat/kalkulator-hpp-harga-jual.html | H1 | Kalkulator HPP & Harga Jual
+- alat/kalkulator-hpp-harga-jual.html | P (tanpa class) | Masukkan bahan baku (BOM) per porsi. Olano hitung HPP otomatis, lalu beri 3 opsi harga jual: Aman, Kompetitif, Premium, lengkap dengan alasan.
+- alat/kalkulator-hpp-harga-jual.html | Label form | Nama produk
+- alat/kalkulator-hpp-harga-jual.html | Nilai contoh input | Es Kopi Susu Gula Aren
+- alat/kalkulator-hpp-harga-jual.html | Label form | Bahan (BOM per porsi)
+- alat/kalkulator-hpp-harga-jual.html | Placeholder input | Bahan
+- alat/kalkulator-hpp-harga-jual.html | Nilai contoh input | Kopi susu cair
+- alat/kalkulator-hpp-harga-jual.html | Placeholder input | Qty
+- alat/kalkulator-hpp-harga-jual.html | Placeholder input | Harga /Rp
+- alat/kalkulator-hpp-harga-jual.html | Placeholder input | Bahan
+- alat/kalkulator-hpp-harga-jual.html | Nilai contoh input | Gula aren
+- alat/kalkulator-hpp-harga-jual.html | Placeholder input | Qty
+- alat/kalkulator-hpp-harga-jual.html | Placeholder input | Harga /Rp
+- alat/kalkulator-hpp-harga-jual.html | Placeholder input | Bahan
+- alat/kalkulator-hpp-harga-jual.html | Nilai contoh input | Es & kemasan
+- alat/kalkulator-hpp-harga-jual.html | Placeholder input | Qty
+- alat/kalkulator-hpp-harga-jual.html | Placeholder input | Harga /Rp
+- alat/kalkulator-hpp-harga-jual.html | BUTTON | + Tambah bahan
+- alat/kalkulator-hpp-harga-jual.html | Label form | Overhead per porsi (Rp)
+- alat/kalkulator-hpp-harga-jual.html | Label form | Jumlah (untuk HPP/porsi tetap)
+- alat/kalkulator-hpp-harga-jual.html | BUTTON | Hitung harga jual
+- alat/kalkulator-hpp-harga-jual.html | P (tanpa class) | Margin: Aman 30%, Kompetitif 20%, Premium 45%. Harga = (HPP ÷ (1 − margin)).
+- alat/kalkulator-hpp-harga-jual.html | Class copy | HPP produk
+- alat/kalkulator-hpp-harga-jual.html | Class copy | Aman (margin 30%)Rp15.000
+- alat/kalkulator-hpp-harga-jual.html | Class copy | Kompetitif (20%)Rp13.125
+- alat/kalkulator-hpp-harga-jual.html | Class copy | Premium (45%)Rp19.000
+- alat/kalkulator-hpp-harga-jual.html | Class copy | SARAN AI
+- alat/kalkulator-hpp-harga-jual.html | Class copy | Pantau otomatis: Olano monitor harga bahan (susu, gula) dan beri alert saat naik ≥10%. Aktifkan Pro
+- alat/kalkulator-hpp-harga-jual.html | H2 | Cara kerja
+- alat/kalkulator-hpp-harga-jual.html | B (bold inline) | 1 · BOM
+- alat/kalkulator-hpp-harga-jual.html | P (tanpa class) | Daftar bahan per porsi. HPP = jumlah (harga × qty) + overhead.
+- alat/kalkulator-hpp-harga-jual.html | B (bold inline) | 2 · Margin
+- alat/kalkulator-hpp-harga-jual.html | P (tanpa class) | Pilih target margin. Harga jual = HPP ÷ (1 − margin) supaya margin tetap tercapai.
+- alat/kalkulator-hpp-harga-jual.html | B (bold inline) | 3 · Tahan naik harga
+- alat/kalkulator-hpp-harga-jual.html | P (tanpa class) | Margin 30% masih untung saat bahan baku naik 10–15%. Premium 45% untuk brand kuat.
+- alat/kalkulator-hpp-harga-jual.html | Class copy | O
+- alat/kalkulator-hpp-harga-jual.html | Footer link | OOlano
+- alat/kalkulator-hpp-harga-jual.html | Footer link | PPh Final
+- alat/kalkulator-hpp-harga-jual.html | Footer link | Biaya QRIS
+- alat/kalkulator-hpp-harga-jual.html | P (tanpa class) | Simulasi harga. Pantau harga pasar & margin otomatis di Olano Pro.
+- alat/kalkulator-hpp-harga-jual.html | JS verdict (dinamis) | Jual di <b>{Rp}</b> (Aman): margin 30% memberi ruang saat bahan naik 10–15% tanpa rugi. Kalau saingan lebih murah, pakai opsi Kompetitif sambil pantau harga bahan.
+
+## alat/kalkulator-margin-delivery.html
+
+Total string: 48
+
+- alat/kalkulator-margin-delivery.html | META TITLE | Analisa Margin GoFood & GrabFood: Gratis \| Olano
+- alat/kalkulator-margin-delivery.html | META DESCRIPTION | Hitung untung bersih per pesanan GoFood/GrabFood setelah komisi 20–30% dan promo. AI Olano beri harga yang tetap untung. Gratis, tanpa akun.
+- alat/kalkulator-margin-delivery.html | OG:TITLE | Analisa Margin GoFood & GrabFood: Gratis \| Olano
+- alat/kalkulator-margin-delivery.html | OG:DESCRIPTION | Hitung untung bersih per pesanan GoFood/GrabFood setelah komisi 20-30% dan promo. AI Olano usul harga aman.
+- alat/kalkulator-margin-delivery.html | Class copy | Langsung ke alat
+- alat/kalkulator-margin-delivery.html | Class copy | O
+- alat/kalkulator-margin-delivery.html | NAV link | UMKM
+- alat/kalkulator-margin-delivery.html | NAV link | Pajak
+- alat/kalkulator-margin-delivery.html | CTA (a.btn/nav-login) | Coba Gratis
+- alat/kalkulator-margin-delivery.html | NAV link | Beranda
+- alat/kalkulator-margin-delivery.html | NAV link | PPh Final
+- alat/kalkulator-margin-delivery.html | NAV link | HPP
+- alat/kalkulator-margin-delivery.html | NAV link | QRIS
+- alat/kalkulator-margin-delivery.html | Class copy | Alat Gratis · Analisa AI
+- alat/kalkulator-margin-delivery.html | H1 | Analisa Margin GoFood & GrabFood
+- alat/kalkulator-margin-delivery.html | P (tanpa class) | Komisi platform 20–30% sering bikin menu andalanmu diam-diam rugi. Masukkan harga & biaya, AI Olano hitung untung bersih per pesanan dan beri harga yang tetap sehat.
+- alat/kalkulator-margin-delivery.html | Label form | Harga jual (Rp)
+- alat/kalkulator-margin-delivery.html | Label form | HPP per porsi (Rp)
+- alat/kalkulator-margin-delivery.html | Label form | Komisi platform (%)
+- alat/kalkulator-margin-delivery.html | Label form | Potongan promo/diskon (Rp)
+- alat/kalkulator-margin-delivery.html | Label form | Margin target (%)
+- alat/kalkulator-margin-delivery.html | BUTTON | Analisa margin
+- alat/kalkulator-margin-delivery.html | P (tanpa class) | Komisi standar platform 20–30% (config berversi). Promo = potongan yang ditanggung dari harga jual.
+- alat/kalkulator-margin-delivery.html | Class copy | Untung bersih per pesanan
+- alat/kalkulator-margin-delivery.html | Class copy | Didapat platform (net)Rp28.350
+- alat/kalkulator-margin-delivery.html | Class copy | Biaya HPP− Rp18.000
+- alat/kalkulator-margin-delivery.html | Class copy | Untung bersihRp10.350
+- alat/kalkulator-margin-delivery.html | Class copy | AI verdict
+- alat/kalkulator-margin-delivery.html | Class copy | AI verdict Margin 5,3% jauh di bawah target 30%. Naikkan harga ke Rp76.400 atau potong komisi dengan menu paket (bundle hemat komisi efektif).
+- alat/kalkulator-margin-delivery.html | Class copy | Coba simulasi lain: di Olano Pro, AI membandingkan GoFood vs Grab vs walk-in per menu dengan komisi & promo aktual, lalu rekomendasi harga satu ketukan.
+- alat/kalkulator-margin-delivery.html | P (tanpa class) | Estimasi. Komisi & promo aktual berbeda per merchant; cocokkan dengan dashboard merchant-mu.
+- alat/kalkulator-margin-delivery.html | H2 | Kenapa margin bisa negatif di platform
+- alat/kalkulator-margin-delivery.html | B (bold inline) | Komisi 20–30%
+- alat/kalkulator-margin-delivery.html | P (tanpa class) | Dipotong dari harga jual sebelum sampai ke kamu. HPP tetap sama, jadi margin tergerus langsung.
+- alat/kalkulator-margin-delivery.html | B (bold inline) | Promo & ongkir
+- alat/kalkulator-margin-delivery.html | P (tanpa class) | Diskon platform sering ditanggung merchant. Dua promo bertumpuk bisa bikin pesanan rugi.
+- alat/kalkulator-margin-delivery.html | B (bold inline) | Solusi
+- alat/kalkulator-margin-delivery.html | P (tanpa class) | Pakai menu paket (komisi efektif per item turun), sesuaikan harga, atau bandingkan walk-in vs platform per menu.
+- alat/kalkulator-margin-delivery.html | Class copy | O
+- alat/kalkulator-margin-delivery.html | Footer link | OOlano
+- alat/kalkulator-margin-delivery.html | Footer link | PPh Final
+- alat/kalkulator-margin-delivery.html | Footer link | QRIS
+- alat/kalkulator-margin-delivery.html | P (tanpa class) | Simulasi margin. Untuk angka aktual, bandingkan dengan dashboard merchant GoFood/Grab.
+- alat/kalkulator-margin-delivery.html | JS verdict (dinamis) | margin {%}
+- alat/kalkulator-margin-delivery.html | JS verdict (dinamis) | − {Rp}
+- alat/kalkulator-margin-delivery.html | JS verdict (dinamis) | PERUSAHAN: pesanan ini RUGI {Rp} setiap kali. Naikkan harga ke <b>{Rp}</b> atau nonaktifkan promo {Rp}.
+- alat/kalkulator-margin-delivery.html | JS verdict (dinamis) | Margin {%} di bawah target {%}%. Naikkan harga ke <b>{Rp}</b> atau pakai menu paket agar komisi efektif per item turun.
+- alat/kalkulator-margin-delivery.html | JS verdict (dinamis) | Margin sehat ({%} ≥ target {%}%). Pertahankan, pantau bahan baku naik ≥10% agar tidak tergerus.
+
+## alat/kalkulator-pph-final-umkm.html
+
+Total string: 71
+
+- alat/kalkulator-pph-final-umkm.html | META TITLE | Kalkulator PPh Final UMKM 0,5%: Gratis \| Olano
+- alat/kalkulator-pph-final-umkm.html | META DESCRIPTION | Hitung estimasi PPh final 0,5% UMKM sesuai PP 20/2026: omzet tahunan, bebas s.d. Rp500jt untuk orang pribadi, batas Rp4,8M. Gratis, tanpa akun.
+- alat/kalkulator-pph-final-umkm.html | OG:TITLE | Kalkulator PPh Final UMKM 0,5%: Gratis \| Olano
+- alat/kalkulator-pph-final-umkm.html | OG:DESCRIPTION | Hitung estimasi PPh final 0,5% UMKM sesuai PP 20/2026: omzet tahunan, bebas s.d. Rp500jt, di atas Rp4,8M skema umum.
+- alat/kalkulator-pph-final-umkm.html | Class copy | Langsung ke alat
+- alat/kalkulator-pph-final-umkm.html | Class copy | O
+- alat/kalkulator-pph-final-umkm.html | Aria-label | Menu
+- alat/kalkulator-pph-final-umkm.html | NAV link | Pajak
+- alat/kalkulator-pph-final-umkm.html | NAV link | UMKM
+- alat/kalkulator-pph-final-umkm.html | NAV link | Harga
+- alat/kalkulator-pph-final-umkm.html | CTA (a.btn/nav-login) | Coba Gratis
+- alat/kalkulator-pph-final-umkm.html | NAV link | Beranda
+- alat/kalkulator-pph-final-umkm.html | NAV link | Pajak
+- alat/kalkulator-pph-final-umkm.html | NAV link | Kalkulator HPP
+- alat/kalkulator-pph-final-umkm.html | NAV link | Biaya QRIS
+- alat/kalkulator-pph-final-umkm.html | Class copy | Alat Gratis · PP 20/2026
+- alat/kalkulator-pph-final-umkm.html | H1 | Kalkulator PPh Final UMKM 0,5%
+- alat/kalkulator-pph-final-umkm.html | P (tanpa class) | Simulasi pajak final untuk omzet UMKM sesuai PP 20/2026. Orang pribadi bebas s.d. Rp500 juta per tahun; di atasnya 0,5%. Di atas Rp4,8 miliar wajib skema umum. Tanpa akun, tanpa kartu.
+- alat/kalkulator-pph-final-umkm.html | Label form | Jenis Wajib Pajak
+- alat/kalkulator-pph-final-umkm.html | Aria-label | Jenis wajib pajak
+- alat/kalkulator-pph-final-umkm.html | Label form | Orang Pribadi
+- alat/kalkulator-pph-final-umkm.html | Label form | PT Perorangan
+- alat/kalkulator-pph-final-umkm.html | Label form | Koperasi
+- alat/kalkulator-pph-final-umkm.html | Label form | PT
+- alat/kalkulator-pph-final-umkm.html | Label form | CV / Firma
+- alat/kalkulator-pph-final-umkm.html | P (tanpa class) | PT & CV tidak bisa PPh Final sejak PP 20/2026. Gunakan skema umum (pajak atas laba).
+- alat/kalkulator-pph-final-umkm.html | Label form | Omzet rata-rata per bulan (Rp)
+- alat/kalkulator-pph-final-umkm.html | Label form | Omzet 12 bulan terakhir (Rp, kumulatif)
+- alat/kalkulator-pph-final-umkm.html | P (tanpa class) | Dipakai bila omzet fluktuatif. Kosongkan untuk memakai omzet bulanan × 12.
+- alat/kalkulator-pph-final-umkm.html | Label form | Gabungkan omzet bersama anggota keluarga (suami/istri) sesuai aturan PPh final.
+- alat/kalkulator-pph-final-umkm.html | Label form | Omzet keluarga per bulan (Rp)
+- alat/kalkulator-pph-final-umkm.html | BUTTON | Hitung estimasi
+- alat/kalkulator-pph-final-umkm.html | Class copy | config berversi
+- alat/kalkulator-pph-final-umkm.html | P (tanpa class) | Angka dari config berversi PP 20/2026. Ini simulasi, bukan nasihat pajak.
+- alat/kalkulator-pph-final-umkm.html | Class copy | Hasil simulasi
+- alat/kalkulator-pph-final-umkm.html | Class copy | Omzet per bulanRp75.000.000
+- alat/kalkulator-pph-final-umkm.html | Class copy | Omzet tahunanRp900.000.000
+- alat/kalkulator-pph-final-umkm.html | Class copy | Dipotong ambang bebasRp500.000.000
+- alat/kalkulator-pph-final-umkm.html | Class copy | Dasar PPh finalRp400.000.000
+- alat/kalkulator-pph-final-umkm.html | Class copy | Estimasi per tahunRp2.000.000
+- alat/kalkulator-pph-final-umkm.html | Class copy | Status aman. Omzet di bawah Rp4,8 miliar, tetap dalam skema final 0,5%.
+- alat/kalkulator-pph-final-umkm.html | Class copy | Otomatiskan tiap bulan: Olano rekap omzet dari kasirmu, hitung PPh final, dan kirim checklist setor tanggal 1. Coba gratis
+- alat/kalkulator-pph-final-umkm.html | P (tanpa class) | Estimasi berdasarkan PP 20/2026. Bukan nasihat pajak. Konsultasi tim kami via WhatsApp untuk pelaporan resmi.
+- alat/kalkulator-pph-final-umkm.html | H2 | Cara menghitung PPh final 0,5%
+- alat/kalkulator-pph-final-umkm.html | B (bold inline) | 1
+- alat/kalkulator-pph-final-umkm.html | P (tanpa class) | Omzet setahun s.d. Rp500 juta (Orang Pribadi): bebas PPh final.
+- alat/kalkulator-pph-final-umkm.html | B (bold inline) | 2
+- alat/kalkulator-pph-final-umkm.html | P (tanpa class) | Di atas Rp500 juta: PPh final 0,5% dari omzet (atau omzet di atas ambang, sesuai status WP-mu).
+- alat/kalkulator-pph-final-umkm.html | B (bold inline) | 3
+- alat/kalkulator-pph-final-umkm.html | P (tanpa class) | Omzet tahunan > Rp4,8 miliar: keluar skema final, wajib pajak umum atas laba.
+- alat/kalkulator-pph-final-umkm.html | H2 | FAQ Kalkulator
+- alat/kalkulator-pph-final-umkm.html | FAQ question | Kapan setor PPh final?
+- alat/kalkulator-pph-final-umkm.html | P (tanpa class) | Bulanan, paling lambat tanggal 10 bulan berikutnya (konfigurasi admin menentukan tanggal jatuh tempo spesifik). Olano mengirim pengingat + kode billing.
+- alat/kalkulator-pph-final-umkm.html | FAQ question | Apa itu ambang Rp500 juta?
+- alat/kalkulator-pph-final-umkm.html | P (tanpa class) | Pengusaha Orang Pribadi dengan omzet setahun s.d. Rp500 juta dibebaskan PPh final. Mulai Rp500 juta + 1, dikenai 0,5%.
+- alat/kalkulator-pph-final-umkm.html | FAQ question | Koperasi batasan berapa?
+- alat/kalkulator-pph-final-umkm.html | P (tanpa class) | Koperasi berhak PPh final maks. 4 tahun sejak terdaftar. Setelah itu, skema umum.
+- alat/kalkulator-pph-final-umkm.html | Class copy | O
+- alat/kalkulator-pph-final-umkm.html | Footer link | OOlano
+- alat/kalkulator-pph-final-umkm.html | Footer link | HPP & Harga
+- alat/kalkulator-pph-final-umkm.html | Footer link | Biaya QRIS
+- alat/kalkulator-pph-final-umkm.html | Footer link | Halaman Pajak
+- alat/kalkulator-pph-final-umkm.html | P (tanpa class) | Olano membantu menghitung & menyiapkan pajak. Pelaporan sebagai kuasa wajib pajak dikerjakan mitra berizin. Bukan nasihat hukum atau pajak.
+- alat/kalkulator-pph-final-umkm.html | JS verdict (dinamis) | n/a
+- alat/kalkulator-pph-final-umkm.html | JS verdict (dinamis) | skema umum
+- alat/kalkulator-pph-final-umkm.html | JS verdict (dinamis) | tidak final
+- alat/kalkulator-pph-final-umkm.html | JS verdict (dinamis) | tidak ada (final penuh)
+- alat/kalkulator-pph-final-umkm.html | JS verdict (dinamis) | <b>{PT\|CV / Firma}.</b> Tidak bisa PPh Final 0,5% sejak {PP 20/2026}. Wajib skema umum berbasis laba. Omzet {Rp} per bulan. Konsultasikan dengan tim kami.
+- alat/kalkulator-pph-final-umkm.html | JS verdict (dinamis) | <b>Perhatian.</b> Omzet tahunan {Rp} melewati {Rp}. Keluar skema final: wajib beralih ke skema pajak umum (laba). Tim kami bantu migrasi.
+- alat/kalkulator-pph-final-umkm.html | JS verdict (dinamis) | <b>Bebas PPh final.</b> Omzet s.d. {Rp} untuk Orang Pribadi dibebaskan pajak final tahun ini.
+- alat/kalkulator-pph-final-umkm.html | JS verdict (dinamis) | <b>Status aman.</b> Omzet di bawah {Rp}, tetap dalam skema final {%}%.
+
+---
+Total keseluruhan: 807 string di 13 halaman.

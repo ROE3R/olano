@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kalkulator HPP &amp; Harga Jual: Gratis | Olano</title>
-<meta name="description" content="Hitung HPP otomatis dari resep/BOM, lalu 3 opsi harga jual (Aman, Kompetitif, Premium) dengan alasan. Untuk resto &amp; produsen UMKM. Gratis, tanpa akun.">
+<meta name="description" content="Kalkulator HPP dan harga jual: hitung HPP dari resep/BOM, lalu 3 opsi harga jual dengan margin Aman 30%, Kompetitif 20%, Premium 45%. Tahu batas aman sebelum kasih diskon. Gratis, tanpa akun.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#2453EB">
 <link rel="canonical" href="https://olano.xyz/alat/kalkulator-hpp-harga-jual.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232453EB'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='19' font-weight='800' fill='white' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="../assets/css/main.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Kalkulator HPP & Harga Jual","url":"https://olano.xyz/alat/kalkulator-hpp-harga-jual.html","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"IDR"},"description":"Hitung HPP otomatis dari resep/BOM, lalu 3 opsi harga jual (Aman, Kompetitif, Premium) dengan alasan. Untuk resto &amp; produsen UMKM. Gratis, tanpa akun."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Kalkulator HPP & Harga Jual","url":"https://olano.xyz/alat/kalkulator-hpp-harga-jual.html","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"IDR"},"description":"Kalkulator HPP dan harga jual: hitung HPP dari resep/BOM, lalu 3 opsi harga jual dengan margin Aman 30%, Kompetitif 20%, Premium 45%. Tahu batas aman sebelum kasih diskon. Gratis, tanpa akun."}</script>
   <meta property="og:title" content="Kalkulator HPP &amp; Harga Jual: Gratis | Olano">
-  <meta property="og:description" content="Hitung HPP otomatis dari resep/BOM, lalu 3 opsi harga jual (Aman, Kompetitif, Premium) dengan margin target.">
+  <meta property="og:description" content="Kalkulator HPP dan harga jual: hitung HPP dari resep/BOM, lalu 3 opsi harga jual dengan margin Aman 30%, Kompetitif 20%, Premium 45%. Tahu batas aman sebelum kasih diskon. Gratis, tanpa akun.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://olano.xyz/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -41,8 +41,8 @@
   <img class="l-grid" src="../assets/daydream/grid-overlay.svg" alt="" width="1920" height="1280" loading="lazy">
 </div><div class=ontainer container-narrow">
   <div class="badge"><span class="dot"></span>Alat Gratis</div>
-  <h1 class="mt-4">Kalkulator HPP &amp; Harga Jual</h1>
-  <p class="mt-4" style="color:var(--gray-500);font-size:var(--fs-body-lg)">Masukkan bahan baku (BOM) per porsi. Olano hitung HPP otomatis, lalu beri 3 opsi harga jual: Aman, Kompetitif, Premium, lengkap dengan alasan.</p>
+  <h1 class="mt-4">Harga jual yang benar, bukan kira-kira.</h1>
+  <p class="mt-4" style="color:var(--gray-500);font-size:var(--fs-body-lg)">Hitung HPP, margin, dan harga jual minimum. Tahu batas aman sebelum kasih diskon.</p>
 </div></section>
 
 <section class="section" style="padding-top:32px"><div class="container">
@@ -74,21 +74,21 @@
         <div class="field"><label for="overhead">Overhead per porsi (Rp)</label><input id="overhead" type="number" inputmode="numeric" value="1500"></div>
         <div class="field"><label for="qty">Jumlah (untuk HPP/porsi tetap)</label><input id="qty" type="number" inputmode="numeric" value="1" min="1"></div>
       </div>
-      <button class="btn btn-primary btn-block" id="hitung">Hitung harga jual</button>
+      <button class="btn btn-primary btn-block" id="hitung">Hitung margin</button>
       <p class="small mt-4" style="color:var(--gray-500)">Margin: Aman 30%, Kompetitif 20%, Premium 45%. Harga = (HPP ÷ (1 − margin)).</p>
     </div>
 
     <div class="calc-out" data-reveal aria-live="polite" id="out">
       <div class="eyebrow" style="color:var(--blue-300)">HPP produk</div>
-      <div class="out-hero mt-4"><b id="r-hpp">Rp10.500</b><span style="color:var(--blue-200);font-size:14px">biaya produksi + overhead per porsi</span></div>
+      <div class="out-hero mt-4"><b id="r-hpp">Rp11.700</b><span style="color:var(--blue-200);font-size:14px">biaya produksi + overhead per porsi</span></div>
       <div style="margin-top:16px">
-        <div class="out-line"><span>Aman (margin 30%)</span><span class="val" id="r-aman">Rp15.000</span></div>
-        <div class="out-line"><span>Kompetitif (20%)</span><span class="val" id="r-kom">Rp13.125</span></div>
-        <div class="out-line"><span>Premium (45%)</span><span class="val" id="r-prem">Rp19.000</span></div>
+        <div class="out-line"><span>Aman (margin 30%)</span><span class="val" id="r-aman">Rp16.714</span></div>
+        <div class="out-line"><span>Kompetitif (20%)</span><span class="val" id="r-kom">Rp14.625</span></div>
+        <div class="out-line"><span>Premium (45%)</span><span class="val" id="r-prem">Rp21.273</span></div>
       </div>
       <div class="aiv" id="r-ai" style="border-radius:12px;padding:14px 16px;font-size:13.5px;line-height:1.65;color:var(--blue-100);border:1px solid rgba(109,140,255,.3);background:rgba(109,140,255,.08);margin-bottom:12px">
         <span class="vtag" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:#93b8fd;display:block;margin-bottom:6px">SARAN AI</span>
-        <span id="r-ai-text">Jual di <b>Rp15.000</b> (Aman): margin 30% memberi ruang saat bahan naik 10–15% tanpa rugi. Kalau saingannya di Rp13rb, pakai <b>Rp13.125</b> (Kompetitif) sambil pantau gula aren.</span>
+        <span id="r-ai-text">Jual di <b>Rp16.714</b> (Aman): margin 30% memberi ruang saat bahan naik 10% tanpa rugi. Kalau saingannya lebih murah, pakai <b>Rp14.625</b> (Kompetitif) sambil pantau harga bahan.</span>
       </div>
       <div class="upsell" style="border:1px dashed rgba(255,255,255,.2);border-radius:12px;padding:14px 16px;font-size:13px;color:var(--blue-100);line-height:1.6"><b style="color:#fff">Pantau otomatis:</b> Olano monitor harga bahan (susu, gula) dan beri alert saat naik ≥10%. <a href="../kasir.html" style="color:#fff;text-decoration:underline;font-weight:600">Aktifkan Pro</a></div>
     </div>
@@ -99,7 +99,7 @@
     <div class="grid mt-6" style="grid-template-columns:1fr;gap:14px">
       <div class="card"><b class="mono" style="color:var(--blue-600)">1 · BOM</b><p class="small mt-2">Daftar bahan per porsi. HPP = jumlah (harga × qty) + overhead.</p></div>
       <div class="card"><b class="mono" style="color:var(--blue-600)">2 · Margin</b><p class="small mt-2">Pilih target margin. Harga jual = HPP ÷ (1 − margin) supaya margin tetap tercapai.</p></div>
-      <div class="card"><b class="mono" style="color:var(--blue-600)">3 · Tahan naik harga</b><p class="small mt-2">Margin 30% masih untung saat bahan baku naik 10–15%. Premium 45% untuk brand kuat.</p></div>
+      <div class="card"><b class="mono" style="color:var(--blue-600)">3 · Tahan naik harga</b><p class="small mt-2">Margin 30% masih untung saat bahan baku naik 10%. Premium 45% untuk brand kuat.</p></div>
     </div>
   </div>
 </div></section>
@@ -131,7 +131,7 @@
     document.getElementById("r-kom").textContent=window.OLANO.rp(Math.round(hpp/(1-M.kompetitif.margin)));
     document.getElementById("r-prem").textContent=window.OLANO.rp(Math.round(hpp/(1-M.premium.margin)));
     var aman=Math.round(hpp/(1-M.aman.margin));
-    document.getElementById("r-ai-text").innerHTML="Jual di <b>"+window.OLANO.rp(aman)+"</b> (Aman): margin "+(M.aman.margin*100)+"% memberi ruang saat bahan naik 10–15% tanpa rugi. Kalau saingan lebih murah, pakai opsi Kompetitif sambil pantau harga bahan.";
+    document.getElementById("r-ai-text").innerHTML="Jual di <b>"+window.OLANO.rp(aman)+"</b> (Aman): margin "+(M.aman.margin*100)+"% memberi ruang saat bahan naik 10% tanpa rugi. Kalau saingan lebih murah, pakai opsi Kompetitif sambil pantau harga bahan.";
   }
   document.getElementById("hitung").addEventListener("click",calc);
   document.addEventListener("input",function(e){ if(e.target.matches("#items input,#overhead")) calc(); });

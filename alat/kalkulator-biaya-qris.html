@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kalkulator Biaya QRIS 2026 (MDR): Gratis | Olano</title>
-<meta name="description" content="Hitung estimasi biaya MDR QRIS 2026: usaha mikro 0% s.d. Rp500rb, 0,3% di atasnya; usaha kecil/mdn 0,7%. Berlaku sejak 1 Okt 2026. Gratis.">
+<meta name="description" content="Kalkulator biaya MDR QRIS: usaha mikro 0% s.d. Rp500rb, 0,3% di atasnya; usaha kecil-menengah-besar 0% s.d. Rp100rb, 0,7% di atasnya. Berlaku 1 Okt 2026, ditanggung merchant. Gratis.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#2453EB">
 <link rel="canonical" href="https://olano.xyz/alat/kalkulator-biaya-qris.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232453EB'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='19' font-weight='800' fill='white' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="../assets/css/main.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Kalkulator Biaya QRIS","url":"https://olano.xyz/alat/kalkulator-biaya-qris.html","offers":{"@type":"Offer","price":"0","priceCurrency":"IDR"},"description":"Hitung estimasi biaya MDR QRIS 2026: usaha mikro 0% s.d. Rp500rb, 0,3% di atasnya; usaha kecil/mdn 0,7%. Berlaku sejak 1 Okt 2026. Gratis."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Kalkulator Biaya QRIS","url":"https://olano.xyz/alat/kalkulator-biaya-qris.html","offers":{"@type":"Offer","price":"0","priceCurrency":"IDR"},"description":"Kalkulator biaya MDR QRIS: usaha mikro 0% s.d. Rp500rb, 0,3% di atasnya; usaha kecil-menengah-besar 0% s.d. Rp100rb, 0,7% di atasnya. Berlaku 1 Okt 2026, ditanggung merchant. Gratis."}</script>
   <meta property="og:title" content="Kalkulator Biaya QRIS 2026 (MDR): Gratis | Olano">
-  <meta property="og:description" content="Hitung estimasi biaya MDR QRIS 2026: usaha mikro 0% s.d. Rp500rb, 0,3% di atasnya; usaha kecil 0,2% s.d. Rp5jt.">
+  <meta property="og:description" content="Kalkulator biaya MDR QRIS: usaha mikro 0% s.d. Rp500rb, 0,3% di atasnya; usaha kecil-menengah-besar 0% s.d. Rp100rb, 0,7% di atasnya. Berlaku 1 Okt 2026, ditanggung merchant. Gratis.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://olano.xyz/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -39,9 +39,9 @@
   <img class="l-cloud" src="../assets/daydream/cloud-1.webp" alt="" width="520" height="322" fetchpriority="low">
   <img class="l-grid" src="../assets/daydream/grid-overlay.svg" alt="" width="1920" height="1280" loading="lazy">
 </div><div class=ontainer container-narrow">
-  <div class="badge"><span class="dot"></span>Alat Gratis · Tarif 1 Okt 2026</div>
-  <h1 class="mt-4">Kalkulator Biaya QRIS (MDR)</h1>
-  <p class="mt-4" style="color:var(--gray-500);font-size:var(--fs-body-lg)">Estimasi biaya pemrosesan QRIS per transaksi, sesuai tarif yang berlaku sejak 1 Oktober 2026. MDR ditanggung merchant dan tidak boleh dibebankan ke konsumen.</p>
+  <div class="badge"><span class="dot"></span>Alat Gratis · Berlaku 1 Okt 2026</div>
+  <h1 class="mt-4">QRIS mikro 0% sampai Rp500 ribu. Cek selisihnya.</h1>
+  <p class="mt-4" style="color:var(--gray-500);font-size:var(--fs-body-lg)">Berlaku 1 Oktober 2026. Hitung berapa biaya MDR yang tidak lagi Anda bayar per transaksi kecil. MDR ditanggung merchant.</p>
 </div></section>
 
 <section class="section" style="padding-top:32px"><div class="container">
@@ -58,17 +58,17 @@
         <div class="field"><label for="nominal">Nominal transaksi (Rp)</label><input id="nominal" type="number" inputmode="numeric" value="35000" min="0"></div>
         <div class="field"><label for="frekuensi">Transaksi per bulan</label><input id="frekuensi" type="number" inputmode="numeric" value="300" min="0"></div>
       </div>
-      <button class="btn btn-primary btn-block" id="hitung">Hitung biaya</button>
+      <button class="btn btn-primary btn-block" id="hitung">Cek penghematan</button>
     </div>
     <div class="calc-out" data-reveal aria-live="polite">
-      <div class="eyebrow" style="color:var(--blue-300)">Biaya QRIS</div>
+      <div class="eyebrow" style="color:var(--blue-300)">Biaya MDR</div>
       <div class="out-hero mt-4"><b id="r-per">Rp0</b><span style="color:var(--blue-200);font-size:14px">per transaksi · <span id="r-rate-label">tarif 0%</span></span></div>
       <div style="margin-top:16px">
         <div class="out-line"><span>MDR per transaksi</span><span class="val" id="r-mdrr">Rp0</span></div>
         <div class="out-line"><span>Estimasi per bulan</span><span class="val" id="r-bulan">Rp0</span></div>
         <div class="out-line"><span>Estimasi per tahun</span><span class="val" id="r-tahun">Rp0</span></div>
       </div>
-      <div class="callout ok mt-6" id="r-verdict"><b>Gratis (0%).</b> Nominal di bawah batas, MDR mikro 0%.</div>
+      <div class="callout ok mt-6" id="r-verdict"><b>Gratis (0%).</b> Nominal ≤ Rp500.000 (mikro) kena MDR 0%.</div>
     </div>
   </div>
   <div class="mt-8" data-reveal>
@@ -76,7 +76,7 @@
     <div class="grid mt-6" style="grid-template-columns:1fr;gap:14px">
       <div class="card"><b>Usaha Mikro</b><p class="small mt-2">≤ Rp500.000 → 0% · &gt; Rp500.000 → 0,3%.</p></div>
       <div class="card"><b>Usaha Kecil / Menengah / Besar</b><p class="small mt-2">≤ Rp100.000 → 0% · &gt; Rp100.000 → 0,7%.</p></div>
-      <div class="card"><b>Pengingat penting</b><p class="small mt-2">MDR dipotong dari dana merchant. Tidak boleh dipbebankan ke konsumen. Pastikan namamu di struk/nama PJP benar.</p></div>
+      <div class="card"><b>Pengingat penting</b><p class="small mt-2">MDR dipotong dari dana merchant. Tidak boleh dibebankan ke konsumen. Pastikan namamu di struk/nama PJP benar.</p></div>
     </div>
   </div>
 </div></section>
