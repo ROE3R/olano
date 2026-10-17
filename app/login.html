@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Masuk: Kasir Olano</title>
+<meta name="description" content="Masuk ke Kasir Olano: POS offline untuk UMKM. Akun demo siap pakai, tersimpan per perangkat.">
+<meta name="theme-color" content="#2453EB">
+<meta name="robots" content="noindex,follow">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232453EB'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='19' font-weight='800' fill='white' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/main.css">
+<style>
+.auth-wrap{max-width:400px;margin:0 auto;padding:var(--sp-6) var(--gutter) var(--sp-12);width:100%}
+.auth-card{background:#fff;border:1px solid var(--gray-100);border-radius:var(--r-xl);padding:24px 20px;box-shadow:var(--sh-md)}
+.auth-card h1{font-size:1.3rem;letter-spacing:-0.02em}
+.auth-sub{color:var(--gray-500);font-size:14px;margin-top:6px}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0 16px}
+.auth-tabs button{min-height:44px;border:1px solid var(--gray-300);border-radius:var(--r-md);background:#fff;font-weight:600;font-size:14px;color:var(--gray-700)}
+.auth-tabs button.on{border-color:var(--blue-600);background:var(--blue-50);color:var(--blue-700)}
+.auth-demo{margin-top:16px;background:var(--blue-50);border:1px solid var(--blue-100);border-radius:var(--r-md);padding:14px 16px;font-size:13.5px;color:var(--gray-700)}
+.auth-demo b{color:var(--ink);font-family:var(--font-mono)}
+.auth-note{color:var(--gray-500);font-size:12px;line-height:1.55;margin-top:14px;text-align:center}
+.auth-note a{color:var(--blue-600);font-weight:600}
+@media(min-width:700px){.auth-card{padding:32px 28px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#auth-card">Langsung ke form</a>
+
+<header class="pos-top">
+  <a class="logo" href="../index.html" style="gap:8px"><span class="mark">O</span>Olano</a>
+  <a class="btn btn-ghost sm" href="../index.html" style="margin-left:auto;min-height:40px;font-size:13px">Beranda</a>
+</header>
+
+<main class="auth-wrap" id="main">
+  <div class="auth-card" id="auth-card">
+    <div class="eyebrow" style="font-size:11px">Kasir Offline · per perangkat</div>
+    <h1 style="margin-top:6px">Masuk ke Kasir</h1>
+    <p class="auth-sub">Kasir tetap jalan walau internet mati.</p>
+
+    <div class="auth-tabs" role="tablist" aria-label="Pilih masuk atau daftar">
+      <button type="button" id="tab-login" class="on" role="tab" aria-selected="true" aria-controls="form-login">Masuk</button>
+      <button type="button" id="tab-reg" role="tab" aria-selected="false" aria-controls="form-reg">Daftar akun baru</button>
+    </div>
+
+    <!-- form MASUK -->
+    <form id="form-login" novalidate>
+      <div class="callout light warn" id="login-error" role="alert" style="display:none;margin-bottom:14px"></div>
+      <div class="field">
+        <label for="login-user">Username</label>
+        <input id="login-user" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+      </div>
+      <div class="field">
+        <label for="login-pass">Password</label>
+        <input id="login-pass" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+    </form>
+
+    <!-- form DAFTAR -->
+    <form id="form-reg" style="display:none" novalidate>
+      <div class="callout light warn" id="reg-error" role="alert" style="display:none;margin-bottom:14px"></div>
+      <div class="field">
+        <label for="reg-store">Nama toko</label>
+        <input id="reg-store" name="store" type="text" autocomplete="organization" required>
+      </div>
+      <div class="field">
+        <label for="reg-user">Username</label>
+        <input id="reg-user" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+      </div>
+      <div class="field">
+        <label for="reg-pass">Password</label>
+        <input id="reg-pass" name="password" type="password" autocomplete="new-password" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Daftar &amp; masuk</button>
+    </form>
+
+    <div class="auth-demo" id="auth-demo">Akun demo: <b>demo</b> / <b>olano</b> &middot; Kopi Senja</div>
+    <p class="auth-note">Akun tersimpan di perangkat ini (localStorage, password di-hash + salt).
+      Tanpa server, tetap jalan offline. <a href="../index.html">olano.xyz</a></p>
+  </div>
+</main>
+
+<script src="../assets/js/config.js"></script>
+<script>
+(function(){
+  "use strict";
+  var ACC_KEY = "olano-auth-accounts";
+  var SES_KEY = "olano-auth-session";
+  var LS = (function(){
+    try{ localStorage.setItem("olano-auth-t","1"); localStorage.removeItem("olano-auth-t"); return localStorage; }
+    catch(e){ return null; }
+  })();
+  function jget(k, d){ try{ var v = LS && LS.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } }
+  function jset(k, v){ try{ LS.setItem(k, JSON.stringify(v)); return true; }catch(e){ return false; } }
+
+  /* ---------- hash: FNV-1a 32-bit + salt acak (tanpa backend, tidak plain) ---------- */
+  function fnv1a(str){
+    var h = 0x811c9dc5;
+    for(var i = 0; i < str.length; i++){
+      h ^= str.charCodeAt(i);
+      h = (h + (h<<1) + (h<<4) + (h<<7) + (h<<8) + (h<<24)) >>> 0;
+    }
+    return ("0000000" + h.toString(16)).slice(-8);
+  }
+  function makeSalt(){ var s=""; for(var i=0;i<8;i++) s += "0123456789abcdef"[Math.floor(Math.random()*16)]; return s; }
+  function hashPass(pass, salt){ return fnv1a(salt + ":" + pass + ":" + salt); }
+  function makeHash(pass){ var salt = makeSalt(); return salt + "$" + hashPass(pass, salt); }
+  function checkHash(pass, stored){
+    var p = String(stored||"").split("$"); if(p.length !== 2) return false;
+    return hashPass(pass, p[0]) === p[1];
+  }
+
+  /* ---------- seed akun demo (idempotent) ---------- */
+  function seedDemo(){
+    var acc = jget(ACC_KEY, {});
+    if(!acc["demo"]){
+      acc["demo"] = { username:"demo", store:"Kopi Senja", hash: makeHash("olano"), ts: Date.now() };
+      jset(ACC_KEY, acc);
+    }
+  }
+
+  /* ---------- session ---------- */
+  function getSession(){ var s = jget(SES_KEY, null); return (s && s.username) ? s : null; }
+  function setSession(acc){ jset(SES_KEY, { username: acc.username, store: acc.store, ts: Date.now() }); }
+  function clearSession(){ try{ LS.removeItem(SES_KEY); }catch(e){} }
+
+  function show(el, on){ el.style.display = on ? "" : "none"; }
+  function showErr(id, msg){ var el = document.getElementById(id); el.textContent = msg; el.style.display = ""; }
+  function hideErr(id){ document.getElementById(id).style.display = "none"; }
+
+  function switchTab(reg){
+    document.getElementById("tab-login").classList.toggle("on", !reg);
+    document.getElementById("tab-reg").classList.toggle("on", reg);
+    document.getElementById("tab-login").setAttribute("aria-selected", String(!reg));
+    document.getElementById("tab-reg").setAttribute("aria-selected", String(reg));
+    show(document.getElementById("form-login"), !reg);
+    show(document.getElementById("form-reg"), reg);
+    if(!reg) hideErr("reg-error"); else hideErr("login-error");
+  }
+
+  document.getElementById("tab-login").addEventListener("click", function(){ switchTab(false); });
+  document.getElementById("tab-reg").addEventListener("click", function(){ switchTab(true); });
+
+  /* ---------- MASUK ---------- */
+  document.getElementById("form-login").addEventListener("submit", function(e){
+    e.preventDefault();
+    var u = document.getElementById("login-user").value.trim().toLowerCase();
+    var p = document.getElementById("login-pass").value;
+    if(!u || !p){ showErr("login-error", "Isi username dan password."); return; }
+    seedDemo();
+    var acc = jget(ACC_KEY, {})[u];
+    if(!acc || !checkHash(p, acc.hash)){
+      showErr("login-error", "Username atau password salah"); return;
+    }
+    setSession(acc);
+    location.replace("kasir.html");
+  });
+
+  /* ---------- DAFTAR ---------- */
+  document.getElementById("form-reg").addEventListener("submit", function(e){
+    e.preventDefault();
+    var store = document.getElementById("reg-store").value.trim();
+    var u = document.getElementById("reg-user").value.trim().toLowerCase();
+    var p = document.getElementById("reg-pass").value;
+    if(!store || !u || !p){ showErr("reg-error", "Isi nama toko, username, dan password."); return; }
+    if(u.length < 3 || !/^[a-z0-9._-]+$/.test(u)){ showErr("reg-error", "Username min. 3 karakter (huruf kecil, angka, titik, garis)."); return; }
+    if(p.length < 4){ showErr("reg-error", "Password minimal 4 karakter."); return; }
+    var acc = jget(ACC_KEY, {});
+    if(acc[u]){ showErr("reg-error", "Username sudah dipakai di perangkat ini."); return; }
+    acc[u] = { username: u, store: store.slice(0, 40), hash: makeHash(p), ts: Date.now() };
+    jset(ACC_KEY, acc);
+    setSession(acc[u]);
+    location.replace("kasir.html");
+  });
+
+  /* ---------- init ---------- */
+  seedDemo();
+  if(getSession()){ location.replace("kasir.html"); }
+})();
+</script>
+</body>
+</html>

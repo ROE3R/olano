@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kopi Senja - Kopi &amp; Keripik Lokal (Demo Template Katalog) | Olano</title>
+<meta name="description" content="Tayangan demo template Katalog Olano: website toko statis dengan grid produk, jam buka, dan kontak WhatsApp. Data di halaman ini contoh isi dari kasir.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2453EB">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232453EB'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='19' font-weight='800' fill='white' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"CafeOrCoffeeShop","@id":"https://olano.xyz/templates/katalog.html#toko","name":"Kopi Senja","description":"Toko demo untuk template Katalog Olano: kopi dan keripik lokal.","servesCuisine":["Kopi","Keripik"],"priceRange":"Rp2.000 - Rp32.000","address":{"@type":"PostalAddress","streetAddress":"Jl. Contoh No. 10","addressLocality":"Yogyakarta","addressRegion":"DI Yogyakarta","addressCountry":"ID"},"telephone":"+6281200000000","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"21:00"}]},
+{"@type":"ItemList","name":"Menu dan produk Kopi Senja","itemListElement":[
+{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"Es Kopi Susu","category":"Minuman","image":"https://olano.xyz/assets/img/food/foto-ai-kopi-after.webp","offers":{"@type":"Offer","price":"22000","priceCurrency":"IDR","availability":"https://schema.org/InStock"}}},
+{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"Kopi Hitam","category":"Minuman","image":"https://olano.xyz/assets/img/food/tkopi.webp","offers":{"@type":"Offer","price":"18000","priceCurrency":"IDR","availability":"https://schema.org/InStock"}}},
+{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"Matcha Latte","category":"Minuman","image":"https://olano.xyz/assets/img/food/tkopi.webp","offers":{"@type":"Offer","price":"32000","priceCurrency":"IDR","availability":"https://schema.org/InStock"}}},
+{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"Croissant","category":"Makanan","image":"https://olano.xyz/assets/img/food/tkeripik.webp","offers":{"@type":"Offer","price":"18000","priceCurrency":"IDR","availability":"https://schema.org/InStock"}}},
+{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"Donat Cokelat","category":"Makanan","image":"https://olano.xyz/assets/img/food/tkeripik.webp","offers":{"@type":"Offer","price":"15000","priceCurrency":"IDR","availability":"https://schema.org/InStock"}}},
+{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"Keripik Kentang","category":"Keripik","image":"https://olano.xyz/assets/img/food/foto-ai-keripik-after.webp","offers":{"@type":"Offer","price":"8000","priceCurrency":"IDR","availability":"https://schema.org/InStock"}}},
+{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"Keripik Singkong","category":"Keripik","image":"https://olano.xyz/assets/img/food/tkeripik.webp","offers":{"@type":"Offer","price":"6000","priceCurrency":"IDR","availability":"https://schema.org/InStock"}}},
+{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"Gelas + Sedotan","category":"Lainnya","image":"https://olano.xyz/assets/img/food/tkopi.webp","offers":{"@type":"Offer","price":"2000","priceCurrency":"IDR","availability":"https://schema.org/InStock"}}}
+]}]}
+</script>
+<style>
+.tpl-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--gray-25);border-bottom:1px solid var(--gray-100);padding:10px var(--gutter);font-family:var(--font-mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--gray-500)}
+.tpl-bar a{color:var(--blue-600);font-weight:500;white-space:nowrap}
+.shop-head{display:flex;align-items:center;gap:var(--sp-4);padding:var(--sp-12) 0 var(--sp-6)}
+.shop-mark{width:56px;height:56px;border-radius:var(--r-lg);background:var(--grad-brand);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:20px;flex:none}
+.shop-head h1{font-size:clamp(1.75rem,3.2vw,2.5rem)}
+.tagline{color:var(--gray-500);margin-top:2px}
+.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-4)}
+@media(min-width:760px){.prod-grid{grid-template-columns:repeat(4,1fr)}}
+.prod-card{background:var(--white);border:1px solid var(--gray-100);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-sm)}
+.prod-img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;background:var(--gray-50)}
+.prod-body{padding:var(--sp-3) var(--sp-3) var(--sp-4)}
+.prod-body b{display:block;font-family:var(--font-display);font-size:15px;letter-spacing:-.01em}
+.cat{display:inline-block;margin-top:4px;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)}
+.price{margin-top:6px;font-family:var(--font-mono);font-size:14px;font-weight:700;color:var(--blue-600);font-variant-numeric:tabular-nums}
+.about-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-4);align-items:start}
+@media(min-width:760px){.about-grid{grid-template-columns:1.3fr 1fr}}
+.card-pad{padding:var(--sp-6)}
+.hours{list-style:none;display:grid;gap:var(--sp-2);font-size:var(--fs-small)}
+.hours li{display:flex;justify-content:space-between;gap:var(--sp-4);border-bottom:1px dashed var(--gray-100);padding-bottom:var(--sp-2)}
+.hours .d{color:var(--gray-500)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Langsung ke isi</a>
+<div class="tpl-bar"><span>Tayangan demo · Template Katalog Olano</span><a href="../website.html">Semua template</a></div>
+
+<main id="main">
+<header class="container shop-head">
+  <div class="shop-mark" aria-hidden="true">KS</div>
+  <div>
+    <h1>Kopi Senja</h1>
+    <p class="tagline">Kopi &amp; keripik lokal. Diseduh pagi, digoreng siang.</p>
+  </div>
+</header>
+
+<section class="container">
+  <div class="eyebrow">Katalog</div>
+  <h2 class="mt-2">Menu &amp; produk</h2>
+  <div class="prod-grid mt-6">
+    <article class="prod-card">
+      <img class="prod-img" src="../assets/img/food/foto-ai-kopi-after.webp" alt="Es Kopi Susu" width="768" height="960" fetchpriority="high">
+      <div class="prod-body"><b>Es Kopi Susu</b><span class="cat">Minuman</span><div class="price">Rp22.000</div></div>
+    </article>
+    <article class="prod-card">
+      <img class="prod-img" src="../assets/img/food/tkopi.webp" alt="Kopi Hitam" width="512" height="512" loading="lazy" decoding="async">
+      <div class="prod-body"><b>Kopi Hitam</b><span class="cat">Minuman</span><div class="price">Rp18.000</div></div>
+    </article>
+    <article class="prod-card">
+      <img class="prod-img" src="../assets/img/food/tkopi.webp" alt="Matcha Latte" width="512" height="512" loading="lazy" decoding="async">
+      <div class="prod-body"><b>Matcha Latte</b><span class="cat">Minuman</span><div class="price">Rp32.000</div></div>
+    </article>
+    <article class="prod-card">
+      <img class="prod-img" src="../assets/img/food/tkeripik.webp" alt="Croissant" width="512" height="512" loading="lazy" decoding="async">
+      <div class="prod-body"><b>Croissant</b><span class="cat">Makanan</span><div class="price">Rp18.000</div></div>
+    </article>
+    <article class="prod-card">
+      <img class="prod-img" src="../assets/img/food/tkeripik.webp" alt="Donat Cokelat" width="512" height="512" loading="lazy" decoding="async">
+      <div class="prod-body"><b>Donat Cokelat</b><span class="cat">Makanan</span><div class="price">Rp15.000</div></div>
+    </article>
+    <article class="prod-card">
+      <img class="prod-img" src="../assets/img/food/foto-ai-keripik-after.webp" alt="Keripik Kentang" width="768" height="960" loading="lazy" decoding="async">
+      <div class="prod-body"><b>Keripik Kentang</b><span class="cat">Keripik</span><div class="price">Rp8.000</div></div>
+    </article>
+    <article class="prod-card">
+      <img class="prod-img" src="../assets/img/food/tkeripik.webp" alt="Keripik Singkong" width="512" height="512" loading="lazy" decoding="async">
+      <div class="prod-body"><b>Keripik Singkong</b><span class="cat">Keripik</span><div class="price">Rp6.000</div></div>
+    </article>
+    <article class="prod-card">
+      <img class="prod-img" src="../assets/img/food/tkopi.webp" alt="Gelas + Sedotan" width="512" height="512" loading="lazy" decoding="async">
+      <div class="prod-body"><b>Gelas + Sedotan</b><span class="cat">Lainnya</span><div class="price">Rp2.000</div></div>
+    </article>
+  </div>
+</section>
+
+<section class="section"><div class="container">
+  <div class="eyebrow">Informasi</div>
+  <h2 class="mt-2">Tentang toko</h2>
+  <div class="about-grid mt-6">
+    <div class="card card-pad">
+      <h3>Kenalan dulu</h3>
+      <p class="small mt-2">Kopi Senja adalah toko demo untuk template Katalog Olano. Nama, produk, harga, dan jam di halaman ini contoh isi; di website sungguhan datanya tersambung ke stok kasir, bukan diketik ulang. Foto di grid memakai contoh foto dan thumbnail produk Olano, belum foto asli tiap item.</p>
+    </div>
+    <div class="card card-pad">
+      <h3>Jam buka</h3>
+      <ul class="hours mt-2">
+        <li><span class="d">Senin&ndash;Minggu</span><span>08.00&ndash;21.00</span></li>
+      </ul>
+      <div class="mt-4"><a class="btn btn-wa" id="wa-toko" href="https://wa.me/6281200000000">Chat WhatsApp toko</a></div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer class="foot"><div class="container">
+  <p class="small">Tayangan demo template Katalog Olano. Data toko, produk, dan kontak di halaman ini contoh, bukan toko sungguhan.</p>
+  <p class="small mt-2"><a href="../website.html" style="color:var(--blue-600);font-weight:600">Bikin website toko dengan Olano</a></p>
+</div></footer>
+
+<script src="../assets/js/config.js"></script>
+<script>
+(function(){
+  var C = window.OLANO_CONFIG;
+  var a = document.getElementById("wa-toko");
+  if (C && C.wa && a) {
+    a.href = "https://wa.me/" + C.wa.website + "?text=" + encodeURIComponent("Halo Kopi Senja, saya mau tanya produk.");
+  }
+})();
+</script>
+</body>
+</html>

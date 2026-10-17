@@ -17,10 +17,11 @@
 <header class="pos-top">
   <div class="row" style="gap:10px">
     <div><div class="eyebrow" style="font-size:10px;color:var(--blue-600)">Olano Kasir</div>
-    <h1>Kopi Senja <span class="outlet">· Demo</span></h1></div>
+    <h1><span id="pos-store">Kopi Senja</span> <span class="outlet">· <span id="pos-user">Demo</span></span></h1></div>
   </div>
   <span class="pos-status sync" id="status" style="margin-left:auto">Menyinkron…</span>
   <span class="pos-clock" id="liveclk" aria-hidden="true">--:--</span>
+  <button class="btn btn-ghost sm" id="logout" style="min-height:40px;font-size:13px">Keluar</button>
   <a class="btn btn-ghost sm" href="../index.html" style="min-height:40px;font-size:13px">Beranda</a>
 </header>
 
@@ -63,13 +64,11 @@
       <input id="cash" type="number" inputmode="numeric"></div>
     <div id="kembali" class="callout light ok" style="display:none;background:var(--success-bg);border:1px solid #bfe4d0;color:#0a5c36;margin:12px 0">Kembalian: <b id="kembali-v">Rp0</b></div>
     <div id="qris-area" style="display:none;text-align:center;padding:8px 0">
-      <div style="width:170px;height:170px;margin:0 auto;background:#fff;border:1px solid var(--gray-300);border-radius:12px;display:grid;place-items:center;position:relative">
-        <div style="width:130px;height:130px;background:
-          repeating-linear-gradient(0deg,#0B1220 0 8px,#fff 8px 16px),
-          repeating-linear-gradient(90deg,#0B1220 0 8px,#fff 8px 16px);mix-blend-mode:multiply;opacity:.85;border-radius:4px"></div>
+      <div style="width:170px;height:170px;margin:0 auto;background:#fff;border:1px solid var(--gray-300);border-radius:12px;display:grid;place-items:center">
+        <div id="qris-box" style="width:150px;height:150px"></div>
       </div>
       <div class="mono" style="font-size:38px;font-weight:700;margin-top:12px" id="qris-amt">Rp0</div>
-      <p class="small" style="margin-top:8px;color:var(--gray-500)">QRIS statis · <b>tekan “Sudah dibayar” setelah cek notifikasi PJP</b>.</p>
+      <p class="small" style="margin-top:8px;color:var(--gray-500)">QRIS dinamis · nominal mengikuti tagihan · <b>tekan “Sudah dibayar” setelah cek notifikasi PJP</b>.</p>
     </div>
     <!-- bencho block: slide to confirm (friksi anti mis-tap di checkout) -->
     <div class="sld" id="sld" role="button" tabindex="0" aria-label="Geser ke kanan untuk konfirmasi pembayaran">
@@ -101,14 +100,12 @@
   <div class="backdrop" data-close></div>
   <div class="panel text-c">
     <div class="grip"></div>
-    <b style="font-family:var(--font-display)">QRIS Statis: Kopi Senja</b>
+    <b style="font-family:var(--font-display)">QRIS Dinamis: <span id="qris-store-name">Kopi Senja</span></b>
     <div style="width:220px;height:220px;margin:16px auto;background:#fff;border:1px solid var(--gray-300);border-radius:12px;display:grid;place-items:center">
-      <div style="width:180px;height:180px;background:
-        repeating-linear-gradient(0deg,#0B1220 0 10px,#fff 10px 20px),
-        repeating-linear-gradient(90deg,#0B1220 0 10px,#fff 10px 20px);mix-blend-mode:multiply;opacity:.85"></div>
+      <div id="qris-full-box" style="width:200px;height:200px"></div>
     </div>
-    <div class="row" style="justify-content:center;gap:12px"><span class="mono" style="font-size:40px;font-weight:700" id="qris-nominal">Rp125.000</span></div>
-    <p class="small mt-4">Nominal besar di samping QR · konfirmasi manual saat pelanggan scan. <span style="color:var(--gray-500)">Flag injeksi nominal: <b>OFF</b> (sesuai spec).</span></p>
+    <div class="row" style="justify-content:center;gap:12px"><span class="mono" style="font-size:40px;font-weight:700" id="qris-nominal">Rp0</span></div>
+    <p class="small mt-4">Nominal mengikuti tagihan (QRIS dinamis) · pelanggan scan, nominal terisi otomatis. <span style="color:var(--gray-500)">Nominal terinje ke payload QRIS per transaksi.</span></p>
     <div class="row center mt-4 wrap">
       <button class="btn btn-primary" id="qris-paid">Sudah dibayar</button>
       <button class="btn btn-secondary" data-close>Tutup</button>
@@ -117,9 +114,90 @@
 </div>
 
 <script src="../assets/js/config.js"></script>
+<script type="module">
+  /* qrcode.js adalah ES module (export default) -> import lalu expose global.
+     Offline-safe: same-origin, di-cache SW (assets/js/qrcode.js di CORE). */
+  import QRCode from "../assets/js/qrcode.js";
+  window.QRCode = QRCode;
+  document.dispatchEvent(new CustomEvent("qrcode-ready"));
+</script>
 <div class="toast" id="toast" role="status" aria-live="polite"><span class="t-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span id="toast-msg"></span></div>
 <script>
 (function(){
+  "use strict";
+  /* ================= AUTH GATE (jalankan sebelum init POS) ================= */
+  var ACC_KEY = "olano-auth-accounts", SES_KEY = "olano-auth-session";
+  function jget(k, d){ try{ var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } }
+  function jset(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  function fnv1a(str){
+    var h = 0x811c9dc5;
+    for(var i = 0; i < str.length; i++){
+      h ^= str.charCodeAt(i);
+      h = (h + (h<<1) + (h<<4) + (h<<7) + (h<<8) + (h<<24)) >>> 0;
+    }
+    return ("0000000" + h.toString(16)).slice(-8);
+  }
+  function checkHash(pass, stored){
+    var p = String(stored||"").split("$"); if(p.length !== 2) return false;
+    var h = 0x811c9dc5, s = p[0] + ":" + pass + ":" + p[0];
+    for(var i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = (h + (h<<1) + (h<<4) + (h<<7) + (h<<8) + (h<<24)) >>> 0; }
+    return ("0000000" + h.toString(16)).slice(-8) === p[1];
+  }
+  function validSession(){
+    var s = jget(SES_KEY, null);
+    if(!s || !s.username) return null;
+    var acc = jget(ACC_KEY, {})[s.username];
+    return acc ? s : null; // sesi tanpa akun di perangkat = invalid
+  }
+  var SESSION = validSession();
+  if(!SESSION){ location.replace("login.html"); return; }
+
+  /* ================= QRIS DINAMIS (EMVCo + CRC16-CCITT) ================= */
+  function crc16ccitt(str){
+    var crc = 0xFFFF;
+    for(var i = 0; i < str.length; i++){
+      crc ^= str.charCodeAt(i) << 8;
+      for(var b = 0; b < 8; b++){ crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) : (crc << 1); crc &= 0xFFFF; }
+    }
+    return crc;
+  }
+  function tlv(tag, val){ return tag + ("0" + val.length).slice(-2) + val; }
+  function buildQrisPayload(nominal, merchant, pjsb, name, city){
+    merchant = merchant || "988000100012345";
+    pjsb = pjsb || "1022790014";
+    name = (name || "KOPI SENJA").toUpperCase().slice(0, 26) || "KOPI SENJA";
+    city = (city || "JAKARTA").toUpperCase().slice(0, 12) || "JAKARTA";
+    var amt = ("000000000" + Math.max(0, Math.round(Number(nominal) || 0)).toString()).slice(-9);
+    var payload =
+      "000201"                                   // PFI: 01 = statically generated (standar QRIS)
+      + "010212"                                 // merchant account info: 12 = QRIS (dinamis per transaksi)
+      + tlv("12", "ID.CO.QRIS.WW")
+      + tlv("26", "ID.CO.QRIS.BASIC" + pjsb + merchant + "00") // PJSB ID + merchant PAN + 00
+      + tlv("51", amt)                           // nominal per transaksi (9 digit fixed)
+      + "52043602"                               // MCC
+      + "5802ID"                                 // negara
+      + tlv("59", name)                          // nama merchant (max 26)
+      + tlv("60", city);                         // kota
+    var base = payload + "6204";
+    return base + ("000" + crc16ccitt(base).toString(16).toUpperCase()).slice(-4);
+  }
+  var qrSheet = null, qrFull = null;
+  function paintQr(qr, box, size, text){
+    if(!box || typeof QRCode === "undefined") return;
+    if(qr && qr._el === box){ qr.clear(); qr.makeCode(text); return qr; }
+    box.innerHTML = "";
+    var inst = new QRCode(box, { text: text, width: size, height: size, correctLevel: QRCode.CorrectLevel.H });
+    inst._el = box;
+    return inst;
+  }
+  function renderQris(){
+    var t = total(), payload = buildQrisPayload(t, null, null, SESSION.store);
+    qrSheet = paintQr(qrSheet, document.getElementById("qris-box"), 150, payload);
+    qrFull = paintQr(qrFull, document.getElementById("qris-full-box"), 200, payload);
+    var b1 = document.getElementById("qris-box");
+    if(b1) b1.dataset.payload = payload; // untuk verifikasi manual (CRC/data attribute)
+  }
+
   var C = window.OLANO_CONFIG, R = window.OLANO;
   var PRODUCTS = [
     {id:"p1", name:"Es Kopi Susu", cat:"MINUM", price:22000, stock:4, emoji:"\u2615"},
@@ -133,6 +211,16 @@
   ];
   var cart = {}, method = "TUNAI", dbp = null, pending = 0;
   var pill = document.getElementById("status");
+
+  /* ================= header akun + logout ================= */
+  var acc = jget(ACC_KEY, {})[SESSION.username] || {};
+  document.getElementById("pos-store").textContent = acc.store || "Kopi Senja";
+  document.getElementById("pos-user").textContent = SESSION.username;
+  document.getElementById("qris-store-name").textContent = acc.store || "Kopi Senja";
+  document.getElementById("logout").addEventListener("click", function(){
+    try{ localStorage.removeItem(SES_KEY); }catch(e){}
+    location.replace("login.html");
+  });
 
   function openDB(){
     if(dbp) return dbp;
@@ -223,6 +311,7 @@
   });
   document.querySelector("[data-qr]").addEventListener("click", function(){
     document.getElementById("qris-nominal").textContent = R.rp(total());
+    renderQris();
     openSheet("sheet-qris");
   });
   document.getElementById("qris-paid").addEventListener("click", function(){ closeSheet("sheet-qris"); pay("QRIS"); });
@@ -243,6 +332,7 @@
     document.getElementById("pay").disabled = count()===0;
     document.getElementById("sheet-sum").textContent = R.rp(total());
     document.getElementById("qris-amt").textContent = R.rp(total());
+    renderQris();
   }
   document.getElementById("pay").addEventListener("click", function(){
     method = "TUNAI";
@@ -258,6 +348,7 @@
       b.classList.add("on"); method = b.dataset.m;
       document.getElementById("cash-area").style.display = method==="TUNAI"?"":"none";
       document.getElementById("qris-area").style.display = method==="QRIS"?"":"none";
+      if(method==="QRIS") renderQris();
       updateKembali();
     });
   });
@@ -364,7 +455,8 @@
     var rows = s.items.map(function(i){
       return '<div class="r-line"><span>'+i.name+" ×"+i.qty+'</span><span>'+R.rp(i.price*i.qty)+'</span></div>';
     }).join("");
-    return '<div class="r-head"><b>KOPI SENJA</b><div class="small">struk demo · '+new Date(s.ts).toLocaleString("id-ID")+'</div></div>'
+    var storeName = (acc.store || "KOPI SENJA").toUpperCase();
+    return '<div class="r-head"><b>'+storeName+'</b><div class="small">struk demo · '+new Date(s.ts).toLocaleString("id-ID")+'</div></div>'
       + rows
       + '<div class="r-line r-total"><span>Method: '+s.method+'</span><span>'+R.rp(s.total)+'</span></div>'
       + '<div class="small mt-4">uuid '+s.uuid+'</div>';

@@ -53,7 +53,7 @@
       kmb:    { limit: 100000,  rate: 0.007 }, // usaha kecil/mdn/besar: ≤ Rp100rb 0%, > Rp100rb 0,7%
       categories: ["MIKRO", "KMB"],
       note: "Tarif sejak 1 Okt 2026. MDR ditanggung merchant, jangan dibebankan ke konsumen.",
-      featureFlag_qrisAmountInjection: false, // F3: OFF
+      featureFlag_qrisAmountInjection: true, // F3: ON sejak QRIS dinamis (nominal per transaksi, payload EMVCo + CRC16)
     },
 
     /* --- HPP / harga jual (F7) --- */
@@ -100,6 +100,15 @@
       currency: "IDR",
       timezoneExamples: ["WIB", "WITA", "WIT"],
       payMethods: ["TUNAI", "QRIS", "TRANSFER", "LAINNYA"],
+    },
+
+    /* --- website builder: status template (sumber kebenaran copy "1 siap + sisanya coming soon") --- */
+    website: {
+      templates: {
+        ready: [{ slug: "katalog", name: "Katalog", status: "siap" }],
+        comingSoon: ["menu-resto","link-in-bio","jasa-booking","portofolio","promo-event","profil-usaha","landing-produk","10-keluarga-x-5-varian"],
+        totalPlanned: 50,
+      },
     },
   };
 

@@ -1,12 +1,12 @@
 # Olano
 
-Olano adalah aplikasi kasir & suite usaha offline-first untuk UMKM Indonesia (PWA, berjalan tanpa internet): kasir + QRIS + stok, rekap pajak PPh final 0,5% per PP 20/2026, website toko dengan 50 template, analisa margin delivery, dan AI penjaga harga saat bahan naik.
+Olano adalah aplikasi kasir & suite usaha offline-first untuk UMKM Indonesia (PWA, berjalan tanpa internet): kasir + QRIS + stok, rekap pajak PPh final 0,5% per PP 20/2026, website toko (template Katalog siap dipakai, 9 keluarga layout coming soon), analisa margin delivery, dan AI penjaga harga saat bahan naik.
 
 ## Halaman utama
 - [Beranda / router modul](https://olano.xyz/)
 - [Kasir UMKM offline](https://olano.xyz/umkm.html)
 - [Pajak UMKM (PPh final 0,5%)](https://olano.xyz/pajak.html)
-- [Website toko UMKM (50 template)](https://olano.xyz/website.html)
+- [Website toko UMKM - template Katalog siap, 9 keluarga coming soon](https://olano.xyz/website.html)
 - [Naik kelas: dari warung ke cabang](https://olano.xyz/naik-kelas.html)
 - [Tentang Olano](https://olano.xyz/tentang.html)
 - [AI Jaga Margin (demo)](https://olano.xyz/ai.html)
