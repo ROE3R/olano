@@ -31,7 +31,7 @@
   <input id="q" type="search" placeholder="Cari produk… (demo: 8 produk)" aria-label="Cari produk">
   <button class="pos-scan" aria-label="Pindai produk (demo)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7V4h3M17 4h3v3M21 17v3h-3M7 20H4v-3M4 8h12v8H4z"/></svg></button>
 </div>
-<p class="small" id="sync-note" style="padding:0 var(--gutter);color:var(--gray-500);font-size:12px">Mode demo: transaksi &amp; stok disimpan di perangkat (IndexedDB). Saat offline, antre &amp; sinkron otomatis.</p>
+<p class="small" id="sync-note" style="padding:0 var(--gutter);color:var(--gray-500);font-size:12px">Mode demo: transaksi dan stok tersimpan di perangkat ini. Saat offline, transaksi mengantre dan terkirim otomatis saat online.</p>
 
 <div class="row" id="quick-tabs" style="padding:10px var(--gutter);gap:8px">
   <button class="btn sm on" data-cat="SEMUA" style="min-height:38px">Semua</button>
@@ -70,7 +70,7 @@
         <div id="qris-box" style="width:150px;height:150px"></div>
       </div>
       <div class="mono" style="font-size:38px;font-weight:700;margin-top:12px" id="qris-amt">Rp0</div>
-      <p class="small" style="margin-top:8px;color:var(--gray-500)">QRIS dinamis · nominal mengikuti tagihan · <b>tekan “Sudah dibayar” setelah cek notifikasi PJP</b>.</p>
+      <p class="small" style="margin-top:8px;color:var(--gray-500)">QRIS · nominal terisi otomatis · <b>tekan “Sudah dibayar” setelah cek notifikasi PJP</b>.</p>
     </div>
     <!-- bencho block: slide to confirm (friksi anti mis-tap di checkout) -->
     <div class="sld" id="sld" role="button" tabindex="0" aria-label="Geser ke kanan untuk konfirmasi pembayaran">
@@ -78,7 +78,7 @@
       <div class="sld-hint">Geser untuk konfirmasi &middot; <span id="sld-amt">Rp0</span></div>
       <div class="sld-knob"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     </div>
-    <p class="small" style="color:var(--gray-500);margin-top:10px;font-size:12px">Transaksi disimpan offline (client_uuid ULID) &amp; antre sync bila perlu.</p>
+    <p class="small" style="color:var(--gray-500);margin-top:10px;font-size:12px">Transaksi tersimpan offline di perangkat dan dikirim otomatis saat online.</p>
   </div>
 </div>
 
@@ -102,12 +102,12 @@
   <div class="backdrop" data-close></div>
   <div class="panel text-c">
     <div class="grip"></div>
-    <b style="font-family:var(--font-display)">QRIS Dinamis: <span id="qris-store-name">Kopi Senja</span></b>
+    <b style="font-family:var(--font-display)">QRIS: <span id="qris-store-name">Kopi Senja</span></b>
     <div style="width:220px;height:220px;margin:16px auto;background:#fff;border:1px solid var(--gray-300);border-radius:12px;display:grid;place-items:center">
       <div id="qris-full-box" style="width:200px;height:200px"></div>
     </div>
     <div class="row" style="justify-content:center;gap:12px"><span class="mono" style="font-size:40px;font-weight:700" id="qris-nominal">Rp0</span></div>
-    <p class="small mt-4">Nominal mengikuti tagihan (QRIS dinamis) · pelanggan scan, nominal terisi otomatis. <span style="color:var(--gray-500)">Nominal terinje ke payload QRIS per transaksi.</span></p>
+    <p class="small mt-4">Pelanggan scan, nominal terisi otomatis sesuai tagihan.</p>
     <div class="row center mt-4 wrap">
       <button class="btn btn-primary" id="qris-paid">Sudah dibayar</button>
       <button class="btn btn-secondary" data-close>Tutup</button>
@@ -419,7 +419,7 @@
     openSheet("sheet-ok");
     if(navigator.vibrate) navigator.vibrate(30);
     animateCheck();
-    if(!navigator.onLine){ pending++; setStatus("off", pending); toast("Offline: "+R.rp(t)+" tercatat di perangkat, antre sinkron"); }
+    if(!navigator.onLine){ pending++; setStatus("off", pending); toast("Offline: "+R.rp(t)+" tercatat di perangkat, dikirim saat online"); }
     else { toast("Transaksi "+R.rp(t)+" tersinkron"); }
     putSale(sale).then(function(){ enqueue(sale); drain(); });
   }
