@@ -898,28 +898,47 @@ h1,h2,h3{font-weight:450}
 .picker{padding:44px 0 12px;background:var(--white)}
 @media(max-width:900px){.picker{padding:32px 0 4px}}
 .picker h2{font-size:var(--fs-h2);font-weight:450;letter-spacing:var(--ls-h2);margin:0 0 20px}
-.pick-grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:880px}
-@media(min-width:760px){.pick-grid{grid-template-columns:1fr 1fr}}
-.pick-card{display:flex;flex-direction:column;gap:10px;background:var(--white);
-  border:1px solid var(--gray-100);border-radius:16px;padding:24px;
-  text-decoration:none;color:inherit}
-.pick-card b{font-family:var(--font-display);font-size:1.375rem;font-weight:600}
-.pick-card p{margin:0;font-size:.9375rem;line-height:1.5;color:var(--gray-500)}
-.pick-chip{align-self:flex-start;font-size:12px;font-weight:500;border-radius:9999px;
-  padding:4px 12px;background:var(--gray-100);color:var(--gray-700)}
-.pick-active{border-color:var(--blue-600);background:var(--blue-50)}
-.pick-active p{color:var(--gray-700)}
-.pick-active .pick-chip{background:var(--blue-600);color:#fff}
-.pick-active:hover{border-color:var(--blue-700)}
-.pick-live{border-color:var(--blue-600);background:var(--blue-50)}
-.pick-live p{color:var(--gray-700)}
-.pick-live .pick-chip{background:var(--blue-600);color:#fff}
-.pick-live:hover{border-color:var(--blue-700)}
-.pick-grid.pick-3{max-width:none}
-@media(min-width:1000px){.pick-grid.pick-3{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:760px) and (max-width:999px){.pick-grid.pick-3{grid-template-columns:repeat(2,1fr)}}
-.pick-soon{cursor:default}
-.pick-soon p{color:var(--gray-500)} /* teks tetap AA (4.68:1), nonaktif ditandai label+bentuk */
+/* ============ MODLIST: router modul editorial (gantikan grid kartu pick-card) ============
+   R-14/R-05: hierarki dari nomor + tipografi + baris hairline, bukan kartu identik.
+   Baris 01 = flagship; baris "soon" dim tapi tetap link valid (R-24/R-38).
+   Motif sama dengan .nrow/.nlist (list fitur) -> satu sistem editorial di satu situs. */
+.modlist{border-top:1px solid var(--gray-100)}
+.modrow{display:grid;grid-template-columns:56px 1fr 132px;gap:16px;align-items:start;
+  padding:24px 10px;margin:0 -10px;border-bottom:1px solid var(--gray-100);
+  text-decoration:none;color:inherit;transition:background var(--dur-base)}
+@media(min-width:760px) and (max-width:999px){.modrow{grid-template-columns:48px 1fr 116px}}
+@media(max-width:759px){.modrow{grid-template-columns:40px 1fr;padding:20px 10px}
+  .modrow .mmeta{grid-column:2;flex-direction:row;align-items:center;margin-top:6px}}
+.modrow .no{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--gray-300);
+  letter-spacing:.05em;padding-top:8px;transition:color var(--dur-base)}
+.mcont{display:flex;flex-direction:column;gap:6px}
+.mcont b{font-family:var(--font-display);font-size:1.3125rem;font-weight:700;letter-spacing:-.02em;
+  color:var(--ink);transition:color var(--dur-base)}
+.mdesc{font-size:.9375rem;line-height:1.5;color:var(--gray-500);max-width:62ch}
+.mchip{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:0;color:var(--blue-700);
+  background:var(--blue-50);border:1px solid var(--blue-100);border-radius:8px;padding:4px 10px;
+  align-self:flex-start;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:559px){.mchip{white-space:normal}}
+.mmeta{display:flex;flex-direction:column;align-items:flex-end;gap:8px;padding-top:2px}
+.mst{font-size:12px;font-weight:500;color:var(--gray-500)}
+.modrow .arr{width:18px;height:18px;color:var(--gray-300);
+  transition:transform var(--dur-base) var(--ease-emphasized),color var(--dur-base)}
+.modrow:hover{background:linear-gradient(90deg,var(--gray-25),transparent 72%)}
+.modrow:hover .no{color:var(--blue-600)}
+.modrow:hover b{color:var(--blue-700)}
+.modrow:hover .arr{transform:translateX(4px);color:var(--blue-600)}
+.modrow:focus-visible{outline:2px solid var(--blue-600);outline-offset:-2px}
+/* 01 = flagship: nomor aksen + judul lebih besar + chip hasil terisi (satu momen aksen) */
+.modrow.fg .no{color:var(--blue-600)}
+.modrow.fg b{font-size:1.5rem}
+.modrow.fg .mchip{background:var(--blue-600);border-color:var(--blue-600);color:#fff}
+/* "segera hadir": dim tapi link-nya tetap jalan (halamannya memang ada) */
+.modrow.soon .mcont b,.modrow.soon .mdesc{opacity:.62}
+.modrow.soon .mchip{background:var(--gray-50);border-color:var(--gray-100);color:var(--gray-500)}
+/* stagger reveal (pola [data-reveal].stagger yang sudah ada di main.css) */
+.modlist.stagger>*{opacity:0;transform:translateY(14px);transition:opacity var(--dur-slow) var(--ease-standard),transform var(--dur-slow) var(--ease-standard)}
+.modlist.stagger.in>*{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.modlist.stagger>*{transition:none}}
 
 /* -- motion guard (B: transform/opacity saja) -- */
 @media (prefers-reduced-motion:reduce){
