@@ -1174,3 +1174,51 @@ body.home .small b{font-variant-numeric:tabular-nums}
   /* Section number ghost (v24) turun di mobile: jangan makan vertikal */
   body.home main>section>.container::before{top:-26px; font-size:11px}
 }
+
+/* ============ v25c: potong konten mobile (homepage, <=759px) ============ */
+@media(max-width:759px){
+  /* HERO: kurangi ruang, gambar tetap pintu demo */
+  body.home .hero{padding:28px 0}
+  .hero-inner{gap:16px}
+  .hero-inner h1{font-size:clamp(2rem,7vw,2.375rem); line-height:1.08}
+  .hero-inner .sub{font-size:15px; margin-top:10px}
+  .hero-visual{max-width:262px; margin-top:4px}
+  .hero-visual img{border-radius:14px}
+  .hero-struk{margin-top:18px}
+  .cta-row{margin-top:14px}
+
+  /* PICKER: rail ringkas + baris rapat */
+  .pick-rail .eyebrow{margin-bottom:6px}
+  .pick-rail h2{font-size:1.5rem; margin:6px 0 0}
+  .pick-rail .small{display:none}
+  .pick-count{display:none}
+  .modrow{padding:14px 10px; gap:10px}
+  .modrow b{font-size:16px}
+  .modrow .mdesc{font-size:13.5px; line-height:1.4}
+  .mchip{font-size:11.5px}
+  .fg .mnum{font-size:1.3rem}
+
+  /* HARGA: kartu ringkas + close ringkas */
+  #harga .sec-head{margin-bottom:18px}
+  #harga .sec-head .sub{display:none}
+  .price-card{padding:18px}
+  .price-card.active{padding:18px}
+  .price-card .price-val{font-size:2rem}
+  .price-list{gap:8px; margin-bottom:16px}
+  .price-list li{font-size:13.5px}
+  .price-card .btn{margin-top:14px}
+  body.home .price-close{padding-top:28px; margin-top:32px}
+  body.home .price-close h2{font-size:clamp(1.6rem,6.5vw,2rem)}
+  body.home .price-close .sub{font-size:14px; margin:10px auto 0}
+  body.home .price-close .cta-row{margin-top:18px}
+  #harga .fnote{margin-top:14px}
+
+  /* FOOTER: rapat */
+  .foot{padding:32px 0 24px}
+  .foot-grid{gap:22px}
+  .foot-h{margin-bottom:10px; font-size:12px}
+  .foot ul{gap:7px}
+  .foot a{font-size:13px}
+  .foot .legal{font-size:12px; margin-top:8px}
+  .foot .small{margin-top:14px; font-size:12px}
+}
