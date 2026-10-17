@@ -1350,3 +1350,14 @@ body.home .small b{font-variant-numeric:tabular-nums}
   body.home main>section>.container::before{display:none}
   body.home .tlist>.item::before{display:none}
 }
+
+/* [landing-fix] L33 (2026-10-18): footer mobile — target sentuh >=44px, 1 kolom + pemisah.
+   Desktop >=760px tak berubah (grid 2fr 1fr 1fr 1fr). Paragraf hukum dicek <=4 baris di 360px. */
+@media(max-width:759px){
+  .foot-grid{grid-template-columns:1fr; gap:0}
+  .foot-grid > *{padding:16px 0}
+  .foot-grid > * + *{border-top:1px dashed var(--gray-300)}
+  .foot ul{gap:0}
+  .foot ul a{display:flex; align-items:center; min-height:44px}
+  .foot-h{margin-bottom:6px}
+}
