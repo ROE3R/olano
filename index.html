@@ -298,6 +298,17 @@
       </div>
     </div>
     <p class="price-strip visually-hidden">Gratis Rp0. Pro Rp50.000 per outlet per bulan.</p>
+    <!-- [landing-fix] L30/K1 (2026-10-18): jalur WhatsApp = tombol non-dead, label jujur "nomor menyusul".
+         TODO shared-fix (wave 3): begitu config.js wa.services terisi nomor, ubah button -> <a class="btn btn-wa"
+         href="https://wa.me/{nomor}?text=..." data-wa-kind="services"> (pesan terisi otomatis) dan buang note. -->
+    <div class="wa-row" id="wa-services">
+      <button type="button" class="btn btn-wa" id="wa-btn" data-wa-kind="services" aria-expanded="false" aria-controls="wa-note">
+        <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-chat"/></svg>
+        <span>WhatsApp</span>
+        <span class="wa-soon">nomor menyusul</span>
+      </button>
+      <p class="hint" id="wa-note" hidden>Nomor WhatsApp menyusul. Sementara, coba dulu demo kasirnya &mdash; gratis, tanpa akun.</p>
+    </div>
     <div class="price-close">
       <h2>Mulai jualan lebih rapi hari ini.</h2>
       <p class="sub">Tanpa kartu, tanpa install. Buka kasir, transaksi pertama dalam 3 menit.</p>
@@ -424,6 +435,15 @@ note.innerHTML = "<b>Omzet tahunan "+window.OLANO.rp(annual)+".</b> Dasar kena (
   })(chips[ci]);
   var clr = document.getElementById("omzet-clear");
   if(clr) clr.addEventListener("click",function(){ om.value=""; calc(); om.focus(); });
+})();
+/* L30: tombol WhatsApp non-dead (K1: nomor belum ada) -> klik menampilkan info jelas, bukan link mati */
+(function(){
+  var b=document.getElementById("wa-btn"), n=document.getElementById("wa-note");
+  if(!b||!n) return;
+  b.addEventListener("click",function(){
+    n.hidden=!n.hidden;
+    b.setAttribute("aria-expanded", String(!n.hidden));
+  });
 })();
 // Testimoni CONTOH: render dari config.testimonials (satu tempat edit = swap nanti)
 (function(){

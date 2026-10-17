@@ -805,6 +805,14 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
    pemisah hairline putus-putus (motif struk) antara hasil dan input di bawahnya. */
 .calc-out-box.calc-out-top{margin-bottom:16px; padding-bottom:14px; border-bottom:1px dashed var(--gray-300)}
 
+/* [landing-fix] L30 + K1 (2026-10-18): tombol WhatsApp di bawah kartu harga, 48px, label jujur.
+   btn-wa (hijau atas putih, teks #0a5c36 ~7.5:1) sudah ada di sistem; row-nya yang baru. */
+.wa-row{margin-top:24px; display:flex; flex-direction:column; align-items:center; gap:10px}
+.wa-row .btn-wa{min-height:48px}
+.wa-row .wa-soon{font-family:var(--font-mono); font-size:12px; font-weight:500; color:var(--gray-500); letter-spacing:.02em}
+.wa-row #wa-note{max-width:42ch; text-align:center}
+@media(max-width:759px){.wa-row .btn-wa{width:100%; max-width:360px}}
+
 /* ==================== B-ATMOSPHERE + PICKER REBUILD v9 ====================
    Tipografi/motion/atmosfer = ref B (thedaydream.studio, ukur 16-10):
    Aspekta (bukti ukur: h2 28.9/450/ls-0.02, hero title 87/600/ls-0.04,
