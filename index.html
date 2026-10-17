@@ -30,6 +30,13 @@
 <body class="home">
 <a class="skip" href="#main">Langsung ke isi</a>
 
+<div class="ticker" id="ticker" role="note" aria-label="Pengumuman">
+  <div class="container ticker-row">
+    <p class="ticker-text">Kasir offline-first &middot; QRIS dinamis MDR 0% &middot; PPh final 0,5% (PP 20/2026) &middot; PWA v24</p>
+    <button type="button" class="ticker-x" id="ticker-x" aria-label="Tutup pengumuman">&times;</button>
+  </div>
+</div>
+
 <header class="nav" id="nav">
   <div class="container nav-inner">
     <a class="logo" href="index.html"><span class="mark">O</span>Olano</a>
@@ -72,6 +79,11 @@
       <h1>Sistem jualan untuk UMKM yang tetap jalan saat internet <em class="it-serif" style="color:var(--blue-800)">mati</em>.</h1>
       <p class="sub">Kasir offline menyimpan tiap transaksi di perangkat. Stok dan QRIS tetap tercatat, rekap PPh final 0,5% sesuai PP 20/2026 dihitung otomatis.</p>
       <div class="cta-row"><a class="btn btn-primary pill btn-lg" href="kasir.html">Coba kasir gratis</a></div>
+      <div class="hero-struk" data-reveal aria-hidden="true">
+        <span class="hs-row"><span>QRIS Rp40.000</span><span>MDR 0%</span></span>
+        <span class="hs-row"><span>Omzet Rp60.000.000/bln</span><span>PPh final</span></span>
+        <span class="hs-row hs-total"><span>PPh final 0,5%</span><span>Rp91.667</span></span>
+      </div>
       <figure class="hero-visual">
         <picture>
           <source media="(max-width: 759px)" srcset="assets/img/produk-kasir-mobile.webp 1x, assets/img/produk-kasir-mobile-2x.webp 2x" type="image/webp">
@@ -82,6 +94,7 @@
       </figure>
     </div>
   </div>
+  <div class="hero-cue" aria-hidden="true"></div>
 </section>
 
 <!-- ============ 1b. ROUTER MODUL (editorial numbered list, bukan grid kartu) ============ -->
@@ -175,12 +188,12 @@
 </section>
 
 <!-- ============ 4. PAJAK ============ -->
-<section class="section alt-deep" id="pajak">
+<section class="section section-dark" id="pajak">
   <div class="container">
     <div class="tax-grid2">
       <div>
         <h2>Pajak UMKM berubah di 2026. Tiga aturan yang berlaku.</h2>
-        <div class="callout light" style="margin-top:20px"><b>Aturan 2026:</b> PPh final 0,5% untuk orang pribadi, PT Perorangan, dan koperasi, maksimal 4 tahun. OP dengan omzet di atas Rp500 juta per tahun mulai kena. Omzet di atas Rp4,8 miliar keluar dari skema final.</div>
+        <div class="callout" style="margin-top:20px"><b>Aturan 2026:</b> PPh final 0,5% untuk orang pribadi, PT Perorangan, dan koperasi, maksimal 4 tahun. OP dengan omzet di atas Rp500 juta per tahun mulai kena. Omzet di atas Rp4,8 miliar keluar dari skema final.</div>
         <div style="margin-top:24px">
           <a class="btn btn-secondary pill" href="pajak.html">Lihat panduan pajak lengkap</a>
         </div>
@@ -242,6 +255,7 @@
         <p class="hint" style="margin-top:16px">Layanan pajak dan website custom tersedia per penawaran lewat WhatsApp.</p>
       </div>
     </div>
+    <p class="price-strip" aria-hidden="true">Gratis Rp0 &middot; Pro Rp50rb/bulan &middot; 14 hari coba</p>
     <div class="price-close">
       <h2>Mulai jualan lebih rapi hari ini.</h2>
       <p class="sub">Tanpa kartu, tanpa install. Buka kasir, transaksi pertama dalam 3 menit.</p>

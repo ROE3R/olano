@@ -319,9 +319,23 @@
   }
 
   function init() {
+
+  /* Ticker dismiss (homepage v24, sessionStorage olano-ticker-dismissed) */
+  function initTicker(){
+    var t = document.getElementById("ticker");
+    if(!t) return;
+    try{ if(sessionStorage.getItem("olano-ticker-dismissed")){ t.hidden = true; return; } }catch(e){}
+    var x = document.getElementById("ticker-x");
+    if(x) x.addEventListener("click", function(){
+      t.hidden = true;
+      try{ sessionStorage.setItem("olano-ticker-dismissed", "1"); }catch(e){}
+    });
+  }
+
     initNav(); initReveal(); initCountUp(); initFaq();
     initSpotlight(); initSlideNum(); initHeroScenes();
     initOfflineDemo(); initMarquee(); initBeforeAfter(); initRings();
+    initTicker();
     registerSW();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

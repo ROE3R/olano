@@ -949,3 +949,152 @@ body.home .picker{padding:120px 0}
 .svg-fig{margin:40px auto 0;max-width:520px;width:100%}
 .svg-fig svg{display:block;width:100%;height:auto;background:var(--gray-25);
   border:1px solid var(--gray-100);border-radius:16px}
+
+/* ==================== STRUK LEDGER ELEVATION v24 (homepage, body.home-scoped) ==================== */
+/* Struk-dash alias + nomor section global (C.1, C.2) */
+body.home{--struk-dash:1px dashed var(--gray-300); --struk-num:var(--font-mono)}
+body.home main{counter-reset:sec}
+body.home main>section>.container{position:relative}
+body.home main>section>.container::before{
+  counter-increment:sec;
+  content:"0" counter(sec) / "";
+  position:absolute; top:-34px; left:24px;
+  font-family:var(--struk-num); font-size:12px; font-weight:500;
+  letter-spacing:.08em; color:var(--gray-300); font-variant-numeric:tabular-nums;
+}
+body.home #pajak>.container::before{color:rgba(255,255,255,.34)}
+
+/* C.3 hero struk readout */
+.hero-struk{
+  width:min(420px,88%); margin:36px auto 0; padding:14px 18px;
+  border:var(--struk-dash); border-radius:var(--r-md); background:rgba(255,255,255,.66);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  display:flex; flex-direction:column; gap:8px;
+}
+.hs-row{display:flex; justify-content:space-between; gap:16px;
+  font-family:var(--struk-num); font-size:13px; color:var(--gray-700);
+  font-variant-numeric:tabular-nums; letter-spacing:.01em}
+.hs-total{border-top:1px solid var(--ink); padding-top:9px; color:var(--ink); font-weight:600}
+.hs-total span:last-child{color:var(--blue-700)}
+body.home .hero-struk{opacity:0; transform:translateY(8px);
+  transition:opacity .6s var(--ease-emphasized) .35s, transform .6s var(--ease-emphasized) .35s}
+body.home .hero-struk.in{opacity:1; transform:none}
+body.home .hero-cue{position:absolute; left:50%; bottom:22px; width:1px; height:44px;
+  background:linear-gradient(180deg, var(--blue-600), transparent); opacity:.55;
+  transform-origin:top; animation:cueDrop 2.2s var(--ease-emphasized) 1s 2 both}
+@keyframes cueDrop{0%{transform:scaleY(0)}55%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* C.4 picker refinements */
+body.home .modrow .no{position:relative; padding-top:8px}
+body.home .mst{display:inline-flex; align-items:center; gap:6px}
+body.home .mst::before{content:""; width:6px; height:6px; border-radius:50%;
+  background:var(--success); flex:none}
+body.home .modrow.soon .mst::before{background:var(--gray-300)}
+@media(hover:hover){body.home .modrow:hover{box-shadow:inset 2px 0 0 var(--blue-600)}}
+body.home .mnum{font-size:clamp(1.6rem,2.2vw,1.9rem)}
+
+/* C.5 alat: nomor baris counter */
+body.home .tlist{counter-reset:tl}
+body.home .trow::before{
+  counter-increment:tl;
+  content:"0" counter(tl) / "";
+  font-family:var(--struk-num); font-size:13px; font-weight:500;
+  color:var(--gray-300); min-width:28px; flex:none;
+  font-variant-numeric:tabular-nums; letter-spacing:.05em;
+}
+body.home .trow:hover::before{color:var(--blue-600)}
+body.home .trow b{min-width:0}
+
+/* C.6 pajak dark band */
+body.home #pajak{background:var(--blue-950)}
+body.home #pajak h2{color:#fff; max-width:26ch}
+body.home #pajak .callout{margin-top:20px}
+body.home #pajak .hint{color:var(--gray-300)}
+body.home #pajak .calc-card{box-shadow:0 24px 64px -16px rgba(0,0,0,.45)}
+body.home #pajak .calc-out-box b{font-variant-numeric:tabular-nums}
+
+/* C.7 harga: line-item struk + PALING LARIS (open-design) + price-close H1 */
+body.home .price-list li{border-bottom:1px dashed var(--gray-100); padding-bottom:10px}
+body.home .price-list{gap:12px}
+body.home .price-card.active{position:relative}
+/* label open-design: pill mono di ATAS kartu Pro (straddle top edge, di luar kartu) */
+body.home .price-card.active::before{
+  content:"PALING LARIS"; position:absolute; top:-11px; left:24px;
+  font-family:var(--struk-num); font-size:11px; font-weight:600;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--blue-600);
+  background:var(--white); border:1px solid var(--blue-200); border-radius:var(--r-full);
+  padding:3px 12px; line-height:1.4;
+}
+body.home .price-strip{font-family:var(--struk-num); font-size:12px; letter-spacing:.05em;
+  color:var(--gray-500); text-align:center; margin:16px auto 0; font-variant-numeric:tabular-nums}
+body.home .price-close{border-top:var(--struk-dash); padding-top:72px}
+body.home .price-close h2{font-size:var(--fs-h1); font-weight:600; letter-spacing:var(--ls-h1);
+  line-height:1.1; max-width:18ch; margin:0 auto}
+
+/* C.8 footer colophon tear */
+body.home .foot{border-top:1px dashed var(--gray-300)}
+body.home .foot .legal{font-family:var(--struk-num); font-size:12px; letter-spacing:.01em}
+
+/* C.9 detail global + guards */
+body.home a:focus-visible{outline-offset:-2px}
+body.home .small b{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){
+  body.home .hero-struk{transition:none; opacity:1; transform:none}
+  body.home .hero-cue{animation:none; opacity:.35}
+}
+
+/* ==================== TICKER v24 (announcement strip, homepage) ==================== */
+.ticker{background:var(--blue-950); color:var(--blue-100); border-bottom:1px solid rgba(255,255,255,.08)}
+.ticker[hidden]{display:none}
+.ticker-row{display:flex; align-items:center; gap:12px; min-height:38px; padding-top:6px; padding-bottom:6px}
+.ticker-text{flex:1 1 auto; min-width:0; margin:0;
+  font-family:var(--font-mono); font-size:11.5px; letter-spacing:.04em;
+  font-variant-numeric:tabular-nums; color:var(--blue-100); line-height:1.5}
+.ticker-x{flex:none; width:28px; height:28px; margin-left:auto;
+  display:inline-grid; place-items:center;
+  background:transparent; border:0; border-radius:var(--r-full);
+  color:var(--blue-100); font-size:16px; line-height:1; cursor:pointer}
+.ticker-x:hover{background:rgba(255,255,255,.12)}
+.ticker-x:focus-visible{outline:2px solid var(--blue-200); outline-offset:2px}
+
+/* ==================== LOGIN SPLIT STANCE v24 ==================== */
+.auth-shell{min-height:100svh; display:grid; grid-template-columns:1fr; background:var(--white)}
+.auth-brand{background:var(--grad-navy); color:#fff;
+  padding:var(--sp-6) var(--sp-6) var(--sp-6);
+  display:flex; flex-direction:column; gap:var(--sp-6)}
+.auth-logo{color:#fff}
+.auth-logo .mark{width:28px; height:28px}
+.auth-brand .eyebrow{color:var(--blue-300); font-size:var(--fs-eyebrow)}
+.auth-tagline{font-family:var(--font-display); font-size:clamp(1.75rem,4.5vw,2.375rem);
+  font-weight:600; letter-spacing:var(--ls-h2); line-height:1.12; max-width:18ch; margin-top:var(--sp-3)}
+.auth-readout{margin-top:auto; font-family:var(--font-mono); font-size:11.5px; line-height:1.9;
+  letter-spacing:.04em; color:var(--blue-300); border-top:1px solid rgba(255,255,255,.16);
+  padding-top:var(--sp-3)}
+.auth-dot{display:inline-block; width:7px; height:7px; border-radius:50%; background:#5FE89A;
+  margin-right:8px; vertical-align:1px}
+.auth-home{color:var(--blue-200)}
+@media(min-width:880px){
+  .auth-shell{grid-template-columns:1.05fr 1fr}
+  .auth-brand{padding:var(--sp-8)}
+}
+.auth-form-col{display:flex; align-items:center; justify-content:center;
+  padding:var(--sp-6) var(--gutter) var(--sp-12)}
+.auth-card{width:100%; max-width:460px; background:#fff; border:1px solid var(--gray-100);
+  border-radius:var(--r-xl); padding:var(--sp-6) var(--sp-6); box-shadow:var(--sh-card);
+  animation:authIn var(--dur-slow) var(--ease-emphasized) both}
+@keyframes authIn{from{opacity:0; transform:translateY(10px)}to{opacity:1; transform:none}}
+.auth-card h1{font-size:1.75rem; font-weight:650; letter-spacing:var(--ls-h2)}
+.auth-sub{color:var(--gray-500); font-size:var(--fs-small); margin-top:6px}
+.auth-tabs{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:var(--sp-6) 0 var(--sp-4)}
+.auth-tabs button{min-height:44px; border:1px solid var(--gray-300); border-radius:var(--r-full);
+  background:#fff; font-weight:600; font-size:14px; color:var(--gray-500);
+  transition:border-color var(--dur-fast), background var(--dur-fast), color var(--dur-fast)}
+.auth-tabs button.on{border-color:var(--blue-600); background:var(--blue-600); color:#fff}
+.auth-demo{margin-top:var(--sp-4); background:var(--blue-50); border:1px solid var(--blue-100);
+  border-left:3px solid var(--blue-600); border-radius:var(--r-md); padding:12px 16px;
+  font-family:var(--font-mono); font-size:13px; color:var(--gray-700)}
+.auth-demo b{color:var(--blue-700); font-weight:700}
+.auth-note{color:var(--gray-500); font-size:12px; line-height:1.55; margin-top:var(--sp-4); text-align:center}
+.auth-note a{color:var(--blue-700); font-weight:600}
+.auth-card .callout{border-left:3px solid var(--warning)}
+@media (prefers-reduced-motion:reduce){.auth-card{animation:none}}
