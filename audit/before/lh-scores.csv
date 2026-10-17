@@ -1,4 +1,4 @@
-file,perf,a11y,bp,seo,fcp,cls,inp
+file,perf,a11y,bp,seo,fcp,cls,lcp
 ai.html,96,100,100,100,2.0 s,0.001,2.5 s
 alat-kalkulator-biaya-qris.html,96,100,96,100,2.0 s,0,2.4 s
 alat-kalkulator-hpp-harga-jual.html,97,100,96,100,1.8 s,0,2.3 s
