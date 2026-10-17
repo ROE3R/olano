@@ -813,6 +813,18 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
 .wa-row #wa-note{max-width:42ch; text-align:center}
 @media(max-width:759px){.wa-row .btn-wa{width:100%; max-width:360px}}
 
+/* [landing-fix] L14/L15 (2026-10-18): baris modul ringkas di mobile (target 72-96px):
+   judul + 1 baris desc (line-clamp 1); chip rumus "contoh · ..." disembunyikan di ≤759px
+   (rumus pecah 2-3 baris di 360px = L15; teks tetap utuh di desktop/tablet & halaman tujuan).
+   Guard drag-vs-tap (jangan navigasi saat jari menyeret) ada di motion.js initModrowTap(). */
+@media(max-width:759px){
+  .modrow{padding:14px 10px}
+  .modrow .mchip{display:none}
+  .modrow .mdesc{display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden}
+  .modrow .no{padding-top:2px}
+  .mcont{gap:2px}
+}
+
 /* ==================== B-ATMOSPHERE + PICKER REBUILD v9 ====================
    Tipografi/motion/atmosfer = ref B (thedaydream.studio, ukur 16-10):
    Aspekta (bukti ukur: h2 28.9/450/ls-0.02, hero title 87/600/ls-0.04,

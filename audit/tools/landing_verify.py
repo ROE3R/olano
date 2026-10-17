@@ -5,7 +5,7 @@ Pola dari cdp_pos.py (Fase 0). Run: python3 audit/tools/landing_verify.py <cmd>
   sizes   - viewport shot 390x844 + 768x900
   measure - scrollHeight (L35) + posisi CTA (C3) @360
 """
-import base64, json, subprocess, time, urllib.request, urllib.parse, websocket, os, sys
+import base64, json, subprocess, time, urllib.request, urllib.parse, websocket, os, sys, shutil, tempfile
 
 CHROME = "/usr/bin/google-chrome"
 PORT = 9343
@@ -14,12 +14,15 @@ OUT = "/root/olano/audit/uiux/landing-after"
 os.makedirs(OUT, exist_ok=True)
 
 def launch():
+    # profil BARU per launch: hindari disk cache Chrome menyajikan CSS/JS lama (sudah kejadian)
+    prof = tempfile.mkdtemp(prefix="chrome-lfix-")
     p = subprocess.Popen([
         CHROME, "--headless=new", "--no-sandbox", "--disable-gpu",
         "--remote-debugging-port=%d" % PORT, "--remote-allow-origins=*",
-        "--user-data-dir=/tmp/chrome-landing-fix", "--window-size=500,900",
+        "--user-data-dir=%s" % prof, "--window-size=500,900",
         "--hide-scrollbars", "about:blank"],
         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    p._prof = prof
     for _ in range(60):
         try:
             with urllib.request.urlopen("http://127.0.0.1:%d/json/version" % PORT, timeout=1) as r:
@@ -29,21 +32,31 @@ def launch():
             time.sleep(0.5)
     raise RuntimeError("chrome not ready")
 
+def kill(p):
+    if not p:
+        return
+    p.terminate()
+    shutil.rmtree(getattr(p, "_prof", ""), ignore_errors=True)
+
 class Tab:
     def __init__(self, url, w=360, h=800):
         for attempt in range(6):
-            req = urllib.request.Request("http://127.0.0.1:%d/json/new?%s" % (PORT, urllib.parse.quote(url)), method="PUT")
+            # tab blank dulu -> set emulation SEBELUM navigasi (maxTouchPoints ikut ter-set)
+            req = urllib.request.Request("http://127.0.0.1:%d/json/new?about:blank" % PORT, method="PUT")
             with urllib.request.urlopen(req) as r:
                 t = json.loads(r.read())
             self.ws = websocket.create_connection(t["webSocketDebuggerUrl"], timeout=30)
             self.i = 0
             self.w, self.h = w, h
             self.send("Emulation.setDeviceMetricsOverride", width=w, height=h, deviceScaleFactor=2, mobile=True)
+            self.send("Emulation.setTouchEmulationEnabled", enabled=True, maxTouchPoints=5)
+            self.send("Page.navigate", url=url)
             t0 = time.time()
             ok = False
-            while time.time() - t0 < 8:
+            while time.time() - t0 < 10:
                 try:
-                    if self.js("location.href") and url.split("#")[0] in self.js("location.href"):
+                    href = self.js("location.href")
+                    if href and url.split("#")[0] in href and self.js("document.readyState") in ("interactive", "complete"):
                         ok = True
                         break
                 except Exception:
@@ -183,7 +196,7 @@ def cmd_l24():
         t.clip_of("after-L24-calc-360.png", "#pajak .calc-card", pad=16)
         t.close()
     finally:
-        p.terminate()
+        kill(p)
 
 def cmd_top():
     p = launch()
@@ -203,7 +216,7 @@ def cmd_top():
         t3.shot("after-390x844.png")
         t3.close()
     finally:
-        p.terminate()
+        kill(p)
 
 def cmd_l25():
     p = launch()
@@ -228,7 +241,7 @@ def cmd_l25():
         t.clip_of("after-L25-calc-360.png", "#pajak .calc-card", pad=16)
         t.close()
     finally:
-        p.terminate()
+        kill(p)
 
 def cmd_full():
     p = launch()
@@ -238,7 +251,7 @@ def cmd_full():
         print("scrollHeight@360 =", t.js("document.documentElement.scrollHeight"))
         t.close()
     finally:
-        p.terminate()
+        kill(p)
 
 def cmd_measure():
     p = launch()
@@ -258,7 +271,7 @@ def cmd_measure():
             print("M", k, "=", v)
         t.close()
     finally:
-        p.terminate()
+        kill(p)
 
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "measure"
