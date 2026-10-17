@@ -813,6 +813,10 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
 .wa-row #wa-note{max-width:42ch; text-align:center}
 @media(max-width:759px){.wa-row .btn-wa{width:100%; max-width:360px}}
 
+/* [landing-fix] L28 (2026-10-18): 1 butir harga = 1 hal; angka batas jadi teks sekunder abu-abu. */
+.price-list li:has(.pli-sub){align-items:flex-start}
+.price-list .pli-sub{display:block; font-size:12px; color:var(--gray-500); margin-top:2px; line-height:1.4}
+
 /* [landing-fix] L14/L15 (2026-10-18): baris modul ringkas di mobile (target 72-96px):
    judul + 1 baris desc (line-clamp 1); chip rumus "contoh · ..." disembunyikan di ≤759px
    (rumus pecah 2-3 baris di 360px = L15; teks tetap utuh di desktop/tablet & halaman tujuan).
