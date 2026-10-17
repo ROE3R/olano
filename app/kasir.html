@@ -13,6 +13,10 @@
 </head>
 <body class="pos-app">
 <a class="skip" href="#produk">Langsung ke kasir</a>
+<div id="pos-sw-banner" class="pos-banner" hidden>
+  <span>Ada versi baru aplikasi.</span>
+  <button type="button" id="pos-sw-reload">Muat ulang</button>
+</div>
 
 <header class="pos-top">
   <div class="row" style="gap:10px">
@@ -612,6 +616,26 @@
   function closeSheet(id){
     document.getElementById(id).classList.remove("open"); document.body.style.overflow = "";
   }
+  /* [pos-fix] P0.6: service worker (reload offline) + banner pembaruan non-modal (brief 5.2.J) */
+  (function(){
+    var swb = document.getElementById("pos-sw-banner");
+    if(!("serviceWorker" in navigator)){ return; }
+    navigator.serviceWorker.register("../sw.js").catch(function(){});
+    var reloadAfterUpdate = false;
+    navigator.serviceWorker.addEventListener("controllerchange", function(){
+      if(reloadAfterUpdate) location.reload(); /* hanya bila pengguna menekan Muat ulang */
+    });
+    navigator.serviceWorker.addEventListener("message", function(e){
+      if(e.data && e.data.type === "OLANO_SW_WAITING"){ reloadAfterUpdate = true; swb.hidden = false; }
+    });
+    document.getElementById("pos-sw-reload").addEventListener("click", function(){
+      if(navigator.serviceWorker.controller){
+        reloadAfterUpdate = true;
+        navigator.serviceWorker.controller.postMessage("SKIP_WAITING");
+        setTimeout(function(){ location.reload(); }, 1200); /* fallback bila SW lambat */
+      } else location.reload();
+    });
+  })();
   document.querySelectorAll(".sheet [data-close]").forEach(function(el){
     el.addEventListener("click", function(){ closeSheet(el.closest(".sheet").id); });
   });
