@@ -80,9 +80,9 @@
       </button>
     </div>
     <div data-stage class="tools-grid mt-6" style="max-width:720px;margin:24px auto 0">
-      <button data-tap class="demo-prod"><span class="feat-ic" style="margin:0"><svg class="ic"><use href="assets/icons.svg#i-cup"/></svg></span><b>Es Kopi</b><span class="mono small">Rp22.000</span></button>
-      <button data-tap class="demo-prod"><span class="feat-ic" style="margin:0"><svg class="ic"><use href="assets/icons.svg#i-cake"/></svg></span><b>Kue</b><span class="mono small">Rp15.000</span></button>
-      <button data-tap class="demo-prod"><span class="feat-ic" style="margin:0"><svg class="ic"><use href="assets/icons.svg#i-box"/></svg></span><b>Keripik</b><span class="mono small">Rp8.000</span></button>
+      <button data-tap class="demo-prod"><span class="demo-thumb"><img src="assets/img/food/tkopi.webp" width="512" height="512" alt="Foto produk es kopi susu" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block"></span><b>Es Kopi</b><span class="mono small">Rp22.000</span></button>
+      <button data-tap class="demo-prod"><span class="demo-thumb"><img src="assets/img/food/tbatik.webp" width="512" height="512" alt="Foto produk kemeja batik" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block"></span><b>Batik</b><span class="mono small">Rp55.000</span></button>
+      <button data-tap class="demo-prod"><span class="demo-thumb"><img src="assets/img/food/tkeripik.webp" width="512" height="512" alt="Foto produk keripik" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block"></span><b>Keripik</b><span class="mono small">Rp8.000</span></button>
     </div>
     <div class="row center mt-6" style="justify-content:center">
       <span class="callout light" style="background:var(--blue-50);border:1px solid var(--blue-100);color:var(--blue-700)" data-live></span>
@@ -159,6 +159,7 @@
 .demo-prod{display:flex;flex-direction:column;align-items:center;gap:6px;background:var(--white);border:1px solid var(--gray-100);
   border-radius:var(--r-lg);padding:20px;cursor:pointer;font-family:inherit;transition:transform var(--dur-base) var(--ease-emphasized),border-color var(--dur-base)}
 .demo-prod b{font-size:14px}.demo-prod .small{font-size:12px}
+.demo-thumb{width:72px;height:72px;border-radius:50%;overflow:hidden;background:var(--gray-50);border:1px solid var(--gray-100)}
 .demo-prod:hover{transform:translateY(-2px);border-color:var(--blue-300)}
 .demo-prod.tapped{border-color:var(--success);background:var(--success-bg)}
 </style>
