@@ -1145,3 +1145,32 @@ body.home .small b{font-variant-numeric:tabular-nums}
 .tst-attr b{font-size:14px; font-weight:600; color:var(--ink); display:block}
 .tst-attr .store{font-size:12px; color:var(--gray-500); display:block; margin-top:2px}
 @media(max-width:759px){.tst-grid{grid-template-columns:1fr; min-height:960px}}
+
+/* ============ v25b: compact mobile (homepage, <=759px) ============ */
+@media(max-width:759px){
+  body.home .section{padding:64px 0}
+  .hero-visual{max-width:300px; margin:0 auto}
+  .tst-card{padding:20px 18px}
+  .tst-quote{font-size:1.1rem; margin-top:12px}
+  .tst-attr{margin-top:10px}
+  #harga .sec-head{margin-bottom:24px}
+  #harga .price-close{padding-top:40px}
+  /* Testimoni mobile = carousel snap (pola bencho.dev/carousel): 1 kartu per layar,
+     min-height 320 = konten terukur (CLS 0), bukan hole 960px */
+  .tst-grid{display:grid; grid-auto-flow:column; grid-auto-columns:85%; gap:12px;
+    overflow-x:auto; scroll-snap-type:x mandatory; min-height:320px; margin-top:28px;
+    padding-bottom:8px; -webkit-overflow-scrolling:touch}
+  .tst-grid .tst-card{scroll-snap-align:center; margin:0}
+  .tst-grid::-webkit-scrollbar{height:6px}
+  .tst-grid::-webkit-scrollbar-thumb{background:var(--gray-300); border-radius:3px}
+}
+/* ============ v25b2: compact mobile lanjutan ============ */
+@media(max-width:759px){
+  body.home .hero{padding:36px 0}
+  .hero-inner{gap:20px}
+  .hero-struk{width:min(340px,92%); margin-top:24px}
+  .hero-cue{display:none}
+  .hero-visual-link .hint{margin-top:8px}
+  /* Section number ghost (v24) turun di mobile: jangan makan vertikal */
+  body.home main>section>.container::before{top:-26px; font-size:11px}
+}
