@@ -53,14 +53,15 @@
 <p class="small" id="sync-note" style="padding:0 var(--gutter);color:var(--gray-500);font-size:12px">Mode demo: transaksi dan stok tersimpan di perangkat ini. Saat offline, transaksi mengantre dan terkirim otomatis saat online.</p>
 
 <div class="row" id="quick-tabs" style="padding:10px var(--gutter);gap:8px">
-  <button class="btn sm on" data-cat="SEMUA" style="min-height:38px">Semua</button>
-  <button class="btn sm" data-cat="MINUM" style="min-height:38px">Minuman</button>
-  <button class="btn sm" data-cat="MAKANAN" style="min-height:38px">Makanan</button>
-  <button class="btn sm" data-cat="KEREK" style="min-height:38px">Keripik</button>
-  <button class="btn btn-wa sm" data-qr="1" style="min-height:38px;margin-left:auto"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/></svg>QRIS</button>
+  <button class="btn sm on" data-cat="SEMUA" style="min-height:44px">Semua</button>
+  <button class="btn sm" data-cat="MINUM" style="min-height:44px">Minuman</button>
+  <button class="btn sm" data-cat="MAKANAN" style="min-height:44px">Makanan</button>
+  <button class="btn sm" data-cat="KEREK" style="min-height:44px">Keripik</button>
+  <button class="btn btn-wa sm" data-qr="1" style="min-height:44px;margin-left:auto"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/></svg>QRIS</button>
 </div>
 
 <main id="produk" class="pos-grid" aria-live="polite"></main>
+<p class="pos-hint" id="pos-hint">Ketuk produk untuk menjual</p>
 
 <!-- bottom bar / cart -->
 <div class="pos-bar" id="bar">
@@ -78,8 +79,8 @@
     <div class="pay-methods" id="pay-methods">
       <button data-m="TUNAI" class="on">Tunai</button>
       <button data-m="QRIS">QRIS</button>
-      <button data-m="TRANSFER">Transfer</button>
-      <button data-m="LAINNYA">Lainnya</button>
+      <button data-m="TRANSFER" hidden>Transfer</button>
+      <button data-m="LAINNYA" hidden>Lainnya</button>
     </div>
     <div id="cash-area" class="field"><label for="cash">Tunai diterima (kembalian otomatis)</label>
       <div class="cash-chips" id="cash-chips"></div>
@@ -522,9 +523,15 @@
         + (qty>0?'<span class="pos-badge" aria-label="Sudah di keranjang">'+qty+'</span>':'')
         + '</button>';
     }).join("");
+    if(!list.length){
+      grid.innerHTML = '<div class="empty-pos"><span aria-hidden="true">🗂️</span><b>Tidak ada produk yang cocok</b><button type="button" class="btn btn-secondary" id="empty-add">Tambah produk</button></div>';
+    }
   }
   grid.addEventListener("click", function(e){
+    var ea = e.target.closest("#empty-add");
+    if(ea){ document.getElementById("menu-produk").click(); return; } /* [pos-fix] P1: satu aksi di empty state */
     var b = e.target.closest(".pos-item"); if(!b) return;
+    var hint = document.getElementById("pos-hint"); if(hint && !hint.hidden) hint.hidden = true; /* [pos-fix] P1: petunjuk pertama hilang setelah ketukan pertama */
     var p = PRODUCTS.find(function(x){ return x.id===b.dataset.id; }); if(!p) return;
     if(p.stock<=0){ toast(p.name+" habis"); return; } /* [pos-fix] P0.2: stok 0 tidak bisa dijual */
     cart[p.id] = (cart[p.id]||0)+1; if(p.stock>0) p.stock--;
@@ -789,11 +796,14 @@
     var storeName = (acc.store || "KOPI SENJA").toUpperCase();
     return '<div class="r-head"><b>'+storeName+'</b><div class="small">struk demo · '+new Date(s.ts).toLocaleString("id-ID")+'</div></div>'
       + rows
-      + '<div class="r-line r-total"><span>Method: '+s.method+'</span><span>'+R.rp(s.total)+'</span></div>'
+      + '<div class="r-line r-total"><span>Metode: '+s.method+'</span><span>'+R.rp(s.total)+'</span></div>'
       + '<div class="small mt-4">uuid '+s.uuid+'</div>';
   }
   document.getElementById("print").addEventListener("click", function(){
-    if(navigator.share){ navigator.share({title:"Struk Olano", text:document.getElementById("receipt").innerText}).catch(function(){}); }
+    if(navigator.share){
+      navigator.share({title:"Struk Olano", text:document.getElementById("receipt").innerText})
+        .catch(function(){ toast("Gagal membagikan struk — coba lagi"); }); /* [pos-fix] P1: gagal share tidak diam-diam */
+    }
     else window.print();
   });
   function animateCheck(){
@@ -804,10 +814,12 @@
 
   function openSheet(id){
     var s = document.getElementById(id); s.classList.add("open"); document.body.style.overflow = "hidden";
+    s._lastFocus = document.activeElement; /* [pos-fix] P1: simpan fokus utk dikembalikan saat tutup */
     var f = s.querySelector("button.btn, .panel"); if(f) f.focus();
   }
   function closeSheet(id){
-    document.getElementById(id).classList.remove("open"); document.body.style.overflow = "";
+    var s = document.getElementById(id); s.classList.remove("open"); document.body.style.overflow = "";
+    if(s._lastFocus && s._lastFocus.focus){ try{ s._lastFocus.focus(); }catch(e){} } /* [pos-fix] P1: fokus kembali ke pemicu, bukan skip-link */
   }
   /* [pos-fix] P0.6: service worker (reload offline) + banner pembaruan non-modal (brief 5.2.J) */
   (function(){
