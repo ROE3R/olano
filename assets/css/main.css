@@ -801,6 +801,10 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
 .omzet-chips button:hover{border-color:var(--blue-400); color:var(--blue-600)}
 .omzet-chips button.on{background:var(--blue-600); border-color:var(--blue-600); color:#fff; box-shadow:var(--sh-sm)}
 
+/* [landing-fix] L25 (2026-10-18): #tax-out dipindah DI ATAS input omzet (di DOM index.html);
+   pemisah hairline putus-putus (motif struk) antara hasil dan input di bawahnya. */
+.calc-out-box.calc-out-top{margin-bottom:16px; padding-bottom:14px; border-bottom:1px dashed var(--gray-300)}
+
 /* ==================== B-ATMOSPHERE + PICKER REBUILD v9 ====================
    Tipografi/motion/atmosfer = ref B (thedaydream.studio, ukur 16-10):
    Aspekta (bukti ukur: h2 28.9/450/ls-0.02, hero title 87/600/ls-0.04,

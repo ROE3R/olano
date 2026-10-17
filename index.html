@@ -241,6 +241,10 @@
               <option value="CV">CV / Firma</option>
             </select>
           </div>
+          <div id="tax-out" aria-live="polite" class="calc-out-box calc-out-top">
+            <div class="out-hero"><b id="tax-result">Rp166.667</b><span class="small">per bulan, PPh final 0,5%</span></div>
+            <div class="callout" id="tax-note"><b>Omzet tahunan Rp900 juta.</b> Di atas Rp500 juta, OP kena PPh final 0,5%.</div>
+          </div>
           <div class="field"><label for="tax-omzet">Omzet per bulan (Rp)</label>
             <div class="omzet-wrap">
               <span class="omzet-prefix" aria-hidden="true">Rp</span>
@@ -253,10 +257,6 @@
               <button type="button" data-omzet="60000000">60 jt</button>
               <button type="button" data-omzet="100000000">100 jt</button>
             </div>
-          </div>
-          <div id="tax-out" aria-live="polite" class="calc-out-box">
-            <div class="out-hero"><b id="tax-result">Rp166.667</b><span class="small">per bulan, PPh final 0,5%</span></div>
-            <div class="callout" id="tax-note"><b>Omzet tahunan Rp900 juta.</b> Di atas Rp500 juta, OP kena PPh final 0,5%.</div>
           </div>
           <p class="hint" style="margin-top:16px">Estimasi, bukan nasihat pajak. Memakai mesin pajak yang sama dengan aplikasi.</p>
         </div>
@@ -401,6 +401,11 @@ note.innerHTML = "<b>Omzet tahunan "+window.OLANO.rp(annual)+".</b> Dasar kena (
     }
   }
   wp.addEventListener("input",calc); calc();
+  /* L25: hasil kini DI ATAS input; saat mengetik (keyboard terbuka), jaga hasil tetap terlihat */
+  var out = document.getElementById("tax-out");
+  om.addEventListener("input",function(){
+    setTimeout(function(){ if(out && out.scrollIntoView) out.scrollIntoView({block:"nearest"}); },80);
+  });
   /* L24: format ribuan LIVE tanpa kursor melompat (kursor jangkar di akhir), tolak non-digit */
   om.addEventListener("input",function(){
     var caretAtEnd = om.selectionStart === om.value.length;

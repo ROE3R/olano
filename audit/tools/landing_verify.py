@@ -205,6 +205,31 @@ def cmd_top():
     finally:
         p.terminate()
 
+def cmd_l25():
+    p = launch()
+    try:
+        t = Tab(BASE, 360, 800)
+        checks = {}
+        checks["result_above_input"] = t.js("document.getElementById('tax-out').getBoundingClientRect().top + window.scrollY < document.getElementById('tax-omzet').getBoundingClientRect().top + window.scrollY")
+        checks["aria_live"] = t.js("document.getElementById('tax-out').getAttribute('aria-live')")
+        checks["dom_order_ok"] = t.js("var c=document.querySelector('.calc-card'); Array.prototype.indexOf.call(c.children, document.getElementById('tax-out')) < Array.prototype.indexOf.call(c.children, document.getElementById('tax-omzet').closest('.field'))")
+        # simulasi mengetik -> scrollIntoView harus menjaga hasil dalam viewport
+        t.js("document.getElementById('pajak').scrollIntoView({block:'start'})")
+        time.sleep(0.4)
+        t.js("document.getElementById('tax-omzet').focus()")
+        t.insert_text("50000000")
+        time.sleep(0.6)
+        checks["result_in_viewport_after_type"] = t.js("var r=document.getElementById('tax-out').getBoundingClientRect(); r.top >= 0 && r.bottom <= window.innerHeight")
+        checks["result_text"] = t.js("document.getElementById('tax-result').textContent")
+        for k, v in checks.items():
+            print("CHECK", k, "=", v)
+        t.js("document.getElementById('pajak').scrollIntoView({block:'start'})")
+        time.sleep(0.6)
+        t.clip_of("after-L25-calc-360.png", "#pajak .calc-card", pad=16)
+        t.close()
+    finally:
+        p.terminate()
+
 def cmd_full():
     p = launch()
     try:
@@ -237,4 +262,4 @@ def cmd_measure():
 
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "measure"
-    {"l24": cmd_l24, "top": cmd_top, "full": cmd_full, "measure": cmd_measure}[cmd]()
+    {"l24": cmd_l24, "l25": cmd_l25, "top": cmd_top, "full": cmd_full, "measure": cmd_measure}[cmd]()
