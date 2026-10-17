@@ -318,7 +318,8 @@
 
   var grid = document.getElementById("produk"), activeCat = "SEMUA";
   function render(list){
-    list = list || PRODUCTS;
+    /* [pos-fix] P0.4: default render = filter kategori aktif (chip kategori tidak bohong lagi) */
+    if(!list) list = PRODUCTS.filter(function(p){ return activeCat==="SEMUA" || p.cat===activeCat; });
     grid.innerHTML = list.map(function(p){
       return '<button class="pos-item'+(p.stock<=3?" low":"")+'" data-id="'+p.id+'">'
         + '<span class="thumb">'+p.emoji+'</span>'
