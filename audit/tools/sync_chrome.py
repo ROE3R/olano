@@ -121,7 +121,7 @@ def footer(pfx):
     A = lambda rel: _href(pfx, rel)
     def col(title, items):
         lis = "\n".join(f'          <li><a href="{A(rel)}">{lab}</a></li>' for rel, lab in items)
-        return f'      <nav aria-label="{title}">\n        <h3 class="foot-h">{title}</h3>\n        <ul>\n{lis}\n        </ul>\n      </nav>'
+        return f'      <nav aria-label="{title}">\n        <h2 class="foot-h">{title}</h2>\n        <ul>\n{lis}\n        </ul>\n      </nav>'
     pro_items = [(r, l) for r, l, s, c in PRODUK]
     kal_items = [(r, l) for r, l, s, c in KALC]
     return f'''<footer class="foot" id="foot">
