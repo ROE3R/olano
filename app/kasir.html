@@ -37,6 +37,7 @@
     <b style="font-family:var(--font-display);font-size:1.15rem;display:block;margin-bottom:8px">Menu</b>
     <nav class="menu-list">
       <button type="button" id="menu-rekap">Rekap harian</button>
+      <button type="button" id="menu-produk">Tambah produk</button>
       <button type="button" id="menu-data">Data &amp; cadangan</button>
       <a id="demo-signup-menu" href="login.html" hidden>Buat akun — data ikut tersimpan online</a>
       <a href="../index.html">Beranda</a>
@@ -157,6 +158,32 @@
     <div class="callout light ok" style="margin:0 0 12px"><b id="backup-last">Belum pernah dicadangkan</b></div>
     <button type="button" class="btn btn-primary btn-block" id="backup-btn">Cadangkan data (unduh berkas)</button>
     <p class="small" style="color:var(--gray-500);margin-top:10px">Cadangan berisi produk &amp; transaksi di perangkat ini. Simpan berkasnya di tempat aman.</p>
+  </div>
+</div>
+
+<!-- tambah produk sheet [pos-fix] P1 (layar G) -->
+<div class="sheet" id="sheet-produk" role="dialog" aria-modal="true" aria-label="Tambah produk">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <div class="grip"></div>
+    <b style="font-family:var(--font-display);font-size:1.15rem;display:block;margin-bottom:10px">Tambah produk</b>
+    <form id="form-produk" class="form-pos">
+      <div class="field"><label for="fp-nama">Nama produk</label>
+        <input id="fp-nama" type="text" autocomplete="off" enterkeyhint="next"></div>
+      <div class="field"><label for="fp-kat">Kategori</label>
+        <select id="fp-kat"><option value="MINUM">Minuman</option><option value="MAKANAN">Makanan</option><option value="KEREK">Keripik</option><option value="LAIN">Lainnya</option></select></div>
+      <div class="field"><label for="fp-harga">Harga jual (Rp)</label>
+        <input id="fp-harga" type="text" inputmode="numeric" enterkeyhint="next" placeholder="0"></div>
+      <div class="field"><label for="fp-stok">Stok awal</label>
+        <input id="fp-stok" type="text" inputmode="numeric" enterkeyhint="next" placeholder="0"></div>
+      <div class="field"><label for="fp-emoji">Ikon (emoji)</label>
+        <input id="fp-emoji" type="text" maxlength="4" value="🛒"></div>
+      <p id="fp-err" role="alert" style="display:none;color:var(--danger);font-weight:700;font-size:13px;margin:0 0 10px"></p>
+      <div style="display:flex;gap:8px;margin-top:4px">
+        <button type="button" class="btn btn-secondary" id="fp-again" style="flex:1;min-height:52px">Simpan &amp; tambah lagi</button>
+        <button type="submit" class="btn btn-primary" style="flex:1.3;min-height:52px">Simpan</button>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -386,6 +413,42 @@
     });
   });
 
+  /* ================= tambah produk [pos-fix] P1 (layar G, brief 5.2.G) ================= */
+  function escHtml(s){
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function parseAngka(v){
+    /* [pos-fix] P1: "12rb"/"12k"/"12 ribu" = 12.000; "Rp 12.000" = 12000; huruf lain ditolak */
+    v = String(v).trim().toLowerCase();
+    var m = v.match(/^(\d+(?:[.,]\d+)?)\s*(rb|ribu|k)$/);
+    if(m) return Math.round(parseFloat(m[1].replace(",", ".")) * 1000);
+    var d = v.replace(/[^0-9]/g, "");
+    return d ? parseInt(d, 10) : 0;
+  }
+  document.getElementById("menu-produk").addEventListener("click", function(){
+    document.getElementById("fp-err").style.display = "none";
+    openSheet("sheet-produk");
+  });
+  function simpanProduk(again){
+    var nama = document.getElementById("fp-nama").value.trim();
+    var harga = parseAngka(document.getElementById("fp-harga").value);
+    var stok = parseAngka(document.getElementById("fp-stok").value);
+    var err = document.getElementById("fp-err");
+    if(!nama){ err.textContent = "Isi nama produk dulu."; err.style.display = ""; return; }
+    if(harga <= 0){ err.textContent = "Isi harga dengan angka lebih dari 0."; err.style.display = ""; return; }
+    err.style.display = "none";
+    var emoji = document.getElementById("fp-emoji").value.trim() || "\ud83d\uded2";
+    PRODUCTS.push({ id:"u"+Date.now(), name:nama, cat:document.getElementById("fp-kat").value, price:harga, stock:stok, emoji:emoji });
+    render(); updateBar(); toast(nama+" ditambahkan");
+    document.getElementById("fp-nama").value = "";
+    document.getElementById("fp-harga").value = "";
+    document.getElementById("fp-stok").value = "";
+    if(again) document.getElementById("fp-nama").focus();
+    else closeSheet("sheet-produk");
+  }
+  document.getElementById("form-produk").addEventListener("submit", function(e){ e.preventDefault(); simpanProduk(false); });
+  document.getElementById("fp-again").addEventListener("click", function(){ simpanProduk(true); });
+
   function openDB(){
     /* [pos-fix] P1: selalu balikkan Promise (sebelumnya call ke-2 balikin objek DB -> .then error, transaksi ke-2 tidak tersimpan) */
     if(dbp) return dbp;
@@ -450,11 +513,14 @@
     /* [pos-fix] P0.4: default render = filter kategori aktif (chip kategori tidak bohong lagi) */
     if(!list) list = PRODUCTS.filter(function(p){ return activeCat==="SEMUA" || p.cat===activeCat; });
     grid.innerHTML = list.map(function(p){
+      var qty = cart[p.id]||0;
       return '<button class="pos-item'+(p.stock<=3?" low":"")+'" data-id="'+p.id+'">'
-        + '<span class="thumb">'+p.emoji+'</span>'
-        + '<span class="name">'+p.name+'</span>'
+        + '<span class="thumb">'+escHtml(p.emoji)+'</span>'
+        + '<span class="name">'+escHtml(p.name)+'</span>'
         + '<span class="price">'+R.rp(p.price)+'</span>'
-        + '<span class="stock">stok '+p.stock+'</span></button>';
+        + '<span class="stock">'+(p.stock<=0?'habis':'stok '+p.stock)+'</span>'
+        + (qty>0?'<span class="pos-badge" aria-label="Sudah di keranjang">'+qty+'</span>':'')
+        + '</button>';
     }).join("");
   }
   grid.addEventListener("click", function(e){
@@ -501,7 +567,7 @@
     rows.innerHTML = ids.map(function(id){
       var p = PRODUCTS.find(function(x){ return x.id===id; });
       return '<div class="cart-row" data-id="'+id+'">'
-        + '<div class="c-main"><div class="name">'+p.name+'</div><div class="qty">'+R.rp(p.price)+'</div></div>'
+        + '<div class="c-main"><div class="name">'+escHtml(p.name)+'</div><div class="qty">'+R.rp(p.price)+'</div></div>'
         + '<div class="qty-ctrl">'
         + '<button type="button" data-q="-1" aria-label="Kurangi '+p.name+'">−</button>'
         + '<b class="c-qty">'+cart[id]+'</b>'
