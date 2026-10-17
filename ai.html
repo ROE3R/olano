@@ -25,13 +25,58 @@
 </head>
 <body>
 <a class="skip" href="#main">Langsung ke isi</a>
-<header class="nav"><div class="container nav-inner">
-  <a class="logo" href="index.html"><span class="mark">O</span>Olano</a>
-  <nav class="nav-links" aria-label="Menu utama"><a href="umkm.html">UMKM</a><a href="pajak.html">Pajak</a><a href="website.html">Website</a><a href="naik-kelas.html">Naik Kelas</a><a href="index.html#harga">Harga</a></nav>
-  <div class="nav-cta"><a class="btn btn-ghost" href="kasir.html">Masuk</a><a class="btn btn-primary" href="kasir.html">Coba Gratis</a></div>
-  <button class="nav-burger" aria-label="Buka menu" aria-expanded="false"><span></span><span></span><span></span></button>
-</div>
-<nav class="nav-mobile" aria-label="Menu seluler"><a href="index.html">Beranda</a><a href="umkm.html">UMKM</a><a href="pajak.html">Pajak</a><a href="ai.html">AI Margin</a><a href="kasir.html" style="color:var(--blue-600);font-weight:600">Coba Gratis</a></nav></header>
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="index.html"><span class="mark">O</span>Olano</a>
+    <nav class="nav-links" aria-label="Menu utama">
+      <div class="dd">
+        <button type="button" class="dd-trigger" aria-expanded="false" aria-haspopup="true">Produk<span class="dd-caret" aria-hidden="true"></span></button>
+        <div class="dd-menu">
+          <a href="umkm.html">Kasir UMKM</a>
+          <a href="pajak.html">Pajak</a>
+          <a href="website.html">Website</a>
+          <a href="analisa-delivery.html">Analisa Delivery</a>
+          <a href="ai.html" aria-current="page">AI Jaga Margin</a>
+          <a href="automation.html">Automation<span class="dd-chip">Segera hadir</span></a>
+          <a href="naik-kelas.html">Naik Kelas</a>
+        </div>
+      </div>
+      <div class="dd">
+        <button type="button" class="dd-trigger" aria-expanded="false" aria-haspopup="true">Kalkulator<span class="dd-caret" aria-hidden="true"></span></button>
+        <div class="dd-menu">
+          <a href="alat/kalkulator-pph-final-umkm.html">PPh Final UMKM</a>
+          <a href="alat/kalkulator-hpp-harga-jual.html">HPP & Harga Jual</a>
+          <a href="alat/kalkulator-biaya-qris.html">Biaya QRIS</a>
+          <a href="alat/kalkulator-margin-delivery.html">Margin Delivery</a>
+        </div>
+      </div>
+      <a href="index.html#harga">Harga</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-login" href="app/login.html">Masuk</a>
+      <a class="btn btn-primary pill" href="app/kasir.html#demo">Coba demo kasir</a>
+    </div>
+    <button class="nav-burger" aria-label="Buka menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="nav-mobile" aria-label="Menu seluler">
+    <p class="mgrp">Produk</p>
+    <a href="umkm.html">Kasir UMKM</a>
+    <a href="pajak.html">Pajak</a>
+    <a href="website.html">Website</a>
+    <a href="analisa-delivery.html">Analisa Delivery</a>
+    <a href="ai.html" aria-current="page">AI Jaga Margin</a>
+    <a href="automation.html">Automation <span class="dd-chip">Segera hadir</span></a>
+    <a href="naik-kelas.html">Naik Kelas</a>
+    <p class="mgrp">Kalkulator</p>
+    <a href="alat/kalkulator-pph-final-umkm.html">PPh Final UMKM</a>
+    <a href="alat/kalkulator-hpp-harga-jual.html">HPP & Harga Jual</a>
+    <a href="alat/kalkulator-biaya-qris.html">Biaya QRIS</a>
+    <a href="alat/kalkulator-margin-delivery.html">Margin Delivery</a>
+    <a href="index.html#harga">Harga</a>
+    <a class="nav-login" href="app/login.html">Masuk</a>
+    <a class="btn btn-primary pill" style="margin:10px var(--gutter)" href="app/kasir.html#demo">Coba demo kasir</a>
+  </nav>
+</header>
 
 <main id="main">
 <section class="tool-hero"><div class="hero-sky-lite" aria-hidden="true">
@@ -44,7 +89,7 @@
   <div class="badge"><span class="dot"></span>Contoh kecil · jalan tanpa akun</div>
   <h1 class="mt-4" style="max-width:20ch">AI yang menjaga <em class="it-serif">margin</em>, bukan sekadar menjual.</h1>
   <p class="mt-4" style="color:var(--gray-500);font-size:var(--fs-body-lg);max-width:54ch">Foto produk diproses sampai 60 foto per outlet tiap bulan. Harga jual dan margin dipantau, peringatan muncul sebelum rugi.</p>
-  <div class="row wrap mt-6"><a class="btn btn-primary btn-lg" href="kasir.html">Coba di outletmu</a><a class="btn btn-secondary btn-lg" href="#demo">Coba contohnya</a></div>
+  <div class="row wrap mt-6"><a class="btn btn-primary btn-lg" href="kasir.html">Coba di outletmu</a><a class="btn btn-secondary btn-lg" href="#demo">Coba demo kasir</a></div>
   <figure class="svg-fig"><svg viewBox="0 0 320 240" role="img" aria-label="Contoh: tiga usul harga dari AI" width="320" height="240"><rect width="320" height="240" fill="#FAFBFD"/><rect x="14" y="14" width="292" height="52" rx="10" fill="#fff" stroke="#E8ECF3"/><text x="30" y="45" font-size="14" fill="#0B1220" font-family="Figtree, sans-serif">Es Kopi Susu, Rp12.000</text><text x="296" y="45" font-size="12" fill="#8A5400" text-anchor="end" font-family="Figtree, sans-serif">bahan +10%</text><rect x="14" y="82" width="90" height="34" rx="17" fill="#F4F6FA" stroke="#E8ECF3"/><text x="59" y="103" font-size="12" fill="#343C4F" text-anchor="middle" font-family="Figtree, sans-serif">Aman</text><rect x="114" y="82" width="110" height="34" rx="17" fill="#2453EB"/><text x="169" y="103" font-size="12" fill="#fff" text-anchor="middle" font-family="Figtree, sans-serif">Kompetitif</text><rect x="234" y="82" width="72" height="34" rx="17" fill="#F4F6FA" stroke="#E8ECF3"/><text x="270" y="103" font-size="12" fill="#343C4F" text-anchor="middle" font-family="Figtree, sans-serif">Premium</text><rect x="14" y="126" width="90" height="22" rx="11" fill="#EFF5FF"/><text x="59" y="141" font-size="11" fill="#2453EB" text-anchor="middle" font-family="Figtree, sans-serif">pilihan AI</text><text x="14" y="190" font-size="13" fill="#4E586B" font-family="Figtree, sans-serif">Rp12.571, Rp11.000, Rp16.000</text><text x="14" y="216" font-size="11" fill="#4E586B" font-family="Figtree, sans-serif">contoh · HPP Rp8.000, harga Rp12.000</text></svg></figure>
 </div></section>
 
@@ -87,13 +132,47 @@
 </div></section>
 </main>
 
-<footer class="foot"><div class="container">
-  <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--gray-100)">
-    <a class="logo sm" href="index.html" style="font-size:15px;color:var(--ink)"><span class="mark" style="width:20px;height:20px;font-size:11px">O</span>Olano</a>
-    <nav style="display:flex;gap:16px;font-size:13px"><a href="umkm.html" style="color:var(--gray-500)">UMKM</a><a href="pajak.html" style="color:var(--gray-500)">Pajak</a><a href="ai.html" style="color:var(--gray-500)">AI Margin</a></nav>
+<footer class="foot" id="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="index.html" style="color:var(--ink)"><span class="mark">O</span>Olano</a>
+        <p class="legal">Kasir, website, dan pajak UMKM di satu tempat. Tetap jalan walau internet mati.</p>
+      </div>
+      <nav aria-label="Produk">
+        <h3 class="foot-h">Produk</h3>
+        <ul>
+          <li><a href="umkm.html">Kasir UMKM</a></li>
+          <li><a href="pajak.html">Pajak</a></li>
+          <li><a href="website.html">Website</a></li>
+          <li><a href="analisa-delivery.html">Analisa Delivery</a></li>
+          <li><a href="ai.html">AI Jaga Margin</a></li>
+          <li><a href="automation.html">Automation</a></li>
+          <li><a href="naik-kelas.html">Naik Kelas</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Kalkulator">
+        <h3 class="foot-h">Kalkulator</h3>
+        <ul>
+          <li><a href="alat/kalkulator-pph-final-umkm.html">PPh Final UMKM</a></li>
+          <li><a href="alat/kalkulator-hpp-harga-jual.html">HPP & Harga Jual</a></li>
+          <li><a href="alat/kalkulator-biaya-qris.html">Biaya QRIS</a></li>
+          <li><a href="alat/kalkulator-margin-delivery.html">Margin Delivery</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Perusahaan">
+        <h3 class="foot-h">Perusahaan</h3>
+        <ul>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="kebijakan-privasi.html">Kebijakan Privasi</a></li>
+          <li><a href="syarat-ketentuan.html">Syarat & Ketentuan</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="small">Olano membantu menghitung dan menyiapkan rekap pajak. Pelaporan sebagai kuasa wajib pajak dikerjakan mitra berizin. Bukan nasihat hukum atau pajak.</p>
+    <p class="small">&copy; 2026 Olano</p>
   </div>
-  <p class="small mt-4" style="color:var(--gray-500)">AI penjaga harga termasuk paket Pro. Contoh di halaman ini dihitung di perangkatmu.</p>
-</div></footer>
+</footer>
 <script src="assets/js/config.js"></script>
 <script src="assets/js/shared.js"></script>
   <script src="assets/js/motion.js"></script>

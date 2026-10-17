@@ -146,6 +146,21 @@ p{max-width:65ch}
 .nav-mobile.open{display:flex}
 .nav-mobile a{padding:14px var(--gutter); font-weight:500; color:var(--gray-700); font-size:var(--fs-body)}
 .nav-mobile a:hover{background:var(--gray-50); color:var(--blue-600)}
+.nav-mobile .mgrp{padding:12px var(--gutter) 4px; font-size:var(--fs-small); font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--gray-500)}
+.nav-mobile .dd-chip{display:inline-block; margin-left:6px; padding:2px 8px; border-radius:99px; background:var(--gray-50); color:var(--gray-500); font-size:12px; font-weight:500}
+
+/* dropdown nav (desktop >=1080) */
+.dd{position:relative}
+.dd-trigger{display:inline-flex; align-items:center; gap:6px; background:none; border:0; cursor:pointer; padding:6px 2px; font:inherit; font-size:var(--fs-small); font-weight:500; color:var(--gray-700)}
+.dd-trigger:hover{color:var(--blue-600)}
+.dd-caret{width:7px; height:7px; border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor; transform:rotate(45deg) translateY(-1px); transition:transform var(--dur-fast) var(--ease-standard)}
+.dd[aria-open="true"] .dd-caret{transform:rotate(-135deg) translateY(1px)}
+.dd-menu{position:absolute; top:100%; left:50%; transform:translateX(-50%); min-width:212px; padding:8px; background:var(--white); border:1px solid var(--gray-100); border-radius:12px; box-shadow:var(--sh-lg); display:none; z-index:60}
+.dd[aria-open="true"] .dd-menu{display:block}
+.dd-menu a{display:flex; align-items:center; gap:8px; padding:10px 12px; border-radius:8px; font-size:var(--fs-small); font-weight:500; color:var(--gray-700); white-space:nowrap}
+.dd-menu a:hover{background:var(--gray-50); color:var(--blue-600)}
+.dd-menu a[aria-current="page"]{color:var(--blue-600); font-weight:600; background:var(--blue-50)}
+.dd-menu .dd-chip{margin-left:auto; padding:2px 8px; border-radius:99px; background:var(--gray-50); color:var(--gray-500); font-size:12px; font-weight:500}
 
 /* ============================= BUTTON ============================= */
 .btn{display:inline-flex; align-items:center; justify-content:center; gap:var(--sp-2);

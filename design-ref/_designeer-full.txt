@@ -1,0 +1,513 @@
+# Designeer — full catalogue
+
+> Designeer curates interface craft, component libraries, design systems, and AI tools for designers, developers, and builders — plus people worth following.
+
+422 tools across 17 sections. See [llms.txt](https://designeer.xyz/llms.txt) for pages, machine-readable endpoints, and WebMCP tools.
+
+## Design Galleries
+
+Design galleries, interface patterns, and web inspiration.
+
+- [60fps](https://60fps.design/): Recordings of interfaces that move well.
+- [Awwwards](https://www.awwwards.com/): Awards celebrating exceptional digital web craft.
+- [Cosmos](https://www.cosmos.so/): Visual moodboarding and creative inspiration engine.
+- [Curated Design](https://www.curated.design/): Web design sorted by aesthetic style.
+- [Layers](https://layers.to/): Platform for sharing design work publicly.
+- [Minimal Gallery](https://minimal.gallery/): Showcase of minimal and restrained websites.
+- [Mobbin](https://mobbin.com/): Real mobile and web product flows.
+- [Saaspo](https://www.saaspo.com/): Curated SaaS landing page designs.
+- [SEESAW](https://www.seesaw.website/): Design inspiration organized by page section.
+- [Supahero](https://supahero.io/): Curated collection of website hero sections.
+- [Imageory](https://www.imageory.in/): Visual gallery pairing images with prompts.
+- [Backgrounds Supply](https://backgrounds.supply/): Handcrafted website backgrounds ready to use.
+- [Venust Backgrounds](https://backgrounds.venust.ai/): Free AI-generated backgrounds with original prompts.
+- [Details](https://www.details.so/): Micro-interaction analysis of top digital products.
+- [Sombra](https://sombra.design/): Showcase of dark-mode website interfaces.
+- [Dribbble](https://dribbble.com/): Global community sharing design concepts.
+- [Behance](https://www.behance.net/): Adobe showcase for creative portfolios.
+- [Recent Design](https://recent.design/): Weekly selection of award-worthy websites.
+- [navbar.design](https://navbar.design/): Curated gallery of navigation bar patterns.
+- [footer.design](https://footer.design/): Curated gallery of creative website footers.
+- [Land-book](https://land-book.com/): Landing pages organized by industry.
+- [Collect UI](https://collectui.com/): Daily UI inspiration tagged by component.
+- [SiteInspire](https://www.siteinspire.com/): Showcase of fine web design craft.
+- [Lapa Ninja](https://www.lapa.ninja/): Curated gallery of responsive landing pages.
+- [UX Archive](https://uxarchive.com/): Historical archive of mobile onboarding flows.
+- [Screenlane](https://screenlane.com/): Searchable gallery of interface screens.
+- [Flowbase](https://www.flowbase.co/): Premium UI components and interaction patterns.
+- [Hover States](https://hoverstat.es/): Showcase of innovative interactive web design.
+- [SaaSFrame](https://www.saasframe.io/): Hundreds of SaaS marketing page screenshots.
+- [Landingfolio](https://www.landingfolio.com/): Extensive library of landing page designs.
+- [Pttrns](https://pttrns.com/): Directory of mobile user interface patterns.
+- [One Page Love](https://onepagelove.com/): Showcase of single-page website designs.
+- [Designspiration](https://www.designspiration.com/): Creative search platform for visual art.
+- [Best Website Gallery](https://bestwebsite.gallery/): Curated archive of exceptional websites.
+- [Inspiration Grid](https://theinspirationgrid.com/): Online magazine celebrating creative visual design.
+- [Scrnshts](https://scrnshts.club/): Curated App Store screenshot designs.
+- [Are.na](https://www.are.na/): Collaborative research and visual bookmarking platform.
+- [Appinspo](https://www.appinspo.com/): Curated mobile application design gallery.
+- [Dark Mode Design](https://www.darkmodedesign.com/): Showcase celebrating dark-mode websites.
+- [Pinterest](https://www.pinterest.com/): Visual discovery engine for creative ideas.
+- [navbar.gallery](https://navbar.gallery/): Focused collection of modern navigation bars.
+- [posts.design](https://posts.design/): Curated social media graphic design archive.
+- [loadmo.re](https://loadmo.re/): Gallery of experimental mobile website designs.
+- [inspora.design](https://www.inspora.design/): Archive of contemporary visual web design.
+- [cta.gallery](https://cta.gallery/): Curated call-to-action button and banner designs.
+- [desengs.com](https://desengs.com/): Directory of design engineering portfolios and lore.
+- [isthereanytool](https://isthereanytool.app/): Directory of lesser-known design, craft, and AI tools.
+- [designeng.tools](https://designeng.tools/): Curated design engineering tools, resources, and inspiration.
+- [bestdesignsonx.com](https://bestdesignsonx.com/): Curated design-forward creators and posts on X.
+- [Design Bookmark](https://designbookmark.com/): Directory of design resources and links.
+- [Rebrand Gallery](https://rebrand.gallery/): Brand redesigns compared before and after.
+- [Curations](https://curations.supply/): Library of curated digital design assets.
+- [Landing Love](https://landing.love/): Delightful landing pages organized by animation.
+- [Motionimo](https://motionimo.xyz/): Extensive library of motion design clips.
+- [before.click](https://before.click/): Showcase of high-converting app screenshot concepts.
+- [Swiped](https://swiped.design/): Standout design posts from social platforms.
+- [Landdding](https://landdding.com/): Daily catalogue of creative landing pages.
+- [designengineer.tools](https://designengineer.tools/): Essential tools tailored for design engineers.
+- [Insposite](https://www.insposite.com/): Directory of design references and tools.
+- [Loader Buttons](https://loader-buttons.appllama.io/): Gallery of 25 loading button animations.
+- [What Ships](https://whatships.com/): Standout product launch demo videos on X.
+- [GreatStuff](https://greatstuff.fyi/): Carefully vetted archive of creative tools.
+- [Great Apps](https://greatapps.fyi/): Weekly gallery highlighting exceptional iOS apps.
+- [Curated Domains](https://curated.domains/): Brands using creative top-level domain names.
+- [Sections.wtf](https://sections.wtf/): Real-world website section and hero gallery.
+- [Browse.cool](https://browse.cool/): Websites chosen for exceptional tactile feel.
+- [Folios Gallery](https://folios.gallery/): Selective directory of outstanding designer portfolios.
+- [wwwtf.site](https://wwwtf.site/): Quirky and experimental interactive web corners.
+- [Early](https://www.early.tools/): Discovery platform for early-stage software products.
+- [OpenAlternative](https://openalternative.co/): Open-source alternatives to popular SaaS tools.
+- [Everywhere Tools](https://everywhere.tools/): Open-source creative tools for design craft.
+- [Jessy In's Gallery](https://gallery.jessyin.world/): Collaborative moodboard of unique visual finds.
+- [Wall of Portfolios](https://www.wallofportfolios.in/): Design engineering and product portfolio showcases.
+- [Detail Design](https://detail.design/): Archive of thoughtful software micro-interactions.
+- [Betwn Studios](https://betwnstudios.com/): Studio crafting modern SaaS web experiences.
+- [SaaS Landing Page](https://saaslandingpage.com/): Showcase of top SaaS landing pages.
+- [Best SaaS Web Designs](https://bestsaaswebdesigns.com/): Curated inspiration gallery of SaaS website design.
+- [A1](https://www.a1.gallery/): Website design inspiration gallery.
+
+## Component Libraries
+
+Production UI primitives and accessible component libraries.
+
+- [ForgeUI](https://forgeui.in/): Animated React and Tailwind components and templates.
+- [RewampUI](https://www.rewampui.com/): Component showcase dashboard of ready-made UI.
+- [shadcn/ui](https://ui.shadcn.com/): Components you copy directly into codebases.
+- [Base UI](https://base-ui.com/): Unstyled component primitives from Radix and MUI.
+- [Radix](https://www.radix-ui.com/): Accessible unstyled UI primitives for React.
+- [21st.dev](https://21st.dev/): Community shadcn registry with interactive previews.
+- [Motion Primitives](https://motion-primitives.com/): Animated React components powered by Motion.
+- [React Bits](https://reactbits.dev/): Animated and creative components for React.
+- [Component Gallery](https://component.gallery/): Repository comparing design system components.
+- [NumberFlow](https://number-flow.barvian.me/): Smooth number transitions across modern frameworks.
+- [Fancy Components](https://www.fancycomponents.dev/): Playful React components with physics effects.
+- [Opensource UI](https://opensourceui.in/): Copy-paste React UI and device mockups.
+- [Spectrum UI](https://ui.spectrumhq.in/): Polished components designed for SaaS websites.
+- [Amicro](https://amicro.vercel.app/): Lightweight drop-in React micro-animation primitives.
+- [Painterly](https://painterly.design-tools.workers.dev/): Artistic canvas loader components for React.
+- [Bencho](https://bencho.dev/): Interactive UI blocks with adjustable physics.
+- [shadcnblocks](https://www.shadcnblocks.com/): Thousands of clean shadcn website blocks.
+- [blocks.so](https://blocks.so/): Open-source website blocks installable via CLI.
+- [8bitcn](https://8bitcn.com/): Retro 8-bit components for shadcn projects.
+- [Evil Charts](https://evilcharts.com/): Animated SVG charts designed for shadcn/ui.
+- [coss ui](https://coss.com/ui): Copy-paste components built on Base UI.
+- [Rare UI](https://rareui.com/): Unique animated UI components for React.
+- [beUI](https://beui.dev/): Animated React components with Tailwind CSS.
+- [Butter Nav](https://butter-nav.vercel.app/): Mega-menu featuring fluid layout morphing transitions.
+- [Cult UI](https://www.cult-ui.com/): Animated React components with Framer Motion.
+- [daisyUI](https://daisyui.com/): Component class library for Tailwind CSS.
+- [HeroUI](https://www.heroui.com/): Modern React UI library, formerly NextUI.
+- [Kibo UI](https://www.kibo-ui.com/): Component registry tailored for AI interfaces.
+- [Magic UI](https://magicui.design/): Animated components crafted for landing pages.
+- [Aceternity UI](https://ui.aceternity.com/): Trendy animated components and hero sections.
+- [Animate UI](https://animate-ui.com/): Accessible shadcn components animated with Motion.
+- [FlyonUI](https://flyonui.com/): Semantic Tailwind CSS components ready for v4.
+- [TailGrids](https://tailgrids.com/): Responsive UI blocks designed for Tailwind.
+- [Flowbite](https://flowbite.com/): Extensive component library for Tailwind CSS.
+- [HyperUI](https://www.hyperui.dev/): Free open-source Tailwind CSS UI components.
+- [Preline UI](https://preline.co/): Tailwind CSS components for complex dashboards.
+- [Float UI](https://floatui.com/): Tailwind components crafted for marketing websites.
+- [Meraki UI](https://merakiui.com/): Tailwind components with right-to-left language support.
+- [Tremor](https://tremor.so/): Modular React library for building dashboards.
+- [Headless UI](https://headlessui.com/): Unstyled accessible components from Tailwind Labs.
+- [Base CN](https://basecn.dev/): Base UI primitives adapted for shadcn.
+- [Easy UI](https://easyui.pro/): Copy-paste component library for rapid building.
+- [Eldora UI](https://eldoraui.site/): Animated components tailored for web landings.
+- [Velora UI](https://velora.colorlib.com/): Free Tailwind CSS components and sections.
+- [Watermelon UI](https://watermelon.sh/): React component library for shadcn ecosystem.
+- [Beautiful UI](https://beautifului.dev/): Polished copy-paste components for web applications.
+- [Hexter UI](https://hexter-ui.com/): Clean component collection for shadcn projects.
+- [Lightswind](https://lightswind.com/): Tailwind components featuring lighting and glows.
+- [Reverse UI](https://reverseui.com/): Tailwind and React component library.
+- [Smooth UI](https://smoothui.dev/): Motion-heavy React components ready to copy.
+- [Tailark](https://tailark.com/): Tailwind sections and components for marketing.
+- [UI Layouts](https://ui-layouts.com/): Full-page layouts and heroes for Tailwind.
+- [Kokonut UI](https://kokonutui.com/): Creative interactive components for shadcn format.
+- [Nex UI](https://nexui.dev/): Extensible component library for modern startups.
+- [Ninja UI](https://ninna-ui.dev/): Lightweight UI components for fast websites.
+- [Sera UI](https://seraui.com/): React components designed for shadcn CLI.
+- [Re UI](https://reui.io/): Accessible UI components using Base UI.
+- [Syntax UI](https://syntaxui.com/): Animated copy-paste components for landing pages.
+- [shadcn-cssinjs](https://www.shadcn-cssinjs.com/): shadcn components adapted for CSS-in-JS.
+- [Transitions](https://transitions.dev/): Curated CSS transition recipes and easings.
+- [23rd](https://23rd.dev/): shadcn components for React and Svelte.
+- [Oneko](https://oneko.dhrv.pw/): Pixel cat companion that chases cursor.
+- [Rolling Number](https://rolling.kitlangton.dev/): Smooth digit-rolling number counter for React.
+- [Annnimate](https://annnimate.com/): GSAP motion components ready for production.
+- [GetLayers](https://getlayers.ai/): AI prompts for cinematic page sections.
+- [Scritto](https://scrit.to/): Rolling character text transition component library.
+- [ogimagecn](https://www.ogimagecn.com/): Open Graph image components using Satori.
+- [Dither Kit](https://www.tripwire.sh/dither-kit): Dithered chart components with retro aesthetic.
+- [shieldcn](https://shieldcn.dev/): README badges styled with shadcn aesthetics.
+- [unlumen UI](https://ui.unlumen.com/): Minimalist React component library with CLI.
+- [Bearnie](https://bearnie.dev/): Astro and Tailwind component collection.
+- [Fluid Functionalism](https://www.fluidfunctionalism.com/): Components designed with purposeful physical animation.
+- [termcn](https://termcn.dev/): Terminal UI components for React, built on Ink and OpenTUI.
+- [framecn](https://framecn.dev/): Video rendering components for React, built on Editframe.
+- [emailcn](https://emailcn.run/): Responsive email components for React Email, MJML, and JSX Email.
+- [startercn](https://startercn.vercel.app/): shadcn/ui registry template with docs, landing page, and agent support.
+- [pdfcn](https://pdfcn.dev/): PDF components for React, built on Takumi and Forme.
+- [editorcn](https://editorcn.vercel.app/): Rich text editor components for React, built on Tiptap.
+- [Shadcn Labs](https://www.shadcn-labs.com/): Open-source shadcn/ui component registries and tools ecosystem.
+- [Frameblox](https://frameblox.com/): Modular Framer sections and templates.
+- [Nexvyn UI](https://ui.nexvyn.dev/): Polished drop-in components for digital interfaces.
+- [Gradient Spin](https://gradient-spin.vercel.app/): Spinning gradient loading indicator for React.
+- [Libraries.dev](https://libraries.dev/): UI effects and components for agents.
+- [Sona UI](https://www.sonaui.com/): Animated React components you fully own.
+- [Colorion Text Effects](https://text-effects.colorion.co/): Animated text effects ready to copy.
+- [Dot Matrix](https://dotmatrix.zzzzshawn.cloud/): Over fifty dot-matrix loaders for shadcn.
+- [SRCL](https://www.sacred.computer/): Retro DOS-style terminal component kit.
+- [Prompt Kit](https://www.prompt-kit.com/): Chat and AI interface component primitives.
+- [Shoogle](https://shoogle.dev/): Search engine spanning shadcn component registries.
+- [interior.dev](https://www.interior.dev/): Micro-interactions finely tuned for click responsiveness.
+- [soundcn](https://soundcn.xyz/): Collection of copy-paste UI sound effects.
+- [cuelume](https://cuelume.dev/): Micro interface sounds generated with Web Audio.
+- [Canvas UI](https://canvasui.dev/): GPU-accelerated liquid physics and canvas shaders.
+- [Odyssey UI](https://www.odysseyui.com/): Animated React components built on shadcn.
+- [Spell UI](https://spell.sh/): High-craft interactive components for modern apps.
+- [Skiper UI](https://skiper-ui.com/): Animated UI primitives for Tailwind CSS.
+- [devl](https://www.devl.dev/): Minimalist experimental UI components for web.
+- [Uiuno](https://uiuno.com/): AI workspace for organizing shadcn components.
+- [Vengeance UI](https://www.vengeanceui.com/): Animated React components with scroll interactions.
+- [sensory-ui](https://www.sensory-ui.com/): Sound design system for shadcn/ui components.
+- [Amacro](https://amacro.vercel.app/): Drop-in page reveal animations for React.
+- [Evil Buttons](https://www.evilbuttons.com/): Interactive and tactile button components.
+- [Componentry](https://componentry.dev/): Customizable React UI primitives and components.
+- [Great UI](https://www.great-ui.com/): Copy-paste React and Tailwind CSS components.
+- [Ruru UI](https://ui.ruru.build/): Accessible customizable UI components for React.
+- [Shadcn Studio](https://shadcnstudio.com/): shadcn/ui components, blocks, and templates.
+- [Animated shadcn/ui](https://shadcn-animated.vercel.app/): Motion-powered variants of shadcn/ui components.
+- [Pin UI](https://www.pinui.xyz/): Distinctive copy-paste React and Tailwind components.
+- [loading.dev](https://loading.dev/): Lightweight library of loading indicators for React.
+
+## Development
+
+Modern code editors, runtimes, and local tooling.
+
+- [Claude Code](https://claude.com/claude-code): Agentic coding tool inside your terminal.
+- [Cursor](https://cursor.com/): AI-first code editor for rapid development.
+- [Zed](https://zed.dev/): High-performance code editor built for low latency.
+- [v0](https://v0.app/): Generative AI translating prompts into shadcn code.
+- [Bolt.new](https://bolt.new/): In-browser development sandbox for full-stack applications.
+- [Vite](https://vite.dev/): Blazing fast frontend build and dev tool.
+- [Biome](https://biomejs.dev/): Fast Rust-based formatter and code linter.
+- [Playwright](https://playwright.dev/): Reliable browser automation and end-to-end testing.
+- [BuilderTools](https://www.buildertools.sh/): Focused developer tools for shipping software.
+- [nuqs](https://nuqs.47ng.com/): Type-safe URL search params for React.
+- [Better T Stack](https://www.better-t-stack.dev/): CLI scaffolding modern full-stack TypeScript setups.
+- [AI Stack](https://github.com/alp82/aistack): Directory comparing modern AI tech stacks.
+- [Alumnium](https://alumnium.ai/): Natural-language end-to-end testing via MCP.
+- [Vercel Doctor](https://vercel-doctor.com/): Diagnostic tool identifying Next.js performance bottlenecks.
+- [OSS Perks](https://ossperks.com/): Free cloud credits for open-source maintainers.
+- [Vinext](https://vinext.dev/): Vite plugin running Next.js on Cloudflare.
+- [evlog](https://www.evlog.dev/): Structured logging framework for web applications.
+- [@web-kits/audio](https://audio.raphaelsalaja.com/): Declarative sound library for web apps.
+- [Nue](https://nuejs.org/): Lightweight web framework alternative to React.
+- [Umami](https://umami.is/): Privacy-focused web analytics without cookie banners.
+- [Torph](https://torph.lochie.me/): Dependency-free text morphing animation library.
+- [x.ai/bot](https://x.ai/bot): Documentation detailing xAI web crawler specifications.
+- [Tracwell](https://tracwell.app/): Focused analytics tracking visitors and conversions.
+- [DialKit](https://www.dialkit.dev/): Floating interface toolbar for parameter tuning.
+
+## Agents & MCP
+
+Coding agents, local MCP servers, and machine specs.
+
+- [Dray](https://www.drayhq.com/): Unified desktop workspace managing coding agents.
+- [Refero](https://styles.refero.design/): Structured DESIGN.MD specifications for AI agents.
+- [designmd.me](https://designmd.me/): Generator creating machine-readable design specifications.
+- [Open Design](https://open-design.ai/): Standardized design systems formatted for agents.
+- [designmd.supply](https://designmd.supply/): DESIGN.MD templates to guide AI assistants.
+- [getdesign.md](https://getdesign.md/): Interactive generator producing AI design rules.
+- [Hyperbrowser Design.md](https://design-md.hyperbrowser.ai/): DESIGN.MD generator extracting rules from websites.
+- [Aura](https://aura.build/): Design system generator structuring AI guidelines.
+- [Neuform](https://neuform.ai/): AI-assisted interface design producing clean code.
+- [typeui.sh](https://typeui.sh/): Command-line tool scaffolding typed UI components.
+- [Webclaw](https://webclaw.io/): Converts any webpage into structured markdown.
+- [Ghostex](https://ghostex.dev/): Orchestrates multiple background coding agent sessions.
+- [is-agentic.com](https://is-agentic.com/): Scores how effectively websites support crawlers.
+- [Herdr](https://herdr.dev/): Distributed runner managing coding agent jobs.
+- [Soubi](https://soubi.vercel.app/): Compiler transforming agent skill definitions.
+- [agentcn](https://agentcn.run/): Customizable and production-ready AI agent recipes for React.
+- [skills](https://www.skills.sh/shadcn-labs/skills): Agent skills for shadcn registries and developer workflows.
+- [mcpcn](https://mcpcn.dev/): ChatGPT, Claude, and MCP app UI components for React.
+- [integrations.sh](https://integrations.sh/): Repository of API integration specifications for agents.
+- [fx](https://fx.sh/): High-performance coding agent CLI in Zig.
+- [HyperFrames](https://www.hyperframes.dev/): Headless HTML-to-MP4 video rendering engine.
+- [Foglamp](https://www.foglamp.dev/): Observability tool monitoring latency and costs.
+- [Distill](https://distill.id/): Intelligent agent organizing scattered research notes.
+- [Agentation](https://www.agentation.com/): Converts on-screen UI annotations into context.
+- [OpenCode](https://opencode.ai/): Open-source terminal AI coding agent.
+- [Impeccable](https://impeccable.style/): Design intelligence skill for AI agents.
+- [SkillSync](https://skillsync.com/): Synchronizes agent context across code editors.
+- [bb](https://getbb.app/): Open-source development environment for coding agents.
+- [Capacity](https://capacity.so/): Natural language workspace generating full-stack apps.
+- [Lafys](https://lafys.com/): Prompt-driven UI component generator for builders.
+- [Efecto](https://efecto.app/): Agent-first visual web canvas with MCP.
+- [Arc labs](https://www.arclabs.space/): AI career suite simulating technical interviews.
+- [Scira](https://scira.ai/): Minimalist open-source AI search engine.
+- [Kombai](https://kombai.com/): AI design engineer that codes UI from context.
+- [Causal](https://causal.so/): AI canvas workspace for notes and plans.
+
+## Motion
+
+Animation timing, spring physics, and motion libraries.
+
+- [Motion](https://motion.dev/): Production-ready animation library for React applications.
+- [GSAP](https://gsap.com/): Industry-standard JavaScript timeline animation engine.
+- [Rive](https://rive.app/): Interactive state-machine vector animation tool.
+- [Lottie](https://lottiefiles.com/): Lightweight JSON-based vector animation format.
+- [Easing Wizard](https://easingwizard.com/): Visual generator for custom CSS springs.
+- [Morphrig](https://morphrig.dev/): Interactive manual on how icon morphing works.
+- [Theatre.js](https://www.theatrejs.com/): Visual motion design sequencer for DOM.
+- [morphicons](https://www.morphicons.com/): Spring-physics icon morphing animation library.
+- [glimm](https://glimm.dev/): Shader-driven page transitions for Next.js.
+- [Devouring Details](https://devouringdetails.com/): Interactive book teaching micro-interaction design.
+- [textmotion](https://textmotion.dev/): Zero-dependency text roll animation primitive.
+
+## Interface Design
+
+Interface design canvases, tokens, and layout systems.
+
+- [Figma](https://figma.com/): Collaborative interface design and prototyping platform.
+- [Framer](https://framer.com/): Visual canvas designing and publishing websites.
+- [make.design](https://make.design/): AI generator turning prompts into polished designs.
+- [Penpot](https://penpot.app/): Open-source web design platform supporting SVG.
+- [Spline](https://spline.design/): Browser-based 3D design software with physics.
+- [Interface Craft](https://www.interfacecraft.dev/): Articles exploring modern digital interface craftsmanship.
+- [UI Labs](https://www.uilabs.dev/): Laboratory deconstructing animated UI components.
+- [UIWTF](https://uiw.tf/): Showcase of experimental web interface patterns.
+- [Lab01](https://lab01.dev/): Refined UI experiments from a studio.
+- [design.dev](https://design.dev/): AI-assisted design token and system editor.
+- [UI Playbook](https://uiplaybook.dev/): Guide to common UI component states.
+
+## Type
+
+Curated web typefaces, pairings, and font optimization.
+
+- [Fontshare](https://fontshare.com/): High-quality professional fonts free for commercial use.
+- [Klim](https://klim.co.nz/): Type foundry creating contemporary web typefaces.
+- [Fontsource](https://fontsource.org/): Self-host open-source fonts via npm packages.
+- [Wakamai Fondue](https://wakamaifondue.com/): Tool inspecting font files and features.
+- [Utopia](https://utopia.fyi/): Fluid typography calculator generating CSS clamp.
+- [Velvetyne](https://velvetyne.fr/): Open-source foundry distributing experimental typefaces.
+- [Departure Mono](https://departuremono.com/): Pixel monospace typeface designed for terminals.
+
+## Color
+
+Color palette generators, contrast checkers, and color math.
+
+- [OKLCH](https://oklch.com/): Color picker using perceptually uniform space.
+- [Color.review](https://color.review/): Contrast checker helping design accessible palettes.
+- [Huetone](https://huetone.ardov.me/): Accessible palette generator balancing contrast ratios.
+- [APCA](https://www.myndex.com/APCA/): Modern contrast algorithm matching visual perception.
+- [Ramps](https://www.ramps.studio/): Design token tool generating OKLCH ramps.
+
+## 3D
+
+3D modeling tools and WebGL rendering engines online.
+
+- [Three.js](https://threejs.org/): JavaScript 3D library rendering WebGL scenes.
+- [React Three Fiber](https://r3f.docs.pmnd.rs/): Declarative React renderer for Three.js scenes.
+- [Drei](https://drei.docs.pmnd.rs/): Helper components for React Three Fiber.
+- [Blender](https://blender.org/): Open-source 3D modeling and animation suite.
+- [gltf.report](https://gltf.report/): Web-based optimizer for 3D glTF files.
+- [Poly Haven](https://polyhaven.com/): Public asset library offering CC0 textures.
+
+## Shaders
+
+Interactive fragment shaders, procedural noise, and canvas effects.
+
+- [Book of Shaders](https://thebookofshaders.com/): Interactive guide to mastering fragment shaders.
+- [compute.toys](https://compute.toys/): Sandbox for authoring WGSL compute shaders.
+- [Shaderfrog](https://shaderfrog.com/): Visual node-based editor for composing shaders.
+- [shadercn](https://shadercn.run/): Shader components for React, built on vgpu and TypeGPU.
+- [Paper Shaders](https://shaders.paper.design/): Zero-dependency shaders ready to import.
+- [OpenShaders](https://openshaders.com/): Open-source shader collection for web projects.
+- [Orbkit](https://orbkit.zzzzshawn.cloud/): WebGL shader renderer for orb animations.
+
+## Icons
+
+Crisp icon families and glyphs for modern interfaces.
+
+- [Lucide](https://lucide.dev/): Community-maintained Feather Icons fork with thousands of glyphs.
+- [Phosphor](https://phosphoricons.com/): Icon family providing six consistent weights.
+- [Iconify](https://iconify.design/): Unified framework providing instant icon access.
+- [Rune Icons](https://www.runeicons.com/): Minimalist icon set offering five styles.
+- [Icon Museum](https://icon.museum/): Archive celebrating mobile app icon craftsmanship.
+- [Tabler Icons](https://tabler.io/icons): Library of thousands of outline icons.
+- [Heroicons](https://heroicons.com/): Handcrafted SVG icons from Tailwind creators.
+- [Material Symbols](https://fonts.google.com/icons): Google variable icon font spanning three styles.
+- [Bootstrap Icons](https://icons.getbootstrap.com/): Official icon library designed for Bootstrap.
+- [Remix Icon](https://remixicon.com/): Neutral icon library in outline and fill.
+- [Iconoir](https://iconoir.com/): Open-source SVG icons with consistent strokes.
+- [Ionicons](https://ionic.io/ionicons/): Premium icon pack for web and mobile.
+- [Simple Icons](https://simpleicons.org/): Over three thousand SVG brand logos.
+- [theSVG](https://thesvg.org/): Curated collection of clean brand SVGs.
+- [Feather](https://feathericons.com/): Minimalist open-source icon set on 24px grid.
+- [Carbon Icons](https://carbondesignsystem.com/): IBM official icon library for enterprise design.
+- [Boxicons](https://boxicons.com/): Vector icons crafted in three styles.
+- [MX Icons](https://mx-icons.vercel.app/): Large collection of customizable React icons.
+- [Eva Icons](https://akveo.github.io/eva-icons/): Pack of 400 icons in outline and fill.
+- [Devicon](https://devicon.dev/): Developer-focused icon set for programming tools.
+- [css.gg](https://css.gg/): 700 lightweight icons rendered using pure CSS.
+- [HugeIcons](https://hugeicons.com/): Comprehensive library of stroke and solid icons.
+- [Reicon](https://reicon.dev/): Tree-shakeable React icon library with dual weights.
+- [Iconsax](https://app.iconsax.io/): Versatile icon set with six visual styles.
+- [icons0](https://icons0.dev/): Search engine covering over 200k icons.
+- [Heroicons Animated](https://heroicons-animated.com/): Heroicons enhanced with reactive hover animations.
+- [Icons.download](https://icons.download/): Curated icon library in sixteen aesthetic styles.
+- [Lucide Animated](https://lucide-animated.com/): Lucide icons enhanced with micro-animations.
+- [Icon Foundry](https://iconfoundry.store/): Searchable collection of icons from many families.
+- [Inkword](https://inkword.app/): Turns a single word into a matching illustration.
+
+## Utilities
+
+Developer utilities that accelerate frontend workflows.
+
+- [SVGOMG](https://svgomg.net/): Web GUI to optimize and clean SVG files.
+- [RegExr](https://regexr.com/): Interactive sandbox for testing regular expressions.
+- [Squoosh](https://squoosh.app/): Browser image compression with visual comparisons.
+- [Fffuel](https://fffuel.co/): Generative SVG textures, gradients, and patterns.
+- [ui.camera](https://ui.camera/): 3D mockups and scene staging for software.
+- [Ray.so](https://ray.so/): Turn code snippets into shareable screenshots.
+- [Transform](https://transform.tools/): Polyglot code converter for JSON and types.
+- [Playgrnd](https://www.playgrnd.tools/): Suite of browser-based offline creative tools.
+- [Anim8](https://www.tryanim8.com/): Convert MP4 recordings into animated SVG graphics.
+- [OGFolio](https://www.ogfolio.com/): Inspect and preview Open Graph social cards.
+- [DotForge](https://dotforge.vercel.app/): Real-time dither effect generator for web.
+- [ASCIInator](https://asciinator.app/): Browser utility converting images into ASCII art.
+- [Vessa](https://vessa.design/): Publish brand guidelines as live pages.
+- [Icoon](https://icoon.co/): AI tool generating custom 3D icons.
+- [Design Minis](https://www.designminis.com/): Suite of micro design tools and scales.
+- [ASCII (Kracked Devs)](https://ascii.krackeddevs.com/): Fast tool converting text into ASCII art.
+- [Dither Lab](https://literate-enigma-snowy.vercel.app/): Applies vintage dithering filters to photographs.
+- [Hallmark](https://www.usehallmark.com/): Landing page builder producing handcrafted designs.
+- [Tooooools](https://www.tooooools.app/): In-browser utilities to dither and pixelate images.
+- [Screan](https://screan.app/): Create promotional App Store screenshot mockups.
+- [PostSpark](https://postspark.app/): Format screenshots with clean social backgrounds.
+- [Drawably](https://www.drawably.dev/): Sketching tool generating hand-drawn UI shapes.
+- [Mesurer](https://mesurer.dev/): On-screen tool checking website pixel spacing.
+- [Render Labs](https://render-labs.evlog.cloud/): Image rendering tool from evlog team.
+- [Butterfly](https://www.butterfly.so/): Minimalist landing page builder for validation.
+- [Corne](https://corne.rs/): Documentation for the Corne split keyboard.
+- [Shiori](https://www.shiori.sh/): Bookmark manager with CLI and Raycast support.
+- [Open Source Together](https://opensource-together.com/): Platform matching developers with open-source projects.
+- [ASCII Studio](https://www.asciistudio.space/): Transforms images and videos into ASCII art.
+- [Tabbied](https://tabbied.com/): Generative geometric pattern creator for SVG.
+- [Rynix Studio](https://studio.rynix.in/edit): Playground for real-time video visual effects.
+- [Mascofast](https://mascofast.com/): AI tool generating animated transparent 3D mascots.
+- [Screenshot Studio](https://www.screenshot-studio.com/): Frames screenshots inside realistic 3D mockups.
+- [Replay](https://letsreplay.co/): Session replay and visitor recording for websites.
+
+## Desktop
+
+Native macOS and desktop utility apps for productivity.
+
+- [Raycast](https://raycast.com/): Extendable desktop launcher replacing Spotlight.
+- [Ghostty](https://ghostty.org/): Fast GPU-accelerated terminal emulator for developers.
+- [Warp](https://warp.dev/): Rust-based terminal with block outputs and AI.
+- [CleanShot X](https://cleanshot.com/): Ultimate screen capture and recording utility.
+- [Granola](https://granola.ai/): AI notepad generating meeting summaries without bots.
+- [LocalSend](https://localsend.org/): Share files securely across local Wi-Fi networks.
+- [Canario](https://rioterm.com/canario): Terminal organizing CLI sessions into panes.
+- [CoolDock](https://cooldock.app/): Secondary dock supporting desktop monitoring widgets.
+- [Supaste](https://supaste.com/): Clipboard manager and screenshot history for Mac.
+- [Runey](https://runey.app/): Invoicing and client tracking app for freelancers.
+- [Revone](https://revone.app/): Unified revenue dashboard aggregating payment metrics.
+- [Zen Browser](https://zen-browser.app/): Firefox fork with vertical tabs and focus.
+
+## Video & Capture
+
+Screen recording software, timeline editors, and demo tools.
+
+- [Screen Studio](https://screen.studio/): Screen recorder adding camera zooms automatically.
+- [Remotion](https://remotion.dev/): Render high-definition videos programmatically with React.
+- [DaVinci Resolve](https://www.blackmagicdesign.com/products/davinciresolve): Professional video editing and color grading suite.
+- [Descript](https://descript.com/): AI video editor where you edit text.
+- [Gifski](https://gif.ski/): High-quality video-to-GIF converter preserving framerates.
+- [Slant It](https://slantit.app/): Transforms flat captures into 3D mockups.
+- [Remocn](https://www.remocn.dev/): Remotion animation components for video production.
+- [BetterShot](https://www.bettershot.site/): Screen recorder featuring cursor zoom and captions.
+- [Recordly](https://recordly.dev/): Screen recording tool for polished developer demos.
+- [Cursorful](https://cursorful.com/): Screen recorder that automatically tracks cursor.
+- [Tokokino](https://tokokino.com/): In-browser editor for device framing and mockups.
+
+## Whiteboard
+
+Infinite canvas workspaces for wireframing and systems architecture.
+
+- [tldraw](https://tldraw.com/): Infinite whiteboard library offering React SDK.
+- [Excalidraw](https://excalidraw.com/): Collaborative whiteboard with hand-drawn sketch aesthetic.
+- [Obsidian](https://obsidian.md/): Local-first Markdown knowledge base with graphs.
+- [Linear](https://linear.app/): Project management software setting speed standards.
+
+## Deploy
+
+Hosting platforms, edge runtimes, and deployment infrastructure.
+
+- [Vercel](https://vercel.com/): Cloud platform for deploying Next.js applications.
+- [Cloudflare](https://developers.cloudflare.com/workers/): Global edge network running serverless Workers.
+- [Netlify](https://netlify.com/): Web platform providing continuous deployment pipelines.
+- [Railway](https://railway.app/): Simplified infrastructure platform for deploying databases.
+- [Fly.io](https://fly.io/): Runs Docker containers close to users.
+
+## Reading
+
+Essential books, design engineering essays, and craft tutorials.
+
+- [Refactoring UI](https://refactoringui.com/): Practical design guide for building interfaces.
+- [Practical Typography](https://practicaltypography.com/): Essential book covering typographic rules and layout.
+- [web.dev](https://web.dev/): Guidance on web performance and modern standards.
+- [Inclusive Components](https://inclusive-components.design/): Pattern library teaching accessible component design.
+- [Josh Comeau](https://joshwcomeau.com/): Interactive tutorials breaking down CSS mechanics.
+- [Design Books](https://design-books.com/): Directory of essential design literature by discipline.
+- [Learn Kernels](https://learn-kernels.com/): Interactive guide exploring GPU kernel programming.
+- [Design System Checklist](https://designsystemchecklist.com/): Comprehensive checklist for production design systems.
+- [Learn UI](https://learn-ui.com/): Video course teaching practical user interface design.
+- [Design Spells](https://designspells.com/): Dissecting subtle design details in software.
+- [Good UI](https://goodui.org/): Evidence-based UI design patterns and data.
+- [Abduzeedo](https://abduzeedo.com/): Daily design blog sharing visual inspiration.
+- [UX Collective](https://uxdesign.cc/): Curated publication sharing critical UX essays.
+- [Smashing Magazine](https://www.smashingmagazine.com/): Reliable resource for web designers and developers.
+- [Codrops](https://tympanus.net/codrops/): Blog publishing creative frontend experiments and tutorials.
+- [Muzli](https://muz.li/): Daily digest curating latest design trends.
+- [Boxes and Arrows](https://boxesandarrows.com/): Journal dedicated to information architecture craft.
+- [Designer News](https://www.designernews.co/): Community-driven news feed highlighting design stories.
+- [Web Designer Depot](https://www.webdesignerdepot.com/): Design publication covering web standards and tools.
+- [Designmodo](https://designmodo.com/): Articles and tools covering web design.
+- [99designs Discover](https://99designs.com/discover): Design blog exploring creative branding insights.
+- [Interfaces](https://interfaces.dev/): Monthly digital publication exploring digital interfaces.
+- [Making Software](https://www.makingsoftware.com/): Essays examining how tools shape design.
+- [Visual Rambling](https://visualrambling.space/): Personal visual essays exploring interface design.
+- [Degreeless Design](https://www.degreeless.design/): Curated roadmap for mastering product design.
+- [SVG Guide](https://www.svg.guide/): Guide to mastering SVG markup and animations.
+- [Animations.dev](https://www.animations.dev/): Course on creating web animations that feel right.
+- [UI Skills](https://ui-skills.com/): Course teaching techniques for designing with AI.
+- [AI for UI](https://aiforui.dev/): Course teaching AI workflows for interfaces.
+- [UI Land](https://ui.land/): Interviews with leading design engineers on craft.
+- [Laws of UX](https://lawsofux.com/): Psychological principles that influence interface usability.
+- [User Interface Wiki](https://userinterface.wiki/): Knowledge base documenting interface guidelines and rules.
+- [The Shape of AI](https://www.shapeof.ai/): Pattern library highlighting AI interface design.
+

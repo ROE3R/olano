@@ -111,7 +111,7 @@
       <ul class="hours mt-2">
         <li><span class="d">Senin&ndash;Minggu</span><span>08.00&ndash;21.00</span></li>
       </ul>
-      <div class="mt-4"><a class="btn btn-wa" id="wa-toko" href="https://wa.me/6281200000000">Chat WhatsApp toko</a></div>
+      <div class="mt-4"><span class="btn btn-wa" id="wa-toko" style="pointer-events:none;cursor:default">Chat WhatsApp toko (nomor menyusul)</span></div>
     </div>
   </div>
 </div></section>
@@ -123,14 +123,5 @@
 </div></footer>
 
 <script src="../assets/js/config.js"></script>
-<script>
-(function(){
-  var C = window.OLANO_CONFIG;
-  var a = document.getElementById("wa-toko");
-  if (C && C.wa && a) {
-    a.href = "https://wa.me/" + C.wa.website + "?text=" + encodeURIComponent("Halo Kopi Senja, saya mau tanya produk.");
-  }
-})();
-</script>
 </body>
 </html>

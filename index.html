@@ -41,25 +41,52 @@
   <div class="container nav-inner">
     <a class="logo" href="index.html"><span class="mark">O</span>Olano</a>
     <nav class="nav-links" aria-label="Menu utama">
-      <a href="#modul">Fitur</a>
-      <a href="#alat">Kalkulator</a>
-      <a href="#pajak">Pajak</a>
+      <div class="dd">
+        <button type="button" class="dd-trigger" aria-expanded="false" aria-haspopup="true">Produk<span class="dd-caret" aria-hidden="true"></span></button>
+        <div class="dd-menu">
+          <a href="umkm.html">Kasir UMKM</a>
+          <a href="pajak.html">Pajak</a>
+          <a href="website.html">Website</a>
+          <a href="analisa-delivery.html">Analisa Delivery</a>
+          <a href="ai.html">AI Jaga Margin</a>
+          <a href="automation.html">Automation<span class="dd-chip">Segera hadir</span></a>
+          <a href="naik-kelas.html">Naik Kelas</a>
+        </div>
+      </div>
+      <div class="dd">
+        <button type="button" class="dd-trigger" aria-expanded="false" aria-haspopup="true">Kalkulator<span class="dd-caret" aria-hidden="true"></span></button>
+        <div class="dd-menu">
+          <a href="alat/kalkulator-pph-final-umkm.html">PPh Final UMKM</a>
+          <a href="alat/kalkulator-hpp-harga-jual.html">HPP & Harga Jual</a>
+          <a href="alat/kalkulator-biaya-qris.html">Biaya QRIS</a>
+          <a href="alat/kalkulator-margin-delivery.html">Margin Delivery</a>
+        </div>
+      </div>
       <a href="#harga">Harga</a>
     </nav>
     <div class="nav-cta">
-      <a class="nav-login" href="kasir.html">Masuk</a>
-      <a class="btn btn-primary pill" href="kasir.html#demo">Coba kasir gratis</a>
+      <a class="nav-login" href="app/login.html">Masuk</a>
+      <a class="btn btn-primary pill" href="app/kasir.html#demo">Coba demo kasir</a>
     </div>
     <button class="nav-burger" aria-label="Buka menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
   <nav class="nav-mobile" aria-label="Menu seluler">
-    <a href="#modul">Fitur</a>
-    <a href="#alat">Kalkulator</a>
-    <a href="#pajak">Pajak</a>
-    <a href="#harga">Harga</a>
+    <p class="mgrp">Produk</p>
     <a href="umkm.html">Kasir UMKM</a>
-    <a class="nav-login" href="kasir.html" style="color:var(--blue-600);font-weight:500">Masuk</a>
-    <a class="btn btn-primary pill" href="kasir.html#demo" style="margin:10px var(--gutter)">Coba kasir gratis</a>
+    <a href="pajak.html">Pajak</a>
+    <a href="website.html">Website</a>
+    <a href="analisa-delivery.html">Analisa Delivery</a>
+    <a href="ai.html">AI Jaga Margin</a>
+    <a href="automation.html">Automation <span class="dd-chip">Segera hadir</span></a>
+    <a href="naik-kelas.html">Naik Kelas</a>
+    <p class="mgrp">Kalkulator</p>
+    <a href="alat/kalkulator-pph-final-umkm.html">PPh Final UMKM</a>
+    <a href="alat/kalkulator-hpp-harga-jual.html">HPP & Harga Jual</a>
+    <a href="alat/kalkulator-biaya-qris.html">Biaya QRIS</a>
+    <a href="alat/kalkulator-margin-delivery.html">Margin Delivery</a>
+    <a href="#harga">Harga</a>
+    <a class="nav-login" href="app/login.html">Masuk</a>
+    <a class="btn btn-primary pill" style="margin:10px var(--gutter)" href="app/kasir.html#demo">Coba demo kasir</a>
   </nav>
 </header>
 
@@ -78,14 +105,14 @@
     <div class="hero-inner">
       <h1>Sistem jualan untuk UMKM yang tetap jalan saat internet <em class="it-serif" style="color:var(--blue-800)">mati</em>.</h1>
       <p class="sub">Kasir offline untuk UMKM. Stok &amp; QRIS tercatat, PPh final 0,5% terhitung otomatis.</p>
-      <div class="cta-row"><a class="btn btn-primary pill btn-lg" href="kasir.html#demo">Coba kasir gratis</a></div>
+      <div class="cta-row"><a class="btn btn-primary pill btn-lg" href="kasir.html#demo">Coba demo kasir</a></div>
       <div class="hero-struk" data-reveal aria-hidden="true">
         <span class="hs-row"><span>QRIS Rp40.000</span><span>MDR 0%</span></span>
         <span class="hs-row"><span>Omzet Rp75.000.000/bln</span><span>PPh 0,5%</span></span>
         <span class="hs-row hs-total"><span>PPh final/bln</span><span>Rp166.667</span></span>
       </div>
       <p class="fnote">Basis: omzet contoh Rp75.000.000/bln &middot; PPh final 0,5% (PP 20/2026) &middot; MDR QRIS mikro 0% (&le;Rp500rb)</p>
-      <a class="hero-visual-link" href="kasir.html#demo" aria-label="Buka demo kasir langsung">
+      <a class="hero-visual-link" href="kasir.html#demo" aria-label="Coba demo kasir">
         <figure class="hero-visual">
           <picture>
             <source media="(max-width: 759px)" srcset="assets/img/produk-kasir-mobile.webp 1x, assets/img/produk-kasir-mobile-2x.webp 2x" type="image/webp">
@@ -94,7 +121,7 @@
           </picture>
           <figcaption>Data contoh: tampilan aplikasi Olano</figcaption>
         </figure>
-        <span class="hint" aria-hidden="true">Buka demo kasir langsung &rarr;</span>
+        <span class="hint" aria-hidden="true">Coba demo kasir &rarr;</span>
       </a>
     </div>
   </div>
@@ -245,7 +272,7 @@
           <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>1 outlet, maks. 50 produk</li>
           <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>Rekap harian via email</li>
         </ul>
-        <a class="btn btn-primary pill btn-block" href="kasir.html#demo">Mulai gratis</a>
+        <a class="btn btn-primary pill btn-block" href="kasir.html#demo">Coba demo kasir</a>
       </div>
       <div class="price-card active">
         <b class="price-name">Pro</b>
@@ -264,7 +291,7 @@
     <div class="price-close">
       <h2>Mulai jualan lebih rapi hari ini.</h2>
       <p class="sub">Tanpa kartu, tanpa install. Buka kasir, transaksi pertama dalam 3 menit.</p>
-      <div class="cta-row"><a class="btn btn-primary pill btn-lg" href="kasir.html#demo">Coba kasir gratis</a></div>
+      <div class="cta-row"><a class="btn btn-primary pill btn-lg" href="kasir.html#demo">Coba demo kasir</a></div>
     </div>
   </div>
 </section>
@@ -281,31 +308,45 @@
 
 </main>
 
-<footer class="foot">
+<footer class="foot" id="foot">
   <div class="container">
     <div class="foot-grid">
-      <div>
+      <div class="foot-brand">
         <a class="logo" href="index.html" style="color:var(--ink)"><span class="mark">O</span>Olano</a>
-        <p class="legal" style="margin-top:16px">Kasir, website, dan pajak UMKM Indonesia di satu aplikasi. Tetap jalan walau internet mati.</p>
+        <p class="legal">Kasir, website, dan pajak UMKM di satu tempat. Tetap jalan walau internet mati.</p>
       </div>
-      <div><h3 class="foot-h">Produk</h3><ul>
-        <li><a href="umkm.html">Kasir UMKM</a></li>
-        <li><a href="pajak.html">Pajak</a></li>
-        <li><a href="website.html">Website</a></li>
-        <li><a href="analisa-delivery.html">Analisa Delivery</a></li>
-        <li><a href="ai.html">AI Jaga Margin</a></li>
-        <li><a href="naik-kelas.html">Naik Kelas</a></li></ul></div>
-      <div><h3 class="foot-h">Kalkulator</h3><ul>
-        <li><a href="alat/kalkulator-pph-final-umkm.html">PPh Final UMKM</a></li>
-        <li><a href="alat/kalkulator-hpp-harga-jual.html">HPP dan Harga Jual</a></li>
-        <li><a href="alat/kalkulator-biaya-qris.html">Biaya QRIS</a></li>
-        <li><a href="alat/kalkulator-margin-delivery.html">Margin Delivery</a></li></ul></div>
-      <div><h3 class="foot-h">Perusahaan</h3><ul>
-        <li><a href="tentang.html">Tentang</a></li>
-        <li><a href="kebijakan-privasi.html">Kebijakan Privasi</a></li>
-        <li><a href="syarat-ketentuan.html">Syarat dan Ketentuan</a></li></ul></div>
+      <nav aria-label="Produk">
+        <h3 class="foot-h">Produk</h3>
+        <ul>
+          <li><a href="umkm.html">Kasir UMKM</a></li>
+          <li><a href="pajak.html">Pajak</a></li>
+          <li><a href="website.html">Website</a></li>
+          <li><a href="analisa-delivery.html">Analisa Delivery</a></li>
+          <li><a href="ai.html">AI Jaga Margin</a></li>
+          <li><a href="automation.html">Automation</a></li>
+          <li><a href="naik-kelas.html">Naik Kelas</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Kalkulator">
+        <h3 class="foot-h">Kalkulator</h3>
+        <ul>
+          <li><a href="alat/kalkulator-pph-final-umkm.html">PPh Final UMKM</a></li>
+          <li><a href="alat/kalkulator-hpp-harga-jual.html">HPP & Harga Jual</a></li>
+          <li><a href="alat/kalkulator-biaya-qris.html">Biaya QRIS</a></li>
+          <li><a href="alat/kalkulator-margin-delivery.html">Margin Delivery</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Perusahaan">
+        <h3 class="foot-h">Perusahaan</h3>
+        <ul>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="kebijakan-privasi.html">Kebijakan Privasi</a></li>
+          <li><a href="syarat-ketentuan.html">Syarat & Ketentuan</a></li>
+        </ul>
+      </nav>
     </div>
-    <p class="small" style="margin-top:32px">&copy; 2026 Olano. Olano membantu menghitung dan menyiapkan rekap pajak. Pelaporan sebagai kuasa wajib pajak dikerjakan mitra berizin. Bukan nasihat hukum atau pajak.</p>
+    <p class="small">Olano membantu menghitung dan menyiapkan rekap pajak. Pelaporan sebagai kuasa wajib pajak dikerjakan mitra berizin. Bukan nasihat hukum atau pajak.</p>
+    <p class="small">&copy; 2026 Olano</p>
   </div>
 </footer>
 

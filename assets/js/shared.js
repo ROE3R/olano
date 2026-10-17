@@ -213,6 +213,83 @@
     }
   }
 
+  /* ---------- dropdown nav desktop (.dd) ----------
+     State = atribut aria-open pada .dd (dibaca CSS). Satu menu terbuka pada satu waktu;
+     tutup via klik di luar, Escape (fokus balik ke trigger), klik link, atau fokus keluar.
+     Scope selector .nav-links -> panel mobile (.nav-mobile) tidak tersentuh. */
+  function initNavDropdowns() {
+    var dds = document.querySelectorAll(".nav-links .dd");
+    if (!dds.length) return;
+    function close(dd) {
+      dd.setAttribute("aria-open", "false");
+      var t = dd.querySelector(".dd-trigger");
+      if (t) t.setAttribute("aria-expanded", "false");
+    }
+    function open(dd) {
+      dds.forEach(function (o) { if (o !== dd) close(o); });
+      dd.setAttribute("aria-open", "true");
+      var t = dd.querySelector(".dd-trigger");
+      if (t) t.setAttribute("aria-expanded", "true");
+    }
+    function items(dd) {
+      return Array.prototype.filter.call(dd.querySelectorAll(".dd-menu a"), function (a) {
+        return a.offsetParent !== null;
+      });
+    }
+    function focusAt(list, idx) {
+      if (!list.length) return;
+      list[((idx % list.length) + list.length) % list.length].focus();
+    }
+    dds.forEach(function (dd) {
+      var trigger = dd.querySelector(".dd-trigger");
+      var menu = dd.querySelector(".dd-menu");
+      if (!trigger || !menu) return;
+      trigger.addEventListener("click", function () {
+        if (dd.getAttribute("aria-open") === "true") close(dd);
+        else open(dd);
+      });
+      trigger.addEventListener("keydown", function (e) {
+        if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+        e.preventDefault();
+        if (dd.getAttribute("aria-open") !== "true") open(dd);
+        var list = items(dd);
+        focusAt(list, e.key === "ArrowDown" ? 0 : list.length - 1);
+      });
+      menu.addEventListener("keydown", function (e) {
+        var list = items(dd);
+        if (!list.length) return;
+        var cur = list.indexOf(document.activeElement);
+        if (e.key === "ArrowDown") { e.preventDefault(); focusAt(list, cur + 1); }
+        else if (e.key === "ArrowUp") { e.preventDefault(); focusAt(list, cur - 1); }
+        else if (e.key === "Home") { e.preventDefault(); focusAt(list, 0); }
+        else if (e.key === "End") { e.preventDefault(); focusAt(list, list.length - 1); }
+      });
+      menu.addEventListener("click", function (e) {
+        if (e.target.closest("a")) close(dd);
+      });
+      dd.addEventListener("focusout", function (e) {
+        if (dd.getAttribute("aria-open") !== "true") return;
+        if (!e.relatedTarget || !dd.contains(e.relatedTarget)) close(dd);
+      });
+    });
+    document.addEventListener("click", function (e) {
+      dds.forEach(function (dd) {
+        if (dd.getAttribute("aria-open") === "true" && !dd.contains(e.target)) close(dd);
+      });
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      dds.forEach(function (dd) {
+        if (dd.getAttribute("aria-open") !== "true") return;
+        close(dd);
+        if (dd.contains(document.activeElement)) {
+          var t = dd.querySelector(".dd-trigger");
+          if (t) t.focus();
+        }
+      });
+    });
+  }
+
   /* ---------- detail/FAQ: tutup yang lain ---------- */
   function initFaq() {
     var items = document.querySelectorAll(".faq-item");
@@ -361,7 +438,7 @@
     });
   }
 
-    initNav(); initReveal(); initCountUp(); initFaq();
+    initNav(); initNavDropdowns(); initReveal(); initCountUp(); initFaq();
     initSpotlight(); initSlideNum(); initHeroScenes();
     initOfflineDemo(); initMarquee(); initBeforeAfter(); initRings();
     initTicker();

@@ -1,0 +1,80 @@
+# OLANO AUDIT - BASELINE INVENTORY
+# generated: 2026-10-17 18:26 UTC  HEAD: 031c701
+
+## [P0-06] href kosong atau '#'
+website.html:112:      <a class="btn btn-primary" id="wa-web-2" href="#">Chat soal website custom</a>
+
+## [P0-06] Penyebutan WhatsApp / wa.me (audit tautan)
+index.html:260:        <p class="hint" style="margin-top:16px">Layanan pajak dan website custom tersedia per penawaran lewat WhatsApp.</p>
+pajak.html:7:<meta name="description" content="Rekap PPh final 0,5% UMKM sesuai PP 20/2026, terhitung dari transaksi kasir. Batas Rp500jt dan Rp4,8M per jenis WP. Rekap PDF siap setor, tim bantu via WhatsApp.">
+pajak.html:13:  <meta property="og:description" content="Rekap PPh final 0,5% UMKM sesuai PP 20/2026, terhitung dari transaksi kasir. Batas Rp500jt dan Rp4,8M per jenis WP. Rekap PDF siap setor, tim bantu via WhatsApp.">
+pajak.html:22:[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Beranda","item":"https://olano.xyz/"},{"@type":"ListItem","position":2,"name":"Pajak UMKM","item":"https://olano.xyz/pajak.html"}]},{"@type":"WebPage","name":"Rekap Pajak UMKM sesuai PP 20/2026","url":"https://olano.xyz/pajak.html","description":"Rekap PPh final 0,5% UMKM sesuai PP 20/2026, terhitung dari transaksi kasir. Batas Rp500jt dan Rp4,8M per jenis WP. Rekap PDF siap setor, tim bantu via WhatsApp.","isPartOf":{"@id":"https://olano.xyz/#site"}}]
+pajak.html:45:  <p class="mt-4" style="color:var(--gray-500);font-size:var(--fs-body-lg);max-width:54ch">PPh final 0,5% sesuai PP 20/2026, terhitung otomatis dari setiap penjualan di kasir. Olano siapkan rekap PDF dan pengingat tanggal. Tim kami bantu urus pelaporan via WhatsApp.</p>
+pajak.html:46:  <div class="row wrap mt-6"><a class="btn btn-primary btn-lg" href="alat/kalkulator-pph-final-umkm.html">Coba hitung pajak (gratis)</a><a class="btn btn-wa btn-lg" id="wa-pajak">Konsultasi via WhatsApp</a></div>
+pajak.html:79:    <div class="card"><b class="mono" style="color:var(--blue-600)">04</b><h3 class="mt-2" style="font-size:1.1rem">Tim kami urus</h3><p class="small mt-2">Kirim "Biar admin yang urus rekap &amp; lapor bulan ini" via WhatsApp. Pelaporan dikerjakan mitra berizin.</p></div>
+pajak.html:88:  <div class="row wrap mt-6"><a class="btn btn-primary btn-lg" id="wa-pajak-2">Chat WhatsApp</a><a class="btn btn-lg" style="background:#fff;color:var(--blue-700)" href="kasir.html">Hubungkan kasirmu</a></div></div>
+pajak.html:119:    return "https://wa.me/" + C.wa.pajak + "?text=" + msg;
+website.html:7:<meta name="description" content="Website toko UMKM dari template Katalog, siap dipakai sekarang. 9 keluarga layout lain menyusul (1 dari 50 template yang direncanakan). Produk tersinkron dari kasir. Custom domain via WhatsApp.">
+website.html:20:  <meta property="og:description" content="Website toko UMKM dari template Katalog, siap dipakai sekarang. 9 keluarga layout lain menyusul (1 dari 50 template yang direncanakan). Produk tersinkron dari kasir. Custom domain via WhatsApp.">
+website.html:29:[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Beranda","item":"https://olano.xyz/"},{"@type":"ListItem","position":2,"name":"Website Toko","item":"https://olano.xyz/website.html"}]},{"@type":"WebPage","name":"Website Toko UMKM: Template Katalog siap, 9 keluarga menyusul","url":"https://olano.xyz/website.html","description":"Website toko UMKM dari template Katalog, siap dipakai sekarang. 9 keluarga layout lain menyusul (1 dari 50 template yang direncanakan). Produk tersinkron dari kasir. Custom domain via WhatsApp.","isPartOf":{"@id":"https://olano.xyz/#site"}}]
+website.html:90:    <div class="card"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-chat"/></svg><span class="chip chip-soon" data-slug="jasa-booking">Coming soon</span></div><b class="block mt-2">Jasa / Booking</b><p class="small mt-2">Layanan, jam, dan tombol WhatsApp toko untuk tanya-tanya.</p></div>
+website.html:92:    <div class="card"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-img"/></svg><span class="chip chip-soon" data-slug="promo-event">Coming soon</span></div><b class="block mt-2">Promo / Event</b><p class="small mt-2">Pengumuman promo, countdown, dan CTA ke kanal WhatsApp.</p></div>
+website.html:124:  <p class="small mt-4" style="color:var(--gray-500)">Situsmu tayang di domain olano.id. Domain sendiri diurus via WhatsApp.</p>
+website.html:131:  function href(){ return "https://wa.me/"+C.wa.website+"?text="+encodeURIComponent("Halo Olano, saya mau diskusi website custom/domain sendiri. Usaha: (isi) · Template favorit: (isi)."); }
+templates/katalog.html:7:<meta name="description" content="Tayangan demo template Katalog Olano: website toko statis dengan grid produk, jam buka, dan kontak WhatsApp. Data di halaman ini contoh isi dari kasir.">
+templates/katalog.html:114:      <div class="mt-4"><a class="btn btn-wa" id="wa-toko" href="https://wa.me/6281200000000">Chat WhatsApp toko</a></div>
+templates/katalog.html:131:    a.href = "https://wa.me/" + C.wa.website + "?text=" + encodeURIComponent("Halo Kopi Senja, saya mau tanya produk.");
+naik-kelas.html:94:  function href(){ return "https://wa.me/"+C.wa.pajak+"?text="+encodeURIComponent("Halo Olano, saya mau konsultasi Naik Kelas / multi-outlet / pajak PT-CV. Usaha: (isi)."); }
+alat/kalkulator-pph-final-umkm.html:110:        <p class="disclaimer" style="font-size:11px;color:var(--blue-300);margin-top:14px;font-family:var(--font-mono)">Estimasi berdasarkan PP 20/2026. Bukan nasihat pajak. Konsultasi tim kami via WhatsApp untuk pelaporan resmi.</p>
+
+## [P0-04] dinamis / statis
+index.html:35:    <p class="ticker-text">Kasir offline-first &middot; QRIS dinamis MDR 0% &middot; PPh final 0,5% (PP 20/2026) &middot; PWA v24</p>
+index.html:244:          <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>QRIS statis + catatan bayar</li>
+app/kasir.html:73:      <p class="small" style="margin-top:8px;color:var(--gray-500)">QRIS dinamis · nominal mengikuti tagihan · <b>tekan “Sudah dibayar” setelah cek notifikasi PJP</b>.</p>
+app/kasir.html:105:    <b style="font-family:var(--font-display)">QRIS Dinamis: <span id="qris-store-name">Kopi Senja</span></b>
+app/kasir.html:110:    <p class="small mt-4">Nominal mengikuti tagihan (QRIS dinamis) · pelanggan scan, nominal terisi otomatis. <span style="color:var(--gray-500)">Nominal terinje ke payload QRIS per transaksi.</span></p>
+app/kasir.html:183:  /* ================= QRIS DINAMIS (EMVCo + CRC16-CCITT) ================= */
+app/kasir.html:201:      + "010212"                                 // merchant account info: 12 = QRIS (dinamis per transaksi)
+umkm.html:120:  <div class="text-c" style="max-width:560px;margin:0 auto" data-reveal><div class="eyebrow">QRIS statis</div><h2 class="mt-2">Terima QRIS dari semua bank &amp; e-wallet.</h2>
+umkm.html:121:  <p class="small mt-4">Olano membaca QRIS statis dari bank atau e-wallet mana pun, memvalidasi isinya, lalu menampilkan ulang QR yang tajam dengan nominal besar di sebelahnya. Konfirmasi pembayaran manual setelah cek notifikasi PJP.</p></div>
+umkm.html:145:    <details class="faq-item"><summary>QRIS dari bank mana saja bisa?<span class="plus">+</span></summary><p class="ans">Semua PJP yang menerbitkan QRIS statis (bank &amp; e-wallet). Olano menampilkan QR dan nominal, konfirmasi manual sesuai notifikasi PJP.</p></details>
+templates/katalog.html:7:<meta name="description" content="Tayangan demo template Katalog Olano: website toko statis dengan grid produk, jam buka, dan kontak WhatsApp. Data di halaman ini contoh isi dari kasir.">
+
+## [P0-01] Durasi PPh final (4 tahun / tanpa batas / PP)
+index.html:7:<meta name="description" content="Kasir offline + QRIS untuk UMKM. Rekap PPh final 0,5% sesuai PP 20/2026 dihitung otomatis. Jualan tetap jalan walau internet mati. Mulai gratis, tanpa kartu.">
+index.html:11:<meta property="og:description" content="Kasir offline + QRIS + AI penjaga harga & stok + rekap PPh final 0,5% sesuai PP 20/2026. Mulai gratis.">
+index.html:35:    <p class="ticker-text">Kasir offline-first &middot; QRIS dinamis MDR 0% &middot; PPh final 0,5% (PP 20/2026) &middot; PWA v24</p>
+index.html:87:      <p class="fnote">Basis: omzet contoh Rp60.000.000/bln &middot; PPh final 0,5% (PP 20/2026) &middot; MDR QRIS mikro 0% (&le;Rp500rb)</p>
+index.html:129:          <span class="mdesc">PPh final 0,5% (PP 20/2026) dihitung dari omzet kasir. PDF siap setor, pengingat tanggal setor.</span>
+index.html:201:        <div class="callout" style="margin-top:20px"><b>Aturan 2026:</b> PPh final 0,5% untuk orang pribadi, PT Perorangan, dan koperasi, maksimal 4 tahun. OP dengan omzet di atas Rp500 juta per tahun mulai kena. Omzet di atas Rp4,8 miliar keluar dari skema final.</div>
+index.html:245:          <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>1 outlet, maks. 50 produk</li>
+index.html:318:  var cfg = window.OLANO_CONFIG ? window.OLANO_CONFIG.tax : {rate:.005,exemptionOP:5e8,ceiling:48e8,ppNumber:"PP 20/2026",types:{OP:{final:true,freeUpto:5e8}}};
+index.html:326:      note.innerHTML = "<b>"+wp.options[wp.selectedIndex].text+".</b> Tidak bisa PPh Final 0,5% sejak "+(cfg.ppNumber||"PP 20/2026")+". Wajib skema umum berbasis laba. Kami bantu konsultasi.";
+umkm.html:133:    <div class="card"><b>Gratis</b> · <span class="mono" style="color:var(--blue-600);font-weight:700">Rp0</span><p class="small mt-2">Kasir offline, QRIS, 1 outlet, maks. 50 produk, ringkasan harian via email.</p>
+pajak.html:6:<title>Rekap Pajak UMKM Tiap Bulan sesuai PP 20/2026 | Olano</title>
+pajak.html:7:<meta name="description" content="Rekap PPh final 0,5% UMKM sesuai PP 20/2026, terhitung dari transaksi kasir. Batas Rp500jt dan Rp4,8M per jenis WP. Rekap PDF siap setor, tim bantu via WhatsApp.">
+pajak.html:12:  <meta property="og:title" content="Rekap Pajak UMKM Tiap Bulan sesuai PP 20/2026 | Olano">
+pajak.html:13:  <meta property="og:description" content="Rekap PPh final 0,5% UMKM sesuai PP 20/2026, terhitung dari transaksi kasir. Batas Rp500jt dan Rp4,8M per jenis WP. Rekap PDF siap setor, tim bantu via WhatsApp.">
+pajak.html:22:[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Beranda","item":"https://olano.xyz/"},{"@type":"ListItem","position":2,"name":"Pajak UMKM","item":"https://olano.xyz/pajak.html"}]},{"@type":"WebPage","name":"Rekap Pajak UMKM sesuai PP 20/2026","url":"https://olano.xyz/pajak.html","description":"Rekap PPh final 0,5% UMKM sesuai PP 20/2026, terhitung dari transaksi kasir. Batas Rp500jt dan Rp4,8M per jenis WP. Rekap PDF siap setor, tim bantu via WhatsApp.","isPartOf":{"@id":"https://olano.xyz/#site"}}]
+pajak.html:43:  <div class="badge"><span class="dot"></span>PPh final 0,5% · PP 20/2026</div>
+pajak.html:45:  <p class="mt-4" style="color:var(--gray-500);font-size:var(--fs-body-lg);max-width:54ch">PPh final 0,5% sesuai PP 20/2026, terhitung otomatis dari setiap penjualan di kasir. Olano siapkan rekap PDF dan pengingat tanggal. Tim kami bantu urus pelaporan via WhatsApp.</p>
+pajak.html:60:          <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-100);font-weight:600">Orang Pribadi</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-100)">0,5% atas omzet. <b style="color:var(--success)">Bebas s.d. Rp500jt/thn</b>. Tanpa batas waktu.</td></tr>
+pajak.html:61:          <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-100);font-weight:600">PT Perorangan</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-100)">0,5% atas omzet. Tanpa batas waktu.</td></tr>
+pajak.html:62:          <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-100);font-weight:600">Koperasi</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-100)">0,5%, <b>maks. 4 tahun</b> sejak terdaftar.</td></tr>
+pajak.html:69:  <p class="small mt-4" style="color:var(--gray-500)">Sumber: PP 20/2026. Ini simulasi &amp; edukasi, bukan nasihat pajak.</p>
+automation.html:56:    <div class="card"><svg class="ic" aria-hidden="true" width="20" height="20"><use href="assets/icons.svg#i-receipt"/></svg><b class="block mt-2">Rekap pajak bulanan otomatis</b><p class="small mt-2">Omzet terkumpul dari transaksi kasir, dihitung sebagai PPh final 0,5% sesuai PP 20/2026, rekap siap lapor.</p></div>
+naik-kelas.html:53:    <div class="card"><div class="row" style="gap:14px"><svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-shield"/></svg><div><b style="font-family:var(--font-display)">Akses admin pajak</b><p class="small mt-2">Owner memberi izin baca berbatas waktu ke tim Olano untuk mengerjakan rekap. Bisa dicabut kapan pun, tercatat di audit log.</p></div></div></div>
+naik-kelas.html:76:  <p class="mt-4" style="color:var(--blue-200)">Sejak PP 20/2026, PT dan CV tidak bisa PPh final 0,5%. Yang berlaku skema umum (pajak atas laba), termasuk PPh 21 dan PPN bila omzet di atas ambang. Tim kami bantu hitung dan lapor.</p>
+kebijakan-privasi.html:24:<div class="card mt-4"><h3 style="font-size:1.05rem">Akses admin pajak</h3><p class="small mt-2">Anda dapat memberi tim Olano akses baca berbatas waktu untuk rekap pajak; bisa dicabut kapan saja dan tercatat di audit log.</p></div>
+syarat-ketentuan.html:22:<div class="card mt-4"><h3 style="font-size:1.05rem">Paket &amp; tagihan</h3><p class="small mt-2">Gratis: POS + QRIS, 1 outlet, maks. 50 produk. Pro: Rp50rb/outlet/bulan, trial 14 hari tanpa kartu. Tagihan menyesuaikan jumlah outlet aktif (prorata). Metode via Xendit.</p></div>
+alat/kalkulator-pph-final-umkm.html:7:<meta name="description" content="Kalkulator PPh final 0,5% UMKM sesuai PP 20/2026. Masukkan omzet, keluar jumlah pajak. Orang pribadi bebas s.d. Rp500 juta; di atas Rp4,8 miliar wajib skema umum. Gratis, tanpa akun.">
+alat/kalkulator-pph-final-umkm.html:14:{"@context":"https://schema.org","@type":"WebApplication","name":"Kalkulator PPh Final UMKM","url":"https://olano.xyz/alat/kalkulator-pph-final-umkm.html","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"IDR"},"description":"Kalkulator PPh final 0,5% UMKM sesuai PP 20/2026. Masukkan omzet, keluar jumlah pajak. Orang pribadi bebas s.d. Rp500 juta; di atas Rp4,8 miliar wajib skema umum. Gratis, tanpa akun."}
+alat/kalkulator-pph-final-umkm.html:20:  <meta property="og:description" content="Kalkulator PPh final 0,5% UMKM sesuai PP 20/2026. Masukkan omzet, keluar jumlah pajak. Orang pribadi bebas s.d. Rp500 juta; di atas Rp4,8 miliar wajib skema umum. Gratis, tanpa akun.">
+alat/kalkulator-pph-final-umkm.html:52:    <div class="badge"><span class="dot"></span>Alat Gratis · PP 20/2026</div>
+alat/kalkulator-pph-final-umkm.html:54:    <p class="mt-4" style="color:var(--gray-500);font-size:var(--fs-body-lg)">Masukkan omzet, keluar jumlah pajak sesuai PP 20/2026. Orang pribadi bebas s.d. Rp500 juta per tahun; PT dan CV pakai skema umum. Gratis, tanpa daftar.</p>
+alat/kalkulator-pph-final-umkm.html:72:          <p class="hint">PT &amp; CV tidak bisa PPh Final sejak PP 20/2026. Gunakan skema umum (pajak atas laba).</p>
+alat/kalkulator-pph-final-umkm.html:92:        <p class="small mt-4" style="color:var(--gray-500)">Tarif dari PP 20/2026. Ini simulasi, bukan nasihat pajak.</p>
+alat/kalkulator-pph-final-umkm.html:110:        <p class="disclaimer" style="font-size:11px;color:var(--blue-300);margin-top:14px;font-family:var(--font-mono)">Estimasi berdasarkan PP 20/2026. Bukan nasihat pajak. Konsultasi tim kami via WhatsApp untuk pelaporan resmi.</p>
+alat/kalkulator-pph-final-umkm.html:132:      <details class="faq-item"><summary>Koperasi batasan berapa?<span class="plus">+</span></summary><p class="ans">Koperasi berhak PPh final maks. 4 tahun sejak terdaftar. Setelah itu, skema umum.</p></details>
+
+## [P0-05] Angka template

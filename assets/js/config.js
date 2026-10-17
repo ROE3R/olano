@@ -86,8 +86,10 @@
 
     /* --- WhatsApp layanan (F11): env di production; placeholder di demo --- */
     wa: {
-      pajak: "6281200000000",  // TODO: NEXT_PUBLIC_WA_PAJAK
-      website: "6281200000000",// TODO: NEXT_PUBLIC_WA_WEBSITE
+      // K1: no real WhatsApp number yet -> empty, not a clickable placeholder.
+      // Builder JS guards on truthiness, so nothing becomes a live link.
+      pajak: "",  // TODO: set NEXT_PUBLIC_WA_PAJAK in production
+      website: "",// TODO: set NEXT_PUBLIC_WA_WEBSITE in production
       services: ["pajak_rekap", "website_custom"],
     },
 

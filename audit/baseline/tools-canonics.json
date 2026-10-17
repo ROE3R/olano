@@ -1,0 +1,409 @@
+{
+ "pph": {
+  "inputs": [
+   {
+    "id": "wp-OP",
+    "name": "wp",
+    "type": "radio",
+    "label": "Jenis Wajib Pajak",
+    "value": "OP"
+   },
+   {
+    "id": "wp-PTP",
+    "name": "wp",
+    "type": "radio",
+    "label": "Jenis Wajib Pajak",
+    "value": "PT_PERORANGAN"
+   },
+   {
+    "id": "wp-KOP",
+    "name": "wp",
+    "type": "radio",
+    "label": "Jenis Wajib Pajak",
+    "value": "KOPERASI"
+   },
+   {
+    "id": "wp-PT",
+    "name": "wp",
+    "type": "radio",
+    "label": "Jenis Wajib Pajak",
+    "value": "PT"
+   },
+   {
+    "id": "wp-CV",
+    "name": "wp",
+    "type": "radio",
+    "label": "Jenis Wajib Pajak",
+    "value": "CV"
+   },
+   {
+    "id": "omzet",
+    "name": "",
+    "type": "number",
+    "label": "Omzet rata-rata per bulan (Rp)",
+    "value": "75000000"
+   },
+   {
+    "id": "omzet-12b",
+    "name": "",
+    "type": "number",
+    "label": "Omzet 12 bulan terakhir (Rp, kumulatif)",
+    "value": "900000000"
+   },
+   {
+    "id": "keluarga",
+    "name": "",
+    "type": "checkbox",
+    "label": "",
+    "value": "on"
+   },
+   {
+    "id": "omzet-keluarga",
+    "name": "",
+    "type": "number",
+    "label": "Omzet keluarga per bulan (Rp)",
+    "value": "0"
+   }
+  ],
+  "lines": [
+   "Langsung ke alat",
+   "O",
+   "Olano",
+   "Pajak",
+   "UMKM",
+   "Harga",
+   "Coba Gratis",
+   "Alat Gratis · PP 20/2026",
+   "PPh final 0,5% dalam hitungan detik.",
+   "Masukkan omzet, keluar jumlah pajak sesuai PP 20/2026. Orang pribadi bebas s.d. Rp500 juta per tahun; PT dan CV pakai skema umum. Gratis, tanpa daftar.",
+   "Jenis Wajib Pajak",
+   "Orang Pribadi",
+   "PT Perorangan",
+   "Koperasi",
+   "PT",
+   "CV / Firma",
+   "PT & CV tidak bisa PPh Final sejak PP 20/2026. Gunakan skema umum (pajak atas laba).",
+   "Omzet rata-rata per bulan (Rp)",
+   "Gabungkan omzet bersama anggota keluarga (suami/istri) sesuai aturan PPh final.",
+   "Hitung sekarang",
+   "Tarif dari PP 20/2026. Ini simulasi, bukan nasihat pajak.",
+   "HASIL SIMULASI",
+   "Rp166.667est. PPh final per bulan",
+   "Omzet per bulan",
+   "Rp75.000.000",
+   "Omzet tahunan",
+   "Rp900.000.000",
+   "Dipotong ambang bebas",
+   "Rp500.000.000",
+   "Dasar PPh final",
+   "Rp400.000.000",
+   "Estimasi per tahun",
+   "Rp2.000.000",
+   "Status aman. Omzet di bawah Rp4.800.000.000, tetap dalam skema final 0,5%.",
+   "Otomatiskan tiap bulan: Olano rekap omzet dari kasirmu, hitung PPh final, dan kirim checklist setor tanggal 1. Coba gratis",
+   "Estimasi berdasarkan PP 20/2026. Bukan nasihat pajak. Konsultasi tim kami via WhatsApp untuk pelaporan resmi.",
+   "Cara menghitung PPh final 0,5%",
+   "1",
+   "Omzet setahun s.d. Rp500 juta (Orang Pribadi): bebas PPh final.",
+   "2",
+   "Di atas Rp500 juta: PPh final 0,5% dari omzet (atau omzet di atas ambang, sesuai status WP-mu).",
+   "3",
+   "Omzet tahunan > Rp4,8 miliar: keluar skema final, wajib pajak umum atas laba.",
+   "FAQ Kalkulator",
+   "Kapan setor PPh final?",
+   "+",
+   "Apa itu ambang Rp500 juta?",
+   "+",
+   "Koperasi batasan berapa?",
+   "+",
+   "O",
+   "Olano",
+   "HPP & Harga",
+   "Biaya QRIS",
+   "Halaman Pajak",
+   "Olano membantu menghitung & menyiapkan pajak. Pelaporan sebagai kuasa wajib pajak dikerjakan mitra berizin. Bukan nasihat hukum atau pajak."
+  ]
+ },
+ "hpp": {
+  "inputs": [
+   {
+    "id": "nama",
+    "name": "",
+    "type": "text",
+    "label": "Nama produk",
+    "value": "Es Kopi Susu Gula Aren"
+   },
+   {
+    "id": "",
+    "name": "",
+    "type": "text",
+    "label": "Bahan (BOM per porsi)",
+    "value": "Kopi susu cair"
+   },
+   {
+    "id": "",
+    "name": "",
+    "type": "text",
+    "label": "Bahan (BOM per porsi)",
+    "value": "1"
+   },
+   {
+    "id": "",
+    "name": "",
+    "type": "text",
+    "label": "Bahan (BOM per porsi)",
+    "value": "6000"
+   },
+   {
+    "id": "",
+    "name": "",
+    "type": "text",
+    "label": "Bahan (BOM per porsi)",
+    "value": "Gula aren"
+   },
+   {
+    "id": "",
+    "name": "",
+    "type": "text",
+    "label": "Bahan (BOM per porsi)",
+    "value": "1"
+   },
+   {
+    "id": "",
+    "name": "",
+    "type": "text",
+    "label": "Bahan (BOM per porsi)",
+    "value": "1200"
+   },
+   {
+    "id": "",
+    "name": "",
+    "type": "text",
+    "label": "Bahan (BOM per porsi)",
+    "value": "Es & kemasan"
+   },
+   {
+    "id": "",
+    "name": "",
+    "type": "text",
+    "label": "Bahan (BOM per porsi)",
+    "value": "1"
+   },
+   {
+    "id": "",
+    "name": "",
+    "type": "text",
+    "label": "Bahan (BOM per porsi)",
+    "value": "3000"
+   },
+   {
+    "id": "overhead",
+    "name": "",
+    "type": "number",
+    "label": "Overhead per porsi (Rp)",
+    "value": "1500"
+   },
+   {
+    "id": "qty",
+    "name": "",
+    "type": "number",
+    "label": "Jumlah (untuk HPP/porsi tetap)",
+    "value": "1"
+   }
+  ],
+  "lines": [
+   "Langsung ke alat",
+   "O",
+   "Olano",
+   "UMKM",
+   "Pajak",
+   "Harga",
+   "Coba Gratis",
+   "Alat Gratis",
+   "Harga jual yang benar, bukan kira-kira.",
+   "Hitung HPP, margin, dan harga jual minimum. Tahu batas aman sebelum kasih diskon.",
+   "Nama produk",
+   "Bahan (BOM per porsi)",
+   "+ Tambah bahan",
+   "Overhead per porsi (Rp)",
+   "Jumlah (untuk HPP/porsi tetap)",
+   "Hitung margin",
+   "Margin: Aman 30%, Kompetitif 20%, Premium 45%. Harga = (HPP ÷ (1 − margin)).",
+   "HPP PRODUK",
+   "Rp11.700biaya produksi + overhead per porsi",
+   "Aman (margin 30%)",
+   "Rp16.714",
+   "Kompetitif (20%)",
+   "Rp14.625",
+   "Premium (45%)",
+   "Rp21.273",
+   "SARAN AI",
+   "Jual di Rp16.714 (Aman): margin 30% memberi ruang saat bahan naik 10% tanpa rugi. Kalau saingan lebih murah, pakai opsi Kompetitif sambil pantau harga bahan.",
+   "Pantau otomatis: Olano monitor harga bahan (susu, gula) dan beri alert saat naik ≥10%. Aktifkan Pro",
+   "Cara kerja",
+   "1 · BOM",
+   "Daftar bahan per porsi. HPP = jumlah (harga × qty) + overhead.",
+   "2 · Margin",
+   "Pilih target margin. Harga jual = HPP ÷ (1 − margin) supaya margin tetap tercapai.",
+   "3 · Tahan naik harga",
+   "Margin 30% masih untung saat bahan baku naik 10%. Premium 45% untuk brand kuat.",
+   "O",
+   "Olano",
+   "PPh Final",
+   "Biaya QRIS",
+   "Simulasi harga. Pantau harga pasar & margin otomatis di Olano Pro."
+  ]
+ },
+ "qris": {
+  "inputs": [
+   {
+    "id": "cat-mikro",
+    "name": "cat",
+    "type": "radio",
+    "label": "Kategori usaha (pemohon QRIS)",
+    "value": "MIKRO"
+   },
+   {
+    "id": "cat-kmb",
+    "name": "cat",
+    "type": "radio",
+    "label": "Kategori usaha (pemohon QRIS)",
+    "value": "KMB"
+   },
+   {
+    "id": "nominal",
+    "name": "",
+    "type": "number",
+    "label": "Nominal transaksi (Rp)",
+    "value": "35000"
+   },
+   {
+    "id": "frekuensi",
+    "name": "",
+    "type": "number",
+    "label": "Transaksi per bulan",
+    "value": "300"
+   }
+  ],
+  "lines": [
+   "Langsung ke alat",
+   "O",
+   "Olano",
+   "UMKM",
+   "Pajak",
+   "Coba Gratis",
+   "Alat Gratis · Berlaku 1 Okt 2026",
+   "QRIS mikro 0% sampai Rp500 ribu. Cek selisihnya.",
+   "Berlaku 1 Oktober 2026. Hitung berapa biaya MDR yang tidak lagi Anda bayar per transaksi kecil. MDR ditanggung merchant.",
+   "Kategori usaha (pemohon QRIS)",
+   "Usaha Mikro",
+   "Kecil / Menengah / Besar",
+   "Mikro: NIB/UMKM. Kecil-menengah-besar: sesuai klasifikasi Sertifikat Usaha.",
+   "Nominal transaksi (Rp)",
+   "Transaksi per bulan",
+   "Cek penghematan",
+   "BIAYA MDR",
+   "Rp0per transaksi · tarif 0%",
+   "MDR per transaksi",
+   "Rp0",
+   "Estimasi per bulan",
+   "Rp0",
+   "Estimasi per tahun",
+   "Rp0",
+   "Gratis (0%). Nominal ≤ Rp500.000 (mikro) kena MDR 0%.",
+   "Tarif MDR QRIS sejak 1 Okt 2026",
+   "Usaha Mikro",
+   "≤ Rp500.000 → 0% · > Rp500.000 → 0,3%.",
+   "Usaha Kecil / Menengah / Besar",
+   "≤ Rp100.000 → 0% · > Rp100.000 → 0,7%.",
+   "Pengingat penting",
+   "MDR dipotong dari dana merchant. Tidak boleh dibebankan ke konsumen. Pastikan namamu di struk/nama PJP benar.",
+   "O",
+   "Olano",
+   "PPh Final",
+   "HPP",
+   "Estimasi. Tarif final mengikuti PJP masing-masing & PP/aturan BI terbaru."
+  ]
+ },
+ "margin": {
+  "inputs": [
+   {
+    "id": "harga",
+    "name": "",
+    "type": "number",
+    "label": "Harga jual (Rp)",
+    "value": "45000"
+   },
+   {
+    "id": "hpp",
+    "name": "",
+    "type": "number",
+    "label": "HPP per porsi (Rp)",
+    "value": "18000"
+   },
+   {
+    "id": "komisi",
+    "name": "",
+    "type": "number",
+    "label": "Komisi platform (%)",
+    "value": "29"
+   },
+   {
+    "id": "promo",
+    "name": "",
+    "type": "number",
+    "label": "Potongan promo/diskon (Rp)",
+    "value": "3000"
+   },
+   {
+    "id": "target",
+    "name": "",
+    "type": "number",
+    "label": "Margin target (%)",
+    "value": "30"
+   }
+  ],
+  "lines": [
+   "Langsung ke alat",
+   "O",
+   "Olano",
+   "UMKM",
+   "Pajak",
+   "Coba Gratis",
+   "Alat Gratis · Komisi 20–30%",
+   "Komisi 20–30% makan margin Anda berapa?",
+   "Masukkan harga jual dan komisi platform, lihat sisa margin sebelum memasang aplikasi. Untung bersih per pesanan dihitung otomatis, termasuk promo.",
+   "Harga jual (Rp)",
+   "HPP per porsi (Rp)",
+   "Komisi platform (%)",
+   "Potongan promo/diskon (Rp)",
+   "Margin target (%)",
+   "Hitung komisinya",
+   "Komisi platform umumnya 20–30%. Promo = potongan dari harga jual yang Anda tanggung.",
+   "UNTUNG BERSIH PER PESANAN",
+   "Rp10.950margin 24,3%",
+   "Didapat platform (net)",
+   "Rp28.950",
+   "Biaya HPP",
+   "− Rp18.000",
+   "Untung bersih",
+   "Rp10.950",
+   "AI VERDICT",
+   "Margin 24,3% di bawah target 30%. Naikkan harga ke Rp51.500 atau pakai menu paket agar komisi efektif per item turun.",
+   "Coba simulasi lain: di Olano Pro, AI membandingkan GoFood vs Grab vs walk-in per menu dengan komisi & promo aktual, lalu rekomendasi harga satu ketukan.",
+   "Estimasi. Komisi & promo aktual berbeda per merchant; cocokkan dengan dashboard merchant-mu.",
+   "Kenapa margin bisa negatif di platform",
+   "Komisi 20–30%",
+   "Dipotong dari harga jual sebelum sampai ke kamu. HPP tetap sama, jadi margin tergerus langsung.",
+   "Promo & ongkir",
+   "Diskon platform sering ditanggung merchant. Dua promo bertumpuk bisa bikin pesanan rugi.",
+   "Solusi",
+   "Pakai menu paket (komisi efektif per item turun), sesuaikan harga, atau bandingkan walk-in vs platform per menu.",
+   "O",
+   "Olano",
+   "PPh Final",
+   "QRIS",
+   "Simulasi margin. Untuk angka aktual, bandingkan dengan dashboard merchant GoFood/Grab."
+  ]
+ }
+}

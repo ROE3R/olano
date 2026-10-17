@@ -1,0 +1,92 @@
+[
+ {
+  "n": "01",
+  "path": "index.html",
+  "axe": "[{\"id\":\"region\",\"impact\":\"moderate\",\"n\":1,\"desc\":\"Ensure all page content is contained by landmarks\"},{\"id\":\"scrollable-region-focusable\",\"impact\":\"serious\",\"n\":1,\"desc\":\"Ensure elements that have scrollable content are accessible by keyboard\"}]"
+ },
+ {
+  "n": "02",
+  "path": "kasir.html",
+  "axe": "[]"
+ },
+ {
+  "n": "03",
+  "path": "app/kasir.html",
+  "axe": "[]"
+ },
+ {
+  "n": "04",
+  "path": "umkm.html",
+  "axe": "[{\"id\":\"heading-order\",\"impact\":\"moderate\",\"n\":2,\"desc\":\"Ensure the order of headings is semantically correct\"}]"
+ },
+ {
+  "n": "05",
+  "path": "pajak.html",
+  "axe": "[]"
+ },
+ {
+  "n": "06",
+  "path": "website.html",
+  "axe": "[]"
+ },
+ {
+  "n": "07",
+  "path": "templates/katalog.html",
+  "axe": "[{\"id\":\"region\",\"impact\":\"moderate\",\"n\":1,\"desc\":\"Ensure all page content is contained by landmarks\"}]"
+ },
+ {
+  "n": "08",
+  "path": "analisa-delivery.html",
+  "axe": "[{\"id\":\"color-contrast\",\"impact\":\"serious\",\"n\":1,\"desc\":\"Ensure the contrast between foreground and background colors meets WCAG 2 AA min\"}]"
+ },
+ {
+  "n": "09",
+  "path": "ai.html",
+  "axe": "[]"
+ },
+ {
+  "n": "10",
+  "path": "automation.html",
+  "axe": "[]"
+ },
+ {
+  "n": "11",
+  "path": "naik-kelas.html",
+  "axe": "[]"
+ },
+ {
+  "n": "12",
+  "path": "tentang.html",
+  "axe": "[]"
+ },
+ {
+  "n": "13",
+  "path": "kebijakan-privasi.html",
+  "axe": "[{\"id\":\"heading-order\",\"impact\":\"moderate\",\"n\":1,\"desc\":\"Ensure the order of headings is semantically correct\"}]"
+ },
+ {
+  "n": "14",
+  "path": "syarat-ketentuan.html",
+  "axe": "[{\"id\":\"heading-order\",\"impact\":\"moderate\",\"n\":1,\"desc\":\"Ensure the order of headings is semantically correct\"}]"
+ },
+ {
+  "n": "15",
+  "path": "alat/kalkulator-pph-final-umkm.html",
+  "axe": "[]"
+ },
+ {
+  "n": "16",
+  "path": "alat/kalkulator-hpp-harga-jual.html",
+  "axe": "[{\"id\":\"color-contrast\",\"impact\":\"serious\",\"n\":19,\"desc\":\"Ensure the contrast between foreground and background colors meets WCAG 2 AA min\"}]"
+ },
+ {
+  "n": "17",
+  "path": "alat/kalkulator-biaya-qris.html",
+  "axe": "[{\"id\":\"color-contrast\",\"impact\":\"serious\",\"n\":7,\"desc\":\"Ensure the contrast between foreground and background colors meets WCAG 2 AA min\"}]"
+ },
+ {
+  "n": "18",
+  "path": "alat/kalkulator-margin-delivery.html",
+  "axe": "[{\"id\":\"color-contrast\",\"impact\":\"serious\",\"n\":7,\"desc\":\"Ensure the contrast between foreground and background colors meets WCAG 2 AA min\"}]"
+ }
+]
