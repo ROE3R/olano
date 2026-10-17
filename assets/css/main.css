@@ -516,6 +516,11 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
   padding:8px 4px;margin:-8px -6px -8px 0;text-transform:uppercase;letter-spacing:.04em}
 .toast-undo:active{opacity:.7}
 
+/* [pos-fix] P0.5 2026-10-18: kembalian raksasa di layar sukses (>=36px, tabular-nums) */
+#ok-kembali{margin:10px 0 4px}
+#ok-kembali .ok-k-label{display:block;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gray-500);margin-bottom:4px}
+#ok-kembali b{font-size:40px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink);letter-spacing:-.02em;line-height:1.1}
+
 /* ============================= FORMS (general) ============================= */
 .form{display:grid; gap:var(--sp-4)}
 .input{width:100%; min-height:48px; padding:0 var(--sp-4); border:1px solid var(--gray-300); border-radius:var(--r-md);

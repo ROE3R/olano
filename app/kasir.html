@@ -103,6 +103,7 @@
     <div class="grip"></div>
     <div class="success-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path id="check-path" d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     <b style="font-family:var(--font-display);font-size:1.3rem;display:block">Pembayaran tercatat</b>
+    <div id="ok-kembali" hidden><span class="ok-k-label">Kembalian</span><b id="ok-kembali-v" class="mono">Rp0</b></div>
     <div class="receipt text-left mt-4" id="receipt"></div>
     <div class="row center mt-4 wrap" style="justify-content:center">
       <button class="btn btn-primary btn-block" id="print">Cetak / Bagikan struk</button>
@@ -504,6 +505,12 @@
       total: t, method: method, ts: Date.now(), synced: false
     };
     // UI dulu, biar struk tidak ngeblock pada storage
+    /* [pos-fix] P0.5: kembalian raksasa di layar sukses (brief 5.2.E) */
+    var cashVal = parseFloat(document.getElementById("cash").value)||0;
+    var back = (method==="TUNAI" && cashVal>t) ? cashVal-t : 0;
+    var okk = document.getElementById("ok-kembali");
+    if(back>0){ document.getElementById("ok-kembali-v").textContent = R.rp(back); okk.hidden = false; }
+    else okk.hidden = true;
     cart = {}; render(); updateBar(); closeSheet("sheet");
     document.getElementById("receipt").innerHTML = receiptHTML(sale);
     openSheet("sheet-ok");
