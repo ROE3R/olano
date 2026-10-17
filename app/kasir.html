@@ -23,7 +23,7 @@
     <div><div class="eyebrow" style="font-size:10px;color:var(--blue-600)">Olano Kasir</div>
     <h1><span id="pos-store">Kopi Senja</span> <span class="outlet">· <span id="pos-user">Demo</span></span></h1></div>
   </div>
-  <span class="pos-status sync" id="status" style="margin-left:auto">Menyinkron…</span>
+  <span class="pos-status sync" id="status" aria-live="polite" style="margin-left:auto">Menyinkron…</span>
   <span class="pos-clock" id="liveclk" aria-hidden="true">--:--</span>
   <span class="demo-chip" id="demo-chip" hidden>MODE DEMO</span>
   <button class="btn btn-ghost sm" id="menu-btn" style="min-height:44px;font-size:13px">Menu</button>
@@ -87,6 +87,9 @@
       <input id="cash" type="text" inputmode="numeric" enterkeyhint="done" autocomplete="off" spellcheck="false">
       <p class="small" id="cash-err" role="alert" style="display:none;color:var(--danger);font-weight:700;margin:8px 0 0">Uang kurang <span id="cash-err-v">0</span> — tambahkan uang atau kurangi item.</p></div>
     <div id="kembali" class="callout light ok" style="display:none;background:var(--success-bg);border:1px solid #bfe4d0;color:#0a5c36;margin:12px 0">Kembalian: <b id="kembali-v">Rp0</b></div>
+    <style>/* [pos-fix] P0: kembalian LIVE raksasa di sheet pembayaran (>=36px, brief 5.2.D) */
+      #kembali{display:flex;justify-content:space-between;align-items:center}
+      #kembali b{font-family:var(--font-mono);font-size:36px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.1}</style>
     <div id="qris-area" style="display:none;text-align:center;padding:8px 0">
       <div style="width:170px;height:170px;margin:0 auto;background:#fff;border:1px solid var(--gray-300);border-radius:12px;display:grid;place-items:center">
         <div id="qris-box" style="width:150px;height:150px"></div>
@@ -495,7 +498,19 @@
   function refreshStatus(){
     if(!navigator.onLine){ setStatus("off", pending); } else { pending = 0; setStatus("on"); }
   }
-  window.addEventListener("online", function(){ drained = false; refreshStatus(); drain(); });
+  /* [pos-fix] P1: jumlah antre nyata dibaca dari IDB saat load & saat online (bukan hitungan sesi saja) */
+  function countOutbox(){
+    return openDB().then(function(db){
+      if(!db) return 0;
+      return new Promise(function(res){
+        var tx = db.transaction("outbox", "readonly");
+        var rq = tx.objectStore("outbox").count();
+        rq.onsuccess = function(){ res(rq.result || 0); };
+        rq.onerror = function(){ res(0); };
+      });
+    });
+  }
+  window.addEventListener("online", function(){ drained = false; refreshStatus(); countOutbox().then(function(n){ pending = n; setStatus("off", pending); drain(); }); });
   window.addEventListener("offline", refreshStatus);
   var drained = false;
   function drain(){
@@ -788,6 +803,14 @@
   });
   sld.addEventListener("focus", sldUpdateAmount);
   sldUpdateAmount();
+  /* [pos-fix] P1: slide & bar tetap terjangkau saat keyboard cash terbuka (visualViewport) */
+  (function(){
+    var vv = window.visualViewport; if(!vv) return;
+    function onVV(){
+      document.body.classList.toggle("kb-open", vv.height < window.innerHeight - 120);
+    }
+    vv.addEventListener("resize", onVV); onVV();
+  })();
 
   function receiptHTML(s){
     var rows = s.items.map(function(i){
@@ -849,6 +872,7 @@
   });
 
   render(); updateBar(); refreshStatus();
+  countOutbox().then(function(n){ if(n>0){ pending = n; setStatus("off", pending); } }); /* [pos-fix] P1: antre offline nyata saat load */
 })();
 </script>
 </body>

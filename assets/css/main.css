@@ -573,6 +573,10 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
 .empty-pos b{display:block;font-size:15px;color:var(--ink);margin-bottom:14px}
 .empty-pos .btn{min-height:48px}
 
+/* [pos-fix] P1 2026-10-18: keyboard cash terbuka -> kecilkan padding bilah bawah supaya slide terjangkau */
+body.kb-open .pos-bar{padding-top:6px;padding-bottom:max(4px, env(safe-area-inset-bottom))}
+body.kb-open .pos-pay{min-height:48px}
+
 /* ============================= FORMS (general) ============================= */
 .form{display:grid; gap:var(--sp-4)}
 .input{width:100%; min-height:48px; padding:0 var(--sp-4); border:1px solid var(--gray-300); border-radius:var(--r-md);
