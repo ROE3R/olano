@@ -63,7 +63,8 @@
       <button data-m="LAINNYA">Lainnya</button>
     </div>
     <div id="cash-area" class="field"><label for="cash">Tunai diterima (kembalian otomatis)</label>
-      <input id="cash" type="number" inputmode="numeric"></div>
+      <input id="cash" type="number" inputmode="numeric">
+      <p class="small" id="cash-err" role="alert" style="display:none;color:var(--danger);font-weight:700;margin:8px 0 0">Uang kurang Rp<span id="cash-err-v">0</span> — tambahkan uang atau kurangi item.</p></div>
     <div id="kembali" class="callout light ok" style="display:none;background:var(--success-bg);border:1px solid #bfe4d0;color:#0a5c36;margin:12px 0">Kembalian: <b id="kembali-v">Rp0</b></div>
     <div id="qris-area" style="display:none;text-align:center;padding:8px 0">
       <div style="width:170px;height:170px;margin:0 auto;background:#fff;border:1px solid var(--gray-300);border-radius:12px;display:grid;place-items:center">
@@ -392,9 +393,22 @@
   function updateKembali(){
     var t = total(), c = parseFloat(document.getElementById("cash").value)||0;
     var k = document.getElementById("kembali");
+    var sld = document.getElementById("sld"), err = document.getElementById("cash-err");
     if(method==="TUNAI" && c>t){ k.style.display=""; document.getElementById("kembali-v").textContent = R.rp(c-t); }
     else k.style.display = "none";
+    /* [pos-fix] P0.1: uang kurang = merah + teks + slide nonaktif (brief 5.2.D).
+       Input kosong = asumsi uang pas (alur C1 tanpa ketik nominal). */
+    if(method==="TUNAI" && t>0 && document.getElementById("cash").value!=="" && c<t){
+      err.style.display = ""; document.getElementById("cash-err-v").textContent = R.rp(t-c);
+      sld.classList.add("short"); sld.setAttribute("aria-disabled","true");
+      kembaliShort = (t-c);
+    } else {
+      err.style.display = "none";
+      sld.classList.remove("short"); sld.removeAttribute("aria-disabled");
+      kembaliShort = 0;
+    }
   }
+  var kembaliShort = 0;
   document.getElementById("cash").addEventListener("input", updateKembali);
 
   function ulid(){
@@ -406,6 +420,8 @@
   function pay(overrideMethod){
     if(overrideMethod) method = overrideMethod;
     var t = total(); if(t===0) return;
+    /* [pos-fix] P0.1: TUNAI dengan nominal terketik < total tidak boleh tersimpan (input kosong = uang pas) */
+    if(method==="TUNAI" && document.getElementById("cash").value!=="" && (parseFloat(document.getElementById("cash").value)||0) < t) return;
     var sale = {
       uuid: ulid(),
       items: Object.keys(cart).map(function(id){
@@ -452,7 +468,7 @@
   document.addEventListener("input", function(e){ if(e.target.id==="cash") sldUpdateAmount(); });
   function sldMax(){ return Math.max(40, sld.offsetWidth - sldKnob.offsetWidth - 10); }
   sld.addEventListener("pointerdown", function(e){
-    if(sldDrag.done) return;
+    if(sldDrag.done || sld.classList.contains("short")) return; /* [pos-fix] P0.1 */
     sldDrag.on = true; sldDrag.x0 = e.clientX; sldDrag.max = sldMax();
     sld.classList.add("armed"); sld.setPointerCapture(e.pointerId);
   });
@@ -483,7 +499,7 @@
     });
   });
   sld.addEventListener("keydown", function(e){ // fallback keyboard (R-32)
-    if(e.key==="Enter" || e.key===" "){ e.preventDefault(); sld.classList.add("on"); pay(); }
+    if((e.key==="Enter" || e.key===" ") && !sld.classList.contains("short")){ e.preventDefault(); sld.classList.add("on"); pay(); } /* [pos-fix] P0.1: short cash tidak lulus keyboard */
   });
   sld.addEventListener("focus", sldUpdateAmount);
   sldUpdateAmount();
