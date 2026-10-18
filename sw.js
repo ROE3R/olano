@@ -1,5 +1,5 @@
 /* Olano service worker: offline-first (PRD F2: POS 100% offline setelah login pertama) */
-var CACHE = "olano-v32"; /* bump: index/robots/checklist/otp berubah 2026-10-18 */
+var CACHE = "olano-v33"; /* bump: homepage v2 - ritme section terkonsolidasi, motion reveal + count-up, testimoni 3 kolom desktop, hero 1 CTA */
 var CORE = [
   "./", "index.html", "manifest.json", "robots.txt", "sitemap.xml", "llms.txt", "404.html",
   "assets/css/main.css", "assets/js/config.js", "assets/js/shared.js", "assets/js/motion.js",

@@ -259,8 +259,9 @@ p{max-width:65ch}
 .ic.sm{width:15px;height:15px}
 
 /* ============================= HERO (perkenalan) ============================= */
-.hero{background:var(--grad-hero);padding:88px 0 72px}
-@media(max-width:900px){.hero{padding:56px 0 48px}}
+/* .hero global (fallback) — index memakai .hero 120/80 desktop / 32/48 mobile
+   yang didefinisikan di bawah; sub-halaman memakai .tool-hero (bukan .hero).
+   grad-hero 88/72 dihapus: aturan mati (selalu kalah). */
 .hero-grid{display:grid;gap:56px;align-items:center}
 @media(min-width:1024px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:48px}}
 .hero h1{font-size:var(--fs-display);font-weight:800}
@@ -867,7 +868,7 @@ body.kb-open .pos-pay{min-height:48px}
 @font-face{font-family:"Instrument Serif";font-style:italic;font-weight:400;font-display:swap;src:url("../fonts/instrument-serif-400-italic-latin.woff2") format("woff2")}
 
 /* -- nav: transparan (ukur sokudo: bg transparent, tanpa blur), solid saat scroll -- */
-.nav{background:transparent;border-bottom:1px solid transparent}
+.nav{background:transparent;border-bottom:1px solid transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
 .nav.scrolled{background:var(--white);border-bottom-color:var(--gray-100)}
 .nav-login{font-size:15px;font-weight:400;color:var(--gray-700);min-height:40px;display:inline-flex;align-items:center;
   padding:0 4px;transition:color .15s var(--ease-standard)}
@@ -885,7 +886,7 @@ body.kb-open .pos-pay{min-height:48px}
 .hero::before{content:"";position:absolute;left:50%;top:280px;width:min(1584px,140%);height:min(926px,80vh);
   transform:translate(-50%,-32%);pointer-events:none;contain:layout style paint;will-change:transform;
   background:radial-gradient(50% 46% at 50% 50%, rgba(36,83,235,.16), rgba(36,83,235,.05) 45%, transparent 72%)}
-@media(max-width:900px){.hero{padding:48px 0 48px}}
+@media(max-width:900px){.hero{padding:32px 0 48px}} /* [v2] ukur: hero mobile 32/48 */
 .hero-inner{position:relative;animation:heroIn .5s var(--ease-standard) both}
 .hero h1{font-size:var(--fs-h1);font-weight:700;line-height:1.3;letter-spacing:-.02em;
   max-width:16ch;margin:28px auto 0;text-wrap:balance}
@@ -1179,10 +1180,6 @@ body.home .hero .container{z-index:1}
 /* ==================== DECLUTTER v23 (homepage saja, body.home) ====================
    Ritme band Linear/Framer: desktop 120/120, mobile 96/96 — SCOPED ke body.home
    (index.html saja), .section global & halaman lain tidak tersentuh. */
-body.home .section{padding:120px 0}
-@media(max-width:900px){body.home .section{padding:96px 0}}
-body.home .picker{padding:120px 0}
-@media(max-width:900px){body.home .picker{padding:96px 0}}
 
 /* -- alat: 4 kartu kalkulator jadi 1 strip baris mono + hairline (ala .nlist/.nrow,
    sistem list editorial yang sama dengan picker) -- */
@@ -1376,16 +1373,6 @@ body.home .small b{font-variant-numeric:tabular-nums}
 /* ============ v25: footnote & pintu demo ============ */
 .fnote{font-family:var(--font-mono); font-size:12px; color:var(--gray-500); /* [landing-fix] L9 (2026-10-18): 11->12px (min brief); kontras gray-500 terukur 7.16:1 di putih, 5.24:1 di titik terburuk gradasi C9DEFF — lulus >=4.5:1 */
   letter-spacing:.02em; margin-top:20px}
-/* [landing-fix] L13 (2026-10-18): tautan demo = tombol teks 48px TERPISAH dari gambar
-   (gambar hero bukan link raksasa lagi; hint 11px digugurkan). */
-.hero-demo-link{display:inline-flex; align-items:center; justify-content:center; gap:6px;
-  min-height:48px; padding:0 20px; margin:14px auto 0; border-radius:var(--r-full);
-  font-weight:600; font-size:var(--fs-small); color:var(--blue-700);
-  background:var(--blue-50); border:1px solid var(--blue-100);
-  transition:background var(--dur-fast), border-color var(--dur-fast), color var(--dur-fast)}
-.hero-demo-link:hover{background:var(--blue-100); border-color:var(--blue-200); color:var(--blue-800)}
-.hero-demo-link:focus-visible{outline:2px solid var(--blue-600); outline-offset:2px}
-.hero-demo-link .ic{width:15px; height:15px}
 /* Chip MODE DEMO di header POS: pola dot .mst (dot 6px, font-mono 11px) */
 .demo-chip{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono);
   font-size:11px; font-weight:600; letter-spacing:.04em; color:var(--gray-500);
@@ -1427,8 +1414,6 @@ body.home .small b{font-variant-numeric:tabular-nums}
 
 /* ============ v25b: compact mobile (homepage, <=759px) ============ */
 @media(max-width:759px){
-  body.home .section{padding:64px 0}
-  .hero-visual{max-width:300px; margin:0 auto}
   .tst-card{padding:20px 18px}
   .tst-quote{font-size:1.1rem; margin-top:12px}
   .tst-attr{margin-top:10px}
@@ -1445,7 +1430,6 @@ body.home .small b{font-variant-numeric:tabular-nums}
 }
 /* ============ v25b2: compact mobile lanjutan ============ */
 @media(max-width:759px){
-  body.home .hero{padding:36px 0}
   .hero-inner{gap:20px}
   .hero-struk{width:min(340px,92%); margin-top:24px}
   .hero-cue{display:none}
@@ -1457,14 +1441,10 @@ body.home .small b{font-variant-numeric:tabular-nums}
 /* ============ v25c: potong konten mobile (homepage, <=759px) ============ */
 @media(max-width:759px){
   /* HERO: kurangi ruang, gambar tetap pintu demo */
-  body.home .hero{padding:28px 0}
   .hero-inner{gap:16px}
-  .hero-inner h1{font-size:clamp(2rem,7vw,2.375rem); line-height:1.08}
   .hero-inner .sub{font-size:15px; margin-top:10px}
-  .hero-visual{max-width:262px; margin-top:4px}
   .hero-visual img{border-radius:28px} /* [landing-fix] L10/O-1: radius frame HP (dgn bezel 5px) */
   .hero-struk{margin-top:18px}
-  .cta-row{margin-top:14px}
 
   /* PICKER: rail ringkas + baris rapat */
   .pick-rail .eyebrow{margin-bottom:6px}
@@ -1611,8 +1591,6 @@ body.home .small b{font-variant-numeric:tabular-nums}
 /* [landing-fix] L35 (2026-10-18): rapatkan spacing mobile supaya <=9 layar.
    Hanya padding/margin seksi — konten dan target sentuh tidak diubah. */
 @media(max-width:759px){
-  body.home #harga{padding-top:48px}
-  body.home #testimoni{padding-top:48px; padding-bottom:48px}
   #faq{margin-top:32px; padding-top:32px}
   #harga .sec-head{margin-bottom:20px}
 }
@@ -1696,7 +1674,6 @@ figure[data-before-after] input[type=range]{height:44px}
 /* [L35] Testimoni mobile: kartu dipadatkan. Sebelumnya quote 1.25rem + padding 28px
    membuat satu kartu 442px, seksi 673px -> total halaman 9,47 layar (>9). */
 @media (max-width:720px){
-  #testimoni{padding-top:32px; padding-bottom:32px}
   #testimoni .tst-grid{min-height:0 !important; grid-auto-columns:88%; margin-top:20px}
   #testimoni .tst-quote{font-size:1rem; line-height:1.45; margin-top:12px}
   #testimoni .tst-card{padding:18px 16px}
@@ -1723,37 +1700,13 @@ figure[data-before-after] input[type=range]{height:44px}
    (bukti sosial tak perlu 6), sisanya tampil di tablet/desktop. */
 @media (max-width:400px){
   #testimoni .tst-grid{min-height:0 !important}
-  #testimoni{padding-bottom:24px}
 }
 
 /* [L35] 360x800 = 9.19 layar (target <=9). Padding seksi mobile diturunkan
    dari 96/64 ke 56/56: hemat ~80px x 6 seksi tanpa mengubah hierarki visual. */
-@media (max-width:720px){
-  body.home section{padding-top:56px !important; padding-bottom:56px !important}
-  body.home #modul{padding-top:64px !important; padding-bottom:64px !important}
-  body.home .hero{padding-top:20px !important; padding-bottom:20px !important}
-}
 
-/* [L35] sisa 56px: #harga 2137px adalah seksi terberat. Jarak antar kartu
-   harga dipadatkan di layar sempit (bukan mengurangi isi). */
-@media (max-width:720px){
-  body.home #harga .price-grid{gap:14px !important}
-  body.home #harga .price-card{padding:20px 18px !important}
-  body.home #testimoni{padding-top:28px !important; padding-bottom:28px !important}
-}
 
-/* [L35] sisa 44px di 360x800: modul 1304px + hero 1012px dipadatkan sedikit. */
-@media (max-width:720px){
-  body.home #modul{padding-top:48px !important; padding-bottom:48px !important}
-  body.home .hero{padding-top:12px !important; padding-bottom:16px !important}
-}
 
-/* [L35] margin aman: 9.00 -> ~8.8 layar (bukan mepet di batas). */
-@media (max-width:400px){
-  body.home .hero h1{font-size:2rem !important}
-  body.home .hero .cta-row{margin-top:20px !important}
-  body.home #testimoni{padding-top:20px !important; padding-bottom:20px !important}
-}
 
 /* [launch] Pemisah grup Aplikasi vs Jasa di daftar layanan.
    Tujuan: pengunjung langsung paham mana yang software (pakai sendiri) dan
@@ -1776,21 +1729,9 @@ figure[data-before-after] input[type=range]{height:44px}
   .grp-head{margin:14px 0 8px}
   .svc-switch{margin-top:12px}
   .svc-pill{min-height:44px; padding:0 16px; font-size:.8125rem}
-  body.home #modul{padding-top:40px !important; padding-bottom:40px !important}
 }
 
-/* [L35] sisa 56px @360: kartu harga & modul dipadatkan tipis (isi tidak berubah). */
-@media (max-width:720px){
-  body.home #harga{padding-top:36px !important}
-  body.home #harga .price-grid{gap:12px !important}
-  body.home #modul .modrow{padding-top:12px !important; padding-bottom:12px !important}
-}
 
-/* [L35] desktop 9.06 -> <=9: jarak seksi di layar lebar dirapatkan sedikit. */
-@media (min-width:721px){
-  body.home #modul{padding-top:72px !important; padding-bottom:72px !important}
-  body.home #testimoni{padding-top:56px !important; padding-bottom:56px !important}
-}
 
 /* [launch] Ringkasan harga jasa — 3 kartu sejajar, angka sebagai fokus utama. */
 .svc-price{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:36px}
@@ -1812,13 +1753,8 @@ figure[data-before-after] input[type=range]{height:44px}
 /* [L35] #harga-jasa 848px @360 bikin total 10,05 layar. Dipadatkan: kartu
    jadi satu baris padat (b + harga + catatan), padding seksi lebih tipis. */
 @media (max-width:720px){
-  body.home #harga-jasa{padding-top:36px !important; padding-bottom:36px !important}
   body.home #harga-jasa .sec-head h2{font-size:1.375rem}
   body.home #harga-jasa .sub{font-size:.875rem}
-  .svc-card{padding:14px 16px !important; gap:4px !important}
-  .svc-from strong{font-size:1.125rem !important}
-  .svc-note{font-size:.75rem !important}
-  body.home #harga-jasa .btn{min-height:44px; font-size:.875rem; padding:0 16px}
 }
 
 /* [fix] rule media 1-class kalah dari .svc-card di luar media. Naikkan spesifisitas
@@ -1834,8 +1770,6 @@ figure[data-before-after] input[type=range]{height:44px}
 /* [L35] Seksi #mulai (cara mulai + FAQ) 713px. Padding seksi dirapatkan dan
    jarak antar blok dikurangi, tanpa menyembunyikan isi. */
 @media (max-width:720px){
-  body.home #mulai{padding-top:32px !important; padding-bottom:32px !important}
-  body.home #mulai .faq-steps{gap:20px !important}
   body.home #mulai .fs-steps h2,
   body.home #mulai .fs-faq h2{font-size:1.25rem}
   body.home #mulai .faq-item{padding-top:10px; padding-bottom:10px}
@@ -1857,57 +1791,40 @@ figure[data-before-after] input[type=range]{height:44px}
 /* [L35] Halaman sekarang punya 8 seksi (tambah band harga jasa). Pemadatan mobile:
    hero visual, kartu harga, dan blok FAQ — isi tidak dikurangi. */
 @media (max-width:720px){
-  body.home .hero{padding-top:8px !important}
-  body.home .hero-struk{margin-top:16px !important}
-  body.home #harga .price-card{padding:18px 16px !important}
   body.home #harga .price-card li{padding-top:5px; padding-bottom:5px}
-  body.home #mulai .fs-steps h2{font-size:1.125rem !important}
-  body.home #mulai .faq-item summary{padding:10px 0 !important}
-  body.home #mulai .ans{font-size:.8125rem !important}
 }
 
 /* [L35] 9,70 -> target <=9 layar. Tiga blok terbesar dipadatkan (isi utuh):
    modul (9 baris), kartu harga (2 kartu), dan blok mulai/FAQ. */
 @media (max-width:720px){
   /* modul: 9 baris x ~110px -> ~80px */
-  body.home #modul .modrow{padding-top:10px !important; padding-bottom:10px !important}
   body.home #modul .mdesc{font-size:.8125rem; line-height:1.35}
   body.home #modul .mchip{font-size:.6875rem}
-  body.home #modul .grp-head{margin:10px 0 6px !important}
+  body.home #modul .grp-head{margin:10px 0 6px}
   /* kartu harga */
-  body.home #harga .price-grid{gap:10px !important}
   body.home #harga .price-card li{padding-top:3px; padding-bottom:3px; font-size:.875rem}
   body.home #harga .price-card .price{font-size:1.75rem}
-  body.home #harga .svc-band{margin-top:20px !important; padding-top:18px !important}
+  body.home #harga .svc-band{margin-top:20px; padding-top:18px}
   body.home #harga .price-close h2{font-size:1.25rem}
   /* mulai/faq */
-  body.home #mulai{padding-top:26px !important; padding-bottom:26px !important}
-  body.home #mulai .fs-steps{gap:14px !important}
+  body.home #mulai .fs-steps{gap:14px}
   body.home #mulai .fs-list li{padding-top:6px; padding-bottom:6px; font-size:.8125rem}
   body.home #mulai .fs-faq{margin-top:4px}
 }
 
-/* [L35] Trim terakhir di 360px: hero visual + testimoni. */
-@media (max-width:400px){
-  body.home .hero-demo-link{margin-top:8px !important}
-  body.home #testimoni{padding-top:18px !important; padding-bottom:18px !important}
-  body.home #testimoni .tst-grid{margin-top:14px !important}
-  body.home #testimoni h2{font-size:1.25rem !important}
-}
 
-/* [L35] Desktop 9,57 -> <=9 layar. Testimoni 9 kartu di 3 kolom = 1181px (3 baris).
-   4 kolom di layar lebar -> hemat satu baris. */
+/* [v2] Testimoni desktop: 9 kartu di 3 kolom = 3 baris penuh (4 kolom bikin
+   baris ketiga cuma 1 kartu, tepi tidak sejajar). */
 @media (min-width:1024px){
-  body.home #testimoni .tst-grid{grid-template-columns:repeat(4,1fr) !important; gap:18px}
+  body.home #testimoni .tst-grid{grid-template-columns:repeat(3,1fr); gap:18px}
   body.home #testimoni .tst-quote{font-size:1.0625rem}
   body.home #testimoni .tst-card{padding:22px 20px}
 }
 
-/* [L35] 4 kolom tapi kartu 293-344px -> tinggi total hampir sama dengan 3 kolom.
-   Perkecil quote + padding supaya 3 baris turun jadi 2 baris padat. */
+/* [v2] Kartu 3 kolom dipadatkan lagi (18/16): tinggi baris turun, masih 3 baris. */
 @media (min-width:1024px){
-  body.home #testimoni .tst-quote{font-size:.9375rem !important; line-height:1.45; margin-top:10px}
-  body.home #testimoni .tst-card{padding:18px 16px !important}
+  body.home #testimoni .tst-quote{font-size:.9375rem; line-height:1.45; margin-top:10px}
+  body.home #testimoni .tst-card{padding:18px 16px}
   body.home #testimoni .tst-avatar{width:32px; height:32px; font-size:12px}
   body.home #testimoni .tst-attr b{font-size:.875rem}
   body.home #testimoni .tst-attr .store{font-size:.75rem}
@@ -1915,35 +1832,22 @@ figure[data-before-after] input[type=range]{height:44px}
 
 /* [L35] Final trim: halaman kini 8 seksi. Hero & modul dipadatkan di layar lebar. */
 @media (min-width:721px){
-  body.home .hero{padding-top:40px !important; padding-bottom:40px !important}
   body.home .hero-visual{max-height:none}
-  body.home #modul{padding-top:56px !important; padding-bottom:56px !important}
-  body.home #modul .modrow{padding-top:14px !important; padding-bottom:14px !important}
-  body.home #mulai{padding-top:48px !important; padding-bottom:48px !important}
-}
-@media (max-width:720px){
-  body.home #modul .modrow{padding-top:9px !important; padding-bottom:9px !important}
 }
 
 /* [L35] Trim mobile: kartu kalkulator pajak (258px hasil + 206px field) dan hero
    dipadatkan. Tidak ada isi yang disembunyikan. */
 @media (max-width:720px){
-  body.home #pajak .calc-out-box{padding:16px 14px !important}
-  body.home #pajak .calc-out-box .big,
-  body.home #pajak .calc-out-box [class*="big"]{font-size:1.625rem !important}
   body.home #pajak .field{padding-top:10px; padding-bottom:10px}
   body.home #pajak .calc-card{padding:18px 16px}
   body.home #pajak h2{font-size:1.375rem}
-  body.home .hero h1{font-size:1.875rem !important}
 }
 
 /* [L35] Sisa trim 360px: seksi #alat (4 kalkulator) & #mulai dirapatkan. */
 @media (max-width:720px){
-  body.home #alat{padding-top:36px !important; padding-bottom:36px !important}
-  body.home #alat .tool-grid{gap:10px !important}
   body.home #mulai .fs-steps{margin-bottom:0}
   body.home #mulai .fs-faq h2{margin-bottom:8px}
-  body.home #mulai .faq-item{border-top:1px solid var(--gray-150,#E6EAF2); padding:8px 0 !important}
+  body.home #mulai .faq-item{border-top:1px solid var(--gray-150,#E6EAF2); padding:8px 0}
   body.home #mulai .ans{padding-bottom:6px}
 }
 
@@ -1953,15 +1857,8 @@ figure[data-before-after] input[type=range]{height:44px}
   body.home #harga .price-card ul,
   body.home #harga .price-card .plist{display:grid; grid-template-columns:1fr 1fr; gap:2px 10px}
   body.home #harga .price-card li{font-size:.8125rem; line-height:1.3}
-  body.home #harga .price-card{padding:16px 14px !important}
 }
 
-/* [L35] 9,04 -> target <=9: sisa 32px. Padding seksi #pajak & #mulai dirapatkan. */
-@media (max-width:400px){
-  body.home #pajak{padding-top:36px !important; padding-bottom:36px !important}
-  body.home #mulai{padding-top:22px !important; padding-bottom:22px !important}
-  body.home #harga{padding-bottom:36px !important}
-}
 
 /* [fix] Aturan lama `.hero-visual img{width:100%;aspect-ratio:1180/962}` menimpa
    gambar di dalam frame perangkat, sehingga iPhone/IPad ambruk jadi ~22px.
@@ -1988,8 +1885,6 @@ figure[data-before-after] input[type=range]{height:44px}
 @media (min-width:900px){
   .device-stack .iphone{max-width:246px}
   .device-stack .ipad{max-width:470px}
-  body.home .hero{padding-top:32px !important; padding-bottom:32px !important}
-  body.home #modul{padding-top:52px !important; padding-bottom:52px !important}
 }
 
 /* [L35] Hero dua perangkat butuh ~0,2 layar lagi. iPad tidak perlu sebesar
@@ -2005,11 +1900,6 @@ figure[data-before-after] input[type=range]{height:44px}
   .device-stack{gap:12px}
 }
 
-/* [L35] 9,07 -> <=9 di desktop: jarak hero-visual & padding modul dirapatkan. */
-@media (min-width:900px){
-  body.home .hero-visual{margin-top:28px !important}
-  body.home #modul{padding-top:44px !important; padding-bottom:44px !important}
-}
 
 /* [L35] 360x800 = 9,33. Perangkat ditumpuk vertikal = 645px. Di layar sempit
    iPad dipindah sejajar di samping iPhone (bukan di bawah), hemat ~200px. */
@@ -2019,55 +1909,21 @@ figure[data-before-after] input[type=range]{height:44px}
   .device-stack .ipad{max-width:150px}
 }
 
-/* [L35] Trim akhir: 9,17 @360 dan 9,02 @1280. */
-@media (max-width:899px){
-  body.home #mulai{padding-top:20px !important; padding-bottom:20px !important}
-  body.home #harga{padding-top:30px !important}
-  body.home .hero-struk{margin-top:12px !important}
-}
-@media (min-width:900px){
-  body.home #harga{padding-top:44px !important}
-  body.home #testimoni{padding-top:40px !important; padding-bottom:40px !important}
-}
 
 /* [L35] 360x800 sisa 120px: modul 9 baris dipadatkan (label & jarak). */
 @media (max-width:400px){
-  body.home #modul .modrow{padding-top:7px !important; padding-bottom:7px !important}
   body.home #modul .mdesc{font-size:.75rem}
   body.home #modul .svc-pill{min-height:44px}
-  body.home #modul .grp-head{margin:8px 0 4px !important}
 }
 
-/* [L35] sisa 72px @360: padding #alat & #pajak dirapatkan. */
-@media (max-width:400px){
-  body.home #alat{padding-top:28px !important; padding-bottom:28px !important}
-  body.home #pajak{padding-top:28px !important; padding-bottom:28px !important}
-  body.home #testimoni{padding-top:14px !important; padding-bottom:14px !important}
-}
 
-/* [L35] 9,04 -> 32px terakhir: jarak antar kartu #alat dirapatkan. */
-@media (max-width:400px){
-  body.home #alat .tool-grid{gap:8px !important}
-  body.home #mulai{padding-top:16px !important; padding-bottom:16px !important}
-}
 
-/* [L35] 24px terakhir @360x800: safe-area + tinggi baris hero. */
-@media (max-width:400px){
-  body.home .hero h1{line-height:1.22 !important}
-  body.home .hero-struk{padding-top:10px !important; padding-bottom:10px !important}
-  body.home #testimoni .tst-grid{margin-top:10px !important}
-}
 
 /* [L35] 20px terakhir: #mulai 722px (FAQ 4 item) dirapatkan tipis. */
 @media (max-width:400px){
-  body.home #mulai .faq-item summary{padding:8px 0 !important}
   body.home #mulai .fs-list li{padding-top:5px; padding-bottom:5px}
 }
 
-/* [L35] 8px terakhir @360x800 (target 7200 dari 7208). */
-@media (max-width:400px){
-  body.home #testimoni{padding-top:10px !important; padding-bottom:10px !important}
-}
 
 /* [v2] Motion device: satu momen load saja (pakai heroIn milik halaman).
    Referensi terukur: sokudo 0 keyframes, daydream 2, open-design 4.
