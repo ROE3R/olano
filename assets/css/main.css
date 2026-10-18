@@ -124,6 +124,15 @@ p{max-width:65ch}
   border-bottom:1px solid transparent; transition:border-color var(--dur-base) var(--ease-standard);}
 .nav.scrolled{border-bottom-color:var(--gray-100)}
 .nav-inner{display:flex; align-items:center; gap:var(--sp-4); height:64px}
+/* [launch] CLS: tampilkan satu gambar per breakpoint (dua rasio berbeda). */
+.hv-desktop{display:none}
+@media(min-width:760px){
+  .hv-mobile{display:none}
+  .hv-desktop{display:block}
+  .hv-desktop img{width:100%; height:auto}
+}
+.hv-mobile img{width:100%; height:auto}
+
 /* [launch] target sentuh minimum 44x44 untuk kontrol header/chip — WCAG 2.5.8 / brief 7.
    Logo & hamburger sebelumnya 36px tinggi -> di bawah minimum, sulit ditekan di HP murah. */
 .logo{font-family:var(--font-display); font-weight:800; font-size:1.35rem; letter-spacing:-0.04em;
@@ -875,9 +884,14 @@ body.kb-open .pos-pay{min-height:48px}
    screenshot layar kasir asli + pita warung; desktop >=760 tetap kartu lebar produk-kasir.
    Chrome memotong konten <img> pada radius border-box -> bezel 5px tampak menyatu. */
 @media(max-width:759px){
-  .hero-visual picture{display:block;background:var(--ink);border-radius:28px;padding:5px;
+  .hero-visual picture.hv-desktop{display:none !important}
+  .hero-visual picture.hv-mobile{display:block;background:var(--ink);border-radius:28px;padding:5px;
     box-shadow:0 24px 64px -20px rgba(14,26,74,.45)}
   .hero-visual img{border:0;border-radius:23px}
+}
+@media(min-width:760px){
+  .hero-visual picture.hv-mobile{display:none !important}
+  .hero-visual picture.hv-desktop{display:block}
 }
 .hero-visual figcaption{font-size:12px;color:var(--gray-500);text-align:center;margin-top:12px}
 

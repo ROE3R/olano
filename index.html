@@ -18,6 +18,8 @@
 <meta name="twitter:image" content="https://olano.xyz/og-image.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232453EB'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='19' font-weight='800' fill='white' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
 <link rel="manifest" href="manifest.json">
+<link rel="preload" href="assets/fonts/Aspekta-450.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Aspekta-650.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -112,10 +114,16 @@
            gambar + caption statis (aria-hidden, dekoratif-edukatif), demo = tautan teks 48px terpisah.
            Log teks: COPY-NANTI.md #3 (hint "Coba demo kasir →" gugur, digantikan tombol 48px). -->
       <figure class="hero-visual" aria-hidden="true">
-        <picture>
-          <source media="(max-width: 759px)" srcset="assets/img/hero-phone-warung-1x.webp 1x, assets/img/hero-phone-warung.webp 2x" type="image/webp">
-          <source media="(min-width: 760px)" srcset="assets/img/produk-kasir.webp 1x, assets/img/produk-kasir-2x.webp 2x" type="image/webp">
+        <!-- [launch] CLS fix: dua aset rasio BEDA (0.462 vs 1.227). Satu <img> dgn satu
+             width/height untuk dua rasio = layout shift 0.326. Sekarang: satu <picture>
+             per breakpoint, tiap-tiap dgn dimensi aslinya sendiri. -->
+        <picture class="hv-mobile">
+          <source srcset="assets/img/hero-phone-warung-1x.webp 1x, assets/img/hero-phone-warung.webp 2x" type="image/webp">
           <img src="assets/img/hero-phone-warung.webp" alt="" width="390" height="844" fetchpriority="high">
+        </picture>
+        <picture class="hv-desktop">
+          <source srcset="assets/img/produk-kasir.webp 1x, assets/img/produk-kasir-2x.webp 2x" type="image/webp">
+          <img src="assets/img/produk-kasir.webp" alt="" width="1180" height="962" loading="lazy" fetchpriority="low">
         </picture>
         <figcaption>Data contoh: tampilan aplikasi Olano</figcaption>
       </figure>
