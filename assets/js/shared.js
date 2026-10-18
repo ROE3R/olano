@@ -548,6 +548,8 @@
         d.classList.toggle("is-off", !inShown);
         if (inShown) d.classList.toggle("is-on", card === shown[i]);
       });
+      var cnt = sec.querySelector(".dk-count");
+      if (cnt) cnt.textContent = String(i + 1).padStart(2, "0") + "/" + String(shown.length).padStart(2, "0");
       announce();
     }
 

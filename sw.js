@@ -1,5 +1,5 @@
 /* Olano service worker: offline-first (PRD F2: POS 100% offline setelah login pertama) */
-var CACHE = "olano-v35"; /* bump: Layanan jadi deck kartu 3D (auto-rotasi 01->09, kontrol prev/next + dot + swipe + filter tabs, reduced-motion = daftar statis); kalkulator: verdict ideal-price + edge komisi>harga, omzet-12b default kosong */
+var CACHE = "olano-v36"; /* bump: ritme section modul 80/80 desktop (sejajar section lain), counter 01/09 pengganti dots di mobile <=559px */
 var CORE = [
   "./", "index.html", "manifest.json", "robots.txt", "sitemap.xml", "llms.txt", "404.html",
   "assets/css/main.css", "assets/js/config.js", "assets/js/shared.js", "assets/js/motion.js",
