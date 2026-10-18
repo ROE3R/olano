@@ -5,7 +5,7 @@
  *   Header: x-olano-store-key (wajib bila env OLANO_SYNC_KEY diset)
  *   Body:   { deviceId: string, sales: Sale[] }
  *   Sale:   { uuid, items:[{id,name,qty,price}], total, method, ts }
- *   Res:    200 { ok, accepted[], duplicates[], failed[], stored }
+ *   Res:    200 { ok, accepted[], duplicates[], failed[] }
  *
  * Guard:
  *   - Method POST saja (405 lainnya).
@@ -21,7 +21,7 @@
  *   - Tanpa read-modify-write (tidak ada race antar tab/perangkat).
  *   - Akses Blob via OIDC (BLOB_STORE_ID), tanpa kredensial statis.
  */
-const { put, list } = require("@vercel/blob");
+const { put } = require("@vercel/blob");
 
 const MAX_SALES_PER_REQUEST = 500;
 const MAX_BODY_BYTES = 256 * 1024;
@@ -130,36 +130,31 @@ module.exports = async function handler(req, res) {
   const duplicates = [];
   const failed = [];
 
-  for (const sale of clean) {
-    const path = `sync/${deviceId}/${sale.uuid}.json`;
-    try {
-      await put(path, JSON.stringify(sale), {
-        access: "private",
-        contentType: "application/json",
-        addRandomSuffix: false,
-        allowOverwrite: false,
-      });
-      accepted.push(sale.uuid);
-    } catch (err) {
-      if (isAlreadyExists(err)) duplicates.push(sale.uuid);
-      else failed.push(sale.uuid);
-    }
-  }
-
-  // Hitung total tersimpan hanya kalau ada yang diterima (biaya list minimal).
-  let stored = null;
-  if (accepted.length > 0) {
-    try {
-      let cursor;
-      let n = 0;
-      do {
-        const page = await list({ prefix: `sync/${deviceId}/`, limit: 1000, cursor });
-        n += page.blobs.length;
-        cursor = page.cursor;
-      } while (cursor);
-      stored = n;
-    } catch {
-      stored = null;
+  /* Tulis paralel berbatas (8 sekaligus). Sebelumnya berurutan: 200 transaksi =
+     puluhan detik dan bisa timeout di klien. */
+  const CONCURRENCY = 8;
+  for (let i = 0; i < clean.length; i += CONCURRENCY) {
+    const chunk = clean.slice(i, i + CONCURRENCY);
+    const results = await Promise.all(
+      chunk.map(async (sale) => {
+        const path = `sync/${deviceId}/${sale.uuid}.json`;
+        try {
+          await put(path, JSON.stringify(sale), {
+            access: "private",
+            contentType: "application/json",
+            addRandomSuffix: false,
+            allowOverwrite: false,
+          });
+          return { ok: true, uuid: sale.uuid };
+        } catch (err) {
+          return { ok: false, uuid: sale.uuid, dup: isAlreadyExists(err) };
+        }
+      })
+    );
+    for (const r of results) {
+      if (r.ok) accepted.push(r.uuid);
+      else if (r.dup) duplicates.push(r.uuid);
+      else failed.push(r.uuid);
     }
   }
 
@@ -168,6 +163,5 @@ module.exports = async function handler(req, res) {
     accepted,
     duplicates,
     failed,
-    stored,
   });
 };

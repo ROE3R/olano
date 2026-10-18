@@ -723,11 +723,15 @@
     if(typeof IS_DEMO !== "undefined" && IS_DEMO) return;
     syncInFlight = true;
     readOutbox().then(function(rows){
-      var sales = rows.map(function(r){ return r.payload; }).filter(Boolean);
-      if(!sales.length){ syncInFlight = false; pending = 0; setStatus("on"); return; }
+      if(!rows.length){ syncInFlight = false; pending = 0; setStatus("on"); return; }
       setStatus("sync");
+      /* Kirim per batch 100: satu request 500 transaksi butuh ~30 detik dan bisa
+         kena timeout. Batch kecil = progres terlihat + gagal sebagian tidak mengulang semua. */
+      var BATCH = 100;
+      var batch = rows.slice(0, BATCH);
+      var sales = batch.map(function(r){ return r.payload; }).filter(Boolean);
       var ctl = ("AbortController" in window) ? new AbortController() : null;
-      var timer = ctl ? setTimeout(function(){ ctl.abort(); }, 15000) : null;
+      var timer = ctl ? setTimeout(function(){ ctl.abort(); }, 30000) : null;
       fetch("/api/sync", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -741,25 +745,28 @@
         var okSet = {};
         (j.accepted || []).concat(j.duplicates || []).forEach(function(u){ okSet[u] = 1; });
         var done = [];
-        rows.forEach(function(r){
+        batch.forEach(function(r){
           var u = r.payload && r.payload.uuid;
           if(u && okSet[u]) done.push(r.seq);
         });
         return deleteOutbox(done).then(function(){
-          var left = rows.length - done.length;
-          pending = left;
-          syncInFlight = false;
-          syncBackoff = 0;
-          if(done.length && !drained){ toast(done.length + " transaksi tersimpan di server"); drained = true; }
-          if(left > 0){ setStatus("off", left); scheduleDrain(5000); }
-          else { setStatus("on"); }
+          return countOutbox().then(function(left){
+            pending = left || 0;
+            syncInFlight = false;
+            syncBackoff = 0;
+            if(done.length && !drained){ toast(done.length + " transaksi tersimpan di server"); drained = true; }
+            if(pending > 0){ setStatus("off", pending); setTimeout(drain, 400); }
+            else { setStatus("on"); }
+          });
         });
       }).catch(function(){
         if(timer) clearTimeout(timer);
         syncInFlight = false;
-        pending = rows.length;
-        setStatus("off", pending);
-        scheduleDrain(0); /* backoff dihitung di scheduleDrain */
+        countOutbox().then(function(left){
+          pending = left || 0;
+          setStatus("off", pending);
+          scheduleDrain(0);
+        });
       });
     });
   }
