@@ -317,6 +317,45 @@
       </button>
       <p class="hint" id="wa-note" hidden>Nomor WhatsApp menyusul. Sementara, coba dulu demo kasirnya &mdash; gratis, tanpa akun.</p>
     </div>
+    <!-- [landing-fix] L34 (2026-10-18): FAQ + 3 langkah "cara mulai" — KOMPONEN STRUKTUR dgn
+         placeholder HONEST "isi menyusul" (R-23/R-38: isi dikerjakan tahap kata, tidak difiksasi).
+         Posisi sesuai urutan L32: sebelum CTA penutup. Accordion = .faq-item (initFaq di shared.js:
+         buka satu tutup yang lain). Anggaran L35 dijaga: blok ringkas, tanpa kartu. -->
+    <div class="faq-steps" id="faq">
+      <p class="tst-label">Komponen struktur &mdash; isi FAQ dan langkah menyusul (tahap kata).</p>
+      <div class="fs-steps">
+        <h2>Cara mulai</h2>
+        <ol class="fs-list">
+          <li>
+            <span class="fs-ic" aria-hidden="true"><svg class="ic"><use href="assets/icons.svg#i-bag"/></svg></span>
+            <span class="fs-txt"><b>Langkah 1</b><span class="fs-sub">isi menyusul</span></span>
+          </li>
+          <li>
+            <span class="fs-ic" aria-hidden="true"><svg class="ic"><use href="assets/icons.svg#i-qr"/></svg></span>
+            <span class="fs-txt"><b>Langkah 2</b><span class="fs-sub">isi menyusul</span></span>
+          </li>
+          <li>
+            <span class="fs-ic" aria-hidden="true"><svg class="ic"><use href="assets/icons.svg#i-chart"/></svg></span>
+            <span class="fs-txt"><b>Langkah 3</b><span class="fs-sub">isi menyusul</span></span>
+          </li>
+        </ol>
+      </div>
+      <div class="fs-faq">
+        <h2>Pertanyaan yang sering ditanya</h2>
+        <details class="faq-item">
+          <summary>Pertanyaan 1<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">Isi menyusul.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Pertanyaan 2<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">Isi menyusul.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Pertanyaan 3<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">Isi menyusul.</div>
+        </details>
+      </div>
+    </div>
     <div class="price-close">
       <h2>Mulai jualan lebih rapi hari ini.</h2>
       <p class="sub">Tanpa kartu, tanpa install. Buka kasir, transaksi pertama dalam 3 menit.</p>
