@@ -1,0 +1,5262 @@
+[
+ {
+  "page": "index.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 2,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [
+   {
+    "t": "Jenis usaha",
+    "w": 274,
+    "h": 21
+   },
+   {
+    "t": "Omzet per bulan (Rp)",
+    "w": 274,
+    "h": 21
+   },
+   {
+    "t": "\u00d7",
+    "w": 36,
+    "h": 36
+   },
+   {
+    "t": "10 jt",
+    "w": 67,
+    "h": 40
+   },
+   {
+    "t": "30 jt",
+    "w": 67,
+    "h": 40
+   },
+   {
+    "t": "60 jt",
+    "w": 67,
+    "h": 40
+   },
+   {
+    "t": "100 jt",
+    "w": 73,
+    "h": 40
+   }
+  ],
+  "tinyCount": 7,
+  "smallTextCount": 1,
+  "smallText": [
+   {
+    "fs": 11,
+    "t": "CONTOH - empat cerita di bawah"
+   }
+  ],
+  "contrastFail": [
+   {
+    "ratio": 1.46,
+    "need": 4.5,
+    "fs": 15,
+    "t": "per bulan, PPh final 0,5%",
+    "fg": "rgb(201, 214, 242)",
+    "bg": "rgb(255,255,255)"
+   }
+  ],
+  "contrastOnImage": [],
+  "title": "Olano: Kasir, website, dan pajak usahamu beres di satu tempat",
+  "titleLen": 61,
+  "descLen": 157,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 41,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "\u00d7",
+   "OOlano",
+   "Coba demo kasir",
+   "Buka demo kasir",
+   "Kalkulator PPh Finalcontoh: Rp166.667/bln",
+   "HPP dan Harga Jualcontoh: 3 opsi harga",
+   "Biaya QRIS (MDR)contoh: Rp0/bln untuk mikro",
+   "Margin GoFood/Grabcontoh: 24,3% bersih",
+   "Lihat panduan pajak lengkap",
+   "10 jt",
+   "30 jt",
+   "60 jt",
+   "100 jt",
+   "WhatsApp",
+   "Kasir UMKM",
+   "Pajak",
+   "Website"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 1,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp40.000\n",
+   "Rp75.000.000",
+   "Rp166.667\n",
+   "Rp500rb",
+   "Rp166.667",
+   "Rp0",
+   "Rp75.000.000 ",
+   "Rp900.000.000. ",
+   "Rp400.000.000",
+   "Rp166.667 ",
+   "Rp50rb",
+   "Rp0\n"
+  ],
+  "bodyWords": 627,
+  "cls": 0.0179,
+  "scrollW": 360,
+  "scrollH": 7173,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "index.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 2,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [
+   {
+    "t": "Jenis usaha",
+    "w": 304,
+    "h": 21
+   },
+   {
+    "t": "Omzet per bulan (Rp)",
+    "w": 304,
+    "h": 21
+   },
+   {
+    "t": "\u00d7",
+    "w": 36,
+    "h": 36
+   },
+   {
+    "t": "10 jt",
+    "w": 67,
+    "h": 40
+   },
+   {
+    "t": "30 jt",
+    "w": 67,
+    "h": 40
+   },
+   {
+    "t": "60 jt",
+    "w": 67,
+    "h": 40
+   },
+   {
+    "t": "100 jt",
+    "w": 73,
+    "h": 40
+   }
+  ],
+  "tinyCount": 7,
+  "smallTextCount": 1,
+  "smallText": [
+   {
+    "fs": 11,
+    "t": "CONTOH - empat cerita di bawah"
+   }
+  ],
+  "contrastFail": [
+   {
+    "ratio": 1.46,
+    "need": 4.5,
+    "fs": 15,
+    "t": "per bulan, PPh final 0,5%",
+    "fg": "rgb(201, 214, 242)",
+    "bg": "rgb(255,255,255)"
+   }
+  ],
+  "contrastOnImage": [],
+  "title": "Olano: Kasir, website, dan pajak usahamu beres di satu tempat",
+  "titleLen": 61,
+  "descLen": 157,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 41,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "\u00d7",
+   "OOlano",
+   "Coba demo kasir",
+   "Buka demo kasir",
+   "Kalkulator PPh Finalcontoh: Rp166.667/bln",
+   "HPP dan Harga Jualcontoh: 3 opsi harga",
+   "Biaya QRIS (MDR)contoh: Rp0/bln untuk mikro",
+   "Margin GoFood/Grabcontoh: 24,3% bersih",
+   "Lihat panduan pajak lengkap",
+   "10 jt",
+   "30 jt",
+   "60 jt",
+   "100 jt",
+   "WhatsApp",
+   "Kasir UMKM",
+   "Pajak",
+   "Website"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 1,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp40.000\n",
+   "Rp75.000.000",
+   "Rp166.667\n",
+   "Rp500rb",
+   "Rp166.667",
+   "Rp0",
+   "Rp75.000.000 ",
+   "Rp900.000.000. ",
+   "Rp400.000.000",
+   "Rp166.667 ",
+   "Rp50rb",
+   "Rp0\n"
+  ],
+  "bodyWords": 627,
+  "cls": 0,
+  "scrollW": 390,
+  "scrollH": 7041,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "index.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 2,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "Jenis usaha",
+    "w": 503,
+    "h": 21
+   },
+   {
+    "t": "Omzet per bulan (Rp)",
+    "w": 503,
+    "h": 21
+   },
+   {
+    "t": "\u00d7",
+    "w": 36,
+    "h": 36
+   },
+   {
+    "t": "10 jt",
+    "w": 67,
+    "h": 40
+   },
+   {
+    "t": "30 jt",
+    "w": 67,
+    "h": 40
+   },
+   {
+    "t": "60 jt",
+    "w": 67,
+    "h": 40
+   },
+   {
+    "t": "100 jt",
+    "w": 73,
+    "h": 40
+   },
+   {
+    "t": "Produk",
+    "w": 211,
+    "h": 26
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   }
+  ],
+  "tinyCount": 27,
+  "smallTextCount": 7,
+  "smallText": [
+   {
+    "fs": 11.5,
+    "t": "contoh \u00b7 QRIS Rp40.000 \u2192 MDR 0"
+   },
+   {
+    "fs": 11.5,
+    "t": "contoh \u00b7 omzet \u2264 Rp500 juta/ta"
+   },
+   {
+    "fs": 11.5,
+    "t": "contoh \u00b7 1 template siap, 7 ke"
+   },
+   {
+    "fs": 11.5,
+    "t": "contoh \u00b7 Rp45.000 \u2212 komisi 29%"
+   },
+   {
+    "fs": 11.5,
+    "t": "contoh \u00b7 HPP Rp25.000 +10% \u2192 u"
+   },
+   {
+    "fs": 11.5,
+    "t": "rencana \u00b7 stok < 80% \u00b7 bahan n"
+   },
+   {
+    "fs": 11,
+    "t": "CONTOH - empat cerita di bawah"
+   }
+  ],
+  "contrastFail": [
+   {
+    "ratio": 1.46,
+    "need": 4.5,
+    "fs": 15,
+    "t": "per bulan, PPh final 0,5%",
+    "fg": "rgb(201, 214, 242)",
+    "bg": "rgb(255,255,255)"
+   }
+  ],
+  "contrastOnImage": [],
+  "title": "Olano: Kasir, website, dan pajak usahamu beres di satu tempat",
+  "titleLen": 61,
+  "descLen": 157,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 45,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "\u00d7",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "Buka demo kasir",
+   "Kalkulator PPh Finalcontoh: Rp166.667/bln",
+   "HPP dan Harga Jualcontoh: 3 opsi harga",
+   "Biaya QRIS (MDR)contoh: Rp0/bln untuk mikro",
+   "Margin GoFood/Grabcontoh: 24,3% bersih",
+   "Lihat panduan pajak lengkap",
+   "10 jt",
+   "30 jt",
+   "60 jt",
+   "100 jt"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 1,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp40.000\n",
+   "Rp75.000.000",
+   "Rp166.667\n",
+   "Rp500rb",
+   "Rp40.000 ",
+   "Rp500 juta",
+   "Rp0\n",
+   "Rp45.000 ",
+   "Rp3.000 ",
+   "Rp18.000 ",
+   "Rp10.950\n",
+   "Rp25.000 "
+  ],
+  "bodyWords": 745,
+  "cls": 0.0006,
+  "scrollW": 1280,
+  "scrollH": 8082,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "app/kasir.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [
+   {
+    "t": "Username",
+    "w": 262,
+    "h": 21
+   },
+   {
+    "t": "Password",
+    "w": 262,
+    "h": 21
+   },
+   {
+    "t": "olano.xyz",
+    "w": 51,
+    "h": 17
+   }
+  ],
+  "tinyCount": 3,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Kasir tetap jalan walau\n  "
+  ],
+  "title": "Masuk: Kasir Olano",
+  "titleLen": 18,
+  "descLen": 92,
+  "canonical": false,
+  "ogImage": false,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 7,
+  "ctaLabels": [
+   "Langsung ke form",
+   "OOlano",
+   "Masuk",
+   "Daftar akun baru",
+   "Tidak mau daftar dulu? Buka kasir demo \u2192",
+   "olano.xyz"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 77,
+  "cls": 0.0002,
+  "scrollW": 360,
+  "scrollH": 1009,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "app/kasir.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [
+   {
+    "t": "Username",
+    "w": 292,
+    "h": 21
+   },
+   {
+    "t": "Password",
+    "w": 292,
+    "h": 21
+   },
+   {
+    "t": "Tidak mau daftar dulu? Buka ",
+    "w": 289,
+    "h": 22
+   },
+   {
+    "t": "olano.xyz",
+    "w": 51,
+    "h": 17
+   }
+  ],
+  "tinyCount": 4,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Kasir tetap jalan walau\n  "
+  ],
+  "title": "Masuk: Kasir Olano",
+  "titleLen": 18,
+  "descLen": 92,
+  "canonical": false,
+  "ogImage": false,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 7,
+  "ctaLabels": [
+   "Langsung ke form",
+   "OOlano",
+   "Masuk",
+   "Daftar akun baru",
+   "Tidak mau daftar dulu? Buka kasir demo \u2192",
+   "olano.xyz"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 77,
+  "cls": 0.007,
+  "scrollW": 390,
+  "scrollH": 965,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "app/kasir.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [
+   {
+    "t": "Username",
+    "w": 410,
+    "h": 21
+   },
+   {
+    "t": "Password",
+    "w": 410,
+    "h": 21
+   },
+   {
+    "t": "Tidak mau daftar dulu? Buka ",
+    "w": 289,
+    "h": 22
+   },
+   {
+    "t": "olano.xyz",
+    "w": 51,
+    "h": 17
+   }
+  ],
+  "tinyCount": 4,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Kasir tetap jalan walau\n  "
+  ],
+  "title": "Masuk: Kasir Olano",
+  "titleLen": 18,
+  "descLen": 92,
+  "canonical": false,
+  "ogImage": false,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 7,
+  "ctaLabels": [
+   "Langsung ke form",
+   "OOlano",
+   "Masuk",
+   "Daftar akun baru",
+   "Tidak mau daftar dulu? Buka kasir demo \u2192",
+   "olano.xyz"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 77,
+  "cls": 0.0033,
+  "scrollW": 1280,
+  "scrollH": 900,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "app/login.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [
+   {
+    "t": "Username",
+    "w": 262,
+    "h": 21
+   },
+   {
+    "t": "Password",
+    "w": 262,
+    "h": 21
+   },
+   {
+    "t": "olano.xyz",
+    "w": 51,
+    "h": 17
+   }
+  ],
+  "tinyCount": 3,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Kasir tetap jalan walau\n  "
+  ],
+  "title": "Masuk: Kasir Olano",
+  "titleLen": 18,
+  "descLen": 92,
+  "canonical": false,
+  "ogImage": false,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 7,
+  "ctaLabels": [
+   "Langsung ke form",
+   "OOlano",
+   "Masuk",
+   "Daftar akun baru",
+   "Tidak mau daftar dulu? Buka kasir demo \u2192",
+   "olano.xyz"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 77,
+  "cls": 0.0084,
+  "scrollW": 360,
+  "scrollH": 1009,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "app/login.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [
+   {
+    "t": "Username",
+    "w": 292,
+    "h": 21
+   },
+   {
+    "t": "Password",
+    "w": 292,
+    "h": 21
+   },
+   {
+    "t": "Tidak mau daftar dulu? Buka ",
+    "w": 289,
+    "h": 22
+   },
+   {
+    "t": "olano.xyz",
+    "w": 51,
+    "h": 17
+   }
+  ],
+  "tinyCount": 4,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Kasir tetap jalan walau\n  "
+  ],
+  "title": "Masuk: Kasir Olano",
+  "titleLen": 18,
+  "descLen": 92,
+  "canonical": false,
+  "ogImage": false,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 7,
+  "ctaLabels": [
+   "Langsung ke form",
+   "OOlano",
+   "Masuk",
+   "Daftar akun baru",
+   "Tidak mau daftar dulu? Buka kasir demo \u2192",
+   "olano.xyz"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 77,
+  "cls": 0.014,
+  "scrollW": 390,
+  "scrollH": 965,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "app/login.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [
+   {
+    "t": "Username",
+    "w": 410,
+    "h": 21
+   },
+   {
+    "t": "Password",
+    "w": 410,
+    "h": 21
+   },
+   {
+    "t": "Tidak mau daftar dulu? Buka ",
+    "w": 289,
+    "h": 22
+   },
+   {
+    "t": "olano.xyz",
+    "w": 51,
+    "h": 17
+   }
+  ],
+  "tinyCount": 4,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Kasir tetap jalan walau\n  "
+  ],
+  "title": "Masuk: Kasir Olano",
+  "titleLen": 18,
+  "descLen": 92,
+  "canonical": false,
+  "ogImage": false,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 7,
+  "ctaLabels": [
+   "Langsung ke form",
+   "OOlano",
+   "Masuk",
+   "Daftar akun baru",
+   "Tidak mau daftar dulu? Buka kasir demo \u2192",
+   "olano.xyz"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 77,
+  "cls": 0.0033,
+  "scrollW": 1280,
+  "scrollH": 900,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "pajak.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [],
+  "tinyCount": 0,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Pajak UMKM dihitung dari t",
+   "PPh final 0,5% sesuai PP 2",
+   "Konsultasi rekap pajak (no"
+  ],
+  "title": "Rekap Pajak UMKM Tiap Bulan sesuai PP 20/2026 | Olano",
+  "titleLen": 53,
+  "descLen": 161,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 20,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Coba hitung pajak (gratis)",
+   "Coba demo kasir",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 1,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp500jt",
+   "Rp4,8 ",
+   "Rp4,8"
+  ],
+  "bodyWords": 359,
+  "cls": 0.0005,
+  "scrollW": 360,
+  "scrollH": 4572,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "pajak.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [],
+  "tinyCount": 0,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Pajak UMKM dihitung dari t",
+   "PPh final 0,5% sesuai PP 2",
+   "Konsultasi rekap pajak (no"
+  ],
+  "title": "Rekap Pajak UMKM Tiap Bulan sesuai PP 20/2026 | Olano",
+  "titleLen": 53,
+  "descLen": 161,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 20,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Coba hitung pajak (gratis)",
+   "Coba demo kasir",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 1,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp500jt",
+   "Rp4,8 ",
+   "Rp4,8"
+  ],
+  "bodyWords": 359,
+  "cls": 0.0005,
+  "scrollW": 390,
+  "scrollH": 4505,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "pajak.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   },
+   {
+    "t": "Pajak",
+    "w": 37,
+    "h": 22
+   },
+   {
+    "t": "Website",
+    "w": 55,
+    "h": 22
+   },
+   {
+    "t": "Analisa Delivery",
+    "w": 108,
+    "h": 22
+   },
+   {
+    "t": "AI Jaga Margin",
+    "w": 99,
+    "h": 22
+   },
+   {
+    "t": "Automation",
+    "w": 80,
+    "h": 22
+   },
+   {
+    "t": "Naik Kelas",
+    "w": 70,
+    "h": 22
+   },
+   {
+    "t": "PPh Final UMKM",
+    "w": 112,
+    "h": 22
+   },
+   {
+    "t": "HPP & Harga Jual",
+    "w": 119,
+    "h": 22
+   }
+  ],
+  "tinyCount": 17,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Pajak UMKM dihitung dari t",
+   "PPh final 0,5% sesuai PP 2",
+   "Konsultasi rekap pajak (no"
+  ],
+  "title": "Rekap Pajak UMKM Tiap Bulan sesuai PP 20/2026 | Olano",
+  "titleLen": 53,
+  "descLen": 161,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 24,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "Coba hitung pajak (gratis)",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 1,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp500jt",
+   "Rp4,8 ",
+   "Rp4,8"
+  ],
+  "bodyWords": 366,
+  "cls": 0.0011,
+  "scrollW": 1280,
+  "scrollH": 2944,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "website.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "SIAP - buka contohnya",
+    "w": 150,
+    "h": 29
+   }
+  ],
+  "tinyCount": 1,
+  "smallTextCount": 16,
+  "smallText": [
+   {
+    "fs": 11,
+    "t": "Katalog \u00b7 siap"
+   },
+   {
+    "fs": 11,
+    "t": "Nov 2026"
+   },
+   {
+    "fs": 11,
+    "t": "Nov 2026"
+   },
+   {
+    "fs": 11,
+    "t": "Des 2026"
+   },
+   {
+    "fs": 11,
+    "t": "Des 2026"
+   },
+   {
+    "fs": 11,
+    "t": "Jan 2027"
+   },
+   {
+    "fs": 11,
+    "t": "Jan 2027"
+   },
+   {
+    "fs": 11,
+    "t": "Feb 2027"
+   },
+   {
+    "fs": 11.5,
+    "t": "SIAP - buka contohnya"
+   },
+   {
+    "fs": 11.5,
+    "t": "Target Nov 2026"
+   }
+  ],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Template Katalog siap. 7 k",
+   "Satu template (Katalog) si",
+   "Domain sendiri? Diskusi vi"
+  ],
+  "title": "Website Toko UMKM: Template Katalog Siap, 7 Keluarga Menyusul | Olano",
+  "titleLen": 69,
+  "descLen": 154,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 22,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Buka template Katalog",
+   "SIAP - buka contohnya",
+   "Chat soal website custom (nomor WhatsApp menyusul)",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 1,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 346,
+  "cls": 0.0339,
+  "scrollW": 360,
+  "scrollH": 4699,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "website.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "SIAP - buka contohnya",
+    "w": 150,
+    "h": 29
+   }
+  ],
+  "tinyCount": 1,
+  "smallTextCount": 16,
+  "smallText": [
+   {
+    "fs": 11,
+    "t": "Katalog \u00b7 siap"
+   },
+   {
+    "fs": 11,
+    "t": "Nov 2026"
+   },
+   {
+    "fs": 11,
+    "t": "Nov 2026"
+   },
+   {
+    "fs": 11,
+    "t": "Des 2026"
+   },
+   {
+    "fs": 11,
+    "t": "Des 2026"
+   },
+   {
+    "fs": 11,
+    "t": "Jan 2027"
+   },
+   {
+    "fs": 11,
+    "t": "Jan 2027"
+   },
+   {
+    "fs": 11,
+    "t": "Feb 2027"
+   },
+   {
+    "fs": 11.5,
+    "t": "SIAP - buka contohnya"
+   },
+   {
+    "fs": 11.5,
+    "t": "Target Nov 2026"
+   }
+  ],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Template Katalog siap. 7 k",
+   "Satu template (Katalog) si",
+   "Domain sendiri? Diskusi vi"
+  ],
+  "title": "Website Toko UMKM: Template Katalog Siap, 7 Keluarga Menyusul | Olano",
+  "titleLen": 69,
+  "descLen": 154,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 22,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Buka template Katalog",
+   "SIAP - buka contohnya",
+   "Chat soal website custom (nomor WhatsApp menyusul)",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 1,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 346,
+  "cls": 0.0324,
+  "scrollW": 390,
+  "scrollH": 4598,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "website.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "SIAP - buka contohnya",
+    "w": 150,
+    "h": 29
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   },
+   {
+    "t": "Pajak",
+    "w": 37,
+    "h": 22
+   },
+   {
+    "t": "Website",
+    "w": 55,
+    "h": 22
+   },
+   {
+    "t": "Analisa Delivery",
+    "w": 108,
+    "h": 22
+   },
+   {
+    "t": "AI Jaga Margin",
+    "w": 99,
+    "h": 22
+   },
+   {
+    "t": "Automation",
+    "w": 80,
+    "h": 22
+   },
+   {
+    "t": "Naik Kelas",
+    "w": 70,
+    "h": 22
+   },
+   {
+    "t": "PPh Final UMKM",
+    "w": 112,
+    "h": 22
+   }
+  ],
+  "tinyCount": 18,
+  "smallTextCount": 16,
+  "smallText": [
+   {
+    "fs": 11,
+    "t": "Katalog \u00b7 siap"
+   },
+   {
+    "fs": 11,
+    "t": "Nov 2026"
+   },
+   {
+    "fs": 11,
+    "t": "Nov 2026"
+   },
+   {
+    "fs": 11,
+    "t": "Des 2026"
+   },
+   {
+    "fs": 11,
+    "t": "Des 2026"
+   },
+   {
+    "fs": 11,
+    "t": "Jan 2027"
+   },
+   {
+    "fs": 11,
+    "t": "Jan 2027"
+   },
+   {
+    "fs": 11,
+    "t": "Feb 2027"
+   },
+   {
+    "fs": 11.5,
+    "t": "SIAP - buka contohnya"
+   },
+   {
+    "fs": 11.5,
+    "t": "Target Nov 2026"
+   }
+  ],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Template Katalog siap. 7 k",
+   "Satu template (Katalog) si",
+   "Domain sendiri? Diskusi vi"
+  ],
+  "title": "Website Toko UMKM: Template Katalog Siap, 7 Keluarga Menyusul | Olano",
+  "titleLen": 69,
+  "descLen": 154,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 26,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "Buka template Katalog",
+   "SIAP - buka contohnya",
+   "Chat soal website custom (nomor WhatsApp menyusul)",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 1,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 353,
+  "cls": 0.0076,
+  "scrollW": 1280,
+  "scrollH": 2725,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "umkm.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 12,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Geser untuk membandingkan fo",
+    "w": 312,
+    "h": 16
+   },
+   {
+    "t": "Geser untuk membandingkan fo",
+    "w": 312,
+    "h": 16
+   },
+   {
+    "t": "Geser untuk membandingkan fo",
+    "w": 312,
+    "h": 16
+   },
+   {
+    "t": "Hitung MDR",
+    "w": 87,
+    "h": 38
+   }
+  ],
+  "tinyCount": 4,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Kasir yang tetap jalan saa",
+   "Transaksi tersimpan di per",
+   "Jualan lebih rapi mulai ma",
+   "Buka kasir, langsung mulai"
+  ],
+  "title": "Kasir Offline untuk UMKM: Jualan Jalan walau Internet Mati | Olano",
+  "titleLen": 66,
+  "descLen": 139,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 29,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Mulai gratis",
+   "Hitung Biaya QRIS",
+   "Internet: ON",
+   "Es KopiRp22.000",
+   "BatikRp55.000",
+   "KeripikRp8.000",
+   "Hitung MDR",
+   "Coba demo kasir",
+   "Coba kasir gratis",
+   "Cek pajak UMKM",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp22.000\n",
+   "Rp55.000\nK",
+   "Rp8.000\n",
+   "Rp500rb",
+   "Rp100rb",
+   "Rp0\n",
+   "Rp50rb"
+  ],
+  "bodyWords": 407,
+  "cls": 0.1516,
+  "scrollW": 360,
+  "scrollH": 7615,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "umkm.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 12,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Geser untuk membandingkan fo",
+    "w": 342,
+    "h": 16
+   },
+   {
+    "t": "Geser untuk membandingkan fo",
+    "w": 342,
+    "h": 16
+   },
+   {
+    "t": "Geser untuk membandingkan fo",
+    "w": 342,
+    "h": 16
+   },
+   {
+    "t": "Hitung MDR",
+    "w": 94,
+    "h": 38
+   }
+  ],
+  "tinyCount": 4,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Kasir yang tetap jalan saa",
+   "Transaksi tersimpan di per",
+   "Jualan lebih rapi mulai ma",
+   "Buka kasir, langsung mulai"
+  ],
+  "title": "Kasir Offline untuk UMKM: Jualan Jalan walau Internet Mati | Olano",
+  "titleLen": 66,
+  "descLen": 139,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 29,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Mulai gratis",
+   "Hitung Biaya QRIS",
+   "Internet: ON",
+   "Es KopiRp22.000",
+   "BatikRp55.000",
+   "KeripikRp8.000",
+   "Hitung MDR",
+   "Coba demo kasir",
+   "Coba kasir gratis",
+   "Cek pajak UMKM",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp22.000\n",
+   "Rp55.000\nK",
+   "Rp8.000\n",
+   "Rp500rb",
+   "Rp100rb",
+   "Rp0\n",
+   "Rp50rb"
+  ],
+  "bodyWords": 407,
+  "cls": 0.0326,
+  "scrollW": 390,
+  "scrollH": 7578,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "umkm.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 12,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "Geser untuk membandingkan fo",
+    "w": 228,
+    "h": 16
+   },
+   {
+    "t": "Geser untuk membandingkan fo",
+    "w": 228,
+    "h": 16
+   },
+   {
+    "t": "Geser untuk membandingkan fo",
+    "w": 228,
+    "h": 16
+   },
+   {
+    "t": "Hitung MDR",
+    "w": 103,
+    "h": 38
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   },
+   {
+    "t": "Pajak",
+    "w": 37,
+    "h": 22
+   },
+   {
+    "t": "Website",
+    "w": 55,
+    "h": 22
+   },
+   {
+    "t": "Analisa Delivery",
+    "w": 108,
+    "h": 22
+   },
+   {
+    "t": "AI Jaga Margin",
+    "w": 99,
+    "h": 22
+   }
+  ],
+  "tinyCount": 21,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Kasir yang tetap jalan saa",
+   "Transaksi tersimpan di per",
+   "Jualan lebih rapi mulai ma",
+   "Buka kasir, langsung mulai"
+  ],
+  "title": "Kasir Offline untuk UMKM: Jualan Jalan walau Internet Mati | Olano",
+  "titleLen": 66,
+  "descLen": 139,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 33,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "Mulai gratis",
+   "Hitung Biaya QRIS",
+   "Internet: ON",
+   "Es KopiRp22.000",
+   "BatikRp55.000",
+   "KeripikRp8.000",
+   "Hitung MDR",
+   "Coba kasir gratis",
+   "Cek pajak UMKM",
+   "Kasir UMKM",
+   "Pajak"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp22.000\n",
+   "Rp55.000\nK",
+   "Rp8.000\n",
+   "Rp500rb",
+   "Rp100rb",
+   "Rp0\n",
+   "Rp50rb"
+  ],
+  "bodyWords": 414,
+  "cls": 0.0204,
+  "scrollW": 1280,
+  "scrollH": 4787,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "ai.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "HPP satu porsi (Rp)",
+    "w": 254,
+    "h": 21
+   },
+   {
+    "t": "Harga jual sekarang (Rp)",
+    "w": 254,
+    "h": 21
+   }
+  ],
+  "tinyCount": 2,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "AI yang menjaga margin, bu",
+   "Foto produk diproses sampa"
+  ],
+  "title": "AI Jaga Margin: Contoh Saran Harga Saat Bahan Naik 10% | Olano",
+  "titleLen": 62,
+  "descLen": 141,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 20,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Coba di outletmu",
+   "Coba demo kasir",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp12.000\n",
+   "Rp12.571, ",
+   "Rp11.000, ",
+   "Rp16.000\n",
+   "Rp8.000, ",
+   "Rp12.571\nK",
+   "Rp11.000\n",
+   "Rp12.571 ",
+   "Rp11.000 "
+  ],
+  "bodyWords": 291,
+  "cls": 0.0005,
+  "scrollW": 360,
+  "scrollH": 3671,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "ai.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "HPP satu porsi (Rp)",
+    "w": 284,
+    "h": 21
+   },
+   {
+    "t": "Harga jual sekarang (Rp)",
+    "w": 284,
+    "h": 21
+   }
+  ],
+  "tinyCount": 2,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "AI yang menjaga margin, bu",
+   "Foto produk diproses sampa"
+  ],
+  "title": "AI Jaga Margin: Contoh Saran Harga Saat Bahan Naik 10% | Olano",
+  "titleLen": 62,
+  "descLen": 141,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 20,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Coba di outletmu",
+   "Coba demo kasir",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp12.000\n",
+   "Rp12.571, ",
+   "Rp11.000, ",
+   "Rp16.000\n",
+   "Rp8.000, ",
+   "Rp12.571\nK",
+   "Rp11.000\n",
+   "Rp12.571 ",
+   "Rp11.000 "
+  ],
+  "bodyWords": 291,
+  "cls": 0.0275,
+  "scrollW": 390,
+  "scrollH": 3552,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "ai.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "HPP satu porsi (Rp)",
+    "w": 654,
+    "h": 21
+   },
+   {
+    "t": "Harga jual sekarang (Rp)",
+    "w": 654,
+    "h": 21
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   },
+   {
+    "t": "Pajak",
+    "w": 37,
+    "h": 22
+   },
+   {
+    "t": "Website",
+    "w": 55,
+    "h": 22
+   },
+   {
+    "t": "Analisa Delivery",
+    "w": 108,
+    "h": 22
+   },
+   {
+    "t": "AI Jaga Margin",
+    "w": 99,
+    "h": 22
+   },
+   {
+    "t": "Automation",
+    "w": 80,
+    "h": 22
+   },
+   {
+    "t": "Naik Kelas",
+    "w": 70,
+    "h": 22
+   }
+  ],
+  "tinyCount": 19,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "AI yang menjaga margin, bu",
+   "Foto produk diproses sampa"
+  ],
+  "title": "AI Jaga Margin: Contoh Saran Harga Saat Bahan Naik 10% | Olano",
+  "titleLen": 62,
+  "descLen": 141,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 24,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "Coba di outletmu",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp12.000\n",
+   "Rp12.571, ",
+   "Rp11.000, ",
+   "Rp16.000\n",
+   "Rp8.000, ",
+   "Rp12.571\nK",
+   "Rp11.000\n",
+   "Rp12.571 ",
+   "Rp11.000 "
+  ],
+  "bodyWords": 298,
+  "cls": 0.0009,
+  "scrollW": 1280,
+  "scrollH": 2644,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "automation.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [],
+  "tinyCount": 0,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Yang berulang, dikerjakan ",
+   "Pengingat stok, rekap paja"
+  ],
+  "title": "Automation UMKM: Stok, Pajak, Harga Bahan | Olano",
+  "titleLen": 49,
+  "descLen": 158,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 20,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Lihat modul pajak",
+   "Coba kasir gratis",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 192,
+  "cls": 0.0003,
+  "scrollW": 360,
+  "scrollH": 2677,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "automation.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [],
+  "tinyCount": 0,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Yang berulang, dikerjakan ",
+   "Pengingat stok, rekap paja"
+  ],
+  "title": "Automation UMKM: Stok, Pajak, Harga Bahan | Olano",
+  "titleLen": 49,
+  "descLen": 158,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 20,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Lihat modul pajak",
+   "Coba kasir gratis",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 192,
+  "cls": 0.0003,
+  "scrollW": 390,
+  "scrollH": 2614,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "automation.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   },
+   {
+    "t": "Pajak",
+    "w": 37,
+    "h": 22
+   },
+   {
+    "t": "Website",
+    "w": 55,
+    "h": 22
+   },
+   {
+    "t": "Analisa Delivery",
+    "w": 108,
+    "h": 22
+   },
+   {
+    "t": "AI Jaga Margin",
+    "w": 99,
+    "h": 22
+   },
+   {
+    "t": "Automation",
+    "w": 80,
+    "h": 22
+   },
+   {
+    "t": "Naik Kelas",
+    "w": 70,
+    "h": 22
+   },
+   {
+    "t": "PPh Final UMKM",
+    "w": 112,
+    "h": 22
+   },
+   {
+    "t": "HPP & Harga Jual",
+    "w": 119,
+    "h": 22
+   }
+  ],
+  "tinyCount": 17,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Yang berulang, dikerjakan ",
+   "Pengingat stok, rekap paja"
+  ],
+  "title": "Automation UMKM: Stok, Pajak, Harga Bahan | Olano",
+  "titleLen": 49,
+  "descLen": 158,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 24,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "Lihat modul pajak",
+   "Coba kasir gratis",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 199,
+  "cls": 0.0008,
+  "scrollW": 1280,
+  "scrollH": 1451,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "naik-kelas.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [],
+  "tinyCount": 0,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Dari warung pertama sampai",
+   "Dirancang seolah untuk bis",
+   "Konsultasi bisnis via What"
+  ],
+  "title": "Naik Kelas: Dari Warung Pertama Sampai Cabang Kesepuluh | Olano",
+  "titleLen": 63,
+  "descLen": 158,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 21,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Coba demo kasir",
+   "Konsultasi pajak PT/CV",
+   "Baca aturan lengkap",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 1,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 338,
+  "cls": 0.0006,
+  "scrollW": 360,
+  "scrollH": 4545,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "naik-kelas.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [],
+  "tinyCount": 0,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Dari warung pertama sampai",
+   "Dirancang seolah untuk bis",
+   "Konsultasi bisnis via What"
+  ],
+  "title": "Naik Kelas: Dari Warung Pertama Sampai Cabang Kesepuluh | Olano",
+  "titleLen": 63,
+  "descLen": 158,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 21,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Coba demo kasir",
+   "Konsultasi pajak PT/CV",
+   "Baca aturan lengkap",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 1,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 338,
+  "cls": 0.0006,
+  "scrollW": 390,
+  "scrollH": 4357,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "naik-kelas.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   },
+   {
+    "t": "Pajak",
+    "w": 37,
+    "h": 22
+   },
+   {
+    "t": "Website",
+    "w": 55,
+    "h": 22
+   },
+   {
+    "t": "Analisa Delivery",
+    "w": 108,
+    "h": 22
+   },
+   {
+    "t": "AI Jaga Margin",
+    "w": 99,
+    "h": 22
+   },
+   {
+    "t": "Automation",
+    "w": 80,
+    "h": 22
+   },
+   {
+    "t": "Naik Kelas",
+    "w": 70,
+    "h": 22
+   },
+   {
+    "t": "PPh Final UMKM",
+    "w": 112,
+    "h": 22
+   },
+   {
+    "t": "HPP & Harga Jual",
+    "w": 119,
+    "h": 22
+   }
+  ],
+  "tinyCount": 17,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Dari warung pertama sampai",
+   "Dirancang seolah untuk bis",
+   "Konsultasi bisnis via What"
+  ],
+  "title": "Naik Kelas: Dari Warung Pertama Sampai Cabang Kesepuluh | Olano",
+  "titleLen": 63,
+  "descLen": 158,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 25,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "Konsultasi pajak PT/CV",
+   "Baca aturan lengkap",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 1,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 345,
+  "cls": 0.0196,
+  "scrollW": 1280,
+  "scrollH": 3099,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "analisa-delivery.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [],
+  "tinyCount": 0,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Tahu untung rugi tiap pesa",
+   "Komisi platform 20 sampai "
+  ],
+  "title": "Analisa GoFood & GrabFood: Margin per Saluran | Olano",
+  "titleLen": 53,
+  "descLen": 155,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 21,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Cek margin delivery",
+   "Coba kasir gratis",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 209,
+  "cls": 0.0003,
+  "scrollW": 360,
+  "scrollH": 2716,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "analisa-delivery.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [],
+  "tinyCount": 0,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Tahu untung rugi tiap pesa",
+   "Komisi platform 20 sampai "
+  ],
+  "title": "Analisa GoFood & GrabFood: Margin per Saluran | Olano",
+  "titleLen": 53,
+  "descLen": 155,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 21,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Cek margin delivery",
+   "Coba kasir gratis",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 209,
+  "cls": 0.0003,
+  "scrollW": 390,
+  "scrollH": 2620,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "analisa-delivery.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   },
+   {
+    "t": "Pajak",
+    "w": 37,
+    "h": 22
+   },
+   {
+    "t": "Website",
+    "w": 55,
+    "h": 22
+   },
+   {
+    "t": "Analisa Delivery",
+    "w": 108,
+    "h": 22
+   },
+   {
+    "t": "AI Jaga Margin",
+    "w": 99,
+    "h": 22
+   },
+   {
+    "t": "Automation",
+    "w": 80,
+    "h": 22
+   },
+   {
+    "t": "Naik Kelas",
+    "w": 70,
+    "h": 22
+   },
+   {
+    "t": "PPh Final UMKM",
+    "w": 112,
+    "h": 22
+   },
+   {
+    "t": "HPP & Harga Jual",
+    "w": 119,
+    "h": 22
+   }
+  ],
+  "tinyCount": 17,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Tahu untung rugi tiap pesa",
+   "Komisi platform 20 sampai "
+  ],
+  "title": "Analisa GoFood & GrabFood: Margin per Saluran | Olano",
+  "titleLen": 53,
+  "descLen": 155,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 25,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "Cek margin delivery",
+   "Coba kasir gratis",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 216,
+  "cls": 0.0008,
+  "scrollW": 1280,
+  "scrollH": 1451,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "alat/kalkulator-pph-final-umkm.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Orang Pribadi",
+    "w": 115,
+    "h": 39
+   },
+   {
+    "t": "PT Perorangan",
+    "w": 121,
+    "h": 39
+   },
+   {
+    "t": "Koperasi",
+    "w": 85,
+    "h": 39
+   },
+   {
+    "t": "PT",
+    "w": 47,
+    "h": 39
+   },
+   {
+    "t": "CV / Firma",
+    "w": 96,
+    "h": 39
+   },
+   {
+    "t": "Omzet rata-rata per bulan (R",
+    "w": 246,
+    "h": 21
+   },
+   {
+    "t": "Coba gratis",
+    "w": 70,
+    "h": 18
+   }
+  ],
+  "tinyCount": 7,
+  "smallTextCount": 1,
+  "smallText": [
+   {
+    "fs": 11,
+    "t": "Estimasi berdasarkan PP 20/202"
+   }
+  ],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "PPh final 0,5% dalam hitun",
+   "Masukkan omzet, keluar jum"
+  ],
+  "title": "Kalkulator PPh Final UMKM 0,5%: Gratis | Olano",
+  "titleLen": 46,
+  "descLen": 182,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 20,
+  "ctaLabels": [
+   "Langsung ke alat",
+   "OOlano",
+   "Hitung sekarang",
+   "Coba gratis",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp500 juta",
+   "Rp166.667",
+   "Rp75.000.000\n",
+   "Rp900.000.000\n",
+   "Rp500.000.000\n",
+   "Rp400.000.000\n",
+   "Rp2.000.000\n",
+   "Rp4.800.000.000, ",
+   "Rp4,8 "
+  ],
+  "bodyWords": 301,
+  "cls": 0.0003,
+  "scrollW": 360,
+  "scrollH": 3959,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "alat/kalkulator-pph-final-umkm.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Orang Pribadi",
+    "w": 115,
+    "h": 39
+   },
+   {
+    "t": "PT Perorangan",
+    "w": 121,
+    "h": 39
+   },
+   {
+    "t": "Koperasi",
+    "w": 85,
+    "h": 39
+   },
+   {
+    "t": "PT",
+    "w": 47,
+    "h": 39
+   },
+   {
+    "t": "CV / Firma",
+    "w": 96,
+    "h": 39
+   },
+   {
+    "t": "Omzet rata-rata per bulan (R",
+    "w": 276,
+    "h": 21
+   },
+   {
+    "t": "Coba gratis",
+    "w": 211,
+    "h": 39
+   }
+  ],
+  "tinyCount": 7,
+  "smallTextCount": 1,
+  "smallText": [
+   {
+    "fs": 11,
+    "t": "Estimasi berdasarkan PP 20/202"
+   }
+  ],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "PPh final 0,5% dalam hitun",
+   "Masukkan omzet, keluar jum"
+  ],
+  "title": "Kalkulator PPh Final UMKM 0,5%: Gratis | Olano",
+  "titleLen": 46,
+  "descLen": 182,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 20,
+  "ctaLabels": [
+   "Langsung ke alat",
+   "OOlano",
+   "Hitung sekarang",
+   "Coba gratis",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp500 juta",
+   "Rp166.667",
+   "Rp75.000.000\n",
+   "Rp900.000.000\n",
+   "Rp500.000.000\n",
+   "Rp400.000.000\n",
+   "Rp2.000.000\n",
+   "Rp4.800.000.000, ",
+   "Rp4,8 "
+  ],
+  "bodyWords": 301,
+  "cls": 0.0003,
+  "scrollW": 390,
+  "scrollH": 3896,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "alat/kalkulator-pph-final-umkm.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "Orang Pribadi",
+    "w": 115,
+    "h": 39
+   },
+   {
+    "t": "PT Perorangan",
+    "w": 121,
+    "h": 39
+   },
+   {
+    "t": "Koperasi",
+    "w": 85,
+    "h": 39
+   },
+   {
+    "t": "PT",
+    "w": 47,
+    "h": 39
+   },
+   {
+    "t": "CV / Firma",
+    "w": 96,
+    "h": 39
+   },
+   {
+    "t": "Omzet rata-rata per bulan (R",
+    "w": 550,
+    "h": 21
+   },
+   {
+    "t": "Coba gratis",
+    "w": 70,
+    "h": 18
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   },
+   {
+    "t": "Pajak",
+    "w": 37,
+    "h": 22
+   }
+  ],
+  "tinyCount": 24,
+  "smallTextCount": 1,
+  "smallText": [
+   {
+    "fs": 11,
+    "t": "Estimasi berdasarkan PP 20/202"
+   }
+  ],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "PPh final 0,5% dalam hitun",
+   "Masukkan omzet, keluar jum"
+  ],
+  "title": "Kalkulator PPh Final UMKM 0,5%: Gratis | Olano",
+  "titleLen": 46,
+  "descLen": 182,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 24,
+  "ctaLabels": [
+   "Langsung ke alat",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "Hitung sekarang",
+   "Coba gratis",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp500 juta",
+   "Rp166.667",
+   "Rp75.000.000\n",
+   "Rp900.000.000\n",
+   "Rp500.000.000\n",
+   "Rp400.000.000\n",
+   "Rp2.000.000\n",
+   "Rp4.800.000.000, ",
+   "Rp4,8 "
+  ],
+  "bodyWords": 308,
+  "cls": 0.0008,
+  "scrollW": 1280,
+  "scrollH": 2452,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "alat/kalkulator-hpp-harga-jual.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Nama produk",
+    "w": 246,
+    "h": 21
+   },
+   {
+    "t": "+ Tambah bahan",
+    "w": 130,
+    "h": 38
+   },
+   {
+    "t": "Overhead per porsi (Rp)",
+    "w": 246,
+    "h": 21
+   },
+   {
+    "t": "Jumlah (untuk HPP/porsi teta",
+    "w": 246,
+    "h": 21
+   },
+   {
+    "t": "Aktifkan Pro",
+    "w": 76,
+    "h": 18
+   }
+  ],
+  "tinyCount": 5,
+  "smallTextCount": 1,
+  "smallText": [
+   {
+    "fs": 10.5,
+    "t": "SARAN AI"
+   }
+  ],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Harga jual yang benar, buk",
+   "Hitung HPP, margin, dan ha"
+  ],
+  "title": "Kalkulator HPP & Harga Jual: Gratis | Olano",
+  "titleLen": 43,
+  "descLen": 191,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 21,
+  "ctaLabels": [
+   "Langsung ke alat",
+   "OOlano",
+   "+ Tambah bahan",
+   "Hitung margin",
+   "Aktifkan Pro",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp11.700",
+   "Rp16.714\nK",
+   "Rp14.625\n",
+   "Rp21.273\n",
+   "Rp16.714 "
+  ],
+  "bodyWords": 244,
+  "cls": 0.0004,
+  "scrollW": 360,
+  "scrollH": 3496,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "alat/kalkulator-hpp-harga-jual.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Nama produk",
+    "w": 276,
+    "h": 21
+   },
+   {
+    "t": "+ Tambah bahan",
+    "w": 130,
+    "h": 38
+   },
+   {
+    "t": "Overhead per porsi (Rp)",
+    "w": 276,
+    "h": 21
+   },
+   {
+    "t": "Jumlah (untuk HPP/porsi teta",
+    "w": 276,
+    "h": 21
+   },
+   {
+    "t": "Aktifkan Pro",
+    "w": 76,
+    "h": 18
+   }
+  ],
+  "tinyCount": 5,
+  "smallTextCount": 1,
+  "smallText": [
+   {
+    "fs": 10.5,
+    "t": "SARAN AI"
+   }
+  ],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Harga jual yang benar, buk",
+   "Hitung HPP, margin, dan ha"
+  ],
+  "title": "Kalkulator HPP & Harga Jual: Gratis | Olano",
+  "titleLen": 43,
+  "descLen": 191,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 21,
+  "ctaLabels": [
+   "Langsung ke alat",
+   "OOlano",
+   "+ Tambah bahan",
+   "Hitung margin",
+   "Aktifkan Pro",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp11.700",
+   "Rp16.714\nK",
+   "Rp14.625\n",
+   "Rp21.273\n",
+   "Rp16.714 "
+  ],
+  "bodyWords": 244,
+  "cls": 0.0003,
+  "scrollW": 390,
+  "scrollH": 3451,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "alat/kalkulator-hpp-harga-jual.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "Nama produk",
+    "w": 550,
+    "h": 21
+   },
+   {
+    "t": "+ Tambah bahan",
+    "w": 130,
+    "h": 38
+   },
+   {
+    "t": "Overhead per porsi (Rp)",
+    "w": 269,
+    "h": 21
+   },
+   {
+    "t": "Jumlah (untuk HPP/porsi teta",
+    "w": 269,
+    "h": 21
+   },
+   {
+    "t": "Aktifkan Pro",
+    "w": 76,
+    "h": 18
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   },
+   {
+    "t": "Pajak",
+    "w": 37,
+    "h": 22
+   },
+   {
+    "t": "Website",
+    "w": 55,
+    "h": 22
+   },
+   {
+    "t": "Analisa Delivery",
+    "w": 108,
+    "h": 22
+   }
+  ],
+  "tinyCount": 22,
+  "smallTextCount": 1,
+  "smallText": [
+   {
+    "fs": 10.5,
+    "t": "SARAN AI"
+   }
+  ],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "Harga jual yang benar, buk",
+   "Hitung HPP, margin, dan ha"
+  ],
+  "title": "Kalkulator HPP & Harga Jual: Gratis | Olano",
+  "titleLen": 43,
+  "descLen": 191,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 25,
+  "ctaLabels": [
+   "Langsung ke alat",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "+ Tambah bahan",
+   "Hitung margin",
+   "Aktifkan Pro",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp11.700",
+   "Rp16.714\nK",
+   "Rp14.625\n",
+   "Rp21.273\n",
+   "Rp16.714 "
+  ],
+  "bodyWords": 251,
+  "cls": 0.0008,
+  "scrollW": 1280,
+  "scrollH": 1909,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "alat/kalkulator-biaya-qris.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Usaha Mikro",
+    "w": 106,
+    "h": 39
+   },
+   {
+    "t": "Kecil / Menengah / Besar",
+    "w": 183,
+    "h": 39
+   },
+   {
+    "t": "Nominal transaksi (Rp)",
+    "w": 246,
+    "h": 21
+   },
+   {
+    "t": "Transaksi per bulan",
+    "w": 246,
+    "h": 21
+   }
+  ],
+  "tinyCount": 4,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "QRIS mikro 0% sampai Rp500",
+   "Berlaku 1 Oktober 2026. Hi"
+  ],
+  "title": "Kalkulator Biaya QRIS 2026 (MDR): Gratis | Olano",
+  "titleLen": 48,
+  "descLen": 182,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 19,
+  "ctaLabels": [
+   "Langsung ke alat",
+   "OOlano",
+   "Cek penghematan",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 1,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp500 ribu",
+   "Rp0",
+   "Rp0\n",
+   "Rp500.000 ",
+   "Rp100.000 "
+  ],
+  "bodyWords": 214,
+  "cls": 0.0005,
+  "scrollW": 360,
+  "scrollH": 3124,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "alat/kalkulator-biaya-qris.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Usaha Mikro",
+    "w": 106,
+    "h": 39
+   },
+   {
+    "t": "Kecil / Menengah / Besar",
+    "w": 183,
+    "h": 39
+   },
+   {
+    "t": "Nominal transaksi (Rp)",
+    "w": 276,
+    "h": 21
+   },
+   {
+    "t": "Transaksi per bulan",
+    "w": 276,
+    "h": 21
+   }
+  ],
+  "tinyCount": 4,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "QRIS mikro 0% sampai Rp500",
+   "Berlaku 1 Oktober 2026. Hi"
+  ],
+  "title": "Kalkulator Biaya QRIS 2026 (MDR): Gratis | Olano",
+  "titleLen": 48,
+  "descLen": 182,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 19,
+  "ctaLabels": [
+   "Langsung ke alat",
+   "OOlano",
+   "Cek penghematan",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 1,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp500 ribu",
+   "Rp0",
+   "Rp0\n",
+   "Rp500.000 ",
+   "Rp100.000 "
+  ],
+  "bodyWords": 214,
+  "cls": 0.0003,
+  "scrollW": 390,
+  "scrollH": 3023,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "alat/kalkulator-biaya-qris.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "Usaha Mikro",
+    "w": 106,
+    "h": 39
+   },
+   {
+    "t": "Kecil / Menengah / Besar",
+    "w": 183,
+    "h": 39
+   },
+   {
+    "t": "Nominal transaksi (Rp)",
+    "w": 269,
+    "h": 21
+   },
+   {
+    "t": "Transaksi per bulan",
+    "w": 269,
+    "h": 21
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   },
+   {
+    "t": "Pajak",
+    "w": 37,
+    "h": 22
+   },
+   {
+    "t": "Website",
+    "w": 55,
+    "h": 22
+   },
+   {
+    "t": "Analisa Delivery",
+    "w": 108,
+    "h": 22
+   },
+   {
+    "t": "AI Jaga Margin",
+    "w": 99,
+    "h": 22
+   }
+  ],
+  "tinyCount": 21,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [
+   "QRIS mikro 0% sampai Rp500",
+   "Berlaku 1 Oktober 2026. Hi"
+  ],
+  "title": "Kalkulator Biaya QRIS 2026 (MDR): Gratis | Olano",
+  "titleLen": 48,
+  "descLen": 182,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 23,
+  "ctaLabels": [
+   "Langsung ke alat",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "Cek penghematan",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 1,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp500 ribu",
+   "Rp0",
+   "Rp0\n",
+   "Rp500.000 ",
+   "Rp100.000 "
+  ],
+  "bodyWords": 221,
+  "cls": 0.0011,
+  "scrollW": 1280,
+  "scrollH": 1756,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "alat/kalkulator-margin-delivery.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Harga jual (Rp)",
+    "w": 246,
+    "h": 21
+   },
+   {
+    "t": "HPP per porsi (Rp)",
+    "w": 246,
+    "h": 21
+   },
+   {
+    "t": "Komisi platform (%)",
+    "w": 246,
+    "h": 21
+   },
+   {
+    "t": "Potongan promo/diskon (Rp)",
+    "w": 246,
+    "h": 21
+   },
+   {
+    "t": "Margin target (%)",
+    "w": 246,
+    "h": 21
+   }
+  ],
+  "tinyCount": 5,
+  "smallTextCount": 1,
+  "smallText": [
+   {
+    "fs": 10.5,
+    "t": "AI verdict"
+   }
+  ],
+  "contrastFail": [
+   {
+    "ratio": 1,
+    "need": 4.5,
+    "fs": 13,
+    "t": "Coba simulasi lain:",
+    "fg": "rgb(11, 18, 32)",
+    "bg": "rgb(11,18,32)"
+   }
+  ],
+  "contrastOnImage": [
+   "Komisi 20\u201330% makan margin",
+   "Masukkan harga jual dan ko"
+  ],
+  "title": "Analisa Margin GoFood & GrabFood: Gratis | Olano",
+  "titleLen": 48,
+  "descLen": 146,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 19,
+  "ctaLabels": [
+   "Langsung ke alat",
+   "OOlano",
+   "Hitung komisinya",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 2,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp10.950",
+   "Rp28.950\n",
+   "Rp18.000\n",
+   "Rp10.950\n",
+   "Rp51.500 "
+  ],
+  "bodyWords": 269,
+  "cls": 0.0004,
+  "scrollW": 360,
+  "scrollH": 3642,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "alat/kalkulator-margin-delivery.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Harga jual (Rp)",
+    "w": 276,
+    "h": 21
+   },
+   {
+    "t": "HPP per porsi (Rp)",
+    "w": 276,
+    "h": 21
+   },
+   {
+    "t": "Komisi platform (%)",
+    "w": 276,
+    "h": 21
+   },
+   {
+    "t": "Potongan promo/diskon (Rp)",
+    "w": 276,
+    "h": 21
+   },
+   {
+    "t": "Margin target (%)",
+    "w": 276,
+    "h": 21
+   }
+  ],
+  "tinyCount": 5,
+  "smallTextCount": 1,
+  "smallText": [
+   {
+    "fs": 10.5,
+    "t": "AI verdict"
+   }
+  ],
+  "contrastFail": [
+   {
+    "ratio": 1,
+    "need": 4.5,
+    "fs": 13,
+    "t": "Coba simulasi lain:",
+    "fg": "rgb(11, 18, 32)",
+    "bg": "rgb(11,18,32)"
+   }
+  ],
+  "contrastOnImage": [
+   "Komisi 20\u201330% makan margin",
+   "Masukkan harga jual dan ko"
+  ],
+  "title": "Analisa Margin GoFood & GrabFood: Gratis | Olano",
+  "titleLen": 48,
+  "descLen": 146,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 19,
+  "ctaLabels": [
+   "Langsung ke alat",
+   "OOlano",
+   "Hitung komisinya",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 2,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp10.950",
+   "Rp28.950\n",
+   "Rp18.000\n",
+   "Rp10.950\n",
+   "Rp51.500 "
+  ],
+  "bodyWords": 269,
+  "cls": 0.0003,
+  "scrollW": 390,
+  "scrollH": 3557,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "alat/kalkulator-margin-delivery.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 3,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 1,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "Harga jual (Rp)",
+    "w": 269,
+    "h": 21
+   },
+   {
+    "t": "HPP per porsi (Rp)",
+    "w": 269,
+    "h": 21
+   },
+   {
+    "t": "Komisi platform (%)",
+    "w": 269,
+    "h": 21
+   },
+   {
+    "t": "Potongan promo/diskon (Rp)",
+    "w": 269,
+    "h": 21
+   },
+   {
+    "t": "Margin target (%)",
+    "w": 550,
+    "h": 21
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   },
+   {
+    "t": "Pajak",
+    "w": 37,
+    "h": 22
+   },
+   {
+    "t": "Website",
+    "w": 55,
+    "h": 22
+   },
+   {
+    "t": "Analisa Delivery",
+    "w": 108,
+    "h": 22
+   }
+  ],
+  "tinyCount": 22,
+  "smallTextCount": 1,
+  "smallText": [
+   {
+    "fs": 10.5,
+    "t": "AI verdict"
+   }
+  ],
+  "contrastFail": [
+   {
+    "ratio": 1,
+    "need": 4.5,
+    "fs": 13,
+    "t": "Coba simulasi lain:",
+    "fg": "rgb(11, 18, 32)",
+    "bg": "rgb(11,18,32)"
+   }
+  ],
+  "contrastOnImage": [
+   "Komisi 20\u201330% makan margin",
+   "Masukkan harga jual dan ko"
+  ],
+  "title": "Analisa Margin GoFood & GrabFood: Gratis | Olano",
+  "titleLen": 48,
+  "descLen": 146,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 23,
+  "ctaLabels": [
+   "Langsung ke alat",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "Hitung komisinya",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 2,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp10.950",
+   "Rp28.950\n",
+   "Rp18.000\n",
+   "Rp10.950\n",
+   "Rp51.500 "
+  ],
+  "bodyWords": 276,
+  "cls": 0.0011,
+  "scrollW": 1280,
+  "scrollH": 1979,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "tentang.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [],
+  "tinyCount": 0,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [],
+  "title": "Tentang Olano",
+  "titleLen": 13,
+  "descLen": 125,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 20,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Mulai gratis",
+   "Konsultasi pajak",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 152,
+  "cls": 0.0008,
+  "scrollW": 360,
+  "scrollH": 2309,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "tentang.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [],
+  "tinyCount": 0,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [],
+  "title": "Tentang Olano",
+  "titleLen": 13,
+  "descLen": 125,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 20,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Mulai gratis",
+   "Konsultasi pajak",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 152,
+  "cls": 0.0008,
+  "scrollW": 390,
+  "scrollH": 2275,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "tentang.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   },
+   {
+    "t": "Pajak",
+    "w": 37,
+    "h": 22
+   },
+   {
+    "t": "Website",
+    "w": 55,
+    "h": 22
+   },
+   {
+    "t": "Analisa Delivery",
+    "w": 108,
+    "h": 22
+   },
+   {
+    "t": "AI Jaga Margin",
+    "w": 99,
+    "h": 22
+   },
+   {
+    "t": "Automation",
+    "w": 80,
+    "h": 22
+   },
+   {
+    "t": "Naik Kelas",
+    "w": 70,
+    "h": 22
+   },
+   {
+    "t": "PPh Final UMKM",
+    "w": 112,
+    "h": 22
+   },
+   {
+    "t": "HPP & Harga Jual",
+    "w": 119,
+    "h": 22
+   }
+  ],
+  "tinyCount": 17,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [],
+  "title": "Tentang Olano",
+  "titleLen": 13,
+  "descLen": 125,
+  "canonical": true,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1",
+  "lang": "id",
+  "noindex": false,
+  "fontAspekta": true,
+  "ctaCount": 24,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "Mulai gratis",
+   "Konsultasi pajak",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 159,
+  "cls": 0.0012,
+  "scrollW": 1280,
+  "scrollH": 1281,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "kebijakan-privasi.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [
+   {
+    "t": "privasi@olano.xyz",
+    "w": 124,
+    "h": 22
+   }
+  ],
+  "tinyCount": 1,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [],
+  "title": "Kebijakan Privasi | Olano",
+  "titleLen": 25,
+  "descLen": 0,
+  "canonical": false,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 19,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "privasi@olano.xyz",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 5,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 213,
+  "cls": 0.0002,
+  "scrollW": 360,
+  "scrollH": 2327,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "kebijakan-privasi.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [
+   {
+    "t": "privasi@olano.xyz",
+    "w": 124,
+    "h": 22
+   }
+  ],
+  "tinyCount": 1,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [],
+  "title": "Kebijakan Privasi | Olano",
+  "titleLen": 25,
+  "descLen": 0,
+  "canonical": false,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 19,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "privasi@olano.xyz",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 5,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 213,
+  "cls": 0.0002,
+  "scrollW": 390,
+  "scrollH": 2260,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "kebijakan-privasi.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "privasi@olano.xyz",
+    "w": 124,
+    "h": 22
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   },
+   {
+    "t": "Pajak",
+    "w": 37,
+    "h": 22
+   },
+   {
+    "t": "Website",
+    "w": 55,
+    "h": 22
+   },
+   {
+    "t": "Analisa Delivery",
+    "w": 108,
+    "h": 22
+   },
+   {
+    "t": "AI Jaga Margin",
+    "w": 99,
+    "h": 22
+   },
+   {
+    "t": "Automation",
+    "w": 80,
+    "h": 22
+   },
+   {
+    "t": "Naik Kelas",
+    "w": 70,
+    "h": 22
+   },
+   {
+    "t": "PPh Final UMKM",
+    "w": 112,
+    "h": 22
+   }
+  ],
+  "tinyCount": 18,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [],
+  "title": "Kebijakan Privasi | Olano",
+  "titleLen": 25,
+  "descLen": 0,
+  "canonical": false,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 23,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "privasi@olano.xyz",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 5,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [],
+  "bodyWords": 220,
+  "cls": 0.0008,
+  "scrollW": 1280,
+  "scrollH": 1496,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "syarat-ketentuan.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [],
+  "tinyCount": 0,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [],
+  "title": "Syarat & Ketentuan | Olano",
+  "titleLen": 26,
+  "descLen": 0,
+  "canonical": false,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 18,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp50rb"
+  ],
+  "bodyWords": 178,
+  "cls": 0.0002,
+  "scrollW": 360,
+  "scrollH": 2199,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "syarat-ketentuan.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [],
+  "tinyCount": 0,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [],
+  "title": "Syarat & Ketentuan | Olano",
+  "titleLen": 26,
+  "descLen": 0,
+  "canonical": false,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 18,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery",
+   "Tentang",
+   "Kebijakan Privasi",
+   "Syarat & Ketentuan"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp50rb"
+  ],
+  "bodyWords": 178,
+  "cls": 0.0002,
+  "scrollW": 390,
+  "scrollH": 2131,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "syarat-ketentuan.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 0,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 0,
+  "tinyTargets": [
+   {
+    "t": "Produk",
+    "w": 68,
+    "h": 37
+   },
+   {
+    "t": "Kalkulator",
+    "w": 91,
+    "h": 37
+   },
+   {
+    "t": "Harga",
+    "w": 42,
+    "h": 37
+   },
+   {
+    "t": "Kasir UMKM",
+    "w": 82,
+    "h": 22
+   },
+   {
+    "t": "Pajak",
+    "w": 37,
+    "h": 22
+   },
+   {
+    "t": "Website",
+    "w": 55,
+    "h": 22
+   },
+   {
+    "t": "Analisa Delivery",
+    "w": 108,
+    "h": 22
+   },
+   {
+    "t": "AI Jaga Margin",
+    "w": 99,
+    "h": 22
+   },
+   {
+    "t": "Automation",
+    "w": 80,
+    "h": 22
+   },
+   {
+    "t": "Naik Kelas",
+    "w": 70,
+    "h": 22
+   },
+   {
+    "t": "PPh Final UMKM",
+    "w": 112,
+    "h": 22
+   },
+   {
+    "t": "HPP & Harga Jual",
+    "w": 119,
+    "h": 22
+   }
+  ],
+  "tinyCount": 17,
+  "smallTextCount": 0,
+  "smallText": [],
+  "contrastFail": [],
+  "contrastOnImage": [],
+  "title": "Syarat & Ketentuan | Olano",
+  "titleLen": 26,
+  "descLen": 0,
+  "canonical": false,
+  "ogImage": true,
+  "viewport": "width=device-width, initial-scale=1",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 22,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "OOlano",
+   "Produk",
+   "Kalkulator",
+   "Harga",
+   "Masuk",
+   "Coba demo kasir",
+   "Kasir UMKM",
+   "Pajak",
+   "Website",
+   "Analisa Delivery",
+   "AI Jaga Margin",
+   "Automation",
+   "Naik Kelas",
+   "PPh Final UMKM",
+   "HPP & Harga Jual",
+   "Biaya QRIS",
+   "Margin Delivery"
+  ],
+  "pronKamu": 1,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp50rb"
+  ],
+  "bodyWords": 185,
+  "cls": 0.0008,
+  "scrollW": 1280,
+  "scrollH": 1390,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "templates/katalog.html",
+  "vw": 360,
+  "vh": 800,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 8,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 3,
+  "tinyTargets": [
+   {
+    "t": "Semua template",
+    "w": 92,
+    "h": 20
+   },
+   {
+    "t": "Bikin website toko dengan Ol",
+    "w": 201,
+    "h": 18
+   }
+  ],
+  "tinyCount": 2,
+  "smallTextCount": 8,
+  "smallText": [
+   {
+    "fs": 11,
+    "t": "Minuman"
+   },
+   {
+    "fs": 11,
+    "t": "Minuman"
+   },
+   {
+    "fs": 11,
+    "t": "Minuman"
+   },
+   {
+    "fs": 11,
+    "t": "Makanan"
+   },
+   {
+    "fs": 11,
+    "t": "Makanan"
+   },
+   {
+    "fs": 11,
+    "t": "Keripik"
+   },
+   {
+    "fs": 11,
+    "t": "Keripik"
+   },
+   {
+    "fs": 11,
+    "t": "Lainnya"
+   }
+  ],
+  "contrastFail": [],
+  "contrastOnImage": [],
+  "title": "Kopi Senja - Kopi & Keripik Lokal (Demo Template Katalog) | Olano",
+  "titleLen": 65,
+  "descLen": 151,
+  "canonical": false,
+  "ogImage": false,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 3,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "Semua template",
+   "Bikin website toko dengan Olano"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp22.000\nK",
+   "Rp18.000\n",
+   "Rp32.000\n",
+   "Rp15.000\nK",
+   "Rp8.000\nK",
+   "Rp6.000\n",
+   "Rp2.000\n"
+  ],
+  "bodyWords": 140,
+  "cls": 0.0003,
+  "scrollW": 360,
+  "scrollH": 2213,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "templates/katalog.html",
+  "vw": 390,
+  "vh": 844,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 8,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 3,
+  "tinyTargets": [
+   {
+    "t": "Semua template",
+    "w": 92,
+    "h": 20
+   },
+   {
+    "t": "Bikin website toko dengan Ol",
+    "w": 201,
+    "h": 18
+   }
+  ],
+  "tinyCount": 2,
+  "smallTextCount": 8,
+  "smallText": [
+   {
+    "fs": 11,
+    "t": "Minuman"
+   },
+   {
+    "fs": 11,
+    "t": "Minuman"
+   },
+   {
+    "fs": 11,
+    "t": "Minuman"
+   },
+   {
+    "fs": 11,
+    "t": "Makanan"
+   },
+   {
+    "fs": 11,
+    "t": "Makanan"
+   },
+   {
+    "fs": 11,
+    "t": "Keripik"
+   },
+   {
+    "fs": 11,
+    "t": "Keripik"
+   },
+   {
+    "fs": 11,
+    "t": "Lainnya"
+   }
+  ],
+  "contrastFail": [],
+  "contrastOnImage": [],
+  "title": "Kopi Senja - Kopi & Keripik Lokal (Demo Template Katalog) | Olano",
+  "titleLen": 65,
+  "descLen": 151,
+  "canonical": false,
+  "ogImage": false,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 3,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "Semua template",
+   "Bikin website toko dengan Olano"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp22.000\nK",
+   "Rp18.000\n",
+   "Rp32.000\n",
+   "Rp15.000\nK",
+   "Rp8.000\nK",
+   "Rp6.000\n",
+   "Rp2.000\n"
+  ],
+  "bodyWords": 140,
+  "cls": 0.0003,
+  "scrollW": 390,
+  "scrollH": 2228,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ },
+ {
+  "page": "templates/katalog.html",
+  "vw": 1280,
+  "vh": 900,
+  "h1Count": 1,
+  "headingJumps": [],
+  "imgTotal": 8,
+  "imgNoAlt": 0,
+  "imgNoDims": 0,
+  "imgLazyAboveFold": 7,
+  "tinyTargets": [
+   {
+    "t": "Semua template",
+    "w": 92,
+    "h": 20
+   },
+   {
+    "t": "Bikin website toko dengan Ol",
+    "w": 227,
+    "h": 22
+   }
+  ],
+  "tinyCount": 2,
+  "smallTextCount": 8,
+  "smallText": [
+   {
+    "fs": 11,
+    "t": "Minuman"
+   },
+   {
+    "fs": 11,
+    "t": "Minuman"
+   },
+   {
+    "fs": 11,
+    "t": "Minuman"
+   },
+   {
+    "fs": 11,
+    "t": "Makanan"
+   },
+   {
+    "fs": 11,
+    "t": "Makanan"
+   },
+   {
+    "fs": 11,
+    "t": "Keripik"
+   },
+   {
+    "fs": 11,
+    "t": "Keripik"
+   },
+   {
+    "fs": 11,
+    "t": "Lainnya"
+   }
+  ],
+  "contrastFail": [],
+  "contrastOnImage": [],
+  "title": "Kopi Senja - Kopi & Keripik Lokal (Demo Template Katalog) | Olano",
+  "titleLen": 65,
+  "descLen": 151,
+  "canonical": false,
+  "ogImage": false,
+  "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+  "lang": "id",
+  "noindex": true,
+  "fontAspekta": true,
+  "ctaCount": 3,
+  "ctaLabels": [
+   "Langsung ke isi",
+   "Semua template",
+   "Bikin website toko dengan Olano"
+  ],
+  "pronKamu": 0,
+  "pronAnda": 0,
+  "waLinks": 0,
+  "telLinks": 0,
+  "priceFormats": [
+   "Rp22.000\nK",
+   "Rp18.000\n",
+   "Rp32.000\n",
+   "Rp15.000\nK",
+   "Rp8.000\nK",
+   "Rp6.000\n",
+   "Rp2.000\n"
+  ],
+  "bodyWords": 140,
+  "cls": 0.0002,
+  "scrollW": 1280,
+  "scrollH": 1686,
+  "hscroll": false,
+  "jsErrors": [],
+  "failedReqs": [],
+  "ok": true
+ }
+]

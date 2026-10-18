@@ -20,6 +20,8 @@
 <link rel="manifest" href="manifest.json">
 <link rel="preload" href="assets/fonts/Aspekta-450.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/Aspekta-650.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/css/main.css" as="style">
+<style>/* [launch] critical: ukuran ikon sebelum main.css tiba (cegah SVG 300x150 -> CLS) */svg.ic{width:20px;height:20px;flex:none}svg.ic.sm{width:15px;height:15px}.feat-ic svg.ic{width:22px;height:22px}</style>
 <link rel="stylesheet" href="assets/css/main.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -127,7 +129,7 @@
         </picture>
         <figcaption>Data contoh: tampilan aplikasi Olano</figcaption>
       </figure>
-      <a class="hero-demo-link" href="kasir.html#demo">Buka demo kasir <svg class="ic sm" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a>
+      <a class="hero-demo-link" href="kasir.html#demo">Coba demo kasir <svg class="ic sm" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a>
     </div>
   </div>
   <div class="hero-cue" aria-hidden="true"></div>

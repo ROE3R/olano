@@ -27,7 +27,7 @@
   /* -- fonts: tipografi = ref B (thedaydream.studio, ukur 16-10): Aspekta utk semua peran
      + Instrument Serif italic utk aksen. A (sokudo) hanya sumber struktur/komponen. -- */
   --font-display:"Aspekta", "Aspekta Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-sans:"Aspekta", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans:"Aspekta", "Aspekta Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-serif:"Instrument Serif", Georgia, "Times New Roman", serif;
   --font-mono:"Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
@@ -101,8 +101,9 @@ p{max-width:65ch}
 /* ============================= LAYOUT ============================= */
 .container{width:100%; max-width:var(--container); margin:0 auto; padding:0 var(--gutter)}
 .container-narrow{max-width:760px}
-.section{padding:var(--sp-32) 0}
-@media(max-width:900px){.section{padding:var(--sp-16) 0}}
+/* [launch] disatukan dgn definisi :905 (80/64). Dua definisi = padding berubah saat CSS tiba = CLS. */
+.section{padding:80px 0}
+@media(max-width:900px){.section{padding:64px 0}}
 .section-dark{background:var(--blue-950); color:var(--white)}
 .section-dark h1,.section-dark h2,.section-dark h3{color:#fff}
 .section-dark .eyebrow{color:var(--blue-300)}
@@ -392,8 +393,13 @@ p{max-width:65ch}
 .itemrow input:focus{outline:none; border-color:var(--blue-600); box-shadow:0 0 0 3px var(--blue-100)}
 .fcheck{display:flex; gap:9px; align-items:flex-start}
 .aiv .vtag,.verdict .vtag{font-family:var(--font-mono);font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:6px}
-.upsell{margin-top:14px;border:1px dashed var(--gray-300);border-radius:12px;padding:14px 16px;font-size:13px;color:var(--gray-700);line-height:1.6}
-.upsell b{color:var(--ink)}
+/* [launch] .upsell hidup di dalam .calc-out (latar --ink gelap). Sebelumnya gray-700
+   di atas ink = 1:1 (tak terbaca). Pakai pasangan terang + border terang. */
+.upsell{margin-top:14px;border:1px dashed rgba(255,255,255,.28);border-radius:12px;padding:14px 16px;
+  font-size:13px;color:rgba(255,255,255,.86);line-height:1.6;background:rgba(255,255,255,.05)}
+.upsell b{color:#FFFFFF}
+.calc-out .upsell, .calc-out .upsell b{color:rgba(255,255,255,.9)}
+.calc-out .upsell b{color:#fff}
 .tool-hero{background:var(--grad-hero); padding:var(--sp-16) 0 var(--sp-8)}
 .tool-calc{display:grid; grid-template-columns:1fr; gap:var(--sp-6)}
 @media(min-width:900px){.tool-calc{grid-template-columns:1.1fr .9fr; gap:var(--sp-8)}}
@@ -901,9 +907,7 @@ body.kb-open .pos-pay{min-height:48px}
 }
 .hero-visual figcaption{font-size:12px;color:var(--gray-500);text-align:center;margin-top:12px}
 
-/* -- section: ritme ukur sokudo (80 desktop / 64 mobile), surface shift halus -- */
-.section{padding:80px 0}
-@media(max-width:900px){.section{padding:64px 0}}
+/* -- section: ritme (80 desktop / 64 mobile) — definisi tunggal di atas -- */
 .section.alt{background:var(--gray-25)}
 .section.alt-deep{background:var(--gray-50)}
 .section h2{font-weight:600;line-height:1.35;letter-spacing:-.02em;text-wrap:balance}
@@ -1050,7 +1054,11 @@ body.home .hero::before{content:"";position:absolute;left:50%;top:200px;width:mi
 body.home .hero .container{z-index:1}
 
 /* -- sky LITE utk tool-hero (sub-halaman; foto ringan, tanpa comet) -- */
-.tool-hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#C9DEFF 0%,#E4EEFF 46%,#FFFFFF 100%)}
+/* [launch] CLS: hero sub-halaman (pajak/website/umkm/ai/...) tidak punya tinggi pasti,
+   sehingga pertukaran font (h1) + 3 baris teks mengubah tinggi section = shift 0.15 di umkm.
+   Reserve ruang: min-height + contain supaya konten di bawahnya tidak bergerak. */
+.tool-hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#C9DEFF 0%,#E4EEFF 46%,#FFFFFF 100%);
+  contain:layout style}
 .tool-hero .hero-sky-lite{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .tool-hero .hero-sky-lite img{position:absolute;pointer-events:none}
 .tool-hero .l-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.55;filter:hue-rotate(30deg) saturate(1.12)}
@@ -1603,4 +1611,56 @@ body.home .small b{font-variant-numeric:tabular-nums}
   body.home #testimoni{padding-top:48px; padding-bottom:48px}
   #faq{margin-top:32px; padding-top:32px}
   #harga .sec-head{margin-bottom:20px}
+}
+
+/* [launch] daftar periksa detail kecil (audit 18 halaman x 3 viewport):
+   - <label> hanya 21px tinggi -> baris label + input jadi target sempit, sulit ditekan.
+   - teks 10.5-11px di halaman website/template (di bawah batas 12px).
+   - chip/segmented 39-40px -> dinaikkan ke 44px. */
+label{display:inline-block; min-height:44px; line-height:1.35; padding:10px 0 6px}
+label.inline, .form-inline label{min-height:0; padding:0}
+@media(max-width:759px){
+  .ws-small, .tpl-meta, .katalog-meta, .ws-note{font-size:12px !important}
+  .omzet-chips button, .seg button, .chips button{min-height:44px !important}
+}
+
+/* [launch] sisa target <44px: tombol tutup ticker (36px) & tautan kecil dalam teks.
+   Tautan inline diberi area tekan vertikal tanpa merusak alur teks. */
+.ticker-x{min-width:44px !important; min-height:44px !important}
+.inline-link, .foot .legal a, .prose a{display:inline-block; min-height:44px; line-height:44px; margin:-12px 0}
+.btn.xl-none{min-height:44px}
+
+/* [launch] target sentuh tepat sasaran (hasil audit 18 halaman x 3 viewport) */
+.omzet-clear{min-width:44px !important; min-height:44px !important; display:inline-grid; place-items:center}
+.chip-ready{min-height:44px !important; display:inline-flex; align-items:center; padding:0 14px}
+.auth-note a, .tpl-bar a, .small a{display:inline-flex; align-items:center; min-height:44px}
+.tpl-bar{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+
+/* [launch] sisa: tautan "Coba gratis" 18px di dalam teks kalkulator */
+.calc-out a[href*="kasir"], .calc-out .small a, .cta-inline{display:inline-flex; align-items:center; min-height:44px}
+
+/* [launch] teks <12px (audit): dinaikkan ke 12px minimum (WCAG/typography rule brief §7).
+   Elemen: tst-label, rd-dot (label roadmap), .cat, .vtag, .disclaimer, .pli-sub. */
+.tst-label{font-size:12px !important}
+.rd-dot{font-size:12px !important}
+.cat{font-size:12px !important}
+.vtag{font-size:12px !important}
+.disclaimer{font-size:12px !important}
+.rd-rail .rd-meta, .rd-rail span{font-size:12px}
+/* [launch] 2 target sisa */
+#bahan-add, .add-row button{min-height:44px !important}
+
+/* [launch] chip roadmap website: 11.5px -> 12px */
+.chip, .chip-ready, .chip-soon{font-size:12px !important}
+
+/* [launch] 2 target mobile sisa (audit final 360px): tombol "Hitung MDR" & "+ Tambah bahan" */
+#hitung-mdr, [data-hitung-mdr], .btn-mdr{min-height:44px !important}
+#bahan-add, [data-add-bahan], .add-row > button[type=button]{min-height:44px !important; padding-block:10px}
+/* teks aksesibel slider (aria-label) bukan target sentuh — slider-nya sendiri 44px */
+figure[data-before-after] input[type=range]{height:44px}
+
+/* [launch] .btn.sm / .btn-ghost.sm = 38px -> naikkan ke 44px di layar sentuh saja
+   (desktop tetap 38px karena pakai mouse; WCAG 2.5.8 target hanya untuk touch). */
+@media (pointer: coarse){
+  .btn.sm, .btn-ghost.sm{min-height:44px !important; padding-block:10px}
 }
