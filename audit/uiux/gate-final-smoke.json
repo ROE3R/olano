@@ -1,0 +1,79 @@
+{
+ "checks": {
+  "C3_fold": {
+   "rect": {
+    "top": 370,
+    "bottom": 414
+   },
+   "pass": true
+  },
+  "L35_scrollHeight": {
+   "px": 6963,
+   "layar": 8.7,
+   "pass": true
+  },
+  "prefetch_links": {
+   "hrefs": [
+    "/app/kasir.html",
+    "/assets/js/config.js"
+   ],
+   "pass": true
+  },
+  "skeleton_render": {
+   "aria_busy_cleared": true,
+   "pos_items": 8,
+   "skel_cards_static": 0,
+   "pass": true
+  },
+  "swipe_delete": {
+   "before": 2,
+   "after": 1,
+   "swipe": {
+    "ok": true,
+    "w": 312,
+    "dx": -280
+   },
+   "undo_visible": true,
+   "toast_msg": "1 produk dihapus",
+   "pass": true
+  },
+  "swipe_undo": {
+   "rows": 2,
+   "total": "Rp40.000",
+   "pass": true
+  },
+  "import_backup": {
+   "dispatched": true,
+   "msg": {
+    "text": "Berhasil: 1 transaksi dipulihkan ke perangkat ini.",
+    "shown": true,
+    "color": "var(--success)"
+   },
+   "pass": true
+  },
+  "rekap_render": {
+   "state": {
+    "open": true,
+    "rk": 3,
+    "rows": 1
+   },
+   "pass": true
+  },
+  "qris_dynamic": {
+   "qrcode_loaded": true,
+   "payload_len": 136,
+   "payload_head": "0002010102121213ID.C",
+   "crc_valid": true,
+   "amt_tlv51": 40000,
+   "box_children": 2,
+   "full_children": 2,
+   "sheet_open": true,
+   "pass": true
+  }
+ },
+ "errors": {
+  "index": [],
+  "kasir": []
+ },
+ "all_pass": true
+}

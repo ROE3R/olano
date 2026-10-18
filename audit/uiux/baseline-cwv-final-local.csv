@@ -1,0 +1,5 @@
+tag,base,page,perf,a11y,bp,seo,lcp_ms,lcp_disp,cls,cls_disp,ttfba_ms,fcp_ms,si_ms,tbt_ms,tti_ms,tti_disp,inp_ms,inp_id,inp_disp
+final-local,http://localhost:8923,index.html,94,100,96,100,2855.0,2.9 s,0,0,0,2105.0,2105.0,0,2855.0,2.9 s,,n/a,n/a
+final-local,http://localhost:8923,app/kasir.html,92,100,100,63,2855.4,2.9 s,0.0003,0,3,2480.4,2480.4,0,2855.4,2.9 s,,n/a,n/a
+final-local,http://localhost:8923,index.html,94,100,100,100,2854.5,2.9 s,0,0,1,2104.5,2104.5,0,2854.5,2.9 s,,n/a,n/a
+final-local,http://localhost:8923,app/kasir.html,91,100,100,63,2850.5,2.9 s,0.0002,0,0,2850.5,2850.5,0,2850.5,2.9 s,,n/a,n/a
