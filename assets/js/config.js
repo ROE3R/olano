@@ -2,7 +2,7 @@
    Ubah angka di sini, bukan di HTML. Naikkan `version` tiap ubah. */
 (function (w) {
   const OLANO_CONFIG = {
-    version: "2.1.0",
+    version: "2.2.0",
     brand: { name: "Olano", domain: "olano.xyz" },
 
     /* --- paket & harga (F6/§6) --- */
@@ -84,12 +84,11 @@
       { min: 0,  label: "Kritis" },
     ],
 
-    /* --- WhatsApp layanan (F11): env di production; placeholder di demo --- */
+    /* --- WhatsApp layanan (F11): nomor live — satu nomor utk semua layanan --- */
     wa: {
-      // K1: no real WhatsApp number yet -> empty, not a clickable placeholder.
-      // Builder JS guards on truthiness, so nothing becomes a live link.
-      pajak: "",  // TODO: set NEXT_PUBLIC_WA_PAJAK in production
-      website: "",// TODO: set NEXT_PUBLIC_WA_WEBSITE in production
+      // K1: nomor 6285111044407 (dikonfirmasi owner 18 Okt 2026).
+      pajak: "6285111044407",   // nomor 6285111044407 (dikonfirmasi owner 18 Okt 2026)
+      website: "6285111044407", // nomor 6285111044407 (dikonfirmasi owner 18 Okt 2026)
       services: ["pajak_rekap", "website_custom"],
     },
 
