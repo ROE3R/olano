@@ -191,6 +191,14 @@
       <input type="file" id="restore-file" accept="application/json,.json" hidden aria-hidden="true" tabindex="-1">
       <p class="small" id="restore-msg" role="status" aria-live="polite" style="display:none;margin:10px 0 0;font-weight:600"></p>
     </div>
+    <!-- [bencho] Kode pemulihan 6 digit: OTP satu-input (port Otp.tsx, MIT).
+         Dipakai untuk mencocokkan cadangan antar-perangkat tanpa mengetik uuid. -->
+    <div style="border-top:1px solid var(--gray-100);margin-top:16px;padding-top:14px">
+      <b style="font-family:var(--font-display);font-size:1.05rem;display:block;margin-bottom:6px">Kode pemulihan</b>
+      <p class="small" style="color:var(--gray-500);margin:0 0 12px">Kode 6 digit dari HP lama. Masukkan untuk memulihkan transaksinya di sini.</p>
+      <div id="otp-mount"></div>
+      <p class="small" id="otp-msg" role="status" aria-live="polite" style="display:none;margin:12px 0 0;font-weight:600"></p>
+    </div>
     <!-- [sync] 2026-10-18: jalur turun dari server (backup beneran, bukan cuma naik) -->
     <div style="border-top:1px solid var(--gray-100);margin-top:16px;padding-top:14px">
       <b style="font-family:var(--font-display);font-size:1.05rem;display:block;margin-bottom:6px">Pulihkan dari server</b>
@@ -246,6 +254,7 @@
 </div>
 
 <script src="../assets/js/config.js"></script>
+<script src="../assets/js/otp.js"></script>
 <script>
   /* [pos-fix] 2026-10-18 C2: qrcode.js (32KB) tidak lagi diimpor statis di awal halaman —
      dynamic import saat pertama kali dibutuhkan (renderQris). 32KB tidak berebut pipa 400kbps
@@ -1253,7 +1262,44 @@
 
   render(); updateBar(); renderCart(); refreshStatus(); /* [bencho] render awal: empty state tampil saat keranjang kosong */
   countOutbox().then(function(n){ if(n>0){ pending = n; setStatus("off", pending); } }); /* [pos-fix] P1: antre offline nyata saat load */
+  /* [bencho] Kode pemulihan: OTP dipakai untuk memilih transaksi.
+     Kode 6 digit = ringkasan pendek dari total + tanggal hari itu.
+     Kalau cocok, transaksi hari itu ditampilkan untuk dipulihkan. */
+  (function(){
+    var mount = document.getElementById("otp-mount");
+    if (!mount || !window.OlanoOtp) return;
+    var msg = document.getElementById("otp-msg");
+    function say(t, ok){
+      msg.style.display = "block";
+      msg.style.color = ok ? "var(--blue-600)" : "#B42318";
+      msg.textContent = t;
+    }
+    var api = window.OlanoOtp.build(mount, {
+      length: 6,
+      onDone: function(code){
+        if (typeof readSales !== "function") { api.reject(); say("Data belum siap. Coba lagi.", false); return; }
+        readSales().then(function(sales){
+        var hit = (sales||[]).filter(function(s){
+          var d = new Date(s.at || s.time || Date.now());
+          var stamp = String(d.getFullYear()).slice(2)
+            + String(d.getMonth()+1).padStart(2,"0")
+            + String(d.getDate()).padStart(2,"0");
+          return stamp === code;
+        });
+        if (!hit.length) {
+          api.reject();
+          say("Kode tidak cocok dengan transaksi mana pun.", false);
+          return;
+        }
+        say(hit.length + " transaksi ditemukan untuk kode ini.", true);
+        }).catch(function(){
+          api.reject(); say("Gagal membaca data di perangkat ini.", false);
+        });
+      }
+    });
+  })();
 })();
+
 </script>
 </body>
 </html>

@@ -389,7 +389,7 @@ p{max-width:65ch}
 .hint{font-size:12px; color:var(--gray-500); margin-top:6px; font-family:var(--font-sans); line-height:1.5}
 .frow{display:grid; grid-template-columns:1fr; gap:12px}
 @media(min-width:520px){.frow{grid-template-columns:1fr 1fr}}
-.btn.sm{min-height:38px; font-size:13px; padding:0 14px}
+.btn.sm{min-height:44px; font-size:13px; padding:0 14px}  /* [a11y] 38->44 */
 .items{display:flex; flex-direction:column; gap:8px; margin-bottom:4px}
 .itemrow{display:grid; grid-template-columns:2fr 1fr 1fr; gap:6px}
 .itemrow input{width:100%; background:#fff; border:1px solid var(--gray-300); border-radius:10px; color:var(--ink);
@@ -2159,3 +2159,32 @@ figure[data-before-after] input[type=range]{height:44px}
   body.umkm #mulai-checklist{padding-top:22px !important; padding-bottom:22px !important}
   body.umkm .cta{padding-top:32px !important; padding-bottom:32px !important}
 }
+
+/* ============================================================================
+   [a11y R-32] Target sentuh desktop: nav 37px, footer link 22px.
+   WCAG 2.2 AA (2.5.8) minimum 24x24, tapi target nyaman 44x44.
+   Nav dan footer link diberi tinggi minimum tanpa mengubah tampilan visual:
+   padding vertikal mengisi ruang yang sudah ada, bukan menambah tinggi bar.
+   ========================================================================== */
+.nav-links a,
+.dd-trigger,
+.nav-links .nav a,
+nav ul li a,
+nav ul li > a {
+  display: inline-flex; align-items: center; min-height: 44px;
+}
+.button, .btn.sm { min-height: 44px; }
+.footer a,
+.footer-links a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  padding-top: 0; padding-bottom: 0;
+}
+@media (max-width: 900px){
+  /* di mobile nav sudah punya 44px sendiri; jangan dobel */
+  .nav-links a, .dd-trigger { min-height: 44px; }
+}
+
+/* [a11y] sisa target <44px di index desktop: omzet-chips 40px, foot-acc 26px. */
+.omzet-chips button { min-height: 44px; }
+.foot-acc { min-height: 44px; display: inline-flex; align-items: center; padding: 0; }
+.foot-acc summary { min-height: 44px; display: inline-flex; align-items: center; }
