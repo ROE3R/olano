@@ -1094,10 +1094,10 @@ body.home .hero .container{z-index:1}
    Baris 01 = flagship; baris "soon" dim tapi tetap link valid (R-24/R-38).
    Motif sama dengan .nrow/.nlist (list fitur) -> satu sistem editorial di satu situs. */
 .modlist{border-top:1px solid var(--gray-100)}
-.modrow{display:grid;grid-template-columns:56px 1fr 132px;gap:16px;align-items:start;
+.modrow{display:grid;grid-template-columns:56px 1fr 180px;gap:16px;align-items:start;
   padding:24px 10px;margin:0 -10px;border-bottom:1px solid var(--gray-100);
   text-decoration:none;color:inherit;transition:background var(--dur-base)}
-@media(min-width:760px) and (max-width:999px){.modrow{grid-template-columns:48px 1fr 116px}}
+@media(min-width:760px) and (max-width:999px){.modrow{grid-template-columns:48px 1fr 150px}}
 @media(max-width:759px){.modrow{grid-template-columns:40px 1fr;padding:20px 10px}
   .modrow .mmeta{grid-column:2;flex-direction:row;align-items:center;margin-top:6px}}
 .modrow .no{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--gray-500);
@@ -1106,10 +1106,12 @@ body.home .hero .container{z-index:1}
 .mcont b{font-family:var(--font-display);font-size:1.3125rem;font-weight:700;letter-spacing:-.02em;
   color:var(--ink);transition:color var(--dur-base)}
 .mdesc{font-size:.9375rem;line-height:1.5;color:var(--gray-500);max-width:62ch}
+/* [v2] Chip = teks mono polos TANPA box (bg/border/radius dihilangkan) — rumus
+   "contoh · …" jadi detail tenang, bukan kotak yang wrap 3-4 baris. Clamp 2 baris
+   biar ritme tinggi baris seragam. Aksen flagship tetap di mnum + nomor + judul. */
 .mchip{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:0;color:var(--blue-700);
-  background:var(--blue-50);border:1px solid var(--blue-100);border-radius:8px;padding:4px 10px;
-  align-self:flex-start;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-@media(max-width:559px){.mchip{white-space:normal}}
+  align-self:flex-start;max-width:100%;line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .mmeta{display:flex;flex-direction:column;align-items:flex-end;gap:8px;padding-top:2px}
 .mst{font-size:12px;font-weight:500;color:var(--gray-500)}
 .modrow .arr{width:18px;height:18px;color:var(--gray-300);
@@ -1119,13 +1121,13 @@ body.home .hero .container{z-index:1}
 .modrow:hover b{color:var(--blue-700)}
 .modrow:hover .arr{transform:translateX(4px);color:var(--blue-600)}
 .modrow:focus-visible{outline:2px solid var(--blue-600);outline-offset:-2px}
-/* 01 = flagship: nomor aksen + judul lebih besar + chip hasil terisi (satu momen aksen) */
+/* 01 = flagship: aksen di nomor + judul besar + mnum; chip tetap teks polos (tanpa box) */
 .modrow.fg .no{color:var(--blue-600)}
 .modrow.fg b{font-size:1.5rem}
-.modrow.fg .mchip{background:var(--blue-600);border-color:var(--blue-600);color:#fff}
+.modrow.fg .mchip{font-weight:600}
 /* "segera hadir": dim tapi link-nya tetap jalan (halamannya memang ada) */
 .modrow.soon .mcont b,.modrow.soon .mdesc{opacity:.62}
-.modrow.soon .mchip{background:var(--gray-50);border-color:var(--gray-100);color:var(--gray-500)}
+.modrow.soon .mchip{color:var(--gray-500)}
 /* stagger reveal (pola [data-reveal].stagger yang sudah ada di main.css) */
 .modlist.stagger>*{opacity:0;transform:translateY(14px);transition:opacity var(--dur-slow) var(--ease-standard),transform var(--dur-slow) var(--ease-standard)}
 .modlist.stagger.in>*{opacity:1;transform:none}
@@ -1142,26 +1144,39 @@ body.home .hero .container{z-index:1}
 @media(min-width:760px) and (max-width:999px){
   .modrow .mchip{grid-column:2}
   .modrow .mmeta{grid-column:3;grid-row:1}}
-/* P3: 4 kolom di >=1000px — kolom 3 = chip/angka, kolom 4 = status */
+/* P3: 4 kolom mulai >=1200px (kolom 3 = data, kolom 4 = status).
+   [v2] 1000-1199 tetap 3 kolom: di 1024 kolom 300px memeras kolom konten jadi
+   44px (desc nge-wrap 7 baris = baris tinggi beda-beda; root cause "berantakan"
+   di lebar ~1100px). Chip pindah di bawah desc, status/panah di kolom kanan. */
 @media(min-width:1000px){
   .pick-grid{grid-template-columns:340px 1fr;gap:56px;align-items:start}
   .pick-rail{position:sticky;top:96px} /* P1 */
-  .modrow{grid-template-columns:56px minmax(0,1fr) minmax(240px,300px) 132px;align-items:center}
   .modrow .mcont{max-width:52ch}
-  .mchip{white-space:normal;text-overflow:clip;align-self:center;max-width:100%}}
+  .modrow{align-items:center}
+  .modrow .mchip{grid-column:2;grid-row:2;justify-self:start;align-self:start;margin-top:2px}
+  .modrow .mmeta{grid-column:3;grid-row:1}}
+@media(min-width:1200px){
+  .modrow{grid-template-columns:56px minmax(0,1fr) minmax(240px,300px) 132px}
+  .modrow .mchip{grid-column:3;grid-row:1}
+  .modrow .mmeta{grid-column:4;grid-row:1}
+  .modrow .no{grid-column:1}
+  .modrow .mcont{grid-column:2}}
 /* P2: flagship expand — angka besar di kolom data, chip kecil di bawah desc */
 .modrow.fg b{font-size:clamp(1.5rem,2vw,1.625rem)}
 .modrow.fg .mdesc{max-width:48ch}
 .mnum{display:none;font-family:var(--font-mono);font-weight:600;font-size:clamp(1.4rem,2vw,1.75rem);
   color:var(--blue-600);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-@media(min-width:1000px){
+/* [v2] flagship 4 kolom hanya di >=1200px (zona 4 kolom); 1000-1199 mnum
+   tetap hidden, info flagship ditanggung chip di bawah desc. mcont BARIS 1
+   doang (bukan span 2) supaya chip di baris 2 tidak overlap dengan desc. */
+@media(min-width:1200px){
   .modrow.fg .mnum{display:block;grid-column:3;grid-row:1;align-self:center}
   .modrow.fg .mmeta{grid-column:4;grid-row:1;align-self:center}
   .modrow.fg .no{grid-column:1;grid-row:1}
-  .modrow.fg .mcont{grid-column:2;grid-row:1 / span 2}
-  .modrow.fg .mchip{grid-column:2;grid-row:2;justify-self:start;align-self:start;margin-top:2px}}
-/* mobile: chip tanpa ellipsis (angka contoh harus terbaca utuh) */
-@media(max-width:559px){.mchip{white-space:normal;text-overflow:clip}}
+  .modrow.fg .mcont{grid-column:2;grid-row:1}
+  .modrow.fg .mchip{grid-column:2;grid-row:2;justify-self:start;align-self:start;margin-top:4px}}
+/* [v2] aturan mati dihapus: chip display:none di <=759px (rumus utuh hidup di
+   desktop/tablet & halaman tujuan) */
 /* P4: row slide — reuse handler magnetic di a.modrow (transform saja, tanpa CLS) */
 @media(hover:hover) and (pointer:fine){
   .modrow .mcont{transform:translateX(var(--slide,0));transition:transform var(--dur-base) var(--ease-emphasized)}}
@@ -1657,12 +1672,12 @@ figure[data-before-after] input[type=range]{height:44px}
 .fnote-d[open] > summary::after{content:"–"}
 .fnote-d .fnote{margin:4px 0 0;font-size:12px;line-height:1.55;color:var(--gray-500);max-width:60ch}
 
-/* [launch] kartu layanan jasa (bukan software): beda visual dari modul produk,
-   supaya orang paham "ini jasa yang dikerjakan orang", bukan fitur aplikasi. */
-.modrow.svc{background:linear-gradient(180deg,var(--blue-25,#F7FAFF),#fff);
-  border-inline-start:3px solid var(--blue-600)}
+/* [v2] Baris jasa DE-BOX: tidak ada gradient / strip-kiri / box chip.
+   Ledger satu sistem editorial; bedanya jasa vs aplikasi cukup lewat
+   header grup (grp-head "Jasa - dikerjakan tim Olano"). Nomor jasa
+   tetap aksen biru (label, bukan box). */
 .modrow.svc .no{color:var(--blue-600)}
-.modrow.svc .mchip{background:var(--blue-50);color:var(--blue-700);border-color:var(--blue-100)}
+.modrow.svc .mchip{color:var(--blue-700);font-weight:500}
 
 /* [L35] Testimoni: mobile tampil 3 (paling relevan), sisanya desktop.
    Alasan: 6 kartu menambah 673px -> total 9,47 layar (target <=9). 3 kartu = angka
