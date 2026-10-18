@@ -141,7 +141,11 @@
     <div id="ok-kembali" hidden><span class="ok-k-label">Kembalian</span><b id="ok-kembali-v" class="mono">Rp0</b></div>
     <div class="receipt text-left mt-4" id="receipt"></div>
     <div class="row center mt-4 wrap" style="justify-content:center">
-      <button class="btn btn-secondary" id="print">Cetak / Bagikan struk</button>
+      <button class="btn btn-primary" id="wa-struk">
+        <svg class="ic sm" aria-hidden="true"><use href="../assets/icons.svg#i-chat"/></svg>
+        Kirim struk ke WhatsApp
+      </button>
+      <button class="btn btn-secondary" id="print">Cetak struk</button>
       <button class="btn btn-primary btn-block" data-close>Selesai</button>
     </div>
   </div>
@@ -161,6 +165,10 @@
     </div>
     <div class="rekap-stats" id="rekap-stats"></div>
     <div id="rekap-list"></div>
+    <button type="button" class="btn btn-primary btn-block" id="rekap-wa" style="margin-top:14px">
+      <svg class="ic sm" aria-hidden="true"><use href="../assets/icons.svg#i-chat"/></svg>
+      Kirim rekap ke WhatsApp
+    </button>
   </div>
 </div>
 
@@ -1139,12 +1147,30 @@
       + '<div class="r-line r-total"><span>Metode: '+s.method+'</span><span>'+R.rp(s.total)+'</span></div>'
       + '<div class="small mt-4">uuid '+s.uuid+'</div>';
   }
+  /* [launch] Kebiasaan pasar: ~90% pedagang Indonesia jualan lewat WhatsApp.
+     Struk dikirim ke WA (pilih kontak sendiri), cetak tetap tersedia sebagai jalur kedua. */
+  /* [launch] rekap harian -> WA: kebiasaan tutup buku pedagang Indonesia lewat WA. */
+  (function(){
+    var btn = document.getElementById("rekap-wa");
+    if(!btn) return;
+    btn.addEventListener("click", function(){
+      var stats = document.getElementById("rekap-stats");
+      var list = document.getElementById("rekap-list");
+      var txt = "Rekap Olano\n" + (stats ? stats.innerText : "") + "\n" + (list ? list.innerText : "");
+      var url = "https://wa.me/?text=" + encodeURIComponent(txt.slice(0, 1800));
+      var win = window.open(url, "_blank", "noopener");
+      if(!win) toast("Popup diblokir — izinkan popup untuk kirim ke WhatsApp");
+    });
+  })();
+
+  document.getElementById("wa-struk").addEventListener("click", function(){
+    var txt = document.getElementById("receipt").innerText || "";
+    var url = "https://wa.me/?text=" + encodeURIComponent(txt.slice(0, 1800));
+    var win = window.open(url, "_blank", "noopener");
+    if(!win) toast("Popup diblokir — izinkan popup untuk kirim ke WhatsApp");
+  });
   document.getElementById("print").addEventListener("click", function(){
-    if(navigator.share){
-      navigator.share({title:"Struk Olano", text:document.getElementById("receipt").innerText})
-        .catch(function(){ toast("Gagal membagikan struk — coba lagi"); }); /* [pos-fix] P1: gagal share tidak diam-diam */
-    }
-    else window.print();
+    window.print();
   });
   function animateCheck(){
     var p = document.getElementById("check-path"); if(!p) return;
