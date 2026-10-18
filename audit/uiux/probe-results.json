@@ -1,0 +1,2182 @@
+{
+ "360": {
+  "viewport": {
+   "w": 500,
+   "h": 657,
+   "dpr": 1
+  },
+  "scrollHeight": 6586,
+  "hOverflow": {
+   "scrollW": 500,
+   "innerW": 500,
+   "overflow": false
+  },
+  "ticker": {
+   "hidden": false,
+   "role": "note",
+   "ariaLabel": "Pengumuman",
+   "text": "Kasir tetap jalan saat internet mati · QRIS dengan nominal terisi otomatis · PPh final 0,5% (PP 20/2026)",
+   "facts": 3,
+   "box": {
+    "top": 0,
+    "left": 0,
+    "w": 500,
+    "h": 47.5
+   },
+   "textLines": 2,
+   "textFontSize": "11.5px",
+   "textWhite": "normal",
+   "closeBtn": {
+    "top": 9.3,
+    "left": 448,
+    "w": 28,
+    "h": 28,
+    "ariaLabel": "Tutup pengumuman"
+   }
+  },
+  "tickerClose": {
+   "before": {
+    "mainTop": 112.5,
+    "scrollH": 6586
+   },
+   "after": {
+    "mainTop": 65,
+    "scrollH": 6539
+   },
+   "shiftPx": 47.5,
+   "hiddenAfter": true,
+   "transition": "0s"
+  },
+  "headerButtons": [
+   {
+    "text": "Masuk",
+    "href": "app/login.html",
+    "visible": false
+   },
+   {
+    "text": "Coba demo kasir",
+    "href": "app/kasir.html#demo",
+    "visible": false
+   }
+  ],
+  "burgerVisible": true,
+  "desktopNav": {
+   "produk": [
+    "Kasir UMKM -&gt; umkm.html",
+    "Pajak -&gt; pajak.html",
+    "Website -&gt; website.html",
+    "Analisa Delivery -&gt; analisa-delivery.html",
+    "AI Jaga Margin -&gt; ai.html",
+    "AutomationSegera hadir -&gt; automation.html",
+    "Naik Kelas -&gt; naik-kelas.html"
+   ],
+   "kalkulator": [
+    "PPh Final UMKM -&gt; alat/kalkulator-pph-final-umkm.html",
+    "HPP &amp; Harga Jual -&gt; alat/kalkulator-hpp-harga-jual.html",
+    "Biaya QRIS -&gt; alat/kalkulator-biaya-qris.html",
+    "Margin Delivery -&gt; alat/kalkulator-margin-delivery.html"
+   ],
+   "plain": [
+    "Harga -&gt; #harga"
+   ]
+  },
+  "mobileNav": [
+   "Kasir UMKM -&gt; umkm.html",
+   "Pajak -&gt; pajak.html",
+   "Website -&gt; website.html",
+   "Analisa Delivery -&gt; analisa-delivery.html",
+   "AI Jaga Margin -&gt; ai.html",
+   "Automation Segera hadir -&gt; automation.html",
+   "Naik Kelas -&gt; naik-kelas.html",
+   "PPh Final UMKM -&gt; alat/kalkulator-pph-final-umkm.html",
+   "HPP &amp; Harga Jual -&gt; alat/kalkulator-hpp-harga-jual.html",
+   "Biaya QRIS -&gt; alat/kalkulator-biaya-qris.html",
+   "Margin Delivery -&gt; alat/kalkulator-margin-delivery.html",
+   "Harga -&gt; #harga",
+   "Masuk -&gt; app/login.html",
+   "Coba demo kasir -&gt; app/kasir.html#demo"
+  ],
+  "mobileLinkHeights": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "h1": {
+   "text": "Sistem jualan untuk UMKM yang tetap jalan saat internet mati.",
+   "words": 10,
+   "fontSize": "35px",
+   "lineHeight": "37.8px",
+   "box": {
+    "top": 131,
+    "left": 24,
+    "w": 452,
+    "h": 115.4
+   },
+   "lines": 3
+  },
+  "heroCta": {
+   "top": 333.4,
+   "left": 155.3,
+   "w": 189.4,
+   "h": 44,
+   "href": "kasir.html#demo",
+   "text": "Coba demo kasir",
+   "heightPx": 44,
+   "bottom": 377.4
+  },
+  "heroStruk": {
+   "exists": true,
+   "box": {
+    "top": 403.4,
+    "left": 80,
+    "w": 340,
+    "h": 120.3
+   },
+   "rows": [
+    "QRIS Rp40.000MDR 0%",
+    "Omzet Rp75.000.000/blnPPh 0,5%",
+    "PPh final/blnRp166.667"
+   ]
+  },
+  "fnote": {
+   "text": "Basis: omzet contoh Rp75.000.000/bln · PPh final 0,5% (PP 20/2026) · MDR QRIS mikro 0% (≤R",
+   "fontSize": "11px",
+   "lineHeight": "18.15px",
+   "box": {
+    "top": 535.7,
+    "left": 24,
+    "w": 357.5,
+    "h": 36.3
+   }
+  },
+  "sky": [
+   {
+    "cls": "h-sky",
+    "src": "sky-hero-m.webp",
+    "natural": "780x568",
+    "rendered": "500x1115"
+   },
+   {
+    "cls": "h-grid",
+    "src": "grid-overlay.svg",
+    "natural": "225x150",
+    "rendered": "500x803"
+   },
+   {
+    "cls": "h-cloud-1",
+    "src": "cloud-1.webp",
+    "natural": "520x322",
+    "rendered": "480x297"
+   }
+  ],
+  "cloudAnim": {
+   "animation": "cloud-drift 9s infinite",
+   "filter": "blur(4px) hue-rotate(30deg) saturate(1.05)"
+  },
+  "gridParallax": {
+   "hasDataParallax": true,
+   "val": "0.10",
+   "translate": "(none)"
+  },
+  "heroVisualLink": {
+   "wrapsImageAndText": true,
+   "href": "kasir.html#demo",
+   "imgSrc": "produk-kasir-mobile.webp",
+   "imgNatural": "390x844",
+   "imgRendered": "244x528",
+   "caption": "Data contoh: tampilan aplikasi Olano"
+  },
+  "modules": {
+   "count": 6,
+   "allAreLinks": true,
+   "rows": [
+    {
+     "no": "01",
+     "title": "Kasir",
+     "chip": "contoh · QRIS Rp40.000 → MDR 0% untuk usaha mikro",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "kasir.html",
+     "height": 189
+    },
+    {
+     "no": "02",
+     "title": "Pajak",
+     "chip": "contoh · omzet ≤ Rp500 juta/tahun → PPh Rp0",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "pajak.html",
+     "height": 176
+    },
+    {
+     "no": "03",
+     "title": "Website",
+     "chip": "contoh · 1 template siap, 7 keluarga segera hadir",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "website.html",
+     "height": 176
+    },
+    {
+     "no": "04",
+     "title": "Analisa Delivery",
+     "chip": "contoh · Rp45.000 − komisi 29% − promo Rp3.000 − HPP Rp18.000 → laba Rp10.950",
+     "chipLines": 3,
+     "status": "Sudah jalan",
+     "href": "analisa-delivery.html",
+     "height": 195
+    },
+    {
+     "no": "05",
+     "title": "AI Jaga Margin",
+     "chip": "contoh · HPP Rp25.000 +10% → usul premium Rp50.000",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "ai.html",
+     "height": 176
+    },
+    {
+     "no": "06",
+     "title": "Automation",
+     "chip": "rencana · stok &lt; 80% · bahan naik ≥ 10%",
+     "chipLines": 2,
+     "status": "Segera hadir",
+     "href": "automation.html",
+     "height": 176
+    }
+   ],
+   "sudahJalanCount": 5,
+   "pickCountText": "05 aktif · 01 segera hadir",
+   "pickCountVisible": false,
+   "totalRowsHeight": "1088"
+  },
+  "calculators": [
+   {
+    "text": "Kalkulator PPh Finalcontoh: Rp166.667/bln",
+    "href": "alat/kalkulator-pph-final-umkm.html",
+    "height": 56
+   },
+   {
+    "text": "HPP dan Harga Jualcontoh: 3 opsi harga",
+    "href": "alat/kalkulator-hpp-harga-jual.html",
+    "height": 56
+   },
+   {
+    "text": "Biaya QRIS (MDR)contoh: Rp0/bln untuk mikro",
+    "href": "alat/kalkulator-biaya-qris.html",
+    "height": 56
+   },
+   {
+    "text": "Margin GoFood/Grabcontoh: 24,3% bersih",
+    "href": "alat/kalkulator-margin-delivery.html",
+    "height": 56
+   }
+  ],
+  "sections": [
+   {
+    "id": "modul",
+    "bg": "rgb(255, 255, 255)",
+    "padTop": "96px",
+    "padBottom": "96px",
+    "h": 1367
+   },
+   {
+    "id": "alat",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "64px",
+    "padBottom": "64px",
+    "h": 592
+   },
+   {
+    "id": "pajak",
+    "bg": "rgb(14, 26, 74)",
+    "padTop": "64px",
+    "padBottom": "64px",
+    "h": 846
+   },
+   {
+    "id": "harga",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "64px",
+    "padBottom": "64px",
+    "h": 1307
+   },
+   {
+    "id": "testimoni",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "64px",
+    "padBottom": "64px",
+    "h": 671
+   }
+  ],
+  "pajak": {
+   "domOrder": [
+    "H2 \"Pajak UMKM berubah di 2026. Tiga aturan \"",
+    "DIV \"Aturan 2026: PPh final 0,5% untuk orang \"",
+    "DIV \"Lihat panduan pajak lengkap\""
+   ],
+   "calcTopOffsetInSection": 381,
+   "textColHeight": 269
+  },
+  "taxWidget": {
+   "jenisUsaha": {
+    "tag": "SELECT",
+    "options": [
+     "Orang Pribadi",
+     "PT Perorangan",
+     "Koperasi",
+     "PT",
+     "CV / Firma"
+    ],
+    "default": "Orang Pribadi"
+   },
+   "omzetInput": {
+    "type": "number",
+    "inputmode": "numeric",
+    "valueShown": "75000000",
+    "hasRpPrefixInside": false,
+    "quickChipsCount": 0,
+    "clearBtn": false
+   },
+   "resultAriaLive": "polite",
+   "hitungButtons": [],
+   "resultShown": "Rp166.667",
+   "resultFontSize": "28px",
+   "resultBelowInput": true,
+   "resultTopVsInputTop": 64
+  },
+  "pricing": {
+   "order": [
+    {
+     "name": "Gratis",
+     "isActive": false,
+     "marker": "none",
+     "cta": {
+      "text": "Coba demo kasir",
+      "href": "kasir.html#demo"
+     }
+    },
+    {
+     "name": "Pro",
+     "isActive": true,
+     "marker": "\"PALING LARIS\"",
+     "cta": {
+      "text": "Coba demo kasir",
+      "href": "app/kasir.html#demo"
+     }
+    }
+   ],
+   "stackedMobile": true,
+   "proBullets": [
+    "Produk tak terbatas",
+    "AI harga, foto (60 foto/outlet/bulan), dan Tanya AI",
+    "Skor kesehatan + ringkasan mingguan",
+    "Rekap pajak bulanan + akses admin"
+   ],
+   "priceVal": {
+    "text": "Rp50rb/outlet/bulan",
+    "fontSize": "30.4px",
+    "spansSameLine": false
+   },
+   "waLine": {
+    "text": "Layanan pajak dan website custom tersedia per penawaran lewat WhatsApp.",
+    "hasButtonInside": false
+   }
+  },
+  "sectionOrder": {
+   "closingCtaTop": 5185,
+   "testimoniTop": 5293,
+   "testimoniAfterClosingCta": true,
+   "contohLabel": "CONTOH - tiga cerita di bawah ini contoh tampilan; akan kami ganti dengan pemili",
+   "renderedCards": 3
+  },
+  "footer": {
+   "columns": [
+    "Produk",
+    "Kalkulator",
+    "Perusahaan"
+   ],
+   "linkHeights": [
+    18,
+    18,
+    18,
+    18,
+    18
+   ],
+   "linkFontSize": "13px",
+   "ulGap": "7px",
+   "paraLens": [
+    79,
+    147,
+    12
+   ]
+  },
+  "absentBlocks": {
+   "faqCount": 0,
+   "idCara": 0,
+   "idKeamanan": 0,
+   "textFAQ": false,
+   "textKeamananData": true,
+   "textCaraMulai": true
+  },
+  "backToTopCount": 0,
+  "skipLink": {
+   "exists": true,
+   "href": "#main",
+   "focusLeft": 0,
+   "visibleOnFocus": true,
+   "mainTarget": true
+  },
+  "logoHref": "index.html",
+  "anchorTest": {
+   "hargaTopAfterJump": 0.2,
+   "navHeight": 65,
+   "coveredByStickyNav": true
+  }
+ },
+ "360_closed": {
+  "viewport": {
+   "w": 500,
+   "h": 657,
+   "dpr": 1
+  },
+  "scrollHeight": 6586,
+  "hOverflow": {
+   "scrollW": 500,
+   "innerW": 500,
+   "overflow": false
+  },
+  "ticker": {
+   "hidden": false,
+   "role": "note",
+   "ariaLabel": "Pengumuman",
+   "text": "Kasir tetap jalan saat internet mati · QRIS dengan nominal terisi otomatis · PPh final 0,5% (PP 20/2026)",
+   "facts": 3,
+   "box": {
+    "top": 0,
+    "left": 0,
+    "w": 500,
+    "h": 47.5
+   },
+   "textLines": 2,
+   "textFontSize": "11.5px",
+   "textWhite": "normal",
+   "closeBtn": {
+    "top": 9.3,
+    "left": 448,
+    "w": 28,
+    "h": 28,
+    "ariaLabel": "Tutup pengumuman"
+   }
+  },
+  "tickerClose": {
+   "before": {
+    "mainTop": 112.5,
+    "scrollH": 6586
+   },
+   "after": {
+    "mainTop": 65,
+    "scrollH": 6539
+   },
+   "shiftPx": 47.5,
+   "hiddenAfter": true,
+   "transition": "0s"
+  },
+  "headerButtons": [
+   {
+    "text": "Masuk",
+    "href": "app/login.html",
+    "visible": false
+   },
+   {
+    "text": "Coba demo kasir",
+    "href": "app/kasir.html#demo",
+    "visible": false
+   }
+  ],
+  "burgerVisible": true,
+  "desktopNav": {
+   "produk": [
+    "Kasir UMKM -&gt; umkm.html",
+    "Pajak -&gt; pajak.html",
+    "Website -&gt; website.html",
+    "Analisa Delivery -&gt; analisa-delivery.html",
+    "AI Jaga Margin -&gt; ai.html",
+    "AutomationSegera hadir -&gt; automation.html",
+    "Naik Kelas -&gt; naik-kelas.html"
+   ],
+   "kalkulator": [
+    "PPh Final UMKM -&gt; alat/kalkulator-pph-final-umkm.html",
+    "HPP &amp; Harga Jual -&gt; alat/kalkulator-hpp-harga-jual.html",
+    "Biaya QRIS -&gt; alat/kalkulator-biaya-qris.html",
+    "Margin Delivery -&gt; alat/kalkulator-margin-delivery.html"
+   ],
+   "plain": [
+    "Harga -&gt; #harga"
+   ]
+  },
+  "mobileNav": [
+   "Kasir UMKM -&gt; umkm.html",
+   "Pajak -&gt; pajak.html",
+   "Website -&gt; website.html",
+   "Analisa Delivery -&gt; analisa-delivery.html",
+   "AI Jaga Margin -&gt; ai.html",
+   "Automation Segera hadir -&gt; automation.html",
+   "Naik Kelas -&gt; naik-kelas.html",
+   "PPh Final UMKM -&gt; alat/kalkulator-pph-final-umkm.html",
+   "HPP &amp; Harga Jual -&gt; alat/kalkulator-hpp-harga-jual.html",
+   "Biaya QRIS -&gt; alat/kalkulator-biaya-qris.html",
+   "Margin Delivery -&gt; alat/kalkulator-margin-delivery.html",
+   "Harga -&gt; #harga",
+   "Masuk -&gt; app/login.html",
+   "Coba demo kasir -&gt; app/kasir.html#demo"
+  ],
+  "mobileLinkHeights": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "h1": {
+   "text": "Sistem jualan untuk UMKM yang tetap jalan saat internet mati.",
+   "words": 10,
+   "fontSize": "35px",
+   "lineHeight": "37.8px",
+   "box": {
+    "top": 131,
+    "left": 24,
+    "w": 452,
+    "h": 115.4
+   },
+   "lines": 3
+  },
+  "heroCta": {
+   "top": 333.4,
+   "left": 155.3,
+   "w": 189.4,
+   "h": 44,
+   "href": "kasir.html#demo",
+   "text": "Coba demo kasir",
+   "heightPx": 44,
+   "bottom": 377.4
+  },
+  "heroStruk": {
+   "exists": true,
+   "box": {
+    "top": 403.4,
+    "left": 80,
+    "w": 340,
+    "h": 120.3
+   },
+   "rows": [
+    "QRIS Rp40.000MDR 0%",
+    "Omzet Rp75.000.000/blnPPh 0,5%",
+    "PPh final/blnRp166.667"
+   ]
+  },
+  "fnote": {
+   "text": "Basis: omzet contoh Rp75.000.000/bln · PPh final 0,5% (PP 20/2026) · MDR QRIS mikro 0% (≤R",
+   "fontSize": "11px",
+   "lineHeight": "18.15px",
+   "box": {
+    "top": 535.7,
+    "left": 24,
+    "w": 357.5,
+    "h": 36.3
+   }
+  },
+  "sky": [
+   {
+    "cls": "h-sky",
+    "src": "sky-hero-m.webp",
+    "natural": "780x568",
+    "rendered": "500x1115"
+   },
+   {
+    "cls": "h-grid",
+    "src": "grid-overlay.svg",
+    "natural": "225x150",
+    "rendered": "500x803"
+   },
+   {
+    "cls": "h-cloud-1",
+    "src": "cloud-1.webp",
+    "natural": "520x322",
+    "rendered": "480x297"
+   }
+  ],
+  "cloudAnim": {
+   "animation": "cloud-drift 9s infinite",
+   "filter": "blur(4px) hue-rotate(30deg) saturate(1.05)"
+  },
+  "gridParallax": {
+   "hasDataParallax": true,
+   "val": "0.10",
+   "translate": "(none)"
+  },
+  "heroVisualLink": {
+   "wrapsImageAndText": true,
+   "href": "kasir.html#demo",
+   "imgSrc": "produk-kasir-mobile.webp",
+   "imgNatural": "390x844",
+   "imgRendered": "244x528",
+   "caption": "Data contoh: tampilan aplikasi Olano"
+  },
+  "modules": {
+   "count": 6,
+   "allAreLinks": true,
+   "rows": [
+    {
+     "no": "01",
+     "title": "Kasir",
+     "chip": "contoh · QRIS Rp40.000 → MDR 0% untuk usaha mikro",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "kasir.html",
+     "height": 189
+    },
+    {
+     "no": "02",
+     "title": "Pajak",
+     "chip": "contoh · omzet ≤ Rp500 juta/tahun → PPh Rp0",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "pajak.html",
+     "height": 176
+    },
+    {
+     "no": "03",
+     "title": "Website",
+     "chip": "contoh · 1 template siap, 7 keluarga segera hadir",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "website.html",
+     "height": 176
+    },
+    {
+     "no": "04",
+     "title": "Analisa Delivery",
+     "chip": "contoh · Rp45.000 − komisi 29% − promo Rp3.000 − HPP Rp18.000 → laba Rp10.950",
+     "chipLines": 3,
+     "status": "Sudah jalan",
+     "href": "analisa-delivery.html",
+     "height": 195
+    },
+    {
+     "no": "05",
+     "title": "AI Jaga Margin",
+     "chip": "contoh · HPP Rp25.000 +10% → usul premium Rp50.000",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "ai.html",
+     "height": 176
+    },
+    {
+     "no": "06",
+     "title": "Automation",
+     "chip": "rencana · stok &lt; 80% · bahan naik ≥ 10%",
+     "chipLines": 2,
+     "status": "Segera hadir",
+     "href": "automation.html",
+     "height": 176
+    }
+   ],
+   "sudahJalanCount": 5,
+   "pickCountText": "05 aktif · 01 segera hadir",
+   "pickCountVisible": false,
+   "totalRowsHeight": "1088"
+  },
+  "calculators": [
+   {
+    "text": "Kalkulator PPh Finalcontoh: Rp166.667/bln",
+    "href": "alat/kalkulator-pph-final-umkm.html",
+    "height": 56
+   },
+   {
+    "text": "HPP dan Harga Jualcontoh: 3 opsi harga",
+    "href": "alat/kalkulator-hpp-harga-jual.html",
+    "height": 56
+   },
+   {
+    "text": "Biaya QRIS (MDR)contoh: Rp0/bln untuk mikro",
+    "href": "alat/kalkulator-biaya-qris.html",
+    "height": 56
+   },
+   {
+    "text": "Margin GoFood/Grabcontoh: 24,3% bersih",
+    "href": "alat/kalkulator-margin-delivery.html",
+    "height": 56
+   }
+  ],
+  "sections": [
+   {
+    "id": "modul",
+    "bg": "rgb(255, 255, 255)",
+    "padTop": "96px",
+    "padBottom": "96px",
+    "h": 1367
+   },
+   {
+    "id": "alat",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "64px",
+    "padBottom": "64px",
+    "h": 592
+   },
+   {
+    "id": "pajak",
+    "bg": "rgb(14, 26, 74)",
+    "padTop": "64px",
+    "padBottom": "64px",
+    "h": 846
+   },
+   {
+    "id": "harga",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "64px",
+    "padBottom": "64px",
+    "h": 1307
+   },
+   {
+    "id": "testimoni",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "64px",
+    "padBottom": "64px",
+    "h": 671
+   }
+  ],
+  "pajak": {
+   "domOrder": [
+    "H2 \"Pajak UMKM berubah di 2026. Tiga aturan \"",
+    "DIV \"Aturan 2026: PPh final 0,5% untuk orang \"",
+    "DIV \"Lihat panduan pajak lengkap\""
+   ],
+   "calcTopOffsetInSection": 381,
+   "textColHeight": 269
+  },
+  "taxWidget": {
+   "jenisUsaha": {
+    "tag": "SELECT",
+    "options": [
+     "Orang Pribadi",
+     "PT Perorangan",
+     "Koperasi",
+     "PT",
+     "CV / Firma"
+    ],
+    "default": "Orang Pribadi"
+   },
+   "omzetInput": {
+    "type": "number",
+    "inputmode": "numeric",
+    "valueShown": "75000000",
+    "hasRpPrefixInside": false,
+    "quickChipsCount": 0,
+    "clearBtn": false
+   },
+   "resultAriaLive": "polite",
+   "hitungButtons": [],
+   "resultShown": "Rp166.667",
+   "resultFontSize": "28px",
+   "resultBelowInput": true,
+   "resultTopVsInputTop": 64
+  },
+  "pricing": {
+   "order": [
+    {
+     "name": "Gratis",
+     "isActive": false,
+     "marker": "none",
+     "cta": {
+      "text": "Coba demo kasir",
+      "href": "kasir.html#demo"
+     }
+    },
+    {
+     "name": "Pro",
+     "isActive": true,
+     "marker": "\"PALING LARIS\"",
+     "cta": {
+      "text": "Coba demo kasir",
+      "href": "app/kasir.html#demo"
+     }
+    }
+   ],
+   "stackedMobile": true,
+   "proBullets": [
+    "Produk tak terbatas",
+    "AI harga, foto (60 foto/outlet/bulan), dan Tanya AI",
+    "Skor kesehatan + ringkasan mingguan",
+    "Rekap pajak bulanan + akses admin"
+   ],
+   "priceVal": {
+    "text": "Rp50rb/outlet/bulan",
+    "fontSize": "30.4px",
+    "spansSameLine": false
+   },
+   "waLine": {
+    "text": "Layanan pajak dan website custom tersedia per penawaran lewat WhatsApp.",
+    "hasButtonInside": false
+   }
+  },
+  "sectionOrder": {
+   "closingCtaTop": 5185,
+   "testimoniTop": 5293,
+   "testimoniAfterClosingCta": true,
+   "contohLabel": "CONTOH - tiga cerita di bawah ini contoh tampilan; akan kami ganti dengan pemili",
+   "renderedCards": 3
+  },
+  "footer": {
+   "columns": [
+    "Produk",
+    "Kalkulator",
+    "Perusahaan"
+   ],
+   "linkHeights": [
+    18,
+    18,
+    18,
+    18,
+    18
+   ],
+   "linkFontSize": "13px",
+   "ulGap": "7px",
+   "paraLens": [
+    79,
+    147,
+    12
+   ]
+  },
+  "absentBlocks": {
+   "faqCount": 0,
+   "idCara": 0,
+   "idKeamanan": 0,
+   "textFAQ": false,
+   "textKeamananData": true,
+   "textCaraMulai": true
+  },
+  "backToTopCount": 0,
+  "skipLink": {
+   "exists": true,
+   "href": "#main",
+   "focusLeft": 0,
+   "visibleOnFocus": true,
+   "mainTarget": true
+  },
+  "logoHref": "index.html",
+  "anchorTest": {
+   "hargaTopAfterJump": 0.2,
+   "navHeight": 65,
+   "coveredByStickyNav": true
+  }
+ },
+ "390": {
+  "viewport": {
+   "w": 500,
+   "h": 701,
+   "dpr": 1
+  },
+  "scrollHeight": 6586,
+  "hOverflow": {
+   "scrollW": 500,
+   "innerW": 500,
+   "overflow": false
+  },
+  "ticker": {
+   "hidden": false,
+   "role": "note",
+   "ariaLabel": "Pengumuman",
+   "text": "Kasir tetap jalan saat internet mati · QRIS dengan nominal terisi otomatis · PPh final 0,5% (PP 20/2026)",
+   "facts": 3,
+   "box": {
+    "top": 0,
+    "left": 0,
+    "w": 500,
+    "h": 47.5
+   },
+   "textLines": 2,
+   "textFontSize": "11.5px",
+   "textWhite": "normal",
+   "closeBtn": {
+    "top": 9.3,
+    "left": 448,
+    "w": 28,
+    "h": 28,
+    "ariaLabel": "Tutup pengumuman"
+   }
+  },
+  "tickerClose": {
+   "before": {
+    "mainTop": 112.5,
+    "scrollH": 6586
+   },
+   "after": {
+    "mainTop": 65,
+    "scrollH": 6539
+   },
+   "shiftPx": 47.5,
+   "hiddenAfter": true,
+   "transition": "0s"
+  },
+  "headerButtons": [
+   {
+    "text": "Masuk",
+    "href": "app/login.html",
+    "visible": false
+   },
+   {
+    "text": "Coba demo kasir",
+    "href": "app/kasir.html#demo",
+    "visible": false
+   }
+  ],
+  "burgerVisible": true,
+  "desktopNav": {
+   "produk": [
+    "Kasir UMKM -&gt; umkm.html",
+    "Pajak -&gt; pajak.html",
+    "Website -&gt; website.html",
+    "Analisa Delivery -&gt; analisa-delivery.html",
+    "AI Jaga Margin -&gt; ai.html",
+    "AutomationSegera hadir -&gt; automation.html",
+    "Naik Kelas -&gt; naik-kelas.html"
+   ],
+   "kalkulator": [
+    "PPh Final UMKM -&gt; alat/kalkulator-pph-final-umkm.html",
+    "HPP &amp; Harga Jual -&gt; alat/kalkulator-hpp-harga-jual.html",
+    "Biaya QRIS -&gt; alat/kalkulator-biaya-qris.html",
+    "Margin Delivery -&gt; alat/kalkulator-margin-delivery.html"
+   ],
+   "plain": [
+    "Harga -&gt; #harga"
+   ]
+  },
+  "mobileNav": [
+   "Kasir UMKM -&gt; umkm.html",
+   "Pajak -&gt; pajak.html",
+   "Website -&gt; website.html",
+   "Analisa Delivery -&gt; analisa-delivery.html",
+   "AI Jaga Margin -&gt; ai.html",
+   "Automation Segera hadir -&gt; automation.html",
+   "Naik Kelas -&gt; naik-kelas.html",
+   "PPh Final UMKM -&gt; alat/kalkulator-pph-final-umkm.html",
+   "HPP &amp; Harga Jual -&gt; alat/kalkulator-hpp-harga-jual.html",
+   "Biaya QRIS -&gt; alat/kalkulator-biaya-qris.html",
+   "Margin Delivery -&gt; alat/kalkulator-margin-delivery.html",
+   "Harga -&gt; #harga",
+   "Masuk -&gt; app/login.html",
+   "Coba demo kasir -&gt; app/kasir.html#demo"
+  ],
+  "mobileLinkHeights": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "h1": {
+   "text": "Sistem jualan untuk UMKM yang tetap jalan saat internet mati.",
+   "words": 10,
+   "fontSize": "35px",
+   "lineHeight": "37.8px",
+   "box": {
+    "top": 121,
+    "left": 24,
+    "w": 452,
+    "h": 115.4
+   },
+   "lines": 3
+  },
+  "heroCta": {
+   "top": 323.4,
+   "left": 155.3,
+   "w": 189.4,
+   "h": 44,
+   "href": "kasir.html#demo",
+   "text": "Coba demo kasir",
+   "heightPx": 44,
+   "bottom": 367.4
+  },
+  "heroStruk": {
+   "exists": true,
+   "box": {
+    "top": 386.8,
+    "left": 80,
+    "w": 340,
+    "h": 120.3
+   },
+   "rows": [
+    "QRIS Rp40.000MDR 0%",
+    "Omzet Rp75.000.000/blnPPh 0,5%",
+    "PPh final/blnRp166.667"
+   ]
+  },
+  "fnote": {
+   "text": "Basis: omzet contoh Rp75.000.000/bln · PPh final 0,5% (PP 20/2026) · MDR QRIS mikro 0% (≤R",
+   "fontSize": "11px",
+   "lineHeight": "18.15px",
+   "box": {
+    "top": 525.7,
+    "left": 24,
+    "w": 357.5,
+    "h": 36.3
+   }
+  },
+  "sky": [
+   {
+    "cls": "h-sky",
+    "src": "sky-hero-m.webp",
+    "natural": "780x568",
+    "rendered": "500x1115"
+   },
+   {
+    "cls": "h-grid",
+    "src": "grid-overlay.svg",
+    "natural": "225x150",
+    "rendered": "500x803"
+   },
+   {
+    "cls": "h-cloud-1",
+    "src": "cloud-1.webp",
+    "natural": "520x322",
+    "rendered": "480x297"
+   }
+  ],
+  "cloudAnim": {
+   "animation": "cloud-drift 9s infinite",
+   "filter": "blur(4px) hue-rotate(30deg) saturate(1.05)"
+  },
+  "gridParallax": {
+   "hasDataParallax": true,
+   "val": "0.10",
+   "translate": "(none)"
+  },
+  "heroVisualLink": {
+   "wrapsImageAndText": true,
+   "href": "kasir.html#demo",
+   "imgSrc": "produk-kasir-mobile.webp",
+   "imgNatural": "390x844",
+   "imgRendered": "244x528",
+   "caption": "Data contoh: tampilan aplikasi Olano"
+  },
+  "modules": {
+   "count": 6,
+   "allAreLinks": true,
+   "rows": [
+    {
+     "no": "01",
+     "title": "Kasir",
+     "chip": "contoh · QRIS Rp40.000 → MDR 0% untuk usaha mikro",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "kasir.html",
+     "height": 189
+    },
+    {
+     "no": "02",
+     "title": "Pajak",
+     "chip": "contoh · omzet ≤ Rp500 juta/tahun → PPh Rp0",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "pajak.html",
+     "height": 176
+    },
+    {
+     "no": "03",
+     "title": "Website",
+     "chip": "contoh · 1 template siap, 7 keluarga segera hadir",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "website.html",
+     "height": 176
+    },
+    {
+     "no": "04",
+     "title": "Analisa Delivery",
+     "chip": "contoh · Rp45.000 − komisi 29% − promo Rp3.000 − HPP Rp18.000 → laba Rp10.950",
+     "chipLines": 3,
+     "status": "Sudah jalan",
+     "href": "analisa-delivery.html",
+     "height": 195
+    },
+    {
+     "no": "05",
+     "title": "AI Jaga Margin",
+     "chip": "contoh · HPP Rp25.000 +10% → usul premium Rp50.000",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "ai.html",
+     "height": 176
+    },
+    {
+     "no": "06",
+     "title": "Automation",
+     "chip": "rencana · stok &lt; 80% · bahan naik ≥ 10%",
+     "chipLines": 2,
+     "status": "Segera hadir",
+     "href": "automation.html",
+     "height": 176
+    }
+   ],
+   "sudahJalanCount": 5,
+   "pickCountText": "05 aktif · 01 segera hadir",
+   "pickCountVisible": false,
+   "totalRowsHeight": "1088"
+  },
+  "calculators": [
+   {
+    "text": "Kalkulator PPh Finalcontoh: Rp166.667/bln",
+    "href": "alat/kalkulator-pph-final-umkm.html",
+    "height": 56
+   },
+   {
+    "text": "HPP dan Harga Jualcontoh: 3 opsi harga",
+    "href": "alat/kalkulator-hpp-harga-jual.html",
+    "height": 56
+   },
+   {
+    "text": "Biaya QRIS (MDR)contoh: Rp0/bln untuk mikro",
+    "href": "alat/kalkulator-biaya-qris.html",
+    "height": 56
+   },
+   {
+    "text": "Margin GoFood/Grabcontoh: 24,3% bersih",
+    "href": "alat/kalkulator-margin-delivery.html",
+    "height": 56
+   }
+  ],
+  "sections": [
+   {
+    "id": "modul",
+    "bg": "rgb(255, 255, 255)",
+    "padTop": "96px",
+    "padBottom": "96px",
+    "h": 1367
+   },
+   {
+    "id": "alat",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "64px",
+    "padBottom": "64px",
+    "h": 592
+   },
+   {
+    "id": "pajak",
+    "bg": "rgb(14, 26, 74)",
+    "padTop": "64px",
+    "padBottom": "64px",
+    "h": 846
+   },
+   {
+    "id": "harga",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "64px",
+    "padBottom": "64px",
+    "h": 1307
+   },
+   {
+    "id": "testimoni",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "64px",
+    "padBottom": "64px",
+    "h": 671
+   }
+  ],
+  "pajak": {
+   "domOrder": [
+    "H2 \"Pajak UMKM berubah di 2026. Tiga aturan \"",
+    "DIV \"Aturan 2026: PPh final 0,5% untuk orang \"",
+    "DIV \"Lihat panduan pajak lengkap\""
+   ],
+   "calcTopOffsetInSection": 381,
+   "textColHeight": 269
+  },
+  "taxWidget": {
+   "jenisUsaha": {
+    "tag": "SELECT",
+    "options": [
+     "Orang Pribadi",
+     "PT Perorangan",
+     "Koperasi",
+     "PT",
+     "CV / Firma"
+    ],
+    "default": "Orang Pribadi"
+   },
+   "omzetInput": {
+    "type": "number",
+    "inputmode": "numeric",
+    "valueShown": "75000000",
+    "hasRpPrefixInside": false,
+    "quickChipsCount": 0,
+    "clearBtn": false
+   },
+   "resultAriaLive": "polite",
+   "hitungButtons": [],
+   "resultShown": "Rp166.667",
+   "resultFontSize": "28px",
+   "resultBelowInput": true,
+   "resultTopVsInputTop": 64
+  },
+  "pricing": {
+   "order": [
+    {
+     "name": "Gratis",
+     "isActive": false,
+     "marker": "none",
+     "cta": {
+      "text": "Coba demo kasir",
+      "href": "kasir.html#demo"
+     }
+    },
+    {
+     "name": "Pro",
+     "isActive": true,
+     "marker": "\"PALING LARIS\"",
+     "cta": {
+      "text": "Coba demo kasir",
+      "href": "app/kasir.html#demo"
+     }
+    }
+   ],
+   "stackedMobile": true,
+   "proBullets": [
+    "Produk tak terbatas",
+    "AI harga, foto (60 foto/outlet/bulan), dan Tanya AI",
+    "Skor kesehatan + ringkasan mingguan",
+    "Rekap pajak bulanan + akses admin"
+   ],
+   "priceVal": {
+    "text": "Rp50rb/outlet/bulan",
+    "fontSize": "30.4px",
+    "spansSameLine": false
+   },
+   "waLine": {
+    "text": "Layanan pajak dan website custom tersedia per penawaran lewat WhatsApp.",
+    "hasButtonInside": false
+   }
+  },
+  "sectionOrder": {
+   "closingCtaTop": 5185,
+   "testimoniTop": 5293,
+   "testimoniAfterClosingCta": true,
+   "contohLabel": "CONTOH - tiga cerita di bawah ini contoh tampilan; akan kami ganti dengan pemili",
+   "renderedCards": 3
+  },
+  "footer": {
+   "columns": [
+    "Produk",
+    "Kalkulator",
+    "Perusahaan"
+   ],
+   "linkHeights": [
+    18,
+    18,
+    18,
+    18,
+    18
+   ],
+   "linkFontSize": "13px",
+   "ulGap": "7px",
+   "paraLens": [
+    79,
+    147,
+    12
+   ]
+  },
+  "absentBlocks": {
+   "faqCount": 0,
+   "idCara": 0,
+   "idKeamanan": 0,
+   "textFAQ": false,
+   "textKeamananData": true,
+   "textCaraMulai": true
+  },
+  "backToTopCount": 0,
+  "skipLink": {
+   "exists": true,
+   "href": "#main",
+   "focusLeft": 0,
+   "visibleOnFocus": true,
+   "mainTarget": true
+  },
+  "logoHref": "index.html",
+  "anchorTest": {
+   "hargaTopAfterJump": 0.2,
+   "navHeight": 65,
+   "coveredByStickyNav": true
+  }
+ },
+ "768": {
+  "viewport": {
+   "w": 768,
+   "h": 757,
+   "dpr": 1
+  },
+  "scrollHeight": 7391,
+  "hOverflow": {
+   "scrollW": 768,
+   "innerW": 768,
+   "overflow": false
+  },
+  "ticker": {
+   "hidden": false,
+   "role": "note",
+   "ariaLabel": "Pengumuman",
+   "text": "Kasir tetap jalan saat internet mati · QRIS dengan nominal terisi otomatis · PPh final 0,5% (PP 20/2026)",
+   "facts": 3,
+   "box": {
+    "top": 0,
+    "left": 0,
+    "w": 768,
+    "h": 47.5
+   },
+   "textLines": 2,
+   "textFontSize": "11.5px",
+   "textWhite": "normal",
+   "closeBtn": {
+    "top": 9.3,
+    "left": 716,
+    "w": 28,
+    "h": 28,
+    "ariaLabel": "Tutup pengumuman"
+   }
+  },
+  "tickerClose": {
+   "before": {
+    "mainTop": 112.5,
+    "scrollH": 7391
+   },
+   "after": {
+    "mainTop": 65,
+    "scrollH": 7344
+   },
+   "shiftPx": 47.5,
+   "hiddenAfter": true,
+   "transition": "0s"
+  },
+  "headerButtons": [
+   {
+    "text": "Masuk",
+    "href": "app/login.html",
+    "visible": false
+   },
+   {
+    "text": "Coba demo kasir",
+    "href": "app/kasir.html#demo",
+    "visible": false
+   }
+  ],
+  "burgerVisible": true,
+  "desktopNav": {
+   "produk": [
+    "Kasir UMKM -&gt; umkm.html",
+    "Pajak -&gt; pajak.html",
+    "Website -&gt; website.html",
+    "Analisa Delivery -&gt; analisa-delivery.html",
+    "AI Jaga Margin -&gt; ai.html",
+    "AutomationSegera hadir -&gt; automation.html",
+    "Naik Kelas -&gt; naik-kelas.html"
+   ],
+   "kalkulator": [
+    "PPh Final UMKM -&gt; alat/kalkulator-pph-final-umkm.html",
+    "HPP &amp; Harga Jual -&gt; alat/kalkulator-hpp-harga-jual.html",
+    "Biaya QRIS -&gt; alat/kalkulator-biaya-qris.html",
+    "Margin Delivery -&gt; alat/kalkulator-margin-delivery.html"
+   ],
+   "plain": [
+    "Harga -&gt; #harga"
+   ]
+  },
+  "mobileNav": [
+   "Kasir UMKM -&gt; umkm.html",
+   "Pajak -&gt; pajak.html",
+   "Website -&gt; website.html",
+   "Analisa Delivery -&gt; analisa-delivery.html",
+   "AI Jaga Margin -&gt; ai.html",
+   "Automation Segera hadir -&gt; automation.html",
+   "Naik Kelas -&gt; naik-kelas.html",
+   "PPh Final UMKM -&gt; alat/kalkulator-pph-final-umkm.html",
+   "HPP &amp; Harga Jual -&gt; alat/kalkulator-hpp-harga-jual.html",
+   "Biaya QRIS -&gt; alat/kalkulator-biaya-qris.html",
+   "Margin Delivery -&gt; alat/kalkulator-margin-delivery.html",
+   "Harga -&gt; #harga",
+   "Masuk -&gt; app/login.html",
+   "Coba demo kasir -&gt; app/kasir.html#demo"
+  ],
+  "mobileLinkHeights": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "h1": {
+   "text": "Sistem jualan untuk UMKM yang tetap jalan saat internet mati.",
+   "words": 10,
+   "fontSize": "59.0003px",
+   "lineHeight": "61.9503px",
+   "box": {
+    "top": 141,
+    "left": 24,
+    "w": 720,
+    "h": 188.8
+   },
+   "lines": 3
+  },
+  "heroCta": {
+   "top": 449.8,
+   "left": 289.3,
+   "w": 189.4,
+   "h": 44,
+   "href": "kasir.html#demo",
+   "text": "Coba demo kasir",
+   "heightPx": 44,
+   "bottom": 493.8
+  },
+  "heroStruk": {
+   "exists": true,
+   "box": {
+    "top": 537.8,
+    "left": 174,
+    "w": 420,
+    "h": 120.3
+   },
+   "rows": [
+    "QRIS Rp40.000MDR 0%",
+    "Omzet Rp75.000.000/blnPPh 0,5%",
+    "PPh final/blnRp166.667"
+   ]
+  },
+  "fnote": {
+   "text": "Basis: omzet contoh Rp75.000.000/bln · PPh final 0,5% (PP 20/2026) · MDR QRIS mikro 0% (≤R",
+   "fontSize": "11px",
+   "lineHeight": "18.15px",
+   "box": {
+    "top": 670.1,
+    "left": 24,
+    "w": 357.5,
+    "h": 36.3
+   }
+  },
+  "sky": [
+   {
+    "cls": "h-sky",
+    "src": "sky-hero.webp",
+    "natural": "2200x1604",
+    "rendered": "768x1391"
+   },
+   {
+    "cls": "h-grid",
+    "src": "grid-overlay.svg",
+    "natural": "225x150",
+    "rendered": "768x1001"
+   },
+   {
+    "cls": "h-cloud-1",
+    "src": "cloud-1.webp",
+    "natural": "520x322",
+    "rendered": "737x457"
+   }
+  ],
+  "cloudAnim": {
+   "animation": "cloud-drift 9s infinite",
+   "filter": "blur(4px) hue-rotate(30deg) saturate(1.05)"
+  },
+  "gridParallax": {
+   "hasDataParallax": true,
+   "val": "0.10",
+   "translate": "(none)"
+  },
+  "heroVisualLink": {
+   "wrapsImageAndText": true,
+   "href": "kasir.html#demo",
+   "imgSrc": "produk-kasir.webp",
+   "imgNatural": "1180x962",
+   "imgRendered": "720x587",
+   "caption": "Data contoh: tampilan aplikasi Olano"
+  },
+  "modules": {
+   "count": 6,
+   "allAreLinks": true,
+   "rows": [
+    {
+     "no": "01",
+     "title": "Kasir",
+     "chip": "contoh · QRIS Rp40.000 → MDR 0% untuk usaha mikro",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "kasir.html",
+     "height": 185
+    },
+    {
+     "no": "02",
+     "title": "Pajak",
+     "chip": "contoh · omzet ≤ Rp500 juta/tahun → PPh Rp0",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "pajak.html",
+     "height": 180
+    },
+    {
+     "no": "03",
+     "title": "Website",
+     "chip": "contoh · 1 template siap, 7 keluarga segera hadir",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "website.html",
+     "height": 180
+    },
+    {
+     "no": "04",
+     "title": "Analisa Delivery",
+     "chip": "contoh · Rp45.000 − komisi 29% − promo Rp3.000 − HPP Rp18.000 → laba Rp10.950",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "analisa-delivery.html",
+     "height": 180
+    },
+    {
+     "no": "05",
+     "title": "AI Jaga Margin",
+     "chip": "contoh · HPP Rp25.000 +10% → usul premium Rp50.000",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "ai.html",
+     "height": 157
+    },
+    {
+     "no": "06",
+     "title": "Automation",
+     "chip": "rencana · stok &lt; 80% · bahan naik ≥ 10%",
+     "chipLines": 2,
+     "status": "Segera hadir",
+     "href": "automation.html",
+     "height": 157
+    }
+   ],
+   "sudahJalanCount": 5,
+   "pickCountText": "05 aktif · 01 segera hadir",
+   "pickCountVisible": true,
+   "totalRowsHeight": "1038"
+  },
+  "calculators": [
+   {
+    "text": "Kalkulator PPh Finalcontoh: Rp166.667/bln",
+    "href": "alat/kalkulator-pph-final-umkm.html",
+    "height": 62
+   },
+   {
+    "text": "HPP dan Harga Jualcontoh: 3 opsi harga",
+    "href": "alat/kalkulator-hpp-harga-jual.html",
+    "height": 62
+   },
+   {
+    "text": "Biaya QRIS (MDR)contoh: Rp0/bln untuk mikro",
+    "href": "alat/kalkulator-biaya-qris.html",
+    "height": 62
+   },
+   {
+    "text": "Margin GoFood/Grabcontoh: 24,3% bersih",
+    "href": "alat/kalkulator-margin-delivery.html",
+    "height": 62
+   }
+  ],
+  "sections": [
+   {
+    "id": "modul",
+    "bg": "rgb(255, 255, 255)",
+    "padTop": "96px",
+    "padBottom": "96px",
+    "h": 1446
+   },
+   {
+    "id": "alat",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "96px",
+    "padBottom": "96px",
+    "h": 679
+   },
+   {
+    "id": "pajak",
+    "bg": "rgb(14, 26, 74)",
+    "padTop": "96px",
+    "padBottom": "96px",
+    "h": 891
+   },
+   {
+    "id": "harga",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "96px",
+    "padBottom": "96px",
+    "h": 1405
+   },
+   {
+    "id": "testimoni",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "96px",
+    "padBottom": "96px",
+    "h": 798
+   }
+  ],
+  "pajak": {
+   "domOrder": [
+    "H2 \"Pajak UMKM berubah di 2026. Tiga aturan \"",
+    "DIV \"Aturan 2026: PPh final 0,5% untuk orang \"",
+    "DIV \"Lihat panduan pajak lengkap\""
+   ],
+   "calcTopOffsetInSection": 392,
+   "textColHeight": 248
+  },
+  "taxWidget": {
+   "jenisUsaha": {
+    "tag": "SELECT",
+    "options": [
+     "Orang Pribadi",
+     "PT Perorangan",
+     "Koperasi",
+     "PT",
+     "CV / Firma"
+    ],
+    "default": "Orang Pribadi"
+   },
+   "omzetInput": {
+    "type": "number",
+    "inputmode": "numeric",
+    "valueShown": "75000000",
+    "hasRpPrefixInside": false,
+    "quickChipsCount": 0,
+    "clearBtn": false
+   },
+   "resultAriaLive": "polite",
+   "hitungButtons": [],
+   "resultShown": "Rp166.667",
+   "resultFontSize": "28px",
+   "resultBelowInput": true,
+   "resultTopVsInputTop": 64
+  },
+  "pricing": {
+   "order": [
+    {
+     "name": "Gratis",
+     "isActive": false,
+     "marker": "none",
+     "cta": {
+      "text": "Coba demo kasir",
+      "href": "kasir.html#demo"
+     }
+    },
+    {
+     "name": "Pro",
+     "isActive": true,
+     "marker": "\"PALING LARIS\"",
+     "cta": {
+      "text": "Coba demo kasir",
+      "href": "app/kasir.html#demo"
+     }
+    }
+   ],
+   "stackedMobile": false,
+   "proBullets": [
+    "Produk tak terbatas",
+    "AI harga, foto (60 foto/outlet/bulan), dan Tanya AI",
+    "Skor kesehatan + ringkasan mingguan",
+    "Rekap pajak bulanan + akses admin"
+   ],
+   "priceVal": {
+    "text": "Rp50rb/outlet/bulan",
+    "fontSize": "36px",
+    "spansSameLine": false
+   },
+   "waLine": {
+    "text": "Layanan pajak dan website custom tersedia per penawaran lewat WhatsApp.",
+    "hasButtonInside": false
+   }
+  },
+  "sectionOrder": {
+   "closingCtaTop": 5736,
+   "testimoniTop": 5876,
+   "testimoniAfterClosingCta": true,
+   "contohLabel": "CONTOH - tiga cerita di bawah ini contoh tampilan; akan kami ganti dengan pemili",
+   "renderedCards": 3
+  },
+  "footer": {
+   "columns": [
+    "Produk",
+    "Kalkulator",
+    "Perusahaan"
+   ],
+   "linkHeights": [
+    22,
+    22,
+    22,
+    22,
+    22
+   ],
+   "linkFontSize": "15px",
+   "ulGap": "10px",
+   "paraLens": [
+    79,
+    147,
+    12
+   ]
+  },
+  "absentBlocks": {
+   "faqCount": 0,
+   "idCara": 0,
+   "idKeamanan": 0,
+   "textFAQ": false,
+   "textKeamananData": true,
+   "textCaraMulai": true
+  },
+  "backToTopCount": 0,
+  "skipLink": {
+   "exists": true,
+   "href": "#main",
+   "focusLeft": 0,
+   "visibleOnFocus": true,
+   "mainTarget": true
+  },
+  "logoHref": "index.html",
+  "anchorTest": {
+   "hargaTopAfterJump": -0.1,
+   "navHeight": 65,
+   "coveredByStickyNav": true
+  }
+ },
+ "1280": {
+  "viewport": {
+   "w": 1280,
+   "h": 757,
+   "dpr": 1
+  },
+  "scrollHeight": 7214,
+  "hOverflow": {
+   "scrollW": 1280,
+   "innerW": 1280,
+   "overflow": false
+  },
+  "ticker": {
+   "hidden": false,
+   "role": "note",
+   "ariaLabel": "Pengumuman",
+   "text": "Kasir tetap jalan saat internet mati · QRIS dengan nominal terisi otomatis · PPh final 0,5% (PP 20/2026)",
+   "facts": 3,
+   "box": {
+    "top": 0,
+    "left": 0,
+    "w": 1280,
+    "h": 47.5
+   },
+   "textLines": 2,
+   "textFontSize": "11.5px",
+   "textWhite": "normal",
+   "closeBtn": {
+    "top": 9.3,
+    "left": 1188,
+    "w": 28,
+    "h": 28,
+    "ariaLabel": "Tutup pengumuman"
+   }
+  },
+  "tickerClose": {
+   "before": {
+    "mainTop": 112.5,
+    "scrollH": 7214
+   },
+   "after": {
+    "mainTop": 65,
+    "scrollH": 7166
+   },
+   "shiftPx": 47.5,
+   "hiddenAfter": true,
+   "transition": "0s"
+  },
+  "headerButtons": [
+   {
+    "text": "Masuk",
+    "href": "app/login.html",
+    "visible": true
+   },
+   {
+    "text": "Coba demo kasir",
+    "href": "app/kasir.html#demo",
+    "visible": true
+   }
+  ],
+  "burgerVisible": false,
+  "desktopNav": {
+   "produk": [
+    "Kasir UMKM -&gt; umkm.html",
+    "Pajak -&gt; pajak.html",
+    "Website -&gt; website.html",
+    "Analisa Delivery -&gt; analisa-delivery.html",
+    "AI Jaga Margin -&gt; ai.html",
+    "AutomationSegera hadir -&gt; automation.html",
+    "Naik Kelas -&gt; naik-kelas.html"
+   ],
+   "kalkulator": [
+    "PPh Final UMKM -&gt; alat/kalkulator-pph-final-umkm.html",
+    "HPP &amp; Harga Jual -&gt; alat/kalkulator-hpp-harga-jual.html",
+    "Biaya QRIS -&gt; alat/kalkulator-biaya-qris.html",
+    "Margin Delivery -&gt; alat/kalkulator-margin-delivery.html"
+   ],
+   "plain": [
+    "Harga -&gt; #harga"
+   ]
+  },
+  "mobileNav": [
+   "Kasir UMKM -&gt; umkm.html",
+   "Pajak -&gt; pajak.html",
+   "Website -&gt; website.html",
+   "Analisa Delivery -&gt; analisa-delivery.html",
+   "AI Jaga Margin -&gt; ai.html",
+   "Automation Segera hadir -&gt; automation.html",
+   "Naik Kelas -&gt; naik-kelas.html",
+   "PPh Final UMKM -&gt; alat/kalkulator-pph-final-umkm.html",
+   "HPP &amp; Harga Jual -&gt; alat/kalkulator-hpp-harga-jual.html",
+   "Biaya QRIS -&gt; alat/kalkulator-biaya-qris.html",
+   "Margin Delivery -&gt; alat/kalkulator-margin-delivery.html",
+   "Harga -&gt; #harga",
+   "Masuk -&gt; app/login.html",
+   "Coba demo kasir -&gt; app/kasir.html#demo"
+  ],
+  "mobileLinkHeights": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "h1": {
+   "text": "Sistem jualan untuk UMKM yang tetap jalan saat internet mati.",
+   "words": 10,
+   "fontSize": "80.3338px",
+   "lineHeight": "84.3504px",
+   "box": {
+    "top": 213,
+    "left": 64,
+    "w": 1152,
+    "h": 171.7
+   },
+   "lines": 2
+  },
+  "heroCta": {
+   "top": 531.7,
+   "left": 545.3,
+   "w": 189.4,
+   "h": 44,
+   "href": "kasir.html#demo",
+   "text": "Coba demo kasir",
+   "heightPx": 44,
+   "bottom": 575.7
+  },
+  "heroStruk": {
+   "exists": true,
+   "box": {
+    "top": 619.7,
+    "left": 430,
+    "w": 420,
+    "h": 120.3
+   },
+   "rows": [
+    "QRIS Rp40.000MDR 0%",
+    "Omzet Rp75.000.000/blnPPh 0,5%",
+    "PPh final/blnRp166.667"
+   ]
+  },
+  "fnote": {
+   "text": "Basis: omzet contoh Rp75.000.000/bln · PPh final 0,5% (PP 20/2026) · MDR QRIS mikro 0% (≤R",
+   "fontSize": "11px",
+   "lineHeight": "18.15px",
+   "box": {
+    "top": 752,
+    "left": 64,
+    "w": 357.5,
+    "h": 36.3
+   }
+  },
+  "sky": [
+   {
+    "cls": "h-sky",
+    "src": "sky-hero.webp",
+    "natural": "2200x1604",
+    "rendered": "1280x1857"
+   },
+   {
+    "cls": "h-grid",
+    "src": "grid-overlay.svg",
+    "natural": "225x150",
+    "rendered": "1280x1337"
+   },
+   {
+    "cls": "h-cloud-1",
+    "src": "cloud-1.webp",
+    "natural": "520x322",
+    "rendered": "922x571"
+   }
+  ],
+  "cloudAnim": {
+   "animation": "cloud-drift 9s infinite",
+   "filter": "blur(4px) hue-rotate(30deg) saturate(1.05)"
+  },
+  "gridParallax": {
+   "hasDataParallax": true,
+   "val": "0.10",
+   "translate": "(none)"
+  },
+  "heroVisualLink": {
+   "wrapsImageAndText": true,
+   "href": "kasir.html#demo",
+   "imgSrc": "produk-kasir.webp",
+   "imgNatural": "1180x962",
+   "imgRendered": "1152x939",
+   "caption": "Data contoh: tampilan aplikasi Olano"
+  },
+  "modules": {
+   "count": 6,
+   "allAreLinks": true,
+   "rows": [
+    {
+     "no": "01",
+     "title": "Kasir",
+     "chip": "contoh · QRIS Rp40.000 → MDR 0% untuk usaha mikro",
+     "chipLines": 3,
+     "status": "Sudah jalan",
+     "href": "kasir.html",
+     "height": 165
+    },
+    {
+     "no": "02",
+     "title": "Pajak",
+     "chip": "contoh · omzet ≤ Rp500 juta/tahun → PPh Rp0",
+     "chipLines": 2,
+     "status": "Sudah jalan",
+     "href": "pajak.html",
+     "height": 180
+    },
+    {
+     "no": "03",
+     "title": "Website",
+     "chip": "contoh · 1 template siap, 7 keluarga segera hadir",
+     "chipLines": 3,
+     "status": "Sudah jalan",
+     "href": "website.html",
+     "height": 180
+    },
+    {
+     "no": "04",
+     "title": "Analisa Delivery",
+     "chip": "contoh · Rp45.000 − komisi 29% − promo Rp3.000 − HPP Rp18.000 → laba Rp10.950",
+     "chipLines": 3,
+     "status": "Sudah jalan",
+     "href": "analisa-delivery.html",
+     "height": 180
+    },
+    {
+     "no": "05",
+     "title": "AI Jaga Margin",
+     "chip": "contoh · HPP Rp25.000 +10% → usul premium Rp50.000",
+     "chipLines": 3,
+     "status": "Sudah jalan",
+     "href": "ai.html",
+     "height": 157
+    },
+    {
+     "no": "06",
+     "title": "Automation",
+     "chip": "rencana · stok &lt; 80% · bahan naik ≥ 10%",
+     "chipLines": 2,
+     "status": "Segera hadir",
+     "href": "automation.html",
+     "height": 157
+    }
+   ],
+   "sudahJalanCount": 5,
+   "pickCountText": "05 aktif · 01 segera hadir",
+   "pickCountVisible": true,
+   "totalRowsHeight": "1018"
+  },
+  "calculators": [
+   {
+    "text": "Kalkulator PPh Finalcontoh: Rp166.667/bln",
+    "href": "alat/kalkulator-pph-final-umkm.html",
+    "height": 62
+   },
+   {
+    "text": "HPP dan Harga Jualcontoh: 3 opsi harga",
+    "href": "alat/kalkulator-hpp-harga-jual.html",
+    "height": 62
+   },
+   {
+    "text": "Biaya QRIS (MDR)contoh: Rp0/bln untuk mikro",
+    "href": "alat/kalkulator-biaya-qris.html",
+    "height": 62
+   },
+   {
+    "text": "Margin GoFood/Grabcontoh: 24,3% bersih",
+    "href": "alat/kalkulator-margin-delivery.html",
+    "height": 62
+   }
+  ],
+  "sections": [
+   {
+    "id": "modul",
+    "bg": "rgb(255, 255, 255)",
+    "padTop": "120px",
+    "padBottom": "120px",
+    "h": 1259
+   },
+   {
+    "id": "alat",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "120px",
+    "padBottom": "120px",
+    "h": 727
+   },
+   {
+    "id": "pajak",
+    "bg": "rgb(14, 26, 74)",
+    "padTop": "120px",
+    "padBottom": "120px",
+    "h": 650
+   },
+   {
+    "id": "harga",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "120px",
+    "padBottom": "120px",
+    "h": 1462
+   },
+   {
+    "id": "testimoni",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padTop": "120px",
+    "padBottom": "120px",
+    "h": 675
+   }
+  ],
+  "pajak": {
+   "domOrder": [
+    "H2 \"Pajak UMKM berubah di 2026. Tiga aturan \"",
+    "DIV \"Aturan 2026: PPh final 0,5% untuk orang \"",
+    "DIV \"Lihat panduan pajak lengkap\""
+   ],
+   "calcTopOffsetInSection": 120,
+   "textColHeight": 248
+  },
+  "taxWidget": {
+   "jenisUsaha": {
+    "tag": "SELECT",
+    "options": [
+     "Orang Pribadi",
+     "PT Perorangan",
+     "Koperasi",
+     "PT",
+     "CV / Firma"
+    ],
+    "default": "Orang Pribadi"
+   },
+   "omzetInput": {
+    "type": "number",
+    "inputmode": "numeric",
+    "valueShown": "75000000",
+    "hasRpPrefixInside": false,
+    "quickChipsCount": 0,
+    "clearBtn": false
+   },
+   "resultAriaLive": "polite",
+   "hitungButtons": [],
+   "resultShown": "Rp166.667",
+   "resultFontSize": "36px",
+   "resultBelowInput": true,
+   "resultTopVsInputTop": 64
+  },
+  "pricing": {
+   "order": [
+    {
+     "name": "Gratis",
+     "isActive": false,
+     "marker": "none",
+     "cta": {
+      "text": "Coba demo kasir",
+      "href": "kasir.html#demo"
+     }
+    },
+    {
+     "name": "Pro",
+     "isActive": true,
+     "marker": "\"PALING LARIS\"",
+     "cta": {
+      "text": "Coba demo kasir",
+      "href": "app/kasir.html#demo"
+     }
+    }
+   ],
+   "stackedMobile": false,
+   "proBullets": [
+    "Produk tak terbatas",
+    "AI harga, foto (60 foto/outlet/bulan), dan Tanya AI",
+    "Skor kesehatan + ringkasan mingguan",
+    "Rekap pajak bulanan + akses admin"
+   ],
+   "priceVal": {
+    "text": "Rp50rb/outlet/bulan",
+    "fontSize": "36px",
+    "spansSameLine": false
+   },
+   "waLine": {
+    "text": "Layanan pajak dan website custom tersedia per penawaran lewat WhatsApp.",
+    "hasButtonInside": false
+   }
+  },
+  "sectionOrder": {
+   "closingCtaTop": 5855,
+   "testimoniTop": 6019,
+   "testimoniAfterClosingCta": true,
+   "contohLabel": "CONTOH - tiga cerita di bawah ini contoh tampilan; akan kami ganti dengan pemili",
+   "renderedCards": 3
+  },
+  "footer": {
+   "columns": [
+    "Produk",
+    "Kalkulator",
+    "Perusahaan"
+   ],
+   "linkHeights": [
+    22,
+    22,
+    22,
+    22,
+    22
+   ],
+   "linkFontSize": "15px",
+   "ulGap": "10px",
+   "paraLens": [
+    79,
+    147,
+    12
+   ]
+  },
+  "absentBlocks": {
+   "faqCount": 0,
+   "idCara": 0,
+   "idKeamanan": 0,
+   "textFAQ": false,
+   "textKeamananData": true,
+   "textCaraMulai": true
+  },
+  "backToTopCount": 0,
+  "skipLink": {
+   "exists": true,
+   "href": "#main",
+   "focusLeft": 0,
+   "visibleOnFocus": true,
+   "mainTarget": true
+  },
+  "logoHref": "index.html",
+  "anchorTest": {
+   "hargaTopAfterJump": 0.4,
+   "navHeight": 65,
+   "coveredByStickyNav": true
+  }
+ }
+}

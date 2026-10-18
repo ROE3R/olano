@@ -1,0 +1,28 @@
+<!doctype html><html><body style="margin:0;background:#888">
+<iframe id="f" style="width:360px;height:800px;border:0;display:block"></iframe>
+<pre id="out" style="display:none">PENDING</pre>
+<script>
+(function(){
+  var f=document.getElementById('f');
+  f.src='/index.html?probe360fix=1';
+  f.addEventListener('load',function(){
+    setTimeout(function(){
+      fetch('/audit/uiux/probe.js').then(function(r){return r.text()}).then(function(txt){
+        var d=f.contentDocument;
+        var s=d.createElement('script');s.textContent=txt;
+        d.body.appendChild(s);
+        setTimeout(function(){
+          var p=d.getElementById('__probe');
+          var o=document.getElementById('out');
+          o.style.display='block';
+          o.textContent=p?('PROBE_START'+p.textContent+'PROBE_END'):('PROBE_FAIL no __probe');
+        },900);
+      }).catch(function(e){
+        var o=document.getElementById('out');o.style.display='block';
+        o.textContent='PROBE_FETCH_ERR:'+e;
+      });
+    },500);
+  });
+})();
+</script>
+</body></html>

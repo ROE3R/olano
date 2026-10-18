@@ -1,0 +1,67 @@
+{
+  "base": "http://localhost:8913",
+  "checks": [
+    {
+      "check": "C3-fold-360x560-CTA-visible",
+      "pass": true,
+      "detail": {
+        "text": "Coba demo kasir",
+        "top": 370,
+        "bottom": 414,
+        "visible": true,
+        "aboveFold": true
+      }
+    },
+    {
+      "check": "L35-scrollHeight<=9-layar-360x800",
+      "pass": true,
+      "detail": {
+        "sh": 7103,
+        "vh": 800,
+        "screens": 8.88,
+        "hscroll": false
+      }
+    },
+    {
+      "check": "index-JS-errors=0",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "check": "kasir-demo-items-render",
+      "pass": true,
+      "detail": {
+        "items": 8
+      }
+    },
+    {
+      "check": "POS-uang-kurang-block-active",
+      "pass": true,
+      "detail": {
+        "cart": "1 item",
+        "errShown": true,
+        "errText": "Uang kurang Rp17.000 — tambahkan uang atau kurangi item.",
+        "sldShort": true,
+        "sldAriaDisabled": "true",
+        "total": "Rp22.000"
+      }
+    },
+    {
+      "check": "POS-rekap-renders",
+      "pass": true,
+      "detail": {
+        "menu_open": true,
+        "rekapOpen": true,
+        "statsChildren": 3,
+        "statsText": "OMZET | Rp0 | TRANSAKSI | 0 | ITEM TERJUAL | 0",
+        "listText": "Belum ada transaksi pada rentang ini."
+      }
+    },
+    {
+      "check": "kasir-JS-errors=0",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "all_pass": true
+}

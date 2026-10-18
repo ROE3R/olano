@@ -1,0 +1,5 @@
+tag,base,page,perf,a11y,bp,seo,lcp_ms,lcp_disp,cls,cls_disp,ttfba_ms,fcp_ms,si_ms,tbt_ms,tti_ms,tti_disp,inp_ms,inp_id,inp_disp
+prod,https://olano.vercel.app,index.html,99,100,100,100,1960.2,2.0 s,0,0,3,1510.2,2200.9,0,1975.2,2.0 s,,n/a,n/a
+prod,https://olano.vercel.app,app/kasir.html,100,100,100,63,1356.2,1.4 s,0.0003,0,3,1056.2,1056.2,0,1356.2,1.4 s,,n/a,n/a
+prod,https://olano.vercel.app,index.html,95,100,100,100,2238.4,2.2 s,0,0,3,1788.4,4263.9,0,2253.4,2.3 s,,n/a,n/a
+prod,https://olano.vercel.app,app/kasir.html,100,100,100,63,1506.4,1.5 s,0.0005,0.001,1,1007.4,1007.4,0,1506.4,1.5 s,,n/a,n/a
