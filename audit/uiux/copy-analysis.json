@@ -1,0 +1,188 @@
+{
+ "index.html": {
+  "kata": 588,
+  "kalimat": 100,
+  "rata2_kata_per_kalimat": 5.3,
+  "kalimat_panjang_>25kata": 0,
+  "contoh_kalimat_panjang": [],
+  "jargon": {
+   "AI": 15,
+   "PPh": 9,
+   "MDR": 3,
+   "PP 20/2026": 2,
+   "modul": 2,
+   "API": 1,
+   "layout": 1
+  },
+  "total_jargon": 33,
+  "istilah_asing": {
+   "omzet": 8,
+   "stok": 6,
+   "margin": 4,
+   "offline": 2,
+   "install": 2,
+   "online": 1,
+   "premium": 1
+  }
+ },
+ "umkm.html": {
+  "kata": 387,
+  "kalimat": 60,
+  "rata2_kata_per_kalimat": 5.9,
+  "kalimat_panjang_>25kata": 0,
+  "contoh_kalimat_panjang": [],
+  "jargon": {
+   "AI": 18,
+   "MDR": 3,
+   "API": 1,
+   "PPh": 1,
+   "fitur": 1
+  },
+  "total_jargon": 24,
+  "istilah_asing": {
+   "offline": 6,
+   "stok": 3,
+   "online": 2,
+   "margin": 2,
+   "scan": 1,
+   "checkout": 1
+  }
+ },
+ "pajak.html": {
+  "kata": 332,
+  "kalimat": 56,
+  "rata2_kata_per_kalimat": 5.8,
+  "kalimat_panjang_>25kata": 0,
+  "contoh_kalimat_panjang": [],
+  "jargon": {
+   "PPh": 8,
+   "AI": 7,
+   "PP 20/2026": 3
+  },
+  "total_jargon": 18,
+  "istilah_asing": {
+   "omzet": 7,
+   "margin": 2
+  }
+ },
+ "website.html": {
+  "kata": 321,
+  "kalimat": 61,
+  "rata2_kata_per_kalimat": 4.9,
+  "kalimat_panjang_>25kata": 1,
+  "contoh_kalimat_panjang": [
+   "Tujuh keluarga layout lain (menu resto, link-in-bio, jasa, portofolio, promo, profil usaha, landing produk) se"
+  ],
+  "jargon": {
+   "AI": 15,
+   "layout": 3,
+   "API": 1,
+   "deploy": 1,
+   "render": 1,
+   "PPh": 1
+  },
+  "total_jargon": 22,
+  "istilah_asing": {
+   "margin": 2,
+   "update": 1,
+   "premium": 1
+  }
+ },
+ "ai.html": {
+  "kata": 274,
+  "kalimat": 46,
+  "rata2_kata_per_kalimat": 5.6,
+  "kalimat_panjang_>25kata": 0,
+  "contoh_kalimat_panjang": [],
+  "jargon": {
+   "AI": 14,
+   "API": 1,
+   "PPh": 1
+  },
+  "total_jargon": 16,
+  "istilah_asing": {
+   "margin": 12,
+   "premium": 3,
+   "update": 1
+  }
+ },
+ "automation.html": {
+  "kata": 180,
+  "kalimat": 26,
+  "rata2_kata_per_kalimat": 6.3,
+  "kalimat_panjang_>25kata": 0,
+  "contoh_kalimat_panjang": [],
+  "jargon": {
+   "AI": 9,
+   "PPh": 3,
+   "modul": 3,
+   "PP 20/2026": 1
+  },
+  "total_jargon": 16,
+  "istilah_asing": {
+   "stok": 3,
+   "margin": 2,
+   "omzet": 1
+  }
+ },
+ "naik-kelas.html": {
+  "kata": 326,
+  "kalimat": 48,
+  "rata2_kata_per_kalimat": 6.3,
+  "kalimat_panjang_>25kata": 0,
+  "contoh_kalimat_panjang": [],
+  "jargon": {
+   "AI": 6,
+   "PPh": 3,
+   "CSV": 1,
+   "XLSX": 1,
+   "PPN": 1,
+   "PP 20/2026": 1,
+   "dashboard": 1,
+   "KPI": 1
+  },
+  "total_jargon": 15,
+  "istilah_asing": {
+   "stok": 4,
+   "margin": 3,
+   "omzet": 3,
+   "offline": 1
+  }
+ },
+ "analisa-delivery.html": {
+  "kata": 198,
+  "kalimat": 32,
+  "rata2_kata_per_kalimat": 5.8,
+  "kalimat_panjang_>25kata": 0,
+  "contoh_kalimat_panjang": [],
+  "jargon": {
+   "AI": 6,
+   "PPh": 1,
+   "modul": 1
+  },
+  "total_jargon": 8,
+  "istilah_asing": {
+   "margin": 10,
+   "online": 1,
+   "premium": 1
+  }
+ },
+ "tentang.html": {
+  "kata": 147,
+  "kalimat": 24,
+  "rata2_kata_per_kalimat": 5.3,
+  "kalimat_panjang_>25kata": 0,
+  "contoh_kalimat_panjang": [],
+  "jargon": {
+   "AI": 5,
+   "PPh": 1,
+   "enkripsi": 1
+  },
+  "total_jargon": 7,
+  "istilah_asing": {
+   "margin": 2,
+   "offline": 1,
+   "online": 1
+  }
+ }
+}
