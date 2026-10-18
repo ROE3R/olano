@@ -50,7 +50,7 @@
   <input id="q" type="search" placeholder="Cari produk… (demo: 8 produk)" aria-label="Cari produk" enterkeyhint="search">
   <button class="pos-scan" aria-label="Pindai produk (demo)" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7V4h3M17 4h3v3M21 17v3h-3M7 20H4v-3M4 8h12v8H4z"/></svg></button>
 </div>
-<p class="small" id="sync-note" style="padding:0 var(--gutter);color:var(--gray-500);font-size:12px">Mode demo: transaksi dan stok tersimpan di perangkat ini. Saat offline, transaksi mengantre dan terkirim otomatis saat online.</p>
+<p class="small" id="sync-note" style="padding:0 var(--gutter);color:var(--gray-500);font-size:12px">Mode demo: transaksi dan stok tersimpan di perangkat ini saja, tidak dikirim ke server. Masuk dengan akun untuk mengaktifkan cadangan cloud.</p>
 
 <div class="row" id="quick-tabs" style="padding:10px var(--gutter);gap:8px">
   <button class="btn sm on" data-cat="SEMUA" style="min-height:44px">Semua</button>
@@ -179,6 +179,13 @@
       <button type="button" class="btn btn-secondary btn-block" id="restore-btn">Impor cadangan (pilih berkas)</button>
       <input type="file" id="restore-file" accept="application/json,.json" hidden aria-hidden="true" tabindex="-1">
       <p class="small" id="restore-msg" role="status" aria-live="polite" style="display:none;margin:10px 0 0;font-weight:600"></p>
+    </div>
+    <!-- [sync] 2026-10-18: jalur turun dari server (backup beneran, bukan cuma naik) -->
+    <div style="border-top:1px solid var(--gray-100);margin-top:16px;padding-top:14px">
+      <b style="font-family:var(--font-display);font-size:1.05rem;display:block;margin-bottom:6px">Pulihkan dari server</b>
+      <p class="small" style="color:var(--gray-500);margin:0 0 10px">Ambil kembali transaksi yang sudah tersinkron di perangkat ini. Berguna setelah ganti HP atau install ulang.</p>
+      <button type="button" class="btn btn-secondary btn-block" id="cloud-restore-btn">Pulihkan dari server</button>
+      <p class="small" id="cloud-restore-msg" role="status" aria-live="polite" style="display:none;margin:10px 0 0;font-weight:600"></p>
     </div>
   </div>
 </div>
@@ -460,6 +467,61 @@
   /* ================= impor cadangan [pos-fix] 2026-10-18 (rubrik I 18->20) =================
      Pilih berkas JSON -> validasi format ({app:"olano-pos", sales:[...]}) -> restore ke IDB.
      Konfirmasi HANYA untuk aksi merusak (timpa transaksi, brief P6); pesan sukses/galat jelas. */
+
+  /* ================= pulihkan dari cloud [sync] 2026-10-18 =================
+     Cadangan lokal saja bukan backup kalau HP hilang. Ini jalur turun dari server:
+     GET /api/restore?deviceId=... -> gabungkan ke IDB (uuid sama ditimpa). */
+  (function(){
+    var btn = document.getElementById("cloud-restore-btn");
+    var msg = document.getElementById("cloud-restore-msg");
+    if(!btn) return;
+    function say(text, ok, color){
+      msg.textContent = text;
+      msg.style.color = color || (ok ? "var(--success)" : "var(--danger)");
+      msg.style.display = "";
+    }
+    btn.addEventListener("click", function(){
+      if(typeof IS_DEMO !== "undefined" && IS_DEMO){
+        say("Mode demo: data contoh tidak tersimpan di server. Masuk dengan akun untuk memakai cadangan cloud.", false);
+        return;
+      }
+      var ok = window.confirm("Pulihkan semua transaksi yang tersimpan di server untuk perangkat ini? Transaksi dengan uuid sama akan ditimpa.");
+      if(!ok) return;
+      btn.disabled = true;
+      say("Mengambil data dari server…", true, "var(--gray-700)");
+      fetch("/api/restore?deviceId=" + encodeURIComponent(deviceId()), { headers: { "Accept": "application/json" } })
+        .then(function(r){
+          if(!r.ok) throw new Error("HTTP " + r.status);
+          return r.json();
+        })
+        .then(function(j){
+          if(!j || !j.sales || !j.sales.length){
+            say("Tidak ada transaksi tersimpan di server untuk perangkat ini.", false, "var(--gray-700)");
+            return;
+          }
+          return new Promise(function(res, rej){
+            openDB().then(function(db){
+              if(!db) return rej(new Error("Penyimpanan lokal tidak tersedia di browser ini."));
+              var tx = db.transaction("sales", "readwrite");
+              var st = tx.objectStore("sales");
+              j.sales.forEach(function(s){ st.put(s); });
+              tx.oncomplete = function(){ res(j.sales.length); };
+              tx.onerror = function(){ rej(new Error("Gagal menulis ke penyimpanan lokal.")); };
+            });
+          });
+        })
+        .then(function(n){
+          if(typeof n === "number"){
+            say(n + " transaksi dipulihkan dari server. Buka Menu → Rekap harian untuk melihatnya.", true);
+            toast(n + " transaksi dipulihkan");
+          }
+        })
+        .catch(function(e){
+          say("Gagal memulihkan: " + (e && e.message ? e.message : "periksa koneksi lalu coba lagi."), false);
+        })
+        .then(function(){ btn.disabled = false; });
+    });
+  })();
   (function(){
     var fi = document.getElementById("restore-file"), btn = document.getElementById("restore-btn"), msg = document.getElementById("restore-msg");
     function say(text, ok){

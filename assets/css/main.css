@@ -124,8 +124,15 @@ p{max-width:65ch}
   border-bottom:1px solid transparent; transition:border-color var(--dur-base) var(--ease-standard);}
 .nav.scrolled{border-bottom-color:var(--gray-100)}
 .nav-inner{display:flex; align-items:center; gap:var(--sp-4); height:64px}
+/* [launch] target sentuh minimum 44x44 untuk kontrol header/chip — WCAG 2.5.8 / brief 7.
+   Logo & hamburger sebelumnya 36px tinggi -> di bawah minimum, sulit ditekan di HP murah. */
 .logo{font-family:var(--font-display); font-weight:800; font-size:1.35rem; letter-spacing:-0.04em;
-  color:var(--ink); display:flex; align-items:center; gap:var(--sp-2)}
+  color:var(--ink); display:flex; align-items:center; gap:var(--sp-2);
+  min-height:44px; min-width:44px}
+.nav-toggle, .nav-burger, button[aria-label="Buka menu"]{min-width:44px; min-height:44px}
+.omzet-chips button{min-height:44px; min-width:44px; padding:8px 12px}
+.ticker-x{min-width:44px; min-height:44px}
+.toast button, .snackbar button{min-height:44px; min-width:44px}
 .logo .mark{width:26px; height:26px; border-radius:8px; background:var(--grad-brand);
   display:grid; place-items:center; color:#fff; font-size:14px; font-weight:800}
 .nav-links{display:none; gap:var(--sp-6); margin-left:var(--sp-4)}
@@ -270,7 +277,7 @@ p{max-width:65ch}
 .mock-tax{display:flex;align-items:center;gap:10px;padding:12px;background:var(--ink);border-radius:12px}
 .mock-tax .mock-ic{background:rgba(255,255,255,.14);color:var(--blue-300)}
 .mock-tax .mock-name b{display:block;font-size:12px;color:#fff}
-.mock-tax .mock-name small{display:block;font-size:11px;color:var(--gray-300)}
+.mock-tax .mock-name small{display:block;font-size:11px;color:var(--gray-500)}
 .mock-tax .mock-val{color:#fff}
 
 /* ============================= VALUE STRIP ============================= */
@@ -699,12 +706,12 @@ body.kb-open .pos-pay{min-height:48px}
 .nlist{border-top:1px solid var(--gray-100)}
 .nrow{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:26px 0;border-bottom:1px solid var(--gray-100)}
 @media(min-width:800px){.nrow{grid-template-columns:72px 1fr 120px;align-items:baseline}}
-.nrow .no{font-family:var(--font-mono);font-size:14px;font-weight:600;color:var(--gray-300);letter-spacing:.05em;transition:color var(--dur-base)}
+.nrow .no{font-family:var(--font-mono);font-size:14px;font-weight:600;color:var(--gray-500);letter-spacing:.05em;transition:color var(--dur-base)}
 .nrow b{font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-.02em;display:block;transition:color var(--dur-base)}
 .nsub{display:block;font-size:14.5px;color:var(--gray-500);margin-top:4px;max-width:52ch}
 .nlink{display:none}
 @media(min-width:800px){.nlink{display:block;justify-self:end;font-family:var(--font-mono);font-size:12px;font-weight:600;
-  letter-spacing:.06em;text-transform:uppercase;color:var(--gray-300);transition:color var(--dur-base)}}
+  letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500);transition:color var(--dur-base)}}
 .nrow:hover{background:linear-gradient(90deg,var(--gray-25),transparent 70%)}
 .nrow:hover .no,.nrow:hover .nlink{color:var(--blue-600)}
 .nrow:hover b{color:var(--blue-700)}
@@ -716,7 +723,7 @@ body.kb-open .pos-pay{min-height:48px}
 .tool-card:hover .tool-out{background:var(--blue-50);border-color:var(--blue-100);color:var(--blue-700)}
 
 /* dark band: teks ringan di atas navy */
-.section-dark .small{color:#9FB0DA}
+.section-dark .small{color:#C9D6F2}
 .section-dark .calc-card{box-shadow:var(--sh-lg)}
 
 /* ============================= MOTION / REVEAL ============================= */
@@ -1060,7 +1067,7 @@ body.home .hero .container{z-index:1}
 @media(min-width:760px) and (max-width:999px){.modrow{grid-template-columns:48px 1fr 116px}}
 @media(max-width:759px){.modrow{grid-template-columns:40px 1fr;padding:20px 10px}
   .modrow .mmeta{grid-column:2;flex-direction:row;align-items:center;margin-top:6px}}
-.modrow .no{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--gray-300);
+.modrow .no{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--gray-500);
   letter-spacing:.05em;padding-top:8px;transition:color var(--dur-base)}
 .mcont{display:flex;flex-direction:column;gap:6px}
 .mcont b{font-family:var(--font-display);font-size:1.3125rem;font-weight:700;letter-spacing:-.02em;
@@ -1236,7 +1243,7 @@ body.home .trow b{min-width:0}
 body.home #pajak{background:var(--blue-950)}
 body.home #pajak h2{color:#fff; max-width:26ch}
 body.home #pajak .callout{margin-top:20px}
-body.home #pajak .hint{color:var(--gray-300)}
+body.home #pajak .hint{color:var(--gray-500)}
 body.home #pajak .calc-card{box-shadow:0 24px 64px -16px rgba(0,0,0,.45)}
 body.home #pajak .calc-out-box b{font-variant-numeric:tabular-nums}
 
