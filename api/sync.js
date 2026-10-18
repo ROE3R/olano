@@ -22,6 +22,7 @@
  *   - Akses Blob via OIDC (BLOB_STORE_ID), tanpa kredensial statis.
  */
 const { put } = require("@vercel/blob");
+const { rateLimit, clientIp } = require("./_ratelimit");
 
 const MAX_SALES_PER_REQUEST = 500;
 const MAX_BODY_BYTES = 256 * 1024;
@@ -85,6 +86,15 @@ module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return bad(res, 405, "method_not_allowed");
+  }
+
+  // Rate limit: 60 sync / menit per IP. Batch 100 transaksi -> 6000 tx/menit,
+  // jauh di atas kebutuhan warung, tapi menahan klien rusak/abuse.
+  const rl = rateLimit(`sync:${clientIp(req)}`, 60, 60_000);
+  res.setHeader("X-RateLimit-Remaining", String(rl.remaining));
+  if (!rl.ok) {
+    res.setHeader("Retry-After", String(rl.retryAfter));
+    return bad(res, 429, "rate_limited");
   }
 
   if (!originAllowed(req)) return bad(res, 403, "origin_not_allowed");

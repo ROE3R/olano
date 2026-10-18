@@ -12,6 +12,7 @@
  * Guard: origin sama seperti /api/sync; batas 5000 transaksi per permintaan.
  */
 const { get, list } = require("@vercel/blob");
+const { rateLimit, clientIp } = require("./_ratelimit");
 
 const MAX_DEVICE_ID = 64;
 const MIN_DEVICE_ID = 8;
@@ -40,6 +41,14 @@ module.exports = async function handler(req, res) {
     res.setHeader("Allow", "GET");
     return bad(res, 405, "method_not_allowed");
   }
+  // Rate limit restore: 20/menit per IP (operasi berat: baca banyak blob).
+  const rl = rateLimit(`restore:${clientIp(req)}`, 20, 60_000);
+  res.setHeader("X-RateLimit-Remaining", String(rl.remaining));
+  if (!rl.ok) {
+    res.setHeader("Retry-After", String(rl.retryAfter));
+    return bad(res, 429, "rate_limited");
+  }
+
   if (!originAllowed(req)) return bad(res, 403, "origin_not_allowed");
 
   const requiredKey = process.env.OLANO_SYNC_KEY;
