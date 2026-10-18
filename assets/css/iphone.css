@@ -1,0 +1,116 @@
+/* [launch] iPhone mockup (Dynamic Island) untuk hero — CSS murni, tanpa aset baru.
+   Alasan: mockup lama (bezel tebal + pita warung) terlihat seperti gambar tempelan,
+   bukan perangkat. Ini frame iPhone modern: sudut 44px, bezel tipis, Dynamic Island,
+   tombol samping, kilau kaca, bayangan bertingkat. Isi layar = screenshot asli app. */
+
+.iphone {
+  --bezel: 10px;
+  position: relative;
+  width: 100%;
+  max-width: 268px;
+  margin: 0 auto;
+  border-radius: 46px;
+  padding: var(--bezel);
+  background:
+    linear-gradient(160deg, #3A3F47 0%, #14171C 38%, #0A0C10 62%, #2B3037 100%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.10) inset,
+    0 0 0 2px rgba(0,0,0,.55),
+    0 18px 34px -12px rgba(10,16,32,.34),
+    0 42px 70px -30px rgba(10,16,32,.30);
+  isolation: isolate;
+}
+
+/* kilau kaca di tepi kiri atas */
+.iphone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(145deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,.04) 16%, transparent 34%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* tombol volume kiri + power kanan */
+.iphone::after {
+  content: "";
+  position: absolute;
+  inset-block: 86px 118px;
+  inset-inline-start: calc(var(--bezel) * -1.6);
+  width: 3px;
+  border-radius: 3px 0 0 3px;
+  background: linear-gradient(180deg, #4A5058, #1C2026);
+  box-shadow: inset 0 40px 0 -1px #2C3138;
+  pointer-events: none;
+}
+
+.iphone .frame {
+  position: relative;
+  border-radius: 36px;
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 390 / 844;
+}
+
+.iphone .frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border: 0;
+  border-radius: 0;
+  aspect-ratio: auto;
+  background: #0A0C10;
+}
+
+/* Dynamic Island */
+.iphone .island {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 88px;
+  height: 25px;
+  border-radius: 14px;
+  background: #05070A;
+  z-index: 4;
+  box-shadow: 0 1px 0 rgba(255,255,255,.06);
+}
+
+/* kamera dalam island */
+.iphone .island::after {
+  content: "";
+  position: absolute;
+  right: 9px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #2A3A66 0%, #0C1220 62%, #05070A 100%);
+  box-shadow: 0 0 0 1px rgba(90,130,220,.18);
+}
+
+/* home indicator */
+.iphone .home-bar {
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 96px;
+  height: 4px;
+  border-radius: 3px;
+  background: rgba(255,255,255,.42);
+  z-index: 4;
+  mix-blend-mode: overlay;
+}
+
+@media (min-width: 760px) {
+  .iphone { max-width: 300px; --bezel: 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iphone { transition: none; }
+}
