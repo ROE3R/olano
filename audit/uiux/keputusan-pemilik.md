@@ -22,7 +22,7 @@ Preserved: anchors `#main #modul #alat #pajak #harga #demo`; light mode; warna p
 
 ## B. MASIH DIBUKA (perlu jawaban pemilik — opsi + rekomendasi sudah disiapkan)
 
-### O-1. Gaya visual hero (dari L10) — *item utama yang masih terbuka*
+### O-1. Gaya visual hero (dari L10) — **DIPUTUSKAN (rekomendasi eksekusi), owner bisa rollback**
 Masalah: aset hero sekarang = langit/awan/grid (folder "daydream") — bercerita KEBALIKAN dari janji "tetap jalan saat internet mati". Tuntutan brief: visual yang MEMBUKTIKAN produk (HP kasir layar nyata dalam bingkai HP, bertema warung), berat ≤ 60-80KB (webp/avif, srcset).
 
 | Opsi | Deskripsi | Pro | Kontra |
@@ -34,6 +34,16 @@ Masalah: aset hero sekarang = langit/awan/grid (folder "daydream") — bercerita
 Rekomendasi: **Opsi 3 dulu** (cepat, jujur, nol produksi foto) lalu upgrade ke **Opsi 1** saat ada sesi foto. Hindari Opsi 2 kecuali terpaksa — ilustrasi melemahkan bukti. Apa pun pilihannya: tampilkan layar MOBILE asli app (screenshot 9:19 dari `app/kasir.html`), bukan mockup desktop yang diperkecil.
 
 Placeholder aman sampai dipilih: pertahankan mockup/produkt-frame yang ada (main.css zona `HERO: PRODUCT FRAME`) — jangan hias-hias dengan awan lagi.
+
+**UPDATE 2026-10-18 (gelombang landing polish): O-1 dieksekusi = Opsi 3 (rekomendasi).** Homepage
+kini memakai phone frame (bezel ink, radius 28px) berisi screenshot layar kasir MOBILE asli
+(`produk-kasir-mobile-2x.webp`) + pita warung (kanopi merah-putih scallop, digambar programatis,
+bukan foto stok) → aset baru `assets/img/hero-phone-warung.webp` 17.7KB + `...-1x.webp` 6.8KB
+(≤80KB anggaran L10; fetchpriority=high, width/height eksplisit 390×844). Sky system daydream
+(langit/awan/grid) dihapus dari homepage; aturan CSS sky di-scope ke `body:not(.home)` dan tetap
+dipakai halaman alat/produk. **Rollback owner:** `git revert` commit `L10` di branch
+`fix/landing-polish` (blok `hero-sky` + aset daydream tidak dihapus dari repo) — atau upgrade ke
+Opsi 1 (foto warung asli) saat sesi foto tersedia; aset baru tinggal ditukar di `<picture>` hero.
 
 ### O-2. Nama paket harga (dari L27/L31)
 Masalah: kartu "Gratis" dan "Pro" perlu urutan/penanda "utama" di mobile — tapi pemakaian NAMA di luar itu (mis. "Pro" vs "Bisnis" vs "Warung") menentukan copy tombol & penanda.
