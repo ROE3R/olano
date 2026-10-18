@@ -11,6 +11,7 @@
 <link rel="preload" href="assets/css/main.css" as="style">
 <style>/* [launch] critical: ukuran ikon sebelum main.css tiba (cegah SVG 300x150 -> CLS) */svg.ic{width:20px;height:20px;flex:none}svg.ic.sm{width:15px;height:15px}.feat-ic svg.ic{width:22px;height:22px}</style>
 <link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/bencho.css">
   <meta property="og:title" content="Rekap Pajak UMKM Tiap Bulan sesuai PP 20/2026 | Olano">
   <meta property="og:description" content="Rekap PPh final 0,5% UMKM sesuai PP 20/2026, terhitung dari transaksi kasir. Batas Rp500jt dan Rp4,8M per jenis WP. Rekap PDF siap setor, tim bantu via WhatsApp.">
   <meta property="og:type" content="website">
@@ -192,6 +193,34 @@
     <p class="small mt-3" style="color:var(--gray-500)">Dikerjakan mitra perpajakan berizin. Mulai setelah data diterima.</p>
   </div>
 </div></section>
+
+<!-- [bencho] Checklist alur jasa — blok `checklist` bencho.dev (MIT). -->
+<section class="section" id="alur-kerja" style="background:var(--gray-25)"><div class="container">
+  <div class="sec-head text-c">
+    <div class="eyebrow">Alur kerja</div>
+    <h2 class="mt-2">Empat langkah, lalu beres.</h2>
+    <p class="sub">Ketuk untuk menandai progres. Tersimpan di perangkat ini.</p>
+  </div>
+  <div class="checklist" data-checklist="pajak" style="max-width:620px;margin:16px auto 0;background:#fff;border:1px solid var(--gray-100);border-radius:16px;padding:8px">
+    <button type="button" class="check-row" data-key="p1" data-done="0">
+      <span class="check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+      <span class="check-txt">Kirim data usaha: NPWP dan omzet sebulan</span>
+    </button>
+    <button type="button" class="check-row" data-key="p2" data-done="0">
+      <span class="check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+      <span class="check-txt">Pilih paket: pajak saja, pembukuan saja, atau gabungan</span>
+    </button>
+    <button type="button" class="check-row" data-key="p3" data-done="0">
+      <span class="check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+      <span class="check-txt">Kirim bukti transaksi bulan ini lewat WhatsApp</span>
+    </button>
+    <button type="button" class="check-row" data-key="p4" data-done="0">
+      <span class="check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+      <span class="check-txt">Terima laporan dan SPT siap tanda tangan</span>
+    </button>
+  </div>
+</div></section>
+
 </main>
 
 <footer class="foot" id="foot">
@@ -251,5 +280,6 @@
   });
 })();
 </script>
+<script src="assets/js/checklist.js"></script>
 </body>
 </html>

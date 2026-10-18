@@ -11,6 +11,7 @@
 <link rel="preload" href="assets/css/main.css" as="style">
 <style>/* [launch] critical: ukuran ikon sebelum main.css tiba (cegah SVG 300x150 -> CLS) */svg.ic{width:20px;height:20px;flex:none}svg.ic.sm{width:15px;height:15px}.feat-ic svg.ic{width:22px;height:22px}</style>
 <link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/bencho.css">
 <meta property="og:title" content="Analisa GoFood &amp; GrabFood: Margin per Saluran | Olano">
 <meta property="og:description" content="Tahu untung rugi tiap pesanan online. Komisi platform 20–30% ikut dihitung. Lihat saluran mana yang benar-benar cuan, mana yang cuma ramai.">
 <meta property="og:type" content="website">
@@ -130,6 +131,34 @@
     </a>
   </div>
 </div></section>
+
+<!-- [bencho] Checklist alur jasa — blok `checklist` bencho.dev (MIT). -->
+<section class="section" id="alur-kerja" style="background:var(--gray-25)"><div class="container">
+  <div class="sec-head text-c">
+    <div class="eyebrow">Alur kerja</div>
+    <h2 class="mt-2">Empat langkah, delivery diurus.</h2>
+    <p class="sub">Ketuk untuk menandai progres. Tersimpan di perangkat ini.</p>
+  </div>
+  <div class="checklist" data-checklist="delivery" style="max-width:620px;margin:16px auto 0;background:#fff;border:1px solid var(--gray-100);border-radius:16px;padding:8px">
+    <button type="button" class="check-row" data-key="d1" data-done="0">
+      <span class="check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+      <span class="check-txt">Kirim tautan toko GoFood dan GrabFood kamu</span>
+    </button>
+    <button type="button" class="check-row" data-key="d2" data-done="0">
+      <span class="check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+      <span class="check-txt">Kirim menu, foto, dan harga terbaru</span>
+    </button>
+    <button type="button" class="check-row" data-key="d3" data-done="0">
+      <span class="check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+      <span class="check-txt">Set promo minggu ini bersama tim</span>
+    </button>
+    <button type="button" class="check-row" data-key="d4" data-done="0">
+      <span class="check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+      <span class="check-txt">Terima laporan omzet delivery tiap Senin</span>
+    </button>
+  </div>
+</div></section>
+
 </main>
 
 <footer class="foot" id="foot">
@@ -176,5 +205,6 @@
 <script src="assets/js/config.js"></script>
 <script src="assets/js/shared.js"></script>
   <script src="assets/js/motion.js"></script>
+<script src="assets/js/checklist.js"></script>
 </body>
 </html>

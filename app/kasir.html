@@ -443,7 +443,15 @@
         + '</div><div class="qty">'+new Date(s.ts).toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})+' · '+s.method+'</div></div>'
         + '<div class="c-actions"><span class="ln">'+R.rp(s.total)+'</span></div></div>';
     }).join("");
-    document.getElementById("rekap-list").innerHTML = rows || '<p class="small" style="color:var(--gray-500);padding:12px 0">Belum ada transaksi pada rentang ini.</p>';
+    /* [bencho] empty state rekap: data-driven, bukan teks abu. Tiga kondisi nyata:
+       belum pernah ada transaksi sama sekali vs ada transaksi tapi di luar rentang. */
+    var emptyMsg = rekapSales.length === 0
+      ? {b:"Belum ada transaksi", p:"Transaksi pertama akan muncul di sini setelah kamu menyelesaikan pembayaran."}
+      : {b:"Kosong di rentang ini", p:"Ada transaksi di tanggal lain. Coba ganti ke 7 hari atau bulan ini."};
+    document.getElementById("rekap-list").innerHTML = rows
+      || ('<div class="pos-empty" role="status">'
+        + '<span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 4 4-7"/></svg></span>'
+        + '<b>' + emptyMsg.b + '</b><p>' + emptyMsg.p + '</p></div>');
   }
   document.getElementById("menu-rekap").addEventListener("click", function(){
     /* [pos-fix] 2026-10-18: skeleton rekap selagi data dibaca dari IDB (brief 5.2.J: kerangka, bukan layar kosong) */
@@ -1098,7 +1106,7 @@
     var okk = document.getElementById("ok-kembali");
     if(back>0){ document.getElementById("ok-kembali-v").textContent = R.rp(back); okk.hidden = false; }
     else okk.hidden = true;
-    cart = {}; render(); updateBar(); closeSheet("sheet");
+    cart = {}; render(); updateBar(); renderCart(); closeSheet("sheet"); /* [fix] renderCart: sheet keranjang harus ikut kosong setelah bayar */
     document.getElementById("receipt").innerHTML = receiptHTML(sale);
     var okS = document.getElementById("sheet-ok");
     okS._lastFocus = document.getElementById("q"); /* [pos-fix] P1: fokus sukses kembali ke layar jual (Bayar sudah disabled) */
