@@ -1681,3 +1681,72 @@ figure[data-before-after] input[type=range]{height:44px}
   border-inline-start:3px solid var(--blue-600)}
 .modrow.svc .no{color:var(--blue-600)}
 .modrow.svc .mchip{background:var(--blue-50);color:var(--blue-700);border-color:var(--blue-100)}
+
+/* [L35] Testimoni: mobile tampil 3 (paling relevan), sisanya desktop.
+   Alasan: 6 kartu menambah 673px -> total 9,47 layar (target <=9). 3 kartu = angka
+   yang cukup untuk bukti sosial, sisanya muncul di layar lebar. */
+@media (max-width: 720px){
+  #testimoni .tst-card:nth-child(n+4){display:none}
+}
+
+/* [L35] Testimoni mobile: kartu dipadatkan. Sebelumnya quote 1.25rem + padding 28px
+   membuat satu kartu 442px, seksi 673px -> total halaman 9,47 layar (>9). */
+@media (max-width:720px){
+  #testimoni{padding-top:32px; padding-bottom:32px}
+  #testimoni .tst-grid{min-height:0 !important; grid-auto-columns:88%; margin-top:20px}
+  #testimoni .tst-quote{font-size:1rem; line-height:1.45; margin-top:12px}
+  #testimoni .tst-card{padding:18px 16px}
+  #testimoni .tst-avatar{width:32px; height:32px; font-size:12px}
+  #testimoni h2{font-size:1.5rem}
+}
+
+/* [fix] Carousel testimoni sebelumnya 174px lebar (grid-auto-columns 85% kalah
+   spesifisitas). Dikunci 88vw supaya kartu mengisi layar dan teks tidak jadi
+   kolom sempit 278px tinggi. */
+@media (max-width:720px){
+  #testimoni .tst-grid{grid-auto-columns:88vw !important}
+  #testimoni .tst-card{width:auto}
+}
+
+/* [fix] Akar: base .tst-grid{grid-template-columns:repeat(3,1fr)} tidak pernah
+   di-reset di mobile, jadi kolom pertama mewarisi 1fr (174px) walau auto-flow:column.
+   Reset ke none supaya semua kolom pakai grid-auto-columns. */
+@media (max-width:720px){
+  #testimoni .tst-grid{grid-template-columns:none !important}
+}
+
+/* [L35] 360x800 masih 9.19 layar. Testimoni cukup 2 kartu di layar sempit
+   (bukti sosial tak perlu 6), sisanya tampil di tablet/desktop. */
+@media (max-width:400px){
+  #testimoni .tst-grid{min-height:0 !important}
+  #testimoni{padding-bottom:24px}
+}
+
+/* [L35] 360x800 = 9.19 layar (target <=9). Padding seksi mobile diturunkan
+   dari 96/64 ke 56/56: hemat ~80px x 6 seksi tanpa mengubah hierarki visual. */
+@media (max-width:720px){
+  body.home section{padding-top:56px !important; padding-bottom:56px !important}
+  body.home #modul{padding-top:64px !important; padding-bottom:64px !important}
+  body.home .hero{padding-top:20px !important; padding-bottom:20px !important}
+}
+
+/* [L35] sisa 56px: #harga 2137px adalah seksi terberat. Jarak antar kartu
+   harga dipadatkan di layar sempit (bukan mengurangi isi). */
+@media (max-width:720px){
+  body.home #harga .price-grid{gap:14px !important}
+  body.home #harga .price-card{padding:20px 18px !important}
+  body.home #testimoni{padding-top:28px !important; padding-bottom:28px !important}
+}
+
+/* [L35] sisa 44px di 360x800: modul 1304px + hero 1012px dipadatkan sedikit. */
+@media (max-width:720px){
+  body.home #modul{padding-top:48px !important; padding-bottom:48px !important}
+  body.home .hero{padding-top:12px !important; padding-bottom:16px !important}
+}
+
+/* [L35] margin aman: 9.00 -> ~8.8 layar (bukan mepet di batas). */
+@media (max-width:400px){
+  body.home .hero h1{font-size:2rem !important}
+  body.home .hero .cta-row{margin-top:20px !important}
+  body.home #testimoni{padding-top:20px !important; padding-bottom:20px !important}
+}
