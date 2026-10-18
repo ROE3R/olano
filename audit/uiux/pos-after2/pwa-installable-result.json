@@ -1,0 +1,41 @@
+{
+ "cdp_errors": [
+  "in-incognito"
+ ],
+ "sw": {
+  "active": true,
+  "scope": "http://localhost:8921/",
+  "controlled": true
+ },
+ "manifest": {
+  "name": "Olano Kasir",
+  "short_name": "Olano",
+  "start_url": "app/kasir.html",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#2453EB",
+  "background_color": "#FAFBFD"
+ },
+ "icons": [
+  {
+   "sizes": "192x192",
+   "purpose": "any"
+  },
+  {
+   "sizes": "512x512",
+   "purpose": "any maskable"
+  }
+ ],
+ "hasil": {
+  "cdp_installable": "GAGAL · in-incognito: ",
+  "sw_aktif": "LULUS · scope=http://localhost:8921/ controlled=True",
+  "mf_name": "LULUS · name=Olano Kasir short_name=Olano",
+  "mf_start_url": "LULUS · app/kasir.html",
+  "mf_display": "LULUS · standalone",
+  "mf_icons_192_512": "LULUS · ['192x192', '512x512']",
+  "mf_maskable": "LULUS · ['any', 'any maskable']",
+  "ikon_http_200": "LULUS · 192=200 512=200",
+  "link_manifest": "LULUS",
+  "mf_theme_bg": "LULUS · theme=#2453EB bg=#FAFBFD"
+ }
+}

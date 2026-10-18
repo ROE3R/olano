@@ -1,0 +1,21 @@
+{
+ "arm": "sesudah",
+ "runs": [
+  {
+   "cta_clicked_s": 4.46,
+   "grid_ready_s": 9.57,
+   "cart_1_item_s": 9.87
+  },
+  {
+   "cta_clicked_s": 4.41,
+   "grid_ready_s": 9.59,
+   "cart_1_item_s": 9.85
+  },
+  {
+   "cta_clicked_s": 4.38,
+   "grid_ready_s": 9.61,
+   "cart_1_item_s": 9.87
+  }
+ ],
+ "median_cart_s": 9.87
+}

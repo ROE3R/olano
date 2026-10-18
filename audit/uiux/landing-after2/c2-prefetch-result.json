@@ -1,0 +1,61 @@
+{
+ "profil": "3G lambat: 400 kbps down / 15 kbps up / RTT 150ms / CPU 4x / SW blokir (kunjungan pertama)",
+ "prefetch": {
+  "viewport": "360x110 (CTA hero pasti di luar viewport)",
+  "cta_rect": {
+   "top": 369.640625,
+   "bottom": 413.640625,
+   "vh": 110
+  },
+  "links_saat_cta_belum_terlihat": [],
+  "links_setelah_cta_terlihat": [
+   "/app/kasir.html",
+   "/assets/js/config.js"
+  ],
+  "gating_ok": true
+ },
+ "jalur_A_landing_ke_keranjang": {
+  "cta_clicked_s": 4.42,
+  "grid_ready_s": 9.53,
+  "product_tapped_s": 9.77,
+  "cart_1_item_s": 9.78,
+  "total_s": 9.78,
+  "bar": "1 item · Rp22.000"
+ },
+ "jalur_B_kasir_langsung": {
+  "grid_ready_s": 3.59,
+  "cart_1_item_s": 3.7,
+  "total_s": 3.7,
+  "bar": "1 item · Rp22.000"
+ },
+ "target_lebih_besar_sama_10": true,
+ "pageerrors": [],
+ "ab_same_tree_median_3run": {
+  "sebelum_prefetch_s": 8.54,
+  "sesudah_prefetch_bot_tap_immediate_s": 9.87,
+  "catatan": "bot-tap Playwright mengetuk segera saat CTA actionable (~4.4s); kasir.html prefetch (prioritas terendah) di HTTP/1.0 local (no keep-alive) masih menyedot pipa saat itu -> navigasi meng-reuse respons in-flight yang lambat (zombie-boost). Pengguna nyata membaca hero dulu -> lihat late_tap."
+ },
+ "late_tap_manualis": {
+  "dengan_prefetch": {
+   "click_s": 7.81,
+   "grid_ready_s": 8.78,
+   "cart_1_item_s": 8.89,
+   "nav_transferSize": 0,
+   "cache_hit": true
+  },
+  "tanpa_prefetch_tap_sama_7_9s": {
+   "click_s": 7.9,
+   "grid_ready_s": 10.17,
+   "cart_1_item_s": 10.49,
+   "nav_transferSize": 48675,
+   "lewat_10s": true
+  },
+  "kesimpulan": "Prefetch menyelamatkan pengguna yang tap >= ~7.3s (dokumen kasir cache-hit, 1.6x lebih cepat); segment tap-immediate sedikit terkena zombie-boost (+1.3s) tapi tetap <= 10s."
+ },
+ "commit": "9682ca9 (fix/landing-polish, worktree /root/olano-landing2, server :8922)",
+ "bukti_screenshot": [
+  "prefetch-0-cta-belum-terlihat-360x110.png (0 link prefetch, cta top 369.6 > vh 110)",
+  "prefetch-1-cta-terlihat-2-link-360x110.png (2 link: /app/kasir.html, /assets/js/config.js)",
+  "after-C2-3G-prefetch-keranjang-1item-360x800.png (jalur A: bar 1 item Rp22.000)"
+ ]
+}

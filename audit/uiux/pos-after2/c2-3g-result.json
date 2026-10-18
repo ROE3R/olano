@@ -1,0 +1,19 @@
+{
+ "profil": "3G lambat: 400 kbps down / 15 kbps up / RTT 150ms / CPU 4x / SW blokir (kunjungan pertama)",
+ "jalur_A_landing_ke_keranjang": {
+  "cta_clicked_s": 5.74,
+  "grid_ready_s": 9.62,
+  "product_tapped_s": 9.7,
+  "cart_1_item_s": 9.7,
+  "total_s": 9.7,
+  "bar": "1 item · Rp22.000"
+ },
+ "jalur_B_kasir_langsung": {
+  "grid_ready_s": 3.69,
+  "cart_1_item_s": 3.81,
+  "total_s": 3.81,
+  "bar": "1 item · Rp22.000"
+ },
+ "target_lebih_besar_sama_10": true,
+ "pageerrors": []
+}

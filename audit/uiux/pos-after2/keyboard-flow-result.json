@@ -1,0 +1,28 @@
+{
+ "alur": "keyboard-only penuh (tanpa mouse): grid -> +1 -> Bayar -> Uang pas -> konfirmasi -> Selesai",
+ "tahapan": [
+  "Tab x10 -> fokus kartu produk pertama (pos-item)",
+  "Enter -> 1 item di keranjang (bar: 1 item · Rp22.000)",
+  "Tab x10 -> tombol Bayar",
+  "Enter -> sheet Pembayaran terbuka, fokus di: BayarRp22.000",
+  "Tab x3 -> chip Uang pas",
+  "Enter -> cash terisi 22000 (uang pas), tidak ada peringatan kurang",
+  "Tab x4 -> slide konfirmasi",
+  "Enter -> transaksi tersimpan, layar sukses",
+  "Tab x2 -> tombol Selesai",
+  "Enter -> Selesai; keranjang kosong (0 item), kembali ke layar jual"
+ ],
+ "hasil": {
+  "tahap1_fokus_grid": "LULUS · 10 Tab -> pos-item",
+  "tahap2_enter_tambah": "LULUS · 1 item",
+  "tahap3_fokus_bayar": "LULUS · 10 Tab -> pay",
+  "tahap3_sheet_terbuka": "LULUS · fokus awal: BayarRp22.000",
+  "tahap4_fokus_uang_pas": "LULUS · 3 Tab -> cash-chip pas",
+  "tahap4_uang_pas_isi": "LULUS · cash=22000 err=False",
+  "tahap5_fokus_slide": "LULUS · 4 Tab -> sld",
+  "tahap5_sukses": "LULUS · layar sukses terbuka",
+  "tahap6_fokus_selesai": "LULUS · 2 Tab -> btn btn-primary btn-block",
+  "tahap6_selesai_kembali": "LULUS · bar=0 item sheetClosed=True"
+ },
+ "pageerrors": []
+}

@@ -1,0 +1,21 @@
+{
+ "arm": "sebelum",
+ "runs": [
+  {
+   "cta_clicked_s": 4.36,
+   "grid_ready_s": 8.31,
+   "cart_1_item_s": 8.54
+  },
+  {
+   "cta_clicked_s": 4.38,
+   "grid_ready_s": 8.39,
+   "cart_1_item_s": 8.66
+  },
+  {
+   "cta_clicked_s": 4.32,
+   "grid_ready_s": 8.27,
+   "cart_1_item_s": 8.5
+  }
+ ],
+ "median_cart_s": 8.54
+}
