@@ -1309,7 +1309,7 @@ body.home .small b{font-variant-numeric:tabular-nums}
 @media (prefers-reduced-motion:reduce){.auth-card{animation:none}}
 
 /* ============ v25: footnote & pintu demo ============ */
-.fnote{font-family:var(--font-mono); font-size:11px; color:var(--gray-500);
+.fnote{font-family:var(--font-mono); font-size:12px; color:var(--gray-500); /* [landing-fix] L9 (2026-10-18): 11->12px (min brief); kontras gray-500 terukur 7.16:1 di putih, 5.24:1 di titik terburuk gradasi C9DEFF — lulus >=4.5:1 */
   letter-spacing:.02em; margin-top:20px}
 /* [landing-fix] L13 (2026-10-18): tautan demo = tombol teks 48px TERPISAH dari gambar
    (gambar hero bukan link raksasa lagi; hint 11px digugurkan). */
