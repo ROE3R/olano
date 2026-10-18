@@ -321,8 +321,10 @@
   </div>
 </section>
 
-<!-- ============ 6. TESTIMONI (placeholder berlabel CONTOH, render dari config.testimonials) ============ -->
-<section class="section" id="testimoni" aria-labelledby="tst-h">
+<!-- ============ 6. TESTIMONI (K5 + L32: disembunyikan di produksi sampai ada isi nyata) ============
+     FLAG: hapus atribut `hidden` di bawah SETELAH testimoni asli diisi (data masih utuh di
+     config.js -> testimonials; renderer inline di bawah otomatis merender lagi saat flag dibuka). -->
+<section class="section" id="testimoni" aria-labelledby="tst-h" hidden>
   <div class="container">
     <p class="tst-label">CONTOH - tiga cerita di bawah ini contoh tampilan; akan kami ganti dengan pemilik toko yang benar-benar memakai Olano.</p>
     <div class="eyebrow" style="margin-top:16px">Testimoni</div>
@@ -450,10 +452,12 @@ note.innerHTML = "<b>Omzet tahunan "+window.OLANO.rp(annual)+".</b> Dasar kena (
   });
 })();
 // Testimoni CONTOH: render dari config.testimonials (satu tempat edit = swap nanti)
+// [L32] seksi #testimoni hidden di produksi (K5) -> renderer skip; buka hidden = render jalan lagi
 (function(){
   var T = window.OLANO_CONFIG && window.OLANO_CONFIG.testimonials;
   var grid = document.getElementById("tst-grid");
   if(!T || !grid || !T.quotes || !T.quotes.length) return;
+  if(grid.closest("section") && grid.closest("section").hidden) return;
   grid.innerHTML = T.quotes.map(function(q){
     return '<figure class="tst-card">'
       + '<span class="tst-avatar" aria-hidden="true">' + (q.initials||"") + '</span>'
