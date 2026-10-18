@@ -94,13 +94,8 @@
 
 <!-- ============ 1. HERO ============ -->
 <section class="hero">
-  <div class="hero-sky" aria-hidden="true">
-    <picture><source media="(max-width: 759px)" srcset="assets/daydream/sky-hero-m.webp" type="image/webp"><img class="h-sky" src="assets/daydream/sky-hero.webp" alt="" width="2200" height="1604" fetchpriority="high"></picture>
-    <div class="h-veil"></div>
-    <img class="h-grid" data-parallax="0.10" src="assets/daydream/grid-overlay.svg" alt="" width="1920" height="1280">
-    <img class="h-cloud-1" src="assets/daydream/cloud-1.webp" alt="" width="520" height="322" fetchpriority="low">
-    <div class="h-scrim"></div>
-  </div>
+  <!-- [landing-fix] L10/O-1 (2026-10-18): daydream sky/cloud/grid diganti pita warung (DIPUTUSKAN, owner bisa rollback: pulihkan blok hero-sky dari git) -->
+  <div class="hero-wb" aria-hidden="true"></div>
   <div class="container text-c">
     <div class="hero-inner">
       <h1>Sistem jualan untuk UMKM yang tetap jalan saat internet <em class="it-serif" style="color:var(--blue-800)">mati</em>.</h1>
@@ -115,9 +110,9 @@
       <a class="hero-visual-link" href="kasir.html#demo" aria-label="Coba demo kasir">
         <figure class="hero-visual">
           <picture>
-            <source media="(max-width: 759px)" srcset="assets/img/produk-kasir-mobile.webp 1x, assets/img/produk-kasir-mobile-2x.webp 2x" type="image/webp">
+            <source media="(max-width: 759px)" srcset="assets/img/hero-phone-warung-1x.webp 1x, assets/img/hero-phone-warung.webp 2x" type="image/webp">
             <source media="(min-width: 760px)" srcset="assets/img/produk-kasir.webp 1x, assets/img/produk-kasir-2x.webp 2x" type="image/webp">
-            <img src="assets/img/produk-kasir.webp" alt="Tampilan aplikasi kasir Olano: katalog produk, keranjang, dan tombol bayar (data contoh)" width="1180" height="962" fetchpriority="high">
+            <img src="assets/img/hero-phone-warung.webp" alt="Tampilan kasir Olano: katalog produk, keranjang, dan tombol bayar (data contoh)" width="390" height="844" fetchpriority="high">
           </picture>
           <figcaption>Data contoh: tampilan aplikasi Olano</figcaption>
         </figure>

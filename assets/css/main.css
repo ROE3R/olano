@@ -835,6 +835,13 @@ body.kb-open .pos-pay{min-height:48px}
 .hero-visual img{width:100%;height:auto;aspect-ratio:1180/962;border:1px solid var(--gray-300);border-radius:14px;background:#fff;
   box-shadow:0 0 0 1px rgba(20,40,70,.05), 0 28px 72px -20px rgba(14,26,74,.30)}
 @media(max-width:759px){.hero-visual img{aspect-ratio:390/844}} /* gambar mobile 390x844, CLS tetap 0 */
+/* [landing-fix] L10/O-1 (2026-10-18): mobile = phone frame (bezel ink, radius 28) berisi
+   screenshot layar kasir asli + pita warung; desktop >=760 tetap kartu lebar produk-kasir.
+   Chrome memotong konten <img> pada radius border-box -> bezel 5px tampak menyatu. */
+@media(max-width:759px){
+  .hero-visual img{background:var(--ink); border:0; border-radius:28px; padding:5px;
+    box-shadow:0 24px 64px -20px rgba(14,26,74,.45)}
+}
 .hero-visual figcaption{font-size:12px;color:var(--gray-500);text-align:center;margin-top:12px}
 
 /* -- section: ritme ukur sokudo (80 desktop / 64 mobile), surface shift halus -- */
@@ -958,7 +965,10 @@ h1,h2,h3{font-weight:450}
    gradient asli #C9DEFF->#FFF jadi base anti-AA. Detail: DESIGN-REFERENCE
    "ATMOSPHERE SYSTEM v2". Motion guard di bawah. -- */
 @keyframes cloud-drift{from{transform:translateX(0)}to{transform:translateX(-9vw)}}
-.hero{background:linear-gradient(180deg,#C9DEFF 0%,#E4EEFF 46%,#FFFFFF 100%)}
+/* [landing-fix] L10/O-1 (2026-10-18): homepage tidak lagi memakai sky system daydream
+   (hero = pita warung + screenshot kasir). Sky system tetap hidup untuk halaman alat/produk
+   -> aturan di-scope ke body:not(.home); body.home dapat latar putih + glow radial. */
+body:not(.home) .hero{background:linear-gradient(180deg,#C9DEFF 0%,#E4EEFF 46%,#FFFFFF 100%)}
 .hero-sky{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .hero-sky img{position:absolute;pointer-events:none}
 .hero-sky .h-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.62;filter:hue-rotate(30deg) saturate(1.12)}
@@ -972,6 +982,12 @@ h1,h2,h3{font-weight:450}
 @media(max-width:900px){
   .hero-sky .h-cloud-1{width:96vw;right:-30%;top:18%}
 }
+/* [landing-fix] L10/O-1: homepage hero = putih + glow radial (bentuk sama dgn sky system, hue biru) */
+body.home .hero{background:#FFFFFF}
+body.home .hero::before{content:"";position:absolute;left:50%;top:26%;width:min(1584px,140%);aspect-ratio:1584/926;
+  transform:translate(-50%,-32%);pointer-events:none;
+  background:radial-gradient(50% 46% at 50% 50%, rgba(219,232,254,.9), rgba(36,83,235,.05) 45%, transparent 72%)}
+body.home .hero .container{z-index:1}
 
 /* -- sky LITE utk tool-hero (sub-halaman; foto ringan, tanpa comet) -- */
 .tool-hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#C9DEFF 0%,#E4EEFF 46%,#FFFFFF 100%)}
@@ -1365,7 +1381,7 @@ body.home .small b{font-variant-numeric:tabular-nums}
   .hero-inner h1{font-size:clamp(2rem,7vw,2.375rem); line-height:1.08}
   .hero-inner .sub{font-size:15px; margin-top:10px}
   .hero-visual{max-width:262px; margin-top:4px}
-  .hero-visual img{border-radius:14px}
+  .hero-visual img{border-radius:28px} /* [landing-fix] L10/O-1: radius frame HP (dgn bezel 5px) */
   .hero-struk{margin-top:18px}
   .cta-row{margin-top:14px}
 
