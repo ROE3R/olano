@@ -53,23 +53,23 @@ Artefak lanjutan (dibuat oleh subagent bersangkutan, bukan file ini): skor rubri
 |---|---|---|---|---|---|---|
 | L3 | dua tombol "Masuk" + "Coba kasir gratis" tujuan sama; sesak di HP | m360 | - | T | | |
 | L4 | menu desktop vs mobile beda isi ("Kasir UMKM" hanya di salah satu) | m360 + desktop | - | T | | |
-| L5 | menu mobile: tinggi baris, CTA dasar panel, Esc, fokus-lock, scroll-lock, reduced-motion | m360 | - | T | | |
+| L5 | menu mobile: tinggi baris, CTA dasar panel, Esc, fokus-lock, scroll-lock, reduced-motion | m360 | - | T | menu mobile: Esc/Back menutup, focus trap (Tab/Shift+Tab), scroll body terkunci (overflow hidden), tanpa scroll-bleed (overscroll contain), panel 160ms <200ms, fokus balik ke pemicu; reduced-motion guard global | DONE |
 | L6 | jangkar #modul/#alat/#pajak/#harga tertutup header sticky (scroll-padding) | m360 | - | S | | |
-| L7 | logo menaut ke /index.html, bukan "/" | semua | - | R | | |
+| L7 | logo menaut ke /index.html, bukan "/" | semua | - | R | logo header & footer href='/' (bukan index.html) | DONE |
 
 ### Landing — hero
 | ID | halaman/layar | perangkat | [H] terbukti? | tingkat | perbaikan | status |
 |---|---|---|---|---|---|---|
 | L8 | H1 ~14 kata → CTA terdorong keluar layar pertama | m360 | - | K | | |
-| L9 | 3 kartu angka melayang + catatan "Basis" tak terbaca | m360 | - | K | | |
-| L10 | aset hero langit/awan/grid = kebalikan janji "tetap jalan saat internet mati" | m360 + desktop | - | K | | |
-| L11 | lapisan dekoratif beranimasi/parallax → jank & boros baterai | m360 | - | S | | |
+| L9 | 3 kartu angka melayang + catatan "Basis" tak terbaca | m360 | - | K | fnote 11->12px; kontras gray-500 terukur: 7.16:1 putih / 6.13:1 E4EEFF / 5.24:1 C9DEFF — semua >=4.5:1 | DONE |
+| L10 | aset hero langit/awan/grid = kebalikan janji "tetap jalan saat internet mati" | m360 + desktop | - | K | O-1 dieksekusi (Opsi 3): phone frame warung berisi screenshot kasir asli (aset hero-phone-warung 17.7+6.8KB, fetchpriority=high, w/h eksplisit); sky daydream keluar dari homepage (CSS di-scope body:not(.home), halaman alat tetap); keputusan-pemilik O-1 = DIPUTUSKAN, rollback via git revert | DONE |
+| L11 | lapisan dekoratif beranimasi/parallax → jank & boros baterai | m360 | - | S | cloud-drift OFF @ (hover:none),(pointer:coarse); motion.js gate 'pointer halus' + maxTouchPoints==0 -> wheel-hijack/parallax/magnetic OFF di sentuh; verif l-cloud none/0s & wheel tak dicegah @360 touch | DONE |
 | L12 | satu tombol di hero — PERTAHANKAN, jangan tambah tombol kedua | m360 | - | S | | |
 
 ### Landing — blok tangkapan layar produk
 | ID | halaman/layar | perangkat | [H] terbukti? | tingkat | perbaikan | status |
 |---|---|---|---|---|---|---|
-| L13 | seluruh tangkapan layar + keterangan = 1 tautan raksasa; gambar landscape tak terbaca di HP | m360 | - | K | | |
+| L13 | seluruh tangkapan layar + keterangan = 1 tautan raksasa; gambar landscape tak terbaca di HP | m360 | - | K | gambar hero bukan lagi tautan raksasa (figure aria-hidden, alt kosong) + tautan teks 'Buka demo kasir' 48px terpisah; COPY-NANTI #3 | DONE |
 
 ### Landing — seksi Modul
 | ID | halaman/layar | perangkat | [H] terbukti? | tingkat | perbaikan | status |
@@ -77,7 +77,7 @@ Artefak lanjutan (dibuat oleh subagent bersangkutan, bukan file ini): skor rubri
 | L14 | 6 kartu penuh-tautan: sentuh tak sengaja, nama aksesibel panjang, ~6 layar | m360 | - | K | baris modul ringkas mobile 118-131px (desc line-clamp 1), chip rumus disembunyikan <=759px, guard drag-vs-tap a.modrow di motion.js v18 (drag >=8px batal, ketukan jalan) | DONE |
 | L15 | baris "contoh" rumus satu-baris pecah acak di layar sempit | m360 | - | T | rumus contoh disembunyikan di <=759px (utuh di desktop/tablet & halaman tujuan); layout label-kiri/nilai-kanan ditunda tahap kata | DONE |
 | L16 | lencana "Sudah jalan" x5 = kebisingan (lihat F14 — label di tahap kata) | m360 | - | T | badge 'Sudah jalan' x5 dihapus dari modlist; 'Segera hadir' dipertahankan; log COPY-NANTI #1 (label F14 tak diubah) | DONE |
-| L17 | penghitung "05 aktif · 01 segera hadir" = info pendiri, bukan pengguna | m360 | - | S | | |
+| L17 | penghitung "05 aktif · 01 segera hadir" = info pendiri, bukan pengguna | m360 | - | S | penghitung '05 aktif - 01 segera hadir' dihapus (desktop juga) + rule CSS-nya | DONE |
 | L18 | kartu "Automation" tampil aktif & bisa ditekan = jalan buntu | m360 | - | T | | |
 | L19 | nomor 01-06 kesan urutan/peringkat palsu | m360 | - | S | | |
 
@@ -94,7 +94,7 @@ Artefak lanjutan (dibuat oleh subagent bersangkutan, bukan file ini): skor rubri
 | L23 | "Jenis usaha" 5 opsi: radio memakan 240px vertikal / dropdown kustom rawan | m360 | - | T | | |
 | L24 | input omzet: prefix Rp, ribuan live, inputmode, tombol cepat, hasil LIVE | m360 | - | K | prefix Rp dalam kolom, ribuan live (kursor stabil di akhir), chip 10/30/60/100 jt, tombol clear, type=text + inputmode=numeric, paste 'Rp 60.000.000' dibersihkan | DONE |
 | L25 | hasil kalkulator tertutup keyboard saat mengetik | m360 | - | K | #tax-out dipindah DI ATAS input (DOM) + scrollIntoView block:nearest saat mengetik; aria-live=polite dipertahankan | DONE |
-| L26 | kartu hasil: dua kalimat tebal bersaing, tanpa hierarki angka | m360 | - | S | | |
+| L26 | kartu hasil: dua kalimat tebal bersaing, tanpa hierarki angka | m360 | - | S | hasil kalkulator: angka >=32px (clamp 2rem-2.5rem) kolom + label 1 baris + .out-sub penjelas 14/12.5px + detail callout kecil; tabular-nums | DONE |
 
 ### Landing — seksi Harga
 | ID | halaman/layar | perangkat | [H] terbukti? | tingkat | perbaikan | status |
@@ -103,20 +103,20 @@ Artefak lanjutan (dibuat oleh subagent bersangkutan, bukan file ini): skor rubri
 | L28 | butir fitur Pro gabungan (3 hal + angka dalam satu butir) | m360 | - | T | butir gabungan dipecah 3 butir (AI harga | Foto | Tanya AI); kuota '60 foto/outlet/bulan' jadi teks sekunder 12px; log COPY-NANTI #2 | DONE |
 | L29 | "Rp50rb/outlet/bulan" satuan membungkus baris, ukuran tak konsisten | m360 | - | T | | |
 | L30 | jalur WhatsApp tanpa tombol terlihat (lihat K1 — label "nomor menyusul", non-dead) | m360 | - | K | tombol WA 48px di #harga, label jujur 'nomor menyusul' (K1), non-dead: klik membuka info; TODO shared-fix wave 3: swap ke <a wa.me> saat config wa terisi | DONE |
-| L31 | dua CTA harga menuju tujuan identik, tanpa hierarki primer/sekunder | m360 | - | S | | |
+| L31 | dua CTA harga menuju tujuan identik, tanpa hierarki primer/sekunder | m360 | - | S | CTA harga: Pro (utama) solid btn-primary, Gratis outline btn-secondary | DONE |
 
 ### Landing — CTA penutup, testimoni, footer
 | ID | halaman/layar | perangkat | [H] terbukti? | tingkat | perbaikan | status |
 |---|---|---|---|---|---|---|
-| L32 | seksi testimoni "CONTOH" tampil di produksi; CTA penutup jadi elemen terakhir (lihat K5) | m360 | - | K | | |
+| L32 | seksi testimoni "CONTOH" tampil di produksi; CTA penutup jadi elemen terakhir (lihat K5) | m360 | - | K | seksi testimoni CONTOH hidden di produksi (flag, bukan hapus; renderer skip; data config tetap utuh); halaman -0.9 layar | DONE |
 | L33 | footer 3 kolom + paragraf hukum: target sentuh sempit | m360 | - | T | footer mobile: 1 kolom + pemisah dashed, semua tautan min-height 44px, legal 3 baris di 360px; desktop tak berubah | DONE |
 
 ### Landing — global
 | ID | halaman/layar | perangkat | [H] terbukti? | tingkat | perbaikan | status |
 |---|---|---|---|---|---|---|
-| L34 | tak ada FAQ / cara mulai / keamanan data (komponen struktur boleh dibuat, isi ditunda) | m360 | - | T | | |
-| L35 | tinggi total halaman > 9 layar di 360x800 | 360x800 | - | T | setelah batch fix: scrollHeight 7103px = 8.88 layar @360x800 (<=9 LULUS; sebelum 6983 = 8.73); C3 ikut aman: CTA bottom 414 < 560 | DONE |
-| L36 | tak ada tombol kembali-ke-atas pada halaman panjang | m360 | - | S | | |
+| L34 | tak ada FAQ / cara mulai / keamanan data (komponen struktur boleh dibuat, isi ditunda) | m360 | - | T | komponen FAQ (3 accordion) + 3 langkah berikon SEBELUM CTA penutup, placeholder honest 'isi menyusul' (R-23/R-38); faqH 510px @360 | DONE |
+| L35 | tinggi total halaman > 9 layar di 360x800 | 360x800 | - | T | final 6963px = 8.70 layar @360x800 (baseline gelombang 8.88) — <=9 LULUS meski +FAQ/L34 (L32 membebaskan ruang) | DONE |
+| L36 | tak ada tombol kembali-ke-atas pada halaman panjang | m360 | - | S | tombol kembali-ke-atas 44px kiri-bawah (jauh dari WA/CTA kanan), muncul scroll>2 layar, safe-area, smooth scroll (auto saat reduced-motion); uji overlap footer = False | DONE |
 | L37 | skip link "Langsung ke isi" — pertahankan; pastikan terlihat saat fokus | m360 + keyboard | - | S | | |
 
 <!-- /SECTION: landing L1-L37 -->
