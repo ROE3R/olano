@@ -144,6 +144,10 @@ p{max-width:65ch}
 .nav-mobile{display:none; flex-direction:column; gap:0; border-top:1px solid var(--gray-100);
   background:var(--white); padding:var(--sp-2) 0}
 .nav-mobile.open{display:flex}
+/* [landing-fix] L5 (2026-10-18): panel masuk 160ms (<200ms), tanpa scroll-bleed.
+   Esc/Back/fokus-lock/scroll-lock di shared.js initNav; reduced-motion dimitigasi guard global. */
+.nav-mobile.open{animation:navPanelIn .16s var(--ease-standard) both; overscroll-behavior:contain}
+@keyframes navPanelIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 .nav-mobile a{padding:14px var(--gutter); font-weight:500; color:var(--gray-700); font-size:var(--fs-body)}
 .nav-mobile a:hover{background:var(--gray-50); color:var(--blue-600)}
 .nav-mobile .mgrp{padding:12px var(--gutter) 4px; font-size:var(--fs-small); font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--gray-500)}
@@ -860,6 +864,13 @@ body.kb-open .pos-pay{min-height:48px}
 .hero-visual img{width:100%;height:auto;aspect-ratio:1180/962;border:1px solid var(--gray-300);border-radius:14px;background:#fff;
   box-shadow:0 0 0 1px rgba(20,40,70,.05), 0 28px 72px -20px rgba(14,26,74,.30)}
 @media(max-width:759px){.hero-visual img{aspect-ratio:390/844}} /* gambar mobile 390x844, CLS tetap 0 */
+/* [landing-fix] L10/O-1 (2026-10-18): mobile = phone frame (bezel ink, radius 28) berisi
+   screenshot layar kasir asli + pita warung; desktop >=760 tetap kartu lebar produk-kasir.
+   Chrome memotong konten <img> pada radius border-box -> bezel 5px tampak menyatu. */
+@media(max-width:759px){
+  .hero-visual img{background:var(--ink); border:0; border-radius:28px; padding:5px;
+    box-shadow:0 24px 64px -20px rgba(14,26,74,.45)}
+}
 .hero-visual figcaption{font-size:12px;color:var(--gray-500);text-align:center;margin-top:12px}
 
 /* -- section: ritme ukur sokudo (80 desktop / 64 mobile), surface shift halus -- */
@@ -881,8 +892,11 @@ body.kb-open .pos-pay{min-height:48px}
   background:radial-gradient(48% 46% at 50% 50%, rgba(36,83,235,.14), rgba(36,83,235,.04) 45%, transparent 72%)}
 .calc-wrap .calc-card{position:relative;z-index:1;box-shadow:none}
 .calc-card{background:var(--white);border:1px solid var(--gray-100);border-radius:16px;padding:28px}
-.calc-card .out-hero b{color:var(--ink);font-size:clamp(1.75rem,3vw,2.25rem);font-family:var(--font-sans);
-  font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.calc-card .out-hero b{color:var(--ink);font-size:clamp(2rem,3vw,2.5rem);font-family:var(--font-sans);
+  font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.15;display:block} /* [landing-fix] L26: angka >=32px */
+.calc-card .out-hero .small{display:block;margin-top:4px} /* L26: label turun ke baris sendiri */
+.calc-out-box .out-sub{display:block;font-size:14px;color:var(--gray-500);margin-top:8px;line-height:1.5} /* L26: penjelas 1 baris */
+@media(max-width:759px){.calc-out-box .out-sub{font-size:12.5px}}
 .calc-card .calc-out-box{border-top:0;padding-top:0}
 
 /* -- harga: kartu sistem sama (border, tanpa shadow) -- */
@@ -983,7 +997,10 @@ h1,h2,h3{font-weight:450}
    gradient asli #C9DEFF->#FFF jadi base anti-AA. Detail: DESIGN-REFERENCE
    "ATMOSPHERE SYSTEM v2". Motion guard di bawah. -- */
 @keyframes cloud-drift{from{transform:translateX(0)}to{transform:translateX(-9vw)}}
-.hero{background:linear-gradient(180deg,#C9DEFF 0%,#E4EEFF 46%,#FFFFFF 100%)}
+/* [landing-fix] L10/O-1 (2026-10-18): homepage tidak lagi memakai sky system daydream
+   (hero = pita warung + screenshot kasir). Sky system tetap hidup untuk halaman alat/produk
+   -> aturan di-scope ke body:not(.home); body.home dapat latar putih + glow radial. */
+body:not(.home) .hero{background:linear-gradient(180deg,#C9DEFF 0%,#E4EEFF 46%,#FFFFFF 100%)}
 .hero-sky{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .hero-sky img{position:absolute;pointer-events:none}
 .hero-sky .h-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.62;filter:hue-rotate(30deg) saturate(1.12)}
@@ -997,6 +1014,12 @@ h1,h2,h3{font-weight:450}
 @media(max-width:900px){
   .hero-sky .h-cloud-1{width:96vw;right:-30%;top:18%}
 }
+/* [landing-fix] L10/O-1: homepage hero = putih + glow radial (bentuk sama dgn sky system, hue biru) */
+body.home .hero{background:#FFFFFF}
+body.home .hero::before{content:"";position:absolute;left:50%;top:26%;width:min(1584px,140%);aspect-ratio:1584/926;
+  transform:translate(-50%,-32%);pointer-events:none;
+  background:radial-gradient(50% 46% at 50% 50%, rgba(219,232,254,.9), rgba(36,83,235,.05) 45%, transparent 72%)}
+body.home .hero .container{z-index:1}
 
 /* -- sky LITE utk tool-hero (sub-halaman; foto ringan, tanpa comet) -- */
 .tool-hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#C9DEFF 0%,#E4EEFF 46%,#FFFFFF 100%)}
@@ -1071,7 +1094,6 @@ h1,h2,h3{font-weight:450}
 .pick-grid{display:grid;gap:var(--sp-8)}
 .pick-rail h2{font-size:var(--fs-h2);font-weight:450;letter-spacing:var(--ls-h2);margin:10px 0 16px}
 .pick-rail .small{max-width:30ch}
-.pick-count{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;color:var(--gray-500);margin-top:16px}
 /* P5 pick-ghost DIGUGURKAN: draft plan pakai gray-100 (1.18:1) & gray-300 (1.63:1) — keduanya
    gagal WCAG 1.4.3 utk teks; palet tak punya token 3:1–7:1; P5 opsional demi gate A11y bersih */
 /* chip keluar dari .mcont -> tepat di bawah desc (mobile & tablet) */
@@ -1107,6 +1129,11 @@ h1,h2,h3{font-weight:450}
 @media (prefers-reduced-motion:reduce){
   .hero-sky .h-cloud-1,.tool-hero .l-cloud{animation:none}
   .hero-inner{animation:none}
+}
+/* [landing-fix] L11 (2026-10-18): cloud-drift OFF di perangkat sentuh/mobile (jank + boros
+   baterai di HP murah); hanya jalan di pointer halus non-sentuh. Reduced-motion sudah dicakup. */
+@media (hover:none), (pointer:coarse){
+  .hero-sky .h-cloud-1,.tool-hero .l-cloud{animation:none}
 }
 
 /* ==================== DECLUTTER v23 (homepage saja, body.home) ====================
@@ -1307,13 +1334,18 @@ body.home .small b{font-variant-numeric:tabular-nums}
 @media (prefers-reduced-motion:reduce){.auth-card{animation:none}}
 
 /* ============ v25: footnote & pintu demo ============ */
-.fnote{font-family:var(--font-mono); font-size:11px; color:var(--gray-500);
+.fnote{font-family:var(--font-mono); font-size:12px; color:var(--gray-500); /* [landing-fix] L9 (2026-10-18): 11->12px (min brief); kontras gray-500 terukur 7.16:1 di putih, 5.24:1 di titik terburuk gradasi C9DEFF — lulus >=4.5:1 */
   letter-spacing:.02em; margin-top:20px}
-.hero-visual-link{display:block; color:inherit; text-decoration:none}
-.hero-visual-link:focus-visible{outline:2px solid var(--blue-600); outline-offset:4px; border-radius:14px}
-.hero-visual-link .hint{font-family:var(--font-mono); font-size:11px; color:var(--gray-500);
-  letter-spacing:.02em; margin-top:10px; text-align:center}
-.hero-visual-link:hover .hint{color:var(--blue-600)}
+/* [landing-fix] L13 (2026-10-18): tautan demo = tombol teks 48px TERPISAH dari gambar
+   (gambar hero bukan link raksasa lagi; hint 11px digugurkan). */
+.hero-demo-link{display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  min-height:48px; padding:0 20px; margin:14px auto 0; border-radius:var(--r-full);
+  font-weight:600; font-size:var(--fs-small); color:var(--blue-700);
+  background:var(--blue-50); border:1px solid var(--blue-100);
+  transition:background var(--dur-fast), border-color var(--dur-fast), color var(--dur-fast)}
+.hero-demo-link:hover{background:var(--blue-100); border-color:var(--blue-200); color:var(--blue-800)}
+.hero-demo-link:focus-visible{outline:2px solid var(--blue-600); outline-offset:2px}
+.hero-demo-link .ic{width:15px; height:15px}
 /* Chip MODE DEMO di header POS: pola dot .mst (dot 6px, font-mono 11px) */
 .demo-chip{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono);
   font-size:11px; font-weight:600; letter-spacing:.04em; color:var(--gray-500);
@@ -1390,7 +1422,7 @@ body.home .small b{font-variant-numeric:tabular-nums}
   .hero-inner h1{font-size:clamp(2rem,7vw,2.375rem); line-height:1.08}
   .hero-inner .sub{font-size:15px; margin-top:10px}
   .hero-visual{max-width:262px; margin-top:4px}
-  .hero-visual img{border-radius:14px}
+  .hero-visual img{border-radius:28px} /* [landing-fix] L10/O-1: radius frame HP (dgn bezel 5px) */
   .hero-struk{margin-top:18px}
   .cta-row{margin-top:14px}
 
@@ -1398,7 +1430,6 @@ body.home .small b{font-variant-numeric:tabular-nums}
   .pick-rail .eyebrow{margin-bottom:6px}
   .pick-rail h2{font-size:1.5rem; margin:6px 0 0}
   .pick-rail .small{display:none}
-  .pick-count{display:none}
   .modrow{padding:14px 10px; gap:10px}
   .modrow b{font-size:16px}
   .modrow .mdesc{font-size:13.5px; line-height:1.4}
@@ -1465,6 +1496,44 @@ body.home .small b{font-variant-numeric:tabular-nums}
   body.home main>section>.container::before{display:none}
   body.home .tlist>.item::before{display:none}
 }
+
+/* [landing-fix] L34 (2026-10-18): FAQ + 3 langkah 'cara mulai' — komponen struktur ringkas
+   (anggaran L35): tanpa kartu, hairline pemisah, ikon 40px, accordion memakai .faq-item global. */
+.faq-steps{margin-top:48px; border-top:1px dashed var(--gray-300); padding-top:40px}
+.faq-steps h2{font-size:1.125rem; margin:0 0 14px}
+.fs-list{list-style:none; display:grid; gap:10px; margin:0; counter-reset:none}
+.fs-list li{display:flex; gap:12px; align-items:center; min-height:48px}
+.fs-ic{width:40px; height:40px; border-radius:12px; background:var(--blue-50); color:var(--blue-600);
+  display:grid; place-items:center; flex:none}
+.fs-txt b{display:block; font-size:14.5px; font-weight:600; color:var(--ink)}
+.fs-txt .fs-sub{display:block; font-family:var(--font-mono); font-size:12px; color:var(--gray-500)}
+.fs-faq{margin-top:28px}
+.fs-faq .faq-item summary{font-size:1rem; padding:14px 0; min-height:48px; box-sizing:border-box}
+.fs-faq .faq-item .ans{padding-bottom:14px}
+@media(min-width:900px){
+  .faq-steps{display:grid; grid-template-columns:1fr 1fr; gap:48px; padding-top:48px}
+  .fs-faq{margin-top:0}
+}
+
+/* [landing-fix] L36 (2026-10-18): tombol kembali ke atas — kecil mengambang 44px, muncul
+   setelah scroll > 2 layar (JS inline index.html). Posisi KIRI-bawah supaya tidak menimpa
+   CTA harga/WA (kanan); safe-area-aware; reduced-motion: lompat tanpa smooth. */
+.to-top{position:fixed; left:12px; bottom:max(12px, env(safe-area-inset-bottom)); z-index:80;
+  width:44px; height:44px; border-radius:var(--r-full); border:1px solid var(--gray-300);
+  background:var(--white); color:var(--gray-700); box-shadow:var(--sh-md);
+  display:grid; place-items:center; opacity:0; transform:translateY(6px); pointer-events:none;
+  transition:opacity var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard)}
+.to-top.show{opacity:1; transform:none; pointer-events:auto}
+.to-top:hover{border-color:var(--blue-300); color:var(--blue-600)}
+.to-top:focus-visible{outline:2px solid var(--blue-600); outline-offset:2px}
+.to-top .ic{transform:rotate(-90deg)}
+.to-top[hidden]{display:none}
+
+/* [landing-fix] L26 (2026-10-18): hierarki hasil kalkulator di SEMUA lebar — ditaruh paling akhir
+   supaya menang atas override #pajak .calc-card .out-hero b (v28 mobile). Angka >=32px turun satu
+   kolom, label 1 baris di bawahnya, penjelas .out-sub, detail callout tetap paling kecil. */
+.calc-out-box .out-hero{flex-direction:column; align-items:flex-start}
+#pajak .calc-card .out-hero b{font-size:clamp(2rem,6vw,2.5rem); line-height:1.15}
 
 /* [landing-fix] L33 (2026-10-18): footer mobile — target sentuh >=44px, 1 kolom + pemisah.
    Desktop >=760px tak berubah (grid 2fr 1fr 1fr 1fr). Paragraf hukum dicek <=4 baris di 360px. */

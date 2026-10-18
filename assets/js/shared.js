@@ -200,16 +200,70 @@
     var burger = document.querySelector(".nav-burger");
     var mobile = document.querySelector(".nav-mobile");
     if (burger && mobile) {
+      /* [landing-fix] L5 (2026-10-18): menu mobile a11y lengkap —
+         Esc & tombol Back menutup, fokus terkunci di panel (focus trap),
+         scroll body terkunci selama terbuka, fokus kembali ke pemicu.
+         Animasi panel <200ms + reduced-motion dihormati (main.css + guard global). */
+      var lastFocus = null;
+      var MENU_FLAG = "olanoMenu";
+      function setScrollLock(on) {
+        document.body.style.overflow = on ? "hidden" : "";
+      }
+      function focusables() {
+        var list = [burger].concat(Array.prototype.slice.call(mobile.querySelectorAll("a[href], button")));
+        return list.filter(function (el) { return el.offsetParent !== null; });
+      }
+      function teardown() {
+        if (!mobile.classList.contains("open")) return;
+        mobile.classList.remove("open");
+        burger.setAttribute("aria-expanded", "false");
+        burger.setAttribute("aria-label", "Buka menu");
+        setScrollLock(false);
+        document.removeEventListener("keydown", onKey);
+      }
+      function openMenu() {
+        if (mobile.classList.contains("open")) return;
+        lastFocus = document.activeElement;
+        mobile.classList.add("open");
+        burger.setAttribute("aria-expanded", "true");
+        burger.setAttribute("aria-label", "Tutup menu");
+        setScrollLock(true);
+        try { history.pushState({ olanoMenu: 1 }, ""); } catch (e) {}
+        document.addEventListener("keydown", onKey);
+        requestAnimationFrame(function () {
+          var f = mobile.querySelector("a[href], button");
+          if (f) f.focus();
+        });
+      }
+      function closeMenu(opts) {
+        if (!mobile.classList.contains("open")) return;
+        teardown();
+        var refocus = !(opts && opts.noRefocus);
+        if (refocus && lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+        if (!(opts && opts.viaPop)) {
+          try { if (history.state && history.state[MENU_FLAG]) history.back(); } catch (e) {}
+        }
+      }
+      function onKey(e) {
+        if (e.key === "Escape") { e.preventDefault(); closeMenu(); return; }
+        if (e.key !== "Tab") return;
+        var f = focusables();
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
       burger.addEventListener("click", function () {
-        var open = mobile.classList.toggle("open");
-        burger.setAttribute("aria-expanded", open ? "true" : "false");
+        mobile.classList.contains("open") ? closeMenu() : openMenu();
       });
       mobile.querySelectorAll("a").forEach(function (a) {
-        a.addEventListener("click", function () {
-          mobile.classList.remove("open");
-          burger.setAttribute("aria-expanded", "false");
-        });
+        a.addEventListener("click", function () { closeMenu({ viaPop: true, noRefocus: true }); });
       });
+      window.addEventListener("popstate", function () {
+        /* tombol Back / gestur Back Android menutup menu, bukan keluar halaman */
+        if (mobile.classList.contains("open")) closeMenu({ viaPop: true });
+      });
+      window.addEventListener("hashchange", function () { closeMenu({ viaPop: true, noRefocus: true }); });
     }
   }
 
@@ -384,6 +438,37 @@
     });
   }
 
+  /* ---------- prefetch app kasir saat CTA hero terlihat (C2) ----------
+     C2: ketukan CTA beranda -> produk pertama masuk keranjang <= 10 dtk di 3G.
+     App demo (app/kasir.html + assets/js/config.js) di-prefetch HANYA saat CTA
+     utama hero masuk viewport (IntersectionObserver, sekali -> unobserve):
+     pengunjung yang tidak sampai CTA tidak membayar kuota app. rel=prefetch
+     (bukan preload) = hanya mengisi cache HTTP, tidak dieksekusi di halaman ini.
+     Idempoten: link prefetch untuk URL yang sudah ada tidak diduplikat. */
+  function initCtaPrefetch() {
+    var cta = document.querySelector(".hero .cta-row a[href*='kasir.html']");
+    if (!cta || !("IntersectionObserver" in window)) return;
+    var done = false;
+    var urls = ["/app/kasir.html", "/assets/js/config.js"];
+    function add(url) {
+      if (document.querySelector("link[rel~='prefetch'][href='" + url + "']")) return;
+      var l = document.createElement("link");
+      l.rel = "prefetch";
+      l.href = url;
+      l.as = /\.html$/.test(url) ? "document" : "script";
+      document.head.appendChild(l);
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting || done) return;
+        done = true;
+        io.unobserve(e.target);
+        urls.forEach(add);
+      });
+    }, { threshold: 0.1 });
+    io.observe(cta);
+  }
+
   function registerSW() {
     if (!("serviceWorker" in navigator)) return;
     if (new URLSearchParams(location.search).has("no-sw")) return;
@@ -441,6 +526,7 @@
     initNav(); initNavDropdowns(); initReveal(); initCountUp(); initFaq();
     initSpotlight(); initSlideNum(); initHeroScenes();
     initOfflineDemo(); initMarquee(); initBeforeAfter(); initRings();
+    initCtaPrefetch();
     initTicker();
     registerSW();
   }

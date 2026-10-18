@@ -39,7 +39,8 @@
 
 <header class="nav" id="nav">
   <div class="container nav-inner">
-    <a class="logo" href="index.html"><span class="mark">O</span>Olano</a>
+    <!-- [landing-fix] L7 (2026-10-18): logo menaut ke "/" (bukan index.html) -->
+    <a class="logo" href="/"><span class="mark">O</span>Olano</a>
     <nav class="nav-links" aria-label="Menu utama">
       <div class="dd">
         <button type="button" class="dd-trigger" aria-expanded="false" aria-haspopup="true">Produk<span class="dd-caret" aria-hidden="true"></span></button>
@@ -94,13 +95,8 @@
 
 <!-- ============ 1. HERO ============ -->
 <section class="hero">
-  <div class="hero-sky" aria-hidden="true">
-    <picture><source media="(max-width: 759px)" srcset="assets/daydream/sky-hero-m.webp" type="image/webp"><img class="h-sky" src="assets/daydream/sky-hero.webp" alt="" width="2200" height="1604" fetchpriority="high"></picture>
-    <div class="h-veil"></div>
-    <img class="h-grid" data-parallax="0.10" src="assets/daydream/grid-overlay.svg" alt="" width="1920" height="1280">
-    <img class="h-cloud-1" src="assets/daydream/cloud-1.webp" alt="" width="520" height="322" fetchpriority="low">
-    <div class="h-scrim"></div>
-  </div>
+  <!-- [landing-fix] L10/O-1 (2026-10-18): daydream sky/cloud/grid diganti pita warung (DIPUTUSKAN, owner bisa rollback: pulihkan blok hero-sky dari git) -->
+  <div class="hero-wb" aria-hidden="true"></div>
   <div class="container text-c">
     <div class="hero-inner">
       <h1>Sistem jualan untuk UMKM yang tetap jalan saat internet <em class="it-serif" style="color:var(--blue-800)">mati</em>.</h1>
@@ -112,17 +108,18 @@
         <span class="hs-row hs-total"><span>PPh final/bln</span><span>Rp166.667</span></span>
       </div>
       <p class="fnote">Basis: omzet contoh Rp75.000.000/bln &middot; PPh final 0,5% (PP 20/2026) &middot; MDR QRIS mikro 0% (&le;Rp500rb)</p>
-      <a class="hero-visual-link" href="kasir.html#demo" aria-label="Coba demo kasir">
-        <figure class="hero-visual">
-          <picture>
-            <source media="(max-width: 759px)" srcset="assets/img/produk-kasir-mobile.webp 1x, assets/img/produk-kasir-mobile-2x.webp 2x" type="image/webp">
-            <source media="(min-width: 760px)" srcset="assets/img/produk-kasir.webp 1x, assets/img/produk-kasir-2x.webp 2x" type="image/webp">
-            <img src="assets/img/produk-kasir.webp" alt="Tampilan aplikasi kasir Olano: katalog produk, keranjang, dan tombol bayar (data contoh)" width="1180" height="962" fetchpriority="high">
-          </picture>
-          <figcaption>Data contoh: tampilan aplikasi Olano</figcaption>
-        </figure>
-        <span class="hint" aria-hidden="true">Coba demo kasir &rarr;</span>
-      </a>
+      <!-- [landing-fix] L13 (2026-10-18): gambar layar kasir bukan lagi tautan raksasa —
+           gambar + caption statis (aria-hidden, dekoratif-edukatif), demo = tautan teks 48px terpisah.
+           Log teks: COPY-NANTI.md #3 (hint "Coba demo kasir →" gugur, digantikan tombol 48px). -->
+      <figure class="hero-visual" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 759px)" srcset="assets/img/hero-phone-warung-1x.webp 1x, assets/img/hero-phone-warung.webp 2x" type="image/webp">
+          <source media="(min-width: 760px)" srcset="assets/img/produk-kasir.webp 1x, assets/img/produk-kasir-2x.webp 2x" type="image/webp">
+          <img src="assets/img/hero-phone-warung.webp" alt="" width="390" height="844" fetchpriority="high">
+        </picture>
+        <figcaption>Data contoh: tampilan aplikasi Olano</figcaption>
+      </figure>
+      <a class="hero-demo-link" href="kasir.html#demo">Buka demo kasir <svg class="ic sm" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a>
     </div>
   </div>
   <div class="hero-cue" aria-hidden="true"></div>
@@ -136,7 +133,8 @@
         <div class="eyebrow">Modul</div>
         <h2>Enam modul. Satu aplikasi.</h2>
         <p class="small">Diurutkan dari modul yang paling sering dipakai. Angka di tiap baris keluar dari kalkulator Olano, bukan klaim.</p>
-        <p class="pick-count" aria-hidden="true">05 aktif &middot; 01 segera hadir</p>
+        <!-- [landing-fix] L17 (2026-10-18): penghitung '05 aktif - 01 segera hadir' dihapus —
+             info internal pendiri, bukan informasi pengguna (kalau dihitung pun bisa stale). -->
       </div>
     <div class="modlist stagger" data-reveal>
       <a class="modrow fg" href="kasir.html">
@@ -245,7 +243,10 @@
             </select>
           </div>
           <div id="tax-out" aria-live="polite" class="calc-out-box calc-out-top">
+            <!-- [landing-fix] L26 (2026-10-18): hierarki hasil = angka besar (>=32px) -> 1 baris
+                 penjelas (out-sub, teks struktur bukan fakta) -> detail (callout, angka dari mesin). -->
             <div class="out-hero"><b id="tax-result">Rp166.667</b><span class="small">per bulan, PPh final 0,5%</span></div>
+            <span class="out-sub">PPh final 0,5% dari omzet yang kamu isi di bawah.</span>
             <div class="callout" id="tax-note"><b>Omzet tahunan Rp900 juta.</b> Di atas Rp500 juta, OP kena PPh final 0,5%.</div>
           </div>
           <div class="field"><label for="tax-omzet">Omzet per bulan (Rp)</label>
@@ -285,7 +286,9 @@
           <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>1 outlet, maks. 50 produk</li>
           <li><svg class="ic sm"><use href="assets/icons.svg#i-check"/></svg>Rekap harian via email</li>
         </ul>
-        <a class="btn btn-primary pill btn-block" href="kasir.html#demo">Coba demo kasir</a>
+        <!-- [landing-fix] L31 (2026-10-18): hierarki CTA harga — paket utama (Pro, .active) = solid,
+             paket lain (Gratis) = outline (btn-secondary). Label/tujuan tidak diubah. -->
+        <a class="btn btn-secondary pill btn-block" href="kasir.html#demo">Coba demo kasir</a>
       </div>
       <div class="price-card active">
         <b class="price-name">Pro</b>
@@ -314,6 +317,45 @@
       </button>
       <p class="hint" id="wa-note" hidden>Nomor WhatsApp menyusul. Sementara, coba dulu demo kasirnya &mdash; gratis, tanpa akun.</p>
     </div>
+    <!-- [landing-fix] L34 (2026-10-18): FAQ + 3 langkah "cara mulai" — KOMPONEN STRUKTUR dgn
+         placeholder HONEST "isi menyusul" (R-23/R-38: isi dikerjakan tahap kata, tidak difiksasi).
+         Posisi sesuai urutan L32: sebelum CTA penutup. Accordion = .faq-item (initFaq di shared.js:
+         buka satu tutup yang lain). Anggaran L35 dijaga: blok ringkas, tanpa kartu. -->
+    <div class="faq-steps" id="faq">
+      <p class="tst-label">Komponen struktur &mdash; isi FAQ dan langkah menyusul (tahap kata).</p>
+      <div class="fs-steps">
+        <h2>Cara mulai</h2>
+        <ol class="fs-list">
+          <li>
+            <span class="fs-ic" aria-hidden="true"><svg class="ic"><use href="assets/icons.svg#i-bag"/></svg></span>
+            <span class="fs-txt"><b>Langkah 1</b><span class="fs-sub">isi menyusul</span></span>
+          </li>
+          <li>
+            <span class="fs-ic" aria-hidden="true"><svg class="ic"><use href="assets/icons.svg#i-qr"/></svg></span>
+            <span class="fs-txt"><b>Langkah 2</b><span class="fs-sub">isi menyusul</span></span>
+          </li>
+          <li>
+            <span class="fs-ic" aria-hidden="true"><svg class="ic"><use href="assets/icons.svg#i-chart"/></svg></span>
+            <span class="fs-txt"><b>Langkah 3</b><span class="fs-sub">isi menyusul</span></span>
+          </li>
+        </ol>
+      </div>
+      <div class="fs-faq">
+        <h2>Pertanyaan yang sering ditanya</h2>
+        <details class="faq-item">
+          <summary>Pertanyaan 1<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">Isi menyusul.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Pertanyaan 2<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">Isi menyusul.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Pertanyaan 3<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">Isi menyusul.</div>
+        </details>
+      </div>
+    </div>
     <div class="price-close">
       <h2>Mulai jualan lebih rapi hari ini.</h2>
       <p class="sub">Tanpa kartu, tanpa install. Buka kasir, transaksi pertama dalam 3 menit.</p>
@@ -322,8 +364,10 @@
   </div>
 </section>
 
-<!-- ============ 6. TESTIMONI (placeholder berlabel CONTOH, render dari config.testimonials) ============ -->
-<section class="section" id="testimoni" aria-labelledby="tst-h">
+<!-- ============ 6. TESTIMONI (K5 + L32: disembunyikan di produksi sampai ada isi nyata) ============
+     FLAG: hapus atribut `hidden` di bawah SETELAH testimoni asli diisi (data masih utuh di
+     config.js -> testimonials; renderer inline di bawah otomatis merender lagi saat flag dibuka). -->
+<section class="section" id="testimoni" aria-labelledby="tst-h" hidden>
   <div class="container">
     <p class="tst-label">CONTOH - tiga cerita di bawah ini contoh tampilan; akan kami ganti dengan pemilik toko yang benar-benar memakai Olano.</p>
     <div class="eyebrow" style="margin-top:16px">Testimoni</div>
@@ -338,7 +382,7 @@
   <div class="container">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="logo" href="index.html" style="color:var(--ink)"><span class="mark">O</span>Olano</a>
+        <a class="logo" href="/" style="color:var(--ink)"><span class="mark">O</span>Olano</a>
         <p class="legal">Kasir, website, dan pajak UMKM di satu tempat. Tetap jalan walau internet mati.</p>
       </div>
       <nav aria-label="Produk">
@@ -375,6 +419,12 @@
     <p class="small">&copy; 2026 Olano</p>
   </div>
 </footer>
+
+<!-- [landing-fix] L36 (2026-10-18): kembali ke atas — muncul setelah scroll > 2 layar; posisi
+     kiri-bawah (jauh dari CTA/WA yang berada di kanan); target 44px. -->
+<button type="button" class="to-top" id="to-top" aria-label="Kembali ke atas" hidden>
+  <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg>
+</button>
 
 <script src="assets/js/config.js"></script>
 <script src="assets/js/shared.js"></script>
@@ -441,6 +491,27 @@ note.innerHTML = "<b>Omzet tahunan "+window.OLANO.rp(annual)+".</b> Dasar kena (
   var clr = document.getElementById("omzet-clear");
   if(clr) clr.addEventListener("click",function(){ om.value=""; calc(); om.focus(); });
 })();
+/* L36: kembali ke atas — muncul setelah scroll > 2 layar, lompat halus ke atas */
+(function(){
+  var btn = document.getElementById("to-top");
+  if(!btn) return;
+  var shown = false;
+  function onScroll(){
+    var want = window.scrollY > window.innerHeight * 2;
+    if(want === shown) return;
+    shown = want;
+    btn.hidden = false;              // sekali tampil, toggling lewat class (tanpa reflow aneh)
+    btn.classList.toggle("show", want);
+  }
+  btn.addEventListener("click", function(){
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    btn.blur();
+  });
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
+
 /* L30: tombol WhatsApp non-dead (K1: nomor belum ada) -> klik menampilkan info jelas, bukan link mati */
 (function(){
   var b=document.getElementById("wa-btn"), n=document.getElementById("wa-note");
@@ -451,10 +522,12 @@ note.innerHTML = "<b>Omzet tahunan "+window.OLANO.rp(annual)+".</b> Dasar kena (
   });
 })();
 // Testimoni CONTOH: render dari config.testimonials (satu tempat edit = swap nanti)
+// [L32] seksi #testimoni hidden di produksi (K5) -> renderer skip; buka hidden = render jalan lagi
 (function(){
   var T = window.OLANO_CONFIG && window.OLANO_CONFIG.testimonials;
   var grid = document.getElementById("tst-grid");
   if(!T || !grid || !T.quotes || !T.quotes.length) return;
+  if(grid.closest("section") && grid.closest("section").hidden) return;
   grid.innerHTML = T.quotes.map(function(q){
     return '<figure class="tst-card">'
       + '<span class="tst-avatar" aria-hidden="true">' + (q.initials||"") + '</span>'
