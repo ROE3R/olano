@@ -1,9 +1,10 @@
 /* Olano service worker: offline-first (PRD F2: POS 100% offline setelah login pertama) */
-var CACHE = "olano-v29";
+var CACHE = "olano-v30";
 var CORE = [
   "./", "index.html", "manifest.json", "robots.txt", "sitemap.xml", "llms.txt", "404.html",
   "assets/css/main.css", "assets/js/config.js", "assets/js/shared.js", "assets/js/motion.js",
-  "app/kasir.html", "app/login.html", "assets/js/qrcode.js",
+  "app/kasir.html", "app/login.html", /* qrcode.js: lazy via dynamic import saat QRIS pertama (runtime-cache), bukan cache awal */
+  "assets/img/hero-phone-warung-1x.webp", "assets/img/hero-phone-warung.webp",
   "templates/katalog.html",
   "umkm.html", "pajak.html", "website.html", "naik-kelas.html",
   "tentang.html", "kebijakan-privasi.html", "syarat-ketentuan.html",
