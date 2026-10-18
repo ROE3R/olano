@@ -144,6 +144,10 @@ p{max-width:65ch}
 .nav-mobile{display:none; flex-direction:column; gap:0; border-top:1px solid var(--gray-100);
   background:var(--white); padding:var(--sp-2) 0}
 .nav-mobile.open{display:flex}
+/* [landing-fix] L5 (2026-10-18): panel masuk 160ms (<200ms), tanpa scroll-bleed.
+   Esc/Back/fokus-lock/scroll-lock di shared.js initNav; reduced-motion dimitigasi guard global. */
+.nav-mobile.open{animation:navPanelIn .16s var(--ease-standard) both; overscroll-behavior:contain}
+@keyframes navPanelIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 .nav-mobile a{padding:14px var(--gutter); font-weight:500; color:var(--gray-700); font-size:var(--fs-body)}
 .nav-mobile a:hover{background:var(--gray-50); color:var(--blue-600)}
 .nav-mobile .mgrp{padding:12px var(--gutter) 4px; font-size:var(--fs-small); font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--gray-500)}

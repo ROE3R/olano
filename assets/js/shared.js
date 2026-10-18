@@ -200,16 +200,70 @@
     var burger = document.querySelector(".nav-burger");
     var mobile = document.querySelector(".nav-mobile");
     if (burger && mobile) {
+      /* [landing-fix] L5 (2026-10-18): menu mobile a11y lengkap —
+         Esc & tombol Back menutup, fokus terkunci di panel (focus trap),
+         scroll body terkunci selama terbuka, fokus kembali ke pemicu.
+         Animasi panel <200ms + reduced-motion dihormati (main.css + guard global). */
+      var lastFocus = null;
+      var MENU_FLAG = "olanoMenu";
+      function setScrollLock(on) {
+        document.body.style.overflow = on ? "hidden" : "";
+      }
+      function focusables() {
+        var list = [burger].concat(Array.prototype.slice.call(mobile.querySelectorAll("a[href], button")));
+        return list.filter(function (el) { return el.offsetParent !== null; });
+      }
+      function teardown() {
+        if (!mobile.classList.contains("open")) return;
+        mobile.classList.remove("open");
+        burger.setAttribute("aria-expanded", "false");
+        burger.setAttribute("aria-label", "Buka menu");
+        setScrollLock(false);
+        document.removeEventListener("keydown", onKey);
+      }
+      function openMenu() {
+        if (mobile.classList.contains("open")) return;
+        lastFocus = document.activeElement;
+        mobile.classList.add("open");
+        burger.setAttribute("aria-expanded", "true");
+        burger.setAttribute("aria-label", "Tutup menu");
+        setScrollLock(true);
+        try { history.pushState({ olanoMenu: 1 }, ""); } catch (e) {}
+        document.addEventListener("keydown", onKey);
+        requestAnimationFrame(function () {
+          var f = mobile.querySelector("a[href], button");
+          if (f) f.focus();
+        });
+      }
+      function closeMenu(opts) {
+        if (!mobile.classList.contains("open")) return;
+        teardown();
+        var refocus = !(opts && opts.noRefocus);
+        if (refocus && lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+        if (!(opts && opts.viaPop)) {
+          try { if (history.state && history.state[MENU_FLAG]) history.back(); } catch (e) {}
+        }
+      }
+      function onKey(e) {
+        if (e.key === "Escape") { e.preventDefault(); closeMenu(); return; }
+        if (e.key !== "Tab") return;
+        var f = focusables();
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
       burger.addEventListener("click", function () {
-        var open = mobile.classList.toggle("open");
-        burger.setAttribute("aria-expanded", open ? "true" : "false");
+        mobile.classList.contains("open") ? closeMenu() : openMenu();
       });
       mobile.querySelectorAll("a").forEach(function (a) {
-        a.addEventListener("click", function () {
-          mobile.classList.remove("open");
-          burger.setAttribute("aria-expanded", "false");
-        });
+        a.addEventListener("click", function () { closeMenu({ viaPop: true, noRefocus: true }); });
       });
+      window.addEventListener("popstate", function () {
+        /* tombol Back / gestur Back Android menutup menu, bukan keluar halaman */
+        if (mobile.classList.contains("open")) closeMenu({ viaPop: true });
+      });
+      window.addEventListener("hashchange", function () { closeMenu({ viaPop: true, noRefocus: true }); });
     }
   }
 
