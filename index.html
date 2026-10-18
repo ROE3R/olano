@@ -241,7 +241,10 @@
             </select>
           </div>
           <div id="tax-out" aria-live="polite" class="calc-out-box calc-out-top">
+            <!-- [landing-fix] L26 (2026-10-18): hierarki hasil = angka besar (>=32px) -> 1 baris
+                 penjelas (out-sub, teks struktur bukan fakta) -> detail (callout, angka dari mesin). -->
             <div class="out-hero"><b id="tax-result">Rp166.667</b><span class="small">per bulan, PPh final 0,5%</span></div>
+            <span class="out-sub">PPh final 0,5% dari omzet yang kamu isi di bawah.</span>
             <div class="callout" id="tax-note"><b>Omzet tahunan Rp900 juta.</b> Di atas Rp500 juta, OP kena PPh final 0,5%.</div>
           </div>
           <div class="field"><label for="tax-omzet">Omzet per bulan (Rp)</label>
