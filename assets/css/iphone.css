@@ -123,8 +123,8 @@
 
 /* ----------------------------------------------------------------- iPad ---- */
 .ipad {
-  --bezel: 13px;
-  --radius: 28px;
+  --bezel: 10px;
+  --radius: 24px;
   position: relative;
   width: 100%;
   max-width: 560px;
@@ -152,7 +152,7 @@
 
 .ipad .frame {
   position: relative;
-  border-radius: calc(var(--radius) - var(--bezel));
+  border-radius: 14px; /* [v2] = radius visual sokudo 14px */
   overflow: hidden;
   background: #fff;
   aspect-ratio: 1180 / 962;         /* = rasio screenshot desktop (1.227), tidak memotong UI */

@@ -119,31 +119,18 @@
       <!-- [landing-fix] L13 (2026-10-18): gambar layar kasir bukan lagi tautan raksasa —
            gambar + caption statis (aria-hidden, dekoratif-edukatif), demo = tautan teks 48px terpisah.
            Log teks: COPY-NANTI.md #3 (hint "Coba demo kasir →" gugur, digantikan tombol 48px). -->
-      <figure class="hero-visual" aria-hidden="true">
-        <!-- [launch] Mockup perangkat: iPhone (layar kasir 390x844) + iPad (layar desktop 1180x820).
-             Dua perangkat karena Olano dipakai di HP saat jualan dan di laptop/tablet saat tutup buku.
-             Semua ukuran pakai rasio perangkat asli supaya tidak gepeng/terpotong. -->
-        <div class="device-stack">
-          <div class="iphone">
-            <div class="frame">
-              <picture>
-                <source srcset="assets/img/produk-kasir-mobile.webp 1x, assets/img/produk-kasir-mobile-2x.webp 2x" type="image/webp">
-                <img src="assets/img/produk-kasir-mobile.webp" alt="" width="390" height="844" fetchpriority="high">
-              </picture>
-            </div>
-            <span class="island"></span>
-            <span class="home-bar"></span>
+      <figure class="hero-visual">
+        <!-- [v2] Satu visual fokus (sokudo: 1 visual 1185x687, bukan dua perangkat).
+             iPhone tetap ada sebagai bukti "jalan di HP", tapi SETELAH screenshot utama,
+             bukan bertumpuk di hero. Rasio 1180/962 = rasio aset asli, tidak memotong UI. -->
+        <div class="ipad">
+          <div class="frame">
+            <picture>
+              <source srcset="assets/img/produk-kasir.webp 1x, assets/img/produk-kasir-2x.webp 2x" type="image/webp">
+              <img src="assets/img/produk-kasir.webp" alt="Tampilan kasir Olano: daftar produk, keranjang, dan total transaksi" width="1180" height="962" fetchpriority="high">
+            </picture>
           </div>
-
-          <div class="ipad">
-            <div class="frame">
-              <picture>
-                <source srcset="assets/img/produk-kasir.webp 1x, assets/img/produk-kasir-2x.webp 2x" type="image/webp">
-                <img src="assets/img/produk-kasir.webp" alt="" width="1180" height="820" loading="lazy" decoding="async">
-              </picture>
-            </div>
-            <span class="cam"></span>
-          </div>
+          <span class="cam"></span>
         </div>
       </figure>
       <a class="hero-demo-link" href="kasir.html#demo">Coba demo kasir <svg class="ic sm" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a>

@@ -34,8 +34,9 @@
   /* -- type scale (ukur B: H1 87/600/ls-0.04em@1440; H2 28.9/450/ls-0.02em;
      body 16/18 w450; nav 13.3). H1 mobile diskalakan; H2 tetap 29. -- */
   --fs-display: clamp(2.625rem, 4.1667vw + 1.6875rem, 5.4375rem);
-  --fs-h1: clamp(2.625rem, 4.1667vw + 1.6875rem, 5.4375rem);
-  --fs-h2: 1.8125rem;
+  /* [v2] dari ukur sokudo: H1 48/64 desktop, 28/36 mobile */
+  --fs-h1: clamp(1.75rem, 3.2vw + 1rem, 3rem);
+  --fs-h2: clamp(1.75rem, 1.6vw + 1.2rem, 2.5rem);
   --fs-h3: 1.25rem;
   --fs-body-lg: 1.5rem;
   --fs-body: 1rem;
@@ -55,8 +56,11 @@
   --sh-md: 0 8px 24px -8px rgba(14,26,74,.12);
   --sh-lg: 0 24px 64px -16px rgba(36,83,235,.22);
   /* Ref Cal.com: ring border + contact shadow + diffused ambient, satu stack (depth dari shadow, bukan dari border tebal) */
-  --sh-card: 0 0 0 1px rgba(20,40,70,.05), 0 1px 3px -1px rgba(20,40,70,.10), 0 10px 24px -14px rgba(20,40,70,.14);
-  --sh-lift: 0 0 0 1px rgba(36,83,235,.16), 0 2px 6px -2px rgba(20,40,70,.12), 0 28px 56px -18px rgba(36,83,235,.22);
+  /* [v2] Disiplin shadow dari ukur: sokudo 8/315 (2.5%), daydream 18/380 (4.7%),
+     open-design 62/971 (6.4%). Kartu TIDAK men-shadow (border saja);
+     shadow hanya untuk visual hero + CTA utama + elemen mengambang (menu/sheet). */
+  --sh-card: none;
+  --sh-lift: 0 0 0 1px rgba(36,83,235,.16);
 
   /* -- motion --
      --ease-emphasized = expo-out (cubic-bezier .16,1,.3,1): ref web-ui-patterns,
@@ -102,8 +106,8 @@ p{max-width:65ch}
 .container{width:100%; max-width:var(--container); margin:0 auto; padding:0 var(--gutter)}
 .container-narrow{max-width:760px}
 /* [launch] disatukan dgn definisi :905 (80/64). Dua definisi = padding berubah saat CSS tiba = CLS. */
-.section{padding:80px 0}
-@media(max-width:900px){.section{padding:64px 0}}
+.section{padding:80px 0} /* [v2] = ukur sokudo 80/80 */
+@media(max-width:900px){.section{padding:64px 0}} /* = ukur sokudo 64/64 */
 .section-dark{background:var(--blue-950); color:var(--white)}
 .section-dark h1,.section-dark h2,.section-dark h3{color:#fff}
 .section-dark .eyebrow{color:var(--blue-300)}
@@ -212,10 +216,10 @@ p{max-width:65ch}
 .badge .dot{width:7px; height:7px; border-radius:50%; background:var(--blue-600)}
 
 /* ============================= CARD / BENTO ============================= */
-.card{background:var(--white); border:1px solid var(--gray-100); border-radius:var(--r-lg);
+.card{background:var(--white); border:1px solid var(--gray-100); border-radius:var(--r-lg); box-shadow:none;
   padding:var(--sp-6); box-shadow:var(--sh-card); position:relative;}
 .card.hover{transition:transform var(--dur-base) var(--ease-emphasized), box-shadow var(--dur-base)}
-.card.hover:hover{transform:translateY(-4px); box-shadow:var(--sh-lift); border-color:var(--blue-200)}
+.card.hover:hover{box-shadow:none; border-color:var(--blue-300)}
 .card.active{border-color:var(--blue-200); box-shadow:0 0 0 4px var(--blue-50)}
 .card .ic{margin-bottom:4px} /* ikon kartu jangan menempel judul */
 .bento{display:grid; gap:var(--sp-4); grid-template-columns:1fr}
@@ -238,7 +242,7 @@ p{max-width:65ch}
 .chooser-card::before{content:""; position:absolute; inset:0;
   background:radial-gradient(200px 120px at 20% 0%, rgba(36,83,235,.10), transparent 70%);
   opacity:0; transition:opacity var(--dur-base); pointer-events:none}
-.chooser-card:hover{transform:translateY(-3px); border-color:var(--blue-200); box-shadow:var(--sh-lg)}
+.chooser-card:hover{border-color:var(--blue-300)}
 .chooser-card:hover::before{opacity:1}
 .chooser-ic{width:52px; height:52px; border-radius:14px; display:grid; place-items:center;
   background:var(--blue-50); color:var(--blue-600)}
@@ -328,7 +332,7 @@ p{max-width:65ch}
   border-radius:var(--r-lg);padding:24px;box-shadow:var(--sh-card);
   transition:border-color var(--dur-base) var(--ease-standard),
   box-shadow var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-emphasized)}
-.tool-card:hover{border-color:var(--blue-300);box-shadow:var(--sh-lift);transform:translateY(-2px)}
+.tool-card:hover{border-color:var(--blue-300)}
 .tool-card .ic{width:24px;height:24px;color:var(--blue-600)}
 .tool-card b{font-family:var(--font-display);font-size:1.05rem;letter-spacing:-.01em}
 .tool-go{margin-top:auto;font-size:13px;font-weight:600;color:var(--blue-600);display:inline-flex;align-items:center;gap:4px;
@@ -469,7 +473,7 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
   cursor:pointer; transition:transform var(--dur-fast), box-shadow var(--dur-fast); display:flex; flex-direction:column; gap:6px;
   touch-action:manipulation; -webkit-tap-highlight-color:transparent}
 .pos-item:active{transform:scale(.97); border-color:var(--blue-200); box-shadow:0 0 0 4px var(--blue-50)} /* [pos-fix] P1: umpan balik tekan <100ms */
-.pos-item:hover{transform:translateY(-2px); box-shadow:var(--sh-md)}
+.pos-item:hover{background:var(--gray-50)}
 .pos-item .thumb{aspect-ratio:1; border-radius:var(--r-md); background:var(--gray-50); display:grid; place-items:center;
   font-size:34px; overflow:hidden}
 .pos-item .thumb img{width:100%; height:100%; object-fit:cover}
@@ -1038,7 +1042,7 @@ body:not(.home) .hero{background:linear-gradient(180deg,#C9DEFF 0%,#E4EEFF 46%,#
 .hero-sky .h-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.62;filter:hue-rotate(30deg) saturate(1.12)}
 .hero-sky .h-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(214,229,255,.26) 0%,rgba(228,239,255,.55) 48%,rgba(240,247,255,.92) 82%,#FFFFFF 100%)}
 .hero-sky .h-grid{top:0;left:50%;transform:translateX(-50%);width:min(1800px,140%);height:72%;object-fit:cover;object-position:top;opacity:.45}
-.hero-sky .h-cloud-1{top:24%;right:-14%;width:min(1200px,72vw);height:auto;filter:blur(4px) hue-rotate(30deg) saturate(1.05);animation:cloud-drift 9s linear infinite alternate}
+.hero-sky .h-cloud-1{top:24%;right:-14%;width:min(1200px,72vw);height:auto;filter:blur(4px) hue-rotate(30deg) saturate(1.05)}
 /* -- scrim zona teks: radial white garansi kontras di titik terburuk (probe 2026-10-16:
    sub di atas band foto mid 3.18-4.12 tanpa scrim; scrim radial menutup 1200px zona tengah) -- */
 .hero-sky .h-scrim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(62% 52% at 50% 40%,rgba(255,255,255,.72) 0%,rgba(255,255,255,.38) 46%,rgba(255,255,255,0) 72%)}
@@ -1064,7 +1068,7 @@ body.home .hero .container{z-index:1}
 .tool-hero .l-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.55;filter:hue-rotate(30deg) saturate(1.12)}
 .tool-hero .l-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(214,229,255,.28) 0%,rgba(228,239,255,.55) 48%,rgba(240,247,255,.90) 82%,#FFFFFF 100%)}
 .tool-hero .l-scrim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(70% 60% at 50% 42%,rgba(255,255,255,.62) 0%,rgba(255,255,255,.30) 50%,rgba(255,255,255,0) 75%)}
-.tool-hero .l-cloud{top:34%;left:-10%;width:min(640px,62vw);height:auto;filter:blur(3px);animation:cloud-drift 9s linear infinite alternate}
+.tool-hero .l-cloud{top:34%;left:-10%;width:min(640px,62vw);height:auto;filter:blur(3px)}
 .tool-hero .l-grid{top:0;left:50%;transform:translateX(-50%);width:min(1200px,140%);height:calc(min(1200px,140%)*1280/1920);object-fit:cover;object-position:top;opacity:.35}
 .tool-hero .container{position:relative;z-index:1}
 
@@ -1793,7 +1797,7 @@ figure[data-before-after] input[type=range]{height:44px}
 .svc-card{display:flex; flex-direction:column; gap:6px; padding:24px 22px; min-height:44px;
   background:#fff; border:1px solid var(--gray-150,#E6EAF2); border-radius:14px;
   text-decoration:none; color:inherit; transition:border-color .15s, transform .15s}
-.svc-card:hover{border-color:var(--blue-300); transform:translateY(-2px)}
+.svc-card:hover{border-color:var(--blue-300)}
 .svc-card:focus-visible{outline:2px solid var(--blue-600); outline-offset:2px}
 .svc-card b{font-size:1rem; color:var(--ink)}
 .svc-from{font-size:.9375rem; color:var(--gray-700)}
@@ -2065,45 +2069,12 @@ figure[data-before-after] input[type=range]{height:44px}
   body.home #testimoni{padding-top:10px !important; padding-bottom:10px !important}
 }
 
-/* ============================================================================
-   Hero device motion — "remotion" ala product film:
-   iPhone & iPad masuk dari bawah dengan rotasi kecil, lalu settle.
-   Alasan: landing SaaS yang menjual aplikasi perlu menunjukkan perangkatnya
-   hidup, bukan screenshot datar. Motion hanya di perangkat (bukan seluruh
-   halaman), durasi pendek, dan mati total saat prefers-reduced-motion.
-   ========================================================================== */
-@keyframes devIn {
-  0%   { opacity: 0; transform: translateY(28px) rotateX(9deg) scale(.94); }
-  60%  { opacity: 1; }
-  100% { opacity: 1; transform: translateY(0) rotateX(0) scale(1); }
-}
-@keyframes devFloat {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-7px); }
-}
-@keyframes islandPulse {
-  0%, 100% { background: #04060A; }
-  50%      { background: #0B1020; }
-}
+/* [v2] Motion device: satu momen load saja (pakai heroIn milik halaman).
+   Referensi terukur: sokudo 0 keyframes, daydream 2, open-design 4.
+   Olano sebelumnya 5 keyframes bersamaan -> dihapus, diganti transisi 0.15s. */
+.device-stack .iphone,
+.device-stack .ipad { transition: opacity .2s var(--ease-standard), transform .2s var(--ease-standard); }
 
-.device-stack { perspective: 1200px; }
-
-.device-stack .iphone {
-  animation: devIn .72s cubic-bezier(.2,.8,.2,1) both;
-  will-change: transform, opacity;
-}
-.device-stack .ipad {
-  animation: devIn .72s cubic-bezier(.2,.8,.2,1) .12s both;
-  will-change: transform, opacity;
-}
-/* settle lalu mengapung sangat halus — bukan goyang */
-@media (min-width:900px){
-  .device-stack .iphone { animation: devIn .72s cubic-bezier(.2,.8,.2,1) both, devFloat 7s ease-in-out .9s infinite; }
-  .device-stack .ipad   { animation: devIn .72s cubic-bezier(.2,.8,.2,1) .12s both, devFloat 8.5s ease-in-out 1.1s infinite; }
-}
-
-/* Dynamic Island bernapas pelan (isyarat "perangkat hidup") */
-.iphone .island { animation: islandPulse 4.5s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce){
   .device-stack .iphone,

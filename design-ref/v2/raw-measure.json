@@ -1,0 +1,825 @@
+{
+ "https://sokudo.dev": {
+  "1440": {
+   "title": "Sokudo — The IDE where AI agents work like a real dev team",
+   "h1": {
+    "t": "The IDE where AI agents\nwork like a real dev team",
+    "fontFamily": "Figtree, ui-sans-serif, system-ui, -apple-system, sans-serif",
+    "fontSize": "48px",
+    "fontWeight": "700",
+    "lineHeight": "64px",
+    "letterSpacing": "normal",
+    "color": "rgb(255, 255, 255)",
+    "textAlign": "center"
+   },
+   "h2": {
+    "t": "Everything your AI dev team\nneeds to work together",
+    "fontFamily": "Figtree, ui-sans-serif, system-ui, -apple-system, sans-serif",
+    "fontSize": "40px",
+    "fontWeight": "600",
+    "lineHeight": "56px",
+    "color": "rgb(255, 255, 255)"
+   },
+   "body": {
+    "bg": "rgb(0, 0, 0)",
+    "color": "rgb(255, 255, 255)",
+    "fontFamily": "Figtree, ui-sans-serif, system-ui, -apple-system, sans-serif",
+    "fontSize": "16px",
+    "lineHeight": "24px"
+   },
+   "nav": {
+    "h": 80,
+    "bg": "rgba(0, 0, 0, 0)",
+    "pos": "relative",
+    "blur": "none"
+   },
+   "btn": {
+    "t": "",
+    "backgroundImage": "none",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "borderRadius": "0px",
+    "height": "80px",
+    "padding": "16px 72px",
+    "boxShadow": "none",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "h": 80
+   },
+   "sections": [
+    {
+     "h": 1372,
+     "pt": "120px",
+     "pb": "80px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 2279,
+     "pt": "80px",
+     "pb": "80px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 648,
+     "pt": "80px",
+     "pb": "80px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 692,
+     "pt": "80px",
+     "pb": "80px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 704,
+     "pt": "0px",
+     "pb": "0px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    }
+   ],
+   "animations": {},
+   "transitions": {
+    "all": 6,
+    "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to": 9
+   },
+   "fonts": [
+    "Figtree, ui-sans-serif, system-ui, -apple-system, sans-serif"
+   ],
+   "scrollH": 6251,
+   "radiusSamples": [
+    "0px",
+    "3.35544e+07px",
+    "14px",
+    "16px",
+    "16px 0px 0px",
+    "0px 16px 0px 0px",
+    "0px 14px 14px 0px",
+    "14px 0px 0px 14px"
+   ],
+   "shadowCount": 8,
+   "totalEls": 315
+  },
+  "390": {
+   "title": "Sokudo — The IDE where AI agents work like a real dev team",
+   "h1": {
+    "t": "The IDE where AI agents\nwork like a real dev team",
+    "fontFamily": "Figtree, ui-sans-serif, system-ui, -apple-system, sans-serif",
+    "fontSize": "28px",
+    "fontWeight": "700",
+    "lineHeight": "36px",
+    "letterSpacing": "normal",
+    "color": "rgb(255, 255, 255)",
+    "textAlign": "center"
+   },
+   "h2": {
+    "t": "Everything your AI dev team needs to work together",
+    "fontFamily": "Figtree, ui-sans-serif, system-ui, -apple-system, sans-serif",
+    "fontSize": "28px",
+    "fontWeight": "600",
+    "lineHeight": "36px",
+    "color": "rgb(255, 255, 255)"
+   },
+   "body": {
+    "bg": "rgb(0, 0, 0)",
+    "color": "rgb(255, 255, 255)",
+    "fontFamily": "Figtree, ui-sans-serif, system-ui, -apple-system, sans-serif",
+    "fontSize": "16px",
+    "lineHeight": "24px"
+   },
+   "nav": {
+    "h": 68,
+    "bg": "rgba(0, 0, 0, 0)",
+    "pos": "relative",
+    "blur": "none"
+   },
+   "btn": {
+    "t": "",
+    "backgroundImage": "none",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "borderRadius": "0px",
+    "height": "40px",
+    "padding": "0px",
+    "boxShadow": "none",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "h": 40
+   },
+   "sections": [
+    {
+     "h": 646,
+     "pt": "32px",
+     "pb": "48px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 3621,
+     "pt": "64px",
+     "pb": "64px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 898,
+     "pt": "64px",
+     "pb": "64px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 1348,
+     "pt": "64px",
+     "pb": "64px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 560,
+     "pt": "0px",
+     "pb": "0px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    }
+   ],
+   "animations": {},
+   "transitions": {
+    "all": 6,
+    "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to": 9
+   },
+   "fonts": [
+    "Figtree, ui-sans-serif, system-ui, -apple-system, sans-serif"
+   ],
+   "scrollH": 7412,
+   "radiusSamples": [
+    "0px",
+    "3.35544e+07px",
+    "14px",
+    "16px",
+    "16px 0px 0px",
+    "0px 16px 0px 0px",
+    "0px 14px 14px 0px",
+    "14px 0px 0px 14px"
+   ],
+   "shadowCount": 8,
+   "totalEls": 315
+  }
+ },
+ "https://thedaydream.studio": {
+  "1440": {
+   "title": "DayDream — Where your dream designs come true",
+   "h1": null,
+   "h2": {
+    "t": "A selection of the best projects crafted by the DayDream stu",
+    "fontFamily": "Aspekta, \"Inter Tight Variable\", \"Inter Tight\", system-ui, sans-serif",
+    "fontSize": "32.5057px",
+    "fontWeight": "450",
+    "lineHeight": "34.5px",
+    "color": "rgb(0, 0, 0)"
+   },
+   "body": {
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(0, 0, 0)",
+    "fontFamily": "Aspekta, \"Inter Tight Variable\", \"Inter Tight\", system-ui, sans-serif",
+    "fontSize": "7.5px",
+    "lineHeight": "normal"
+   },
+   "nav": {
+    "h": 28,
+    "bg": "rgba(0, 0, 0, 0)",
+    "pos": "absolute",
+    "blur": "none"
+   },
+   "btn": {
+    "t": "Book a call",
+    "backgroundImage": "none",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "borderRadius": "75px",
+    "height": "46.4844px",
+    "padding": "0px",
+    "boxShadow": "none",
+    "fontSize": "7.5px",
+    "fontWeight": "400",
+    "h": 46
+   },
+   "sections": [
+    {
+     "h": 0,
+     "pt": "0px",
+     "pb": "0px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 285,
+     "pt": "0px",
+     "pb": "0px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 26,
+     "pt": "8.99999px",
+     "pb": "8.99999px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "6px"
+    },
+    {
+     "h": 490,
+     "pt": "0px",
+     "pb": "0px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 2838,
+     "pt": "0px",
+     "pb": "0px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 517,
+     "pt": "0px",
+     "pb": "0px",
+     "bg": "rgb(255, 255, 255)",
+     "radius": "15px"
+    }
+   ],
+   "animations": {
+    "cloud-drift": 9,
+    "comet-fly": 17
+   },
+   "transitions": {
+    "all": 6
+   },
+   "fonts": [
+    "Aspekta, \"Inter Tight Variable\", \"Inter Tight\", system-ui, sans-serif"
+   ],
+   "scrollH": 4700,
+   "radiusSamples": [
+    "0px",
+    "1.5px",
+    "0.75px",
+    "75px",
+    "6px",
+    "9.74999px"
+   ],
+   "shadowCount": 18,
+   "totalEls": 380
+  },
+  "390": {
+   "title": "DayDream — Where your dream designs come true",
+   "h1": null,
+   "h2": {
+    "t": "A selection of the best projects crafted by the DayDream stu",
+    "fontFamily": "Aspekta, \"Inter Tight Variable\", \"Inter Tight\", system-ui, sans-serif",
+    "fontSize": "29.12px",
+    "fontWeight": "450",
+    "lineHeight": "32.032px",
+    "color": "rgb(0, 0, 0)"
+   },
+   "body": {
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(0, 0, 0)",
+    "fontFamily": "Aspekta, \"Inter Tight Variable\", \"Inter Tight\", system-ui, sans-serif",
+    "fontSize": "10.4px",
+    "lineHeight": "normal"
+   },
+   "nav": {
+    "h": 40,
+    "bg": "rgba(0, 0, 0, 0)",
+    "pos": "absolute",
+    "blur": "none"
+   },
+   "btn": {
+    "t": "Book a call",
+    "backgroundImage": "none",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "borderRadius": "104px",
+    "height": "52.0938px",
+    "padding": "0px",
+    "boxShadow": "none",
+    "fontSize": "10.4px",
+    "fontWeight": "400",
+    "h": 52
+   },
+   "sections": [
+    {
+     "h": 0,
+     "pt": "0px",
+     "pb": "0px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 357,
+     "pt": "0px",
+     "pb": "0px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 36,
+     "pt": "12.48px",
+     "pb": "12.48px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "8.32001px"
+    },
+    {
+     "h": 735,
+     "pt": "0px",
+     "pb": "0px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 3502,
+     "pt": "0px",
+     "pb": "0px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 590,
+     "pt": "0px",
+     "pb": "0px",
+     "bg": "rgb(255, 255, 255)",
+     "radius": "20.8px"
+    }
+   ],
+   "animations": {
+    "cloud-drift": 9,
+    "comet-fly": 17
+   },
+   "transitions": {
+    "all": 7
+   },
+   "fonts": [
+    "Aspekta, \"Inter Tight Variable\", \"Inter Tight\", system-ui, sans-serif",
+    "Arial"
+   ],
+   "scrollH": 5818,
+   "radiusSamples": [
+    "0px",
+    "2.08px",
+    "1.04px",
+    "104px",
+    "8.32001px",
+    "13.52px"
+   ],
+   "shadowCount": 18,
+   "totalEls": 403
+  }
+ },
+ "https://oyenza.com": {
+  "1440": {
+   "title": "403 Forbidden",
+   "h1": {
+    "t": "403 Forbidden",
+    "fontFamily": "\"Times New Roman\"",
+    "fontSize": "32px",
+    "fontWeight": "700",
+    "lineHeight": "normal",
+    "letterSpacing": "normal",
+    "color": "rgb(0, 0, 0)",
+    "textAlign": "-webkit-center"
+   },
+   "h2": null,
+   "body": {
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(0, 0, 0)",
+    "fontFamily": "\"Times New Roman\"",
+    "fontSize": "16px",
+    "lineHeight": "normal"
+   },
+   "nav": null,
+   "btn": null,
+   "sections": [],
+   "animations": {},
+   "transitions": {},
+   "fonts": [
+    "\"Times New Roman\""
+   ],
+   "scrollH": 900,
+   "radiusSamples": [],
+   "shadowCount": 0,
+   "totalEls": 9
+  },
+  "390": {
+   "title": "403 Forbidden",
+   "h1": {
+    "t": "403 Forbidden",
+    "fontFamily": "\"Times New Roman\"",
+    "fontSize": "32px",
+    "fontWeight": "700",
+    "lineHeight": "normal",
+    "letterSpacing": "normal",
+    "color": "rgb(0, 0, 0)",
+    "textAlign": "-webkit-center"
+   },
+   "h2": null,
+   "body": {
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(0, 0, 0)",
+    "fontFamily": "\"Times New Roman\"",
+    "fontSize": "16px",
+    "lineHeight": "normal"
+   },
+   "nav": null,
+   "btn": null,
+   "sections": [],
+   "animations": {},
+   "transitions": {},
+   "fonts": [
+    "\"Times New Roman\""
+   ],
+   "scrollH": 844,
+   "radiusSamples": [],
+   "shadowCount": 0,
+   "totalEls": 9
+  }
+ },
+ "https://open-design.ai": {
+  "1440": {
+   "title": "OpenDesign — Best Open Source Claude Design Alternative",
+   "h1": {
+    "t": "The First Collaborative Design Agent Workspace",
+    "fontFamily": "\"Albert Sans\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "fontSize": "72px",
+    "fontWeight": "700",
+    "lineHeight": "72px",
+    "letterSpacing": "normal",
+    "color": "rgb(38, 38, 38)",
+    "textAlign": "center"
+   },
+   "h2": {
+    "t": "Four steps from idea to on-brand work.",
+    "fontFamily": "\"Albert Sans\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "fontSize": "32px",
+    "fontWeight": "800",
+    "lineHeight": "43.2px",
+    "color": "rgb(38, 38, 38)"
+   },
+   "body": {
+    "bg": "rgb(253, 255, 247)",
+    "color": "rgb(38, 38, 38)",
+    "fontFamily": "\"Albert Sans\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "fontSize": "16px",
+    "lineHeight": "24.8px"
+   },
+   "nav": {
+    "h": 54,
+    "bg": "rgba(0, 0, 0, 0)",
+    "pos": "static",
+    "blur": "none"
+   },
+   "btn": {
+    "t": "",
+    "backgroundImage": "none",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "borderRadius": "0px",
+    "height": "40px",
+    "padding": "0px",
+    "boxShadow": "none",
+    "fontSize": "18px",
+    "fontWeight": "700",
+    "h": 40
+   },
+   "sections": [
+    {
+     "h": 978,
+     "pt": "62px",
+     "pb": "8px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 3494,
+     "pt": "130px",
+     "pb": "130px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 5050,
+     "pt": "40px",
+     "pb": "40px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 1092,
+     "pt": "130px",
+     "pb": "130px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 857,
+     "pt": "130px",
+     "pb": "120px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 421,
+     "pt": "0px",
+     "pb": "120px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 59,
+     "pt": "0px",
+     "pb": "0px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 573,
+     "pt": "24px",
+     "pb": "77px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 981,
+     "pt": "115.2px",
+     "pb": "115.2px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 638,
+     "pt": "0px",
+     "pb": "130px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 584,
+     "pt": "68px",
+     "pb": "130px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 715,
+     "pt": "130px",
+     "pb": "130px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    }
+   ],
+   "animations": {
+    "blurTextIn": 6,
+    "hm-dl-breathe": 1,
+    "hm-dl-sheen": 1,
+    "agent-logo-scroll": 1
+   },
+   "transitions": {
+    "all": 20,
+    "background, border-color": 1,
+    "color": 64,
+    "background": 16,
+    "background, transform": 1,
+    "transform, box-shadow": 6,
+    "border-color, background, box-shadow": 1,
+    "opacity, background": 2,
+    "transform, background, color, border-color": 4,
+    "transform, background, color": 9,
+    "background, color": 11
+   },
+   "fonts": [
+    "\"Albert Sans\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "Arial"
+   ],
+   "scrollH": 15670,
+   "radiusSamples": [
+    "0px",
+    "50%",
+    "8px",
+    "6px",
+    "999px",
+    "24px",
+    "16px",
+    "22px"
+   ],
+   "shadowCount": 62,
+   "totalEls": 971
+  },
+  "390": {
+   "title": "OpenDesign — Best Open Source Claude Design Alternative",
+   "h1": {
+    "t": "The First Collaborative Design Agent Workspace",
+    "fontFamily": "\"Albert Sans\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "fontSize": "32px",
+    "fontWeight": "700",
+    "lineHeight": "35.2px",
+    "letterSpacing": "normal",
+    "color": "rgb(38, 38, 38)",
+    "textAlign": "center"
+   },
+   "h2": {
+    "t": "Four steps from idea to on-brand work.",
+    "fontFamily": "\"Albert Sans\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "fontSize": "25.6px",
+    "fontWeight": "800",
+    "lineHeight": "34.56px",
+    "color": "rgb(38, 38, 38)"
+   },
+   "body": {
+    "bg": "rgb(253, 255, 247)",
+    "color": "rgb(38, 38, 38)",
+    "fontFamily": "\"Albert Sans\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "fontSize": "16px",
+    "lineHeight": "24.8px"
+   },
+   "nav": {
+    "h": 58,
+    "bg": "rgba(0, 0, 0, 0)",
+    "pos": "sticky",
+    "blur": "none"
+   },
+   "btn": {
+    "t": "Download",
+    "backgroundImage": "none",
+    "backgroundColor": "rgb(38, 38, 38)",
+    "borderRadius": "999px",
+    "height": "44px",
+    "padding": "7px 15px",
+    "boxShadow": "none",
+    "fontSize": "13px",
+    "fontWeight": "500",
+    "h": 44
+   },
+   "sections": [
+    {
+     "h": 615,
+     "pt": "62px",
+     "pb": "8px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 861,
+     "pt": "56px",
+     "pb": "56px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 1033,
+     "pt": "56px",
+     "pb": "56px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 695,
+     "pt": "56px",
+     "pb": "56px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 1505,
+     "pt": "56px",
+     "pb": "48px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 827,
+     "pt": "0px",
+     "pb": "48px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 78,
+     "pt": "0px",
+     "pb": "0px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 720,
+     "pt": "24px",
+     "pb": "56px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 1345,
+     "pt": "56px",
+     "pb": "56px",
+     "bg": "rgb(253, 255, 247)",
+     "radius": "0px"
+    },
+    {
+     "h": 1098,
+     "pt": "0px",
+     "pb": "56px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 419,
+     "pt": "40px",
+     "pb": "56px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    },
+    {
+     "h": 649,
+     "pt": "56px",
+     "pb": "56px",
+     "bg": "rgba(0, 0, 0, 0)",
+     "radius": "0px"
+    }
+   ],
+   "animations": {
+    "blurTextIn": 6,
+    "hm-dl-breathe": 1,
+    "hm-dl-sheen": 1,
+    "agent-logo-scroll": 1
+   },
+   "transitions": {
+    "all": 20,
+    "background, border-color": 1,
+    "color": 64,
+    "background": 16,
+    "background, transform": 1,
+    "transform, box-shadow": 6,
+    "border-color, background, box-shadow": 1,
+    "opacity, background": 2,
+    "transform, background, color, border-color": 4,
+    "transform, background, color": 9,
+    "background, color": 11
+   },
+   "fonts": [
+    "\"Albert Sans\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "Arial"
+   ],
+   "scrollH": 10934,
+   "radiusSamples": [
+    "0px",
+    "50%",
+    "8px",
+    "4px",
+    "999px",
+    "24px",
+    "16px",
+    "22px"
+   ],
+   "shadowCount": 60,
+   "totalEls": 971
+  }
+ }
+}
