@@ -228,12 +228,12 @@
 </div>
 
 <script src="../assets/js/config.js"></script>
-<script type="module">
-  /* qrcode.js adalah ES module (export default) -> import lalu expose global.
-     Offline-safe: same-origin, di-cache SW (assets/js/qrcode.js di CORE). */
-  import QRCode from "../assets/js/qrcode.js";
-  window.QRCode = QRCode;
-  document.dispatchEvent(new CustomEvent("qrcode-ready"));
+<script>
+  /* [pos-fix] 2026-10-18 C2: qrcode.js (32KB) tidak lagi diimpor statis di awal halaman —
+     dynamic import saat pertama kali dibutuhkan (renderQris). 32KB tidak berebut pipa 400kbps
+     dengan HTML/config.js saat memuat layar jual (target C2 3G <= 10 dtk). Offline tetap aman:
+     berkas di-cache SW (CORE) sehingga dynamic import tetap terlayani tanpa jaringan. */
+  window.QR_CODE_SRC = "../assets/js/qrcode.js";
 </script>
 <div class="toast" id="toast" role="status" aria-live="polite"><span class="t-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span id="toast-msg"></span><button type="button" class="toast-undo" id="toast-undo" hidden>Urungkan</button></div>
 <script>
@@ -322,6 +322,18 @@
     return base + ("000" + crc16ccitt(base).toString(16).toUpperCase()).slice(-4);
   }
   var qrSheet = null, qrFull = null;
+  /* [pos-fix] 2026-10-18 C2: dynamic import qrcode.js hanya saat QRIS dipakai */
+  var qrLoading = null;
+  function ensureQr(){
+    if(typeof QRCode !== "undefined") return Promise.resolve();
+    if(!qrLoading){
+      qrLoading = import(window.QR_CODE_SRC || "../assets/js/qrcode.js").then(function(m){
+        window.QRCode = m.default;
+        document.dispatchEvent(new CustomEvent("qrcode-ready"));
+      });
+    }
+    return qrLoading;
+  }
   function paintQr(qr, box, size, text){
     if(!box || typeof QRCode === "undefined") return;
     if(qr && qr._el === box){ qr.clear(); qr.makeCode(text); return qr; }
@@ -332,10 +344,11 @@
   }
   function renderQris(){
     var t = total(), payload = buildQrisPayload(t, null, null, SESSION.store);
-    qrSheet = paintQr(qrSheet, document.getElementById("qris-box"), 150, payload);
-    qrFull = paintQr(qrFull, document.getElementById("qris-full-box"), 200, payload);
     var b1 = document.getElementById("qris-box");
-    if(b1) b1.dataset.payload = payload; // untuk verifikasi manual (CRC/data attribute)
+    if(b1) b1.dataset.payload = payload; /* untuk verifikasi manual (CRC/data attribute) */
+    if(typeof QRCode === "undefined"){ ensureQr().then(renderQris).catch(function(){}); return; }
+    qrSheet = paintQr(qrSheet, b1, 150, payload);
+    qrFull = paintQr(qrFull, document.getElementById("qris-full-box"), 200, payload);
   }
 
   var C = window.OLANO_CONFIG, R = window.OLANO;
