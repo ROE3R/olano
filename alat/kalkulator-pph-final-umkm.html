@@ -122,7 +122,7 @@
         </div>
         <div class="field" id="wr-fields" hidden>
           <label>Omzet 12 bulan terakhir (Rp, kumulatif)</label>
-          <input id="omzet-12b" type="number" inputmode="numeric" min="0" step="1000000" value="900000000">
+          <input id="omzet-12b" type="number" inputmode="numeric" min="0" step="1000000" value="">
           <p class="hint">Dipakai bila omzet fluktuatif. Kosongkan untuk memakai omzet bulanan × 12.</p>
         </div>
         <label class="fcheck" style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--gray-700);margin:6px 0 14px">
@@ -236,6 +236,7 @@
   wpSeg.addEventListener("change", function(){
     var v = wpSeg.querySelector("input:checked").value;
     document.getElementById("fam-field").hidden = !(v==="OP");
+    calc();
   });
   kel.addEventListener("change", function(){
     document.getElementById("fam-field").hidden = !(kel.checked && wpSeg.querySelector("input:checked").value==="OP");

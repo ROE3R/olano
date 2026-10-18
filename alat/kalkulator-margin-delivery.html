@@ -200,14 +200,17 @@
     document.getElementById("r-hpp").textContent = "− " + H.rp(hpp);
     document.getElementById("r-laba2").textContent = H.rp(Math.round(laba));
     var v = document.getElementById("r-verdict"), vt = document.getElementById("r-vtext");
+    var idealTxt = denom>0 ? H.rp(round5k(hargaIdeal||0)) : null;
+    var idealLine = idealTxt ? " Naikkan harga ke <b>"+idealTxt+"</b> atau nonaktifkan promo "+H.rp(promo)+"."
+                              : " Komisi+target sama dengan atau lebih dari 100% dari harga jual, target tidak tercapai di harga berapa pun. Turunkan target atau kurangi komisi/promo.";
     if(laba<0){
       v.className="verdict bad"; v.style.background="rgba(229,72,77,.08)"; v.style.borderColor="rgba(229,72,77,.4)";
       v.querySelector(".vtag").style.color="#ff8f92";
-      vt.innerHTML="Perhatian: pesanan ini RUGI "+H.rp(Math.abs(Math.round(laba)))+" per pesanan. Naikkan harga ke <b>"+H.rp(round5k(hargaIdeal||0))+"</b> atau nonaktifkan promo "+H.rp(promo)+".";
+      vt.innerHTML="Perhatian: pesanan ini RUGI "+H.rp(Math.abs(Math.round(laba)))+" per pesanan."+idealLine;
     } else if(mar < target){
       v.className="verdict warn"; v.style.background="rgba(232,161,0,.08)"; v.style.borderColor="rgba(232,161,0,.35)";
       v.querySelector(".vtag").style.color="#ffd75f";
-      vt.innerHTML="Margin "+mar.toLocaleString("id-ID",{maximumFractionDigits:1})+"% di bawah target "+target+"%. Naikkan harga ke <b>"+H.rp(round5k(hargaIdeal||0))+"</b> atau pakai menu paket agar komisi efektif per item turun.";
+      vt.innerHTML="Margin "+mar.toLocaleString("id-ID",{maximumFractionDigits:1})+"% di bawah target "+target+"%."+idealLine;
     } else {
       v.className="verdict ok"; v.style.background="rgba(18,161,80,.08)"; v.style.borderColor="rgba(18,161,80,.35)";
       v.querySelector(".vtag").style.color="#5fe89a";

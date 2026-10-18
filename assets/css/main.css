@@ -983,17 +983,6 @@ body.kb-open .pos-pay{min-height:48px}
 .price-list li:has(.pli-sub){align-items:flex-start}
 .price-list .pli-sub{display:block; font-size:12px; color:var(--gray-500); margin-top:2px; line-height:1.4}
 
-/* [landing-fix] L14/L15 (2026-10-18): baris modul ringkas di mobile (target 72-96px):
-   judul + 1 baris desc (line-clamp 1); chip rumus "contoh · ..." disembunyikan di ≤759px
-   (rumus pecah 2-3 baris di 360px = L15; teks tetap utuh di desktop/tablet & halaman tujuan).
-   Guard drag-vs-tap (jangan navigasi saat jari menyeret) ada di motion.js initModrowTap(). */
-@media(max-width:759px){
-  .modrow{padding:14px 10px}
-  .modrow .mchip{display:none}
-  .modrow .mdesc{display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden}
-  .modrow .no{padding-top:2px}
-  .mcont{gap:2px}
-}
 
 /* [landing-fix] L22 (2026-10-18): mobile = widget dulu, tembok aturan jadi accordion.
    >div:first-child display:contents -> h2, accordion, tombol ikut urutan grid:
@@ -1089,98 +1078,111 @@ body.home .hero .container{z-index:1}
 .picker{padding:44px 0 12px;background:var(--white)}
 @media(max-width:900px){.picker{padding:32px 0 4px}}
 .picker h2{font-size:var(--fs-h2);font-weight:450;letter-spacing:var(--ls-h2);margin:0 0 20px}
-/* ============ MODLIST: router modul editorial (gantikan grid kartu pick-card) ============
-   R-14/R-05: hierarki dari nomor + tipografi + baris hairline, bukan kartu identik.
-   Baris 01 = flagship; baris "soon" dim tapi tetap link valid (R-24/R-38).
-   Motif sama dengan .nrow/.nlist (list fitur) -> satu sistem editorial di satu situs. */
-.modlist{border-top:1px solid var(--gray-100)}
-.modrow{display:grid;grid-template-columns:56px 1fr 180px;gap:16px;align-items:start;
-  padding:24px 10px;margin:0 -10px;border-bottom:1px solid var(--gray-100);
-  text-decoration:none;color:inherit;transition:background var(--dur-base)}
-@media(min-width:760px) and (max-width:999px){.modrow{grid-template-columns:48px 1fr 150px}}
-@media(max-width:759px){.modrow{grid-template-columns:40px 1fr;padding:20px 10px}
-  .modrow .mmeta{grid-column:2;flex-direction:row;align-items:center;margin-top:6px}}
-.modrow .no{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--gray-500);
-  letter-spacing:.05em;padding-top:8px;transition:color var(--dur-base)}
-.mcont{display:flex;flex-direction:column;gap:6px}
-.mcont b{font-family:var(--font-display);font-size:1.3125rem;font-weight:700;letter-spacing:-.02em;
+/* ============ LAYANAN DECK: tumpukan kartu 3D yang auto-rotasi 01->09 ============
+   [v2b2] Ganti ledger statis (owner: "terlalu simpel"). Kartu numpuk: kartu aktif
+   di depan, 2 kartu belakang mengintip; tiap advance kartu aktif fly-out rotasi
+   ke kanan, kartu belakang naik. Controls: prev/next, dots 01-09, swipe,
+   filter tabs Semua/Aplikasi/Jasa.
+   Progressive: DEFAULT (tanpa JS) + reduced-motion = daftar kartu vertikal
+   statis (semua link tetap valid). .deck-live = mode 3D; ditoggle JS.
+   Budget motion spec v2: transisi transform/opacity saja, 0 keyframe baru. */
+.deck-zone{min-width:0}
+.mcard{display:flex;flex-direction:column;gap:10px;width:min(360px,100%);min-height:248px;
+  padding:22px 24px;background:var(--white);border:1px solid var(--gray-100);border-radius:16px;
+  box-shadow:0 1px 2px rgba(11,18,32,.05);text-decoration:none;color:inherit;
+  transition:transform var(--dur-slow) var(--ease-emphasized),opacity .4s var(--ease-standard),
+  box-shadow var(--dur-base) var(--ease-standard),border-color var(--dur-base)}
+/* daftar statis (tanpa JS / reduced-motion / non-live): kartu menumpuk vertikal */
+.mdeck{display:flex;flex-direction:column;gap:14px}
+.mcard .mc-top{display:flex;align-items:center;gap:10px}
+.mcard .no{font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--gray-500)}
+.mtag{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-500)}
+.mcard .mst{margin-left:auto;font-size:11px;font-weight:600;color:var(--gray-500);
+  display:inline-flex;align-items:center;gap:6px}
+.mcard .mst::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue-300)}
+.mcard.soon .mst::before{background:var(--gray-300)}
+.mcard b{font-family:var(--font-display);font-size:1.375rem;font-weight:700;letter-spacing:-.02em;
   color:var(--ink);transition:color var(--dur-base)}
-.mdesc{font-size:.9375rem;line-height:1.5;color:var(--gray-500);max-width:62ch}
-/* [v2] Chip = teks mono polos TANPA box (bg/border/radius dihilangkan) — rumus
-   "contoh · …" jadi detail tenang, bukan kotak yang wrap 3-4 baris. Clamp 2 baris
-   biar ritme tinggi baris seragam. Aksen flagship tetap di mnum + nomor + judul. */
-.mchip{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:0;color:var(--blue-700);
-  align-self:flex-start;max-width:100%;line-height:1.5;
+.mcard .mdesc{font-size:.9375rem;line-height:1.5;color:var(--gray-500)}
+.mc-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto}
+.mcard .mchip{font-family:var(--font-mono);font-size:11.5px;font-weight:500;color:var(--blue-700);
+  line-height:1.5;max-width:72%;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.mmeta{display:flex;flex-direction:column;align-items:flex-end;gap:8px;padding-top:2px}
-.mst{font-size:12px;font-weight:500;color:var(--gray-500)}
-.modrow .arr{width:18px;height:18px;color:var(--gray-300);
-  transition:transform var(--dur-base) var(--ease-emphasized),color var(--dur-base)}
-.modrow:hover{background:linear-gradient(90deg,var(--gray-25),transparent 72%)}
-.modrow:hover .no{color:var(--blue-600)}
-.modrow:hover b{color:var(--blue-700)}
-.modrow:hover .arr{transform:translateX(4px);color:var(--blue-600)}
-.modrow:focus-visible{outline:2px solid var(--blue-600);outline-offset:-2px}
-/* 01 = flagship: aksen di nomor + judul besar + mnum; chip tetap teks polos (tanpa box) */
-.modrow.fg .no{color:var(--blue-600)}
-.modrow.fg b{font-size:1.5rem}
-.modrow.fg .mchip{font-weight:600}
-/* "segera hadir": dim tapi link-nya tetap jalan (halamannya memang ada) */
-.modrow.soon .mcont b,.modrow.soon .mdesc{opacity:.62}
-.modrow.soon .mchip{color:var(--gray-500)}
-/* stagger reveal (pola [data-reveal].stagger yang sudah ada di main.css) */
-.modlist.stagger>*{opacity:0;transform:translateY(14px);transition:opacity var(--dur-slow) var(--ease-standard),transform var(--dur-slow) var(--ease-standard)}
-.modlist.stagger.in>*{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.modlist.stagger>*{transition:none}}
-
-/* -- Editorial Ledger (P1+P3+P2, garnish P4/P5): rail sticky kiri + kolom angka -- */
+.mcard.soon .mdesc,.mcard.soon b{opacity:.62}
+.mcard.soon .mchip{color:var(--gray-500)}
+.mcta{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:12px;
+  font-weight:600;letter-spacing:.04em;color:var(--blue-700);white-space:nowrap}
+.mcta .arr{width:14px;height:14px;color:var(--blue-600);
+  transition:transform var(--dur-base) var(--ease-emphasized)}
+@media(hover:hover){
+  .mcard:hover{border-color:var(--blue-100)}
+  .mcard:hover .mcta .arr{transform:translateX(4px)}
+}
+.mcard:focus-visible{outline:2px solid var(--blue-600);outline-offset:2px}
+/* kartu aktif (deck-live): shadow + border aksen = penanda kartu depan */
+.mcard.is-active{border-color:var(--blue-100);box-shadow:0 14px 34px rgba(11,18,32,.10)}
+/* kartu jauh (p>=3): disamarkan setelah transisi, bukan target pointer/fokus */
+#modul.deck-live .mcard.is-far{opacity:0;pointer-events:none;visibility:hidden;
+  transition:transform var(--dur-slow) var(--ease-emphasized),opacity .4s var(--ease-standard),
+  visibility 0s linear .45s,box-shadow var(--dur-base),border-color var(--dur-base)}
+/* kartu ter-filter: disembunyikan total (mode 3D dan statis) */
+.mcard.is-hidden{display:none}
+/* kartu sedang fly-out (transisi 3D lebih tegas selama .is-out) */
+#modul.deck-live .mcard.is-out{transition:transform .5s var(--ease-emphasized),opacity .5s var(--ease-standard)}
+#modul.deck-live .mcard.no-t{transition:none}
+/* stage 3D: tinggi tetap -> zero CLS; kartu absolute numpuk di tengah */
+#modul.deck-live .mdeck{display:block;position:relative;height:312px;perspective:1400px;margin:0 auto}
+#modul.deck-live .mcard{position:absolute;left:50%;top:50%;margin:0;will-change:transform}
+#modul.deck-live .mcard.is-hidden{display:none}
+@media(max-width:759px){
+  #modul.deck-live .mdeck{height:336px}
+  .mcard{min-height:232px;padding:18px 20px}
+}
+/* controls: prev/next + dots (tap target 44px, aksen aktif = tinta) */
+.dk-ctl{display:none;align-items:center;justify-content:center;gap:14px;margin-top:26px}
+#modul.deck-live .dk-ctl{display:flex}
+#modul.deck-static .dk-live{display:none}
+.dk-btn{width:44px;height:44px;flex:none;border-radius:50%;border:1px solid var(--gray-100);
+  background:var(--white);display:grid;place-items:center;color:var(--gray-500);cursor:pointer;
+  box-shadow:0 1px 2px rgba(11,18,32,.05);transition:border-color var(--dur-base),color var(--dur-base)}
+.dk-btn:hover{border-color:var(--blue-300);color:var(--blue-700)}
+.dk-btn .ic{color:inherit}
+#dk-prev .ic{transform:rotate(180deg)}
+.dk-dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:520px}
+.dk-dot{min-width:44px;height:44px;padding:0 8px;border-radius:22px;border:none;background:none;
+  font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.06em;
+  color:var(--gray-500);cursor:pointer;transition:background var(--dur-base),color var(--dur-base)}
+.dk-dot:hover{background:var(--gray-25)}
+.dk-dot.is-on{background:var(--ink);color:var(--white)}
+.dk-dot.is-off{display:none}
+.dk-dot:focus-visible,.dk-btn:focus-visible{outline:2px solid var(--blue-600);outline-offset:2px}
+.dk-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* utility screen-reader-only (dipakai .dk-live & future a11y hints) */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+/* tabs filter: Semua / Aplikasi / Jasa (tombol, bukan anchor) */
+/* Tanpa JS, tabs & kontrol tidak bisa berfungsi -> disembunyikan agar tidak ada
+   tombol mati (R-26). Muncul hanya saat JS menetapkan mode .deck-live/.deck-static. */
+.svc-switch{display:none;gap:8px;margin-top:20px;flex-wrap:wrap}
+#modul.deck-live .svc-switch,#modul.deck-static .svc-switch{display:flex}
+.svc-pill{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:10px;
+  border:1px solid var(--gray-100);background:var(--white);font-family:var(--font-mono);
+  font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--gray-500);cursor:pointer;
+  transition:background var(--dur-base),color var(--dur-base),border-color var(--dur-base)}
+.svc-pill:hover{border-color:var(--blue-300);color:var(--blue-700)}
+.svc-pill.is-on{background:var(--blue-600);border-color:var(--blue-600);color:var(--white)}
+.svc-pill:focus-visible{outline:2px solid var(--blue-600);outline-offset:2px}
+/* -- grid rail + zona deck -- */
 .pick-grid{display:grid;gap:var(--sp-8)}
 .pick-rail h2{font-size:var(--fs-h2);font-weight:450;letter-spacing:var(--ls-h2);margin:10px 0 16px}
 .pick-rail .small{max-width:30ch}
-/* P5 pick-ghost DIGUGURKAN: draft plan pakai gray-100 (1.18:1) & gray-300 (1.63:1) — keduanya
-   gagal WCAG 1.4.3 utk teks; palet tak punya token 3:1–7:1; P5 opsional demi gate A11y bersih */
-/* chip keluar dari .mcont -> tepat di bawah desc (mobile & tablet) */
-@media(max-width:759px){.modrow .mchip{grid-column:2}}
-@media(min-width:760px) and (max-width:999px){
-  .modrow .mchip{grid-column:2}
-  .modrow .mmeta{grid-column:3;grid-row:1}}
-/* P3: 4 kolom mulai >=1200px (kolom 3 = data, kolom 4 = status).
-   [v2] 1000-1199 tetap 3 kolom: di 1024 kolom 300px memeras kolom konten jadi
-   44px (desc nge-wrap 7 baris = baris tinggi beda-beda; root cause "berantakan"
-   di lebar ~1100px). Chip pindah di bawah desc, status/panah di kolom kanan. */
 @media(min-width:1000px){
   .pick-grid{grid-template-columns:340px 1fr;gap:56px;align-items:start}
-  .pick-rail{position:sticky;top:96px} /* P1 */
-  .modrow .mcont{max-width:52ch}
-  .modrow{align-items:center}
-  .modrow .mchip{grid-column:2;grid-row:2;justify-self:start;align-self:start;margin-top:2px}
-  .modrow .mmeta{grid-column:3;grid-row:1}}
-@media(min-width:1200px){
-  .modrow{grid-template-columns:56px minmax(0,1fr) minmax(240px,300px) 132px}
-  .modrow .mchip{grid-column:3;grid-row:1}
-  .modrow .mmeta{grid-column:4;grid-row:1}
-  .modrow .no{grid-column:1}
-  .modrow .mcont{grid-column:2}}
-/* P2: flagship expand — angka besar di kolom data, chip kecil di bawah desc */
-.modrow.fg b{font-size:clamp(1.5rem,2vw,1.625rem)}
-.modrow.fg .mdesc{max-width:48ch}
-.mnum{display:none;font-family:var(--font-mono);font-weight:600;font-size:clamp(1.4rem,2vw,1.75rem);
-  color:var(--blue-600);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-/* [v2] flagship 4 kolom hanya di >=1200px (zona 4 kolom); 1000-1199 mnum
-   tetap hidden, info flagship ditanggung chip di bawah desc. mcont BARIS 1
-   doang (bukan span 2) supaya chip di baris 2 tidak overlap dengan desc. */
-@media(min-width:1200px){
-  .modrow.fg .mnum{display:block;grid-column:3;grid-row:1;align-self:center}
-  .modrow.fg .mmeta{grid-column:4;grid-row:1;align-self:center}
-  .modrow.fg .no{grid-column:1;grid-row:1}
-  .modrow.fg .mcont{grid-column:2;grid-row:1}
-  .modrow.fg .mchip{grid-column:2;grid-row:2;justify-self:start;align-self:start;margin-top:4px}}
-/* [v2] aturan mati dihapus: chip display:none di <=759px (rumus utuh hidup di
-   desktop/tablet & halaman tujuan) */
-/* P4: row slide — reuse handler magnetic di a.modrow (transform saja, tanpa CLS) */
-@media(hover:hover) and (pointer:fine){
-  .modrow .mcont{transform:translateX(var(--slide,0));transition:transform var(--dur-base) var(--ease-emphasized)}}
-
+  .pick-rail{position:sticky;top:96px}
+}
+@media (prefers-reduced-motion:reduce){
+  .mcard,.dk-dot,.dk-btn{transition:none}
+  #modul.deck-live .mcard{transition:none}
+}
 /* -- motion guard (B: transform/opacity saja) -- */
 @media (prefers-reduced-motion:reduce){
   .hero-sky .h-cloud-1,.tool-hero .l-cloud{animation:none}
@@ -1262,14 +1264,6 @@ body.home .hero-cue{position:absolute; left:50%; bottom:22px; width:1px; height:
   transform-origin:top; animation:cueDrop 2.2s var(--ease-emphasized) 1s 2 both}
 @keyframes cueDrop{0%{transform:scaleY(0)}55%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
 
-/* C.4 picker refinements */
-body.home .modrow .no{position:relative; padding-top:8px}
-body.home .mst{display:inline-flex; align-items:center; gap:6px}
-body.home .mst::before{content:""; width:6px; height:6px; border-radius:50%;
-  background:var(--success); flex:none}
-body.home .modrow.soon .mst::before{background:var(--gray-300)}
-@media(hover:hover){body.home .modrow:hover{box-shadow:inset 2px 0 0 var(--blue-600)}}
-body.home .mnum{font-size:clamp(1.6rem,2.2vw,1.9rem)}
 
 /* C.5 alat: nomor baris counter */
 body.home .tlist{counter-reset:tl}
@@ -1461,15 +1455,12 @@ body.home .small b{font-variant-numeric:tabular-nums}
   .hero-visual img{border-radius:28px} /* [landing-fix] L10/O-1: radius frame HP (dgn bezel 5px) */
   .hero-struk{margin-top:18px}
 
-  /* PICKER: rail ringkas + baris rapat */
+  /* PICKER: rail ringkas + kartu kompak */
   .pick-rail .eyebrow{margin-bottom:6px}
   .pick-rail h2{font-size:1.5rem; margin:6px 0 0}
   .pick-rail .small{display:none}
-  .modrow{padding:14px 10px; gap:10px}
-  .modrow b{font-size:16px}
-  .modrow .mdesc{font-size:13.5px; line-height:1.4}
-  .mchip{font-size:11.5px}
-  .fg .mnum{font-size:1.3rem}
+  .mcard b{font-size:1.25rem}
+  .mcard .mdesc{font-size:13.5px; line-height:1.4}
 
   /* HARGA: kartu ringkas + close ringkas */
   #harga .sec-head{margin-bottom:18px}
@@ -1672,12 +1663,6 @@ figure[data-before-after] input[type=range]{height:44px}
 .fnote-d[open] > summary::after{content:"–"}
 .fnote-d .fnote{margin:4px 0 0;font-size:12px;line-height:1.55;color:var(--gray-500);max-width:60ch}
 
-/* [v2] Baris jasa DE-BOX: tidak ada gradient / strip-kiri / box chip.
-   Ledger satu sistem editorial; bedanya jasa vs aplikasi cukup lewat
-   header grup (grp-head "Jasa - dikerjakan tim Olano"). Nomor jasa
-   tetap aksen biru (label, bukan box). */
-.modrow.svc .no{color:var(--blue-600)}
-.modrow.svc .mchip{color:var(--blue-700);font-weight:500}
 
 /* [L35] Testimoni: mobile tampil 3 (paling relevan), sisanya desktop.
    Alasan: 6 kartu menambah 673px -> total 9,47 layar (target <=9). 3 kartu = angka
@@ -1723,28 +1708,6 @@ figure[data-before-after] input[type=range]{height:44px}
 
 
 
-/* [launch] Pemisah grup Aplikasi vs Jasa di daftar layanan.
-   Tujuan: pengunjung langsung paham mana yang software (pakai sendiri) dan
-   mana yang jasa (serahkan ke tim). Tanpa ini, 3 kartu jasa tenggelam di bawah 6 modul. */
-.grp-head{display:flex; align-items:center; gap:12px; margin:26px 0 12px}
-.grp-line{flex:1; height:1px; background:var(--gray-150,#E6EAF2)}
-.grp-t{font-family:var(--font-mono); font-size:11px; letter-spacing:.06em;
-  text-transform:uppercase; color:var(--blue-600); white-space:nowrap; font-weight:600}
-
-/* pill switcher di header seksi */
-.svc-switch{display:flex; gap:8px; margin-top:18px}
-.svc-pill{display:inline-flex; align-items:center; min-height:44px; padding:0 18px;
-  border-radius:999px; border:1px solid var(--gray-150,#E6EAF2); background:#fff;
-  font-size:.875rem; font-weight:600; color:var(--gray-700); text-decoration:none}
-.svc-pill:hover{border-color:var(--blue-300); color:var(--blue-700)}
-.svc-pill:focus-visible{outline:2px solid var(--blue-600); outline-offset:2px}
-
-/* [L35] grup-head + pill menambah ~90px. Dipadatkan supaya 360x800 kembali <=9. */
-@media (max-width:720px){
-  .grp-head{margin:14px 0 8px}
-  .svc-switch{margin-top:12px}
-  .svc-pill{min-height:44px; padding:0 16px; font-size:.8125rem}
-}
 
 
 
@@ -1812,10 +1775,7 @@ figure[data-before-after] input[type=range]{height:44px}
 /* [L35] 9,70 -> target <=9 layar. Tiga blok terbesar dipadatkan (isi utuh):
    modul (9 baris), kartu harga (2 kartu), dan blok mulai/FAQ. */
 @media (max-width:720px){
-  /* modul: 9 baris x ~110px -> ~80px */
-  body.home #modul .mdesc{font-size:.8125rem; line-height:1.35}
-  body.home #modul .mchip{font-size:.6875rem}
-  body.home #modul .grp-head{margin:10px 0 6px}
+  /* modul: deck kartu (tinggi stage tetap, tanpa aturan khusus) */
   /* kartu harga */
   body.home #harga .price-card li{padding-top:3px; padding-bottom:3px; font-size:.875rem}
   body.home #harga .price-card .price{font-size:1.75rem}
@@ -1925,11 +1885,7 @@ figure[data-before-after] input[type=range]{height:44px}
 }
 
 
-/* [L35] 360x800 sisa 120px: modul 9 baris dipadatkan (label & jarak). */
-@media (max-width:400px){
-  body.home #modul .mdesc{font-size:.75rem}
-  body.home #modul .svc-pill{min-height:44px}
-}
+
 
 
 

@@ -37,4 +37,6 @@
   }
   var rows = document.querySelectorAll("a.modrow");
   for(var i=0;i<rows.length;i++) arm(rows[i]);
+  var cards = document.querySelectorAll("a.mcard");
+  for(var j=0;j<cards.length;j++) arm(cards[j]);
 }();

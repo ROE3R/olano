@@ -426,6 +426,230 @@
     });
   }
 
+  /* ---------- DECK LAYANAN (#modul): tumpukan kartu 3D auto-rotasi 01->09 ----------
+     Default CSS = daftar kartu vertikal statis (tanpa JS / reduced-motion: semua link
+     tetap valid, aksesibilitas terjaga). Saat JS normal, section diberi .deck-live:
+     kartu numpuk di stage 3D (perspective), kartu aktif di depan, 2 kartu belakang
+     mengintip; tiap advance kartu aktif "fly-out" rotasi ke kanan, kartu belakang
+     naik. Controls: prev/next, dots 01-09, swipe horizontal, filter tabs
+     Semua/Aplikasi/Jasa. Transisi transform/opacity saja (budget motion spec v2:
+     0 keyframe baru). Auto-advance dihentikan saat hover/fokus/tab tersembunyi,
+     dan tidak berjalan sama sekali pada prefers-reduced-motion. */
+  function initCardDeck() {
+    var sec = document.getElementById("modul");
+    if (!sec) return;
+    var deck = sec.querySelector(".mdeck");
+    var live = sec.querySelector(".dk-live");
+    var pills = Array.prototype.slice.call(sec.querySelectorAll(".svc-pill"));
+    var prevB = sec.querySelector("#dk-prev");
+    var nextB = sec.querySelector("#dk-next");
+    var dotsWrap = sec.querySelector(".dk-dots");
+    var cards = Array.prototype.slice.call(deck.querySelectorAll(".mcard"));
+    if (!cards.length) return;
+
+    var N = cards.length;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var AUTO = 3800; // ms antar kartu (auto-advance)
+    var i = 0;            // indeks kartu aktif di dalam "shown"
+    var filter = "all";
+    var shown = cards.slice();
+    var timer = 0, hovering = 0, focusing = 0;
+
+    // Dots dibuat dari kartu (nomor = teks .no), agar selaras dengan konten.
+    var dots = cards.map(function (c, n) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "dk-dot";
+      b.dataset.i = String(n);
+      var num = (c.querySelector(".no") || {}).textContent || String(n + 1);
+      var title = (c.querySelector("b") || {}).textContent || ("Kartu " + num);
+      b.setAttribute("aria-label", title + " (kartu " + num + ")");
+      b.textContent = num;
+      b.addEventListener("click", function () { jumpToCard(n); });
+      dotsWrap.appendChild(b);
+      return b;
+    });
+
+    function posOf(card) {
+      var idx = shown.indexOf(card);
+      if (idx < 0) return -1;
+      var len = shown.length;
+      return ((idx - i) % len + len) % len; // 0 aktif, 1 berikutnya...
+    }
+
+    function apply(card, p, len, instant) {
+      var t, o, z;
+      if (p === 0) { t = "translate(-50%,-50%)"; o = 1; z = 4; }
+      else if (p === 1) { t = "translate(-50%,calc(-50% + 16px)) scale(.95)"; o = 0.5; z = 3; }
+      else if (p === 2) { t = "translate(-50%,calc(-50% + 30px)) scale(.9)"; o = 0.22; z = 2; }
+      else { t = "translate(-50%,calc(-50% + 44px)) scale(.85)"; o = 0; z = 1; }
+      card.style.zIndex = z;
+      card.style.opacity = o;
+      card.style.transform = t;
+      card.classList.toggle("is-active", p === 0);
+      card.classList.toggle("is-far", p >= 3);
+      // a11y: kartu jauh tidak boleh jadi target fokus (tidak terlihat)
+      if (p >= 3) { card.tabIndex = -1; card.setAttribute("aria-hidden", "true"); }
+      else { card.tabIndex = 0; card.removeAttribute("aria-hidden"); }
+      if (document.activeElement === card && p >= 3) card.blur();
+      if (instant) { card.classList.add("no-t"); }
+    }
+
+    function layout(instant) {
+      var len = shown.length;
+      // bersihkan is-active dari semua kartu dulu, biar hanya satu kartu
+      // yang benar jadi aktif (mencegah kartu ter-filter yang masih nyimpen
+      // class is-active lama). Kartu sedang fly-out tidak di-reset transform-nya.
+      cards.forEach(function (c) { c.classList.remove("is-active"); });
+      shown.forEach(function (card) {
+        if (card.classList.contains("is-out")) return; // sedang fly-out: jangan timpa transform
+        apply(card, posOf(card), len, instant);
+      });
+      cards.forEach(function (c) {
+        if (shown.indexOf(c) < 0) { c.classList.add("is-hidden"); c.classList.remove("is-active", "is-far"); }
+        else c.classList.remove("is-hidden");
+      });
+      if (instant) {
+        requestAnimationFrame(function () {
+          cards.forEach(function (c) { c.classList.remove("no-t"); });
+        });
+      }
+    }
+
+    // Fly-out kartu aktif saat maju: rotasi ke kanan (kartu "berputar" keluar).
+    function flyOut(card, dir) {
+      card.classList.remove("is-far", "no-t");
+      card.style.zIndex = 5;
+      card.style.transform = dir > 0
+        ? "translate(-50%,-50%) translateX(300px) rotateY(-70deg)"
+        : "translate(-50%,-50%) translateX(-300px) rotateY(70deg)";
+      card.style.opacity = "0";
+      card.classList.add("is-out");
+      setTimeout(function () {
+        card.classList.remove("is-out");
+        apply(card, posOf(card), shown.length, true);
+        requestAnimationFrame(function () { card.classList.remove("no-t"); });
+      }, 480);
+    }
+
+    function announce() {
+      if (!live) return;
+      var cur = shown[i];
+      if (!cur) return;
+      var num = (cur.querySelector(".no") || {}).textContent || String(i + 1);
+      var title = (cur.querySelector("b") || {}).textContent || "";
+      live.textContent = title + " (" + num + " dari " + shown.length + ")";
+    }
+
+    function syncUI() {
+      dots.forEach(function (d, n) {
+        var card = cards[n];
+        var inShown = filter === "all" || card.getAttribute("data-kind") === filter;
+        d.classList.toggle("is-off", !inShown);
+        if (inShown) d.classList.toggle("is-on", card === shown[i]);
+      });
+      announce();
+    }
+
+    function arm() {
+      clearTimeout(timer);
+      if (reduce || shown.length < 2) return;
+      timer = setTimeout(function () {
+        if (hovering || focusing || document.hidden) { arm(); return; }
+        step(1);
+      }, AUTO);
+    }
+
+    function step(dir) {
+      var len = shown.length;
+      if (!len) return;
+      var cur = shown[i];
+      i = (i + dir + len) % len;
+      var isLive3d = sec.classList.contains("deck-live") && !reduce;
+      if (isLive3d && cur) {
+        if (dir === 1) { flyOut(cur, 1); layout(false); }
+        else { layout(false); } // mundur: kartu aktif mundur, kartu belakang naik
+      } else {
+        layout(false);
+      }
+      syncUI();
+      arm();
+    }
+
+    function jumpToCard(cardIdx) {
+      var card = cards[cardIdx];
+      var si = shown.indexOf(card);
+      if (si < 0 || si === i) { syncUI(); return; }
+      var dir = si > i ? 1 : -1;
+      var cur = shown[i];
+      i = si;
+      if (sec.classList.contains("deck-live") && !reduce && cur) {
+        flyOut(cur, dir);
+      }
+      layout(dir === 0);
+      syncUI();
+      arm();
+    }
+
+    if (reduce) {
+      sec.classList.add("deck-static");
+      if (prevB) prevB.hidden = true;
+      if (nextB) nextB.hidden = true;
+      if (dotsWrap) dotsWrap.hidden = true;
+      if (live) live.hidden = true;
+      // Tanpa 3D: daftar vertikal statis, semua kartu tampil. Filter tabs
+      // tetap berfungsi lewat display:none (bukan transform/opacity).
+      shown = cards.slice(); i = 0;
+      pills.forEach(function (p) {
+        p.addEventListener("click", function () {
+          var k = p.getAttribute("data-kind");
+          cards.forEach(function (c) {
+            c.classList.toggle("is-hidden", k !== "all" && c.getAttribute("data-kind") !== k);
+          });
+        });
+      });
+    } else {
+      sec.classList.add("deck-live");
+      pills.forEach(function (p) {
+        p.addEventListener("click", function () {
+          filter = p.getAttribute("data-kind");
+          pills.forEach(function (q) { q.classList.toggle("is-on", q === p); });
+          shown = filter === "all" ? cards.slice() : cards.filter(function (c) {
+            return c.getAttribute("data-kind") === filter;
+          });
+          i = 0;
+          layout(true);
+          syncUI();
+          arm();
+        });
+      });
+      if (prevB) prevB.addEventListener("click", function () { step(-1); });
+      if (nextB) nextB.addEventListener("click", function () { step(1); });
+      // Pause auto-advance saat hover / fokus / tab tersembunyi
+      sec.addEventListener("mouseenter", function () { hovering++; });
+      sec.addEventListener("mouseleave", function () { hovering = Math.max(0, hovering - 1); });
+      sec.addEventListener("focusin", function () { focusing++; });
+      sec.addEventListener("focusout", function () { focusing = Math.max(0, focusing - 1); });
+      document.addEventListener("visibilitychange", arm);
+      // Swipe horizontal di stage (touch/pen; mouse pakai tombol prev/next)
+      var px = 0, py = 0, swiping = false;
+      deck.addEventListener("pointerdown", function (e) {
+        if (e.pointerType === "mouse") return;
+        swiping = true; px = e.clientX; py = e.clientY;
+      }, { passive: true });
+      deck.addEventListener("pointerup", function (e) {
+        if (!swiping || e.pointerType === "mouse") return;
+        swiping = false;
+        var dx = e.clientX - px, dy = e.clientY - py;
+        if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? 1 : -1);
+      }, { passive: true });
+      deck.addEventListener("pointercancel", function () { swiping = false; }, { passive: true });
+      layout(true);
+      syncUI();
+      arm();
+    }
+  }
+
   /* ---------- before/after slider foto AI ---------- */
   function initBeforeAfter() {
     document.querySelectorAll("[data-before-after]").forEach(function (ba) {
@@ -526,6 +750,7 @@
     initNav(); initNavDropdowns(); initReveal(); initCountUp(); initFaq();
     initSpotlight(); initSlideNum(); initHeroScenes();
     initOfflineDemo(); initMarquee(); initBeforeAfter(); initRings();
+    initCardDeck();
     initCtaPrefetch();
     initTicker();
     registerSW();
