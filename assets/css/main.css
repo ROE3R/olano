@@ -1664,3 +1664,13 @@ figure[data-before-after] input[type=range]{height:44px}
 @media (pointer: coarse){
   .btn.sm, .btn-ghost.sm{min-height:44px !important; padding-block:10px}
 }
+
+/* [launch] P1: dasar hitungan pajak/QRIS dipindah ke <details> agar kartu utama bebas jargon.
+   Ringkas, target 44px, tanda +/-, tanpa script. */
+.fnote-d{margin-top:10px;font-size:12px}
+.fnote-d > summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;
+  min-height:44px;color:var(--gray-500);text-decoration:underline;text-underline-offset:3px}
+.fnote-d > summary::-webkit-details-marker{display:none}
+.fnote-d > summary::after{content:"+";font-weight:700;color:var(--blue-600)}
+.fnote-d[open] > summary::after{content:"–"}
+.fnote-d .fnote{margin:4px 0 0;font-size:12px;line-height:1.55;color:var(--gray-500);max-width:60ch}

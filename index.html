@@ -36,7 +36,7 @@
 
 <div class="ticker" id="ticker" role="note" aria-label="Pengumuman">
   <div class="container ticker-row">
-    <p class="ticker-text">Kasir tetap jalan saat internet mati <span class="tk-x">&middot; QRIS dengan nominal terisi otomatis</span> <span class="tk-x">&middot; PPh final 0,5% (PP 20/2026)</span></p>
+    <p class="ticker-text">Kasir tetap jalan saat internet mati <span class="tk-x">&middot; QRIS dengan nominal terisi otomatis</span> <span class="tk-x">&middot; pajak final 0,5% otomatis</span></p>
     <button type="button" class="ticker-x" id="ticker-x" aria-label="Tutup pengumuman">&times;</button>
   </div>
 </div>
@@ -107,11 +107,11 @@
       <p class="sub">Kasir offline untuk UMKM. Stok &amp; QRIS tercatat, PPh final 0,5% terhitung otomatis.</p>
       <div class="cta-row"><a class="btn btn-primary pill btn-lg" href="kasir.html#demo">Coba demo kasir</a></div>
       <div class="hero-struk" data-reveal aria-hidden="true">
-        <span class="hs-row"><span>QRIS Rp40.000</span><span>MDR 0%</span></span>
-        <span class="hs-row"><span>Omzet Rp75.000.000/bln</span><span>PPh 0,5%</span></span>
-        <span class="hs-row hs-total"><span>PPh final/bln</span><span>Rp166.667</span></span>
+        <span class="hs-row"><span>QRIS Rp40.000</span><span>potongan 0%</span></span>
+        <span class="hs-row"><span>Omzet Rp75.000.000/bln</span><span>pajak 0,5%</span></span>
+        <span class="hs-row hs-total"><span>Pajak per bulan</span><span>Rp166.667</span></span>
       </div>
-      <p class="fnote">Basis: omzet contoh Rp75.000.000/bln &middot; PPh final 0,5% (PP 20/2026) &middot; MDR QRIS mikro 0% (&le;Rp500rb)</p>
+      <details class="fnote-d"><summary>Lihat dasar hitungannya</summary><p class="fnote">Contoh: omzet Rp75.000.000/bln. Pajak final UMKM 0,5%. Potongan QRIS untuk usaha mikro 0% (transaksi &le;Rp500rb), sesuai aturan yang berlaku.</p></details>
       <!-- [landing-fix] L13 (2026-10-18): gambar layar kasir bukan lagi tautan raksasa —
            gambar + caption statis (aria-hidden, dekoratif-edukatif), demo = tautan teks 48px terpisah.
            Log teks: COPY-NANTI.md #3 (hint "Coba demo kasir →" gugur, digantikan tombol 48px). -->
@@ -153,24 +153,24 @@
           <b>Kasir</b>
           <span class="mdesc">Kasir, QRIS, struk, dan stok dalam satu layar. Internet mati, transaksi tetap tercatat.</span>
         </span>
-        <span class="mchip">contoh · QRIS Rp40.000 → MDR 0% untuk usaha mikro</span>
-        <span class="mnum" aria-hidden="true">MDR&nbsp;0%</span>
+        <span class="mchip">contoh · QRIS Rp40.000 → potongan 0% untuk usaha mikro</span>
+        <span class="mnum" aria-hidden="true">potongan&nbsp;0%</span>
         <span class="mmeta"><svg class="arr ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></span>
       </a>
       <a class="modrow" href="pajak.html">
         <span class="no">02</span>
         <span class="mcont">
           <b>Pajak</b>
-          <span class="mdesc">PPh final 0,5% (PP 20/2026) dihitung dari omzet kasir. PDF siap setor, pengingat tanggal setor.</span>
+          <span class="mdesc">Pajak final 0,5% dihitung dari omzet kasir. Rekap PDF siap setor, pengingat tanggal setor.</span>
         </span>
-        <span class="mchip">contoh · omzet ≤ Rp500 juta/tahun → PPh Rp0</span>
+        <span class="mchip">contoh · omzet ≤ Rp500 juta/tahun → pajak Rp0</span>
         <span class="mmeta"><svg class="arr ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></span>
       </a>
       <a class="modrow" href="website.html">
         <span class="no">03</span>
         <span class="mcont">
           <b>Website</b>
-          <span class="mdesc">Toko online dari template Katalog yang siap sekarang; 7 keluarga layout menyusul. Katalog terisi dari stok kasir.</span>
+          <span class="mdesc">Toko online dari template Katalog yang siap sekarang; 7 model tampilan menyusul. Katalog terisi dari stok kasir.</span>
         </span>
         <span class="mchip">contoh · 1 template siap, 7 keluarga segera hadir</span>
         <span class="mmeta"><svg class="arr ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></span>
@@ -220,7 +220,7 @@
     <ul class="tlist">
       <li><a class="trow" href="alat/kalkulator-pph-final-umkm.html"><b>Kalkulator PPh Final</b><span class="tval">contoh: Rp166.667/bln</span><svg class="arr ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a></li>
       <li><a class="trow" href="alat/kalkulator-hpp-harga-jual.html"><b>HPP dan Harga Jual</b><span class="tval">contoh: 3 opsi harga</span><svg class="arr ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a></li>
-      <li><a class="trow" href="alat/kalkulator-biaya-qris.html"><b>Biaya QRIS (MDR)</b><span class="tval">contoh: Rp0/bln untuk mikro</span><svg class="arr ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a></li>
+      <li><a class="trow" href="alat/kalkulator-biaya-qris.html"><b>Biaya QRIS</b><span class="tval">contoh: Rp0/bln untuk mikro</span><svg class="arr ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a></li>
       <li><a class="trow" href="alat/kalkulator-margin-delivery.html"><b>Margin GoFood/Grab</b><span class="tval">contoh: 24,3% bersih</span><svg class="arr ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a></li>
     </ul>
     <p class="fnote">Asumsi contoh di atas: PPh Rp166.667/bln dari omzet Rp75.000.000 &middot; QRIS mikro Rp0/bln (&le;Rp500rb) &middot; margin delivery 24,3% (komisi 29%)</p>
