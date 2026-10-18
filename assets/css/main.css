@@ -1099,6 +1099,11 @@ body.home .hero .container{z-index:1}
   .hero-sky .h-cloud-1,.tool-hero .l-cloud{animation:none}
   .hero-inner{animation:none}
 }
+/* [landing-fix] L11 (2026-10-18): cloud-drift OFF di perangkat sentuh/mobile (jank + boros
+   baterai di HP murah); hanya jalan di pointer halus non-sentuh. Reduced-motion sudah dicakup. */
+@media (hover:none), (pointer:coarse){
+  .hero-sky .h-cloud-1,.tool-hero .l-cloud{animation:none}
+}
 
 /* ==================== DECLUTTER v23 (homepage saja, body.home) ====================
    Ritme band Linear/Framer: desktop 120/120, mobile 96/96 — SCOPED ke body.home
