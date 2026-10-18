@@ -393,8 +393,14 @@
     if(dsign) dsign.hidden = false;
   }
   document.getElementById("menu-logout").addEventListener("click", function(){
+    /* [SECURITY] Keluar harus menghapus SESI SERVER (cookie HttpOnly), bukan cuma
+       localStorage. Sebelumnya cookie tetap hidup sehingga sesi masih sah. */
     try{ localStorage.removeItem(SES_KEY); localStorage.removeItem(DEMO_KEY); }catch(e){}
-    location.replace("login.html");
+    var btn = this; btn.disabled = true;
+    fetch("/api/auth?action=logout", { method: "POST", credentials: "same-origin" })
+      .catch(function(){})
+      .then(function(){ location.replace("login.html"); })
+      .catch(function(){ location.replace("login.html"); });
   });
   document.getElementById("menu-btn").addEventListener("click", function(){ openSheet("sheet-menu"); });
 
