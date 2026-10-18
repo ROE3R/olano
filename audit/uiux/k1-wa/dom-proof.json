@@ -1,0 +1,24 @@
+{
+  "tag": "A",
+  "href": "https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20tanya%20soal%20layanan%20untuk%20warung%20saya",
+  "target": "_blank",
+  "rel": "noopener",
+  "label": "WhatsApp",
+  "wa-soon": false,
+  "click_fired": true,
+  "note_hidden_fallback": true,
+  "render": {
+    "visible": true,
+    "rect": {
+      "x": 559,
+      "y": 5790,
+      "w": 152,
+      "h": 48
+    },
+    "display": "flex",
+    "border": "rgb(191, 228, 208)",
+    "bg": "rgb(255, 255, 255)",
+    "minHeight": "48px",
+    "url": "http://localhost:8923/index.html"
+  }
+}
