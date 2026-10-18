@@ -284,29 +284,62 @@
     try{ localStorage.setItem(DEMO_KEY, "1"); }catch(e){}
     history.replaceState(null, "", location.pathname + location.search.replace(/([?&])demo=1&?/g, "$1").replace(/[?&]+$/, ""));
   } else {
-    /* Verifikasi sesi ke server secara sinkron-tampilan: sembunyikan app sampai
-       jawaban tiba supaya data warung tidak sempat dirender untuk pengunjung
-       tanpa sesi. */
+    /* Verifikasi sesi ke server: sembunyikan app sampai jawaban tiba supaya
+       data warung tidak dirender untuk pengunjung tanpa sesi.
+       Prioritas: (1) sesi server valid, (2) offline + cache sesi terakhir,
+       (3) flag demo persisten, (4) login.
+       [OFFLINE-FIRST P0] Saat offline POS harus tetap jalan (PRD F2): cache
+       sesi terakhir yang terverifikasi (SES_KEY, TTL 30 hari) dipakai.
+       Demo persisten (flag tersimpan sejak pertama #demo) jadi fallback agar
+       yang belum daftar tetap bisa coba POS offline; begitu ada sesi server,
+       flag demo dibuang. */
     SESSION = { username: "", store: "", pending: true };
+    try { localStorage.removeItem(ACC_KEY); } catch(e){}
+    var demoPersist = false;
+    try { demoPersist = localStorage.getItem(DEMO_KEY) === "1"; } catch(e){}
+    var lastVerify = (function(){
+      try {
+        var c = JSON.parse(localStorage.getItem(SES_KEY) || "null");
+        return (c && c.username && (Date.now() - (c.ts||0) < 30*24*3600*1000)) ? c : null;
+      } catch(e){ return null; }
+    })();
     var authCheck = fetch("/api/auth?action=me", { credentials: "same-origin" })
-      .then(function(r){ return r.ok ? r.json() : null; })
-      .catch(function(){ return null; });
-    try { localStorage.removeItem(SES_KEY); localStorage.removeItem(ACC_KEY); } catch(e){}
-    authCheck.then(function(j){
-      if(!j || !j.ok){ location.replace("login.html"); return; }
-      SESSION = { username: j.user.username, store: j.user.store };
+      .then(function(r){
+        if(!r.ok) return { bad: true };
+        return r.json().then(function(j){ return { j: j }; }, function(){ return { bad: true }; });
+      })
+      .catch(function(){ return { error: true }; });
+    authCheck.then(function(res){
+      var resolved = null;
+      if(res.j && res.j.ok){
+        /* (1) Sesi server valid → sumber kebenaran */
+        resolved = { username: res.j.user.username, store: res.j.user.store };
+        try { localStorage.setItem(SES_KEY, JSON.stringify({ username: res.j.user.username, store: res.j.user.store, ts: Date.now() })); } catch(e){}
+        /* [OFFLINE-FIRST] Ada sesi server asli → flag demo tidak lagi dibutuhkan
+           (fallback offline sekarang pakai cache SES_KEY). Buang supaya setelah
+           logout user kembali ke login, bukan kejebak di mode demo. */
+        try { localStorage.removeItem(DEMO_KEY); } catch(e){}
+      } else if(res.error){
+        /* (2) Jaring/offline: server tak terjangkau (jangan percaya navigator.onLine,
+           itu tak andal). POS tetap jalan dari data lokal (PRD F2):
+           cache sesi terakhir terverifikasi → flag demo → login. */
+        if(lastVerify){ resolved = { username: lastVerify.username, store: lastVerify.store, offline: true }; }
+        else if(demoPersist){ resolved = { username: "demo", store: "Kopi Senja", demo: true }; }
+        else { try { localStorage.removeItem(SES_KEY); } catch(e){} location.replace("login.html"); return; }
+      } else {
+        /* (3) Server TERJANGKAU tapi sesi tidak valid (401, dsb) → cache basi,
+           buang, ke login. Jangan pakai cache: server sudah menyatakan sesi habis. */
+        try { localStorage.removeItem(SES_KEY); } catch(e){}
+        location.replace("login.html"); return;
+      }
+      SESSION = resolved;
       var uEl = document.getElementById("pos-user"); if(uEl) uEl.textContent = SESSION.username;
       document.documentElement.classList.remove("auth-pending");
       document.body && document.body.classList.remove("auth-pending");
       if(typeof refreshStatus === "function") refreshStatus();
     });
   }
-  // sesi beneran: buang sisa flag demo (login asli = sesi punya field store dari form login)
-  try{
-    if(localStorage.getItem(DEMO_KEY) === "1" && (SESSION.username !== "demo" || SESSION.store)) localStorage.removeItem(DEMO_KEY);
-  }catch(e){}
-
-  /* ================= QRIS DINAMIS (EMVCo + CRC16-CCITT) ================= */
+  /* ================ QRIS DINAMIS (EMVCo + CRC16-CCITT) ================ */
   function crc16ccitt(str){
     var crc = 0xFFFF;
     for(var i = 0; i < str.length; i++){
