@@ -518,6 +518,15 @@ body.pos-app{background:var(--gray-50); min-height:100vh}
   padding:8px 4px;margin:-8px -6px -8px 0;text-transform:uppercase;letter-spacing:.04em}
 .toast-undo:active{opacity:.7}
 
+/* [pos-fix] 2026-10-18: swipe-kiri-untuk-hapus baris keranjang (rubrik C 19->21, brief 5.2.C) */
+.cart-row{position:relative;overflow:hidden}
+.cart-row .swipe-under{position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;
+  padding-right:24px;background:var(--danger-bg);color:var(--danger);border-radius:10px}
+.cart-row .swipe-front{position:relative;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;
+  padding:12px 0;border-bottom:1px solid var(--gray-100);background:#fff;
+  touch-action:pan-y;will-change:transform}
+.cart-row .swipe-front:active{background:var(--gray-50)}
+
 /* [pos-fix] P0.5 2026-10-18: kembalian raksasa di layar sukses (>=36px, tabular-nums) */
 #ok-kembali{margin:10px 0 4px}
 #ok-kembali .ok-k-label{display:block;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gray-500);margin-bottom:4px}
@@ -762,7 +771,9 @@ body.kb-open .pos-pay{min-height:48px}
   border-radius:999px;box-shadow:var(--sh-lift);display:flex;gap:8px;align-items:center;max-width:88vw;
   opacity:0;pointer-events:none;transition:opacity .25s var(--ease-emphasized),transform .25s var(--ease-emphasized)}
 .toast svg{flex:none}
-.toast.show{opacity:1;transform:translate(-50%,0)}
+/* [pos-fix] 2026-10-18: pointer-events:none di base membuat tombol Urungkan tak bisa diklik;
+   aktifkan hanya saat toast tampil, dan z-index di atas sheet (60) supaya tidak terkunci di balik sheet terbuka */
+.toast.show{opacity:1;transform:translate(-50%,0);pointer-events:auto;z-index:230}
 .toast .t-ic{color:var(--success);display:grid;place-items:center}
 
 .pos-clock{font-family:var(--font-mono);font-size:11px;color:var(--gray-500);letter-spacing:.04em;

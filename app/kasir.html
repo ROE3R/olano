@@ -659,6 +659,8 @@
     rows.innerHTML = ids.map(function(id){
       var p = PRODUCTS.find(function(x){ return x.id===id; });
       return '<div class="cart-row" data-id="'+id+'">'
+        + '<div class="swipe-under" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6"/></svg></div>'
+        + '<div class="swipe-front">'
         + '<div class="c-main"><div class="name">'+escHtml(p.name)+'</div><div class="qty">'+R.rp(p.price)+'</div></div>'
         + '<div class="qty-ctrl">'
         + '<button type="button" data-q="-1" aria-label="Kurangi '+p.name+'">−</button>'
@@ -667,7 +669,7 @@
         + '</div>'
         + '<div class="c-actions"><span class="ln">'+R.rp(p.price*cart[id])+'</span>'
         + '<button type="button" class="cart-del" aria-label="Hapus '+p.name+'"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6"/></svg></button></div>'
-        + '</div>';
+        + '</div></div>';
     }).join("") || '<p class="small" style="color:var(--gray-500);padding:12px 0">Keranjang kosong.</p>';
     document.getElementById("cart-sum").textContent = R.rp(total());
     document.getElementById("cart-total").textContent = R.rp(total());
@@ -693,6 +695,63 @@
     renderCart(); updateBar();
     toast("1 produk dihapus", true);
   }
+  /* ---------- swipe-kiri-untuk-hapus di sheet keranjang [pos-fix] 2026-10-18 (rubrik C 19->21, brief 5.2.C) ----------
+     Baris digeser kiri >=40% lebar -> hapus + Snackbar "Urungkan" 5 dtk (toast withUndo). Tap tombol hapus tetap ada (fallback).
+     Geser boleh mulai di mana saja termasuk di atas tombol: begitu gerakan horizontal >=8px terkonfirmasi,
+     click yang dihasilkan pointer sequence ini disembunyikan (capture stopPropagation) supaya stepper/hapus tak terpicu.
+     Ketukan biasa (tanpa geser) tetap mengklik normal. */
+  (function(){
+    var rows = document.getElementById("cart-rows");
+    var sw = { row:null, front:null, x0:0, y0:0, dx:0, w:0, on:false, hor:false, click:false };
+    function frontEl(row){ return row ? row.querySelector(".swipe-front") : null; }
+    function snap(front, dx){ if(front) front.style.transform = dx ? "translateX("+dx+"px)" : ""; }
+    function cleanup(front){
+      if(front){ front.style.transition = "transform .18s var(--ease-emphasized)"; front.style.transform = "";
+        setTimeout(function(){ front.style.transition = ""; }, 200); }
+      sw.on = false; sw.hor = false; sw.row = null; sw.front = null;
+    }
+    rows.addEventListener("pointerdown", function(e){
+      var row = e.target.closest(".cart-row");
+      if(!row) return;
+      sw.on = true; sw.row = row; sw.front = frontEl(row); sw.x0 = e.clientX; sw.y0 = e.clientY; sw.dx = 0;
+      sw.w = row.offsetWidth || 320; sw.hor = false; sw.click = false;
+    });
+    rows.addEventListener("pointermove", function(e){
+      if(!sw.on || !sw.front) return;
+      var ddx = e.clientX - sw.x0, ddy = e.clientY - sw.y0;
+      if(!sw.hor){
+        if(Math.abs(ddx) < 8 && Math.abs(ddy) < 8) return;
+        if(Math.abs(ddx) <= Math.abs(ddy)){ cleanup(sw.front); return; } /* gerakan vertikal = bukan swipe */
+        sw.hor = true;
+      }
+      e.preventDefault();
+      sw.dx = Math.min(0, ddx); /* hanya geser kiri */
+      snap(sw.front, sw.dx);
+    });
+    ["pointerup","pointercancel"].forEach(function(ev){
+      rows.addEventListener(ev, function(){
+        if(!sw.on) return;
+        var front = sw.front, row = sw.row;
+        if(sw.hor){
+          sw.click = true; /* geser terkonfirmasi -> jangan biarkan click menyentuh stepper/tombol */
+          setTimeout(function(){ sw.click = false; }, 80);
+        }
+        if(sw.hor && ev === "pointerup" && sw.dx <= -(sw.w * 0.4)){
+          /* threshold 40% terlampaui -> hapus (Undo 5 dtk tetap tersedia) */
+          sw.on = false; sw.hor = false; sw.row = null; sw.front = null;
+          front.style.transition = "transform .18s ease-in, opacity .18s ease-in";
+          front.style.transform = "translateX(-100%)"; front.style.opacity = "0";
+          setTimeout(function(){ removeCartItem(row.dataset.id); }, 160);
+        } else {
+          cleanup(front);
+        }
+      });
+    });
+    rows.addEventListener("click", function(e){
+      if(sw.click){ e.stopPropagation(); e.preventDefault(); }
+    }, true);
+    rows.addEventListener("pointerleave", function(){ if(sw.on) cleanup(sw.front); });
+  })();
   document.getElementById("toast-undo").addEventListener("click", function(){
     if(!cartLastRemoved) return;
     var r = cartLastRemoved; cartLastRemoved = null;
