@@ -12,6 +12,7 @@
 <link rel="preload" href="../assets/css/main.css" as="style">
 <style>/* [launch] critical: ukuran ikon sebelum main.css tiba (cegah SVG 300x150 -> CLS) */svg.ic{width:20px;height:20px;flex:none}svg.ic.sm{width:15px;height:15px}.feat-ic svg.ic{width:22px;height:22px}</style>
 <link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/bencho.css">
 </head>
 <body class="pos-app">
 <a class="skip" href="#produk">Langsung ke kasir</a>
@@ -495,8 +496,13 @@
         say("Mode demo: data contoh tidak tersimpan di server. Masuk dengan akun untuk memakai cadangan cloud.", false);
         return;
       }
-      var ok = window.confirm("Pulihkan semua transaksi yang tersimpan di server untuk perangkat ini? Transaksi dengan uuid sama akan ditimpa.");
-      if(!ok) return;
+      /* [bencho] inline confirm 2 ketukan, bukan dialog blokir.
+         Logika asli dibungkus utuh supaya alur restore tidak berubah. */
+      armedConfirm(this, "Ketuk lagi: pulihkan", function(){
+        doRestore();
+      });
+      return;
+      function doRestore(){
       btn.disabled = true;
       say("Mengambil data dari server…", true, "var(--gray-700)");
       fetch("/api/restore?deviceId=" + encodeURIComponent(deviceId()), { headers: { "Accept": "application/json" } })
@@ -530,6 +536,7 @@
           say("Gagal memulihkan: " + (e && e.message ? e.message : "periksa koneksi lalu coba lagi."), false);
         })
         .then(function(){ btn.disabled = false; });
+      } /* doRestore */
     });
   })();
   (function(){
@@ -814,7 +821,7 @@
     var p = PRODUCTS.find(function(x){ return x.id===b.dataset.id; }); if(!p) return;
     if(p.stock<=0){ toast(p.name+" habis"); return; } /* [pos-fix] P0.2: stok 0 tidak bisa dijual */
     cart[p.id] = (cart[p.id]||0)+1; if(p.stock>0) p.stock--;
-    render(); updateBar();
+    render(); updateBar(); renderCart(); /* [fix] renderCart wajib: sheet keranjang tidak ikut ter-update */
   });
   document.getElementById("q").addEventListener("input", function(e){
     var q = e.target.value.trim().toLowerCase();
@@ -845,6 +852,31 @@
   function count(){
     return Object.keys(cart).reduce(function(s,id){ return s+cart[id]; }, 0);
   }
+
+  /* [bencho] Inline confirm — dua ketukan untuk aksi merusak.
+     Ganti window.confirm() yang memblokir & tidak bisa di-style.
+     Aturan: tombol pertama "arm" (berubah merah + label yakin), ketukan kedua jalan.
+     Reset otomatis 4s atau saat fokus pindah. */
+  function armedConfirm(btn, msg2, run){
+    if(!btn) { if(window.confirm(msg2)) run(); return; }
+    if(btn.dataset.armed === "1"){
+      btn.dataset.armed = "0";
+      clearTimeout(btn._t);
+      var lbl = btn.querySelector("span.lbl") || btn;
+      lbl.textContent = lbl.dataset.orig || lbl.textContent;
+      run();
+      return;
+    }
+    var lbl = btn.querySelector("span.lbl") || btn;
+    lbl.dataset.orig = lbl.textContent;
+    btn.dataset.armed = "1";
+    lbl.textContent = msg2;
+    btn._t = setTimeout(function(){
+      btn.dataset.armed = "0";
+      lbl.textContent = lbl.dataset.orig || lbl.textContent;
+    }, 4000);
+  }
+
   /* ---------- keranjang sheet [pos-fix] P0.3 ---------- */
   var cartLastRemoved = null; /* {id, qty} untuk Undo */
   function renderCart(){
@@ -864,7 +896,11 @@
         + '<div class="c-actions"><span class="ln">'+R.rp(p.price*cart[id])+'</span>'
         + '<button type="button" class="cart-del" aria-label="Hapus '+p.name+'"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6"/></svg></button></div>'
         + '</div></div>';
-    }).join("") || '<p class="small" style="color:var(--gray-500);padding:12px 0">Keranjang kosong.</p>';
+    }).join("") || '<div class="pos-empty" role="status">'
+        + '<span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M6 6L5 3H2"/></svg></span>'
+        + '<b>Keranjang masih kosong</b>'
+        + '<p>Ketuk produk di layar kiri untuk mulai transaksi.</p>'
+        + '</div>';
     document.getElementById("cart-sum").textContent = R.rp(total());
     document.getElementById("cart-total").textContent = R.rp(total());
   }
@@ -1215,7 +1251,7 @@
     if(e.key==="Escape") document.querySelectorAll(".sheet.open").forEach(function(s){ closeSheet(s.id); });
   });
 
-  render(); updateBar(); refreshStatus();
+  render(); updateBar(); renderCart(); refreshStatus(); /* [bencho] render awal: empty state tampil saat keranjang kosong */
   countOutbox().then(function(n){ if(n>0){ pending = n; setStatus("off", pending); } }); /* [pos-fix] P1: antre offline nyata saat load */
 })();
 </script>

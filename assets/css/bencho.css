@@ -1,0 +1,76 @@
+/* ============================================================================
+   Bencho blocks untuk Olano — vanilla CSS, tanpa dependency.
+   Sumber: bencho.dev (110 blok). Yang dipakai di sini:
+     1. FAQ accordion   -> homepage (sudah pakai <details>, ini hanya polish)
+     2. Empty state     -> keranjang kosong di kasir (belum ada sama sekali)
+     3. Inline confirm  -> hapus produk / reset data (belum ada)
+     4. One-time code   -> input kode backup/restore (belum ada)
+   Aturan: semua state punya warna dari token, target sentuh >=44px,
+   hormati prefers-reduced-motion, tanpa JS library.
+   ========================================================================== */
+
+/* ---------------------------------------------------------------- 1. FAQ --- */
+/* <details> sudah native + aksesibel. Yang kurang hanya transisi tanda +. */
+.faq-item summary { cursor: pointer; list-style: none; display: flex;
+  align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item .plus { transition: transform .18s cubic-bezier(.4,0,.2,1); flex: none; }
+.faq-item[open] .plus { transform: rotate(45deg); }
+
+/* ------------------------------------------------- 2. Empty state (POS) --- */
+.pos-empty {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px; padding: 40px 24px; text-align: center;
+  border: 1px dashed var(--gray-200, #DDE3EC); border-radius: 14px;
+  background: var(--gray-25, #FAFBFD); color: var(--gray-500);
+}
+.pos-empty[hidden] { display: none; }
+.pos-empty .ico {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--blue-50, #EFF4FF); color: var(--blue-600, #2453EB);
+}
+.pos-empty .ico svg { width: 26px; height: 26px; }
+.pos-empty b { font-size: .9375rem; color: var(--ink, #0B1220); font-weight: 600; }
+.pos-empty p { font-size: .8125rem; line-height: 1.45; margin: 0; max-width: 28ch; }
+
+/* ------------------------------------------ 3. Inline confirm (2 langkah) --- */
+/* Menggantikan confirm() bawaan browser: aksi merusak jadi dua ketukan,
+   tombol pertama berubah jadi "Yakin? Hapus" dan reset sendiri setelah 4s. */
+[data-confirm] { position: relative; }
+[data-confirm][data-armed="1"] {
+  background: #FDECEC !important; color: #B42318 !important;
+  border-color: #F5B5B0 !important;
+}
+[data-confirm][data-armed="1"]::after {
+  content: "Ketuk lagi untuk yakin"; position: absolute; left: 50%; bottom: -22px;
+  transform: translateX(-50%); white-space: nowrap;
+  font-size: 11px; color: #B42318; font-family: var(--font-mono);
+  pointer-events: none;
+}
+
+/* --------------------------------------- 4. One-time code (restore/backup) --- */
+.otp-row { display: flex; gap: 8px; align-items: center; justify-content: center; }
+.otp-digit {
+  width: 44px; height: 52px; text-align: center;
+  font-family: var(--font-mono); font-size: 1.25rem; font-weight: 600;
+  color: var(--ink, #0B1220); background: #fff;
+  border: 1.5px solid var(--gray-200, #DDE3EC); border-radius: 10px;
+  transition: border-color .15s, box-shadow .15s;
+  /* 44px target sentuh terjaga lewat lebar 44 */
+}
+.otp-digit:focus {
+  outline: none; border-color: var(--blue-600, #2453EB);
+  box-shadow: 0 0 0 3px rgba(36,83,235,.14);
+}
+.otp-digit[data-filled="1"] { border-color: var(--blue-300, #9FB8F5); }
+
+@media (max-width: 400px) {
+  .otp-digit { width: 40px; height: 48px; font-size: 1.125rem; }
+  .otp-row { gap: 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-item .plus { transition: none; }
+  [data-confirm][data-armed="1"]::after { content: "Yakin?"; }
+}
