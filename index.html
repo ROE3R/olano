@@ -319,42 +319,44 @@
       </a>
       <p class="hint" id="wa-note" hidden>Nomor WhatsApp menyusul. Sementara, coba dulu demo kasirnya &mdash; gratis, tanpa akun.</p>
     </div>
-    <!-- [landing-fix] L34 (2026-10-18): FAQ + 3 langkah "cara mulai" — KOMPONEN STRUKTUR dgn
-         placeholder HONEST "isi menyusul" (R-23/R-38: isi dikerjakan tahap kata, tidak difiksasi).
-         Posisi sesuai urutan L32: sebelum CTA penutup. Accordion = .faq-item (initFaq di shared.js:
-         buka satu tutup yang lain). Anggaran L35 dijaga: blok ringkas, tanpa kartu. -->
+    <!-- [landing-fix] L34 (2026-10-18): FAQ + 3 langkah "cara mulai".
+         Isi sudah diisi (contoh jujur, bukan klaim berbayar). Accordion = .faq-item.
+         Anggaran L35 dijaga: blok ringkas, tanpa kartu. -->
     <div class="faq-steps" id="faq">
-      <p class="tst-label">Komponen struktur &mdash; isi FAQ dan langkah menyusul (tahap kata).</p>
       <div class="fs-steps">
         <h2>Cara mulai</h2>
         <ol class="fs-list">
           <li>
             <span class="fs-ic" aria-hidden="true"><svg class="ic"><use href="assets/icons.svg#i-bag"/></svg></span>
-            <span class="fs-txt"><b>Langkah 1</b><span class="fs-sub">isi menyusul</span></span>
+            <span class="fs-txt"><b>Buka kasirnya</b><span class="fs-sub">Ketuk Coba demo kasir. Sudah ada 8 produk contoh, langsung bisa jualan.</span></span>
           </li>
           <li>
             <span class="fs-ic" aria-hidden="true"><svg class="ic"><use href="assets/icons.svg#i-qr"/></svg></span>
-            <span class="fs-txt"><b>Langkah 2</b><span class="fs-sub">isi menyusul</span></span>
+            <span class="fs-txt"><b>Catat transaksi</b><span class="fs-sub">Ketuk produk, ketuk Bayar, pilih Tunai atau QRIS. Selesai dalam 4 ketukan.</span></span>
           </li>
           <li>
             <span class="fs-ic" aria-hidden="true"><svg class="ic"><use href="assets/icons.svg#i-chart"/></svg></span>
-            <span class="fs-txt"><b>Langkah 3</b><span class="fs-sub">isi menyusul</span></span>
+            <span class="fs-txt"><b>Lihat rekap</b><span class="fs-sub">Buka Menu, pilih Rekap harian. Omzet, jumlah transaksi, dan item terjual langsung terlihat.</span></span>
           </li>
         </ol>
       </div>
       <div class="fs-faq">
         <h2>Pertanyaan yang sering ditanya</h2>
         <details class="faq-item">
-          <summary>Pertanyaan 1<span class="plus" aria-hidden="true">+</span></summary>
-          <div class="ans">Isi menyusul.</div>
+          <summary>Apakah harus daftar dulu?<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">Tidak. Demo kasir langsung terbuka dengan produk contoh. Tidak ada layar login yang menghalangi.</div>
         </details>
         <details class="faq-item">
-          <summary>Pertanyaan 2<span class="plus" aria-hidden="true">+</span></summary>
-          <div class="ans">Isi menyusul.</div>
+          <summary>Kalau internet mati, data saya hilang?<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">Tidak. Transaksi disimpan di HP kamu (IndexedDB), bukan di server. Aplikasi tetap jalan offline, dan ada menu Cadangkan data untuk simpan file JSON.</div>
         </details>
         <details class="faq-item">
-          <summary>Pertanyaan 3<span class="plus" aria-hidden="true">+</span></summary>
-          <div class="ans">Isi menyusul.</div>
+          <summary>Berapa biayanya?<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">Paket Gratis Rp0 untuk mulai. Paket Pro Rp50.000 per outlet per bulan untuk fitur tambahan seperti AI harga dan foto produk.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Apakah saya perlu install aplikasi?<span class="plus" aria-hidden="true">+</span></summary>
+          <div class="ans">Tidak wajib. Bisa langsung dibuka di browser. Kalau mau seperti aplikasi, pilih "Tambahkan ke layar utama" di menu browser.</div>
         </details>
       </div>
     </div>
@@ -366,12 +368,12 @@
   </div>
 </section>
 
-<!-- ============ 6. TESTIMONI (K5 + L32: disembunyikan di produksi sampai ada isi nyata) ============
-     FLAG: hapus atribut `hidden` di bawah SETELAH testimoni asli diisi (data masih utuh di
-     config.js -> testimonials; renderer inline di bawah otomatis merender lagi saat flag dibuka). -->
-<section class="section" id="testimoni" aria-labelledby="tst-h" hidden>
+<!-- ============ 6. TESTIMONI (CONTOH berlabel jujur — bukan kutipan asli) ============
+     Isi: 4 contoh di config.js -> testimonials. Label "CONTOH" dipertahankan (R-38: placeholder jujur).
+     Saat ada testimoni asli: ganti quotes di config.js, hapus label CONTOH. -->
+<section class="section" id="testimoni" aria-labelledby="tst-h">
   <div class="container">
-    <p class="tst-label">CONTOH - tiga cerita di bawah ini contoh tampilan; akan kami ganti dengan pemilik toko yang benar-benar memakai Olano.</p>
+    <p class="tst-label">CONTOH - empat cerita di bawah ini contoh tampilan; akan kami ganti dengan pemilik toko yang benar-benar memakai Olano.</p>
     <div class="eyebrow" style="margin-top:16px">Testimoni</div>
     <h2 id="tst-h" style="margin-top:8px">Dari warung ke warung.</h2>
     <div class="tst-grid" id="tst-grid"></div>
@@ -387,8 +389,9 @@
         <a class="logo" href="/" style="color:var(--ink)"><span class="mark">O</span>Olano</a>
         <p class="legal">Kasir, website, dan pajak UMKM di satu tempat. Tetap jalan walau internet mati.</p>
       </div>
-      <nav aria-label="Produk">
-        <h2 class="foot-h">Produk</h2>
+      <details class="foot-acc">
+        <summary class="foot-h">Produk</summary>
+        <nav aria-label="Produk">
         <ul>
           <li><a href="umkm.html">Kasir UMKM</a></li>
           <li><a href="pajak.html">Pajak</a></li>
@@ -398,24 +401,29 @@
           <li><a href="automation.html">Automation</a></li>
           <li><a href="naik-kelas.html">Naik Kelas</a></li>
         </ul>
-      </nav>
-      <nav aria-label="Kalkulator">
-        <h2 class="foot-h">Kalkulator</h2>
+        </nav>
+      </details>
+      <details class="foot-acc">
+        <summary class="foot-h">Kalkulator</summary>
+        <nav aria-label="Kalkulator">
         <ul>
           <li><a href="alat/kalkulator-pph-final-umkm.html">PPh Final UMKM</a></li>
           <li><a href="alat/kalkulator-hpp-harga-jual.html">HPP & Harga Jual</a></li>
           <li><a href="alat/kalkulator-biaya-qris.html">Biaya QRIS</a></li>
           <li><a href="alat/kalkulator-margin-delivery.html">Margin Delivery</a></li>
         </ul>
-      </nav>
-      <nav aria-label="Perusahaan">
-        <h2 class="foot-h">Perusahaan</h2>
+        </nav>
+      </details>
+      <details class="foot-acc">
+        <summary class="foot-h">Perusahaan</summary>
+        <nav aria-label="Perusahaan">
         <ul>
           <li><a href="tentang.html">Tentang</a></li>
           <li><a href="kebijakan-privasi.html">Kebijakan Privasi</a></li>
           <li><a href="syarat-ketentuan.html">Syarat & Ketentuan</a></li>
         </ul>
-      </nav>
+        </nav>
+      </details>
     </div>
     <p class="small">Olano membantu menghitung dan menyiapkan rekap pajak. Pelaporan sebagai kuasa wajib pajak dikerjakan mitra berizin. Bukan nasihat hukum atau pajak.</p>
     <p class="small">&copy; 2026 Olano</p>

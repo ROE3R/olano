@@ -1384,7 +1384,7 @@ body.home .small b{font-variant-numeric:tabular-nums}
 .tst-attr{margin-top:14px}
 .tst-attr b{font-size:14px; font-weight:600; color:var(--ink); display:block}
 .tst-attr .store{font-size:12px; color:var(--gray-500); display:block; margin-top:2px}
-@media(max-width:759px){.tst-grid{grid-template-columns:1fr; min-height:960px}}
+@media(max-width:759px){.tst-grid{grid-template-columns:1fr; min-height:0}}
 
 /* ============ v25b: compact mobile (homepage, <=759px) ============ */
 @media(max-width:759px){
@@ -1545,4 +1545,35 @@ body.home .small b{font-variant-numeric:tabular-nums}
   .foot ul{gap:0}
   .foot ul a{display:flex; align-items:center; min-height:44px}
   .foot-h{margin-bottom:6px}
+}
+
+/* [landing-fix] L35 (2026-10-18): hemat tinggi mobile — footer akordeon.
+   Desktop: <details> selalu terbuka (open dipaksa via JS-free CSS tidak bisa, jadi
+   desktop pakai `details[open]` default + summary disembunyikan, konten tampil app-style).
+   Mobile: tertutup default, summary jadi baris 48px, hemat ~800px. */
+.foot-acc > summary{list-style:none; cursor:pointer}
+.foot-acc > summary::-webkit-details-marker{display:none}
+.foot-acc > summary::after{content:"+"; float:right; font-size:18px; line-height:1;
+  color:var(--gray-500); transition:transform .15s ease}
+.foot-acc[open] > summary::after{content:"–"}
+@media(max-width:759px){
+  .foot-acc > summary{min-height:48px; display:flex; align-items:center;
+    font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:var(--gray-500)}
+  .foot-acc > summary::after{margin-left:auto; float:none}
+  .foot-acc > nav{padding-bottom:8px}
+}
+@media(min-width:760px){
+  /* desktop: akordeon tidak relevan — paksa konten tampil, summary jadi judul biasa */
+  .foot-acc > summary{pointer-events:none; margin-bottom:var(--sp-4)}
+  .foot-acc > summary::after{display:none}
+  .foot-acc:not([open]) > nav{display:block}
+}
+
+/* [landing-fix] L35 (2026-10-18): rapatkan spacing mobile supaya <=9 layar.
+   Hanya padding/margin seksi — konten dan target sentuh tidak diubah. */
+@media(max-width:759px){
+  body.home #harga{padding-top:48px}
+  body.home #testimoni{padding-top:48px; padding-bottom:48px}
+  #faq{margin-top:32px; padding-top:32px}
+  #harga .sec-head{margin-bottom:20px}
 }

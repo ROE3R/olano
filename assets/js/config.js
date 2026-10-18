@@ -133,6 +133,8 @@
           quote: "Internet mati tidak masalah. Stok dan struk tetap tercatat, besok tinggal lanjut." },
         { initials: "BR", name: "Bu Rina", store: "Batik Rina",
           quote: "Harga dan stok ada di satu tempat. Tidak ada lagi catatan yang tumpang tindis." },
+        { initials: "AH", name: "Arief Hidayat", store: "Warung Sembako Barokah",
+          quote: "Rekap harian paling saya tunggu. Sebelumnya saya hitung manual di buku tulis, sering meleset." },
       ],
     },
   };
