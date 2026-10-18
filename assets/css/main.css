@@ -1474,6 +1474,20 @@ body.home .small b{font-variant-numeric:tabular-nums}
   body.home .tlist>.item::before{display:none}
 }
 
+/* [landing-fix] L36 (2026-10-18): tombol kembali ke atas — kecil mengambang 44px, muncul
+   setelah scroll > 2 layar (JS inline index.html). Posisi KIRI-bawah supaya tidak menimpa
+   CTA harga/WA (kanan); safe-area-aware; reduced-motion: lompat tanpa smooth. */
+.to-top{position:fixed; left:12px; bottom:max(12px, env(safe-area-inset-bottom)); z-index:80;
+  width:44px; height:44px; border-radius:var(--r-full); border:1px solid var(--gray-300);
+  background:var(--white); color:var(--gray-700); box-shadow:var(--sh-md);
+  display:grid; place-items:center; opacity:0; transform:translateY(6px); pointer-events:none;
+  transition:opacity var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard)}
+.to-top.show{opacity:1; transform:none; pointer-events:auto}
+.to-top:hover{border-color:var(--blue-300); color:var(--blue-600)}
+.to-top:focus-visible{outline:2px solid var(--blue-600); outline-offset:2px}
+.to-top .ic{transform:rotate(-90deg)}
+.to-top[hidden]{display:none}
+
 /* [landing-fix] L26 (2026-10-18): hierarki hasil kalkulator di SEMUA lebar — ditaruh paling akhir
    supaya menang atas override #pajak .calc-card .out-hero b (v28 mobile). Angka >=32px turun satu
    kolom, label 1 baris di bawahnya, penjelas .out-sub, detail callout tetap paling kecil. */

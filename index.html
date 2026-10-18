@@ -377,6 +377,12 @@
   </div>
 </footer>
 
+<!-- [landing-fix] L36 (2026-10-18): kembali ke atas — muncul setelah scroll > 2 layar; posisi
+     kiri-bawah (jauh dari CTA/WA yang berada di kanan); target 44px. -->
+<button type="button" class="to-top" id="to-top" aria-label="Kembali ke atas" hidden>
+  <svg class="ic" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg>
+</button>
+
 <script src="assets/js/config.js"></script>
 <script src="assets/js/shared.js"></script>
   <script src="assets/js/motion.js"></script>
@@ -442,6 +448,27 @@ note.innerHTML = "<b>Omzet tahunan "+window.OLANO.rp(annual)+".</b> Dasar kena (
   var clr = document.getElementById("omzet-clear");
   if(clr) clr.addEventListener("click",function(){ om.value=""; calc(); om.focus(); });
 })();
+/* L36: kembali ke atas — muncul setelah scroll > 2 layar, lompat halus ke atas */
+(function(){
+  var btn = document.getElementById("to-top");
+  if(!btn) return;
+  var shown = false;
+  function onScroll(){
+    var want = window.scrollY > window.innerHeight * 2;
+    if(want === shown) return;
+    shown = want;
+    btn.hidden = false;              // sekali tampil, toggling lewat class (tanpa reflow aneh)
+    btn.classList.toggle("show", want);
+  }
+  btn.addEventListener("click", function(){
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    btn.blur();
+  });
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
+
 /* L30: tombol WhatsApp non-dead (K1: nomor belum ada) -> klik menampilkan info jelas, bukan link mati */
 (function(){
   var b=document.getElementById("wa-btn"), n=document.getElementById("wa-note");
