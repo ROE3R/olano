@@ -1,0 +1,13 @@
+{
+  "name": "olano",
+  "version": "2.3.0",
+  "private": true,
+  "description": "Olano - kasir, website, dan pajak UMKM. Static PWA + sync API.",
+  "dependencies": {
+    "@vercel/blob": "^2.0.0"
+  },
+  "scripts": {},
+  "engines": {
+    "node": ">=20"
+  }
+}

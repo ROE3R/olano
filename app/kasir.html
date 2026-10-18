@@ -615,16 +615,98 @@
   window.addEventListener("online", function(){ drained = false; refreshStatus(); countOutbox().then(function(n){ pending = n; setStatus("off", pending); drain(); }); });
   window.addEventListener("offline", refreshStatus);
   var drained = false;
-  function drain(){
-    setTimeout(function(){
-      if(navigator.onLine && pending>0){
-        var n = pending; pending=0; setStatus("sync");
-        if(!drained) toast(n+" transaksi offline sudah tersinkron");
-        drained = true;
-        setTimeout(refreshStatus, 900);
-      }
-    }, 600);
+
+  /* [sync] deviceId persisten: satu perangkat = satu kunci idempotensi di server. */
+  function deviceId(){
+    var K = "olano.deviceId";
+    try {
+      var v = localStorage.getItem(K);
+      if (v && /^[A-Za-z0-9._:-]+$/.test(v)) return v;
+    } catch(e){}
+    var s = "", chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+    for(var i=0;i<20;i++) s += chars[Math.floor(Math.random()*36)];
+    var id = "d-" + s;
+    try { localStorage.setItem(K, id); } catch(e){}
+    return id;
   }
+
+  /* [sync] drain NYATA: baca outbox -> POST /api/sync -> hapus yang diterima.
+     Gagal jaringan = biarkan di outbox, coba lagi (backoff sederhana). */
+  var syncInFlight = false, syncBackoff = 0;
+  function readOutbox(){
+    return openDB().then(function(db){
+      if(!db) return [];
+      return new Promise(function(res){
+        var tx = db.transaction("outbox", "readonly");
+        var rq = tx.objectStore("outbox").getAll();
+        rq.onsuccess = function(){ res(rq.result || []); };
+        rq.onerror = function(){ res([]); };
+      });
+    });
+  }
+  function deleteOutbox(seqs){
+    return openDB().then(function(db){
+      if(!db || !seqs.length) return;
+      return new Promise(function(res){
+        var tx = db.transaction("outbox", "readwrite");
+        var st = tx.objectStore("outbox");
+        seqs.forEach(function(s){ st.delete(s); });
+        tx.oncomplete = res; tx.onerror = res;
+      });
+    });
+  }
+  function drain(){
+    if(syncInFlight || !navigator.onLine) return;
+    /* mode demo tidak mengirim ke server: data contoh milik orang lain bukan milik server */
+    if(typeof IS_DEMO !== "undefined" && IS_DEMO) return;
+    syncInFlight = true;
+    readOutbox().then(function(rows){
+      var sales = rows.map(function(r){ return r.payload; }).filter(Boolean);
+      if(!sales.length){ syncInFlight = false; pending = 0; setStatus("on"); return; }
+      setStatus("sync");
+      var ctl = ("AbortController" in window) ? new AbortController() : null;
+      var timer = ctl ? setTimeout(function(){ ctl.abort(); }, 15000) : null;
+      fetch("/api/sync", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ deviceId: deviceId(), sales: sales }),
+        signal: ctl ? ctl.signal : undefined
+      }).then(function(r){
+        if(timer) clearTimeout(timer);
+        if(!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      }).then(function(j){
+        var okSet = {};
+        (j.accepted || []).concat(j.duplicates || []).forEach(function(u){ okSet[u] = 1; });
+        var done = [];
+        rows.forEach(function(r){
+          var u = r.payload && r.payload.uuid;
+          if(u && okSet[u]) done.push(r.seq);
+        });
+        return deleteOutbox(done).then(function(){
+          var left = rows.length - done.length;
+          pending = left;
+          syncInFlight = false;
+          syncBackoff = 0;
+          if(done.length && !drained){ toast(done.length + " transaksi tersimpan di server"); drained = true; }
+          if(left > 0){ setStatus("off", left); scheduleDrain(5000); }
+          else { setStatus("on"); }
+        });
+      }).catch(function(){
+        if(timer) clearTimeout(timer);
+        syncInFlight = false;
+        pending = rows.length;
+        setStatus("off", pending);
+        scheduleDrain(0); /* backoff dihitung di scheduleDrain */
+      });
+    });
+  }
+  function scheduleDrain(ms){
+    syncBackoff = syncBackoff ? Math.min(syncBackoff * 2, 60000) : 2000;
+    setTimeout(drain, Math.max(ms, syncBackoff));
+  }
+  /* coba sinkron saat halaman dibuka (kalau ada sisa antre dari sesi lalu) */
+  setTimeout(function(){ countOutbox().then(function(n){ pending = n; if(n>0) drain(); }); }, 1200);
 
   var grid = document.getElementById("produk"), activeCat = "SEMUA";
   function render(list){
