@@ -162,6 +162,15 @@
     <div class="callout light ok" style="margin:0 0 12px"><b id="backup-last">Belum pernah dicadangkan</b></div>
     <button type="button" class="btn btn-primary btn-block" id="backup-btn">Cadangkan data (unduh berkas)</button>
     <p class="small" style="color:var(--gray-500);margin-top:10px">Cadangan berisi produk &amp; transaksi di perangkat ini. Simpan berkasnya di tempat aman.</p>
+    <!-- [pos-fix] 2026-10-18: impor cadangan (rubrik I 18->20): pilih berkas JSON -> validasi -> restore ke IDB.
+         Konfirmasi HANYA untuk aksi merusak (timpa data, brief P6); pesan sukses/galat jelas (rubrik 6/7). -->
+    <div style="border-top:1px solid var(--gray-100);margin-top:16px;padding-top:14px">
+      <b style="font-family:var(--font-display);font-size:1.05rem;display:block;margin-bottom:6px">Pulihkan dari cadangan</b>
+      <p class="small" style="color:var(--gray-500);margin:0 0 10px">Impor berkas cadangan JSON hasil unduhan di perangkat ini. Transaksi dengan uuid sama akan ditimpa.</p>
+      <button type="button" class="btn btn-secondary btn-block" id="restore-btn">Impor cadangan (pilih berkas)</button>
+      <input type="file" id="restore-file" accept="application/json,.json" hidden aria-hidden="true" tabindex="-1">
+      <p class="small" id="restore-msg" role="status" aria-live="polite" style="display:none;margin:10px 0 0;font-weight:600"></p>
+    </div>
   </div>
 </div>
 
@@ -416,6 +425,67 @@
       toast("Cadangan diunduh");
     });
   });
+  /* ================= impor cadangan [pos-fix] 2026-10-18 (rubrik I 18->20) =================
+     Pilih berkas JSON -> validasi format ({app:"olano-pos", sales:[...]}) -> restore ke IDB.
+     Konfirmasi HANYA untuk aksi merusak (timpa transaksi, brief P6); pesan sukses/galat jelas. */
+  (function(){
+    var fi = document.getElementById("restore-file"), btn = document.getElementById("restore-btn"), msg = document.getElementById("restore-msg");
+    function say(text, ok){
+      msg.textContent = text;
+      msg.style.color = ok ? "var(--success)" : "var(--danger)";
+      msg.style.display = "";
+    }
+    function restoreSales(sales){
+      return openDB().then(function(db){
+        if(!db) return Promise.reject(new Error("Penyimpanan lokal tidak tersedia di browser ini."));
+        return new Promise(function(res, rej){
+          var tx = db.transaction("sales", "readwrite");
+          var st = tx.objectStore("sales");
+          sales.forEach(function(s){ st.put(s); });
+          tx.oncomplete = function(){ res(sales.length); };
+          tx.onerror = function(){ rej(new Error("Gagal menulis ke penyimpanan lokal.")); };
+        });
+      });
+    }
+    btn.addEventListener("click", function(){
+      msg.style.display = "none";
+      if(typeof FileReader === "undefined"){ say("Browser ini tidak mendukung impor berkas.", false); return; }
+      fi.value = ""; fi.click();
+    });
+    fi.addEventListener("change", function(){
+      var f = fi.files && fi.files[0];
+      if(!f) return; /* batal pilih berkas = bukan galat, jangan beri pesan */
+      if(f.size > 20*1024*1024){ say("Berkas terlalu besar (maks 20 MB) — pastikan ini cadangan Olano.", false); return; }
+      var rd = new FileReader();
+      rd.onerror = function(){ say("Gagal membaca berkas — coba pilih lagi.", false); };
+      rd.onload = function(){
+        var data = null;
+        try{ data = JSON.parse(rd.result); }
+        catch(e){ say("Berkas bukan JSON valid — pastikan memilih berkas cadangan Olano.", false); return; }
+        if(!data || data.app !== "olano-pos" || !Array.isArray(data.sales)){
+          say("Format cadangan tidak dikenali (butuh berkas JSON dari tombol Cadangkan data).", false); return;
+        }
+        var bad = data.sales.filter(function(s){ return !s || !s.uuid || !Array.isArray(s.items) || typeof s.total !== "number"; }).length;
+        if(bad > 0){ say(bad+" transaksi di berkas rusak — impor dibatalkan, data lama aman.", false); return; }
+        if(data.sales.length === 0){ say("Cadangan kosong (0 transaksi) — tidak ada yang dipulihkan.", false); return; }
+        var when = data.at ? new Date(data.at).toLocaleString("id-ID") : "tidak diketahui";
+        /* aksi merusak (menimpa data) -> konfirmasi sekali sebelum eksekusi */
+        if(!window.confirm("Pulihkan "+data.sales.length+" transaksi dari cadangan "+when+"?\n\nTransaksi dengan uuid sama akan ditimpa. Data lain tidak berubah.")){
+          say("Impor dibatalkan. Data tidak berubah.", false); return;
+        }
+        restoreSales(data.sales).then(function(n){
+          var stamp = new Date().toLocaleString("id-ID");
+          try{ localStorage.setItem("olano-last-backup", stamp); }catch(e){}
+          document.getElementById("backup-last").textContent = "Terakhir dicadangkan: "+stamp;
+          say("Berhasil: "+n+" transaksi dipulihkan ke perangkat ini.", true);
+          toast(n+" transaksi dipulihkan dari cadangan");
+        }).catch(function(err){
+          say(err && err.message ? err.message : "Impor gagal — coba lagi.", false);
+        });
+      };
+      rd.readAsText(f);
+    });
+  })();
 
   /* ================= tambah produk [pos-fix] P1 (layar G, brief 5.2.G) ================= */
   function escHtml(s){
