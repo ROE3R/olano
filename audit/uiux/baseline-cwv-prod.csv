@@ -21,3 +21,5 @@ prod,https://olano.vercel.app,index.html,97,100,100,100,2117.8,2.1 s,0,0,8,1306
 prod,https://olano.vercel.app,app/kasir.html,99,100,100,63,1658.3,1.7 s,0.0002,0,3,1658.3,1658.3,0,1658.3,1.7 s,,n/a,n/a
 prod,https://olano.vercel.app,index.html,99,100,100,100,1800.1,1.8 s,0,0,3,1312.1,1606.5,13,1800.1,1.8 s,,n/a,n/a
 prod,https://olano.vercel.app,app/kasir.html,99,100,100,63,1656.6,1.7 s,0.0002,0,3,1656.6,1656.6,0,1656.6,1.7 s,,n/a,n/a
+prod,https://olano.vercel.app,index.html,97,100,100,100,2063.1,2.1 s,0,0,3,1313.1,2252.3,158,2063.1,2.1 s,,n/a,n/a
+prod,https://olano.vercel.app,app/kasir.html,100,100,100,63,1357.3,1.4 s,0.007,0.007,3,1357.3,1357.3,0,1357.3,1.4 s,,n/a,n/a
