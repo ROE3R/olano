@@ -2081,3 +2081,81 @@ figure[data-before-after] input[type=range]{height:44px}
   .device-stack .ipad,
   .iphone .island { animation: none !important; }
 }
+
+/* ============================================================================
+   [daydream] Atmosfer halaman modul: SATU keyframe drift lambat.
+   Diukur dari thedaydream.studio: cloud-drift 9s, transform-only, alternate.
+   Di Olano: hanya 1 keyframe per halaman, hanya di halaman modul (tool-hero),
+   bukan di homepage. Ini anggaran motion yang diturunkan dari ukur:
+   sokudo 0, daydream 2, open-design 4 -> Olano 1 dekoratif + 1 cue.
+   ========================================================================== */
+@keyframes driftSlow {
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(-3vw,0,0); }
+}
+.tool-hero .l-cloud {
+  animation: driftSlow 9s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce){
+  .tool-hero .l-cloud { animation: none; }
+}
+
+/* ============================================================================
+   [open-design] Ritme section halaman modul: 56/56 mobile (ukur 390), 130/130
+   desktop untuk section berat. Diukur dari open-design.ai.
+   ========================================================================== */
+@media (max-width: 900px){
+  .tool-hero + .section,
+  .tool-hero ~ .section { padding-top: 56px; padding-bottom: 56px; }
+}
+
+/* [L35] umkm.html 9.98 layar -> <=9. Checklist 509px (48+152+220+48) dipadatkan:
+   padding 32, head lebih rapat, dan baris 1 baris teks. Isi tidak dihapus. */
+@media (max-width:900px){
+  #mulai-checklist{padding-top:32px !important; padding-bottom:32px !important}
+  #mulai-checklist .sec-head h2{font-size:1.25rem}
+  #mulai-checklist .sec-head .sub{font-size:.8125rem; margin-top:6px}
+  #mulai-checklist .sec-head{margin-bottom:0}
+  #mulai-checklist .checklist{margin-top:12px !important}
+  #mulai-checklist .check-row{padding-top:2px; padding-bottom:2px}
+  #mulai-checklist .check-txt{font-size:.8125rem; line-height:1.3}
+}
+
+/* [L35] umkm.html 9.79 -> <=9: section 1546px dipadatkan (isi utuh). */
+@media (max-width:900px){
+  body.umkm .section{padding-top:44px !important; padding-bottom:44px !important}
+  #mulai-checklist{padding-top:26px !important; padding-bottom:26px !important}
+}
+
+/* [L35] section galeri foto umkm.html = 1522px (grid 1202px). Kartu galeri
+   dipadatkan di mobile: gambar lebih pendek, tanpa mengubah jumlah item. */
+@media (max-width:900px){
+  body.umkm .tools-grid{gap:10px !important}
+  body.umkm .tools-grid .tool-card,
+  body.umkm .tools-grid > *{padding:14px !important}
+  body.umkm .tools-grid img,
+  body.umkm .tools-grid .tool-thumb{max-height:150px !important; object-fit:cover}
+}
+
+/* [fix] rule thumb kalah spesifisitas: gambar masih 150px. Naikkan + aspect. */
+@media (max-width:400px){
+  body.umkm .tools-grid > * img{max-height:104px !important; height:104px !important; object-fit:cover !important}
+  body.umkm .tools-grid > *{padding:10px !important}
+  body.umkm .tools-grid > * h3{font-size:.9375rem !important; margin-top:8px !important}
+  body.umkm .tools-grid > * p{font-size:.75rem !important; margin-top:4px !important}
+}
+
+/* [L35] Figure before/after umkm.html pakai aspect-ratio 4/5 inline -> 390px
+   di layar 312px. Di mobile rasionya diubah ke 1/1 (isi tetap, tidak dipotong
+   karena object-fit:cover sudah menangani). */
+@media (max-width:400px){
+  body.umkm .tools-grid > figure[data-before-after]{aspect-ratio: 1 / 1 !important}
+}
+
+/* [L35] 9.2 -> <=9 di 360: sisa 160px. Padding seksi umkm dirapatkan lagi. */
+@media (max-width:400px){
+  body.umkm .section{padding-top:28px !important; padding-bottom:28px !important}
+  body.umkm #mulai-checklist{padding-top:22px !important; padding-bottom:22px !important}
+  body.umkm .cta{padding-top:32px !important; padding-bottom:32px !important}
+}
