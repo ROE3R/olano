@@ -1069,7 +1069,6 @@ body.home .hero .container{z-index:1}
 .pick-grid{display:grid;gap:var(--sp-8)}
 .pick-rail h2{font-size:var(--fs-h2);font-weight:450;letter-spacing:var(--ls-h2);margin:10px 0 16px}
 .pick-rail .small{max-width:30ch}
-.pick-count{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;color:var(--gray-500);margin-top:16px}
 /* P5 pick-ghost DIGUGURKAN: draft plan pakai gray-100 (1.18:1) & gray-300 (1.63:1) — keduanya
    gagal WCAG 1.4.3 utk teks; palet tak punya token 3:1–7:1; P5 opsional demi gate A11y bersih */
 /* chip keluar dari .mcont -> tepat di bawah desc (mobile & tablet) */
@@ -1406,7 +1405,6 @@ body.home .small b{font-variant-numeric:tabular-nums}
   .pick-rail .eyebrow{margin-bottom:6px}
   .pick-rail h2{font-size:1.5rem; margin:6px 0 0}
   .pick-rail .small{display:none}
-  .pick-count{display:none}
   .modrow{padding:14px 10px; gap:10px}
   .modrow b{font-size:16px}
   .modrow .mdesc{font-size:13.5px; line-height:1.4}
