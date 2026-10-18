@@ -1,62 +1,76 @@
-/* [launch] iPhone mockup (Dynamic Island) untuk hero — CSS murni, tanpa aset baru.
-   Alasan: mockup lama (bezel tebal + pita warung) terlihat seperti gambar tempelan,
-   bukan perangkat. Ini frame iPhone modern: sudut 44px, bezel tipis, Dynamic Island,
-   tombol samping, kilau kaca, bayangan bertingkat. Isi layar = screenshot asli app. */
+/* ============================================================================
+   Mockup perangkat — iPhone + iPad
+   ----------------------------------------------------------------------------
+   Aturan yang membuat mockup tidak "broken":
+   1. Frame dan layar memakai rasio perangkat asli, bukan rasio bebas.
+   2. Sudut layar (inner radius) = sudut frame (outer) - ketebalan bezel,
+      supaya bezel tidak menumpuk di sudut.
+   3. Status bar & home indicator digambar sebagai overlay di ATAS layar,
+      posisinya persen terhadap tinggi layar (tidak hilang saat resize).
+   4. Screenshot di dalam layar berbagi rasio dengan frame-nya.
+   ========================================================================== */
 
+/* ---------------------------------------------------------------- iPhone --- */
 .iphone {
-  --bezel: 10px;
+  --bezel: 11px;
+  --radius: 52px;
   position: relative;
   width: 100%;
-  max-width: 268px;
+  max-width: 292px;
   margin: 0 auto;
-  border-radius: 46px;
   padding: var(--bezel);
+  border-radius: var(--radius);
+  /* bodi titanium: gradien multi-titik supaya tepi berkilau, bukan flat */
   background:
-    linear-gradient(160deg, #3A3F47 0%, #14171C 38%, #0A0C10 62%, #2B3037 100%);
+    linear-gradient(150deg, #6E7480 0%, #2A2E35 18%, #101318 46%, #0A0C10 62%, #34383F 86%, #7C828E 100%);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,.10) inset,
-    0 0 0 2px rgba(0,0,0,.55),
-    0 18px 34px -12px rgba(10,16,32,.34),
-    0 42px 70px -30px rgba(10,16,32,.30);
+    0 0 0 1px rgba(255,255,255,.16) inset,
+    0 1px 2px rgba(255,255,255,.24) inset,
+    0 26px 48px -20px rgba(9,16,32,.42),
+    0 60px 90px -50px rgba(9,16,32,.38);
   isolation: isolate;
 }
 
-/* kilau kaca di tepi kiri atas */
+/* kilau kaca diagonal */
 .iphone::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(145deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,.04) 16%, transparent 34%);
+  background: linear-gradient(142deg, rgba(255,255,255,.30) 0%, rgba(255,255,255,.06) 18%, transparent 38%);
   pointer-events: none;
   z-index: 3;
 }
 
-/* tombol volume kiri + power kanan */
+/* tombol power kanan */
 .iphone::after {
   content: "";
   position: absolute;
-  inset-block: 86px 118px;
-  inset-inline-start: calc(var(--bezel) * -1.6);
+  top: 22%;
+  right: calc(var(--bezel) * -0.5);
   width: 3px;
-  border-radius: 3px 0 0 3px;
-  background: linear-gradient(180deg, #4A5058, #1C2026);
-  box-shadow: inset 0 40px 0 -1px #2C3138;
+  height: 14%;
+  border-radius: 0 2px 2px 0;
+  background: linear-gradient(180deg, #7A8089, #22262C);
   pointer-events: none;
 }
 
 .iphone .frame {
   position: relative;
-  border-radius: 36px;
+  /* inner radius = outer - bezel: sudut bezel rata, tidak dobel */
+  border-radius: calc(var(--radius) - var(--bezel));
   overflow: hidden;
-  background: #000;
-  aspect-ratio: 390 / 844;
+  background: #05070A;
+  aspect-ratio: 390 / 844;          /* rasio layar iPhone */
+  box-shadow: 0 0 0 1px rgba(0,0,0,.85) inset;
 }
 
 .iphone .frame img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;                /* screenshot 390x844 = rasio identik */
   object-position: top center;
   display: block;
   border: 0;
@@ -68,49 +82,127 @@
 /* Dynamic Island */
 .iphone .island {
   position: absolute;
-  top: 11px;
+  top: 2.4%;
   left: 50%;
   transform: translateX(-50%);
-  width: 88px;
-  height: 25px;
-  border-radius: 14px;
-  background: #05070A;
+  width: 30%;
+  height: 3%;
+  min-height: 21px;
+  border-radius: 999px;
+  background: #04060A;
   z-index: 4;
-  box-shadow: 0 1px 0 rgba(255,255,255,.06);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.05) inset;
 }
 
-/* kamera dalam island */
 .iphone .island::after {
   content: "";
   position: absolute;
-  right: 9px;
+  right: 11%;
   top: 50%;
   transform: translateY(-50%);
-  width: 7px;
-  height: 7px;
+  width: 24%;
+  aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #2A3A66 0%, #0C1220 62%, #05070A 100%);
-  box-shadow: 0 0 0 1px rgba(90,130,220,.18);
+  background: radial-gradient(circle at 34% 28%, #33477A 0%, #101828 55%, #04060A 100%);
+  box-shadow: 0 0 0 1px rgba(110,150,240,.16);
 }
 
 /* home indicator */
 .iphone .home-bar {
   position: absolute;
-  bottom: 7px;
+  bottom: 1.2%;
   left: 50%;
   transform: translateX(-50%);
-  width: 96px;
+  width: 34%;
   height: 4px;
-  border-radius: 3px;
-  background: rgba(255,255,255,.42);
+  border-radius: 999px;
+  background: rgba(255,255,255,.55);
   z-index: 4;
   mix-blend-mode: overlay;
 }
 
-@media (min-width: 760px) {
-  .iphone { max-width: 300px; --bezel: 11px; }
+/* ----------------------------------------------------------------- iPad ---- */
+.ipad {
+  --bezel: 13px;
+  --radius: 28px;
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: var(--bezel);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(150deg, #EDF0F5 0%, #BFC6D1 12%, #9AA2B0 42%, #B7BEC9 72%, #E9EDF3 100%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.75) inset,
+    0 0 0 1.5px rgba(20,28,44,.14),
+    0 30px 54px -24px rgba(9,16,32,.28),
+    0 64px 90px -56px rgba(9,16,32,.22);
+}
+
+.ipad::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(148deg, rgba(255,255,255,.55) 0%, transparent 26%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.ipad .frame {
+  position: relative;
+  border-radius: calc(var(--radius) - var(--bezel));
+  overflow: hidden;
+  background: #fff;
+  aspect-ratio: 1180 / 962;         /* = rasio screenshot desktop (1.227), tidak memotong UI */
+  box-shadow: 0 0 0 1px rgba(0,0,0,.09) inset;
+}
+
+.ipad .frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border-radius: 0;
+}
+
+/* kamera depan iPad di bezel atas */
+.ipad .cam {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #2A3038;
+  box-shadow: 0 1px 0 rgba(255,255,255,.6);
+  z-index: 4;
+}
+
+/* ------------------------------------------------------- stack & responsif - */
+.device-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (min-width: 900px) {
+  .device-stack { gap: 26px; }
+  .iphone { max-width: 300px; }
+  .ipad   { max-width: 600px; }
+}
+
+@media (max-width: 899px) {
+  .device-stack { gap: 14px; }
+  .ipad { max-width: 330px; --bezel: 9px; --radius: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .iphone { transition: none; }
+  .iphone, .ipad { transition: none !important; }
 }

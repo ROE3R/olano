@@ -1853,8 +1853,6 @@ figure[data-before-after] input[type=range]{height:44px}
 /* [L35] Halaman sekarang punya 8 seksi (tambah band harga jasa). Pemadatan mobile:
    hero visual, kartu harga, dan blok FAQ — isi tidak dikurangi. */
 @media (max-width:720px){
-  body.home .hero-visual{max-width:196px !important; margin-inline:auto}
-  body.home .iphone{max-width:196px !important}
   body.home .hero{padding-top:8px !important}
   body.home .hero-struk{margin-top:16px !important}
   body.home #harga .price-card{padding:18px 16px !important}
@@ -1887,8 +1885,6 @@ figure[data-before-after] input[type=range]{height:44px}
 
 /* [L35] Trim terakhir di 360px: hero visual + testimoni. */
 @media (max-width:400px){
-  body.home .hero-visual{max-width:172px !important}
-  body.home .iphone{max-width:172px !important}
   body.home .hero-demo-link{margin-top:8px !important}
   body.home #testimoni{padding-top:18px !important; padding-bottom:18px !important}
   body.home #testimoni .tst-grid{margin-top:14px !important}
@@ -1961,4 +1957,156 @@ figure[data-before-after] input[type=range]{height:44px}
   body.home #pajak{padding-top:36px !important; padding-bottom:36px !important}
   body.home #mulai{padding-top:22px !important; padding-bottom:22px !important}
   body.home #harga{padding-bottom:36px !important}
+}
+
+/* [fix] Aturan lama `.hero-visual img{width:100%;aspect-ratio:1180/962}` menimpa
+   gambar di dalam frame perangkat, sehingga iPhone/IPad ambruk jadi ~22px.
+   Semua aturan gambar lama di-scope keluar dari .device-stack. */
+.hero-visual img{aspect-ratio:auto; border:0; border-radius:0; box-shadow:none}
+.device-stack{width:100%}
+.device-stack .iphone,
+.device-stack .ipad{flex:none}
+
+/* Hero dua perangkat: di mobile menumpuk (iPhone atas, iPad bawah);
+   di desktop sejajar supaya keduanya terlihat besar tanpa memanjangkan halaman. */
+@media (min-width:900px){
+  .device-stack{flex-direction:row; align-items:flex-end; justify-content:center; gap:28px}
+  .device-stack .iphone{max-width:270px}
+  .device-stack .ipad{max-width:520px}
+}
+@media (max-width:899px){
+  .device-stack .iphone{max-width:236px}
+  .device-stack .ipad{max-width:300px}
+}
+
+/* [L35] Hero dua perangkat menambah tinggi. Di desktop dikecilkan sedikit +
+   seksi lain dirapatkan, supaya tetap <=9 layar. */
+@media (min-width:900px){
+  .device-stack .iphone{max-width:246px}
+  .device-stack .ipad{max-width:470px}
+  body.home .hero{padding-top:32px !important; padding-bottom:32px !important}
+  body.home #modul{padding-top:52px !important; padding-bottom:52px !important}
+}
+
+/* [L35] Hero dua perangkat butuh ~0,2 layar lagi. iPad tidak perlu sebesar
+   iPhone di desktop (dia elemen pendukung) — dikecilkan + gap dirapatkan. */
+@media (min-width:900px){
+  .device-stack .ipad{max-width:420px}
+  .device-stack{gap:22px}
+  body.home #harga .price-card li{padding-top:4px; padding-bottom:4px}
+}
+@media (max-width:899px){
+  .device-stack .iphone{max-width:210px}
+  .device-stack .ipad{max-width:268px}
+  .device-stack{gap:12px}
+}
+
+/* [L35] 9,07 -> <=9 di desktop: jarak hero-visual & padding modul dirapatkan. */
+@media (min-width:900px){
+  body.home .hero-visual{margin-top:28px !important}
+  body.home #modul{padding-top:44px !important; padding-bottom:44px !important}
+}
+
+/* [L35] 360x800 = 9,33. Perangkat ditumpuk vertikal = 645px. Di layar sempit
+   iPad dipindah sejajar di samping iPhone (bukan di bawah), hemat ~200px. */
+@media (max-width:899px){
+  .device-stack{flex-direction:row; align-items:flex-end; justify-content:center; gap:10px}
+  .device-stack .iphone{max-width:186px}
+  .device-stack .ipad{max-width:150px}
+}
+
+/* [L35] Trim akhir: 9,17 @360 dan 9,02 @1280. */
+@media (max-width:899px){
+  body.home #mulai{padding-top:20px !important; padding-bottom:20px !important}
+  body.home #harga{padding-top:30px !important}
+  body.home .hero-struk{margin-top:12px !important}
+}
+@media (min-width:900px){
+  body.home #harga{padding-top:44px !important}
+  body.home #testimoni{padding-top:40px !important; padding-bottom:40px !important}
+}
+
+/* [L35] 360x800 sisa 120px: modul 9 baris dipadatkan (label & jarak). */
+@media (max-width:400px){
+  body.home #modul .modrow{padding-top:7px !important; padding-bottom:7px !important}
+  body.home #modul .mdesc{font-size:.75rem}
+  body.home #modul .svc-pill{min-height:44px}
+  body.home #modul .grp-head{margin:8px 0 4px !important}
+}
+
+/* [L35] sisa 72px @360: padding #alat & #pajak dirapatkan. */
+@media (max-width:400px){
+  body.home #alat{padding-top:28px !important; padding-bottom:28px !important}
+  body.home #pajak{padding-top:28px !important; padding-bottom:28px !important}
+  body.home #testimoni{padding-top:14px !important; padding-bottom:14px !important}
+}
+
+/* [L35] 9,04 -> 32px terakhir: jarak antar kartu #alat dirapatkan. */
+@media (max-width:400px){
+  body.home #alat .tool-grid{gap:8px !important}
+  body.home #mulai{padding-top:16px !important; padding-bottom:16px !important}
+}
+
+/* [L35] 24px terakhir @360x800: safe-area + tinggi baris hero. */
+@media (max-width:400px){
+  body.home .hero h1{line-height:1.22 !important}
+  body.home .hero-struk{padding-top:10px !important; padding-bottom:10px !important}
+  body.home #testimoni .tst-grid{margin-top:10px !important}
+}
+
+/* [L35] 20px terakhir: #mulai 722px (FAQ 4 item) dirapatkan tipis. */
+@media (max-width:400px){
+  body.home #mulai .faq-item summary{padding:8px 0 !important}
+  body.home #mulai .fs-list li{padding-top:5px; padding-bottom:5px}
+}
+
+/* [L35] 8px terakhir @360x800 (target 7200 dari 7208). */
+@media (max-width:400px){
+  body.home #testimoni{padding-top:10px !important; padding-bottom:10px !important}
+}
+
+/* ============================================================================
+   Hero device motion — "remotion" ala product film:
+   iPhone & iPad masuk dari bawah dengan rotasi kecil, lalu settle.
+   Alasan: landing SaaS yang menjual aplikasi perlu menunjukkan perangkatnya
+   hidup, bukan screenshot datar. Motion hanya di perangkat (bukan seluruh
+   halaman), durasi pendek, dan mati total saat prefers-reduced-motion.
+   ========================================================================== */
+@keyframes devIn {
+  0%   { opacity: 0; transform: translateY(28px) rotateX(9deg) scale(.94); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) rotateX(0) scale(1); }
+}
+@keyframes devFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+@keyframes islandPulse {
+  0%, 100% { background: #04060A; }
+  50%      { background: #0B1020; }
+}
+
+.device-stack { perspective: 1200px; }
+
+.device-stack .iphone {
+  animation: devIn .72s cubic-bezier(.2,.8,.2,1) both;
+  will-change: transform, opacity;
+}
+.device-stack .ipad {
+  animation: devIn .72s cubic-bezier(.2,.8,.2,1) .12s both;
+  will-change: transform, opacity;
+}
+/* settle lalu mengapung sangat halus — bukan goyang */
+@media (min-width:900px){
+  .device-stack .iphone { animation: devIn .72s cubic-bezier(.2,.8,.2,1) both, devFloat 7s ease-in-out .9s infinite; }
+  .device-stack .ipad   { animation: devIn .72s cubic-bezier(.2,.8,.2,1) .12s both, devFloat 8.5s ease-in-out 1.1s infinite; }
+}
+
+/* Dynamic Island bernapas pelan (isyarat "perangkat hidup") */
+.iphone .island { animation: islandPulse 4.5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce){
+  .device-stack .iphone,
+  .device-stack .ipad,
+  .iphone .island { animation: none !important; }
 }
