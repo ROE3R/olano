@@ -871,6 +871,75 @@ body.kb-open .pos-pay{min-height:48px}
   .hero-inner{animation:none}
 }
 
+/* [landing-fix] L24 (2026-10-18): input omzet = prefix "Rp" dalam kolom + tombol clear + chip cepat.
+   Native font/ukuran ikut .field; wrapper absolut jadi prefix/clear tak menambah tinggi layout. */
+.omzet-wrap{position:relative; display:flex; align-items:center}
+.omzet-wrap input{width:100%; min-height:48px; padding:0 44px 0 42px; border:1px solid var(--gray-300);
+  border-radius:var(--r-md); background:var(--white); color:var(--ink); font-family:var(--font-mono);
+  font-size:16px; font-variant-numeric:tabular-nums; transition:border-color var(--dur-fast), box-shadow var(--dur-fast)}
+.omzet-wrap input:focus{outline:none; border-color:var(--blue-600); box-shadow:0 0 0 4px var(--blue-100)}
+.omzet-prefix{position:absolute; left:14px; z-index:1; font-family:var(--font-mono); font-size:15px;
+  font-weight:600; color:var(--gray-500); pointer-events:none}
+.omzet-clear{position:absolute; right:6px; width:36px; height:36px; border:0; border-radius:var(--r-full);
+  background:var(--gray-50); color:var(--gray-500); font-size:18px; line-height:1;
+  display:inline-grid; place-items:center}
+.omzet-clear:hover{background:var(--gray-100); color:var(--ink)}
+.omzet-chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+.omzet-chips button{min-height:40px; padding:0 16px; border:1px solid var(--gray-300); border-radius:var(--r-full);
+  background:var(--white); font-family:var(--font-mono); font-size:13px; font-weight:600; color:var(--gray-700);
+  font-variant-numeric:tabular-nums; transition:border-color var(--dur-fast), background var(--dur-fast), color var(--dur-fast)}
+.omzet-chips button:hover{border-color:var(--blue-400); color:var(--blue-600)}
+.omzet-chips button.on{background:var(--blue-600); border-color:var(--blue-600); color:#fff; box-shadow:var(--sh-sm)}
+
+/* [landing-fix] L25 (2026-10-18): #tax-out dipindah DI ATAS input omzet (di DOM index.html);
+   pemisah hairline putus-putus (motif struk) antara hasil dan input di bawahnya. */
+.calc-out-box.calc-out-top{margin-bottom:16px; padding-bottom:14px; border-bottom:1px dashed var(--gray-300)}
+
+/* [landing-fix] L30 + K1 (2026-10-18): tombol WhatsApp di bawah kartu harga, 48px, label jujur.
+   btn-wa (hijau atas putih, teks #0a5c36 ~7.5:1) sudah ada di sistem; row-nya yang baru. */
+.wa-row{margin-top:24px; display:flex; flex-direction:column; align-items:center; gap:10px}
+.wa-row .btn-wa{min-height:48px}
+.wa-row .wa-soon{font-family:var(--font-mono); font-size:12px; font-weight:500; color:var(--gray-500); letter-spacing:.02em}
+.wa-row #wa-note{max-width:42ch; text-align:center}
+@media(max-width:759px){.wa-row .btn-wa{width:100%; max-width:360px}}
+
+/* [landing-fix] L28 (2026-10-18): 1 butir harga = 1 hal; angka batas jadi teks sekunder abu-abu. */
+.price-list li:has(.pli-sub){align-items:flex-start}
+.price-list .pli-sub{display:block; font-size:12px; color:var(--gray-500); margin-top:2px; line-height:1.4}
+
+/* [landing-fix] L14/L15 (2026-10-18): baris modul ringkas di mobile (target 72-96px):
+   judul + 1 baris desc (line-clamp 1); chip rumus "contoh · ..." disembunyikan di ≤759px
+   (rumus pecah 2-3 baris di 360px = L15; teks tetap utuh di desktop/tablet & halaman tujuan).
+   Guard drag-vs-tap (jangan navigasi saat jari menyeret) ada di motion.js initModrowTap(). */
+@media(max-width:759px){
+  .modrow{padding:14px 10px}
+  .modrow .mchip{display:none}
+  .modrow .mdesc{display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden}
+  .modrow .no{padding-top:2px}
+  .mcont{gap:2px}
+}
+
+/* [landing-fix] L22 (2026-10-18): mobile = widget dulu, tembok aturan jadi accordion.
+   >div:first-child display:contents -> h2, accordion, tombol ikut urutan grid:
+   h2 (-2) -> .calc-wrap (-1) -> accordion -> tombol. Desktop >=980 tidak berubah. */
+.rules-acc{margin-top:20px}
+.rules-acc summary{list-style:none; cursor:pointer; display:flex; align-items:center;
+  justify-content:space-between; gap:16px; font-family:var(--font-display); font-weight:600;
+  font-size:1.05rem; letter-spacing:-.01em; color:inherit; min-height:44px; padding:8px 0}
+.rules-acc summary::-webkit-details-marker{display:none}
+.rules-acc .plus{width:28px; height:28px; border-radius:8px; background:rgba(255,255,255,.14); color:#fff;
+  display:grid; place-items:center; font-size:18px; flex:none; line-height:1;
+  transition:transform var(--dur-base), background var(--dur-base)}
+.rules-acc[open] .plus{transform:rotate(45deg); background:rgba(255,255,255,.22)}
+.rules-acc summary:focus-visible{outline:2px solid #93B8FD; outline-offset:2px}
+@media(max-width:979px){
+  .tax-grid2{gap:24px}
+  .tax-grid2 > div:first-child{display:contents}
+  .tax-grid2 > div:first-child > h2{order:-2}
+  .tax-grid2 .calc-wrap{order:-1}
+  .tax-grid2 .rules-acc{margin-top:0}
+}
+
 /* ==================== B-ATMOSPHERE + PICKER REBUILD v9 ====================
    Tipografi/motion/atmosfer = ref B (thedaydream.studio, ukur 16-10):
    Aspekta (bukti ukur: h2 28.9/450/ls-0.02, hero title 87/600/ls-0.04,
@@ -1150,15 +1219,23 @@ body.home .small b{font-variant-numeric:tabular-nums}
 
 /* ==================== TICKER v24 (announcement strip, homepage) ==================== */
 .ticker{background:var(--blue-950); color:var(--blue-100); border-bottom:1px solid rgba(255,255,255,.08)}
-.ticker[hidden]{display:none}
+/* [landing-fix] L1 (2026-10-18): tutup ticker tanpa CLS — hidden = lipat halus (max-height->0),
+   bukan display:none seketika. sessionStorage dismiss (shared.js) tetap jalan; tidak ada JS baru. */
+.ticker{max-height:160px; overflow:visible; transition:max-height var(--dur-base) var(--ease-standard),
+  border-bottom-width var(--dur-base) var(--ease-standard)}
+.ticker[hidden]{display:block; max-height:0; overflow:hidden; visibility:hidden; border-bottom-width:0}
 .ticker-row{display:flex; align-items:center; gap:12px; min-height:38px; padding-top:6px; padding-bottom:6px}
 .ticker-text{flex:1 1 auto; min-width:0; margin:0;
-  font-family:var(--font-mono); font-size:11.5px; letter-spacing:.04em;
+  font-family:var(--font-mono); font-size:12px; letter-spacing:.04em;
   font-variant-numeric:tabular-nums; color:var(--blue-100); line-height:1.5}
-.ticker-x{flex:none; width:28px; height:28px; margin-left:auto;
+@media(max-width:759px){
+  /* L1: mobile = 1 pesan 1 baris; fakta ke-2/3 tetap ada di desktop (kata tidak diubah) */
+  .ticker-text .tk-x{display:none}
+}
+.ticker-x{flex:none; width:44px; height:44px; margin-right:-8px;
   display:inline-grid; place-items:center;
   background:transparent; border:0; border-radius:var(--r-full);
-  color:var(--blue-100); font-size:16px; line-height:1; cursor:pointer}
+  color:var(--blue-100); font-size:18px; line-height:1; cursor:pointer}
 .ticker-x:hover{background:rgba(255,255,255,.12)}
 .ticker-x:focus-visible{outline:2px solid var(--blue-200); outline-offset:2px}
 
@@ -1362,4 +1439,15 @@ body.home .small b{font-variant-numeric:tabular-nums}
 @media(max-width:759px){
   body.home main>section>.container::before{display:none}
   body.home .tlist>.item::before{display:none}
+}
+
+/* [landing-fix] L33 (2026-10-18): footer mobile — target sentuh >=44px, 1 kolom + pemisah.
+   Desktop >=760px tak berubah (grid 2fr 1fr 1fr 1fr). Paragraf hukum dicek <=4 baris di 360px. */
+@media(max-width:759px){
+  .foot-grid{grid-template-columns:1fr; gap:0}
+  .foot-grid > *{padding:16px 0}
+  .foot-grid > * + *{border-top:1px dashed var(--gray-300)}
+  .foot ul{gap:0}
+  .foot ul a{display:flex; align-items:center; min-height:44px}
+  .foot-h{margin-bottom:6px}
 }
