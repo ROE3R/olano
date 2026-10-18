@@ -438,6 +438,37 @@
     });
   }
 
+  /* ---------- prefetch app kasir saat CTA hero terlihat (C2) ----------
+     C2: ketukan CTA beranda -> produk pertama masuk keranjang <= 10 dtk di 3G.
+     App demo (app/kasir.html + assets/js/config.js) di-prefetch HANYA saat CTA
+     utama hero masuk viewport (IntersectionObserver, sekali -> unobserve):
+     pengunjung yang tidak sampai CTA tidak membayar kuota app. rel=prefetch
+     (bukan preload) = hanya mengisi cache HTTP, tidak dieksekusi di halaman ini.
+     Idempoten: link prefetch untuk URL yang sudah ada tidak diduplikat. */
+  function initCtaPrefetch() {
+    var cta = document.querySelector(".hero .cta-row a[href*='kasir.html']");
+    if (!cta || !("IntersectionObserver" in window)) return;
+    var done = false;
+    var urls = ["/app/kasir.html", "/assets/js/config.js"];
+    function add(url) {
+      if (document.querySelector("link[rel~='prefetch'][href='" + url + "']")) return;
+      var l = document.createElement("link");
+      l.rel = "prefetch";
+      l.href = url;
+      l.as = /\.html$/.test(url) ? "document" : "script";
+      document.head.appendChild(l);
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting || done) return;
+        done = true;
+        io.unobserve(e.target);
+        urls.forEach(add);
+      });
+    }, { threshold: 0.1 });
+    io.observe(cta);
+  }
+
   function registerSW() {
     if (!("serviceWorker" in navigator)) return;
     if (new URLSearchParams(location.search).has("no-sw")) return;
@@ -495,6 +526,7 @@
     initNav(); initNavDropdowns(); initReveal(); initCountUp(); initFaq();
     initSpotlight(); initSlideNum(); initHeroScenes();
     initOfflineDemo(); initMarquee(); initBeforeAfter(); initRings();
+    initCtaPrefetch();
     initTicker();
     registerSW();
   }
