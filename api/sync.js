@@ -2,7 +2,7 @@
  * POST /api/sync - terima transaksi offline dari klien (outbox drain).
  *
  * Kontrak:
- *   Header: x-olano-store-key (wajib bila env OLANO_SYNC_KEY diset)
+ *   Header: Authorization: Bearer <deviceId>.<token> (WAJIB, HMAC)
  *   Body:   { deviceId: string, sales: Sale[] }
  *   Sale:   { uuid, items:[{id,name,qty,price}], total, method, ts }
  *   Res:    200 { ok, accepted[], duplicates[], failed[] }
@@ -14,7 +14,7 @@
  *   - sales maks 500/request, tiap sale divalidasi + disanitasi + di-clamp.
  *   - Origin/referer harus dari host Olano sendiri (403 bila bukan) — mencegah
  *     endpoint dipakai dari situs pihak ketiga.
- *   - Optional shared key via env OLANO_SYNC_KEY (401 bila tidak cocok).
+ *   - deviceId diambil dari token terverifikasi, bukan dari body (403 device_mismatch).
  *
  * Storage: SATU BLOB PER TRANSAKSI (sync/<deviceId>/<uuid>.json), allowOverwrite:false.
  *   - Idempoten alami: kiriman ulang -> blob sudah ada -> "duplicate", bukan galat.
@@ -23,11 +23,10 @@
  */
 const { put } = require("@vercel/blob");
 const { rateLimit, clientIp } = require("./_ratelimit");
+const dev = require("./_device");
 
 const MAX_SALES_PER_REQUEST = 500;
 const MAX_BODY_BYTES = 256 * 1024;
-const MAX_DEVICE_ID = 64;
-const MIN_DEVICE_ID = 8;
 const MAX_ABS = 1e12;
 
 function bad(res, code, msg) {
@@ -102,11 +101,11 @@ module.exports = async function handler(req, res) {
   const clen = Number(req.headers["content-length"] || 0);
   if (clen > MAX_BODY_BYTES) return bad(res, 413, "payload_too_large");
 
-  const requiredKey = process.env.OLANO_SYNC_KEY;
-  if (requiredKey) {
-    const got = String(req.headers["x-olano-store-key"] || "");
-    if (got !== requiredKey) return bad(res, 401, "unauthorized");
-  }
+  /* [SECURITY] deviceId TIDAK lagi dipercaya dari body. Harus terbukti
+     lewat HMAC token. Gagal-tertutup bila secret belum diset. */
+  if (!dev.configured()) return bad(res, 503, "device_secret_not_configured");
+  const authedDevice = dev.verify(req);
+  if (!authedDevice) return bad(res, 401, "unauthorized");
 
   let body = req.body;
   if (typeof body === "string") {
@@ -119,9 +118,11 @@ module.exports = async function handler(req, res) {
   }
   if (!body || typeof body !== "object") return bad(res, 400, "invalid_body");
 
-  const deviceId = String(body.deviceId || "").trim().slice(0, MAX_DEVICE_ID);
-  if (deviceId.length < MIN_DEVICE_ID || !/^[A-Za-z0-9._:-]+$/.test(deviceId)) {
-    return bad(res, 400, "invalid_device_id");
+  /* deviceId yang dipakai = dari token terverifikasi.
+     Bila body menyebut deviceId lain, tolak (bukan abaikan diam-diam). */
+  const deviceId = authedDevice;
+  if (body.deviceId && String(body.deviceId) !== deviceId) {
+    return bad(res, 403, "device_mismatch");
   }
 
   const incoming = Array.isArray(body.sales) ? body.sales.slice(0, MAX_SALES_PER_REQUEST) : [];

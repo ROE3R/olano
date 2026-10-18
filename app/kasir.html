@@ -270,49 +270,36 @@
   var ACC_KEY = "olano-auth-accounts", SES_KEY = "olano-auth-session", DEMO_KEY = "olano-demo-mode";
   function jget(k, d){ try{ var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } }
   function jset(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
-  function fnv1a(str){
-    var h = 0x811c9dc5;
-    for(var i = 0; i < str.length; i++){
-      h ^= str.charCodeAt(i);
-      h = (h + (h<<1) + (h<<4) + (h<<7) + (h<<8) + (h<<24)) >>> 0;
-    }
-    return ("0000000" + h.toString(16)).slice(-8);
-  }
-  function checkHash(pass, stored){
-    var p = String(stored||"").split("$"); if(p.length !== 2) return false;
-    var h = 0x811c9dc5, s = p[0] + ":" + pass + ":" + p[0];
-    for(var i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = (h + (h<<1) + (h<<4) + (h<<7) + (h<<8) + (h<<24)) >>> 0; }
-    return ("0000000" + h.toString(16)).slice(-8) === p[1];
-  }
   function validSession(){
-    var s = jget(SES_KEY, null);
-    if(!s || !s.username) return null;
-    var acc = jget(ACC_KEY, {})[s.username];
-    return acc ? s : null; // sesi tanpa akun di perangkat = invalid
+    /* Sinkron: hanya untuk kompatibilitas pemanggil lama. Sumber kebenaran
+       adalah cookie; ini dipanggil setelah /api/auth?action=me menjawab. */
+    return SESSION;
   }
-  var SESSION = validSession();
-  if(!SESSION){
-    /* MODE DEMO (v25): #demo atau ?demo=1 tanpa sesi -> buat sesi demo lokal,
-       POS langsung jalan tanpa login. URL dinormalisasi (hash/param dibuang)
-       biar tidak re-trigger. */
-    var wantsDemo = /#demo\b/.test(location.hash) || /[?&]demo=1\b/.test(location.search);
-    if(!wantsDemo){ location.replace("login.html"); return; }
-    var accs = jget(ACC_KEY, {});
-    if(!accs["demo"]){
-      // seed akun demo idempoten (hash FNV-1a + salt, alur sama dengan login.html)
-      var sl = (function(){ var s=""; for(var i=0;i<8;i++) s += "0123456789abcdef"[Math.floor(Math.random()*16)]; return s; })();
-      accs["demo"] = { username:"demo", store:"Kopi Senja", ts: Date.now(), hash: sl + "$" + (function(salt){
-        var h = 0x811c9dc5, s = salt + ":olano:" + salt;
-        for(var i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = (h + (h<<1) + (h<<4) + (h<<7) + (h<<8) + (h<<24)) >>> 0; }
-        return ("0000000" + h.toString(16)).slice(-8);
-      })(sl) };
-      jset(ACC_KEY, accs);
-    }
-    jset(SES_KEY, { username: "demo", ts: Date.now() });
+  /* Sesi demo tetap ada (tanpa server) karena POS harus bisa dicoba tanpa daftar.
+     Sesi NYATA diverifikasi ke cookie server, bukan localStorage. */
+  var SESSION = { username: "", store: "", pending: true };
+  var wantsDemo = /#demo\b/.test(location.hash) || /[?&]demo=1\b/.test(location.search);
+  if(wantsDemo){
+    SESSION = { username: "demo", store: "Kopi Senja", demo: true };
     try{ localStorage.setItem(DEMO_KEY, "1"); }catch(e){}
     history.replaceState(null, "", location.pathname + location.search.replace(/([?&])demo=1&?/g, "$1").replace(/[?&]+$/, ""));
-    SESSION = validSession();
-    if(!SESSION){ location.replace("login.html"); return; }
+  } else {
+    /* Verifikasi sesi ke server secara sinkron-tampilan: sembunyikan app sampai
+       jawaban tiba supaya data warung tidak sempat dirender untuk pengunjung
+       tanpa sesi. */
+    SESSION = { username: "", store: "", pending: true };
+    var authCheck = fetch("/api/auth?action=me", { credentials: "same-origin" })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .catch(function(){ return null; });
+    try { localStorage.removeItem(SES_KEY); localStorage.removeItem(ACC_KEY); } catch(e){}
+    authCheck.then(function(j){
+      if(!j || !j.ok){ location.replace("login.html"); return; }
+      SESSION = { username: j.user.username, store: j.user.store };
+      var uEl = document.getElementById("pos-user"); if(uEl) uEl.textContent = SESSION.username;
+      document.documentElement.classList.remove("auth-pending");
+      document.body && document.body.classList.remove("auth-pending");
+      if(typeof refreshStatus === "function") refreshStatus();
+    });
   }
   // sesi beneran: buang sisa flag demo (login asli = sesi punya field store dari form login)
   try{
@@ -393,7 +380,7 @@
   var pill = document.getElementById("status");
 
   /* ================= header akun + logout ================= */
-  var acc = jget(ACC_KEY, {})[SESSION.username] || {};
+  var acc = {}; /* [SECURITY] akun tidak lagi dibaca dari localStorage */
   document.getElementById("pos-store").textContent = acc.store || "Kopi Senja";
   document.getElementById("pos-user").textContent = SESSION.username;
   document.getElementById("qris-store-name").textContent = acc.store || "Kopi Senja";
@@ -498,7 +485,7 @@
 
   /* ================= pulihkan dari cloud [sync] 2026-10-18 =================
      Cadangan lokal saja bukan backup kalau HP hilang. Ini jalur turun dari server:
-     GET /api/restore?deviceId=... -> gabungkan ke IDB (uuid sama ditimpa). */
+     GET /api/restore (Bearer token) -> gabungkan ke IDB (uuid sama ditimpa). */
   (function(){
     var btn = document.getElementById("cloud-restore-btn");
     var msg = document.getElementById("cloud-restore-msg");
@@ -522,7 +509,9 @@
       function doRestore(){
       btn.disabled = true;
       say("Mengambil data dari server…", true, "var(--gray-700)");
-      fetch("/api/restore?deviceId=" + encodeURIComponent(deviceId()), { headers: { "Accept": "application/json" } })
+      readDev().then(function(dv){
+      return fetch("/api/restore", { headers: { "Accept": "application/json", "Authorization": "Bearer " + dv.token } });
+      })
         .then(function(r){
           if(!r.ok) throw new Error("HTTP " + r.status);
           return r.json();
@@ -712,19 +701,32 @@
   window.addEventListener("offline", refreshStatus);
   var drained = false;
 
-  /* [sync] deviceId persisten: satu perangkat = satu kunci idempotensi di server. */
-  function deviceId(){
-    var K = "olano.deviceId";
+  /* [SECURITY] Identitas perangkat: deviceId + token HMAC dari server.
+     Sebelumnya deviceId dibuat di klien dan dipercaya apa adanya -> siapa pun
+     yang tahu deviceId bisa membaca transaksi orang lain lewat /api/restore.
+     Sekarang server menandatangani deviceId; tanpa token, data tidak bisa dibaca.
+
+     Token disimpan di localStorage (bukan cookie) karena kasir harus tetap
+     jalan offline dan tanpa sesi server. Batasannya jujur: token per perangkat,
+     tidak bisa dicabut individual. Pencabutan butuh KV (belum dibangun). */
+  var DEV_K = "olano.device", DEV_P = null;
+  function readDev(){
+    if (DEV_P) return Promise.resolve(DEV_P);
     try {
-      var v = localStorage.getItem(K);
-      if (v && /^[A-Za-z0-9._:-]+$/.test(v)) return v;
+      var raw = localStorage.getItem(DEV_K);
+      if (raw) { var o = JSON.parse(raw); if (o && o.deviceId && o.token) { DEV_P = o; return Promise.resolve(o); } }
     } catch(e){}
-    var s = "", chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-    for(var i=0;i<20;i++) s += chars[Math.floor(Math.random()*36)];
-    var id = "d-" + s;
-    try { localStorage.setItem(K, id); } catch(e){}
-    return id;
+    return fetch("/api/device", { method: "POST", headers: {"Content-Type":"application/json"}, body: "{}" })
+      .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
+      .then(function(j){
+        if(!j || !j.deviceId || !j.token) throw new Error("bad device response");
+        var o = { deviceId: j.deviceId, token: j.token };
+        try { localStorage.setItem(DEV_K, JSON.stringify(o)); } catch(e){}
+        DEV_P = o;
+        return o;
+      });
   }
+  function deviceId(){ return DEV_P ? DEV_P.deviceId : ""; }
 
   /* [sync] drain NYATA: baca outbox -> POST /api/sync -> hapus yang diterima.
      Gagal jaringan = biarkan di outbox, coba lagi (backoff sederhana). */
@@ -766,12 +768,13 @@
       var sales = batch.map(function(r){ return r.payload; }).filter(Boolean);
       var ctl = ("AbortController" in window) ? new AbortController() : null;
       var timer = ctl ? setTimeout(function(){ ctl.abort(); }, 30000) : null;
-      fetch("/api/sync", {
+      readDev().then(function(dv){
+      return fetch("/api/sync", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ deviceId: deviceId(), sales: sales }),
+        headers: {"Content-Type": "application/json", "Authorization": "Bearer " + dv.token},
+        body: JSON.stringify({ deviceId: dv.deviceId, sales: sales }),
         signal: ctl ? ctl.signal : undefined
-      }).then(function(r){
+      });}).then(function(r){
         if(timer) clearTimeout(timer);
         if(!r.ok) throw new Error("HTTP " + r.status);
         return r.json();

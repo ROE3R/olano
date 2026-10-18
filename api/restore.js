@@ -6,16 +6,15 @@
  *
  * Kontrak:
  *   Query: deviceId (wajib, 8-64 char charset aman)
- *   Header: x-olano-store-key (wajib bila env OLANO_SYNC_KEY diset)
+ *   Header: Authorization: Bearer <deviceId>.<token> (WAJIB, HMAC)
  *   Res:   200 { ok, deviceId, count, sales: Sale[] }
  *
  * Guard: origin sama seperti /api/sync; batas 5000 transaksi per permintaan.
  */
 const { get, list } = require("@vercel/blob");
 const { rateLimit, clientIp } = require("./_ratelimit");
+const dev = require("./_device");
 
-const MAX_DEVICE_ID = 64;
-const MIN_DEVICE_ID = 8;
 const MAX_SALES = 5000;
 
 function bad(res, code, msg) {
@@ -51,16 +50,15 @@ module.exports = async function handler(req, res) {
 
   if (!originAllowed(req)) return bad(res, 403, "origin_not_allowed");
 
-  const requiredKey = process.env.OLANO_SYNC_KEY;
-  if (requiredKey) {
-    const got = String(req.headers["x-olano-store-key"] || "");
-    if (got !== requiredKey) return bad(res, 401, "unauthorized");
-  }
+  /* [SECURITY] Kebocoran ditutup: deviceId tidak lagi dibaca dari query.
+     Hanya perangkat yang memegang token HMAC sah yang bisa membaca datanya. */
+  if (!dev.configured()) return bad(res, 503, "device_secret_not_configured");
+  const deviceId = dev.verify(req);
+  if (!deviceId) return bad(res, 401, "unauthorized");
 
-  const deviceId = String((req.query && req.query.deviceId) || "").trim().slice(0, MAX_DEVICE_ID);
-  if (deviceId.length < MIN_DEVICE_ID || !/^[A-Za-z0-9._:-]+$/.test(deviceId)) {
-    return bad(res, 400, "invalid_device_id");
-  }
+  /* Bila query menyebut deviceId lain, tolak eksplisit. */
+  const qDevice = String((req.query && req.query.deviceId) || "").trim();
+  if (qDevice && qDevice !== deviceId) return bad(res, 403, "device_mismatch");
 
   const prefix = `sync/${deviceId}/`;
   let blobs = [];
