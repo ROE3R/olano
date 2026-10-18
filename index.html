@@ -107,17 +107,18 @@
         <span class="hs-row hs-total"><span>PPh final/bln</span><span>Rp166.667</span></span>
       </div>
       <p class="fnote">Basis: omzet contoh Rp75.000.000/bln &middot; PPh final 0,5% (PP 20/2026) &middot; MDR QRIS mikro 0% (&le;Rp500rb)</p>
-      <a class="hero-visual-link" href="kasir.html#demo" aria-label="Coba demo kasir">
-        <figure class="hero-visual">
-          <picture>
-            <source media="(max-width: 759px)" srcset="assets/img/hero-phone-warung-1x.webp 1x, assets/img/hero-phone-warung.webp 2x" type="image/webp">
-            <source media="(min-width: 760px)" srcset="assets/img/produk-kasir.webp 1x, assets/img/produk-kasir-2x.webp 2x" type="image/webp">
-            <img src="assets/img/hero-phone-warung.webp" alt="Tampilan kasir Olano: katalog produk, keranjang, dan tombol bayar (data contoh)" width="390" height="844" fetchpriority="high">
-          </picture>
-          <figcaption>Data contoh: tampilan aplikasi Olano</figcaption>
-        </figure>
-        <span class="hint" aria-hidden="true">Coba demo kasir &rarr;</span>
-      </a>
+      <!-- [landing-fix] L13 (2026-10-18): gambar layar kasir bukan lagi tautan raksasa —
+           gambar + caption statis (aria-hidden, dekoratif-edukatif), demo = tautan teks 48px terpisah.
+           Log teks: COPY-NANTI.md #3 (hint "Coba demo kasir →" gugur, digantikan tombol 48px). -->
+      <figure class="hero-visual" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 759px)" srcset="assets/img/hero-phone-warung-1x.webp 1x, assets/img/hero-phone-warung.webp 2x" type="image/webp">
+          <source media="(min-width: 760px)" srcset="assets/img/produk-kasir.webp 1x, assets/img/produk-kasir-2x.webp 2x" type="image/webp">
+          <img src="assets/img/hero-phone-warung.webp" alt="" width="390" height="844" fetchpriority="high">
+        </picture>
+        <figcaption>Data contoh: tampilan aplikasi Olano</figcaption>
+      </figure>
+      <a class="hero-demo-link" href="kasir.html#demo">Buka demo kasir <svg class="ic sm" aria-hidden="true"><use href="assets/icons.svg#i-arrow"/></svg></a>
     </div>
   </div>
   <div class="hero-cue" aria-hidden="true"></div>

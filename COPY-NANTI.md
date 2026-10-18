@@ -8,6 +8,7 @@
 |---|---|---|---|---|---|
 | 1 | `Sudah jalan` (badge pada modul 01-05, 5×) | (dihapus dari tampilan) | L16: 5 badge status normal = kebisingan; badge hanya untuk pengecualian ("Segera hadir"). Label F14 tak tersentuh — hanya baris 01-05 yang tidak lagi menampilkannya; halaman tujuan & desktop tetap punya kata ini di konten masing-masing | index.html §modul (`.mmeta` baris 01-05) | landing-fix (L16) |
 | 2 | `AI harga, foto (60 foto/outlet/bulan), dan Tanya AI` (1 butir) | 3 butir: `AI harga` · `Foto` + sub `60 foto/outlet/bulan` · `Tanya AI` | L28: 1 butir = 1 hal; angka batas jadi teks sekunder. Semua kata dipertahankan; konjungsi "dan" gugur karena pecah daftar | index.html §harga (`.price-list` kartu Pro) | landing-fix (L28) |
+| 3 | `Coba demo kasir →` (hint 11px di dalam tautan gambar hero) | `Buka demo kasir` (tautan teks 48px terpisah, tombol sekunder biru muda) | L13: gambar + caption bukan lagi satu tautan raksasa; aksi demo = kontrol 48px tersendiri. Kata sama (Buka/Coba demo kasir), panah dekoratif gugur bersama hint 11px | index.html §hero (`.hero-visual-link` -> `.hero-demo-link`) | landing-fix (L13) |
 
 ---
 
