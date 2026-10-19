@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+<script>document.documentElement.className+=" js";</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Olano: Kasir, website, dan pajak usahamu beres di satu tempat</title>
@@ -108,8 +110,19 @@
   <div class="hero-wb" aria-hidden="true"></div>
   <div class="container text-c">
     <div class="hero-inner">
-      <h1>Kasir, pajak, delivery, dan website usaha <em class="it-serif" style="color:var(--blue-800)">beres</em> di satu tempat.</h1>
-            <div class="cta-row"><a class="btn btn-primary pill btn-lg" href="kasir.html#demo">Coba demo kasir</a></div>
+      <h1 data-reveal>
+        <span class="h-roll"><span>Kasir,</span></span>
+        <span class="h-roll"><span>pajak,</span></span>
+        <span class="h-roll"><span>delivery,</span></span>
+        <span class="h-roll"><span>dan</span></span>
+        <span class="h-roll"><span>website</span></span>
+        <span class="h-roll"><span>usaha</span></span>
+        <span class="h-roll"><em class="it-serif" style="color:var(--blue-800)">beres</em></span>
+        <span class="h-roll"><span>di</span></span>
+        <span class="h-roll"><span>satu</span></span>
+        <span class="h-roll"><span>tempat.</span></span>
+      </h1>
+            <div class="cta-row" data-reveal><a class="btn btn-primary pill btn-lg" href="kasir.html#demo">Coba demo kasir</a></div>
       <div class="hero-struk" data-reveal aria-hidden="true">
         <span class="hs-row"><span>QRIS Rp40.000</span><span>potongan 0%</span></span>
         <span class="hs-row"><span>Omzet Rp75.000.000/bln</span><span>pajak 0,5%</span></span>
@@ -119,7 +132,7 @@
       <!-- [landing-fix] L13 (2026-10-18): gambar layar kasir bukan lagi tautan raksasa —
            gambar + caption statis (aria-hidden, dekoratif-edukatif), demo = tautan teks 48px terpisah.
            Log teks: COPY-NANTI.md #3 (hint "Coba demo kasir →" gugur, digantikan tombol 48px). -->
-      <figure class="hero-visual">
+      <figure class="hero-visual" data-parallax="0.12">
         <!-- [v2] Satu visual fokus (sokudo: 1 visual 1185x687, bukan dua perangkat).
              iPhone tetap ada sebagai bukti "jalan di HP", tapi SETELAH screenshot utama,
              bukan bertumpuk di hero. Rasio 1180/962 = rasio aset asli, tidak memotong UI. -->

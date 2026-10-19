@@ -198,6 +198,12 @@ p{max-width:65ch}
 .btn:active{transform:scale(0.98)}
 .btn-primary{background:var(--blue-600); color:#fff; box-shadow:var(--sh-sm)}
 .btn-primary:hover{background:var(--blue-700); box-shadow:var(--sh-md)}
+/* [v2e] sheen sweep (ref open-design): glossy highlight melintas saat hover.
+   100% transform+overflow, 0 keyframe baru, R-31: sinyal tombol premium. */
+.btn-primary::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.32) 50%,transparent 70%);
+  transform:translateX(-110%);transition:transform .7s var(--ease-emphasized)}
+.btn-primary:hover::after,.btn-primary:focus-visible::after{transform:translateX(110%)}
 .btn-secondary{background:#fff; color:var(--ink); border-color:var(--gray-300)}
 .btn-secondary:hover{border-color:var(--blue-400); color:var(--blue-600); box-shadow:var(--sh-sm)}
 .btn-ghost{background:transparent; color:var(--ink); border-color:transparent}
@@ -752,6 +758,11 @@ body.kb-open .pos-pay{min-height:48px}
 [data-reveal].in{opacity:1; transform:none}
 [data-reveal].stagger>*{opacity:0; transform:translateY(16px);
   transition:opacity var(--dur-slow) var(--ease-standard), transform var(--dur-slow) var(--ease-standard)}
+/* [v2e] P0 no-JS: tanpa class .js di <html> semua elemen tetap statis & visible
+   (specificity (0,2,1) = menang di atas basis (0,1,0); mode JS tidak terpengaruh
+   karena :not(.js) tidak match). */
+html:not(.js) [data-reveal]{opacity:1; transform:none}
+html:not(.js) [data-reveal].stagger>*{opacity:1; transform:none}
 [data-reveal].stagger.in>*{opacity:1; transform:none}
 [data-reveal].stagger.in>*:nth-child(1){transition-delay:0ms}
 [data-reveal].stagger.in>*:nth-child(2){transition-delay:60ms}
@@ -783,10 +794,26 @@ body.kb-open .pos-pay{min-height:48px}
    Ref ibelick text-reveal pattern: tiap kata muncul dari balik mask, stagger 45ms,
    expo-out (R-31: one-shot entrance untuk headline, bukan loop). */
 .h-roll{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
-.h-roll>span{display:inline-block;transform:translateY(110%);transition:transform .9s var(--ease-emphasized)}
-[data-reveal].in .h-roll>span{transform:none}
+/* [v2e] word-mask reveal (ibelick pattern): tiap kata naik dari balik mask.
+   Gate html.js: tanpa JS = kata-kata diam & visible (P0: h1 tidak boleh ilang). */
+html.js .h-roll>span,
+html.js .h-roll>em{display:inline-block;transform:translateY(110%);
+  transition:transform .8s var(--ease-emphasized)}
+[data-reveal].in .h-roll>span,
+[data-reveal].in .h-roll>em{transform:none}
+/* ripple per-kata: 45ms/kata (spec ibelick), kata pertama langsung */
+.h-roll:nth-child(2)>span,.h-roll:nth-child(2)>em{transition-delay:45ms}
+.h-roll:nth-child(3)>span,.h-roll:nth-child(3)>em{transition-delay:90ms}
+.h-roll:nth-child(4)>span,.h-roll:nth-child(4)>em{transition-delay:135ms}
+.h-roll:nth-child(5)>span,.h-roll:nth-child(5)>em{transition-delay:180ms}
+.h-roll:nth-child(6)>span,.h-roll:nth-child(6)>em{transition-delay:225ms}
+.h-roll:nth-child(7)>span,.h-roll:nth-child(7)>em{transition-delay:270ms}
+.h-roll:nth-child(8)>span,.h-roll:nth-child(8)>em{transition-delay:315ms}
+.h-roll:nth-child(9)>span,.h-roll:nth-child(9)>em{transition-delay:360ms}
+.h-roll:nth-child(10)>span,.h-roll:nth-child(10)>em{transition-delay:405ms}
+.h-roll:nth-child(11)>span,.h-roll:nth-child(11)>em{transition-delay:450ms}
 .h-roll .grad-text{display:inline-block}
-@media (prefers-reduced-motion: reduce){.h-roll>span{transform:none !important}}
+@media (prefers-reduced-motion: reduce){html.js .h-roll>span,html.js .h-roll>em{transform:none !important; transition:none}}
 
 /* Utility: skip link */
 .skip{position:absolute; left:-9999px; top:0; background:var(--blue-600); color:#fff; padding:12px 18px;
@@ -1263,9 +1290,13 @@ body.home #pajak>.container::before{color:rgba(255,255,255,.34)}
   font-variant-numeric:tabular-nums; letter-spacing:.01em}
 .hs-total{border-top:1px solid var(--ink); padding-top:9px; color:var(--ink); font-weight:600}
 .hs-total span:last-child{color:var(--blue-700)}
-body.home .hero-struk{opacity:0; transform:translateY(8px);
-  transition:opacity .6s var(--ease-emphasized) .35s, transform .6s var(--ease-emphasized) .35s}
+html.js body.home .hero-struk{opacity:0; transform:translateY(8px);
+  transition:opacity .6s var(--ease-emphasized) .55s, transform .6s var(--ease-emphasized) .55s}
 body.home .hero-struk.in{opacity:1; transform:none}
+html.js body.home .hero-struk.in{opacity:1; transform:none}
+/* [v2e] koreografi hero (stacked moment): words (0-450ms) -> CTA -> kartu struk.
+   CTA mendarat di antara keduanya: delay .25s (ref ibelick/open-design). */
+html.js .hero .cta-row{transition-delay:.25s}
 body.home .hero-cue{position:absolute; left:50%; bottom:22px; width:1px; height:44px;
   background:linear-gradient(180deg, var(--blue-600), transparent); opacity:.55;
   transform-origin:top; animation:cueDrop 2.2s var(--ease-emphasized) 1s 2 both}
