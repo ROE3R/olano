@@ -56,7 +56,7 @@
     </nav>
     <div class="nav-cta">
       <a class="nav-login" href="../app/login.html">Masuk</a>
-      <a class="btn btn-primary pill" href="../app/kasir.html#demo">Coba demo kasir</a>
+      <a class="btn btn-primary pill" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20ini%20hasil%20hitungan%20saya%20dari%20kalkulator.%20Bisa%20bantu%20jelaskan%3F" target="_blank" rel="noopener">Kirim hasil hitungan</a>
     </div>
     <button class="nav-burger" aria-label="Buka menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -76,7 +76,7 @@
     <a href="../alat/kalkulator-margin-delivery.html" aria-current="page">Margin Delivery</a>
     <a href="../index.html#harga">Harga</a>
     <a class="nav-login" href="../app/login.html">Masuk</a>
-    <a class="btn btn-primary pill" style="margin:10px var(--gutter)" href="../app/kasir.html#demo">Coba demo kasir</a>
+    <a class="btn btn-primary pill" style="margin:10px var(--gutter)" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20ini%20hasil%20hitungan%20saya%20dari%20kalkulator.%20Bisa%20bantu%20jelaskan%3F" target="_blank" rel="noopener">Kirim hasil hitungan</a>
   </nav>
 </header>
 
@@ -122,6 +122,7 @@
       </div>
       <div class="upsell"><b>Coba simulasi lain:</b> di Olano Pro, AI membandingkan <b>GoFood vs Grab vs walk-in</b> per menu dengan komisi &amp; promo aktual, lalu rekomendasi harga satu ketukan.</div>
       <p class="hint" style="margin-top:12px;color:var(--blue-300)">Estimasi. Komisi &amp; promo aktual berbeda per merchant; cocokkan dengan dashboard merchant-mu.</p>
+      <a class="btn btn-ghost btn-block" id="kirim-hasil" style="margin-top:10px" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20tanya%20soal%20hasil%20hitungan%20kalkulator%20ini" target="_blank" rel="noopener">Kirim hasil ini ke WhatsApp</a>
     </div>
   </div>
 
@@ -133,7 +134,8 @@
       <div class="card"><b class="mono" style="color:var(--blue-600)">Solusi</b><p class="small mt-2">Pakai menu paket (komisi efektif per item turun), sesuaikan harga, atau bandingkan walk-in vs platform per menu.</p></div>
     </div>
   </div>
-</div></section>
+</div>
+</section>
 </main>
 <footer class="foot" id="foot">
   <div class="container">
@@ -205,6 +207,9 @@
     var idealTxt = denom>0 ? H.rp(round5k(hargaIdeal||0)) : null;
     var idealLine = idealTxt ? " Naikkan harga ke <b>"+idealTxt+"</b> atau nonaktifkan promo "+H.rp(promo)+"."
                               : " Komisi+target sama dengan atau lebih dari 100% dari harga jual, target tidak tercapai di harga berapa pun. Turunkan target atau kurangi komisi/promo.";
+    // reset state visual dulu: tanpa ini, warna/class dari kondisi sebelumnya menempel
+    v.removeAttribute("style");
+    var tagEl=v.querySelector(".vtag"); if(tagEl) tagEl.removeAttribute("style");
     if(laba<0){
       v.className="verdict bad"; v.style.background="rgba(229,72,77,.08)"; v.style.borderColor="rgba(229,72,77,.4)";
       v.querySelector(".vtag").style.color="#ff8f92";

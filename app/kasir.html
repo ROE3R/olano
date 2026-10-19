@@ -224,8 +224,8 @@
         <input id="fp-harga" type="text" inputmode="numeric" enterkeyhint="next" placeholder="0"></div>
       <div class="field"><label for="fp-stok">Stok awal</label>
         <input id="fp-stok" type="text" inputmode="numeric" enterkeyhint="next" placeholder="0"></div>
-      <div class="field"><label for="fp-emoji">Ikon (emoji)</label>
-        <input id="fp-emoji" type="text" maxlength="4" value="🛒"></div>
+      <div class="field"><label>Ikon</label>
+        <p class="small" style="margin:4px 0 0">Otomatis: monogram inisial produk (tanpa emoji &amp; tanpa gambar).</p></div>
       <p id="fp-err" role="alert" style="display:none;color:var(--danger);font-weight:700;font-size:13px;margin:0 0 10px"></p>
       <div style="display:flex;gap:8px;margin-top:4px">
         <button type="button" class="btn btn-secondary" id="fp-again" style="flex:1;min-height:52px">Simpan &amp; tambah lagi</button>
@@ -404,38 +404,38 @@
      Stok sengaja dicampur -> state 'habis' (0) + 'low' (<3) terlihat di demo
      tanpa harus bikin data baru. Id stabil p1..p32. */
   var PRODUCTS = [
-    {id:"p1",  name:"Es Kopi Susu",      cat:"MINUM",   price:22000, stock:4,  emoji:"\u2615"},
-    {id:"p2",  name:"Kopi Hitam",        cat:"MINUM",   price:18000, stock:40, emoji:"\u2615"},
-    {id:"p3",  name:"Matcha Latte",      cat:"MINUM",   price:32000, stock:3,  emoji:"\ud83c\udf75"},
-    {id:"p4",  name:"Cokelat Panas",     cat:"MINUM",   price:25000, stock:12, emoji:"\u2615"},
-    {id:"p5",  name:"Es Cokelat",        cat:"MINUM",   price:24000, stock:8,  emoji:"\ud83c\udf66"},
-    {id:"p6",  name:"Americano",         cat:"MINUM",   price:28000, stock:15, emoji:"\u2615"},
-    {id:"p7",  name:"Cappuccino",        cat:"MINUM",   price:30000, stock:0,  emoji:"\u2615"},
-    {id:"p8",  name:"Oat Latte",         cat:"MINUM",   price:33000, stock:6,  emoji:"\u2615"},
-    {id:"p9",  name:"Es Teh Lemon",      cat:"MINUM",   price:15000, stock:25, emoji:"\ud83e\udd64"},
-    {id:"p10", name:"Es Jeruk",          cat:"MINUM",   price:16000, stock:10, emoji:"\ud83c\udf4a"},
-    {id:"p11", name:"Air Mineral",       cat:"MINUM",   price:5000,  stock:48, emoji:"\ud83d\udca7"},
-    {id:"p12", name:"Lemon Tea",         cat:"MINUM",   price:14000, stock:0,  emoji:"\ud83c\udf4b"},
-    {id:"p13", name:"Croissant",         cat:"MAKANAN", price:18000, stock:12, emoji:"\ud83c\udf5e"},
-    {id:"p14", name:"Donat Cokelat",     cat:"MAKANAN", price:15000, stock:2,  emoji:"\ud83c\udf69"},
-    {id:"p15", name:"Roti Cokelat",      cat:"MAKANAN", price:12000, stock:8,  emoji:"\ud83c\udf56"},
-    {id:"p16", name:"Pancake",           cat:"MAKANAN", price:25000, stock:5,  emoji:"\ud83e\udd5e"},
-    {id:"p17", name:"Sandwich",          cat:"MAKANAN", price:22000, stock:7,  emoji:"\ud83e\udd6a"},
-    {id:"p18", name:"Muffin",            cat:"MAKANAN", price:18000, stock:0,  emoji:"\ud83e\uddff"},
-    {id:"p19", name:"Puff Isi",          cat:"MAKANAN", price:10000, stock:14, emoji:"\ud83e\uddfa"},
-    {id:"p20", name:"Brownies",          cat:"MAKANAN", price:15000, stock:3,  emoji:"\ud83c\udf6b"},
-    {id:"p21", name:"Tart Apel",         cat:"MAKANAN", price:20000, stock:6,  emoji:"\ud83e\udd67"},
-    {id:"p22", name:"Keripik Kentang",   cat:"KEREK",   price:8000,  stock:25, emoji:"\ud83e\udd54"},
-    {id:"p23", name:"Keripik Singkong",  cat:"KEREK",   price:6000,  stock:1,  emoji:"\ud83c\udf3d"},
-    {id:"p24", name:"Kentang Goreng",    cat:"KEREK",   price:15000, stock:9,  emoji:"\ud83c\udf5f"},
-    {id:"p25", name:"Nugget",            cat:"KEREK",   price:18000, stock:4,  emoji:"\ud83c\udf57"},
-    {id:"p26", name:"Kentang Sambal",    cat:"KEREK",   price:12000, stock:7,  emoji:"\ud83c\udf36"},
-    {id:"p27", name:"Kacang Panggang",   cat:"KEREK",   price:10000, stock:11, emoji:"\ud83e\udd5c"},
-    {id:"p28", name:"Gelas + Sedotan",   cat:"LAIN",    price:2000,  stock:99, emoji:"\ud83e\uddea"},
-    {id:"p29", name:"Kapsul Kopi",       cat:"LAIN",    price:12000, stock:20, emoji:"\ud83d\dfe0"},
-    {id:"p30", name:"Botol Reusable",    cat:"LAIN",    price:45000, stock:3,  emoji:"\ud83c\udfe6"},
-    {id:"p31", name:"Stiker Olano",      cat:"LAIN",    price:5000,  stock:30, emoji:"\ud83c\udfaf"},
-    {id:"p32", name:"Tas Kanvas",        cat:"LAIN",    price:55000, stock:2,  emoji:"\ud83d\udc5c"}
+    {id:"p1",  name:"Es Kopi Susu",      cat:"MINUM",   price:22000, stock:4,  emoji:null},
+    {id:"p2",  name:"Kopi Hitam",        cat:"MINUM",   price:18000, stock:40, emoji:null},
+    {id:"p3",  name:"Matcha Latte",      cat:"MINUM",   price:32000, stock:3,  emoji:null},
+    {id:"p4",  name:"Cokelat Panas",     cat:"MINUM",   price:25000, stock:12, emoji:null},
+    {id:"p5",  name:"Es Cokelat",        cat:"MINUM",   price:24000, stock:8,  emoji:null},
+    {id:"p6",  name:"Americano",         cat:"MINUM",   price:28000, stock:15, emoji:null},
+    {id:"p7",  name:"Cappuccino",        cat:"MINUM",   price:30000, stock:0,  emoji:null},
+    {id:"p8",  name:"Oat Latte",         cat:"MINUM",   price:33000, stock:6,  emoji:null},
+    {id:"p9",  name:"Es Teh Lemon",      cat:"MINUM",   price:15000, stock:25, emoji:null},
+    {id:"p10", name:"Es Jeruk",          cat:"MINUM",   price:16000, stock:10, emoji:null},
+    {id:"p11", name:"Air Mineral",       cat:"MINUM",   price:5000,  stock:48, emoji:null},
+    {id:"p12", name:"Lemon Tea",         cat:"MINUM",   price:14000, stock:0,  emoji:null},
+    {id:"p13", name:"Croissant",         cat:"MAKANAN", price:18000, stock:12, emoji:null},
+    {id:"p14", name:"Donat Cokelat",     cat:"MAKANAN", price:15000, stock:2,  emoji:null},
+    {id:"p15", name:"Roti Cokelat",      cat:"MAKANAN", price:12000, stock:8,  emoji:null},
+    {id:"p16", name:"Pancake",           cat:"MAKANAN", price:25000, stock:5,  emoji:null},
+    {id:"p17", name:"Sandwich",          cat:"MAKANAN", price:22000, stock:7,  emoji:null},
+    {id:"p18", name:"Muffin",            cat:"MAKANAN", price:18000, stock:0,  emoji:null},
+    {id:"p19", name:"Puff Isi",          cat:"MAKANAN", price:10000, stock:14, emoji:null},
+    {id:"p20", name:"Brownies",          cat:"MAKANAN", price:15000, stock:3,  emoji:null},
+    {id:"p21", name:"Tart Apel",         cat:"MAKANAN", price:20000, stock:6,  emoji:null},
+    {id:"p22", name:"Keripik Kentang",   cat:"KEREK",   price:8000,  stock:25, emoji:null},
+    {id:"p23", name:"Keripik Singkong",  cat:"KEREK",   price:6000,  stock:1,  emoji:null},
+    {id:"p24", name:"Kentang Goreng",    cat:"KEREK",   price:15000, stock:9,  emoji:null},
+    {id:"p25", name:"Nugget",            cat:"KEREK",   price:18000, stock:4,  emoji:null},
+    {id:"p26", name:"Kentang Sambal",    cat:"KEREK",   price:12000, stock:7,  emoji:null},
+    {id:"p27", name:"Kacang Panggang",   cat:"KEREK",   price:10000, stock:11, emoji:null},
+    {id:"p28", name:"Gelas + Sedotan",   cat:"LAIN",    price:2000,  stock:99, emoji:null},
+    {id:"p29", name:"Kapsul Kopi",       cat:"LAIN",    price:12000, stock:20, emoji:null},
+    {id:"p30", name:"Botol Reusable",    cat:"LAIN",    price:45000, stock:3,  emoji:null},
+    {id:"p31", name:"Stiker Olano",      cat:"LAIN",    price:5000,  stock:30, emoji:null},
+    {id:"p32", name:"Tas Kanvas",        cat:"LAIN",    price:55000, stock:2,  emoji:null}
   ];
   var cart = {}, method = "TUNAI", dbp = null, pending = 0;
   var pill = document.getElementById("status");
@@ -695,8 +695,8 @@
     if(!nama){ err.textContent = "Isi nama produk dulu."; err.style.display = ""; return; }
     if(harga <= 0){ err.textContent = "Isi harga dengan angka lebih dari 0."; err.style.display = ""; return; }
     err.style.display = "none";
-    var emoji = document.getElementById("fp-emoji").value.trim() || "\ud83d\uded2";
-    PRODUCTS.push({ id:"u"+Date.now(), name:nama, cat:document.getElementById("fp-kat").value, price:harga, stock:stok, emoji:emoji });
+    /* [posfix] field emoji dihapus: produk baru otomatis monogram (thumb null). */
+    PRODUCTS.push({ id:"u"+Date.now(), name:nama, cat:document.getElementById("fp-kat").value, price:harga, stock:stok, emoji:null, thumb:null });
     render(); updateBar(); toast(nama+" ditambahkan");
     document.getElementById("fp-nama").value = "";
     document.getElementById("fp-harga").value = "";
@@ -881,15 +881,29 @@
   /* coba sinkron saat halaman dibuka (kalau ada sisa antre dari sesi lalu) */
   setTimeout(function(){ countOutbox().then(function(n){ pending = n; if(n>0) drain(); }); }, 1200);
 
-  var grid = document.getElementById("produk"), activeCat = "SEMUA";
+  /* [posfix] monogram tile: 2 huruf awal + tone per kategori. Tones = token brand
+   (MINUM = aksen biru, lain = netral). Tanpa aset gambar baru, tanpa emoji/SVG. */
+function moText(name){
+  var parts = name.trim().split(/\s+/).filter(function(w){ return /[A-Za-z0-9]/.test(w[0]||''); });
+  var s = ((parts[0]||'').charAt(0) + (parts[1] ? parts[1].charAt(0) : '')).toUpperCase();
+  return s || '?';
+}
+function moTone(cat){
+  return cat==='MINUM' ? 'mo-minum' : (cat==='MAKANAN' ? 'mo-makan' : (cat==='KEREK' ? 'mo-erek' : 'mo-lain'));
+}
+var grid = document.getElementById("produk"), activeCat = "SEMUA";
   function render(list){
     /* [pos-fix] P0.4: default render = filter kategori aktif (chip kategori tidak bohong lagi) */
     grid.removeAttribute("aria-busy"); /* [pos-fix] 2026-10-18: skeleton diganti konten nyata */
     if(!list) list = PRODUCTS.filter(function(p){ return activeCat==="SEMUA" || p.cat===activeCat; });
     grid.innerHTML = list.map(function(p){
       var qty = cart[p.id]||0;
-      return '<button class="pos-item'+(p.stock<=3?" low":"")+'" data-id="'+p.id+'">'
-        + '<span class="thumb">'+escHtml(p.emoji)+'</span>'
+      /* [posfix] thumbnail bukan emoji/SVG: foto produk = <img>, selain itu
+         monogram inisial (tone per kategori, token brand). Konsisten di demo + tambah. */
+      var thumb = p.thumb
+        ? '<span class="thumb"><img src="'+escHtml(p.thumb)+'" alt="" loading="lazy"></span>'
+        : '<span class="thumb mo '+moTone(p.cat)+'" aria-hidden="true">'+moText(p.name)+'</span>';
+      return '<button class="pos-item'+(p.stock<=3?" low":"")+'" data-id="'+p.id+'">'+thumb
         + '<span class="name">'+escHtml(p.name)+'</span>'
         + '<span class="price">'+R.rp(p.price)+'</span>'
         + '<span class="stock">'+(p.stock<=0?'habis':'stok '+p.stock)+'</span>'
@@ -897,7 +911,7 @@
         + '</button>';
     }).join("");
     if(!list.length){
-      grid.innerHTML = '<div class="empty-pos"><span aria-hidden="true">🗂️</span><b>Tidak ada produk yang cocok</b><button type="button" class="btn btn-secondary" id="empty-add">Tambah produk</button></div>';
+      grid.innerHTML = '<div class="empty-pos"><b>Tidak ada produk yang cocok</b><button type="button" class="btn btn-secondary" id="empty-add">Tambah produk</button></div>';
     }
   }
   grid.addEventListener("click", function(e){
