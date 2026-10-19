@@ -216,6 +216,8 @@
       function teardown() {
         if (!mobile.classList.contains("open")) return;
         mobile.classList.remove("open");
+        mobile.style.maxHeight = "";           /* [posfix] lepas fit inline saat ditutup */
+        if (mobile._posfixFit) window.removeEventListener("resize", mobile._posfixFit);
         burger.setAttribute("aria-expanded", "false");
         burger.setAttribute("aria-label", "Buka menu");
         setScrollLock(false);
@@ -228,9 +230,19 @@
         burger.setAttribute("aria-expanded", "true");
         burger.setAttribute("aria-label", "Tutup menu");
         setScrollLock(true);
+        /* [posfix] panel > viewport (ticker 57px + header 64px + 16 link) = item bawah
+           tak terjangkau. Batasi tinggi panel ke sisa viewport: baca posisi aktual
+           (banner bisa ada/tidak sesuai sessionStorage dismiss) → pas persempurna. */
+        function fitPanel() {
+          var top = mobile.getBoundingClientRect().top;
+          mobile.style.maxHeight = Math.max(200, window.innerHeight - top) + "px";
+        }
+        window.addEventListener("resize", fitPanel);
+        mobile._posfixFit = fitPanel;
         try { history.pushState({ olanoMenu: 1 }, ""); } catch (e) {}
         document.addEventListener("keydown", onKey);
         requestAnimationFrame(function () {
+          fitPanel();
           var f = mobile.querySelector("a[href], button");
           if (f) f.focus();
         });

@@ -1,5 +1,5 @@
 /* Olano service worker: offline-first (PRD F2: POS 100% offline setelah login pertama) */
-var CACHE = "olano-v38"; /* bump: v2e premium motion (H1 word-mask 45ms/kata, hero parallax 0.12, CTA sheen, koreografi 0->.25s->.55s) + P0 no-JS gate html.js: tanpa JS semua elemen statis & visible */
+var CACHE = "olano-v39"; /* bump: v2e premium motion (H1 word-mask 45ms/kata, hero parallax 0.12, CTA sheen, koreografi 0->.25s->.55s) + P0 no-JS gate html.js: tanpa JS semua elemen statis & visible */
 var CORE = [
   "./", "index.html", "manifest.json", "robots.txt", "sitemap.xml", "llms.txt", "404.html",
   "assets/css/main.css", "assets/js/config.js", "assets/js/shared.js", "assets/js/motion.js",

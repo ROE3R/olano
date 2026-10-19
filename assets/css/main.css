@@ -168,6 +168,18 @@ p{max-width:65ch}
 /* [landing-fix] L5 (2026-10-18): panel masuk 160ms (<200ms), tanpa scroll-bleed.
    Esc/Back/fokus-lock/scroll-lock di shared.js initNav; reduced-motion dimitigasi guard global. */
 .nav-mobile.open{animation:navPanelIn .16s var(--ease-standard) both; overscroll-behavior:contain}
+/* [posfix] panel menu mobile > viewport (1076px vs 844px @390) + scroll-lock body
+   = item bawah tak terjangkau (numpuk). Panel jadi self-scrolling: tinggi
+   dibatasi viewport, semua item reachable, sticky header tetap on-top.
+   (Tidak pakai position:fixed: .nav punya backdrop-filter = containing block,
+   panel fixed akan nyangkut di box nav 64px.) */
+@media(max-width:1079px){
+  .nav-mobile.open{max-height:calc(100vh - 64px); overflow-y:auto;
+    -webkit-overflow-scrolling:touch}
+  @supports(height:100dvh){
+    .nav-mobile.open{max-height:calc(100dvh - 64px)}
+  }
+}
 @keyframes navPanelIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 .nav-mobile a{padding:14px var(--gutter); font-weight:500; color:var(--gray-700); font-size:var(--fs-body)}
 .nav-mobile a:hover{background:var(--gray-50); color:var(--blue-600)}
@@ -919,7 +931,9 @@ html.js .h-roll>em{display:inline-block;transform:translateY(110%);
   max-width:16ch;margin:28px auto 0;text-wrap:balance}
 .hero .sub{max-width:780px;margin:20px auto 0;font-size:var(--fs-body);line-height:1.55;color:var(--gray-500)}
 @media(min-width:760px){.hero .sub{font-size:1.125rem;line-height:28px}}
-.hero .cta-row{margin-top:32px;display:flex;justify-content:center}
+.hero .cta-row{margin-top:32px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+/* [posfix] 2 CTA: desktop berdampingan, mobile di-stack full-width (R-03 tap ≥44px, tanpa overflow) */
+@media(max-width:759px){.hero .cta-row{flex-direction:column;align-items:stretch} .hero .cta-row .btn{width:100%;max-width:342px}}
 .hero-visual{max-width:1180px;margin:56px auto 0;position:relative}
 .hero-visual img{width:100%;height:auto;aspect-ratio:1180/962;border:1px solid var(--gray-300);border-radius:14px;background:#fff;
   box-shadow:0 0 0 1px rgba(20,40,70,.05), 0 28px 72px -20px rgba(14,26,74,.30)}
