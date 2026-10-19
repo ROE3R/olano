@@ -1,5 +1,5 @@
 /* Olano service worker: offline-first (PRD F2: POS 100% offline setelah login pertama) */
-var CACHE = "olano-v40"; /* v40: posfix owner-bugs (1) nav-mobile self-scroll (item bawah terjangkau) + (2) hero CTA kedua '#modul'; demo kasir katalog 8->32 produk (Kopi Senja, state habis/low). Sebelumnya v39/v2e: premium motion + no-JS gate */
+var CACHE = "olano-v41"; /* v41: home(v3) ui polish — scroll native (spring/magnetic/parallax mati), deck layanan statis (9 kartu + filter), hero kasir demote 860px. Sebelumnya v40: posfix owner-bugs */
 var CORE = [
   "./", "index.html", "manifest.json", "robots.txt", "sitemap.xml", "llms.txt", "404.html",
   "assets/css/main.css", "assets/js/config.js", "assets/js/shared.js", "assets/js/motion.js",
@@ -28,6 +28,7 @@ var CORE = [
   "assets/img/produk-kasir.webp",
   "assets/img/produk-kasir-2x.webp",
   "assets/img/produk-kasir-mobile.webp",
+  "assets/img/f-kasir.webp", "assets/img/f-qris.webp", "assets/img/produk-struk.webp", /* v31: hero proof strip */
   "assets/img/produk-kasir-mobile-2x.webp",
   "assets/img/f-foto-ai.webp",
   "assets/img/f-scan16.webp",

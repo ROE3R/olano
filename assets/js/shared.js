@@ -460,7 +460,7 @@
     if (!cards.length) return;
 
     var N = cards.length;
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var reduce = true; /* [v3] deck statis: semua layanan terlihat + filter, tanpa 3D auto-rotasi */
     var AUTO = 3800; // ms antar kartu (auto-advance)
     var i = 0;            // indeks kartu aktif di dalam "shown"
     var filter = "all";
@@ -754,7 +754,7 @@
     if (!("serviceWorker" in navigator)) return;
     if (new URLSearchParams(location.search).has("no-sw")) return;
     window.addEventListener("load", function () {
-      var sub = location.pathname.indexOf("/") >= 1 && /\/(alat|app)\/?/.test(location.pathname);
+      var sub = location.pathname.indexOf("/", 1) > 0; /* ada "/" selain root = subdirektori */
       var rel = sub ? "../sw.js" : "sw.js";
       var scope = sub ? "../" : "/";
       navigator.serviceWorker.register(rel, { scope: scope, updateViaCache: "none" }).then(function (reg) {
