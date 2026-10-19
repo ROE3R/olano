@@ -454,6 +454,7 @@
     var filter = "all";
     var shown = cards.slice();
     var timer = 0, hovering = 0, focusing = 0;
+    var offscreen = false; // section sedang di luar viewport: jangan teruskan auto-advance
 
     // Dots dibuat dari kartu (nomor = teks .no), agar selaras dengan konten.
     var dots = cards.map(function (c, n) {
@@ -556,10 +557,20 @@
     function arm() {
       clearTimeout(timer);
       if (reduce || shown.length < 2) return;
+      // Timer SELALU dijadwalkan (selama ada kartu >1 & tidak reduced-motion),
+      // berapapun status on/off-screen. Keputusan "langkah sekarang atau nunggu"
+      // dibaca dari getBoundingClientRect saat timer fire, jadi recover otomatis
+      // tanpa bergantung pada delivery event scroll/IO (juga di environment
+      // yang tidak memancarkan event scroll, mis. headless).
+      var r = sec.getBoundingClientRect();
+      offscreen = (r.bottom < 0 || r.top > window.innerHeight);
+      var interval = offscreen ? 6000 : AUTO; // off-screen: poll lebih jarang
       timer = setTimeout(function () {
         if (hovering || focusing || document.hidden) { arm(); return; }
-        step(1);
-      }, AUTO);
+        var rr = sec.getBoundingClientRect();
+        if (rr.bottom < 0 || rr.top > window.innerHeight) { arm(); return; } // masih off-screen: lanjut poll
+        step(1); // terlihat: lanjut (step() -> arm() di-reshedule)
+      }, interval);
     }
 
     function step(dir) {
@@ -633,6 +644,38 @@
       sec.addEventListener("focusin", function () { focusing++; });
       sec.addEventListener("focusout", function () { focusing = Math.max(0, focusing - 1); });
       document.addEventListener("visibilitychange", arm);
+      // Auto-advance berhenti total saat section di luar viewport (hemat CPU,
+      // dan aria-live tidak menyetor notifikasi ke screen reader tak ditonton).
+      // IO sebagai sinyal utama; fallback scroll/resize (deterministik) memastikan
+      // offscreen benar walau callback IO tertahan (tab background & dlm).
+      function checkVisibility() {
+        var r = sec.getBoundingClientRect();
+        offscreen = r.bottom < 0 || r.top > window.innerHeight;
+        arm();
+      }
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (ents) {
+          ents.forEach(function (en) { offscreen = !en.isIntersecting; });
+          arm();
+        }, { threshold: 0.15 });
+        io.observe(sec);
+      }
+      // scroll listener di semua lapisan yang bisa scroll: window, document,
+      // dan scrolling element. checkVisibility baca getBoundingClientRect
+      // (sumber kebenaran posisi), jadi deteksi benar di browser nyata
+      // maupun headless.
+      var scrollTargets = [window, document];
+      if (document.scrollingElement) scrollTargets.push(document.scrollingElement);
+      scrollTargets.forEach(function (t) {
+        t.addEventListener("scroll", checkVisibility, { passive: true });
+      });
+      window.addEventListener("resize", checkVisibility, { passive: true });
+      checkVisibility();
+      // Keyboard carousel (APG): panah kan/kiri saat fokus di dalam deck
+      deck.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") { e.preventDefault(); step(1); }
+        else if (e.key === "ArrowLeft") { e.preventDefault(); step(-1); }
+      });
       // Swipe horizontal di stage (touch/pen; mouse pakai tombol prev/next)
       var px = 0, py = 0, swiping = false;
       deck.addEventListener("pointerdown", function (e) {
