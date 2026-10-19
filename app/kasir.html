@@ -50,7 +50,7 @@
 </div>
 
 <div class="pos-search" id="demo">
-  <input id="q" type="search" placeholder="Cari produk… (demo: 8 produk)" aria-label="Cari produk" enterkeyhint="search">
+  <input id="q" type="search" placeholder="Cari produk… (demo: 32 produk)" aria-label="Cari produk" enterkeyhint="search">
   <button class="pos-scan" aria-label="Pindai produk (demo)" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7V4h3M17 4h3v3M21 17v3h-3M7 20H4v-3M4 8h12v8H4z"/></svg></button>
 </div>
 <p class="small" id="sync-note" style="padding:0 var(--gutter);color:var(--gray-500);font-size:12px">Mode demo: transaksi dan stok tersimpan di perangkat ini saja, tidak dikirim ke server. Masuk dengan akun untuk mengaktifkan cadangan cloud.</p>
@@ -399,15 +399,43 @@
   }
 
   var C = window.OLANO_CONFIG, R = window.OLANO;
+  /* [posfix] Katalog demo diperluas 8 -> 32 item (owner: "terlalu push kasir,
+     lupa produknya juga banyak"). Tematik Kopi Senja: MINUM/MAKANAN/KEREK/LAIN.
+     Stok sengaja dicampur -> state 'habis' (0) + 'low' (<3) terlihat di demo
+     tanpa harus bikin data baru. Id stabil p1..p32. */
   var PRODUCTS = [
-    {id:"p1", name:"Es Kopi Susu", cat:"MINUM", price:22000, stock:4, emoji:"\u2615"},
-    {id:"p2", name:"Kopi Hitam", cat:"MINUM", price:18000, stock:40, emoji:"\u2615"},
-    {id:"p3", name:"Matcha Latte", cat:"MINUM", price:32000, stock:3, emoji:"\ud83c\udf75"},
-    {id:"p4", name:"Croissant", cat:"MAKANAN", price:18000, stock:12, emoji:"\ud83c\udf5e"},
-    {id:"p5", name:"Donat Cokelat", cat:"MAKANAN", price:15000, stock:2, emoji:"\ud83c\udf69"},
-    {id:"p6", name:"Keripik Kentang", cat:"KEREK", price:8000, stock:25, emoji:"\ud83e\udd54"},
-    {id:"p7", name:"Keripik Singkong", cat:"KEREK", price:6000, stock:1, emoji:"\ud83c\udf3d"},
-    {id:"p8", name:"Gelas + Sedotan", cat:"LAIN", price:2000, stock:99, emoji:"\ud83e\uddea"}
+    {id:"p1",  name:"Es Kopi Susu",      cat:"MINUM",   price:22000, stock:4,  emoji:"\u2615"},
+    {id:"p2",  name:"Kopi Hitam",        cat:"MINUM",   price:18000, stock:40, emoji:"\u2615"},
+    {id:"p3",  name:"Matcha Latte",      cat:"MINUM",   price:32000, stock:3,  emoji:"\ud83c\udf75"},
+    {id:"p4",  name:"Cokelat Panas",     cat:"MINUM",   price:25000, stock:12, emoji:"\u2615"},
+    {id:"p5",  name:"Es Cokelat",        cat:"MINUM",   price:24000, stock:8,  emoji:"\ud83c\udf66"},
+    {id:"p6",  name:"Americano",         cat:"MINUM",   price:28000, stock:15, emoji:"\u2615"},
+    {id:"p7",  name:"Cappuccino",        cat:"MINUM",   price:30000, stock:0,  emoji:"\u2615"},
+    {id:"p8",  name:"Oat Latte",         cat:"MINUM",   price:33000, stock:6,  emoji:"\u2615"},
+    {id:"p9",  name:"Es Teh Lemon",      cat:"MINUM",   price:15000, stock:25, emoji:"\ud83e\udd64"},
+    {id:"p10", name:"Es Jeruk",          cat:"MINUM",   price:16000, stock:10, emoji:"\ud83c\udf4a"},
+    {id:"p11", name:"Air Mineral",       cat:"MINUM",   price:5000,  stock:48, emoji:"\ud83d\udca7"},
+    {id:"p12", name:"Lemon Tea",         cat:"MINUM",   price:14000, stock:0,  emoji:"\ud83c\udf4b"},
+    {id:"p13", name:"Croissant",         cat:"MAKANAN", price:18000, stock:12, emoji:"\ud83c\udf5e"},
+    {id:"p14", name:"Donat Cokelat",     cat:"MAKANAN", price:15000, stock:2,  emoji:"\ud83c\udf69"},
+    {id:"p15", name:"Roti Cokelat",      cat:"MAKANAN", price:12000, stock:8,  emoji:"\ud83c\udf56"},
+    {id:"p16", name:"Pancake",           cat:"MAKANAN", price:25000, stock:5,  emoji:"\ud83e\udd5e"},
+    {id:"p17", name:"Sandwich",          cat:"MAKANAN", price:22000, stock:7,  emoji:"\ud83e\udd6a"},
+    {id:"p18", name:"Muffin",            cat:"MAKANAN", price:18000, stock:0,  emoji:"\ud83e\uddff"},
+    {id:"p19", name:"Puff Isi",          cat:"MAKANAN", price:10000, stock:14, emoji:"\ud83e\uddfa"},
+    {id:"p20", name:"Brownies",          cat:"MAKANAN", price:15000, stock:3,  emoji:"\ud83c\udf6b"},
+    {id:"p21", name:"Tart Apel",         cat:"MAKANAN", price:20000, stock:6,  emoji:"\ud83e\udd67"},
+    {id:"p22", name:"Keripik Kentang",   cat:"KEREK",   price:8000,  stock:25, emoji:"\ud83e\udd54"},
+    {id:"p23", name:"Keripik Singkong",  cat:"KEREK",   price:6000,  stock:1,  emoji:"\ud83c\udf3d"},
+    {id:"p24", name:"Kentang Goreng",    cat:"KEREK",   price:15000, stock:9,  emoji:"\ud83c\udf5f"},
+    {id:"p25", name:"Nugget",            cat:"KEREK",   price:18000, stock:4,  emoji:"\ud83c\udf57"},
+    {id:"p26", name:"Kentang Sambal",    cat:"KEREK",   price:12000, stock:7,  emoji:"\ud83c\udf36"},
+    {id:"p27", name:"Kacang Panggang",   cat:"KEREK",   price:10000, stock:11, emoji:"\ud83e\udd5c"},
+    {id:"p28", name:"Gelas + Sedotan",   cat:"LAIN",    price:2000,  stock:99, emoji:"\ud83e\uddea"},
+    {id:"p29", name:"Kapsul Kopi",       cat:"LAIN",    price:12000, stock:20, emoji:"\ud83d\dfe0"},
+    {id:"p30", name:"Botol Reusable",    cat:"LAIN",    price:45000, stock:3,  emoji:"\ud83c\udfe6"},
+    {id:"p31", name:"Stiker Olano",      cat:"LAIN",    price:5000,  stock:30, emoji:"\ud83c\udfaf"},
+    {id:"p32", name:"Tas Kanvas",        cat:"LAIN",    price:55000, stock:2,  emoji:"\ud83d\udc5c"}
   ];
   var cart = {}, method = "TUNAI", dbp = null, pending = 0;
   var pill = document.getElementById("status");
