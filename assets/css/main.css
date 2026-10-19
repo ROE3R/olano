@@ -1104,12 +1104,16 @@ body.home .hero .container{z-index:1}
   contain:layout style}
 .tool-hero .hero-sky-lite{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .tool-hero .hero-sky-lite img{position:absolute;pointer-events:none}
-.tool-hero .l-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.55;filter:hue-rotate(30deg) saturate(1.12)}
-.tool-hero .l-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(214,229,255,.28) 0%,rgba(228,239,255,.55) 48%,rgba(240,247,255,.90) 82%,#FFFFFF 100%)}
-.tool-hero .l-scrim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(70% 60% at 50% 42%,rgba(255,255,255,.62) 0%,rgba(255,255,255,.30) 50%,rgba(255,255,255,0) 75%)}
-.tool-hero .l-cloud{top:34%;left:-10%;width:min(640px,62vw);height:auto;filter:blur(3px)}
+.tool-hero .l-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:.42;filter:hue-rotate(30deg) saturate(1.08)}
+.tool-hero .l-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.72) 0%,rgba(248,251,255,.80) 42%,rgba(255,255,255,.93) 78%,#FFFFFF 100%)}
+.tool-hero .l-scrim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(78% 66% at 50% 46%,rgba(255,255,255,.88) 0%,rgba(255,255,255,.62) 46%,rgba(255,255,255,.18) 74%,rgba(255,255,255,0) 100%)}
+.tool-hero .l-cloud{top:34%;left:-10%;width:min(640px,62vw);height:auto;filter:blur(3px);opacity:.55}
 .tool-hero .l-grid{top:0;left:50%;transform:translateX(-50%);width:min(1200px,140%);height:calc(min(1200px,140%)*1280/1920);object-fit:cover;object-position:top;opacity:.35}
-.tool-hero .container{position:relative;z-index:1}
+.tool-hero .container{position:relative;z-index:2}
+.tool-hero h1,.tool-hero p,.tool-hero .badge,.tool-hero .row{position:relative;z-index:2}
+/* Teks hero tetap gelap di atas awan: kontras dijamin, bukan diasumsikan */
+.tool-hero h1{color:var(--ink)}
+.tool-hero p{color:var(--gray-700)}
 
 /* -- peran tipe (B) -- */
 .hero h1{font-weight:600;letter-spacing:var(--ls-h1);line-height:1.05;max-width:26ch}

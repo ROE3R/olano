@@ -146,16 +146,30 @@ svg{display:block}
 }
 
 /* ---------- hero ---------- */
-.hero{position:relative;overflow:hidden;padding-top:clamp(40px,5.5vw,76px);padding-bottom:clamp(44px,6vw,84px)}
+.hero{position:relative;overflow:hidden;isolation:isolate;padding-top:clamp(40px,5.5vw,76px);padding-bottom:clamp(44px,6vw,84px)}
 /* Motif identitas: satu glow biru lembut di belakang headline + garis horizon tipis.
    Alasan: memberi kedalaman tanpa dekorasi; warna tetap biru-putih Olano. */
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;
-  background:
-    radial-gradient(70% 60% at 22% 8%,rgba(36,83,235,.13) 0%,rgba(36,83,235,0) 62%),
-    radial-gradient(60% 55% at 88% 0%,rgba(59,111,246,.10) 0%,rgba(59,111,246,0) 60%),
-    linear-gradient(180deg,#fff 0%,#fff 58%,var(--gray-25) 100%)}
-.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gray-100)}
-.hero__grid{display:grid;gap:clamp(30px,4.5vw,54px);align-items:center}
+.hero__sky{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:
+    radial-gradient(70% 60% at 22% 6%,rgba(36,83,235,.16) 0%,rgba(36,83,235,0) 62%),
+    radial-gradient(60% 55% at 88% 0%,rgba(59,111,246,.12) 0%,rgba(59,111,246,0) 60%),
+    linear-gradient(180deg,#EFF5FF 0%,#F7FAFF 42%,#FFFFFF 100%)}
+.hero__sky img{position:absolute;display:block}
+.hero__sky .s-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;
+  opacity:.58;filter:hue-rotate(28deg) saturate(1.15) contrast(1.05)}
+.hero__sky .s-cloud1{top:10%;left:-16%;width:min(820px,88vw);height:auto;opacity:.85;filter:blur(1.5px);
+  animation:cloudDrift 26s var(--ease) infinite alternate}
+.hero__sky .s-cloud2{top:40%;right:-20%;width:min(680px,72vw);height:auto;opacity:.70;filter:blur(3px);
+  animation:cloudDrift2 32s var(--ease) infinite alternate}
+/* Veil: menjaga teks tetap hitam di atas awan. Ini bukan hiasan, ini jaminan kontras. */
+.hero__sky .s-veil{position:absolute;inset:0;background:linear-gradient(180deg,
+  rgba(255,255,255,.30) 0%,rgba(255,255,255,.52) 38%,rgba(255,255,255,.86) 72%,#FFFFFF 100%)}
+/* Scrim lokal di belakang teks: awan tetap terlihat di pinggir, teks tetap gelap dan terbaca. */
+.hero__sky .s-scrim{position:absolute;inset:0;background:
+  radial-gradient(88% 62% at 50% 34%,rgba(255,255,255,.86) 0%,rgba(255,255,255,.55) 48%,rgba(255,255,255,0) 78%)}
+@keyframes cloudDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(7vw,10px,0)}}
+@keyframes cloudDrift2{from{transform:translate3d(0,0,0)}to{transform:translate3d(-6vw,-8px,0)}}
+@media(prefers-reduced-motion:reduce){.hero__sky .s-cloud1,.hero__sky .s-cloud2{animation:none}}
+.hero__grid{position:relative;z-index:1;display:grid;gap:clamp(30px,4.5vw,54px);align-items:center}
 .hero h1{font-size:var(--h1);font-weight:700;letter-spacing:-.05em;line-height:0.98;max-width:17ch;margin-top:14px}
 .hero__sub{margin-top:clamp(16px,2.2vw,22px);max-width:52ch}
 .hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(22px,2.8vw,30px)}
@@ -528,6 +542,16 @@ html.no-js [data-rv]{opacity:1;transform:none}
 <main id="main">
 
   <section class="hero">
+    <div class="hero__sky" aria-hidden="true">
+      <picture>
+        <source media="(max-width:759px)" srcset="assets/daydream/sky-hero-m.webp" type="image/webp">
+        <img class="s-sky" src="assets/daydream/sky-hero.webp" alt="" width="2200" height="1604" fetchpriority="high">
+      </picture>
+      <img class="s-cloud1" src="assets/daydream/cloud-1.webp" alt="" width="760" height="471" loading="lazy">
+      <img class="s-cloud2" src="assets/daydream/cloud-2.webp" alt="" width="620" height="384" loading="lazy">
+      <div class="s-veil"></div>
+      <div class="s-scrim"></div>
+    </div>
     <div class="wrap hero__grid">
       <div>
         <p class="eyebrow">Platform bisnis, bukan satu aplikasi</p>
