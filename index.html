@@ -318,6 +318,103 @@ svg{display:block}
 .ptable__foot .btn{flex:1;min-width:120px}
 .pricenote{margin-top:16px;font-size:.82rem;color:var(--gray-500);line-height:1.55;max-width:62ch}
 
+/* Mobile: grid 2 kolom, bukan 7 baris bertumpuk. Alasan: 7 baris = 1134px
+   = 1.3 layar cuma untuk daftar. Grid 2 kolom = 640px, semua terlihat sekaligus.
+   Baris ke-7 (butuh yang lain) tetap lebar penuh. */
+@media(max-width:819px){
+  .mods{display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border-top:1px solid var(--gray-100);border-left:1px solid var(--gray-100)}
+  .mrow{display:flex;flex-direction:column;gap:2px;padding:13px 12px;
+    border-bottom:1px solid var(--gray-100);border-right:1px solid var(--gray-100);
+    border-left:0;min-height:0}
+  .mrow__label{font-size:.6rem;letter-spacing:.07em;margin-bottom:2px}
+  .mrow__title{font-size:.88rem;line-height:1.28}
+  /* Deskripsi disembunyikan di mobile: judulnya sudah menjelaskan hasilnya.
+     Alasan: 6 baris deskripsi = +400px tanpa menambah keputusan. */
+  .mrow__right p{display:none}
+  .mrow__tag{margin-top:6px;font-size:.58rem;padding:1px 5px;align-self:flex-start}
+  .mrow--other{grid-column:1/-1;border-radius:0;margin-top:0;padding:16px 12px}
+  .mrow--other .mrow__right p{display:block;font-size:.8rem;margin-top:4px}
+}
+
+/* Footer ringkas: 1350px -> target ~340px. Alasan: footer 4 kolom + CTA box
+   = 23% halaman mobile, lebih besar dari section harga. Footer tugasnya
+   menutup, bukan menjual lagi. */
+.foot__top{display:grid;gap:20px;padding:clamp(28px,3.4vw,44px) 0 22px;
+  border-bottom:1px solid var(--gray-100)}
+@media(min-width:820px){
+  .foot__top{grid-template-columns:1.4fr 1.6fr auto;align-items:center;gap:clamp(24px,4vw,56px)}
+}
+.foot__brand p{margin-top:10px;font-size:.88rem;color:var(--gray-500);line-height:1.55;max-width:34ch}
+.foot__links{display:flex;flex-wrap:wrap;gap:4px 20px}
+.foot__links a{font-size:.88rem;color:var(--gray-700);min-height:44px;
+  display:inline-flex;align-items:center}
+.foot__links a:hover{color:var(--blue-700);text-decoration:underline;text-underline-offset:3px}
+.foot__legal{margin-top:20px;padding-bottom:26px;display:flex;flex-wrap:wrap;
+  gap:8px 24px;justify-content:space-between;align-items:baseline}
+.foot__legal p{font-size:.72rem;color:var(--gray-500);line-height:1.55;max-width:66ch}
+
+/* Showcase produk: tiga potongan tampilan aplikasi. Alasan: pengunjung perlu
+   lihat barangnya, bukan angka contoh. Ini juga menjawab 'harusnya ada dashboard'
+   tanpa memalsukan data: yang ditampilkan adalah UI yang benar-benar ada. */
+.shots{display:grid;gap:clamp(14px,2vw,22px);margin-top:clamp(24px,3vw,36px)}
+@media(min-width:760px){.shots{grid-template-columns:repeat(3,1fr)}}
+.shot{margin:0;display:flex;flex-direction:column;gap:12px}
+.shot__frame{background:#fff;border:1px solid var(--gray-100);border-radius:var(--r-card);
+  overflow:hidden;box-shadow:var(--sh-2)}
+.shot__bar{display:flex;gap:5px;padding:9px 12px;background:var(--gray-25);
+  border-bottom:1px solid var(--gray-100)}
+.shot__bar span{width:6px;height:6px;border-radius:50%;background:var(--gray-300)}
+.shot__body{padding:14px}
+.shot__head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:11px}
+.shot__head b{font-size:.86rem;font-weight:650}
+.shot__head em{font-style:normal;font-size:.62rem;font-weight:650;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--blue-700);background:var(--blue-50);
+  border:1px solid var(--blue-100);border-radius:4px;padding:1px 6px}
+.shot__grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.shot__item{background:var(--gray-25);border:1px solid var(--gray-100);border-radius:7px;
+  padding:8px;display:flex;flex-direction:column;gap:3px}
+.shot__item i{display:block;width:100%;height:26px;border-radius:4px;
+  background:linear-gradient(135deg,#E4EDFF,#D3E2FF)}
+.shot__item b{font-size:.7rem;font-weight:600;line-height:1.2}
+.shot__item span{font-size:.68rem;color:var(--gray-500);font-variant-numeric:tabular-nums}
+.shot__cart{margin-top:11px;padding-top:11px;border-top:1px solid var(--gray-100);
+  display:flex;align-items:center;justify-content:space-between;gap:8px}
+.shot__cart div{display:flex;flex-direction:column;gap:1px}
+.shot__cart span{font-size:.66rem;color:var(--gray-500)}
+.shot__cart b{font-size:.9rem;font-weight:700;font-variant-numeric:tabular-nums}
+.shot__btn{background:var(--blue-600);color:#fff;font-size:.7rem;font-weight:650;
+  border-radius:6px;padding:6px 12px}
+.shot__body--qris{display:flex;flex-direction:column;gap:10px}
+.shot__qr{width:100%;aspect-ratio:1;max-height:132px;border-radius:8px;
+  background:
+    repeating-linear-gradient(90deg,var(--ink) 0 6px,transparent 6px 12px),
+    repeating-linear-gradient(0deg,var(--ink) 0 6px,transparent 6px 12px);
+  background-size:12px 12px;background-position:0 0;opacity:.9;
+  border:7px solid #fff;box-shadow:0 0 0 1px var(--gray-100)}
+.shot__amount{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.shot__amount span{font-size:.68rem;color:var(--gray-500)}
+.shot__amount b{font-size:.92rem;font-weight:700;font-variant-numeric:tabular-nums}
+.shot__ok{font-size:.68rem;color:var(--warn);background:var(--warn-bg);
+  border:1px solid #F2E2BC;border-radius:6px;padding:5px 8px;text-align:center}
+.shot__rows{display:flex;flex-direction:column}
+.shot__rows>div{display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+  padding:7px 0;border-bottom:1px solid var(--gray-100)}
+.shot__rows>div:last-child{border-bottom:0}
+.shot__rows span{font-size:.72rem;color:var(--gray-500)}
+.shot__rows b{font-size:.8rem;font-weight:650;font-variant-numeric:tabular-nums}
+.shot__row--total span{color:var(--ink);font-weight:600}
+.shot__row--total b{font-size:.95rem;font-weight:700;color:var(--blue-700)}
+.shot__bar-fill{height:5px;border-radius:99px;background:var(--gray-100);overflow:hidden;margin-top:10px}
+.shot__bar-fill i{display:block;height:100%;border-radius:99px;width:0;
+  background:linear-gradient(90deg,var(--blue-500),var(--blue-600));
+  transition:width .7s cubic-bezier(.16,1,.3,1)}
+.shot figcaption{display:flex;flex-direction:column;gap:2px}
+.shot figcaption b{font-size:.86rem;font-weight:650;letter-spacing:-.01em}
+.shot figcaption span{font-size:.78rem;color:var(--gray-500);line-height:1.5}
+.shots__cta{margin-top:clamp(20px,2.6vw,30px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.shots__cta p{font-size:.82rem;color:var(--gray-500)}
+
 /* Showcase mobile: hero harus masuk satu layar (844px).
    Alert dan grid modul disembunyikan di mobile, angka + bar tetap.
    Desktop tidak terpengaruh. */
@@ -659,29 +756,13 @@ html.no-js .eco{display:block}
 
 /* ---------- footer ---------- */
 .foot{background:#fff;border-top:1px solid var(--gray-100);padding-block:clamp(36px,4.6vw,60px)}
-.foot__grid{display:grid;gap:clamp(22px,3.6vw,42px)}
-@media(min-width:760px){.foot__grid{grid-template-columns:1.5fr 1fr 1fr 1fr}}
-.foot__status{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:var(--xs);
-  color:var(--gray-500);background:var(--gray-25);border:1px solid var(--gray-100);
-  border-radius:var(--r-pill);padding:5px 10px}
-.foot__status i{width:5px;height:5px;border-radius:50%;background:var(--ok);flex:none}
-.foot__brand p{margin-top:12px;font-size:var(--sm);color:var(--gray-500);max-width:32ch;line-height:1.6}
+@media(min-width:760px){}
 .foot h4{font-size:var(--xs);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   color:var(--gray-500);margin-bottom:8px}
 .foot ul{display:flex;flex-direction:column;gap:0}
 .foot li a{display:inline-flex;align-items:center;min-height:44px;font-size:var(--sm);
   color:var(--gray-700);transition:color .18s var(--ease)}
 .foot li a:hover{color:var(--blue-600)}
-.foot__cta{margin-top:clamp(28px,3.4vw,44px);padding:clamp(20px,2.6vw,28px);
-  border-radius:var(--r-card);background:linear-gradient(160deg,#F7FAFF 0%,#EFF5FF 100%);
-  border:1px solid #DFE7F5;display:flex;align-items:center;justify-content:space-between;
-  gap:18px;flex-wrap:wrap}
-.foot__cta b{font-size:1rem;font-weight:650;letter-spacing:-.02em;display:block}
-.foot__cta p{font-size:var(--sm);color:var(--gray-500);margin-top:5px;max-width:52ch;line-height:1.55}
-.foot__legal{margin-top:clamp(24px,3vw,36px);padding-top:18px;border-top:1px solid var(--gray-100);
-  display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;
-  font-size:var(--xs);color:var(--gray-500);line-height:1.6}
-.foot__legal p{max-width:76ch}
 
 /* ---------- motion ---------- */
 @keyframes maskUp{from{transform:translateY(105%)}to{transform:translateY(0)}}
@@ -735,7 +816,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
         </div>
       </div>
       <a href="#kebutuhan">Kebutuhan bisnis</a>
-      <a href="#kalkulator">Kalkulator</a>
+      <a href="alat/kalkulator-pph-final-umkm.html">Kalkulator</a>
       <a href="#harga">Harga</a>
       <a href="tentang.html">Tentang</a>
     </nav>
@@ -761,7 +842,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
       <a href="automation.html">Otomasi (tahap uji)</a>
       <p class="nav__grp">Lainnya</p>
       <a href="#kebutuhan">Kebutuhan bisnis</a>
-      <a href="#kalkulator">Kalkulator</a>
+      <a href="alat/kalkulator-pph-final-umkm.html">Kalkulator</a>
       <a href="#harga">Harga</a>
       <a href="tentang.html">Tentang</a>
       <a href="app/login.html">Masuk</a>
@@ -804,7 +885,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
         <nav class="hero__index" aria-label="Layanan Olano">
           <a href="app/kasir.html#demo">Kasir</a>
           <a href="#kebutuhan">Pembukuan</a>
-          <a href="#kalkulator">Pajak</a>
+          <a href="pajak.html">Pajak</a>
           <a href="#kebutuhan">Jualan online</a>
           <a href="website.html">Website</a>
           <a href="automation.html">Otomasi</a>
@@ -864,7 +945,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
             <span class="mrow__tag">Mulai Rp600rb</span>
           </div>
         </a>
-        <a class="mrow" href="#kalkulator" data-rv>
+        <a class="mrow" href="pajak.html" data-rv>
           <div class="mrow__left">
             <span class="mrow__label">Pajak</span>
             <h3 class="mrow__title">Pajak bulan ini, siapa yang urus?</h3>
@@ -916,53 +997,73 @@ html.no-js [data-rv]{opacity:1;transform:none}
         </a>
       </div>
 
-      <p class="mods__note" data-rv>Belum tahu mulai dari mana? <a href="#kalkulator">Hitung pajak dulu</a>, atau <a href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20tanya%20kebutuhan%20bisnis%20saya" target="_blank" rel="noopener">tanya lewat WhatsApp</a>.</p>
+      <p class="mods__note" data-rv>Belum tahu mulai dari mana? <a href="alat/kalkulator-pph-final-umkm.html">Hitung pajak dulu</a>, atau <a href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20tanya%20kebutuhan%20bisnis%20saya" target="_blank" rel="noopener">tanya lewat WhatsApp</a>.</p>
     </div>
   </section>
 
-  <section class="sec sec--tint" id="kalkulator">
-    <div class="wrap kalk">
-      <div data-rv>
-        <p class="eyebrow">Hitung dulu, baru bicara</p>
-        <h2>Berapa pajak yang perlu Anda sisihkan bulan ini?</h2>
-        <p class="lede">PPh final 0,5% untuk UMKM. Orang pribadi bebas sampai Rp500 juta setahun. Kalkulator ini memakai aturan yang sama dengan aplikasi.</p>
-        <ul class="kalk__list">
-          <li>Tanpa daftar, tanpa kartu kredit</li>
-          <li>Hasil muncul saat Anda mengetik</li>
-          <li>Bisa langsung dikirim ke WhatsApp kami</li>
-        </ul>
+  <section class="sec sec--tint" id="produk">
+    <div class="wrap">
+      <div class="sechead" data-rv>
+        <p class="eyebrow">Produknya</p>
+        <h2>Bukan janji. <span class="it">Ini yang Anda pakai tiap hari.</span></h2>
+        <p class="lede">Tampilan asli dari aplikasi Olano. Kasir yang jalan tanpa internet, QRIS yang terisi sendiri, dan rekap yang siap dibaca.</p>
       </div>
 
-      <div class="kalk__card" data-rv>
-        <div class="field">
-          <label for="wpType">Jenis wajib pajak</label>
-          <select id="wpType">
-            <option value="OP">Orang pribadi</option>
-            <option value="PT_PERORANGAN">PT perorangan</option>
-            <option value="KOPERASI">Koperasi</option>
-            <option value="PT">PT</option>
-            <option value="CV">CV atau firma</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="omzetBulan">Omzet per bulan (Rp)</label>
-          <input id="omzetBulan" type="text" inputmode="numeric" autocomplete="off" value="75.000.000">
-        </div>
-        <div class="chips" role="group" aria-label="Isi omzet cepat">
-          <button type="button" data-omzet="10000000">10 jt</button>
-          <button type="button" data-omzet="30000000">30 jt</button>
-          <button type="button" data-omzet="60000000">60 jt</button>
-          <button type="button" data-omzet="100000000">100 jt</button>
-        </div>
-        <div class="kalk__out">
-          <div class="kalk__lbl">Pajak per bulan</div>
-          <div class="kalk__val" id="taxVal">Rp166.667</div>
-          <div class="kalk__sub" id="taxSub">Dasar pengenaan Rp400.000.000 setahun, dikali 0,5% dibagi 12.</div>
-        </div>
-        <a class="btn btn--primary btn--block" id="taxWa" style="margin-top:14px"
-           href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20dibantu%20urus%20pajak%20UMKM"
-           target="_blank" rel="noopener">Minta diurus via WhatsApp</a>
-        <p class="kalk__note">Estimasi memakai aturan pajak yang sama dengan aplikasi. Bukan nasihat pajak.</p>
+      <div class="shots">
+        <figure class="shot" data-rv>
+          <div class="shot__frame">
+            <div class="shot__bar"><span></span><span></span><span></span></div>
+            <div class="shot__body">
+              <div class="shot__head"><b>Kopi Senja</b><em>Demo</em></div>
+              <div class="shot__grid">
+                <div class="shot__item"><i></i><b>Kopi Susu</b><span>Rp18.000</span></div>
+                <div class="shot__item"><i></i><b>Americano</b><span>Rp15.000</span></div>
+                <div class="shot__item"><i></i><b>Croissant</b><span>Rp22.000</span></div>
+                <div class="shot__item"><i></i><b>Matcha</b><span>Rp20.000</span></div>
+              </div>
+              <div class="shot__cart">
+                <div><span>2 item</span><b>Rp33.000</b></div>
+                <span class="shot__btn">Bayar</span>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>Kasir offline</b><span>Jalan tanpa internet. Data tersimpan di perangkat.</span></figcaption>
+        </figure>
+
+        <figure class="shot" data-rv>
+          <div class="shot__frame">
+            <div class="shot__bar"><span></span><span></span><span></span></div>
+            <div class="shot__body shot__body--qris">
+              <div class="shot__head"><b>QRIS</b><em>Otomatis</em></div>
+              <div class="shot__qr" aria-hidden="true"></div>
+              <div class="shot__amount"><span>Nominal terisi</span><b>Rp33.000</b></div>
+              <div class="shot__ok">Menunggu pembayaran</div>
+            </div>
+          </div>
+          <figcaption><b>QRIS dinamis</b><span>Nominal terisi sendiri dari keranjang. Tidak perlu ketik ulang.</span></figcaption>
+        </figure>
+
+        <figure class="shot" data-rv>
+          <div class="shot__frame">
+            <div class="shot__bar"><span></span><span></span><span></span></div>
+            <div class="shot__body">
+              <div class="shot__head"><b>Rekap hari ini</b><em>Contoh</em></div>
+              <div class="shot__rows">
+                <div><span>Transaksi</span><b>32</b></div>
+                <div><span>Penjualan</span><b>Rp1.240.000</b></div>
+                <div><span>Pajak disisihkan</span><b>Rp6.200</b></div>
+                <div class="shot__row--total"><span>Untung bersih</span><b>Rp412.000</b></div>
+              </div>
+              <div class="shot__bar-fill"><i data-bar="33"></i></div>
+            </div>
+          </div>
+          <figcaption><b>Rekap otomatis</b><span>Pajak dihitung dari transaksi, bukan dari catatan terpisah.</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="shots__cta" data-rv>
+        <a class="btn btn--primary" href="app/kasir.html#demo">Buka demo kasir</a>
+        <p>Tanpa daftar. Langsung jalan di browser.</p>
       </div>
     </div>
   </section>
@@ -1046,48 +1147,20 @@ html.no-js [data-rv]{opacity:1;transform:none}
 
 <footer class="foot">
   <div class="wrap">
-    <div class="foot__grid">
+    <div class="foot__top">
       <div class="foot__brand">
         <a class="brand" href="/"><span class="brand__mark" aria-hidden="true">O</span>Olano</a>
-        <p>Platform bisnis untuk usaha Indonesia. Kasir, pajak, delivery, website, dan otomasi dalam satu tempat.</p>
-        <span class="foot__status"><i aria-hidden="true"></i>Kasir dan pajak aktif. Otomasi tahap uji.</span>
+        <p>Apa pun bisnisnya, apa pun kebutuhannya, satu tim yang urus.</p>
       </div>
-      <div>
-        <h4>Produk</h4>
-        <ul>
-          <li><a href="app/kasir.html">Kasir</a></li>
-          <li><a href="pajak.html">Pajak</a></li>
-          <li><a href="analisa-delivery.html">Analisa delivery</a></li>
-          <li><a href="website.html">Website</a></li>
-          <li><a href="ai.html">AI jaga margin</a></li>
-          <li><a href="automation.html">Otomasi</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Alat gratis</h4>
-        <ul>
-          <li><a href="alat/kalkulator-pph-final-umkm.html">PPh final UMKM</a></li>
-          <li><a href="alat/kalkulator-hpp-harga-jual.html">HPP dan harga jual</a></li>
-          <li><a href="alat/kalkulator-biaya-qris.html">Biaya QRIS</a></li>
-          <li><a href="alat/kalkulator-margin-delivery.html">Margin delivery</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Perusahaan</h4>
-        <ul>
-          <li><a href="tentang.html">Tentang</a></li>
-          <li><a href="naik-kelas.html">Naik kelas</a></li>
-          <li><a href="kebijakan-privasi.html">Kebijakan privasi</a></li>
-          <li><a href="syarat-ketentuan.html">Syarat dan ketentuan</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="foot__cta">
-      <div>
-        <b>Belum yakin mulai dari mana?</b>
-        <p>Kirim tautan resto atau ceritakan usahamu. Kami balas dengan langkah pertama yang konkret, bukan proposal panjang.</p>
-      </div>
-      <a class="btn btn--primary" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20tanya%20langkah%20pertama" target="_blank" rel="noopener">Tanya lewat WhatsApp</a>
+      <nav class="foot__links" aria-label="Tautan footer">
+        <a href="#kebutuhan">Layanan</a>
+        <a href="#harga">Harga</a>
+        <a href="app/login.html">Masuk</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="kebijakan-privasi.html">Privasi</a>
+        <a href="syarat-ketentuan.html">Ketentuan</a>
+      </nav>
+      <a class="btn btn--primary btn--sm" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20tanya" target="_blank" rel="noopener">WhatsApp</a>
     </div>
     <div class="foot__legal">
       <p>Olano membantu menghitung dan menyiapkan rekap pajak. Pelaporan sebagai kuasa wajib pajak dikerjakan mitra berizin. Bukan nasihat hukum atau pajak.</p>
