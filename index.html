@@ -237,24 +237,30 @@ svg{display:block}
 /* Strip gratis: kasir+QRIS gratis adalah value utama, tapi di mobile sebelumnya
    tenggelam. Strip ini memastikan pengunjung tahu ada produk gratis, bukan cuma jasa. */
 
-/* Enam modul: kartu kecil, satu kalimat, tanpa bullet.
-   Alasan: semua modul harus terlihat (owner benar: produk bukan cuma kasir+pajak),
-   tapi 6 kartu besar = rame. Kartu kecil = peta, bukan brosur. */
-.mods{display:grid;gap:12px;margin-top:clamp(24px,3vw,36px)}
-@media(min-width:640px){.mods{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1020px){.mods{grid-template-columns:repeat(3,1fr)}}
-.mod{display:flex;flex-direction:column;gap:6px;padding:18px 18px 20px;
-  background:#fff;border:1px solid var(--gray-100);border-radius:var(--r-card);
-  box-shadow:var(--sh-1);
-  transition:border-color .15s var(--ease),box-shadow .15s var(--ease),background .15s var(--ease)}
-.mod:hover{border-color:var(--blue-600);background:#FCFDFF;box-shadow:var(--sh-2)}
-.mod__tag{align-self:flex-start;font-size:.66rem;font-weight:700;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--blue-700);background:var(--blue-50);
-  border:1px solid var(--blue-100);border-radius:5px;padding:2px 6px;margin-bottom:4px}
-.mod__tag--free{color:#0E7A3D;background:#E8F6ED;border-color:#BFE6CD}
-.mod__tag--soon{color:var(--warn);background:var(--warn-bg);border-color:#F2E2BC}
-.mod h3{font-size:1.02rem;font-weight:650;letter-spacing:-.015em;line-height:1.3}
-.mod p{font-size:.85rem;color:var(--gray-500);line-height:1.55}
+/* Baris list, bukan kartu seragam. Alasan: 6 kartu identik = template SaaS.
+   Baris memberi hierarki: label layanan kecil, hasil besar, penjelasan di kanan. */
+.mods{display:flex;flex-direction:column;margin-top:clamp(22px,2.8vw,34px);
+  border-top:1px solid var(--gray-100)}
+.mrow{display:grid;gap:6px;padding:20px 4px;border-bottom:1px solid var(--gray-100);
+  transition:background .15s var(--ease)}
+.mrow:hover{background:#FCFDFF}
+@media(min-width:820px){
+  .mrow{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(20px,3vw,48px);
+    align-items:baseline;padding:22px 8px}
+}
+.mrow__label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--blue-700);display:block;margin-bottom:5px}
+.mrow__title{font-size:clamp(1.05rem,1.7vw,1.32rem);font-weight:650;letter-spacing:-.022em;
+  line-height:1.28;color:var(--ink)}
+.mrow__right p{font-size:.9rem;color:var(--gray-500);line-height:1.6}
+.mrow__tag{display:inline-block;margin-top:8px;font-size:.68rem;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--gray-700);
+  background:var(--gray-50);border:1px solid var(--gray-100);border-radius:5px;padding:2px 7px}
+.mrow__tag--free{color:#0E7A3D;background:#E8F6ED;border-color:#BFE6CD}
+.mrow__tag--soon{color:var(--warn);background:var(--warn-bg);border-color:#F2E2BC}
+.mrow--other{background:var(--blue-50);border-bottom:0;border-radius:var(--r-card);margin-top:10px;padding:20px 16px}
+.mrow--other:hover{background:#E8F0FF}
+.mrow--other .mrow__label{color:var(--blue-700)}
 
 .mod__link{margin-top:auto;padding-top:10px;font-size:.82rem;font-weight:600;
   color:var(--blue-600);display:inline-flex;align-items:center;gap:4px}
@@ -271,10 +277,23 @@ svg{display:block}
   display:inline-block;padding:11px 0;min-height:44px;line-height:22px}
 .hero__alt a:hover{color:var(--blue-600)}
 
+/* Index layanan: semangat "website? pajak? automation?" dari owner, tapi dalam
+   bentuk navigasi yang bisa diklik. Teks polos tanpa pill dan tanpa ikon,
+   karena 6 pill = rame dan terlihat seperti tag template. */
+.hero__index{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:22px;
+  padding-top:16px;border-top:1px solid var(--gray-100);max-width:520px}
+.hero__index a{font-size:.92rem;color:var(--gray-700);font-weight:500;
+  min-height:44px;display:inline-flex;align-items:center;
+  border-bottom:1px solid transparent;transition:color .15s var(--ease),border-color .15s var(--ease)}
+.hero__index a:hover{color:var(--blue-700);border-bottom-color:var(--blue-600)}
+
 /* Showcase mobile: hero harus masuk satu layar (844px).
    Alert dan grid modul disembunyikan di mobile, angka + bar tetap.
    Desktop tidak terpengaruh. */
 @media(max-width:759px){
+  /* Panel angka contoh disembunyikan di mobile: index layanan sudah menggantikan
+     fungsinya, dan panel bikin hero melewati satu layar. */
+  .showcase{display:none !important}
   .showcase__main{padding:16px !important}
   .showcase__num{font-size:1.9rem !important}
   .showcase__alert{display:none !important}
@@ -736,20 +755,29 @@ html.no-js [data-rv]{opacity:1;transform:none}
     <div class="wrap hero__grid">
       <div>
         <h1>
-          <span class="w"><span>Pajak</span></span>
-          <span class="w"><span>UMKM</span></span>
-          <span class="w"><span>beres.</span></span>
+          <span class="w"><span>Apa</span></span>
+          <span class="w"><span>pun</span></span>
+          <span class="w"><span>bisnis</span></span>
           <span class="w"><span>Anda</span></span>
-          <span class="w"><span class="it">fokus jualan.</span></span>
+          <span class="w"><span>butuhkan,</span></span>
+          <span class="w"><span class="it">kami urus.</span></span>
         </h1>
-        <p class="lede hero__sub">Kasir dan QRIS gratis selamanya. Pajak diurus tim kami, mulai Rp600.000 per bulan.</p>
+        <p class="lede hero__sub">Kasir, pembukuan, pajak, jualan online, website, sampai otomasi kerja. Satu tim yang kenal bisnis Anda.</p>
         <div class="hero__cta">
-          <a class="btn btn--primary" href="#kalkulator">
-            Hitung pajak Anda
+          <a class="btn btn--primary" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20bisnis%20saya%20butuh%20bantuan%20untuk..." target="_blank" rel="noopener">
+            Ceritakan kebutuhan Anda
             <svg class="btn__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
           </a>
         </div>
-        <p class="hero__alt">Atau <a href="app/kasir.html#demo">pakai kasir gratis</a> dulu, tanpa kartu kredit.</p>
+        <p class="hero__alt">Atau <a href="#kebutuhan">lihat semua layanan</a>. Kasir dan QRIS gratis selamanya.</p>
+        <nav class="hero__index" aria-label="Layanan Olano">
+          <a href="app/kasir.html#demo">Kasir</a>
+          <a href="#kebutuhan">Pembukuan</a>
+          <a href="#kalkulator">Pajak</a>
+          <a href="#kebutuhan">Jualan online</a>
+          <a href="website.html">Website</a>
+          <a href="automation.html">Otomasi</a>
+        </nav>
       </div>
 
       <div class="showcase" data-rv aria-label="Contoh ringkasan harian Olano">
@@ -779,47 +807,81 @@ html.no-js [data-rv]{opacity:1;transform:none}
   <section class="sec" id="kebutuhan">
     <div class="wrap">
       <div class="sechead" data-rv>
-        <p class="eyebrow">Kebutuhan bisnis Anda</p>
-        <h2>Apa pun yang usaha Anda butuhkan, <span class="it">semuanya ada di sini.</span></h2>
-        <p class="lede">Mulai dari yang gratis. Tambah yang Anda perlukan saat usaha tumbuh. Semua memakai data yang sama, jadi tidak ada input dobel.</p>
+        <p class="eyebrow">Yang kami urus</p>
+        <h2>Enam pekerjaan yang biasanya <span class="it">makan waktu Anda.</span></h2>
+        <p class="lede">Ambil yang Anda butuhkan sekarang, tambah sisanya saat usaha tumbuh. Semua memakai data yang sama, jadi tidak ada input dobel.</p>
       </div>
 
       <div class="mods">
-        <a class="mod" href="app/kasir.html#demo" data-rv>
-          <span class="mod__tag mod__tag--free">Gratis</span>
-          <h3>Butuh catat penjualan?</h3>
-          <p>Kasir dan QRIS. Jalan tanpa internet, nominal terisi otomatis.</p>
-          <span class="mod__link">Buka kasir</span>
+        <a class="mrow" href="app/kasir.html#demo" data-rv>
+          <div class="mrow__left">
+            <span class="mrow__label">Kasir & QRIS</span>
+            <h3 class="mrow__title">Penjualan tercatat rapi</h3>
+          </div>
+          <div class="mrow__right">
+            <p>Jalan tanpa internet. Nominal QRIS terisi otomatis.</p>
+            <span class="mrow__tag mod__tag--free">Gratis</span>
+          </div>
         </a>
-        <a class="mod" href="ai.html" data-rv>
-          <span class="mod__tag">Pro</span>
-          <h3>Butuh tahu untung per menu?</h3>
-          <p>AI cek untung. Harga bahan naik, AI hitung harga jual yang masih aman.</p>
-          <span class="mod__link">Lihat AI margin</span>
+        <a class="mrow" href="pajak.html" data-rv>
+          <div class="mrow__left">
+            <span class="mrow__label">Pembukuan</span>
+            <h3 class="mrow__title">Tahu untung, bukan cuma omzet</h3>
+          </div>
+          <div class="mrow__right">
+            <p>Rekap otomatis dari transaksi, siap dibaca akuntan.</p>
+            <span class="mrow__tag">Mulai Rp600rb</span>
+          </div>
         </a>
-        <a class="mod" href="pajak.html" data-rv>
-          <span class="mod__tag">Mulai Rp600rb</span>
-          <h3>Butuh pajak beres tanpa repot?</h3>
-          <p>Pajak dan pembukuan. Rekap otomatis, pendampingan lapor, reguler 3 hari.</p>
-          <span class="mod__link">Lihat layanan pajak</span>
+        <a class="mrow" href="#kalkulator" data-rv>
+          <div class="mrow__left">
+            <span class="mrow__label">Pajak</span>
+            <h3 class="mrow__title">Pajak beres tiap bulan</h3>
+          </div>
+          <div class="mrow__right">
+            <p>Dihitung, disisihkan, dan dilaporkan tim kami.</p>
+            <span class="mrow__tag">Mulai Rp600rb</span>
+          </div>
         </a>
-        <a class="mod" href="analisa-delivery.html" data-rv>
-          <span class="mod__tag">10% omzet</span>
-          <h3>Butuh untung dari GrabFood dan GoFood?</h3>
-          <p>Audit tautan resto, perbaikan menu, promo, dan laporan mingguan.</p>
-          <span class="mod__link">Audit resto saya</span>
+        <a class="mrow" href="analisa-delivery.html" data-rv>
+          <div class="mrow__left">
+            <span class="mrow__label">Jualan online</span>
+            <h3 class="mrow__title">Jualan di aplikasi tanpa boncos</h3>
+          </div>
+          <div class="mrow__right">
+            <p>Audit GrabFood dan GoFood, perbaikan menu dan promo.</p>
+            <span class="mrow__tag">10% omzet</span>
+          </div>
         </a>
-        <a class="mod" href="website.html" data-rv>
-          <span class="mod__tag">Mulai Rp500rb</span>
-          <h3>Butuh website dengan brand sendiri?</h3>
-          <p>Website custom. Toko online, katalog sinkron dengan kasir.</p>
-          <span class="mod__link">Lihat website</span>
+        <a class="mrow" href="website.html" data-rv>
+          <div class="mrow__left">
+            <span class="mrow__label">Website</span>
+            <h3 class="mrow__title">Website atas nama bisnis Anda</h3>
+          </div>
+          <div class="mrow__right">
+            <p>Toko online dengan brand sendiri, katalog sinkron kasir.</p>
+            <span class="mrow__tag">Mulai Rp500rb</span>
+          </div>
         </a>
-        <a class="mod" href="automation.html" data-rv>
-          <span class="mod__tag mod__tag--soon">Tahap uji</span>
-          <h3>Butuh pekerjaan berulang beres sendiri?</h3>
-          <p>Otomasi bisnis. Pesanan ke printer, rekap harian ke WhatsApp, webhook.</p>
-          <span class="mod__link">Lihat rencana</span>
+        <a class="mrow" href="automation.html" data-rv>
+          <div class="mrow__left">
+            <span class="mrow__label">Otomasi & AI</span>
+            <h3 class="mrow__title">Kerja berulang jalan sendiri</h3>
+          </div>
+          <div class="mrow__right">
+            <p>Pesanan ke printer, rekap harian ke WhatsApp, AI cek untung.</p>
+            <span class="mrow__tag mod__tag--soon">Tahap uji</span>
+          </div>
+        </a>
+        <a class="mrow mrow--other" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20bisnis%20saya%20butuh%20sesuatu%20yang%20belum%20ada%20di%20daftar.%20Bisa%20dibantu%3F" target="_blank" rel="noopener" data-rv>
+          <div class="mrow__left">
+            <span class="mrow__label">Belum ada di daftar</span>
+            <h3 class="mrow__title">Butuh yang lain? Ceritakan ke kami.</h3>
+          </div>
+          <div class="mrow__right">
+            <p>Kalau belum ada di daftar, kemungkinan tetap bisa kami kerjakan.</p>
+            <span class="mrow__tag">Tanya dulu</span>
+          </div>
         </a>
       </div>
 
