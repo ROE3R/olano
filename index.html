@@ -158,6 +158,22 @@ svg{display:block}
   border-bottom:1px solid var(--gray-100)}
 .nav__mob a:last-of-type{border-bottom:0}
 .nav__mob .btn{margin-top:14px;border-bottom:0}
+/* Menu mobile: grup produk bisa ditutup. Alasan: 12 link terbuka semua =
+   dinding teks 673px yang menutupi seluruh layar dan membuat bingung.
+   Sekarang default tertutup, 6 link produk di balik satu tombol. */
+.mobgrp{border-bottom:1px solid var(--gray-100)}
+.mobgrp__btn{display:flex;align-items:center;justify-content:space-between;width:100%;
+  min-height:48px;padding:0;background:none;border:0;cursor:pointer;
+  font:inherit;font-size:.95rem;font-weight:600;color:var(--ink);text-align:left}
+.mobgrp__btn svg{transition:transform .22s var(--ease);color:var(--gray-500);flex:none}
+.mobgrp__btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.mobgrp__panel{display:none;padding-bottom:6px}
+.mobgrp__panel.is-open{display:block}
+.mobgrp__panel a{display:flex;align-items:center;min-height:44px;font-size:.92rem;
+  font-weight:500;color:var(--gray-700);border-bottom:0;padding-left:var(--s3)}
+.mobgrp__panel a:last-child{border-bottom:0}
+.nav__mob > .wrap > a{display:flex;align-items:center;min-height:48px;font-size:.95rem;
+  font-weight:500;border-bottom:1px solid var(--gray-100)}
 @media(min-width:940px){
   .nav__links{display:flex}.nav__right{display:flex}.nav__burger{display:none}.nav__mob{display:none!important}
 }
@@ -969,14 +985,20 @@ html.no-js [data-rv]{opacity:1;transform:none}
 
   <nav class="nav__mob" id="navMob" aria-label="Menu seluler">
     <div class="wrap">
-      <p class="nav__grp">Produk</p>
-      <a href="#ekosistem">Enam modul</a>
-      <a href="pajak.html">Pajak dan pembukuan</a>
-      <a href="analisa-delivery.html">Untung di GrabFood dan GoFood</a>
-      <a href="website.html">Website dan toko online</a>
-      <a href="ai.html">Cek untung per menu</a>
-      <a href="automation.html">Otomasi (tahap uji)</a>
-      <p class="nav__grp">Lainnya</p>
+      <div class="mobgrp">
+        <button type="button" class="mobgrp__btn" id="mobProduk" aria-expanded="false" aria-controls="mobProdukPanel">
+          <span>Produk dan jasa</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mobgrp__panel" id="mobProdukPanel">
+          <a href="#ekosistem">Enam modul</a>
+          <a href="pajak.html">Pajak dan pembukuan</a>
+          <a href="analisa-delivery.html">Untung di GrabFood dan GoFood</a>
+          <a href="website.html">Website dan toko online</a>
+          <a href="ai.html">Cek untung per menu</a>
+          <a href="automation.html">Otomasi (tahap uji)</a>
+        </div>
+      </div>
       <a href="#kebutuhan">Kebutuhan bisnis</a>
       <a href="alat/kalkulator-pph-final-umkm.html">Kalkulator</a>
       <a href="#harga">Harga</a>
@@ -1370,6 +1392,17 @@ html.no-js [data-rv]{opacity:1;transform:none}
       dds.forEach(function(o){ o.classList.remove("is-open"); var b=o.querySelector("button"); if(b) b.setAttribute("aria-expanded","false"); });
     }
   });
+
+  /* accordion grup produk di menu mobile */
+  (function(){
+    var b = document.getElementById("mobProduk");
+    var pnl = document.getElementById("mobProdukPanel");
+    if(!b || !pnl) return;
+    b.addEventListener("click", function(){
+      var open = pnl.classList.toggle("is-open");
+      b.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  })();
 
   /* burger mobile */
   var burger = document.getElementById("burger");
