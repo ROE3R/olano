@@ -1128,6 +1128,91 @@ html.no-js [data-rv]{opacity:1;transform:none}
   .ticker__track{animation:none}
 }
 :target{scroll-margin-top:80px}
+
+/* ===== MOBILE PASS =====
+   390x844 sebelumnya 8.55 layar. Target 3.6-4 layar.
+   Tiap aturan menyebut rule yang diperbaiki. */
+
+@media(max-width:767px){
+
+  /* Huge Empty Padding: 80px -> 40px. Padding desktop dibawa ke mobile. */
+  .sec,#kebutuhan,#produk,#harga{padding-block:40px}
+  .closeblock{padding-block:48px 32px}
+
+  /* HERO: 1247px = 1.48 layar -> target 620px (0.73 layar).
+     H1 44px->32px (lh 1.08), frame 564px->max 320px tinggi.
+     Frame turun setelah CTA supaya pesan + aksi tampil lebih dulu. */
+  .hero{padding-block:16px 32px}
+  .hero__grid{row-gap:24px}
+  .hero h1{font-size:32px;line-height:1.08;letter-spacing:-.03em;max-width:20ch}
+  .hero__sub{font-size:14px;line-height:1.45;margin-top:10px}
+  .hero__cta{flex-direction:column;gap:8px;margin-top:18px}
+  .hero__cta .btn{width:100%;min-height:48px;justify-content:center}
+  .hero__alt{font-size:12px;margin-top:10px}
+  .hero__copy{order:1}
+  .hero__shot{order:2}
+  .dframe{max-width:260px;margin-inline:auto}
+  .dframe img{aspect-ratio:9/16;max-height:320px;object-position:top center}
+  /* Index 6 layanan: diturunkan ke bawah frame (Opus: pindah dari hero
+     atas fold). 2 kolom, 44px target. */
+  .hero__index{order:3;margin-top:16px;padding-top:12px}
+  .hero__index a{min-height:44px;font-size:13px}
+
+  /* SECTION 2: 1677px = 2 layar. Judul 4-5 baris.
+     Baris dipadatkan: judul 1-2 baris (fs-3), deskripsi 1 baris clamp,
+     tag sebaris. Target ~90px/baris dari 225-261px. */
+  .sechead{margin-bottom:24px;row-gap:6px}
+  .sechead h2{font-size:22px;line-height:1.15}
+  .sechead .lede{font-size:14px;line-height:1.5;margin-top:8px}
+  .mods{margin-top:24px}
+  .mrow{display:block;padding:10px 0;border-bottom:1px solid rgba(10,12,20,.10)}
+  .mrow__left{display:block}
+  .mrow__label{font-size:12px;letter-spacing:.05em;margin-bottom:2px}
+  .mrow__title{font-size:14px;line-height:1.3;letter-spacing:-.005em;margin-top:1px;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  /* Deskripsi dapat baris penuh, tag turun ke bawahnya. Alasan: flex
+     sebaris membuat deskripsi menyusut ke 52px dan teksnya terpotong. */
+  .mrow__right{display:block;margin-top:5px}
+  .mrow__right p{font-size:12px;line-height:1.35;margin:0;max-width:100%;
+    display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+  .mrow__tag{display:inline-block;margin-top:4px;font-size:12px;padding:1px 5px}
+  .mrow__right p{font-size:13px;line-height:1.4;margin:0;min-width:0;
+    display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+  .mrow__tag{margin-top:0;flex:none;font-size:12px;padding:2px 6px}
+  .mods__note{font-size:12px;margin-top:14px}
+
+  /* PRODUK: carousel sudah snap, tambah indikator posisi (rule: carousel
+     tanpa indikator = user tidak tahu ada berapa). */
+  .shots{margin-top:20px}
+  .shot figcaption{padding-top:10px}
+  .shot figcaption b{font-size:14px}
+  .shot figcaption span:last-child{font-size:12px;line-height:1.35;-webkit-line-clamp:2;min-height:0}
+
+  /* HARGA: 1368px = 1.62 layar. 3 tabel ditumpuk.
+     Padding baris dipangkas, judul kecil, harga tetap terbaca. */
+  #harga .sechead{margin-bottom:14px}
+  .price2{margin-top:14px;gap:12px}
+  .ptable{padding:12px 10px}
+  .ptable th,.ptable td{padding:7px 5px;font-size:12px;line-height:1.3}
+  .ptable thead th{font-size:12px;letter-spacing:.02em;padding-bottom:8px}
+  .pricenote{font-size:12px;line-height:1.45;margin-top:10px}
+
+  /* CLOSING: proof 3 langkah ditumpuk, CTA full width. */
+  .proof{padding:20px 0}
+  .proof__list{gap:14px}
+  .proof__list b{font-size:14px}
+  .proof__list span:last-child{font-size:12px;line-height:1.45}
+  .closebox{padding:20px 16px}
+  .closebox h2{font-size:22px}
+  .closebox .lede{font-size:14px}
+  .closebox .btn{width:100%;min-height:48px}
+
+  /* NAV: burger diberi label teks (rule: The Bare Hamburger). */
+  .nav__burger{gap:3px;min-height:44px;padding:0 10px}
+  .nav__burger::after{content:"Menu";font-size:12px;font-weight:600;
+    letter-spacing:.02em;margin-top:3px;line-height:1}
+  .nav__mob{max-height:calc(100dvh - 64px)}
+}
 </style>
 </head>
 <body>
@@ -1214,16 +1299,17 @@ html.no-js [data-rv]{opacity:1;transform:none}
         </div>
         <p class="hero__alt">Tanpa daftar, tanpa pasang aplikasi. Jalan langsung di browser.</p>
 
-        <nav class="hero__index" aria-label="Layanan Olano">
-          <a href="app/kasir.html#demo"><span class="hero__no">01</span><span class="hero__nm">Kasir dan QRIS</span></a>
-          <a href="#kebutuhan"><span class="hero__no">02</span><span class="hero__nm">Pembukuan</span></a>
-          <a href="pajak.html"><span class="hero__no">03</span><span class="hero__nm">Pajak</span></a>
-          <a href="#kebutuhan"><span class="hero__no">04</span><span class="hero__nm">Jualan online</span></a>
-          <a href="website.html"><span class="hero__no">05</span><span class="hero__nm">Website</span></a>
-          <a href="automation.html"><span class="hero__no">06</span><span class="hero__nm">Otomasi</span></a>
-        </nav>
 
       </div>
+
+      <nav class="hero__index" aria-label="Layanan Olano">
+        <a href="app/kasir.html#demo"><span class="hero__no">01</span><span class="hero__nm">Kasir dan QRIS</span></a>
+        <a href="#kebutuhan"><span class="hero__no">02</span><span class="hero__nm">Pembukuan</span></a>
+        <a href="pajak.html"><span class="hero__no">03</span><span class="hero__nm">Pajak</span></a>
+        <a href="#kebutuhan"><span class="hero__no">04</span><span class="hero__nm">Jualan online</span></a>
+        <a href="website.html"><span class="hero__no">05</span><span class="hero__nm">Website</span></a>
+        <a href="automation.html"><span class="hero__no">06</span><span class="hero__nm">Otomasi</span></a>
+      </nav>
 
       <div class="hero__shot" data-rv>
         <div class="dframe">
@@ -1512,7 +1598,6 @@ html.no-js [data-rv]{opacity:1;transform:none}
       <p>Rekap pajak disiapkan Olano, pelaporan dikerjakan mitra berizin. Bukan nasihat pajak.</p>
     </div>
   </div>
-
 
 <script src="assets/js/config.js"></script>
 <script>
@@ -1870,8 +1955,6 @@ html.no-js [data-rv]{opacity:1;transform:none}
       });
     });
   })();
-
-
 
   /* ---------- carousel produk: label + counter ikut posisi scroll ----------
      Alasan: dot polos tidak memberi tahu isi kartu. Label teks langsung
