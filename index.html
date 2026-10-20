@@ -453,6 +453,23 @@ svg{display:block}
 /* Penutup ringkas: satu CTA, tanpa fine print. Alasan: dua pilihan di akhir
    halaman bikin ragu, dan fine print itu jawaban atas keberatan yang belum muncul.
    Footer menyambung langsung, tanpa pemisah, supaya terasa satu bagian. */
+/* Bukti yang bisa dicek sendiri, menggantikan testimoni.
+   Alasan: testimoni karangan melanggar UU Perlindungan Konsumen Pasal 9 dan
+   menurunkan kesan mahal. Tiga langkah ini bisa diverifikasi pengunjung. */
+.proof{margin-bottom:var(--s4);border-top:1px solid rgba(10,12,20,.10);
+  border-bottom:1px solid rgba(10,12,20,.10);padding:var(--s4) 0}
+.proof__h{font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gray-500);margin:0 0 var(--s3)}
+.proof__list{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3);
+  grid-template-columns:1fr}
+@media(min-width:760px){.proof__list{grid-template-columns:repeat(3,1fr);gap:var(--s4)}}
+.proof__list li{display:grid;grid-template-columns:auto 1fr;column-gap:var(--s2);
+  row-gap:2px;align-content:start}
+.proof__no{grid-row:1 / span 2;font-size:.76rem;font-weight:700;letter-spacing:.08em;
+  color:var(--blue-600);font-variant-numeric:tabular-nums;padding-top:3px}
+.proof__list b{font-size:1rem;font-weight:600;letter-spacing:-.01em;line-height:1.35}
+.proof__list span:last-child{font-size:.9rem;color:var(--gray-500);line-height:1.55}
+.proof__note{margin:var(--s3) 0 0;font-size:.85rem;color:var(--gray-500);line-height:1.6}
 .closeblock{padding-bottom:0}
 .closebox{background:linear-gradient(160deg,#F7FAFF 0%,#EFF5FF 100%);
   border:1px solid #DFE7F5;border-radius:var(--r-card);
@@ -1032,7 +1049,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
           <span class="w"><span>butuhkan,</span></span>
           <span class="w"><span class="it">kami urus.</span></span>
         </h1>
-        <p class="lede hero__sub">Kasir, pembukuan, pajak, jualan online, website, sampai otomasi kerja. Satu tim yang kenal bisnis Anda.</p>
+        <p class="lede hero__sub">Kasir gratis yang tetap jalan saat internet mati. Pembukuan dan pajak ikut tercatat.</p>
         <div class="hero__cta">
           <a class="btn btn--primary" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20bisnis%20saya%20butuh%20bantuan%20untuk..." target="_blank" rel="noopener">
             Ceritakan kebutuhan Anda
@@ -1275,6 +1292,28 @@ html.no-js [data-rv]{opacity:1;transform:none}
 
   <section class="sec closeblock" aria-labelledby="close-h">
     <div class="wrap">
+      <div class="proof" data-rv>
+        <p class="proof__h">Buktikan sendiri, 60 detik</p>
+        <ol class="proof__list">
+          <li>
+            <span class="proof__no">01</span>
+            <b>Buka kasirnya</b>
+            <span>Tanpa daftar, tanpa pasang aplikasi. Langsung jalan di browser.</span>
+          </li>
+          <li>
+            <span class="proof__no">02</span>
+            <b>Matikan internet</b>
+            <span>Kasir tetap mencatat transaksi. Datanya tersimpan di perangkat.</span>
+          </li>
+          <li>
+            <span class="proof__no">03</span>
+            <b>Tutup kasir, buka rekap</b>
+            <span>Omzet, untung, dan pajak bulan ini sudah terhitung sendiri.</span>
+          </li>
+        </ol>
+        <p class="proof__note">Kalau salah satu langkah gagal, itu bug. Laporkan ke kami dan kami perbaiki.</p>
+      </div>
+
       <div class="closebox" data-rv>
         <h2 id="close-h">Mulai dari <span class="it">satu transaksi</span> hari ini.</h2>
         <p class="lede">Buka kasir, catat penjualan pertama, lihat rekapnya. Tanpa pasang aplikasi.</p>
@@ -1290,7 +1329,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
     <div class="foot__top">
       <div class="foot__brand">
         <a class="brand" href="/"><span class="brand__mark" aria-hidden="true">O</span>Olano</a>
-        <p>Apa pun bisnisnya, apa pun kebutuhannya, satu tim yang urus.</p>
+        <p>Kasir gratis yang jalan tanpa internet. Pembukuan dan pajak diurus tim.</p>
       </div>
       <nav class="foot__links" aria-label="Tautan footer">
         <a href="#kebutuhan">Layanan</a>
