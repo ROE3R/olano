@@ -49,8 +49,14 @@
   --pad:clamp(52px,6vw,88px);
   --gutter:clamp(18px,4vw,44px);
   --max:1160px;
-  --r-card:16px; --r-vis:12px; --r-pill:999px;
+  --r-card:12px; --r-vis:12px; --r-pill:999px;
   --ease:cubic-bezier(.22,.61,.36,1);
+  /* Depth system (Stripe): shadow berwarna biru, dua lapis, bukan hitam netral.
+     Alasan: shadow hitam = generik. Shadow biru = elevasi terasa bagian dari brand. */
+  --sh-1:0 3px 6px rgba(36,48,93,.06);
+  --sh-2:0 15px 35px rgba(36,48,93,.08);
+  --sh-3:0 30px 45px -30px rgba(36,48,93,.25),0 18px 36px -18px rgba(11,18,32,.10);
+  --sh-4:0 14px 21px -14px rgba(28,32,80,.25),0 8px 17px -8px rgba(11,18,32,.10);
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -114,7 +120,7 @@ svg{display:block}
   border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-1px);opacity:.55}
 .nav__menu{position:absolute;top:calc(100% + 8px);left:0;min-width:230px;background:#fff;
   border:1px solid var(--gray-100);border-radius:14px;padding:8px;
-  box-shadow:0 20px 44px -24px rgba(11,18,32,.35);
+  box-shadow:var(--sh-3);
   opacity:0;visibility:hidden;transform:translateY(-6px);
   transition:opacity .18s var(--ease),transform .18s var(--ease),visibility .18s}
 .nav__dd.is-open .nav__menu{opacity:1;visibility:visible;transform:none}
@@ -176,6 +182,93 @@ svg{display:block}
   .hero h1{margin-top:0}
   .hero__grid{gap:26px !important}
 }
+/* Panel ringkasan: 3 baris angka, bukan satu angka besar tanpa konteks.
+   Label "Contoh data" wajib terlihat supaya pengunjung tidak mengira itu datanya. */
+.showcase__tag{font-size:.66rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--gray-500);border:1px solid var(--gray-100);border-radius:6px;padding:2px 7px;
+  background:var(--gray-25)}
+.showcase__rows{display:flex;flex-direction:column;gap:2px;margin-top:14px}
+.showcase__row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  padding:9px 0;border-bottom:1px solid var(--gray-100)}
+.showcase__row span{font-size:.82rem;color:var(--gray-500)}
+.showcase__row b{font-size:.95rem;font-weight:650;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.showcase__row--total{border-bottom:0;padding-top:11px}
+.showcase__row--total span{font-weight:600;color:var(--ink)}
+.showcase__row--total b{font-size:1.15rem;font-weight:700;color:var(--blue-700)}
+.showcase__foot{font-size:.72rem;color:var(--gray-500);line-height:1.45;margin-top:10px}
+
+/* Alat gratis: dua kartu berdampingan, bukan dua section terpisah.
+   Alasan: section delivery dan pajak sebelumnya mengulang modul yang sudah
+   ada di tab ekosistem. Yang unik cuma alatnya. */
+.alatgrid{display:grid;gap:clamp(16px,2.2vw,24px);margin-top:clamp(24px,3vw,36px)}
+@media(min-width:900px){.alatgrid{grid-template-columns:1fr 1fr}}
+.alatcard{background:#fff;border:1px solid var(--gray-100);border-radius:var(--r-card);
+  padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:4px;
+  box-shadow:var(--sh-2)}
+.alatcard__head{display:flex;gap:12px;align-items:flex-start;margin-bottom:8px}
+.alatcard__no{font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--blue-600);
+  background:var(--blue-50);border:1px solid var(--blue-100);border-radius:6px;
+  padding:3px 7px;flex:none;margin-top:3px;font-variant-numeric:tabular-nums}
+.alatcard h3{font-size:clamp(1.02rem,1.5vw,1.22rem);letter-spacing:-.02em;line-height:1.3}
+.alatcard__desc{font-size:.88rem;color:var(--gray-500);line-height:1.6;margin-bottom:6px}
+.alatnote{font-size:var(--xs);color:var(--gray-500);margin-top:18px;line-height:1.5}
+
+/* Kalkulator pajak: satu lead magnet, dua kolom. Kiri menjelaskan, kanan menghitung.
+   Tombol WhatsApp membawa angka hasil hitungan supaya lead-nya sudah ada konteks. */
+.kalk{display:grid;gap:clamp(24px,3.4vw,44px);align-items:start}
+@media(min-width:920px){.kalk{grid-template-columns:1fr 1fr}}
+.kalk__list{display:flex;flex-direction:column;gap:8px;margin-top:22px}
+.kalk__list li{position:relative;padding-left:18px;font-size:.92rem;color:var(--gray-700);line-height:1.5}
+.kalk__list li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:1.5px;background:var(--blue-600);border-radius:2px}
+.kalk__card{background:#fff;border:1px solid var(--gray-100);border-radius:var(--r-card);
+  padding:clamp(20px,2.4vw,30px);box-shadow:var(--sh-2)}
+.kalk__out{margin-top:16px;padding:16px;border-radius:12px;background:var(--blue-50);border:1px solid var(--blue-100)}
+.kalk__lbl{font-size:var(--xs);color:var(--gray-500);letter-spacing:.04em}
+.kalk__val{font-size:clamp(1.6rem,2.6vw,2rem);font-weight:700;letter-spacing:-.035em;
+  font-variant-numeric:tabular-nums;color:var(--ink);margin-top:3px;line-height:1.1}
+.kalk__sub{font-size:var(--xs);color:var(--gray-500);margin-top:6px;line-height:1.5}
+.kalk__note{font-size:.7rem;color:var(--gray-500);margin-top:10px;line-height:1.5}
+.showcase__row--hl{background:var(--blue-50);margin:0 -10px;padding-left:10px;padding-right:10px;border-radius:6px;border-bottom-color:transparent}
+.showcase__row--hl span{color:var(--blue-700);font-weight:600}
+.showcase__row--hl b{color:var(--blue-700)}
+
+/* Strip gratis: kasir+QRIS gratis adalah value utama, tapi di mobile sebelumnya
+   tenggelam. Strip ini memastikan pengunjung tahu ada produk gratis, bukan cuma jasa. */
+
+/* Enam modul: kartu kecil, satu kalimat, tanpa bullet.
+   Alasan: semua modul harus terlihat (owner benar: produk bukan cuma kasir+pajak),
+   tapi 6 kartu besar = rame. Kartu kecil = peta, bukan brosur. */
+.mods{display:grid;gap:12px;margin-top:clamp(24px,3vw,36px)}
+@media(min-width:640px){.mods{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1020px){.mods{grid-template-columns:repeat(3,1fr)}}
+.mod{display:flex;flex-direction:column;gap:6px;padding:18px 18px 20px;
+  background:#fff;border:1px solid var(--gray-100);border-radius:var(--r-card);
+  box-shadow:var(--sh-1);
+  transition:border-color .15s var(--ease),box-shadow .15s var(--ease),background .15s var(--ease)}
+.mod:hover{border-color:var(--blue-600);background:#FCFDFF;box-shadow:var(--sh-2)}
+.mod__tag{align-self:flex-start;font-size:.66rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--blue-700);background:var(--blue-50);
+  border:1px solid var(--blue-100);border-radius:5px;padding:2px 6px;margin-bottom:4px}
+.mod__tag--free{color:#0E7A3D;background:#E8F6ED;border-color:#BFE6CD}
+.mod__tag--soon{color:var(--warn);background:var(--warn-bg);border-color:#F2E2BC}
+.mod h3{font-size:1.02rem;font-weight:650;letter-spacing:-.015em;line-height:1.3}
+.mod p{font-size:.85rem;color:var(--gray-500);line-height:1.55}
+
+.mod__link{margin-top:auto;padding-top:10px;font-size:.82rem;font-weight:600;
+  color:var(--blue-600);display:inline-flex;align-items:center;gap:4px}
+.mod:hover .mod__link{text-decoration:underline;text-underline-offset:3px}
+.mods__note{margin-top:22px;font-size:.9rem;color:var(--gray-500);line-height:1.6}
+.mods__note a{color:var(--blue-600);font-weight:600;text-decoration:underline;text-underline-offset:3px;
+  display:inline-block;padding:11px 0;min-height:44px;line-height:22px}
+
+/* Satu CTA primer + satu link teks. Alasan: dua tombol setara = tidak ada arah.
+   SumoPod dan Ramoo sama-sama pakai satu tombol utama di hero. */
+.hero__alt{margin-top:14px;font-size:.9rem;color:var(--gray-500);line-height:1.5}
+.hero__alt a{color:var(--blue-700);font-weight:600;text-decoration:underline;
+  text-underline-offset:3px;text-decoration-thickness:1px;
+  display:inline-block;padding:11px 0;min-height:44px;line-height:22px}
+.hero__alt a:hover{color:var(--blue-600)}
+
 /* Showcase mobile: hero harus masuk satu layar (844px).
    Alert dan grid modul disembunyikan di mobile, angka + bar tetap.
    Desktop tidak terpengaruh. */
@@ -192,8 +285,6 @@ svg{display:block}
 .hero h1{font-size:var(--h1);font-weight:700;letter-spacing:-.04em;line-height:1.02;max-width:15ch;margin-top:14px}
 .hero__sub{margin-top:clamp(16px,2.2vw,22px);max-width:52ch}
 .hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(22px,2.8vw,30px)}
-.hero__note{margin-top:16px;font-size:var(--sm);color:var(--gray-500);display:flex;align-items:center;gap:8px}
-.hero__note svg{width:15px;height:15px;flex:none;color:var(--ok)}
 @media(min-width:980px){.hero__grid{grid-template-columns:1.06fr .94fr}}
 
 /* Showcase hero: satu fitur unggulan (AI margin) + grid modul.
@@ -201,8 +292,8 @@ svg{display:block}
    terasa seperti halaman produk. Ini yang membedakan landing vs dashboard. */
 .showcase{display:flex;flex-direction:column;gap:10px}
 .showcase__main{background:linear-gradient(165deg,#FFFFFF 0%,#F7FAFF 100%);
-  border:1px solid #DFE7F5;border-radius:18px;padding:20px;
-  box-shadow:0 1px 0 #fff inset,0 24px 48px -32px rgba(11,18,32,.35)}
+  border:1px solid #DFE7F5;border-radius:12px;padding:20px;
+  box-shadow:var(--sh-3)}
 .showcase__head{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .showcase__label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-500)}
 .showcase__live{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-weight:600;
@@ -341,7 +432,7 @@ svg{display:block}
 .eco__stage{position:relative;min-height:0}
 .eco__panel{background:linear-gradient(180deg,#fff 0%,#FDFEFF 100%);border:1px solid var(--gray-100);
   border-radius:var(--r-card);padding:clamp(20px,2.6vw,34px);
-  box-shadow:0 1px 0 #fff inset,0 30px 60px -56px rgba(11,18,32,.45);
+  box-shadow:var(--sh-3);
   display:flex;flex-direction:column;gap:13px}
 .eco__panel{display:none}
 .eco__panel.is-active{display:flex}
@@ -418,7 +509,7 @@ html.no-js .eco{display:block}
 .scope span{display:block;font-size:var(--xs);color:var(--gray-500);margin-top:2px;line-height:1.5}
 
 .card{background:#fff;border:1px solid var(--gray-100);border-radius:var(--r-card);
-  padding:clamp(18px,2.3vw,26px);box-shadow:0 26px 60px -48px rgba(11,18,32,.4)}
+  padding:clamp(18px,2.3vw,26px);box-shadow:var(--sh-3)}
 .card__label{font-size:var(--xs);font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--gray-500)}
 .field{margin-top:14px}
 .field label{display:block;font-size:var(--xs);font-weight:600;color:var(--gray-700);margin-bottom:6px}
@@ -542,7 +633,6 @@ html.no-js .eco{display:block}
 
 /* ---------- motion ---------- */
 @keyframes maskUp{from{transform:translateY(105%)}to{transform:translateY(0)}}
-@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* headline: satu momen motion saat load, per kata, bukan per section */
 .hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom}
@@ -561,12 +651,6 @@ html.no-js .eco{display:block}
 [data-rv].is-in{opacity:1;transform:none}
 html.no-js [data-rv]{opacity:1;transform:none}
 
-/* ticker: satu loop bermakna (menampilkan modul), bukan dekorasi */
-.ticker{overflow:hidden;border-bottom:1px solid var(--gray-100);background:var(--blue-50)}
-.ticker__track{display:flex;width:max-content;animation:drift 34s linear infinite}
-.ticker:hover .ticker__track{animation-play-state:paused}
-.ticker__item{display:inline-flex;align-items:center;gap:7px;padding:9px 22px;
-  font-size:var(--xs);font-weight:600;color:var(--blue-800);white-space:nowrap}
 .ticker__item svg{width:13px;height:13px;color:var(--blue-600)}
 
 @media(prefers-reduced-motion:reduce){
@@ -582,48 +666,24 @@ html.no-js [data-rv]{opacity:1;transform:none}
 <body>
 <a class="skip" href="#main">Langsung ke isi</a>
 
-<div class="ticker" aria-hidden="true">
-  <div class="ticker__track">
-    <span class="ticker__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>Kasir offline</span>
-    <span class="ticker__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>QRIS dinamis</span>
-    <span class="ticker__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16"/><path d="M8 15l3-4 3 3 4-6"/></svg>Dashboard dan AI margin</span>
-    <span class="ticker__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Pajak dan pembukuan</span>
-    <span class="ticker__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12l-2-3"/><path d="M20 16H8l2 3"/></svg>Audit GrabFood dan GoFood</span>
-    <span class="ticker__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01M10 6.5h.01"/></svg>Website dan otomasi</span>
-    <span class="ticker__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>Kasir offline</span>
-    <span class="ticker__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>QRIS dinamis</span>
-    <span class="ticker__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16"/><path d="M8 15l3-4 3 3 4-6"/></svg>Dashboard dan AI margin</span>
-    <span class="ticker__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Pajak dan pembukuan</span>
-    <span class="ticker__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12l-2-3"/><path d="M20 16H8l2 3"/></svg>Audit GrabFood dan GoFood</span>
-    <span class="ticker__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01M10 6.5h.01"/></svg>Website dan otomasi</span>
-  </div>
-</div>
-
 <header class="nav" id="nav">
   <div class="wrap nav__in">
     <a class="brand" href="/"><span class="brand__mark" aria-hidden="true">O</span>Olano</a>
 
     <nav class="nav__links" aria-label="Menu utama">
       <div class="nav__dd">
-        <button type="button" aria-expanded="false" aria-haspopup="true">Platform</button>
+        <button type="button" aria-expanded="false" aria-haspopup="true">Produk</button>
         <div class="nav__menu">
-          <a href="#ekosistem">Semua modul</a>
+          <a href="#ekosistem">Enam modul</a>
           <a href="pajak.html">Pajak dan pembukuan</a>
-          <a href="analisa-delivery.html">Delivery Booster</a>
-          <a href="website.html">Website</a>
-          <a href="ai.html">AI jaga margin</a>
-          <a href="automation.html" class="soon">Otomasi</a>
+          <a href="analisa-delivery.html">Untung di GrabFood dan GoFood</a>
+          <a href="website.html">Website dan toko online</a>
+          <a href="ai.html">Cek untung per menu</a>
+          <a href="automation.html" class="soon">Otomasi (tahap uji)</a>
         </div>
       </div>
-      <div class="nav__dd">
-        <button type="button" aria-expanded="false" aria-haspopup="true">Kalkulator</button>
-        <div class="nav__menu">
-          <a href="alat/kalkulator-pph-final-umkm.html">PPh final UMKM</a>
-          <a href="alat/kalkulator-hpp-harga-jual.html">HPP dan harga jual</a>
-          <a href="alat/kalkulator-biaya-qris.html">Biaya QRIS</a>
-          <a href="alat/kalkulator-margin-delivery.html">Margin delivery</a>
-        </div>
-      </div>
+      <a href="#kebutuhan">Kebutuhan bisnis</a>
+      <a href="#kalkulator">Kalkulator</a>
       <a href="#harga">Harga</a>
       <a href="tentang.html">Tentang</a>
     </nav>
@@ -640,19 +700,16 @@ html.no-js [data-rv]{opacity:1;transform:none}
 
   <nav class="nav__mob" id="navMob" aria-label="Menu seluler">
     <div class="wrap">
-      <p class="nav__grp">Platform</p>
-      <a href="#ekosistem">Semua modul</a>
+      <p class="nav__grp">Produk</p>
+      <a href="#ekosistem">Enam modul</a>
       <a href="pajak.html">Pajak dan pembukuan</a>
-      <a href="analisa-delivery.html">Delivery Booster</a>
-      <a href="website.html">Website</a>
-      <a href="ai.html">AI jaga margin</a>
-      <a href="automation.html">Otomasi (segera)</a>
-      <p class="nav__grp">Kalkulator</p>
-      <a href="alat/kalkulator-pph-final-umkm.html">PPh final UMKM</a>
-      <a href="alat/kalkulator-hpp-harga-jual.html">HPP dan harga jual</a>
-      <a href="alat/kalkulator-biaya-qris.html">Biaya QRIS</a>
-      <a href="alat/kalkulator-margin-delivery.html">Margin delivery</a>
+      <a href="analisa-delivery.html">Untung di GrabFood dan GoFood</a>
+      <a href="website.html">Website dan toko online</a>
+      <a href="ai.html">Cek untung per menu</a>
+      <a href="automation.html">Otomasi (tahap uji)</a>
       <p class="nav__grp">Lainnya</p>
+      <a href="#kebutuhan">Kebutuhan bisnis</a>
+      <a href="#kalkulator">Kalkulator</a>
       <a href="#harga">Harga</a>
       <a href="tentang.html">Tentang</a>
       <a href="app/login.html">Masuk</a>
@@ -677,316 +734,111 @@ html.no-js [data-rv]{opacity:1;transform:none}
     <div class="wrap hero__grid">
       <div>
         <h1>
-          <span class="w"><span>Semua</span></span>
-          <span class="w"><span>kebutuhan</span></span>
-          <span class="w"><span>usaha,</span></span>
-          <span class="w"><span class="it">satu</span></span>
-          <span class="w"><span>tempat.</span></span>
+          <span class="w"><span>Pajak</span></span>
+          <span class="w"><span>UMKM</span></span>
+          <span class="w"><span>beres.</span></span>
+          <span class="w"><span>Anda</span></span>
+          <span class="w"><span class="it">fokus jualan.</span></span>
         </h1>
-        <p class="lede hero__sub">Kasir dan QRIS, pajak dan pembukuan, audit GrabFood dan GoFood, website, sampai otomasi. Untuk warung, jasa, toko online, dan kantor.</p>
+        <p class="lede hero__sub">Kasir dan QRIS gratis selamanya. Pajak diurus tim kami, mulai Rp600.000 per bulan.</p>
         <div class="hero__cta">
-          <a class="btn btn--primary" href="app/kasir.html#demo">
-            Coba kasir gratis
+          <a class="btn btn--primary" href="#kalkulator">
+            Hitung pajak Anda
             <svg class="btn__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="btn btn--ghost" href="#ekosistem">Lihat semua modul</a>
         </div>
-        <p class="hero__note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>
-          Tanpa kartu kredit. Data transaksi tersimpan di perangkat Anda.
-        </p>
+        <p class="hero__alt">Atau <a href="app/kasir.html#demo">pakai kasir gratis</a> dulu, tanpa kartu kredit.</p>
       </div>
 
-      <div class="showcase" data-rv aria-label="Contoh dashboard dan modul Olano">
+      <div class="showcase" data-rv aria-label="Contoh ringkasan harian Olano">
         <div class="showcase__main">
           <div class="showcase__head">
-            <span class="showcase__label">AI jaga margin</span>
-            <span class="showcase__live"><i aria-hidden="true"></i>aktif</span>
+            <span class="showcase__label">Ringkasan hari ini</span>
+            <span class="showcase__tag">Contoh data</span>
           </div>
-          <div class="showcase__metric">
-            <span class="showcase__num">34,0%</span>
-            <span class="showcase__delta">margin bersih saat ini</span>
+          <div class="showcase__rows">
+            <div class="showcase__row"><span>Penjualan</span><b>Rp1.240.000</b></div>
+            <div class="showcase__row showcase__row--hl"><span>Pajak yang disisihkan</span><b>Rp6.200</b></div>
+            <div class="showcase__row showcase__row--total"><span>Untung bersih</span><b>Rp412.000</b></div>
           </div>
-          <div class="showcase__bar" aria-hidden="true"><i data-bar="34"></i></div>
-          <div class="showcase__alert">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8.2v4.4M12 15.8v.01"/></svg>
-            <div>
-              <b>Biaya bahan naik 10%</b>
-              <p>Harga jual aman mulai Rp45.429 per porsi. Tanpa penyesuaian, margin turun ke 28,5%.</p>
-            </div>
-          </div>
+          <div class="showcase__bar" aria-hidden="true"><i data-bar="33"></i></div>
+          <p class="showcase__foot">Dihitung dari 32 transaksi. Angka contoh, bukan data Anda.</p>
         </div>
         <div class="showcase__grid">
           <div class="showcase__cell"><span>Kasir</span><em>offline</em></div>
           <div class="showcase__cell"><span>QRIS</span><em>otomatis</em></div>
           <div class="showcase__cell"><span>Pajak</span><em>0,5% final</em></div>
-          <div class="showcase__cell"><span>Delivery</span><em>10% omzet</em></div>
+          <div class="showcase__cell"><span>Untung</span><em>harian</em></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="facts" aria-labelledby="facts-h">
-    <div class="wrap">
-      <div class="facts__wrap">
-        <div class="facts__intro">
-          <b id="facts-h">Angka yang berlaku hari ini</b>
-          <span>Diambil dari aturan pajak dan tarif QRIS yang sama dengan yang dipakai aplikasi.</span>
-        </div>
-        <div class="facts__grid">
-      <div class="facts__cell"><b data-count="0.5" data-suffix="%" data-dec="1">0,5%</b><span>PPh final UMKM, sesuai PP 20/2026</span></div>
-      <div class="facts__cell"><b>Rp0</b><span>Biaya QRIS transaksi mikro sampai Rp500rb</span></div>
-      <div class="facts__cell"><b data-count="0">0</b><span>Koneksi internet dibutuhkan untuk transaksi kasir</span></div>
-          <div class="facts__cell"><b data-count="3" data-suffix=" hari">3 hari</b><span>Pembukuan reguler selesai, diskon 40%</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="ekosistem">
+  <section class="sec" id="kebutuhan">
     <div class="wrap">
       <div class="sechead" data-rv>
-        <p class="eyebrow">Ekosistem</p>
-        <h2>Enam modul. Satu data. <span class="it">Tidak ada input dobel.</span></h2>
-        <p class="lede">Setiap modul bisa dipakai sendiri, tapi datanya saling terhubung. Transaksi kasir jadi dasar pajak, dan omzet delivery masuk ke dashboard yang sama.</p>
+        <p class="eyebrow">Kebutuhan bisnis Anda</p>
+        <h2>Apa pun yang usaha Anda butuhkan, <span class="it">semuanya ada di sini.</span></h2>
+        <p class="lede">Mulai dari yang gratis. Tambah yang Anda perlukan saat usaha tumbuh. Semua memakai data yang sama, jadi tidak ada input dobel.</p>
       </div>
 
-      <div class="eco" data-eco data-rv>
-      <div class="eco__nav" role="tablist" aria-label="Modul Olano">
-          <button class="eco__tab is-active" role="tab" id="eco-tab-0" aria-selected="true" aria-controls="eco-panel-0" tabindex="0"><span class="eco__tabno">01</span><span class="eco__tabname">Dashboard &amp; AI</span></button>
-          <button class="eco__tab" role="tab" id="eco-tab-1" aria-selected="false" aria-controls="eco-panel-1" tabindex="-1"><span class="eco__tabno">02</span><span class="eco__tabname">Kasir &amp; QRIS</span></button>
-          <button class="eco__tab" role="tab" id="eco-tab-2" aria-selected="false" aria-controls="eco-panel-2" tabindex="-1"><span class="eco__tabno">03</span><span class="eco__tabname">Pajak &amp; Pembukuan</span></button>
-          <button class="eco__tab" role="tab" id="eco-tab-3" aria-selected="false" aria-controls="eco-panel-3" tabindex="-1"><span class="eco__tabno">04</span><span class="eco__tabname">Delivery Booster</span></button>
-          <button class="eco__tab" role="tab" id="eco-tab-4" aria-selected="false" aria-controls="eco-panel-4" tabindex="-1"><span class="eco__tabno">05</span><span class="eco__tabname">Website Custom</span></button>
-          <button class="eco__tab" role="tab" id="eco-tab-5" aria-selected="false" aria-controls="eco-panel-5" tabindex="-1"><span class="eco__tabno">06</span><span class="eco__tabname">Otomasi</span></button>
+      <div class="mods">
+        <a class="mod" href="app/kasir.html#demo" data-rv>
+          <span class="mod__tag mod__tag--free">Gratis</span>
+          <h3>Butuh catat penjualan?</h3>
+          <p>Kasir dan QRIS. Jalan tanpa internet, nominal terisi otomatis.</p>
+          <span class="mod__link">Buka kasir</span>
+        </a>
+        <a class="mod" href="ai.html" data-rv>
+          <span class="mod__tag">Pro</span>
+          <h3>Butuh tahu untung per menu?</h3>
+          <p>AI cek untung. Harga bahan naik, AI hitung harga jual yang masih aman.</p>
+          <span class="mod__link">Lihat AI margin</span>
+        </a>
+        <a class="mod" href="pajak.html" data-rv>
+          <span class="mod__tag">Mulai Rp600rb</span>
+          <h3>Butuh pajak beres tanpa repot?</h3>
+          <p>Pajak dan pembukuan. Rekap otomatis, pendampingan lapor, reguler 3 hari.</p>
+          <span class="mod__link">Lihat layanan pajak</span>
+        </a>
+        <a class="mod" href="analisa-delivery.html" data-rv>
+          <span class="mod__tag">10% omzet</span>
+          <h3>Butuh untung dari GrabFood dan GoFood?</h3>
+          <p>Audit tautan resto, perbaikan menu, promo, dan laporan mingguan.</p>
+          <span class="mod__link">Audit resto saya</span>
+        </a>
+        <a class="mod" href="website.html" data-rv>
+          <span class="mod__tag">Mulai Rp500rb</span>
+          <h3>Butuh website dengan brand sendiri?</h3>
+          <p>Website custom. Toko online, katalog sinkron dengan kasir.</p>
+          <span class="mod__link">Lihat website</span>
+        </a>
+        <a class="mod" href="automation.html" data-rv>
+          <span class="mod__tag mod__tag--soon">Tahap uji</span>
+          <h3>Butuh pekerjaan berulang beres sendiri?</h3>
+          <p>Otomasi bisnis. Pesanan ke printer, rekap harian ke WhatsApp, webhook.</p>
+          <span class="mod__link">Lihat rencana</span>
+        </a>
       </div>
-      <div class="eco__stage">
-        <article class="eco__panel is-active" role="tabpanel" id="eco-panel-0" aria-labelledby="eco-tab-0">
-          <div class="eco__panelhead">
-            <span class="eco__no">01 / INTI</span>
-            <span class="eco__tag">Termasuk Pro</span>
-          </div>
-          <div class="eco__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16"/><path d="M8 15l3-4 3 3 4-6"/></svg></div>
-          <h3>Dashboard bisnis dan AI jaga margin</h3>
-          <p>Satu layar untuk omzet, biaya, dan laba. AI memantau kenaikan harga bahan, lalu memberi tahu harga jual yang masih aman sebelum margin Anda tergerus.</p>
-          <ul class="eco__list"><li>Berlaku untuk usaha produk maupun jasa</li><li>Peringatan otomatis saat biaya naik</li><li>Tiga skenario harga siap dipakai</li></ul>
-          <div class="eco__vis" aria-hidden="true">
-            <div class="eco__visrow"><span>Margin saat ini</span><b>34,0%</b></div>
-            <div class="eco__visbar"><i data-bar="34"></i></div>
-            <div class="eco__visalert">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v5M12 16.5v.01"/><circle cx="12" cy="12" r="9"/></svg>
-              <div><b>Biaya bahan naik 10%</b><span>Harga aman mulai Rp45.429 per porsi.</span></div>
-            </div>
-          </div>
-          <div class="eco__foot">
-            <span class="eco__price">Rp50.000 per outlet, per bulan</span>
-            <a class="eco__link" href="ai.html">Pelajari AI margin
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </article>
-        <article class="eco__panel" role="tabpanel" id="eco-panel-1" aria-labelledby="eco-tab-1">
-          <div class="eco__panelhead">
-            <span class="eco__no">02 / OPERASIONAL</span>
-            <span class="eco__tag">Gratis</span>
-          </div>
-          <div class="eco__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></div>
-          <h3>Kasir dan QRIS dinamis</h3>
-          <p>Catat transaksi tanpa internet. Nominal QRIS terisi otomatis, jadi tidak perlu ketik ulang.</p>
-          <ul class="eco__list"><li>Jalan offline, data di perangkat</li><li>Struk dan rekap harian</li><li>32 produk contoh siap coba</li></ul>
-          <div class="eco__vis" aria-hidden="true">
-            <div class="eco__visrow"><span>Transaksi hari ini</span><b>Rp1.240.000</b></div>
-            <div class="eco__visrow eco__visrow--sub"><span>QRIS otomatis</span><b>nominal terisi</b></div>
-            <div class="eco__visrow eco__visrow--sub"><span>Mode offline</span><b>aktif</b></div>
-            <div class="eco__visbar"><i data-bar="72"></i></div>
-          </div>
-          <div class="eco__foot">
-            <span class="eco__price">Rp0 selamanya</span>
-            <a class="eco__link" href="app/kasir.html#demo">Buka demo
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </article>
-        <article class="eco__panel" role="tabpanel" id="eco-panel-2" aria-labelledby="eco-tab-2">
-          <div class="eco__panelhead">
-            <span class="eco__no">03 / KEPATUHAN</span>
-            <span class="eco__tag">Diskon 40%</span>
-          </div>
-          <div class="eco__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></div>
-          <h3>Pajak dan pembukuan</h3>
-          <p>Rekap otomatis dari transaksi, plus pendampingan lapor. Reguler tiga hari, paket ngebut satu hari.</p>
-          <ul class="eco__list"><li>Reguler: diskon 40%, maksimal 3 hari</li><li>Ngebut: diskon 20%, selesai 1 hari</li><li>Pendampingan konsultan</li></ul>
-          <div class="eco__vis" aria-hidden="true">
-            <div class="eco__visrow"><span>Omzet setahun</span><b>Rp900.000.000</b></div>
-            <div class="eco__visrow eco__visrow--sub"><span>PPh final 0,5%</span><b>Rp166.667 / bln</b></div>
-            <div class="eco__visrow eco__visrow--sub"><span>Bebas pajak</span><b>Rp500 juta pertama</b></div>
-          </div>
-          <div class="eco__foot">
-            <span class="eco__price">Mulai Rp600rb per bulan</span>
-            <a class="eco__link" href="pajak.html">Lihat layanan pajak
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </article>
-        <article class="eco__panel" role="tabpanel" id="eco-panel-3" aria-labelledby="eco-tab-3">
-          <div class="eco__panelhead">
-            <span class="eco__no">04 / PERTUMBUHAN</span>
-            <span class="eco__tag">Bagi hasil 10%</span>
-          </div>
-          <div class="eco__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12l-2-3"/><path d="M20 16H8l2 3"/></svg></div>
-          <h3>Delivery GrabFood dan GoFood</h3>
-          <p>Tempel tautan resto, tim kami audit menu, foto, dan ulasan. Bayar 10% dari omzet tambahan, bukan dari omzet awal.</p>
-          <ul class="eco__list"><li>Audit tautan, tanpa login</li><li>Enam area perbaikan</li><li>Tanpa biaya di depan</li></ul>
-          <div class="eco__vis" aria-hidden="true">
-            <div class="eco__visrow"><span>Omzet delivery</span><b>Rp20.000.000</b></div>
-            <div class="eco__visrow eco__visrow--sub"><span>Kenaikan 20%</span><b>+Rp4.000.000</b></div>
-            <div class="eco__visrow eco__visrow--sub"><span>Bagi hasil 10%</span><b>Rp400.000</b></div>
-            <div class="eco__visbar"><i data-bar="20"></i></div>
-          </div>
-          <div class="eco__foot">
-            <span class="eco__price">10% dari omzet tambahan</span>
-            <a class="eco__link" href="#delivery">Coba audit tautan
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </article>
-        <article class="eco__panel" role="tabpanel" id="eco-panel-4" aria-labelledby="eco-tab-4">
-          <div class="eco__panelhead">
-            <span class="eco__no">05 / KANAL</span>
-            <span class="eco__tag">Mulai 500rb</span>
-          </div>
-          <div class="eco__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01M10 6.5h.01"/></svg></div>
-          <h3>Website dan toko online</h3>
-          <p>Template profesional dari katalog kasir Anda, atau website custom kalau butuh alur khusus.</p>
-          <ul class="eco__list"><li>Template siap pakai dalam hitungan menit</li><li>Katalog tersinkron dengan kasir</li><li>Custom: mulai Rp500.000</li></ul>
-          <div class="eco__vis" aria-hidden="true">
-            <div class="eco__visrow"><span>Katalog tersinkron</span><b>kasir ke web</b></div>
-            <div class="eco__visrow eco__visrow--sub"><span>Domain sendiri</span><b>didukung</b></div>
-            <div class="eco__visrow eco__visrow--sub"><span>Sekali bayar</span><b>mulai Rp500rb</b></div>
-          </div>
-          <div class="eco__foot">
-            <span class="eco__price">Rp500rb sekali bayar, custom</span>
-            <a class="eco__link" href="website.html">Lihat website
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </article>
-        <article class="eco__panel" role="tabpanel" id="eco-panel-5" aria-labelledby="eco-tab-5">
-          <div class="eco__panelhead">
-            <span class="eco__no">06 / EFISIENSI</span>
-            <span class="eco__tag eco__tag--soon">Segera hadir</span>
-          </div>
-          <div class="eco__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M8.2 6h7.6M7.2 8l3.6 8M16.8 8l-3.6 8"/></svg></div>
-          <h3>Otomasi kerja</h3>
-          <p>Order masuk langsung ke printer, rekap harian terkirim ke WhatsApp, dan webhook ke sistem lain.</p>
-          <ul class="eco__list"><li>Pemicu dan aksi yang bisa diatur</li><li>Rekap otomatis ke WhatsApp</li><li>Integrasi lewat webhook</li></ul>
-          <div class="eco__vis" aria-hidden="true">
-            <div class="eco__visrow"><span>Rekap harian</span><b>otomatis ke WhatsApp</b></div>
-            <div class="eco__visrow eco__visrow--sub"><span>Pesanan masuk</span><b>langsung ke printer</b></div>
-            <div class="eco__visrow eco__visrow--sub"><span>Status</span><b>tahap uji</b></div>
-          </div>
-          <div class="eco__foot">
-            <span class="eco__price">Tahap uji belum dibuka umum</span>
-            <a class="eco__link" href="automation.html">Lihat rencana
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </article>
-      </div>
+
+      <p class="mods__note" data-rv>Belum tahu mulai dari mana? <a href="#kalkulator">Hitung pajak dulu</a>, atau <a href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20tanya%20kebutuhan%20bisnis%20saya" target="_blank" rel="noopener">tanya lewat WhatsApp</a>.</p>
     </div>
   </section>
 
-  <section class="sec sec--tint" id="delivery">
-    <div class="wrap deliv">
+  <section class="sec sec--tint" id="kalkulator">
+    <div class="wrap kalk">
       <div data-rv>
-        <h2 style="margin-top:12px;font-size:var(--h2)">Resto Anda di GrabFood dan GoFood, <span class="it">diperiksa dari tautannya.</span></h2>
-        <p class="lede" style="margin-top:14px">Kirim tautan resto. Kami periksa area yang paling sering menahan pesanan, lalu susun rencana perbaikan. Bayar 10% dari omzet tambahan yang benar-benar terjadi.</p>
-        <div class="scopes">
-          <div class="scope">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12.5l5 5L20 6.5"/></svg>
-            <div><b>Rating dan ulasan</b><span>Cara menaikkan rating tanpa membeli ulasan.</span></div>
-          </div>
-          <div class="scope">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12.5l5 5L20 6.5"/></svg>
-            <div><b>Promo dan iklan</b><span>Fokus laba, bukan sekadar jumlah pesanan.</span></div>
-          </div>
-          <div class="scope">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12.5l5 5L20 6.5"/></svg>
-            <div><b>Menu dan harga</b><span>Paket, harga, dan struktur margin.</span></div>
-          </div>
-          <div class="scope">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12.5l5 5L20 6.5"/></svg>
-            <div><b>Profil toko</b><span>Foto, judul, tag, dan item unggulan.</span></div>
-          </div>
-          <div class="scope">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12.5l5 5L20 6.5"/></svg>
-            <div><b>Tim dan layanan</b><span>Panduan kerja untuk staf dapur.</span></div>
-          </div>
-          <div class="scope">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12.5l5 5L20 6.5"/></svg>
-            <div><b>Laporan</b><span>Angka mingguan yang bisa dibaca.</span></div>
-          </div>
-        </div>
+        <p class="eyebrow">Hitung dulu, baru bicara</p>
+        <h2>Berapa pajak yang perlu Anda sisihkan bulan ini?</h2>
+        <p class="lede">PPh final 0,5% untuk UMKM. Orang pribadi bebas sampai Rp500 juta setahun. Kalkulator ini memakai aturan yang sama dengan aplikasi.</p>
+        <ul class="kalk__list">
+          <li>Tanpa daftar, tanpa kartu kredit</li>
+          <li>Hasil muncul saat Anda mengetik</li>
+          <li>Bisa langsung dikirim ke WhatsApp kami</li>
+        </ul>
       </div>
 
-      <div class="card" data-rv>
-        <p class="card__label">Audit tautan</p>
-        <div class="field">
-          <label for="linkInput">Tautan resto GrabFood atau GoFood</label>
-          <input id="linkInput" type="url" inputmode="url" autocomplete="off" placeholder="https://gofood.link/... atau https://food.grab.com/...">
-        </div>
-        <button class="btn btn--primary btn--block" id="linkBtn" type="button" style="margin-top:12px">Periksa tautan</button>
-        <div class="out" id="linkOut" role="status" aria-live="polite">Hasil pemeriksaan muncul di sini.</div>
-        <p class="hint">Pemeriksaan dilakukan tim kami, bukan otomatis. Hasil dikirim lewat WhatsApp, biasanya dalam satu hari kerja.</p>
-
-        <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--gray-100)">
-          <p class="card__label">Simulasi bagi hasil</p>
-          <div class="field">
-            <label for="omzetInput">Omzet delivery saat ini per bulan (Rp)</label>
-            <input id="omzetInput" type="text" inputmode="numeric" autocomplete="off" value="20.000.000">
-          </div>
-          <div class="field">
-            <label for="growthRange">Perkiraan kenaikan omzet: <b id="growthVal" style="color:var(--blue-700)">20%</b></label>
-            <input class="range" id="growthRange" type="range" min="5" max="50" step="5" value="20">
-          </div>
-          <div class="out out--ok" id="omzetOut">
-            <b>Omzet tambahan Rp4.000.000.</b> Bagi hasil 10% = Rp400.000 per bulan. Tidak ada biaya di depan.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="pajak">
-    <div class="wrap tax">
-      <div data-rv>
-        <h2 style="margin-top:12px;font-size:var(--h2)">Pajak UMKM 2026, <span class="it">tanpa istilah yang membingungkan.</span></h2>
-        <p class="lede" style="margin-top:14px">PPh final 0,5% untuk orang pribadi, PT perorangan, dan koperasi. Orang pribadi bebas sampai Rp500 juta setahun. Di atas Rp4,8 miliar, keluar dari skema final.</p>
-        <div class="tiers">
-          <div class="tier">
-            <div><b>Usaha mikro</b><span>Omzet sampai Rp4,8 miliar setahun</span></div>
-            <em>Diskon 40%</em>
-          </div>
-          <div class="tier">
-            <div><b>Paket ngebut</b><span>Selesai satu hari kerja</span></div>
-            <em>Diskon 20%</em>
-          </div>
-          <div class="tier">
-            <div><b>Layanan lain</b><span>Konsultasi, restitusi, dan pemeriksaan</span></div>
-            <em>Konsultasi gratis</em>
-          </div>
-        </div>
-        <div class="hero__cta" style="margin-top:22px">
-          <a class="btn btn--primary" href="pajak.html">Lihat panduan pajak</a>
-          <a class="btn btn--ghost" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20konsultasi%20pajak%20gratis" target="_blank" rel="noopener">Konsultasi gratis</a>
-        </div>
-      </div>
-
-      <div class="card" data-rv>
-        <div class="calc__head">
-          <span>Hitung PPh final</span>
-          <span class="calc__badge">PP 20/2026</span>
-        </div>
+      <div class="kalk__card" data-rv>
         <div class="field">
           <label for="wpType">Jenis wajib pajak</label>
           <select id="wpType">
@@ -1007,12 +859,15 @@ html.no-js [data-rv]{opacity:1;transform:none}
           <button type="button" data-omzet="60000000">60 jt</button>
           <button type="button" data-omzet="100000000">100 jt</button>
         </div>
-        <div class="calc__out">
-          <div class="lbl">Pajak per bulan</div>
-          <div class="val" id="taxVal">Rp166.667</div>
-          <div class="sub" id="taxSub">Dasar pengenaan Rp400.000.000 setahun, dikali 0,5% dibagi 12.</div>
+        <div class="kalk__out">
+          <div class="kalk__lbl">Pajak per bulan</div>
+          <div class="kalk__val" id="taxVal">Rp166.667</div>
+          <div class="kalk__sub" id="taxSub">Dasar pengenaan Rp400.000.000 setahun, dikali 0,5% dibagi 12.</div>
         </div>
-        <p class="calc__note">Estimasi memakai mesin pajak yang sama dengan aplikasi. Bukan nasihat pajak.</p>
+        <a class="btn btn--primary btn--block" id="taxWa" style="margin-top:14px"
+           href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20dibantu%20urus%20pajak%20UMKM"
+           target="_blank" rel="noopener">Minta diurus via WhatsApp</a>
+        <p class="kalk__note">Estimasi memakai aturan pajak yang sama dengan aplikasi. Bukan nasihat pajak.</p>
       </div>
     </div>
   </section>
@@ -1410,6 +1265,9 @@ html.no-js [data-rv]{opacity:1;transform:none}
     if(!t.final){
       taxVal.textContent = "Tidak berlaku";
       taxVal.setAttribute("data-tick-from", "0");
+      var wb = document.getElementById("taxWa");
+      if(wb){ wb.href = "https://wa.me/6285111044407?text=" + encodeURIComponent(
+        "Halo Olano, usaha saya " + wpType.options[wpType.selectedIndex].text + " dan tidak memakai PPh final 0,5%. Saya mau konsultasi pajaknya."); }
       taxSub.textContent = wpType.options[wpType.selectedIndex].text + " tidak memakai PPh final 0,5%. Pajak dihitung dari laba.";
       return;
     }
@@ -1429,6 +1287,16 @@ html.no-js [data-rv]{opacity:1;transform:none}
       taxSub.textContent = "Omzet setahun " + rp(tahun) + " masih di bawah batas bebas. Pajak final Rp0.";
     } else {
       taxSub.textContent = "Dasar pengenaan " + rp(dasar) + " setahun, dikali 0,5% dibagi 12.";
+    }
+
+    // Tombol WhatsApp ikut membawa angka, supaya lead masuk sudah ada konteksnya.
+    var waBtn = document.getElementById("taxWa");
+    if(waBtn){
+      var msg = "Halo Olano, saya mau dibantu urus pajak UMKM.\n"
+              + "Jenis: " + wpType.options[wpType.selectedIndex].text + "\n"
+              + "Omzet: " + rp(bulan) + " per bulan\n"
+              + "Estimasi PPh final: " + rp(perBulan) + " per bulan";
+      waBtn.href = "https://wa.me/6285111044407?text=" + encodeURIComponent(msg);
     }
   }
   if(wpType && omzetBulan){
