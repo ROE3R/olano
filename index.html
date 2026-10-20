@@ -287,6 +287,37 @@ svg{display:block}
   border-bottom:1px solid transparent;transition:color .15s var(--ease),border-color .15s var(--ease)}
 .hero__index a:hover{color:var(--blue-700);border-bottom-color:var(--blue-600)}
 
+/* Harga: dua tabel, bukan 5 kartu bertumpuk. Alasan: 2 plan + 3 kartu = 1636px
+   di mobile, dan tiap kartu punya CTA sendiri sehingga tidak ada satu arah.
+   Tabel memaksa satu keputusan: pilih paket, atau konsultasi layanan tim. */
+.price2{display:grid;gap:14px;margin-top:clamp(22px,2.8vw,34px)}
+@media(min-width:960px){.price2{grid-template-columns:1.15fr .85fr;gap:18px;align-items:start}}
+.ptable{background:#fff;border:1px solid var(--gray-100);border-radius:var(--r-card);
+  overflow:hidden;box-shadow:var(--sh-2)}
+.ptable__head{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;
+  padding:12px 16px;background:var(--gray-25);border-bottom:1px solid var(--gray-100);
+  font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500)}
+.ptable__head span:not(:first-child){text-align:right;min-width:64px}
+.ptable:last-child .ptable__head{grid-template-columns:1fr auto}
+.ptable__row{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;
+  padding:11px 16px;border-bottom:1px solid var(--gray-100);font-size:.86rem;color:var(--gray-700)}
+.ptable:last-child .ptable__row{grid-template-columns:1fr auto}
+.ptable__row:last-of-type{border-bottom:0}
+.ptable__row i{font-style:normal;text-align:right;min-width:64px;font-size:.82rem;color:var(--gray-500)}
+.ptable__row i.yes{color:#0E7A3D;font-weight:600}
+.ptable__row i.no{color:var(--gray-500)}
+.ptable__row--price{background:#FCFDFF;padding-top:14px;padding-bottom:14px}
+.ptable__row--price b{text-align:right;font-size:1rem;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.ptable__row--price b span{display:block;font-size:.66rem;font-weight:500;color:var(--gray-500);letter-spacing:0}
+.ptable__row--link{transition:background .15s var(--ease)}
+.ptable__row--link:hover{background:var(--blue-50)}
+.ptable__row--link span em{display:block;font-style:normal;font-size:.72rem;color:var(--gray-500);margin-top:2px}
+.ptable__row--link b{text-align:right;font-size:.86rem;font-weight:650;color:var(--blue-700);white-space:nowrap}
+.ptable__row--link b span{display:block;font-size:.66rem;font-weight:500;color:var(--gray-500)}
+.ptable__foot{padding:14px 16px;display:flex;gap:10px;flex-wrap:wrap;background:#fff}
+.ptable__foot .btn{flex:1;min-width:120px}
+.pricenote{margin-top:16px;font-size:.82rem;color:var(--gray-500);line-height:1.55;max-width:62ch}
+
 /* Showcase mobile: hero harus masuk satu layar (844px).
    Alert dan grid modul disembunyikan di mobile, angka + bar tetap.
    Desktop tidak terpengaruh. */
@@ -816,7 +847,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
         <a class="mrow" href="app/kasir.html#demo" data-rv>
           <div class="mrow__left">
             <span class="mrow__label">Kasir & QRIS</span>
-            <h3 class="mrow__title">Penjualan tercatat rapi</h3>
+            <h3 class="mrow__title">Setiap transaksi tercatat. Gratis.</h3>
           </div>
           <div class="mrow__right">
             <p>Jalan tanpa internet. Nominal QRIS terisi otomatis.</p>
@@ -826,7 +857,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
         <a class="mrow" href="pajak.html" data-rv>
           <div class="mrow__left">
             <span class="mrow__label">Pembukuan</span>
-            <h3 class="mrow__title">Tahu untung, bukan cuma omzet</h3>
+            <h3 class="mrow__title">Tahu untung, bukan cuma omzet.</h3>
           </div>
           <div class="mrow__right">
             <p>Rekap otomatis dari transaksi, siap dibaca akuntan.</p>
@@ -836,7 +867,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
         <a class="mrow" href="#kalkulator" data-rv>
           <div class="mrow__left">
             <span class="mrow__label">Pajak</span>
-            <h3 class="mrow__title">Pajak beres tiap bulan</h3>
+            <h3 class="mrow__title">Pajak bulan ini, siapa yang urus?</h3>
           </div>
           <div class="mrow__right">
             <p>Dihitung, disisihkan, dan dilaporkan tim kami.</p>
@@ -846,7 +877,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
         <a class="mrow" href="analisa-delivery.html" data-rv>
           <div class="mrow__left">
             <span class="mrow__label">Jualan online</span>
-            <h3 class="mrow__title">Jualan di aplikasi tanpa boncos</h3>
+            <h3 class="mrow__title">GrabFood dan GoFood yang benar-benar untung.</h3>
           </div>
           <div class="mrow__right">
             <p>Audit GrabFood dan GoFood, perbaikan menu dan promo.</p>
@@ -856,7 +887,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
         <a class="mrow" href="website.html" data-rv>
           <div class="mrow__left">
             <span class="mrow__label">Website</span>
-            <h3 class="mrow__title">Website atas nama bisnis Anda</h3>
+            <h3 class="mrow__title">Pasang website atas nama brand Anda.</h3>
           </div>
           <div class="mrow__right">
             <p>Toko online dengan brand sendiri, katalog sinkron kasir.</p>
@@ -866,7 +897,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
         <a class="mrow" href="automation.html" data-rv>
           <div class="mrow__left">
             <span class="mrow__label">Otomasi & AI</span>
-            <h3 class="mrow__title">Kerja berulang jalan sendiri</h3>
+            <h3 class="mrow__title">Serahkan kerjaan berulang ke sistem.</h3>
           </div>
           <div class="mrow__right">
             <p>Pesanan ke printer, rekap harian ke WhatsApp, AI cek untung.</p>
@@ -940,64 +971,60 @@ html.no-js [data-rv]{opacity:1;transform:none}
     <div class="wrap">
       <div class="sechead" data-rv>
         <p class="eyebrow">Harga</p>
-        <h2>Mulai gratis. <span class="it">Naik ke Pro saat butuh AI.</span></h2>
-        <p class="lede">Tanpa kartu kredit. Layanan pajak, delivery, dan website dihitung terpisah karena porsinya berbeda untuk setiap usaha.</p>
+        <h2>Mulai gratis. <span class="it">Bayar saat butuh lebih.</span></h2>
       </div>
 
-      <div class="plans">
-        <div class="plan" data-rv>
-          <div class="plan__name">Gratis</div>
-          <div class="plan__price">Rp0 <span>selamanya</span></div>
-          <ul>
-            <li>Kasir offline dan struk</li>
-            <li>QRIS dengan nominal otomatis</li>
-            <li>Satu outlet, sampai 50 produk</li>
-            <li>Rekap harian</li>
-          </ul>
-          <a class="btn btn--ghost btn--block" href="app/kasir.html#demo">Coba kasir gratis</a>
+      <div class="price2" data-rv>
+        <div class="ptable">
+          <div class="ptable__head">
+            <span>Paket aplikasi</span>
+            <span>Gratis</span>
+            <span>Pro</span>
+          </div>
+          <div class="ptable__row ptable__row--price">
+            <span>Harga</span>
+            <b>Rp0</b>
+            <b>Rp50.000<span>/outlet/bln</span></b>
+          </div>
+          <div class="ptable__row"><span>Kasir offline dan struk</span><i class="yes">Ya</i><i class="yes">Ya</i></div>
+          <div class="ptable__row"><span>QRIS nominal otomatis</span><i class="yes">Ya</i><i class="yes">Ya</i></div>
+          <div class="ptable__row"><span>Jumlah produk</span><i>50</i><i>Tanpa batas</i></div>
+          <div class="ptable__row"><span>Dashboard dan AI cek untung</span><i class="no">Tidak</i><i class="yes">Ya</i></div>
+          <div class="ptable__row"><span>Rekap pajak bulanan</span><i class="no">Tidak</i><i class="yes">Ya</i></div>
+          <div class="ptable__foot">
+            <a class="btn btn--ghost btn--sm" href="app/kasir.html#demo">Mulai gratis</a>
+            <a class="btn btn--primary btn--sm" href="app/login.html">Pakai Pro</a>
+          </div>
         </div>
 
-        <div class="plan plan--main" data-rv>
-          <div class="plan__name">Pro <span class="tag">Paling lengkap</span></div>
-          <div class="plan__price">Rp50.000 <span>per outlet, per bulan</span></div>
-          <ul>
-            <li>Semua isi paket Gratis</li>
-            <li>Produk tanpa batas</li>
-            <li>Dashboard bisnis dan AI jaga margin</li>
-            <li>Foto produk dan tanya AI</li>
-            <li>Skor kesehatan usaha dan ringkasan mingguan</li>
-            <li>Rekap pajak bulanan</li>
-          </ul>
-          <a class="btn btn--primary btn--block" href="app/login.html">Mulai paket Pro</a>
+        <div class="ptable">
+          <div class="ptable__head">
+            <span>Layanan dikerjakan tim</span>
+            <span>Harga</span>
+          </div>
+          <a class="ptable__row ptable__row--link" href="pajak.html">
+            <span>Pajak dan pembukuan<em>Reguler 3 hari, ngebut 1 hari</em></span>
+            <b>Mulai Rp600rb<span>/bulan</span></b>
+          </a>
+          <a class="ptable__row ptable__row--link" href="analisa-delivery.html">
+            <span>Delivery GrabFood dan GoFood<em>Audit tautan, menu, promo</em></span>
+            <b>10%<span>omzet tambahan</span></b>
+          </a>
+          <a class="ptable__row ptable__row--link" href="website.html">
+            <span>Website custom<em>Katalog sinkron dengan kasir</em></span>
+            <b>Mulai Rp500rb<span>sekali bayar</span></b>
+          </a>
+          <a class="ptable__row ptable__row--link" href="automation.html">
+            <span>Otomasi bisnis<em>Pesanan ke printer, rekap ke WhatsApp</em></span>
+            <b>Tahap uji<span>belum dibuka</span></b>
+          </a>
+          <div class="ptable__foot">
+            <a class="btn btn--primary btn--sm" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20konsultasi%20layanan" target="_blank" rel="noopener">Konsultasi layanan</a>
+          </div>
         </div>
       </div>
 
-      <div class="svc">
-        <div class="svc__card" data-rv>
-          <b>Pajak dan pembukuan</b>
-          <span class="p">Mulai Rp600.000 per bulan</span>
-          <span class="d">Reguler diskon 40% selesai maksimal tiga hari. Paket ngebut diskon 20% selesai satu hari.</span>
-          <a class="pillar__link" href="pajak.html">Lihat detail
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-        <div class="svc__card" data-rv>
-          <b>Delivery Booster</b>
-          <span class="p">10% dari omzet tambahan</span>
-          <span class="d">Audit tautan, perbaikan menu dan promo, laporan mingguan. Tanpa biaya di depan.</span>
-          <a class="pillar__link" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20audit%20GrabFood%20atau%20GoFood" target="_blank" rel="noopener">Minta audit
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-        <div class="svc__card" data-rv>
-          <b>Website custom</b>
-          <span class="p">Mulai Rp500.000</span>
-          <span class="d">Sekali bayar. Desain mengikuti brand, katalog bisa tersinkron dengan kasir.</span>
-          <a class="pillar__link" href="website.html">Lihat website
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-      </div>
+      <p class="pricenote" data-rv>Harga layanan tim dihitung terpisah dari paket aplikasi karena porsinya berbeda tiap usaha. Konsultasi awal gratis.</p>
     </div>
   </section>
 
