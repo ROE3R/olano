@@ -369,53 +369,6 @@ svg{display:block}
 .shot{margin:0;display:flex;flex-direction:column;gap:12px}
 .shot__frame{background:#fff;border:1px solid var(--gray-100);border-radius:var(--r-card);
   overflow:hidden;box-shadow:none;border:1px solid rgba(10,12,20,.09)}
-.shot__bar{display:flex;gap:5px;padding:9px 12px;background:var(--gray-25);
-  border-bottom:1px solid var(--gray-100)}
-.shot__bar span{width:6px;height:6px;border-radius:50%;background:var(--gray-300)}
-.shot__body{padding:14px}
-.shot__head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:11px}
-.shot__head b{font-size:.86rem;font-weight:650}
-.shot__head em{font-style:normal;font-size:.62rem;font-weight:650;letter-spacing:.05em;
-  text-transform:uppercase;color:var(--blue-700);background:var(--blue-50);
-  border:1px solid var(--blue-100);border-radius:4px;padding:1px 6px}
-.shot__grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.shot__item{background:var(--gray-25);border:1px solid var(--gray-100);border-radius:7px;
-  padding:8px;display:flex;flex-direction:column;gap:3px}
-.shot__item i{display:block;width:100%;height:26px;border-radius:4px;
-  background:linear-gradient(135deg,#E4EDFF,#D3E2FF)}
-.shot__item b{font-size:.7rem;font-weight:600;line-height:1.2}
-.shot__item span{font-size:.68rem;color:var(--gray-500);font-variant-numeric:tabular-nums}
-.shot__cart{margin-top:11px;padding-top:11px;border-top:1px solid var(--gray-100);
-  display:flex;align-items:center;justify-content:space-between;gap:8px}
-.shot__cart div{display:flex;flex-direction:column;gap:1px}
-.shot__cart span{font-size:.66rem;color:var(--gray-500)}
-.shot__cart b{font-size:.9rem;font-weight:700;font-variant-numeric:tabular-nums}
-.shot__btn{background:var(--blue-600);color:#fff;font-size:.7rem;font-weight:650;
-  border-radius:6px;padding:6px 12px}
-.shot__body--qris{display:flex;flex-direction:column;gap:10px}
-.shot__qr{width:100%;aspect-ratio:1;max-height:132px;border-radius:8px;
-  background:
-    repeating-linear-gradient(90deg,var(--ink) 0 6px,transparent 6px 12px),
-    repeating-linear-gradient(0deg,var(--ink) 0 6px,transparent 6px 12px);
-  background-size:12px 12px;background-position:0 0;opacity:.9;
-  border:7px solid #fff;box-shadow:0 0 0 1px var(--gray-100)}
-.shot__amount{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
-.shot__amount span{font-size:.68rem;color:var(--gray-500)}
-.shot__amount b{font-size:.92rem;font-weight:700;font-variant-numeric:tabular-nums}
-.shot__ok{font-size:.68rem;color:var(--warn);background:var(--warn-bg);
-  border:1px solid #F2E2BC;border-radius:6px;padding:5px 8px;text-align:center}
-.shot__rows{display:flex;flex-direction:column}
-.shot__rows>div{display:flex;align-items:baseline;justify-content:space-between;gap:8px;
-  padding:7px 0;border-bottom:1px solid var(--gray-100)}
-.shot__rows>div:last-child{border-bottom:0}
-.shot__rows span{font-size:.72rem;color:var(--gray-500)}
-.shot__rows b{font-size:.8rem;font-weight:650;font-variant-numeric:tabular-nums}
-.shot__row--total span{color:var(--ink);font-weight:600}
-.shot__row--total b{font-size:.95rem;font-weight:700;color:var(--blue-700)}
-.shot__bar-fill{height:5px;border-radius:99px;background:var(--gray-100);overflow:hidden;margin-top:10px}
-.shot__bar-fill i{display:block;height:100%;border-radius:99px;width:0;
-  background:linear-gradient(90deg,var(--blue-500),var(--blue-600));
-  transition:width .7s cubic-bezier(.16,1,.3,1)}
 .shot figcaption{display:flex;flex-direction:column;gap:2px}
 .shot figcaption b{font-size:.86rem;font-weight:650;letter-spacing:-.01em}
 .shot figcaption span{font-size:.78rem;color:var(--gray-500);line-height:1.5}
@@ -532,7 +485,7 @@ input,select,.field input,.field select{border-radius:6px}
 .chips button{border-radius:6px}
 .eco__tab,.eco__panel,.alatcard,.kalk__card,.card{border-radius:6px}
 .plan,.svc__card{border-radius:6px}
-.shot__item,.shot__qr,.shot__tag,.mrow__tag,.pillar__tag{border-radius:4px}
+.shot__tag,.mrow__tag,.pillar__tag{border-radius:4px}
 
 /* Wrap sebagai grid 12 kolom supaya anak-anaknya benar-benar sejajar dengan H2.
    Sebelumnya .mods punya grid-column:4/span 9 tapi parent bukan grid, jadi
@@ -569,6 +522,37 @@ input,select,.field input,.field select{border-radius:6px}
 @media(max-width:819px){
   .mrow__right{display:block}
   .mrow__tag{margin-top:6px}
+}
+
+/* Showcase: screenshot asli dalam frame 4:5. Tinggi frame IDENTIK karena
+   aspect-ratio dikunci, bukan karena isi kebetulan sama panjang.
+   Caption pakai subgrid supaya judul & deskripsi selalu sejajar antar kartu. */
+.shots{display:grid;gap:var(--s3);margin-top:var(--s6);align-items:start;
+  grid-template-rows:auto auto}
+@media(min-width:760px){.shots{grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto}}
+.shot{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:0;margin:0}
+.shot__frame{aspect-ratio:4/5;width:100%;border:1px solid rgba(10,12,20,.10);
+  border-radius:6px;overflow:hidden;background:var(--gray-25)}
+.shot__frame picture{display:block;width:100%;height:100%}
+.shot__frame img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.shot figcaption{display:grid;grid-template-rows:auto auto auto;gap:2px;
+  padding-top:var(--s2);align-content:start}
+.shot__no{font-size:.68rem;font-weight:700;letter-spacing:.1em;color:var(--gray-500);
+  font-variant-numeric:tabular-nums}
+.shot figcaption b{font-size:.94rem;font-weight:600;letter-spacing:-.01em;line-height:1.3}
+.shot figcaption span:last-child{font-size:.82rem;color:var(--gray-500);line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  min-height:2.46em}
+/* Mobile: carousel, kartu 78vw (Opus), tetap 4:5. */
+@media(max-width:759px){
+  .shots{display:flex;gap:var(--s2);overflow-x:auto;scroll-snap-type:x mandatory;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    margin-left:calc(-1 * var(--margin,24px));margin-right:calc(-1 * var(--margin,24px));
+    padding:0 var(--margin,24px) 4px}
+  .shots::-webkit-scrollbar{display:none}
+  .shot{flex:0 0 78vw;scroll-snap-align:start;display:block}
+  .shot figcaption{display:block;padding-top:12px}
+  .shot__no{display:block;margin-bottom:3px}
 }
 
 /* Showcase mobile: hero harus masuk satu layar (844px).
@@ -1146,52 +1130,47 @@ html.no-js [data-rv]{opacity:1;transform:none}
       <div class="shots">
         <figure class="shot" data-rv>
           <div class="shot__frame">
-            <div class="shot__bar"><span></span><span></span><span></span></div>
-            <div class="shot__body">
-              <div class="shot__head"><b>Kopi Senja</b><em>Demo</em></div>
-              <div class="shot__grid">
-                <div class="shot__item"><i></i><b>Kopi Susu</b><span>Rp18.000</span></div>
-                <div class="shot__item"><i></i><b>Americano</b><span>Rp15.000</span></div>
-                <div class="shot__item"><i></i><b>Croissant</b><span>Rp22.000</span></div>
-                <div class="shot__item"><i></i><b>Matcha</b><span>Rp20.000</span></div>
-              </div>
-              <div class="shot__cart">
-                <div><span>2 item</span><b>Rp33.000</b></div>
-                <span class="shot__btn">Bayar</span>
-              </div>
-            </div>
+            <picture>
+              <source srcset="assets/img/showcase/01-kasir.webp" type="image/webp">
+              <img src="assets/img/showcase/01-kasir.png" alt="Katalog produk dan keranjang di aplikasi kasir Olano"
+                   width="360" height="450" loading="lazy" decoding="async">
+            </picture>
           </div>
-          <figcaption><b>Kasir offline</b><span>Jalan tanpa internet. Data tersimpan di perangkat.</span></figcaption>
+          <figcaption>
+            <span class="shot__no">01</span>
+            <b>Kasir offline</b>
+            <span>Jalan tanpa internet. Data tersimpan di perangkat.</span>
+          </figcaption>
         </figure>
 
         <figure class="shot" data-rv>
           <div class="shot__frame">
-            <div class="shot__bar"><span></span><span></span><span></span></div>
-            <div class="shot__body shot__body--qris">
-              <div class="shot__head"><b>QRIS</b><em>Otomatis</em></div>
-              <div class="shot__qr" aria-hidden="true"></div>
-              <div class="shot__amount"><span>Nominal terisi</span><b>Rp33.000</b></div>
-              <div class="shot__ok">Menunggu pembayaran</div>
-            </div>
+            <picture>
+              <source srcset="assets/img/showcase/02-bayar.webp" type="image/webp">
+              <img src="assets/img/showcase/02-bayar.png" alt="Layar pembayaran QRIS dengan nominal terisi otomatis"
+                   width="360" height="450" loading="lazy" decoding="async">
+            </picture>
           </div>
-          <figcaption><b>QRIS dinamis</b><span>Nominal terisi sendiri dari keranjang. Tidak perlu ketik ulang.</span></figcaption>
+          <figcaption>
+            <span class="shot__no">02</span>
+            <b>QRIS dinamis</b>
+            <span>Nominal terisi dari keranjang, tidak perlu ketik ulang.</span>
+          </figcaption>
         </figure>
 
         <figure class="shot" data-rv>
           <div class="shot__frame">
-            <div class="shot__bar"><span></span><span></span><span></span></div>
-            <div class="shot__body">
-              <div class="shot__head"><b>Rekap hari ini</b><em>Contoh</em></div>
-              <div class="shot__rows">
-                <div><span>Transaksi</span><b>32</b></div>
-                <div><span>Penjualan</span><b>Rp1.240.000</b></div>
-                <div><span>Pajak disisihkan</span><b>Rp6.200</b></div>
-                <div class="shot__row--total"><span>Untung bersih</span><b>Rp412.000</b></div>
-              </div>
-              <div class="shot__bar-fill"><i data-bar="33"></i></div>
-            </div>
+            <picture>
+              <source srcset="assets/img/showcase/03-rekap.webp" type="image/webp">
+              <img src="assets/img/showcase/03-rekap.png" alt="Rekap harian: omzet Rp62.000 dari 3 item terjual"
+                   width="360" height="450" loading="lazy" decoding="async">
+            </picture>
           </div>
-          <figcaption><b>Rekap otomatis</b><span>Pajak dihitung dari transaksi, bukan dari catatan terpisah.</span></figcaption>
+          <figcaption>
+            <span class="shot__no">03</span>
+            <b>Rekap otomatis</b>
+            <span>Pajak dihitung dari transaksi, bukan catatan terpisah.</span>
+          </figcaption>
         </figure>
       </div>
 
