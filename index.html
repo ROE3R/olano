@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -40,13 +40,13 @@
   --font:"Aspekta",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --serif:"Instrument Serif",Georgia,serif;
 
-  --h1:clamp(2.5rem,5.8vw,5rem);
-  --h2:clamp(1.7rem,3.5vw,2.85rem);
+  --h1:clamp(2.25rem,4.6vw,4rem);
+  --h2:clamp(1.6rem,3vw,2.5rem);
   --h3:clamp(1.05rem,1.5vw,1.25rem);
   --lede:clamp(1rem,1.3vw,1.15rem);
   --sm:.875rem; --xs:.78rem;
 
-  --pad:clamp(56px,7vw,104px);
+  --pad:clamp(52px,6vw,88px);
   --gutter:clamp(18px,4vw,44px);
   --max:1160px;
   --r-card:16px; --r-vis:12px; --r-pill:999px;
@@ -88,7 +88,7 @@ svg{display:block}
   transition:transform .22s var(--ease),background .22s var(--ease),border-color .22s var(--ease),box-shadow .22s var(--ease)}
 .btn--primary{background:linear-gradient(180deg,#3D6BF3 0%,#2453EB 48%,#1B3FC4 100%);color:#fff;border-color:rgba(255,255,255,.14);letter-spacing:.005em;box-shadow:0 1px 0 rgba(255,255,255,.28) inset,0 -1px 0 rgba(6,14,40,.28) inset,0 14px 28px -16px rgba(36,83,235,.8),0 2px 4px rgba(11,18,32,.18)}
 .btn--primary:hover{background:var(--blue-700);transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(36,83,235,.6)}
-.btn--ghost{background:#fff;color:var(--ink);border-color:var(--gray-300)}
+.btn--ghost{background:#fff;color:var(--ink);border-color:var(--gray-500)}
 .btn--ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
 .btn--block{width:100%}
 .btn--sm{min-height:46px;padding:0 20px;font-size:var(--sm)}
@@ -125,7 +125,7 @@ svg{display:block}
 .nav__menu .soon::after{content:"Segera";margin-left:auto;font-size:.68rem;font-weight:600;
   background:var(--warn-bg);color:var(--warn);border-radius:99px;padding:2px 7px}
 .nav__burger{margin-left:auto;display:inline-flex;flex-direction:column;justify-content:center;gap:5px;
-  width:44px;height:44px;padding:0 11px;background:#fff;border:1px solid var(--gray-300);border-radius:10px;cursor:pointer}
+  width:44px;height:44px;padding:0 11px;background:#fff;border:1px solid var(--gray-500);border-radius:10px;cursor:pointer}
 .nav__burger span{display:block;height:2px;background:var(--ink);border-radius:2px;
   transition:transform .22s var(--ease),opacity .18s var(--ease)}
 .nav__burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -146,7 +146,7 @@ svg{display:block}
 }
 
 /* ---------- hero ---------- */
-.hero{position:relative;overflow:hidden;isolation:isolate;padding-top:clamp(40px,5.5vw,76px);padding-bottom:clamp(44px,6vw,84px)}
+.hero{position:relative;overflow:hidden;isolation:isolate;padding-top:clamp(32px,4.4vw,64px);padding-bottom:clamp(40px,5vw,72px)}
 /* Motif identitas: satu glow biru lembut di belakang headline + garis horizon tipis.
    Alasan: memberi kedalaman tanpa dekorasi; warna tetap biru-putih Olano. */
 .hero__sky{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:
@@ -155,11 +155,11 @@ svg{display:block}
     linear-gradient(180deg,#EFF5FF 0%,#F7FAFF 42%,#FFFFFF 100%)}
 .hero__sky img{position:absolute;display:block}
 .hero__sky .s-sky{top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;
-  opacity:.58;filter:hue-rotate(28deg) saturate(1.15) contrast(1.05)}
+  opacity:.52;filter:saturate(.92) brightness(1.06)}
 .hero__sky .s-cloud1{top:10%;left:-16%;width:min(820px,88vw);height:auto;opacity:.85;filter:blur(1.5px);
   animation:cloudDrift 26s var(--ease) infinite alternate}
 .hero__sky .s-cloud2{top:40%;right:-20%;width:min(680px,72vw);height:auto;opacity:.70;filter:blur(3px);
-  animation:cloudDrift2 32s var(--ease) infinite alternate}
+  animation:cloudDrift 32s linear infinite alternate-reverse}
 /* Veil: menjaga teks tetap hitam di atas awan. Ini bukan hiasan, ini jaminan kontras. */
 .hero__sky .s-veil{position:absolute;inset:0;background:linear-gradient(180deg,
   rgba(255,255,255,.30) 0%,rgba(255,255,255,.52) 38%,rgba(255,255,255,.86) 72%,#FFFFFF 100%)}
@@ -167,10 +167,29 @@ svg{display:block}
 .hero__sky .s-scrim{position:absolute;inset:0;background:
   radial-gradient(88% 62% at 50% 34%,rgba(255,255,255,.86) 0%,rgba(255,255,255,.55) 48%,rgba(255,255,255,0) 78%)}
 @keyframes cloudDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(7vw,10px,0)}}
-@keyframes cloudDrift2{from{transform:translate3d(0,0,0)}to{transform:translate3d(-6vw,-8px,0)}}
 @media(prefers-reduced-motion:reduce){.hero__sky .s-cloud1,.hero__sky .s-cloud2{animation:none}}
+/* Mobile hero: tambah jarak H1->CTA, kurangi padding bawah yang jadi dead space.
+   Alasan: rhythm vertikal di layar kecil harus padat, bukan menggantung. */
+@media(max-width:759px){
+  .hero{padding-bottom:28px}
+  .hero__cta{margin-top:22px}
+  .hero h1{margin-top:0}
+  .hero__grid{gap:26px !important}
+}
+/* Showcase mobile: hero harus masuk satu layar (844px).
+   Alert dan grid modul disembunyikan di mobile, angka + bar tetap.
+   Desktop tidak terpengaruh. */
+@media(max-width:759px){
+  .showcase__main{padding:16px !important}
+  .showcase__num{font-size:1.9rem !important}
+  .showcase__alert{display:none !important}
+  .showcase__bar{margin-top:10px}
+  .showcase__grid{display:none !important}
+  .showcase{gap:8px}
+  .hero__grid{gap:22px !important}
+}
 .hero__grid{position:relative;z-index:1;display:grid;gap:clamp(30px,4.5vw,54px);align-items:center}
-.hero h1{font-size:var(--h1);font-weight:700;letter-spacing:-.05em;line-height:0.98;max-width:17ch;margin-top:14px}
+.hero h1{font-size:var(--h1);font-weight:700;letter-spacing:-.04em;line-height:1.02;max-width:15ch;margin-top:14px}
 .hero__sub{margin-top:clamp(16px,2.2vw,22px);max-width:52ch}
 .hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(22px,2.8vw,30px)}
 .hero__note{margin-top:16px;font-size:var(--sm);color:var(--gray-500);display:flex;align-items:center;gap:8px}
@@ -188,7 +207,7 @@ svg{display:block}
 .showcase__label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-500)}
 .showcase__live{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-weight:600;
   color:var(--ok);letter-spacing:.05em;text-transform:uppercase}
-.showcase__live i{width:5px;height:5px;border-radius:50%;background:var(--ok);animation:pulse 2.4s var(--ease) infinite}
+.showcase__live i{width:5px;height:5px;border-radius:50%;background:var(--ok)}
 .showcase__metric{display:flex;align-items:baseline;gap:8px;margin-top:14px}
 .showcase__num{font-size:clamp(2rem,3.6vw,2.5rem);font-weight:700;letter-spacing:-.04em;
   line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
@@ -214,19 +233,23 @@ svg{display:block}
 
 /* ---------- fakta ---------- */
 .facts{background:#fff;border-bottom:1px solid var(--gray-100)}
-.facts__wrap{display:grid;gap:0;border:1px solid var(--gray-100);border-radius:var(--r-card);
-  overflow:hidden;background:#fff;box-shadow:0 1px 0 #fff inset,0 18px 40px -40px rgba(11,18,32,.4);
-  margin-top:clamp(28px,3.4vw,44px)}
+/* Facts tanpa kotak: angka besar langsung di atas label.
+   Alasan: kotak 4-stat dengan divider adalah bentuk paling pasaran di template SaaS. */
+.facts__wrap{display:grid;gap:0;border-top:1px solid var(--gray-100);
+  border-bottom:1px solid var(--gray-100);background:transparent;
+  margin-top:clamp(28px,3.4vw,44px);position:relative}
+.facts__wrap::before{content:"";position:absolute;top:-1px;left:0;width:64px;height:1px;
+  background:var(--blue-600)}
 @media(min-width:760px){.facts__wrap{grid-template-columns:1.1fr 2.9fr;align-items:stretch}}
-.facts__intro{padding:clamp(18px,2.2vw,24px);background:linear-gradient(160deg,#F7FAFF,#EFF5FF);
-  border-bottom:1px solid var(--gray-100);display:flex;flex-direction:column;justify-content:center;gap:4px}
+.facts__intro{padding:clamp(16px,2vw,22px) 0;display:flex;flex-direction:column;justify-content:center;gap:4px}
 @media(min-width:760px){.facts__intro{border-bottom:0;border-right:1px solid #DFE7F5}}
 .facts__intro b{font-size:.86rem;font-weight:700;letter-spacing:-.01em}
 .facts__intro span{font-size:var(--xs);color:var(--gray-500);line-height:1.45}
 .facts__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--gray-100)}
-.facts__cell{background:#fff;padding:20px clamp(14px,2vw,24px)}
-.facts__cell b{display:block;font-size:clamp(1.2rem,2vw,1.55rem);font-weight:700;
-  letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--ink)}
+.facts__cell{background:transparent;padding:20px clamp(14px,2vw,22px);
+  display:flex;flex-direction:column;gap:4px}
+.facts__cell b{display:block;font-size:clamp(1.75rem,3vw,2.3rem);font-weight:700;
+  letter-spacing:-.035em;font-variant-numeric:tabular-nums;color:var(--ink);line-height:1}
 .facts__cell span{display:block;font-size:var(--xs);color:var(--gray-500);margin-top:3px;line-height:1.45}
 @media(min-width:760px){.facts__grid{grid-template-columns:repeat(4,1fr)}}
 
@@ -240,10 +263,17 @@ svg{display:block}
 @media(min-width:700px){.pillars{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1020px){
   .pillars{grid-template-columns:repeat(3,1fr)}
-  .pillar--wide{grid-column:span 2}
 }
-.pillar{background:linear-gradient(180deg,#fff 0%,#FDFEFF 100%);border:1px solid var(--gray-100);border-radius:var(--r-card);padding:clamp(20px,2.3vw,28px);display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 0 #fff inset;transition:border-color .22s var(--ease),box-shadow .22s var(--ease),transform .22s var(--ease)}
-.pillar:hover{border-color:var(--blue-200);box-shadow:0 18px 40px -30px rgba(36,83,235,.4);transform:translateY(-2px)}
+.pillar{background:linear-gradient(180deg,#fff 0%,#FDFEFF 100%);border:1px solid var(--gray-100);border-radius:var(--r-card);padding:clamp(20px,2.3vw,28px);display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 0 #fff inset;transition:border-color .15s var(--ease)}
+.pillar:hover{border-color:var(--blue-300, #A9C4FB)}
+/* Stagger grid: kartu masuk berurutan 55ms. Tujuan: grid terasa tumbuh,
+   bukan muncul serentak. Hanya berlaku saat reveal aktif. */
+.pillars .pillar:nth-child(1){--rv-delay:0ms}
+.pillars .pillar:nth-child(2){--rv-delay:55ms}
+.pillars .pillar:nth-child(3){--rv-delay:110ms}
+.pillars .pillar:nth-child(4){--rv-delay:165ms}
+.pillars .pillar:nth-child(5){--rv-delay:220ms}
+.pillars .pillar:nth-child(6){--rv-delay:275ms}
 .pillar__top{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .pillar__no{font-size:var(--xs);font-weight:700;letter-spacing:.13em;color:var(--gray-500);font-variant-numeric:tabular-nums}
 .pillar__tag{font-size:var(--xs);font-weight:600;color:var(--blue-700);background:var(--blue-50);
@@ -267,8 +297,6 @@ svg{display:block}
   min-height:44px;color:var(--blue-600)}
 .pillar__link:hover{text-decoration:underline;text-underline-offset:3px}
 .pillar__link svg{width:14px;height:14px}
-.pillar--wide .pillar__inner{display:grid;gap:clamp(16px,2.2vw,26px)}
-@media(min-width:700px){.pillar--wide .pillar__inner{grid-template-columns:1.02fr .98fr;align-items:start}}
 
 /* mini dashboard dalam kartu lebar */
 .mini{background:var(--gray-25);border:1px solid var(--gray-100);border-radius:var(--r-vis);
@@ -283,6 +311,101 @@ svg{display:block}
 .mini__alert svg{width:15px;height:15px;flex:none;color:var(--warn);margin-top:1px}
 .mini__alert b{display:block;font-size:var(--xs);color:var(--warn);letter-spacing:.01em}
 .mini__alert p{font-size:var(--xs);color:#5B4A22;line-height:1.5;margin-top:2px}
+
+/* ---------- Ekosistem: tab + stage ----------
+   Alasan struktur: 6 kartu bertumpuk = 3034px (38% halaman). Tab mengubahnya jadi
+   satu panggung setinggi ~560px yang isinya berganti. Semua 6 modul tetap ada di DOM
+   (bukan lazy), jadi no-JS dan screen reader tetap dapat semuanya. */
+.eco{display:grid;gap:clamp(18px,2.4vw,30px);margin-top:clamp(28px,3.4vw,44px)}
+@media(min-width:900px){.eco{grid-template-columns:250px 1fr;align-items:start;gap:clamp(26px,3vw,44px)}}
+
+.eco__nav{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;
+  -webkit-overflow-scrolling:touch}
+.eco__nav::-webkit-scrollbar{display:none}
+@media(min-width:900px){
+  .eco__nav{flex-direction:column;overflow:visible;gap:2px;position:sticky;top:96px}
+}
+.eco__tab{display:flex;align-items:center;gap:10px;min-height:46px;padding:0 12px;
+  border-radius:10px;border:1px solid transparent;background:transparent;
+  color:var(--gray-500);font:inherit;font-size:.9rem;font-weight:550;letter-spacing:-.01em;
+  text-align:left;cursor:pointer;white-space:nowrap;flex:none;
+  transition:background .18s var(--ease),color .18s var(--ease),border-color .18s var(--ease)}
+.eco__tab:hover{background:var(--gray-25);color:var(--ink)}
+.eco__tab.is-active{background:#fff;border-color:var(--blue-600);color:var(--blue-700);
+  font-weight:650}
+.eco__tabno{font-size:.68rem;font-weight:700;letter-spacing:.1em;color:var(--gray-500);
+  font-variant-numeric:tabular-nums;min-width:16px}
+.eco__tab.is-active .eco__tabno{color:var(--blue-600)}
+.eco__tabname{flex:1}
+
+.eco__stage{position:relative;min-height:0}
+.eco__panel{background:linear-gradient(180deg,#fff 0%,#FDFEFF 100%);border:1px solid var(--gray-100);
+  border-radius:var(--r-card);padding:clamp(20px,2.6vw,34px);
+  box-shadow:0 1px 0 #fff inset,0 30px 60px -56px rgba(11,18,32,.45);
+  display:flex;flex-direction:column;gap:13px}
+.eco__panel{display:none}
+.eco__panel.is-active{display:flex}
+/* Panel masuk: opacity + 8px naik + scale .995 -> 1.
+   380ms decel tajam. Alasan: perpindahan terasa "commit", bukan kedip. */
+@keyframes ecoIn{
+  from{opacity:0;transform:translateY(8px) scale(.995)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.eco__panel.is-active{animation:ecoIn .38s cubic-bezier(.16,1,.3,1) both}
+@media(prefers-reduced-motion:reduce){.eco__panel.is-active{animation:none}}
+.eco__panelhead{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.eco__no{font-size:var(--xs);font-weight:700;letter-spacing:.13em;color:var(--gray-500);
+  font-variant-numeric:tabular-nums}
+.eco__tag{font-size:var(--xs);font-weight:600;color:var(--blue-700);background:var(--blue-50);
+  border:1px solid var(--blue-100);border-radius:var(--r-pill);padding:3px 9px;white-space:nowrap}
+.eco__tag--soon{background:var(--warn-bg);border-color:#F2E2BC;color:var(--warn)}
+.eco__ic{width:44px;height:44px;border-radius:12px;color:var(--blue-700);
+  background:linear-gradient(160deg,#F2F7FF 0%,#E2EDFF 100%);border:1px solid #D3E2FF;
+  box-shadow:0 1px 0 #fff inset;display:grid;place-items:center;flex:none;margin-top:2px}
+.eco__ic svg{width:22px;height:22px;fill:rgba(36,83,235,.16);stroke-width:1.9}
+.eco__panel h3{font-size:clamp(1.25rem,2vw,1.6rem);letter-spacing:-.025em;margin-top:2px}
+.eco__panel>p{color:var(--gray-500);font-size:.96rem;line-height:1.62;max-width:56ch}
+.eco__list{display:flex;flex-direction:column;gap:8px;margin-top:2px}
+.eco__list li{position:relative;padding-left:18px;font-size:.9rem;color:var(--gray-700);line-height:1.5}
+.eco__list li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:1.5px;
+  background:var(--blue-600);border-radius:2px}
+.eco__foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--gray-100);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.eco__price{font-size:var(--sm);font-weight:600;letter-spacing:-.01em}
+.eco__link{display:inline-flex;align-items:center;gap:5px;font-size:var(--sm);font-weight:600;
+  min-height:44px;color:var(--blue-600)}
+.eco__link:hover{text-decoration:underline;text-underline-offset:3px}
+.eco__link svg{width:14px;height:14px}
+
+.eco__vis{margin-top:4px;padding:14px;border-radius:12px;background:var(--gray-25);
+  border:1px solid var(--gray-100);display:flex;flex-direction:column;gap:9px}
+.eco__visrow{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.eco__visrow span{font-size:.78rem;color:var(--gray-500)}
+.eco__visrow b{font-size:.9rem;font-weight:650;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.eco__visrow--sub span,.eco__visrow--sub b{font-size:.76rem;font-weight:500;color:var(--gray-700)}
+.eco__visbar{height:5px;border-radius:99px;background:var(--gray-100);overflow:hidden;margin-top:2px}
+.eco__visbar i{display:block;height:100%;border-radius:99px;width:0;
+  background:linear-gradient(90deg,var(--blue-500),var(--blue-600));
+  transition:width .7s cubic-bezier(.16,1,.3,1)}
+.eco__visalert{display:flex;gap:8px;align-items:flex-start;background:#fff;
+  border:1px solid var(--gray-100);border-radius:9px;padding:9px 10px}
+.eco__visalert svg{width:14px;height:14px;flex:none;color:var(--blue-600);margin-top:1px}
+.eco__visalert b{display:block;font-size:.76rem;font-weight:650}
+.eco__visalert span{display:block;font-size:.72rem;color:var(--gray-500);margin-top:1px}
+
+/* Section ekosistem masuk dengan bobot berbeda dari section lain:
+   24px naik + scale .98, 520ms. Ini inti produk, bukan section biasa. */
+@keyframes ecoSectionIn{
+  from{opacity:0;transform:translateY(24px) scale(.98)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.eco.is-in{animation:ecoSectionIn .52s cubic-bezier(.16,1,.3,1) both}
+@media(prefers-reduced-motion:reduce){.eco.is-in{animation:none}}
+
+/* Fallback no-JS: semua panel tampil berurutan, nav disembunyikan. */
+html.no-js .eco__nav{display:none}
+html.no-js .eco__panel{display:flex !important;margin-bottom:14px}
+html.no-js .eco{display:block}
 
 /* ---------- delivery / auditor ---------- */
 .deliv{display:grid;gap:clamp(26px,4vw,48px);align-items:start}
@@ -300,9 +423,9 @@ svg{display:block}
 .field{margin-top:14px}
 .field label{display:block;font-size:var(--xs);font-weight:600;color:var(--gray-700);margin-bottom:6px}
 .field input,.field select{width:100%;min-height:48px;padding:0 13px;border-radius:10px;
-  background:#fff;border:1px solid var(--gray-300);color:var(--ink);font-size:.92rem;font-family:var(--font);
+  background:#fff;border:1px solid var(--gray-500);color:var(--ink);font-size:.92rem;font-family:var(--font);
   transition:border-color .18s var(--ease),box-shadow .18s var(--ease)}
-.field input::placeholder{color:var(--gray-300)}
+.field input::placeholder{color:var(--gray-500);opacity:1}
 .field input:focus,.field select:focus{outline:none;border-color:var(--blue-600);box-shadow:0 0 0 3px var(--blue-50)}
 .out{margin-top:12px;border-radius:10px;border:1px solid var(--gray-100);background:var(--gray-25);
   padding:13px;font-size:var(--sm);line-height:1.55;color:var(--gray-700)}
@@ -337,7 +460,7 @@ svg{display:block}
 .calc__out .sub{font-size:var(--xs);color:#D6E2FF;margin-top:5px;line-height:1.5}
 .calc__note{margin-top:12px;font-size:var(--xs);color:var(--gray-500);line-height:1.5}
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
-.chips button{min-height:44px;padding:0 14px;border-radius:var(--r-pill);border:1px solid var(--gray-300);
+.chips button{min-height:44px;padding:0 14px;border-radius:var(--r-pill);border:1px solid var(--gray-500);
   background:#fff;font-size:var(--xs);font-weight:600;cursor:pointer;
   transition:border-color .18s var(--ease),background .18s var(--ease),color .18s var(--ease)}
 .chips button:hover{border-color:var(--blue-600);color:var(--blue-700)}
@@ -418,14 +541,13 @@ svg{display:block}
 .foot__legal p{max-width:76ch}
 
 /* ---------- motion ---------- */
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.85)}}
 @keyframes maskUp{from{transform:translateY(105%)}to{transform:translateY(0)}}
 @keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* headline: satu momen motion saat load, per kata, bukan per section */
 .hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom}
 .hero h1 .w>span{display:inline-block;transform:translateY(105%);
-  animation:maskUp .78s var(--ease) forwards}
+  animation:maskUp .78s cubic-bezier(.16,1,.3,1) both}
 .hero h1 .w:nth-child(1)>span{animation-delay:.04s}
 .hero h1 .w:nth-child(2)>span{animation-delay:.10s}
 .hero h1 .w:nth-child(3)>span{animation-delay:.16s}
@@ -434,7 +556,8 @@ svg{display:block}
 
 /* reveal saat scroll: opacity + 12px, sekali saja */
 [data-rv]{opacity:0;transform:translateY(12px);
-  transition:opacity .55s var(--ease),transform .55s var(--ease)}
+  transition:opacity .55s var(--ease),transform .55s var(--ease);
+  transition-delay:var(--rv-delay,0ms)}
 [data-rv].is-in{opacity:1;transform:none}
 html.no-js [data-rv]{opacity:1;transform:none}
 
@@ -457,7 +580,6 @@ html.no-js [data-rv]{opacity:1;transform:none}
 </style>
 </head>
 <body>
-<script>document.documentElement.className+=" no-js";</script>
 <a class="skip" href="#main">Langsung ke isi</a>
 
 <div class="ticker" aria-hidden="true">
@@ -554,7 +676,6 @@ html.no-js [data-rv]{opacity:1;transform:none}
     </div>
     <div class="wrap hero__grid">
       <div>
-        <p class="eyebrow">Platform bisnis, bukan satu aplikasi</p>
         <h1>
           <span class="w"><span>Semua</span></span>
           <span class="w"><span>kebutuhan</span></span>
@@ -626,154 +747,151 @@ html.no-js [data-rv]{opacity:1;transform:none}
     <div class="wrap">
       <div class="sechead" data-rv>
         <p class="eyebrow">Ekosistem</p>
-        <h2>Enam modul. Satu data. Tidak ada input dobel.</h2>
+        <h2>Enam modul. Satu data. <span class="it">Tidak ada input dobel.</span></h2>
         <p class="lede">Setiap modul bisa dipakai sendiri, tapi datanya saling terhubung. Transaksi kasir jadi dasar pajak, dan omzet delivery masuk ke dashboard yang sama.</p>
       </div>
 
-      <div class="pillars">
-
-        <article class="pillar pillar--wide" id="dashboard" data-rv>
-          <div class="pillar__inner">
-            <div>
-              <div class="pillar__top">
-                <span class="pillar__no">01 / INTI</span>
-                <span class="pillar__tag">Termasuk Pro</span>
-              </div>
-              <div class="pillar__ic" style="margin-top:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16"/><path d="M8 15l3-4 3 3 4-6"/></svg></div>
-              <h3 style="margin-top:10px">Dashboard bisnis dan AI jaga margin</h3>
-              <p style="margin-top:8px">Satu layar untuk omzet, biaya, dan laba. AI memantau kenaikan harga bahan, lalu memberi tahu harga jual yang masih aman sebelum margin Anda tergerus.</p>
-              <ul class="pillar__list">
-                <li>Berlaku untuk usaha produk maupun jasa</li>
-                <li>Peringatan otomatis saat biaya naik</li>
-                <li>Tiga skenario harga siap dipakai</li>
-              </ul>
-              <div class="pillar__foot">
-                <span class="pillar__price">Rp50.000<small>per outlet, per bulan</small></span>
-                <a class="pillar__link" href="ai.html">Pelajari AI margin
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-                </a>
-              </div>
+      <div class="eco" data-eco data-rv>
+      <div class="eco__nav" role="tablist" aria-label="Modul Olano">
+          <button class="eco__tab is-active" role="tab" id="eco-tab-0" aria-selected="true" aria-controls="eco-panel-0" tabindex="0"><span class="eco__tabno">01</span><span class="eco__tabname">Dashboard &amp; AI</span></button>
+          <button class="eco__tab" role="tab" id="eco-tab-1" aria-selected="false" aria-controls="eco-panel-1" tabindex="-1"><span class="eco__tabno">02</span><span class="eco__tabname">Kasir &amp; QRIS</span></button>
+          <button class="eco__tab" role="tab" id="eco-tab-2" aria-selected="false" aria-controls="eco-panel-2" tabindex="-1"><span class="eco__tabno">03</span><span class="eco__tabname">Pajak &amp; Pembukuan</span></button>
+          <button class="eco__tab" role="tab" id="eco-tab-3" aria-selected="false" aria-controls="eco-panel-3" tabindex="-1"><span class="eco__tabno">04</span><span class="eco__tabname">Delivery Booster</span></button>
+          <button class="eco__tab" role="tab" id="eco-tab-4" aria-selected="false" aria-controls="eco-panel-4" tabindex="-1"><span class="eco__tabno">05</span><span class="eco__tabname">Website Custom</span></button>
+          <button class="eco__tab" role="tab" id="eco-tab-5" aria-selected="false" aria-controls="eco-panel-5" tabindex="-1"><span class="eco__tabno">06</span><span class="eco__tabname">Otomasi</span></button>
+      </div>
+      <div class="eco__stage">
+        <article class="eco__panel is-active" role="tabpanel" id="eco-panel-0" aria-labelledby="eco-tab-0">
+          <div class="eco__panelhead">
+            <span class="eco__no">01 / INTI</span>
+            <span class="eco__tag">Termasuk Pro</span>
+          </div>
+          <div class="eco__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16"/><path d="M8 15l3-4 3 3 4-6"/></svg></div>
+          <h3>Dashboard bisnis dan AI jaga margin</h3>
+          <p>Satu layar untuk omzet, biaya, dan laba. AI memantau kenaikan harga bahan, lalu memberi tahu harga jual yang masih aman sebelum margin Anda tergerus.</p>
+          <ul class="eco__list"><li>Berlaku untuk usaha produk maupun jasa</li><li>Peringatan otomatis saat biaya naik</li><li>Tiga skenario harga siap dipakai</li></ul>
+          <div class="eco__vis" aria-hidden="true">
+            <div class="eco__visrow"><span>Margin saat ini</span><b>34,0%</b></div>
+            <div class="eco__visbar"><i data-bar="34"></i></div>
+            <div class="eco__visalert">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v5M12 16.5v.01"/><circle cx="12" cy="12" r="9"/></svg>
+              <div><b>Biaya bahan naik 10%</b><span>Harga aman mulai Rp45.429 per porsi.</span></div>
             </div>
-            <div class="mini" aria-label="Contoh tampilan peringatan AI">
-              <div class="mini__row"><span>Margin saat ini</span><b>34,0%</b></div>
-              <div class="mini__bar" aria-hidden="true"><i data-bar="34"></i></div>
-              <div class="mini__alert">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v5M12 16.5v.01"/><path d="M10.3 3.8L2.4 17.5A1.6 1.6 0 003.8 20h16.4a1.6 1.6 0 001.4-2.5L13.7 3.8a1.6 1.6 0 00-2.8 0z"/></svg>
-                <div>
-                  <b>Biaya bahan naik 10%</b>
-                  <p>Margin turun ke 28,5%. Harga jual aman mulai Rp45.429 per porsi.</p>
-                </div>
-              </div>
-              <div class="mini__row"><span>HPP per porsi</span><b>Rp31.800</b></div>
-            </div>
+          </div>
+          <div class="eco__foot">
+            <span class="eco__price">Rp50.000 per outlet, per bulan</span>
+            <a class="eco__link" href="ai.html">Pelajari AI margin
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+            </a>
           </div>
         </article>
-
-        <article class="pillar" id="kasir" data-rv>
-          <div class="pillar__top">
-            <span class="pillar__no">02 / OPERASIONAL</span>
-            <span class="pillar__tag">Gratis</span>
+        <article class="eco__panel" role="tabpanel" id="eco-panel-1" aria-labelledby="eco-tab-1">
+          <div class="eco__panelhead">
+            <span class="eco__no">02 / OPERASIONAL</span>
+            <span class="eco__tag">Gratis</span>
           </div>
-          <div class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></div>
+          <div class="eco__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></div>
           <h3>Kasir dan QRIS dinamis</h3>
           <p>Catat transaksi tanpa internet. Nominal QRIS terisi otomatis, jadi tidak perlu ketik ulang.</p>
-          <ul class="pillar__list">
-            <li>Jalan offline, data di perangkat</li>
-            <li>Struk dan rekap harian</li>
-            <li>32 produk contoh siap coba</li>
-          </ul>
-          <div class="pillar__foot">
-            <span class="pillar__price">Rp0<small>selamanya</small></span>
-            <a class="pillar__link" href="app/kasir.html#demo">Buka demo
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          <ul class="eco__list"><li>Jalan offline, data di perangkat</li><li>Struk dan rekap harian</li><li>32 produk contoh siap coba</li></ul>
+          <div class="eco__vis" aria-hidden="true">
+            <div class="eco__visrow"><span>Transaksi hari ini</span><b>Rp1.240.000</b></div>
+            <div class="eco__visrow eco__visrow--sub"><span>QRIS otomatis</span><b>nominal terisi</b></div>
+            <div class="eco__visrow eco__visrow--sub"><span>Mode offline</span><b>aktif</b></div>
+            <div class="eco__visbar"><i data-bar="72"></i></div>
+          </div>
+          <div class="eco__foot">
+            <span class="eco__price">Rp0 selamanya</span>
+            <a class="eco__link" href="app/kasir.html#demo">Buka demo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
             </a>
           </div>
         </article>
-
-        <article class="pillar" data-rv>
-          <div class="pillar__top">
-            <span class="pillar__no">03 / KEPATUHAN</span>
-            <span class="pillar__tag">Diskon 40%</span>
+        <article class="eco__panel" role="tabpanel" id="eco-panel-2" aria-labelledby="eco-tab-2">
+          <div class="eco__panelhead">
+            <span class="eco__no">03 / KEPATUHAN</span>
+            <span class="eco__tag">Diskon 40%</span>
           </div>
-          <div class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></div>
+          <div class="eco__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></div>
           <h3>Pajak dan pembukuan</h3>
           <p>Rekap otomatis dari transaksi, plus pendampingan lapor. Reguler tiga hari, paket ngebut satu hari.</p>
-          <ul class="pillar__list">
-            <li>Reguler: diskon 40%, maksimal 3 hari</li>
-            <li>Ngebut: diskon 20%, selesai 1 hari</li>
-            <li>Pendampingan konsultan</li>
-          </ul>
-          <div class="pillar__foot">
-            <span class="pillar__price">Mulai Rp600rb<small>per bulan</small></span>
-            <a class="pillar__link" href="pajak.html">Lihat layanan pajak
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          <ul class="eco__list"><li>Reguler: diskon 40%, maksimal 3 hari</li><li>Ngebut: diskon 20%, selesai 1 hari</li><li>Pendampingan konsultan</li></ul>
+          <div class="eco__vis" aria-hidden="true">
+            <div class="eco__visrow"><span>Omzet setahun</span><b>Rp900.000.000</b></div>
+            <div class="eco__visrow eco__visrow--sub"><span>PPh final 0,5%</span><b>Rp166.667 / bln</b></div>
+            <div class="eco__visrow eco__visrow--sub"><span>Bebas pajak</span><b>Rp500 juta pertama</b></div>
+          </div>
+          <div class="eco__foot">
+            <span class="eco__price">Mulai Rp600rb per bulan</span>
+            <a class="eco__link" href="pajak.html">Lihat layanan pajak
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
             </a>
           </div>
         </article>
-
-        <article class="pillar" data-rv>
-          <div class="pillar__top">
-            <span class="pillar__no">04 / PERTUMBUHAN</span>
-            <span class="pillar__tag">Bagi hasil 10%</span>
+        <article class="eco__panel" role="tabpanel" id="eco-panel-3" aria-labelledby="eco-tab-3">
+          <div class="eco__panelhead">
+            <span class="eco__no">04 / PERTUMBUHAN</span>
+            <span class="eco__tag">Bagi hasil 10%</span>
           </div>
-          <div class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12l-2-3"/><path d="M20 16H8l2 3"/></svg></div>
+          <div class="eco__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12l-2-3"/><path d="M20 16H8l2 3"/></svg></div>
           <h3>Delivery GrabFood dan GoFood</h3>
           <p>Tempel tautan resto, tim kami audit menu, foto, dan ulasan. Bayar 10% dari omzet tambahan, bukan dari omzet awal.</p>
-          <ul class="pillar__list">
-            <li>Audit tautan, tanpa login</li>
-            <li>Enam area perbaikan</li>
-            <li>Tanpa biaya di depan</li>
-          </ul>
-          <div class="pillar__foot">
-            <span class="pillar__price">10%<small>dari omzet tambahan</small></span>
-            <a class="pillar__link" href="#delivery">Coba audit tautan
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          <ul class="eco__list"><li>Audit tautan, tanpa login</li><li>Enam area perbaikan</li><li>Tanpa biaya di depan</li></ul>
+          <div class="eco__vis" aria-hidden="true">
+            <div class="eco__visrow"><span>Omzet delivery</span><b>Rp20.000.000</b></div>
+            <div class="eco__visrow eco__visrow--sub"><span>Kenaikan 20%</span><b>+Rp4.000.000</b></div>
+            <div class="eco__visrow eco__visrow--sub"><span>Bagi hasil 10%</span><b>Rp400.000</b></div>
+            <div class="eco__visbar"><i data-bar="20"></i></div>
+          </div>
+          <div class="eco__foot">
+            <span class="eco__price">10% dari omzet tambahan</span>
+            <a class="eco__link" href="#delivery">Coba audit tautan
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
             </a>
           </div>
         </article>
-
-        <article class="pillar" id="web" data-rv>
-          <div class="pillar__top">
-            <span class="pillar__no">05 / KANAL</span>
-            <span class="pillar__tag">Mulai 500rb</span>
+        <article class="eco__panel" role="tabpanel" id="eco-panel-4" aria-labelledby="eco-tab-4">
+          <div class="eco__panelhead">
+            <span class="eco__no">05 / KANAL</span>
+            <span class="eco__tag">Mulai 500rb</span>
           </div>
-          <div class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01M10 6.5h.01"/></svg></div>
+          <div class="eco__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01M10 6.5h.01"/></svg></div>
           <h3>Website dan toko online</h3>
           <p>Template profesional dari katalog kasir Anda, atau website custom kalau butuh alur khusus.</p>
-          <ul class="pillar__list">
-            <li>Template siap pakai dalam hitungan menit</li>
-            <li>Katalog tersinkron dengan kasir</li>
-            <li>Custom: mulai Rp500.000</li>
-          </ul>
-          <div class="pillar__foot">
-            <span class="pillar__price">Rp500rb<small>sekali bayar, custom</small></span>
-            <a class="pillar__link" href="website.html">Lihat website
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          <ul class="eco__list"><li>Template siap pakai dalam hitungan menit</li><li>Katalog tersinkron dengan kasir</li><li>Custom: mulai Rp500.000</li></ul>
+          <div class="eco__vis" aria-hidden="true">
+            <div class="eco__visrow"><span>Katalog tersinkron</span><b>kasir ke web</b></div>
+            <div class="eco__visrow eco__visrow--sub"><span>Domain sendiri</span><b>didukung</b></div>
+            <div class="eco__visrow eco__visrow--sub"><span>Sekali bayar</span><b>mulai Rp500rb</b></div>
+          </div>
+          <div class="eco__foot">
+            <span class="eco__price">Rp500rb sekali bayar, custom</span>
+            <a class="eco__link" href="website.html">Lihat website
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
             </a>
           </div>
         </article>
-
-        <article class="pillar" id="otomasi" data-rv>
-          <div class="pillar__top">
-            <span class="pillar__no">06 / EFISIENSI</span>
-            <span class="pillar__tag pillar__tag--soon">Segera hadir</span>
+        <article class="eco__panel" role="tabpanel" id="eco-panel-5" aria-labelledby="eco-tab-5">
+          <div class="eco__panelhead">
+            <span class="eco__no">06 / EFISIENSI</span>
+            <span class="eco__tag eco__tag--soon">Segera hadir</span>
           </div>
-          <div class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M8.2 6h7.6M7.2 8l3.6 8M16.8 8l-3.6 8"/></svg></div>
+          <div class="eco__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M8.2 6h7.6M7.2 8l3.6 8M16.8 8l-3.6 8"/></svg></div>
           <h3>Otomasi kerja</h3>
           <p>Order masuk langsung ke printer, rekap harian terkirim ke WhatsApp, dan webhook ke sistem lain.</p>
-          <ul class="pillar__list">
-            <li>Pemicu dan aksi yang bisa diatur</li>
-            <li>Rekap otomatis ke WhatsApp</li>
-            <li>Integrasi lewat webhook</li>
-          </ul>
-          <div class="pillar__foot">
-            <span class="pillar__price">Tahap uji<small>belum dibuka umum</small></span>
-            <a class="pillar__link" href="automation.html">Lihat rencana
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          <ul class="eco__list"><li>Pemicu dan aksi yang bisa diatur</li><li>Rekap otomatis ke WhatsApp</li><li>Integrasi lewat webhook</li></ul>
+          <div class="eco__vis" aria-hidden="true">
+            <div class="eco__visrow"><span>Rekap harian</span><b>otomatis ke WhatsApp</b></div>
+            <div class="eco__visrow eco__visrow--sub"><span>Pesanan masuk</span><b>langsung ke printer</b></div>
+            <div class="eco__visrow eco__visrow--sub"><span>Status</span><b>tahap uji</b></div>
+          </div>
+          <div class="eco__foot">
+            <span class="eco__price">Tahap uji belum dibuka umum</span>
+            <a class="eco__link" href="automation.html">Lihat rencana
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
             </a>
           </div>
         </article>
-
       </div>
     </div>
   </section>
@@ -781,8 +899,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
   <section class="sec sec--tint" id="delivery">
     <div class="wrap deliv">
       <div data-rv>
-        <p class="eyebrow">Delivery</p>
-        <h2 style="margin-top:12px;font-size:var(--h2)">Resto Anda di GrabFood dan GoFood, diperiksa dari tautannya.</h2>
+        <h2 style="margin-top:12px;font-size:var(--h2)">Resto Anda di GrabFood dan GoFood, <span class="it">diperiksa dari tautannya.</span></h2>
         <p class="lede" style="margin-top:14px">Kirim tautan resto. Kami periksa area yang paling sering menahan pesanan, lalu susun rencana perbaikan. Bayar 10% dari omzet tambahan yang benar-benar terjadi.</p>
         <div class="scopes">
           <div class="scope">
@@ -843,8 +960,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
   <section class="sec" id="pajak">
     <div class="wrap tax">
       <div data-rv>
-        <p class="eyebrow">Pajak dan pembukuan</p>
-        <h2 style="margin-top:12px;font-size:var(--h2)">Pajak UMKM 2026, tanpa istilah yang membingungkan.</h2>
+        <h2 style="margin-top:12px;font-size:var(--h2)">Pajak UMKM 2026, <span class="it">tanpa istilah yang membingungkan.</span></h2>
         <p class="lede" style="margin-top:14px">PPh final 0,5% untuk orang pribadi, PT perorangan, dan koperasi. Orang pribadi bebas sampai Rp500 juta setahun. Di atas Rp4,8 miliar, keluar dari skema final.</p>
         <div class="tiers">
           <div class="tier">
@@ -901,64 +1017,11 @@ html.no-js [data-rv]{opacity:1;transform:none}
     </div>
   </section>
 
-  <section class="sec sec--tint" id="layanan">
-    <div class="wrap">
-      <div class="sechead" data-rv>
-        <p class="eyebrow">Layanan tambahan</p>
-        <h2>Kalau tidak mau dikerjakan sendiri, serahkan ke tim kami.</h2>
-        <p class="lede">Website custom dan otomasi dikerjakan per proyek. Konsultasi awal gratis, tanpa kewajiban lanjut.</p>
-      </div>
-      <div class="duo">
-        <article class="pillar" data-rv>
-          <div class="pillar__top">
-            <span class="pillar__no">WEBSITE</span>
-            <span class="pillar__tag">Mulai 500rb</span>
-          </div>
-          <div class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01M10 6.5h.01"/></svg></div>
-          <h3>Website custom dan toko online</h3>
-          <p>Untuk brand yang butuh alur khusus: katalog besar, halaman kampanye, atau integrasi pembayaran sendiri.</p>
-          <ul class="pillar__list">
-            <li>Desain menyesuaikan identitas brand</li>
-            <li>Struktur halaman dan kecepatan diuji</li>
-            <li>Katalog bisa tersinkron dengan kasir</li>
-          </ul>
-          <div class="pillar__foot">
-            <span class="pillar__price">Mulai Rp500.000<small>sekali bayar</small></span>
-            <a class="pillar__link" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20konsultasi%20website%20custom" target="_blank" rel="noopener">Konsultasi gratis
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="pillar" data-rv>
-          <div class="pillar__top">
-            <span class="pillar__no">OTOMASI</span>
-            <span class="pillar__tag pillar__tag--soon">Tahap uji</span>
-          </div>
-          <div class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M8.2 6h7.6M7.2 8l3.6 8M16.8 8l-3.6 8"/></svg></div>
-          <h3>Otomasi alur kerja</h3>
-          <p>Pekerjaan berulang dipindahkan ke sistem: pesanan masuk, rekap harian, dan pengingat stok.</p>
-          <ul class="pillar__list">
-            <li>Pesanan masuk langsung ke printer</li>
-            <li>Rekap harian dikirim ke WhatsApp</li>
-            <li>Webhook untuk sistem lain</li>
-          </ul>
-          <div class="pillar__foot">
-            <span class="pillar__price">Ikut paket Pro<small>modul bertahap</small></span>
-            <a class="pillar__link" href="automation.html">Lihat rencana
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <section class="sec" id="harga">
     <div class="wrap">
       <div class="sechead" data-rv>
         <p class="eyebrow">Harga</p>
-        <h2>Mulai gratis. Naik ke Pro saat butuh AI.</h2>
+        <h2>Mulai gratis. <span class="it">Naik ke Pro saat butuh AI.</span></h2>
         <p class="lede">Tanpa kartu kredit. Layanan pajak, delivery, dan website dihitung terpisah karena porsinya berbeda untuk setiap usaha.</p>
       </div>
 
@@ -1022,7 +1085,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
   <section class="sec" style="padding-top:0">
     <div class="wrap">
       <div class="close" data-rv>
-        <h2>Mulai dari satu transaksi hari ini.</h2>
+        <h2>Mulai dari <span class="it">satu transaksi</span> hari ini.</h2>
         <p class="lede">Buka kasir, catat penjualan pertama, dan lihat rekapnya langsung. Tidak perlu pasang aplikasi.</p>
         <div class="close__cta">
           <a class="btn btn--ghost" href="app/kasir.html#demo" style="background:#fff;color:var(--blue-700);border-color:#fff">Coba kasir gratis</a>
@@ -1093,6 +1156,58 @@ html.no-js [data-rv]{opacity:1;transform:none}
   "use strict";
   document.documentElement.classList.remove("no-js");
   var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- number ticker: angka berubah dengan interpolasi ----------
+     Alasan: angka yang melompat terasa seperti form HTML biasa. Angka yang
+     "berjalan" 520ms terasa seperti mesin yang menghitung. Ini state-change
+     motion (60fps.design), bukan dekorasi. */
+  function tickTo(el, to, opts){
+    if(!el) return;
+    opts = opts || {};
+    var dur = opts.dur || 520;
+    var fmt = opts.fmt || function(v){ return Math.round(v).toLocaleString("id-ID"); };
+    var from = parseFloat(el.getAttribute("data-tick-from") || "0");
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(reduce){ el.textContent = fmt(to); el.setAttribute("data-tick-from", to); return; }
+    var t0 = performance.now();
+    if(el._raf) cancelAnimationFrame(el._raf);
+    function step(now){
+      var p = Math.min(1, (now - t0) / dur);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(from + (to - from) * e);
+      if(p < 1){ el._raf = requestAnimationFrame(step); }
+      else { el.setAttribute("data-tick-from", to); el._raf = null; }
+    }
+    el._raf = requestAnimationFrame(step);
+  }
+  window.__tickTo = tickTo;
+
+  /* ---------- parallax hero: 3 lapis kecepatan berbeda ----------
+     Awan 0.06, konten 0.12, showcase 0.18. Tujuan: kedalaman ruang, bukan efek.
+     rAF + passive scroll, dimatikan saat prefers-reduced-motion. */
+  (function(){
+    var hero = document.querySelector(".hero");
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(!hero || reduce) return;
+    var sky  = hero.querySelector(".hero__sky");
+    var grid = hero.querySelector(".hero__grid");
+    var show = hero.querySelector(".showcase");
+    var ticking = false;
+    function onScroll(){
+      if(ticking) return; ticking = true;
+      requestAnimationFrame(function(){
+        var y = window.scrollY || window.pageYOffset || 0;
+        if(y <= hero.offsetHeight + 200){
+          if(sky)  sky.style.transform  = "translate3d(0," + (y * 0.06).toFixed(2) + "px,0)";
+          if(grid) grid.style.transform = "translate3d(0," + (y * 0.12).toFixed(2) + "px,0)";
+          if(show) show.style.transform = "translate3d(0," + (y * 0.18).toFixed(2) + "px,0)";
+        }
+        ticking = false;
+      });
+    }
+    window.addEventListener("scroll", onScroll, {passive:true});
+    onScroll();
+  })();
 
   /* ---------- nav ---------- */
   var nav = document.getElementById("nav");
@@ -1294,13 +1409,19 @@ html.no-js [data-rv]{opacity:1;transform:none}
 
     if(!t.final){
       taxVal.textContent = "Tidak berlaku";
+      taxVal.setAttribute("data-tick-from", "0");
       taxSub.textContent = wpType.options[wpType.selectedIndex].text + " tidak memakai PPh final 0,5%. Pajak dihitung dari laba.";
       return;
     }
     var bebas = (wpType.value === "OP") ? (t.freeUpto || 0) : 0;
     var dasar = Math.max(0, tahun - bebas);
     var perBulan = Math.round(dasar * cfg.rate / 12);
-    taxVal.textContent = rp(perBulan);
+    // Ticker: angka berjalan 450ms. Fallback ke teks langsung kalau tidak tersedia.
+    if(window.__tickTo){
+      window.__tickTo(taxVal, perBulan, {dur:450, fmt:function(v){ return rp(Math.round(v)); }});
+    } else {
+      taxVal.textContent = rp(perBulan);
+    }
 
     if(tahun > cfg.ceiling){
       taxSub.textContent = "Omzet setahun " + rp(tahun) + " melewati batas Rp4,8 miliar. Skema final tidak berlaku lagi.";
@@ -1329,6 +1450,40 @@ html.no-js [data-rv]{opacity:1;transform:none}
     hitungPajak();
   }
 })();
+
+  /* ---------- ekosistem: tab + keyboard ----------
+     Tab menggantikan 6 kartu bertumpuk. Panel diganti, bukan di-scroll,
+     supaya tinggi halaman turun drastis tanpa isi yang hilang. */
+  (function(){
+    var eco = document.querySelector("[data-eco]");
+    if(!eco) return;
+    var tabs = [].slice.call(eco.querySelectorAll(".eco__tab"));
+    var panels = [].slice.call(eco.querySelectorAll(".eco__panel"));
+    function activate(i, focus){
+      tabs.forEach(function(t, j){
+        var on = i === j;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+        panels[j].classList.toggle("is-active", on);
+        // visibilitas lewat class .is-active (lihat CSS), bukan atribut hidden
+      });
+      if(focus) tabs[i].focus();
+    }
+    tabs.forEach(function(t, i){
+      t.addEventListener("click", function(){ activate(i); });
+      t.addEventListener("keydown", function(e){
+        var k = e.key, n = tabs.length, next = -1;
+        if(k === "ArrowDown" || k === "ArrowRight") next = (i + 1) % n;
+        else if(k === "ArrowUp" || k === "ArrowLeft") next = (i - 1 + n) % n;
+        else if(k === "Home") next = 0;
+        else if(k === "End") next = n - 1;
+        if(next > -1){ e.preventDefault(); activate(next, true); }
+      });
+    });
+  })();
+
+
 </script>
 </body>
 </html>
