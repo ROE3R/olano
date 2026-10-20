@@ -90,6 +90,98 @@ svg{display:block}
   .grid12{grid-template-columns:repeat(8,1fr)}}
 @media(max-width:767px){.grid12{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:767px){:root{--col:1fr;--margin:24px;--gutter:16px}}
+/* HERO: teks col 1-5, frame produk col 6-12. Satu visual besar, bukan gadget.
+   Index 6 layanan turun jadi strip horizontal di bawah, bukan kolom yang
+   bersaing dengan H1. Alasan: dua kolom teks + daftar = tidak ada bukti produk. */
+.hero__copy{grid-column:1 / span 5}
+.hero__shot{grid-column:6 / span 7;display:flex;justify-content:flex-end}
+
+/* Frame perangkat: hairline + radius 6, tanpa shadow. Screenshot asli 4:5. */
+.dframe{width:100%;max-width:340px;border:1px solid rgba(10,12,20,.12);border-radius:6px;
+  overflow:hidden;background:#fff}
+.dframe__bar{display:flex;align-items:center;gap:6px;height:32px;padding:0 12px;
+  border-bottom:1px solid rgba(10,12,20,.08);background:var(--gray-25)}
+.dframe__bar i{width:7px;height:7px;border-radius:50%;background:var(--gray-300);flex:none}
+.dframe__bar span{margin-left:8px;font-size:var(--fs-1);color:var(--gray-500);
+  font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.dframe picture,.dframe img{display:block;width:100%;height:auto}
+.dframe img{aspect-ratio:9/16;object-fit:cover;object-position:top center}
+
+/* Index 6 layanan: strip hairline, satu baris di desktop. */
+.hero__index{display:grid;grid-template-columns:repeat(6,1fr);gap:0;
+  margin-top:var(--s5);border-top:1px solid rgba(10,12,20,.10)}
+.hero__index a{display:flex;align-items:center;gap:var(--s2);min-height:64px;
+  padding-right:var(--s2);font-size:var(--fs-2);font-weight:450;color:var(--ink);
+  border-right:1px solid rgba(10,12,20,.08)}
+.hero__index a:last-child{border-right:0}
+.hero__index a:hover{color:var(--blue-700)}
+.hero__index .hero__no{font-size:var(--fs-1);color:var(--gray-500);
+  font-variant-numeric:tabular-nums;font-weight:450}
+
+@media(max-width:1023px){
+    .hero__copy,.hero__shot{grid-column:1}
+  .hero__shot{justify-content:flex-start}
+  .dframe{max-width:300px}
+  .hero__index{grid-template-columns:1fr 1fr;border-top:1px solid rgba(10,12,20,.10)}
+  .hero__index a{min-height:48px;border-right:0;font-size:var(--fs-2)}
+}
+@media(max-width:479px){
+  .hero__index{grid-template-columns:1fr}
+  .hero__index a{min-height:44px;border-bottom:1px solid rgba(10,12,20,.06)}
+}
+
+/* Perbaikan hero: min-height 100svh dicabut karena hero sekarang punya visual
+   produk; tinggi ditentukan isi. Grid 12 -> 1 kolom di mobile (sebelumnya
+   repeat(12,1fr) dengan --col:1fr menghasilkan 12 kolom sempit = frame 162px). */
+@media(max-width:1023px){
+    }
+@media(max-width:767px){}
+
+/* HERO FINAL: satu definisi grid, tidak ada aturan lama yang menimpa.
+   Teks col 1-5, frame produk col 6-12. Mobile 1 kolom. */
+.hero__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));
+  column-gap:var(--gutter);align-items:center;position:relative;z-index:1}
+.hero__copy{grid-column:1 / span 5;min-width:0}
+.hero__shot{grid-column:6 / span 7;min-width:0;display:flex;justify-content:flex-end}
+@media(max-width:1023px){
+    .hero__grid{grid-template-columns:minmax(0,1fr);row-gap:var(--s5)}
+  .hero__copy,.hero__shot{grid-column:1}
+  .hero__shot{justify-content:flex-start}
+}
+@media(max-width:767px){}
+
+/* HERO: satu definisi, tidak ada aturan lama yang menimpa.
+   Teks col 1-5, frame produk col 6-12 (12 kolom). Mobile 1 kolom.
+   Tinggi ditentukan isi, bukan 100svh, karena hero sekarang punya visual. */
+.hero{position:relative;overflow:hidden;isolation:isolate;display:block;
+  min-height:0;padding-block:96px}
+.hero__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr))!important;
+  column-gap:var(--gutter);align-items:center;position:relative;z-index:1}
+.hero__copy{grid-column:1 / span 5;min-width:0}
+.hero__shot{grid-column:6 / span 7;min-width:0;display:flex;justify-content:flex-end}
+@media(max-width:1023px){
+  .hero{padding-block:64px}
+  .hero__grid{grid-template-columns:minmax(0,1fr)!important;row-gap:var(--s5)}
+  .hero__copy,.hero__shot{grid-column:1}
+  .hero__shot{justify-content:flex-start}
+}
+@media(max-width:767px){.hero{padding-block:32px 48px}}
+
+/* Index 6 layanan: masuk kolom kiri di bawah CTA, bukan baris selebar halaman.
+   Alasan: index 311px sebagai baris sendiri mendorong hero ke 1160px, melewati
+   satu layar. Sekarang hero = max(kolom kiri, frame). */
+.hero__index{grid-column:1 / span 5;display:flex;flex-wrap:wrap;gap:0 var(--s3);
+  margin-top:var(--s5);border-top:1px solid rgba(10,12,20,.10);padding-top:var(--s2)}
+.hero__index a{display:flex;align-items:center;gap:8px;min-height:36px;
+  font-size:var(--fs-2);font-weight:450;color:var(--ink)}
+.hero__index a:hover{color:var(--blue-700)}
+.hero__index .hero__no{font-size:var(--fs-1);color:var(--gray-500);
+  font-variant-numeric:tabular-nums;font-weight:450}
+@media(max-width:1023px){
+  .hero__index{grid-column:1;order:3;margin-top:var(--s4)}
+  .hero__index a{min-height:44px}
+}
+
 /* Ritme vertikal: irama sengaja, bukan seragam.
    kebutuhan 128 (padat) -> produk 160 (longgar, visual butuh udara) ->
    harga 128 (padat) -> closing 160/96 (resolusi).
@@ -103,11 +195,8 @@ svg{display:block}
 /* Hero: 88svh di mobile supaya ~100px section berikutnya mengintip,
    jadi user tahu masih ada konten di bawah. Desktop cap 960px supaya
    di monitor tinggi hero tidak jadi lapangan kosong. */
-.hero{min-height:clamp(640px,100svh,960px);display:flex;align-items:center;
-  padding-block:96px 64px}
 @media(max-width:767px){
-  .hero{min-height:88svh;align-items:flex-start;padding-block:24px 32px}
-  .sec,#kebutuhan,#produk,#harga{padding-block:80px}
+    .sec,#kebutuhan,#produk,#harga{padding-block:80px}
   .closeblock{padding-block:96px 64px}
 }
 /* Footer ganti surface: tanda halaman selesai, bukan berhenti mendadak. */
@@ -163,7 +252,7 @@ svg{display:block}
   opacity:0;visibility:hidden;transform:translateY(-6px);
   transition:opacity .18s var(--ease),transform .18s var(--ease),visibility .18s}
 .nav__dd.is-open .nav__menu{opacity:1;visibility:visible;transform:none}
-.nav__menu a{display:flex;align-items:center;min-height:42px;padding:0 10px;border-radius:8px;
+.nav__menu a{display:flex;align-items:center;min-height:44px;padding:0 10px;border-radius:8px;
   font-size:var(--sm);color:var(--gray-700);transition:background .15s var(--ease),color .15s var(--ease)}
 .nav__menu a:hover{background:var(--gray-50);color:var(--gray-700)}
 .nav__menu .soon{color:var(--gray-500)}
@@ -207,7 +296,6 @@ svg{display:block}
 }
 
 /* ---------- hero ---------- */
-.hero{position:relative;overflow:hidden;isolation:isolate}
 /* Motif identitas: satu glow biru lembut di belakang headline + garis horizon tipis.
    Alasan: memberi kedalaman tanpa dekorasi; warna tetap biru-putih Olano. */
 .hero__sky{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:
@@ -234,8 +322,7 @@ svg{display:block}
 @media(max-width:759px){
     .hero__cta{margin-top:22px}
   .hero h1{margin-top:0}
-  .hero__grid{gap:26px !important}
-}
+  }
 /* Panel ringkasan: 3 baris angka, bukan satu angka besar tanpa konteks.
    Label "Contoh data" wajib terlihat supaya pengunjung tidak mengira itu datanya. */
 .showcase__tag{font-size:var(--fs-1);font-weight:600;letter-spacing:.05em;text-transform:uppercase;
@@ -585,14 +672,8 @@ a:not(.btn):not(.brand){color:inherit}
 .sec > .wrap > .shots__nav{grid-column:4 / span 9}
 
 /* Hero: teks col 1-7, daftar col 9-12, rata atas. */
-.hero__grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);
-  align-items:start}
-.hero__grid > div:first-child{grid-column:1 / span 7}
-.hero__grid > .hero__list{grid-column:9 / span 4}
 @media(max-width:1023px){
-  .hero__grid{grid-template-columns:1fr;row-gap:var(--s5)}
-  .hero__grid > div:first-child,.hero__grid > .hero__list{grid-column:1}
-}
+    }
 
 /* Radius: hanya 3 nilai. 0 untuk band besar, 6 untuk elemen interaktif, 50% lingkaran. */
 .shot__frame,.ptable,.mrow,.closebox{border-radius:6px}
@@ -650,7 +731,7 @@ input,select,.field input,.field select{border-radius:6px}
   grid-template-rows:auto auto}
 @media(min-width:760px){.shots{grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto}}
 .shot{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:0;margin:0}
-.shot__frame{aspect-ratio:4/5;width:100%;border:1px solid rgba(10,12,20,.10);
+.shot__frame{aspect-ratio:9/16;width:100%;border:1px solid rgba(10,12,20,.10);
   border-radius:6px;overflow:hidden;background:var(--gray-25)}
 .shot__frame picture{display:block;width:100%;height:100%}
 .shot__frame img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
@@ -687,15 +768,13 @@ input,select,.field input,.field select{border-radius:6px}
   .showcase__bar{margin-top:10px}
   .showcase__grid{display:none !important}
   .showcase{gap:8px}
-  .hero__grid{gap:22px !important}
-}
-.hero__grid{position:relative;z-index:1;display:grid;gap:clamp(30px,4.5vw,54px);align-items:center}
+  }
 .hero h1{font-size:var(--fs-7);font-weight:600;letter-spacing:-.04em;
   line-height:1.0;max-width:16ch;margin-top:0;color:var(--ink)}
 .hero h1 .it{font-weight:450;color:var(--ink)}
 .hero__sub{margin-top:clamp(16px,2.2vw,22px);max-width:52ch}
 .hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(22px,2.8vw,30px)}
-@media(min-width:980px){.hero__grid{grid-template-columns:1.06fr .94fr}}
+@media(min-width:980px){}
 
 /* Showcase hero: satu fitur unggulan (AI margin) + grid modul.
    Alasan: daftar baris terasa seperti panel admin; showcase dengan angka besar
@@ -1126,30 +1205,39 @@ html.no-js [data-rv]{opacity:1;transform:none}
       <div class="s-scrim"></div>
     </div>
     <div class="wrap hero__grid">
-      <div>
-        <h1>Apa pun yang bisnis Anda butuhkan, <span class="it">kami urus.</span></h1>
-        <p class="lede hero__sub">Kasir gratis yang tetap jalan saat internet mati. Pembukuan dan pajak ikut tercatat.</p>
+      <div class="hero__copy">
+        <h1>Kasir gratis yang tetap jalan saat <span class="it">internet mati.</span></h1>
+        <p class="lede hero__sub">Pembukuan dan pajak ikut tercatat dari setiap transaksi. Tidak ada input dobel.</p>
         <div class="hero__cta">
-          <a class="btn btn--primary" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20bisnis%20saya%20butuh%20bantuan%20untuk..." target="_blank" rel="noopener">
-            Ceritakan kebutuhan Anda
-            <svg class="btn__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-          </a>
+          <a class="btn btn--primary" href="app/kasir.html#demo">Coba kasirnya sekarang</a>
+          <a class="btn btn--ghost" href="#harga">Lihat harga</a>
         </div>
-        <p class="hero__alt">Atau <a href="#kebutuhan">lihat semua layanan</a>. Kasir dan QRIS gratis selamanya.</p>
+        <p class="hero__alt">Tanpa daftar, tanpa pasang aplikasi. Jalan langsung di browser.</p>
 
+        <nav class="hero__index" aria-label="Layanan Olano">
+          <a href="app/kasir.html#demo"><span class="hero__no">01</span><span class="hero__nm">Kasir dan QRIS</span></a>
+          <a href="#kebutuhan"><span class="hero__no">02</span><span class="hero__nm">Pembukuan</span></a>
+          <a href="pajak.html"><span class="hero__no">03</span><span class="hero__nm">Pajak</span></a>
+          <a href="#kebutuhan"><span class="hero__no">04</span><span class="hero__nm">Jualan online</span></a>
+          <a href="website.html"><span class="hero__no">05</span><span class="hero__nm">Website</span></a>
+          <a href="automation.html"><span class="hero__no">06</span><span class="hero__nm">Otomasi</span></a>
+        </nav>
 
       </div>
 
-      <nav class="hero__list" aria-label="Layanan Olano">
-        <a href="app/kasir.html#demo"><span class="hero__no">01</span><span class="hero__nm">Kasir dan QRIS</span><span class="hero__ar" aria-hidden="true">→</span></a>
-        <a href="#kebutuhan"><span class="hero__no">02</span><span class="hero__nm">Pembukuan</span><span class="hero__ar" aria-hidden="true">→</span></a>
-        <a href="pajak.html"><span class="hero__no">03</span><span class="hero__nm">Pajak</span><span class="hero__ar" aria-hidden="true">→</span></a>
-        <a href="#kebutuhan"><span class="hero__no">04</span><span class="hero__nm">Jualan online</span><span class="hero__ar" aria-hidden="true">→</span></a>
-        <a href="website.html"><span class="hero__no">05</span><span class="hero__nm">Website</span><span class="hero__ar" aria-hidden="true">→</span></a>
-        <a href="automation.html"><span class="hero__no">06</span><span class="hero__nm">Otomasi</span><span class="hero__ar" aria-hidden="true">→</span></a>
-      </nav>
-
+      <div class="hero__shot" data-rv>
+        <div class="dframe">
+          <div class="dframe__bar" aria-hidden="true"><i></i><i></i><i></i><span>olano.app/kasir</span></div>
+          <picture>
+            <source srcset="assets/img/showcase/01-kasir.webp" type="image/webp">
+            <img src="assets/img/showcase/01-kasir.png"
+                 alt="Aplikasi kasir Olano menampilkan katalog produk dan keranjang aktif"
+                 width="360" height="640" fetchpriority="high" decoding="async">
+          </picture>
+        </div>
+      </div>
     </div>
+
   </section>
 
   <section class="sec" id="kebutuhan">
@@ -1251,7 +1339,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
             <picture>
               <source srcset="assets/img/showcase/01-kasir.webp" type="image/webp">
               <img src="assets/img/showcase/01-kasir.png" alt="Katalog produk dan keranjang di aplikasi kasir Olano"
-                   width="360" height="450" loading="lazy" decoding="async">
+                   width="360" height="640" loading="lazy" decoding="async">
             </picture>
           </div>
           <figcaption>
@@ -1266,7 +1354,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
             <picture>
               <source srcset="assets/img/showcase/02-bayar.webp" type="image/webp">
               <img src="assets/img/showcase/02-bayar.png" alt="Layar pembayaran QRIS dengan nominal terisi otomatis"
-                   width="360" height="450" loading="lazy" decoding="async">
+                   width="360" height="640" loading="lazy" decoding="async">
             </picture>
           </div>
           <figcaption>
@@ -1281,7 +1369,7 @@ html.no-js [data-rv]{opacity:1;transform:none}
             <picture>
               <source srcset="assets/img/showcase/03-rekap.webp" type="image/webp">
               <img src="assets/img/showcase/03-rekap.png" alt="Rekap harian: omzet Rp62.000 dari 3 item terjual"
-                   width="360" height="450" loading="lazy" decoding="async">
+                   width="360" height="640" loading="lazy" decoding="async">
             </picture>
           </div>
           <figcaption>
