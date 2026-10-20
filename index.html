@@ -415,6 +415,77 @@ svg{display:block}
 .shots__cta{margin-top:clamp(20px,2.6vw,30px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .shots__cta p{font-size:.82rem;color:var(--gray-500)}
 
+/* Hero: index layanan jadi daftar bernomor di kolom kanan. Alasan: panel angka
+   contoh bikin ragu ("ini data siapa?"), sedangkan daftar layanan langsung
+   memberi tahu apa yang bisa diklik. Hero jadi menu, bukan mockup. */
+.hero__list{display:flex;flex-direction:column;border-top:1px solid var(--gray-100)}
+.hero__list a{display:flex;align-items:center;gap:14px;min-height:56px;padding:0 4px;
+  border-bottom:1px solid var(--gray-100);transition:background .18s var(--ease)}
+.hero__list a:hover{background:var(--gray-25)}
+.hero__no{font-size:.72rem;font-weight:600;letter-spacing:.06em;color:var(--gray-500);
+  font-variant-numeric:tabular-nums;min-width:20px}
+.hero__nm{font-size:clamp(1rem,1.4vw,1.12rem);font-weight:600;letter-spacing:-.02em;
+  color:var(--ink);flex:1;transition:transform .18s var(--ease)}
+.hero__list a:hover .hero__nm{transform:translateX(8px);color:var(--blue-700)}
+.hero__ar{font-size:.9rem;color:var(--blue-600);opacity:0;transform:translateX(-4px);
+  transition:opacity .18s var(--ease),transform .18s var(--ease)}
+.hero__list a:hover .hero__ar{opacity:1;transform:translateX(0)}
+
+/* Mobile: daftar layanan jadi 2 kolom supaya hero tidak jadi 750px.
+   Alasan: 6 baris x 56px = 337px cuma untuk daftar. 2 kolom = 3 baris. */
+@media(max-width:759px){
+  .hero__list{display:grid;grid-template-columns:1fr 1fr;
+    border-top:1px solid var(--gray-100);border-left:1px solid var(--gray-100)}
+  .hero__list a{min-height:52px;padding:0 12px;gap:8px;
+    border-bottom:1px solid var(--gray-100);border-right:1px solid var(--gray-100)}
+  .hero__nm{font-size:.88rem}
+  .hero__no{font-size:.64rem;min-width:16px}
+  .hero__ar{display:none}
+}
+
+/* Mobile: 3 showcase jadi carousel horizontal. Alasan: 1478px = 29% halaman
+   kalau ditumpuk. Kartu 84vw menyisakan 16vw kartu berikutnya, jadi user
+   paham bisa digeser tanpa perlu teks "geser". */
+@media(max-width:759px){
+  .shots{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    margin-left:calc(-1 * var(--gutter,16px));margin-right:calc(-1 * var(--gutter,16px));
+    padding:0 var(--gutter,16px) 4px}
+  .shots::-webkit-scrollbar{display:none}
+  .shot{flex:0 0 84vw;scroll-snap-align:center}
+  .shot__frame{max-height:none}
+  .shot figcaption{gap:1px}
+  .shot figcaption b{font-size:.82rem}
+  .shot figcaption span{font-size:.74rem}
+}
+/* Indikator carousel: label teks + counter, bukan dot. */
+.shots__nav{display:none}
+@media(max-width:759px){
+  .shots__nav{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    margin-top:16px}
+  .shots__labels{display:flex;gap:14px;flex-wrap:wrap}
+  .shots__labels button{background:none;border:0;padding:6px 0;font:inherit;
+    font-size:.74rem;font-weight:600;color:var(--gray-500);opacity:.55;
+    border-bottom:2px solid transparent;cursor:pointer;min-height:44px;
+    transition:opacity .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease)}
+  .shots__labels button.is-on{opacity:1;color:var(--ink);border-bottom-color:var(--blue-600)}
+  .shots__count{font-size:.7rem;font-weight:600;letter-spacing:.06em;
+    color:var(--gray-500);font-variant-numeric:tabular-nums}
+}
+@media(min-width:760px){.shots__nav{display:none !important}}
+
+/* Penutup ringkas: satu CTA, tanpa fine print. Alasan: dua pilihan di akhir
+   halaman bikin ragu, dan fine print itu jawaban atas keberatan yang belum muncul.
+   Footer menyambung langsung, tanpa pemisah, supaya terasa satu bagian. */
+.closeblock{padding-bottom:0}
+.closebox{background:linear-gradient(160deg,#F7FAFF 0%,#EFF5FF 100%);
+  border:1px solid #DFE7F5;border-radius:var(--r-card);
+  padding:clamp(26px,3.4vw,44px);text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:12px}
+.closebox h2{font-size:clamp(1.35rem,2.6vw,2rem);letter-spacing:-.03em;line-height:1.15;max-width:22ch}
+.closebox .lede{font-size:.94rem;color:var(--gray-700);max-width:46ch;margin:0}
+.closebox .btn{margin-top:6px}
+
 /* Showcase mobile: hero harus masuk satu layar (844px).
    Alert dan grid modul disembunyikan di mobile, angka + bar tetap.
    Desktop tidak terpengaruh. */
@@ -741,18 +812,13 @@ html.no-js .eco{display:block}
 .svc__card .pillar__link{margin-top:auto}
 
 /* ---------- cta penutup ---------- */
-.close{background:linear-gradient(140deg,var(--blue-800),var(--blue-600));color:#fff;
-  text-align:center;border-radius:clamp(18px,3vw,28px);padding:clamp(34px,5vw,64px) clamp(20px,4vw,48px);
-  position:relative;overflow:hidden}
 .close::before{content:"";position:absolute;inset:0;
   background:radial-gradient(60% 80% at 50% 0%,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 60%)}
 .close>*{position:relative}
 .close h2{font-size:var(--h2);max-width:24ch;margin-inline:auto;color:#fff}
 .close .lede{margin:16px auto 0;color:#D6E2FF;max-width:50ch}
-.close__cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:clamp(22px,2.8vw,30px)}
 .close .btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
 .close .btn--ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
-.close__fine{margin-top:14px;font-size:var(--xs);color:#C7D8FF}
 
 /* ---------- footer ---------- */
 .foot{background:#fff;border-top:1px solid var(--gray-100);padding-block:clamp(36px,4.6vw,60px)}
@@ -882,37 +948,19 @@ html.no-js [data-rv]{opacity:1;transform:none}
           </a>
         </div>
         <p class="hero__alt">Atau <a href="#kebutuhan">lihat semua layanan</a>. Kasir dan QRIS gratis selamanya.</p>
-        <nav class="hero__index" aria-label="Layanan Olano">
-          <a href="app/kasir.html#demo">Kasir</a>
-          <a href="#kebutuhan">Pembukuan</a>
-          <a href="pajak.html">Pajak</a>
-          <a href="#kebutuhan">Jualan online</a>
-          <a href="website.html">Website</a>
-          <a href="automation.html">Otomasi</a>
-        </nav>
+
+
       </div>
 
-      <div class="showcase" data-rv aria-label="Contoh ringkasan harian Olano">
-        <div class="showcase__main">
-          <div class="showcase__head">
-            <span class="showcase__label">Ringkasan hari ini</span>
-            <span class="showcase__tag">Contoh data</span>
-          </div>
-          <div class="showcase__rows">
-            <div class="showcase__row"><span>Penjualan</span><b>Rp1.240.000</b></div>
-            <div class="showcase__row showcase__row--hl"><span>Pajak yang disisihkan</span><b>Rp6.200</b></div>
-            <div class="showcase__row showcase__row--total"><span>Untung bersih</span><b>Rp412.000</b></div>
-          </div>
-          <div class="showcase__bar" aria-hidden="true"><i data-bar="33"></i></div>
-          <p class="showcase__foot">Dihitung dari 32 transaksi. Angka contoh, bukan data Anda.</p>
-        </div>
-        <div class="showcase__grid">
-          <div class="showcase__cell"><span>Kasir</span><em>offline</em></div>
-          <div class="showcase__cell"><span>QRIS</span><em>otomatis</em></div>
-          <div class="showcase__cell"><span>Pajak</span><em>0,5% final</em></div>
-          <div class="showcase__cell"><span>Untung</span><em>harian</em></div>
-        </div>
-      </div>
+      <nav class="hero__list" aria-label="Layanan Olano">
+        <a href="app/kasir.html#demo"><span class="hero__no">01</span><span class="hero__nm">Kasir dan QRIS</span><span class="hero__ar" aria-hidden="true">→</span></a>
+        <a href="#kebutuhan"><span class="hero__no">02</span><span class="hero__nm">Pembukuan</span><span class="hero__ar" aria-hidden="true">→</span></a>
+        <a href="pajak.html"><span class="hero__no">03</span><span class="hero__nm">Pajak</span><span class="hero__ar" aria-hidden="true">→</span></a>
+        <a href="#kebutuhan"><span class="hero__no">04</span><span class="hero__nm">Jualan online</span><span class="hero__ar" aria-hidden="true">→</span></a>
+        <a href="website.html"><span class="hero__no">05</span><span class="hero__nm">Website</span><span class="hero__ar" aria-hidden="true">→</span></a>
+        <a href="automation.html"><span class="hero__no">06</span><span class="hero__nm">Otomasi</span><span class="hero__ar" aria-hidden="true">→</span></a>
+      </nav>
+
     </div>
   </section>
 
@@ -1061,6 +1109,15 @@ html.no-js [data-rv]{opacity:1;transform:none}
         </figure>
       </div>
 
+      <div class="shots__nav" data-rv>
+        <div class="shots__labels" role="tablist" aria-label="Tampilan produk">
+          <button type="button" class="is-on" data-shot="0" role="tab" aria-selected="true">Kasir offline</button>
+          <button type="button" data-shot="1" role="tab" aria-selected="false">QRIS dinamis</button>
+          <button type="button" data-shot="2" role="tab" aria-selected="false">Dashboard rekap</button>
+        </div>
+        <span class="shots__count"><b id="shotNow">01</b>/03</span>
+      </div>
+
       <div class="shots__cta" data-rv>
         <a class="btn btn--primary" href="app/kasir.html#demo">Buka demo kasir</a>
         <p>Tanpa daftar. Langsung jalan di browser.</p>
@@ -1129,16 +1186,12 @@ html.no-js [data-rv]{opacity:1;transform:none}
     </div>
   </section>
 
-  <section class="sec" style="padding-top:0">
+  <section class="sec closeblock" aria-labelledby="close-h">
     <div class="wrap">
-      <div class="close" data-rv>
-        <h2>Mulai dari <span class="it">satu transaksi</span> hari ini.</h2>
-        <p class="lede">Buka kasir, catat penjualan pertama, dan lihat rekapnya langsung. Tidak perlu pasang aplikasi.</p>
-        <div class="close__cta">
-          <a class="btn btn--ghost" href="app/kasir.html#demo" style="background:#fff;color:var(--blue-700);border-color:#fff">Coba kasir gratis</a>
-          <a class="btn btn--ghost" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20tanya%20soal%20layanan" target="_blank" rel="noopener">Tanya lewat WhatsApp</a>
-        </div>
-        <p class="close__fine">Konsultasi gratis. Tanpa kewajiban lanjut.</p>
+      <div class="closebox" data-rv>
+        <h2 id="close-h">Mulai dari <span class="it">satu transaksi</span> hari ini.</h2>
+        <p class="lede">Buka kasir, catat penjualan pertama, lihat rekapnya. Tanpa pasang aplikasi.</p>
+        <a class="btn btn--primary" href="app/kasir.html#demo">Buka kasir gratis</a>
       </div>
     </div>
   </section>
@@ -1160,14 +1213,13 @@ html.no-js [data-rv]{opacity:1;transform:none}
         <a href="kebijakan-privasi.html">Privasi</a>
         <a href="syarat-ketentuan.html">Ketentuan</a>
       </nav>
-      <a class="btn btn--primary btn--sm" href="https://wa.me/6285111044407?text=Halo%20Olano%2C%20saya%20mau%20tanya" target="_blank" rel="noopener">WhatsApp</a>
     </div>
     <div class="foot__legal">
-      <p>Olano membantu menghitung dan menyiapkan rekap pajak. Pelaporan sebagai kuasa wajib pajak dikerjakan mitra berizin. Bukan nasihat hukum atau pajak.</p>
       <p>&copy; 2026 Olano</p>
+      <p>Rekap pajak disiapkan Olano, pelaporan dikerjakan mitra berizin. Bukan nasihat pajak.</p>
     </div>
   </div>
-</footer>
+
 
 <script src="assets/js/config.js"></script>
 <script>
@@ -1516,6 +1568,44 @@ html.no-js [data-rv]{opacity:1;transform:none}
   })();
 
 
+
+  /* ---------- carousel produk: label + counter ikut posisi scroll ----------
+     Alasan: dot polos tidak memberi tahu isi kartu. Label teks langsung
+     menyebut nama tampilan, dan bisa di-tap untuk lompat. */
+  (function(){
+    var wrap = document.querySelector(".shots");
+    var nav  = document.querySelector(".shots__nav");
+    if(!wrap || !nav) return;
+    var cards = [].slice.call(wrap.querySelectorAll(".shot"));
+    var btns  = [].slice.call(nav.querySelectorAll("[data-shot]"));
+    var now   = document.getElementById("shotNow");
+    if(!cards.length) return;
+    function setActive(i){
+      btns.forEach(function(b, j){
+        var on = i === j;
+        b.classList.toggle("is-on", on);
+        b.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      if(now) now.textContent = String(i + 1).padStart(2, "0");
+    }
+    btns.forEach(function(b, i){
+      b.addEventListener("click", function(){
+        var target = cards[i];
+        wrap.scrollTo({left: target.offsetLeft - wrap.offsetLeft - 16, behavior: "smooth"});
+        setActive(i);
+      });
+    });
+    if("IntersectionObserver" in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting && en.intersectionRatio > 0.6){
+            setActive(cards.indexOf(en.target));
+          }
+        });
+      }, {root: wrap, threshold: [0.6]});
+      cards.forEach(function(c){ io.observe(c); });
+    }
+  })();
 </script>
 </body>
 </html>
