@@ -1,5 +1,5 @@
 /* Olano service worker: offline-first (PRD F2: POS 100% offline setelah login pertama) */
-var CACHE = "olano-v46"; /* v45: SaaS shell (dashboard, produk, transaksi, pajak, pengaturan) + store.js. v42: bencho PRO ports (rolling counter qty, label-input, magnet-select, slide-confirm end-only). v41: home(v3) ui polish — scroll native (spring/magnetic/parallax mati), deck layanan statis (9 kartu + filter), hero kasir demote 860px. Sebelumnya v40: posfix owner-bugs */
+var CACHE = "olano-v50"; /* v50: homepage v50 (dashboard-first, screenshots asli). v45: SaaS shell (dashboard, produk, transaksi, pajak, pengaturan) + store.js. v42: bencho PRO ports (rolling counter qty, label-input, magnet-select, slide-confirm end-only). v41: home(v3) ui polish — scroll native (spring/magnetic/parallax mati), deck layanan statis (9 kartu + filter), hero kasir demote 860px. Sebelumnya v40: posfix owner-bugs */
 var CORE = [
   "./", "index.html", "manifest.json", "robots.txt", "sitemap.xml", "llms.txt", "404.html",
   "assets/css/main.css", "assets/css/bencho.css", "assets/css/interactions.css", "assets/css/app.css",
@@ -8,6 +8,7 @@ var CORE = [
   "app/kasir.html", "app/login.html", "app/dashboard.html", "app/produk.html",
   "app/transaksi.html", "app/pajak.html", "app/pengaturan.html", /* qrcode.js: lazy via dynamic import saat QRIS pertama (runtime-cache), bukan cache awal */
   "assets/img/hero-phone-warung-1x.webp", "assets/img/hero-phone-warung.webp",
+  "assets/img/app/dashboard-1440.webp", "assets/img/app/produk-1440.webp", "assets/img/app/pajak-1440.webp",
   "templates/katalog.html",
   "umkm.html", "pajak.html", "website.html", "naik-kelas.html",
   "tentang.html", "kebijakan-privasi.html", "syarat-ketentuan.html",

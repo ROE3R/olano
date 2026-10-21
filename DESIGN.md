@@ -235,3 +235,50 @@ tanpa alasan.
 - Tanpa em dash (R-02). Tanpa "seamless/powerful".
 - Label tombol menyebut aksinya: "Tambah produk", "Ekspor CSV", "Simpan pengaturan".
 - Angka kosong ditulis "Belum ada transaksi", bukan "0" yang menyamar jadi data.
+
+
+---
+
+# 11. Homepage v50 (rombak total dari v41)
+
+Alasan rombak: v41 menjual "kasir gratis" padahal produknya sekarang aplikasi enam
+halaman. Pengunjung melihat janji kasir, padahal yang dibangun adalah dashboard,
+stok, transaksi, dan pajak. Homepage harus menjual hal yang benar.
+
+## 11.1 Perubahan struktur
+
+| v41 | v50 | Alasan |
+|---|---|---|
+| hero "Kasir gratis yang tetap jalan saat internet mati" | hero "Satu aplikasi untuk kasir, stok, dan pajak" | posisi produk berubah, judul harus ikut |
+| hero kanan = mockup ponsel (gambar) | hero = tangkapan layar dashboard asli dalam bingkai | bukti pertama harus produknya, bukan ilustrasi |
+| 6 modul dalam index bernomor | 4 baris pekerjaan editorial | pekerjaan lebih mudah dipahami daripada daftar modul |
+| section "Bukan janji" berisi kartu produk | dua panel split dengan screenshot Produk dan Pajak | screenshot menjawab "isinya apa" tanpa perlu dibayangkan |
+| harga 2 kartu + band jasa 3 kartu | 2 kartu sejajar + 4 baris jasa padat | band jasa 3 kartu terlalu ramai untuk 4 layanan |
+| navbar 6 item dengan dropdown | 5 tautan datar + dua tombol aksi | dropdown menambah klik tanpa menambah info |
+
+## 11.2 Yang dipertahankan
+
+- Tipografi: Aspekta + Instrument Serif italic untuk satu kata per headline.
+- Palet: biru `#2453EB` sebagai satu-satunya aksen; netral gray-25..700.
+- Ritme section: hero terang, strip fakta abu, section putih, section tint, putih,
+  tint, penutup gelap. Tidak ada dua section berturut-turut dengan latar sama.
+- Aturan copy: tanpa em dash, tanpa buzzword, CTA menyebut aksinya.
+
+## 11.3 Bukti di halaman
+
+Semua gambar adalah tangkapan layar aplikasi (`assets/img/app/*.webp`, dibuat dari
+`app/dashboard.html`, `produk.html`, `pajak.html` dengan data contoh). Tidak ada
+ilustrasi 3D, tidak ada foto stok, tidak ada logo klien.
+
+Angka di halaman hanya tiga jenis:
+1. dari `OLANO_CONFIG` (harga Pro, masa coba),
+2. dari aturan pajak yang dipakai aplikasi (0,5%, PP 20/2026),
+3. dari jumlah halaman yang benar-benar ada (6).
+
+Tidak ada "10.000 pengguna" atau "99,9% uptime" karena tidak ada sumbernya.
+
+## 11.4 Ukuran
+
+- 7 section, tinggi total 6309 px di 1440 (layar 1000px: ~6,3 layar).
+- 20 tautan footer, 48 tautan total, semuanya menunjuk berkas yang ada.
+- Mobile 390: tanpa overflow, semua target sentuh >= 44px.
