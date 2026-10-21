@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pengaturan: Olano</title>
+<meta name="description" content="Atur nama toko, target bulanan, tarif PPh, serta ekspor dan impor cadangan data.">
+<meta name="theme-color" content="#2453EB">
+<meta name="robots" content="noindex,follow">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon-192.png">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="sh">
+<div id="app-shell"></div>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/shared.js"></script>
+<script src="../assets/js/store.js"></script>
+<script src="../assets/js/app-shell.js"></script>
+<script>
+(function(){
+  "use strict";
+  var A = window.OlanoApp, S = window.OlanoStore;
+
+  A.mount({ active: "pengaturan", title: "Pengaturan", sub: "Toko, target, pajak, dan cadangan", mount: render });
+
+  function render(body){
+    var st = S.settings();
+    body.innerHTML =
+      '<div class="grid grid--2">' +
+
+      '<section class="card">' +
+        '<div class="card__head"><h2>Toko</h2></div>' +
+        '<form id="fStore" novalidate>' +
+          '<div class="field"><label for="sStore">Nama toko</label>' +
+            '<input class="input input--text" id="sStore" type="text" maxlength="40" value="' + A.esc(st.store) + '"></div>' +
+          '<div class="field"><label for="sOutlet">Outlet</label>' +
+            '<input class="input input--text" id="sOutlet" type="text" maxlength="40" value="' + A.esc(st.outlet || "") + '"></div>' +
+          '<p class="hint">Nama ini muncul di kasir, struk, dan judul halaman.</p>' +
+          '<div class="bar-actions" style="margin-top:14px">' +
+            '<button type="submit" class="btn btn-primary btn-sm">Simpan</button>' +
+            '<span class="hint" id="sStoreMsg" role="status" aria-live="polite"></span>' +
+          '</div>' +
+        '</form>' +
+      '</section>' +
+
+      '<section class="card">' +
+        '<div class="card__head"><h2>Target dan pajak</h2></div>' +
+        '<form id="fTax" novalidate>' +
+          '<div class="field"><label for="sTarget">Target omzet bulanan (Rp)</label>' +
+            '<input class="input" id="sTarget" type="number" min="0" step="100000" value="' + (Number(st.monthlyTarget) || 10000000) + '" inputmode="numeric"></div>' +
+          '<div class="field"><label for="sRate">Tarif PPh final (%)</label>' +
+            '<input class="input" id="sRate" type="number" min="0" max="100" step="0.1" value="' + (Number(st.pphRate) != null ? Number(st.pphRate) : 0.5) + '" inputmode="decimal"></div>' +
+          '<div class="field"><label for="sFree">Ambang bebas PPh final (Rp)</label>' +
+            '<input class="input" id="sFree" type="number" min="0" step="1000000" value="' + (Number(st.pphThreshold) || 500000000) + '" inputmode="numeric"></div>' +
+          '<p class="hint">Default mengikuti PP 20/2026: final 0,5%, bebas s.d. Rp500 juta untuk Orang Pribadi. Ubah hanya kalau aturan berubah.</p>' +
+          '<div class="bar-actions" style="margin-top:14px">' +
+            '<button type="submit" class="btn btn-primary btn-sm">Simpan</button>' +
+            '<span class="hint" id="sTaxMsg" role="status" aria-live="polite"></span>' +
+          '</div>' +
+        '</form>' +
+      '</section>' +
+      '</div>' +
+
+      '<section class="card">' +
+        '<div class="card__head"><h2>Cadangan data</h2></div>' +
+        '<p class="hint" style="margin-top:0">Data tinggal di perangkat ini. Ekspor menghasilkan satu berkas JSON berisi produk, pengaturan, dan seluruh transaksi. Simpan berkasnya sebelum mengganti perangkat atau membersihkan browser.</p>' +
+        '<div class="bar-actions" style="margin-top:14px">' +
+          '<button type="button" class="btn btn-line btn-sm" id="bExport">Ekspor cadangan</button>' +
+          '<button type="button" class="btn btn-line btn-sm" id="bImport">Impor cadangan</button>' +
+          '<input type="file" id="fImport" accept="application/json,.json" hidden>' +
+          '<span class="spacer"></span>' +
+          '<button type="button" class="btn btn-danger btn-sm" id="bReset">Hapus semua data</button>' +
+          '<span class="hint" id="sBackupMsg" role="status" aria-live="polite"></span>' +
+        '</div>' +
+      '</section>' +
+
+      '<section class="card">' +
+        '<div class="card__head"><h2>Tentang data ini</h2></div>' +
+        '<div class="rows">' +
+          '<div class="rowline"><span class="k">Produk tersimpan</span><span class="v" id="iProd">memuat</span></div>' +
+          '<div class="rowline"><span class="k">Transaksi tersimpan</span><span class="v" id="iSales">memuat</span></div>' +
+          '<div class="rowline"><span class="k">Penyimpanan</span><span class="v" style="font-size:12px">IndexedDB + localStorage</span></div>' +
+          '<div class="rowline"><span class="k">Terakhir diubah</span><span class="v" style="font-size:12px" id="iUpd">memuat</span></div>' +
+        '</div>' +
+      '</section>';
+
+    /* toko */
+    document.getElementById("fStore").addEventListener("submit", function(e){
+      e.preventDefault();
+      var name = document.getElementById("sStore").value.trim();
+      if (!name) { msg("sStoreMsg", "Nama toko tidak boleh kosong."); return; }
+      S.saveSettings({ store: name, outlet: document.getElementById("sOutlet").value.trim() });
+      msg("sStoreMsg", "Tersimpan.");
+    });
+
+    /* pajak */
+    document.getElementById("fTax").addEventListener("submit", function(e){
+      e.preventDefault();
+      var target = Number(document.getElementById("sTarget").value);
+      var rate = Number(document.getElementById("sRate").value);
+      var free = Number(document.getElementById("sFree").value);
+      if (!(target >= 0)) { msg("sTaxMsg", "Target harus angka nol atau lebih."); return; }
+      if (!(rate >= 0 && rate <= 100)) { msg("sTaxMsg", "Tarif harus antara 0 dan 100 persen."); return; }
+      if (!(free >= 0)) { msg("sTaxMsg", "Ambang bebas harus angka nol atau lebih."); return; }
+      S.saveSettings({ monthlyTarget: target, pphRate: rate, pphThreshold: free });
+      msg("sTaxMsg", "Tersimpan.");
+    });
+
+    /* ekspor */
+    document.getElementById("bExport").addEventListener("click", function(){
+      S.exportAll().then(function(obj){
+        var blob = new Blob([JSON.stringify(obj, null, 1)], { type: "application/json" });
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "olano-cadangan-" + new Date().toISOString().slice(0, 10) + ".json";
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+        msg("sBackupMsg", "Cadangan diunduh (" + obj.products.length + " produk, " + obj.sales.length + " transaksi).");
+      }).catch(function(err){
+        msg("sBackupMsg", "Ekspor gagal: " + (err && err.message || "tidak diketahui"));
+      });
+    });
+
+    /* impor */
+    var file = document.getElementById("fImport");
+    document.getElementById("bImport").addEventListener("click", function(){ file.click(); });
+    file.addEventListener("change", function(){
+      var f = file.files && file.files[0];
+      if (!f) return;
+      var reader = new FileReader();
+      reader.onload = function(){
+        try {
+          var obj = JSON.parse(reader.result);
+          S.importAll(obj);
+          msg("sBackupMsg", "Cadangan dimuat. Muat ulang halaman untuk melihat angkanya.");
+          counts();
+        } catch (err) {
+          msg("sBackupMsg", "Berkas tidak dikenali: " + (err && err.message || "bukan JSON Olano"));
+        }
+      };
+      reader.readAsText(f);
+    });
+
+    /* reset */
+    var resetArmed = false;
+    document.getElementById("bReset").addEventListener("click", function(){
+      var b = this;
+      if (!resetArmed) {
+        resetArmed = true;
+        b.textContent = "Yakin? Klik lagi";
+        setTimeout(function(){ resetArmed = false; b.textContent = "Hapus semua data"; }, 5000);
+        return;
+      }
+      b.disabled = true;
+      /* resetAll menutup koneksi IDB dulu. Tanpa itu, deleteDatabase diblokir
+         dan open berikutnya menggantung: data tampak terhapus padahal DB masih
+         dipegang tab ini juga. */
+      S.resetAll().then(function(where){
+        b.disabled = false;
+        b.textContent = "Hapus semua data";
+        resetArmed = false;
+        if (where === "ok") msg("sBackupMsg", "Semua data dihapus. Muat ulang halaman untuk melihat keadaan kosong.");
+        else if (where === "blocked") msg("sBackupMsg", "Database ditahan tab lain. Tutup tab Olano yang lain lalu ulangi.");
+        else if (where === "unsupported") msg("sBackupMsg", "Browser ini tidak mendukung IndexedDB. Data localStorage sudah dibersihkan.");
+        else msg("sBackupMsg", "Penghapusan gagal. Coba muat ulang lalu ulangi.");
+        counts();
+      });
+    });
+
+    counts();
+
+    function counts(){
+      document.getElementById("iProd").textContent = S.products().length;
+      document.getElementById("iUpd").textContent = st.updatedAt ? new Date(S.settings().updatedAt).toLocaleString("id-ID") : "Belum diubah";
+      S.sales().then(function(list){
+        document.getElementById("iSales").textContent = (list || []).length;
+      }).catch(function(){ document.getElementById("iSales").textContent = "tidak terbaca"; });
+    }
+    function msg(id, text){
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.textContent = text;
+      clearTimeout(el._t);
+      el._t = setTimeout(function(){ el.textContent = ""; }, 4000);
+    }
+  }
+})();
+</script>
+</body>
+</html>

@@ -137,3 +137,101 @@ Lighthouse mobile: Perf >= 90, A11y 100, CLS < 0.05, LCP <= 2.5s. Band gelap = C
 Delivery Gate antislop (4 blok) + checklist UI/Copy/Human/Layout semua YA; verifikasi
 Playwright 1440 & 390: overflow 0, reveal ngejalan, 0 console error, semua link hidup,
 kalkulator benar, kontras spot-check band gelap.
+
+---
+
+# 10. Bahasa visual aplikasi (v3, acuan: Payer)
+
+Sumber arah: screenshot Payer (SaaS finance, 2026-10-21) — owner: "jadikan ini design md,
+olano bakal jadi SaaS bisnis lengkap, perbaiki sampai dashboard dll".
+
+## 10.1 Kenapa Payer, dan apa yang TIDAK diambil
+
+Yang diambil: **struktur produk-nya**, bukan brand-nya. Payer memakai pola yang sudah
+terbukti untuk SaaS finansial: satu angka besar (saldo/omzet) → dua baris arus masuk-keluar
+→ kartu target dengan tab → grafik batang → kartu fitur dengan mockup UI asli di dalamnya.
+Pola itu yang dipakai untuk dashboard Olano.
+
+Yang **tidak** diambil (R-30, jangan klon): logo, nama, maskot, foto tangan memegang ponsel,
+dan deretan logo klien palsu (Slack/Netflix/Coinbase/Airbnb/Stripe di bawah "Trusted by
+6,500 companies" — itu klaim tanpa bukti, R-36/R-17). Olano tidak punya 6.500 pelanggan,
+jadi tidak ada baris logo. Tidak ada juga badge "12K+" atau "Secure Payment" yang tidak
+bisa dibuktikan.
+
+## 10.2 Token tambahan (dari ukur warna screenshot)
+
+| Token | Nilai | Peran | Alasan (R-31) |
+|---|---|---|---|
+| `--surface` | `#F6F7F9` | latar aplikasi (bukan putih) | memisahkan shell dari kartu putih tanpa butuh shadow |
+| `--accent-warm` | `#FF9705` | **satu** seri data: batang "hari ini" di grafik + satu kata highlight | pembeda series tanpa menambah warna palet; dipakai maks 2 tempat per layar |
+| `--ok` | `#1B9E5A` | angka naik, status aman | kontras 4.6:1 di putih |
+| `--warn` | `#B26B00` | stok menipis, di atas ambang | kontras 4.5:1 |
+| `--danger` | `#C0392B` | angka turun, hapus | kontras 4.7:1 |
+
+Palet inti tetap 2 + 1 aksen (R-29): ink `#0B1220`, putih, biru `#2453EB`.
+Warm dan status **bukan** warna brand — hanya penanda data. Kalau dipakai di luar grafik
+atau status, itu penyimpangan.
+
+Alasan biru Olano dipertahankan meski Payer `#2756E2`: selisih ΔE < 2, dan biru lama sudah
+hidup di PWA ikon, manifest, dan seluruh halaman marketing. Ganti biru = ganti identitas
+tanpa alasan.
+
+## 10.3 Bentuk (beda dari halaman marketing)
+
+- **Kartu**: radius 14, border 1px `--gray-100`, **tanpa shadow** di light. Di atas `--surface`
+  kartu putih terbaca tanpa bayangan; shadow hanya di sheet/dialog (elevasi nyata).
+- **Tombol**: pill (sama dengan marketing), h44 mobile / h40 di dalam tabel.
+- **Baris data**: tinggi 52, hairline bawah, angka rata kanan `tabular-nums`.
+- **Grafik batang**: lebar batang 28-40, radius atas 6, gap 8-14; batang hari ini `--accent-warm`,
+  sisanya `--blue-600` pada 28% opacity + garis dasar `--gray-100`. Tidak ada gridline vertikal.
+- **Navigasi kiri**: lebar 248 desktop, rail 64 pada ≤1080, sheet bawah pada ≤760.
+  Item aktif = latar `--blue-50` + teks `--blue-700` + bar 2px di kiri. Bukan pill.
+
+## 10.4 Shell aplikasi (RHYTHM 2 / MOTION 1)
+
+```
+┌────────────┬──────────────────────────────────────────────┐
+│ brand      │ topbar: judul halaman · toko · [cari] [akun] │
+│ ─────────  ├──────────────────────────────────────────────┤
+│ Ringkasan  │  konten halaman (max 1180, gutter 24)        │
+│ Kasir      │                                              │
+│ Produk     │                                              │
+│ Transaksi  │                                              │
+│ Pajak      │                                              │
+│ Pengaturan │                                              │
+└────────────┴──────────────────────────────────────────────┘
+```
+
+- MOTION turun dari 2 ke **1**: aplikasi dipakai puluhan kali sehari, jadi hanya hover/focus
+  state dan transisi 150ms. Reveal-on-scroll dimatikan di dalam shell (alasan sama dengan
+  catatan `slide-confirm`: performa bukan tempatnya di alat kerja).
+- Setiap halaman wajib punya **empty state bernama** (R-27) dan **error state** kalau
+  penyimpanan gagal; bukan tabel kosong tanpa penjelasan.
+
+## 10.5 Peta halaman dashboard
+
+| # | Blok | Isi | Sumber angka |
+|---|---|---|---|
+| 1 | Saldo/Omzet hari ini | angka besar + delta vs kemarin + label "hari ini" | `sales` IndexedDB difilter `startOfDay` |
+| 2 | Arus | Omzet hari ini, Transaksi hari ini, Rata-rata per transaksi | agregasi `sales` |
+| 3 | Target | kartu target bulanan: progres, sisa, status on-track | target disimpan di `olano-settings` (default 10 juta) |
+| 4 | Grafik 7 hari | 7 batang, hari ini warm | `daySeries(7)` |
+| 5 | Produk terlaris | 5 baris: nama, qty, omzet | `topProducts(5)` |
+| 6 | Stok menipis | ≤3 stok, tautan ke Produk | `lowStock(3)` |
+| 7 | Transaksi terakhir | 5 baris: waktu, item, metode, total | `sales` sortir desc |
+
+## 10.6 Halaman lain (semua fungsional, bukan mockup)
+
+- **Kasir** (sudah ada): POS offline, keranjang, QRIS, struk, sinkron.
+- **Produk**: tabel CRUD (tambah/edit/hapus), filter kategori, cari, indikator stok.
+- **Transaksi**: daftar penjualan, filter 7/30 hari, cari, ekspor CSV, ringkasan.
+- **Pajak**: PPh final 0,5% dihitung dari omzet nyata per bulan + proyeksi tahunan,
+  memakai `OLANO_CONFIG.tax` (bukan hardcode).
+- **Pengaturan**: nama toko, target bulanan, tarif PPh, ekspor/impor cadangan JSON, reset.
+
+## 10.7 Aturan copy di dalam aplikasi
+
+- Bahasa Indonesia, sapaan "Anda", angka pakai `Rp` + pemisah titik (helper `OLANO.rp`).
+- Tanpa em dash (R-02). Tanpa "seamless/powerful".
+- Label tombol menyebut aksinya: "Tambah produk", "Ekspor CSV", "Simpan pengaturan".
+- Angka kosong ditulis "Belum ada transaksi", bukan "0" yang menyamar jadi data.

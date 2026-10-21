@@ -1,9 +1,12 @@
 /* Olano service worker: offline-first (PRD F2: POS 100% offline setelah login pertama) */
-var CACHE = "olano-v41"; /* v41: home(v3) ui polish — scroll native (spring/magnetic/parallax mati), deck layanan statis (9 kartu + filter), hero kasir demote 860px. Sebelumnya v40: posfix owner-bugs */
+var CACHE = "olano-v46"; /* v45: SaaS shell (dashboard, produk, transaksi, pajak, pengaturan) + store.js. v42: bencho PRO ports (rolling counter qty, label-input, magnet-select, slide-confirm end-only). v41: home(v3) ui polish — scroll native (spring/magnetic/parallax mati), deck layanan statis (9 kartu + filter), hero kasir demote 860px. Sebelumnya v40: posfix owner-bugs */
 var CORE = [
   "./", "index.html", "manifest.json", "robots.txt", "sitemap.xml", "llms.txt", "404.html",
-  "assets/css/main.css", "assets/js/config.js", "assets/js/shared.js", "assets/js/motion.js",
-  "app/kasir.html", "app/login.html", /* qrcode.js: lazy via dynamic import saat QRIS pertama (runtime-cache), bukan cache awal */
+  "assets/css/main.css", "assets/css/bencho.css", "assets/css/interactions.css", "assets/css/app.css",
+  "assets/js/config.js", "assets/js/shared.js", "assets/js/motion.js", "assets/js/interactions.js",
+  "assets/js/store.js", "assets/js/app-shell.js",
+  "app/kasir.html", "app/login.html", "app/dashboard.html", "app/produk.html",
+  "app/transaksi.html", "app/pajak.html", "app/pengaturan.html", /* qrcode.js: lazy via dynamic import saat QRIS pertama (runtime-cache), bukan cache awal */
   "assets/img/hero-phone-warung-1x.webp", "assets/img/hero-phone-warung.webp",
   "templates/katalog.html",
   "umkm.html", "pajak.html", "website.html", "naik-kelas.html",
@@ -76,16 +79,22 @@ self.addEventListener("fetch", function (e) {
     );
     return;
   }
+  /* Asset statis: stale-while-revalidate.
+     Cache-first murni (versi lama) membuat setiap edit CSS/JS tidak terlihat
+     sampai CACHE dibump manual — sudah dua kali menipu pengujian. SWR menyajikan
+     salinan cache SEKARANG dan memperbaruinya di latar, jadi halaman berikutnya
+     sudah memakai versi baru tanpa menyentuh konstanta CACHE.
+     Offline tetap jalan: kalau jaringan gagal, cache yang menjawab. */
   e.respondWith(
     caches.match(req).then(function (hit) {
-      if (hit) return hit;
-      return fetch(req).then(function (res) {
+      var net = fetch(req).then(function (res) {
         if (res && res.status === 200) {
           var copy = res.clone();
           caches.open(CACHE).then(function (c) { c.put(req, copy); }).catch(function () {});
         }
         return res;
-      });
+      }).catch(function () { return hit; });
+      return hit || net;
     })
   );
 });

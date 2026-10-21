@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pajak: Olano</title>
+<meta name="description" content="PPh final UMKM dihitung dari omzet nyata: per bulan, proyeksi tahunan, dan status ambang.">
+<meta name="theme-color" content="#2453EB">
+<meta name="robots" content="noindex,follow">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon-192.png">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="sh">
+<div id="app-shell"></div>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/shared.js"></script>
+<script src="../assets/js/store.js"></script>
+<script src="../assets/js/app-shell.js"></script>
+<script>
+(function(){
+  "use strict";
+  var A = window.OlanoApp, S = window.OlanoStore;
+  var MONTHS = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+
+  A.mount({ active: "pajak", title: "Pajak", sub: "PPh final dari omzet nyata", mount: render });
+
+  function render(body){
+    body.innerHTML = '<p class="loading" id="xLoad"><i aria-hidden="true"></i>Menghitung dari transaksi…</p><div id="xWrap" hidden></div>';
+
+    S.sales().then(function(list){
+      list = list || [];
+      var cfg = (window.OLANO_CONFIG && window.OLANO_CONFIG.tax) || {};
+      var st = S.settings();
+      var rate = Number(st.pphRate != null ? st.pphRate : 0.5) / 100;   /* persen -> rasio */
+      var free = Number(st.pphThreshold || 500000000);
+      var ceiling = Number(st.pphCeiling || 4800000000);
+
+      /* omzet per bulan kalender, 6 bulan terakhir */
+      var now = new Date();
+      var months = [];
+      for (var i = 5; i >= 0; i--) {
+        var d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        var from = d.getTime();
+        var to = new Date(d.getFullYear(), d.getMonth() + 1, 1).getTime();
+        var rows = list.filter(function(s){ return s.ts >= from && s.ts < to; });
+        months.push({ label: MONTHS[d.getMonth()] + " " + d.getFullYear(), short: MONTHS[d.getMonth()].slice(0,3), from: from, to: to, omzet: S.sum(rows), count: rows.length });
+      }
+
+      var thisMonth = months[months.length - 1].omzet;
+      var year = now.getFullYear();
+      var ytd = list.filter(function(s){
+        return s.ts >= new Date(year, 0, 1).getTime() && s.ts < new Date(year + 1, 0, 1).getTime();
+      });
+      var ytdOmzet = S.sum(ytd);
+      /* proyeksi: rata-rata bulan berjalan x 12, dari bulan yang ada datanya saja */
+      var activeMonths = months.filter(function(m){ return m.omzet > 0; }).length || 1;
+      var runRate = (months.reduce(function(a, m){ return a + m.omzet; }, 0) / activeMonths) * 12;
+      var projected = Math.max(ytdOmzet, Math.round(runRate));
+
+      /* Aturan OP: selama omzet setahun masih di bawah ambang bebas, setoran
+         finalnya nihil. Kalau sudah lewat, PPh dihitung dari omzet bulan itu. */
+      var bebasTahun = ytdOmzet <= free;
+      var dasarBulan = bebasTahun ? 0 : Math.max(0, thisMonth);
+      var pphBulan = Math.round(dasarBulan * rate);
+      var bebas = ytdOmzet <= free;
+      var lewatCeiling = projected > ceiling;
+
+      var html = "";
+
+      html += '<div class="grid grid--main">';
+      html += '<section class="card">' +
+        '<p class="metric__label">PPh final bulan ini (' + months[months.length-1].label + ')</p>' +
+        '<p class="metric__big">' + A.rp(pphBulan) + '</p>' +
+        '<div class="metric__delta"><span class="flat">' +
+          (bebasTahun
+            ? 'Nihil tahun ini: omzet ' + A.rp(ytdOmzet) + ' masih di bawah ambang ' + A.rp(free)
+            : (rate * 100).toLocaleString("id-ID") + '% dari omzet ' + A.rp(thisMonth)) +
+        '</span></div>' +
+        '<div class="rows" style="margin-top:14px">' +
+          '<div class="rowline"><span class="k">Omzet bulan ini</span><span class="v">' + A.rp(thisMonth) + '</span></div>' +
+          '<div class="rowline"><span class="k">Omzet tahun berjalan (' + year + ')</span><span class="v">' + A.rp(ytdOmzet) + '</span></div>' +
+          '<div class="rowline"><span class="k">Proyeksi setahun</span><span class="v">' + A.rp(projected) + '</span></div>' +
+          '<div class="rowline"><span class="k">Ambang bebas PPh final</span><span class="v">' + A.rp(free) + '</span></div>' +
+        '</div>' +
+      '</section>';
+
+      html += '<section class="card">' +
+        '<div class="card__head"><h2>Status skema</h2>' +
+          '<a class="more" href="pengaturan.html">Ubah tarif</a></div>' +
+        '<div class="rows">' +
+          '<div class="rowline"><span class="k">Skema berlaku</span><span class="v">' +
+            (lewatCeiling ? '<span class="tag tag--no">Umum (laba)</span>' : '<span class="tag tag--ok">Final 0,5%</span>') + '</span></div>' +
+          '<div class="rowline"><span class="k">Batas final</span><span class="v">' + A.rp(ceiling) + '</span></div>' +
+          '<div class="rowline"><span class="k">Bebas PPh final tahun ini</span><span class="v">' +
+            (bebas ? '<span class="tag tag--ok">Ya, omzet di bawah ' + A.rp(free) + '</span>'
+                   : '<span class="tag tag--warn">Tidak, sudah lewat ' + A.rp(free) + '</span>') + '</span></div>' +
+          '<div class="rowline"><span class="k">Dasar aturan</span><span class="v" style="font-size:12px">' +
+            A.esc((cfg.ppNumber || "PP 20/2026")) + '</span></div>' +
+        '</div>' +
+        '<p class="hint" style="margin-top:12px">' +
+          (lewatCeiling
+            ? 'Proyeksi omzet melewati batas skema final. Siapkan pembukuan laba sebelum tahun berjalan berakhir.'
+            : 'Selama proyeksi di bawah batas, PPh final 0,5% tetap berlaku. Angka di sini dihitung dari transaksi kasir, bukan perkiraan.') +
+        '</p>' +
+      '</section>';
+      html += '</div>';
+
+      /* tabel 6 bulan */
+      html += '<section class="card"><div class="card__head"><h2>Enam bulan terakhir</h2></div>' +
+        '<div class="tbl-wrap"><table class="tbl"><thead><tr>' +
+        '<th>Bulan</th><th class="num">Omzet</th><th class="num">Transaksi</th><th class="num">PPh final</th></tr></thead><tbody>';
+      months.forEach(function(m, idx){
+        var isNow = idx === months.length - 1;
+        html += '<tr' + (isNow ? ' style="background:var(--blue-50,#EFF5FF)"' : '') + '>' +
+          '<td>' + m.label + (isNow ? ' <span class="tag tag--blue">bulan ini</span>' : '') + '</td>' +
+          '<td class="num">' + (m.omzet ? A.rp(m.omzet) : '<span class="tag">kosong</span>') + '</td>' +
+          '<td class="num">' + m.count + '</td>' +
+          '<td class="num">' + (m.omzet ? A.rp(Math.round(m.omzet * rate)) : "n/a") + '</td>' +
+        '</tr>';
+      });
+      html += '</tbody></table></div>' +
+        '<p class="hint">PPh dihitung dari omzet bruto per bulan. Kalau omzet setahun masih di bawah ambang bebas, setoran finalnya nihil.</p>' +
+        '<div class="bar-actions" style="margin-top:14px">' +
+          '<a class="btn btn-line btn-sm" href="../alat/kalkulator-pph-final-umkm.html">Buka kalkulator pajak</a>' +
+          '<a class="btn btn-primary btn-sm" href="transaksi.html">Lihat transaksi</a>' +
+        '</div>' +
+      '</section>';
+
+      document.getElementById("xLoad").hidden = true;
+      var wrap = document.getElementById("xWrap");
+      wrap.hidden = false;
+      wrap.innerHTML = html;
+    }).catch(function(err){
+      document.getElementById("xLoad").hidden = true;
+      var wrap = document.getElementById("xWrap");
+      wrap.hidden = false;
+      wrap.innerHTML = '<div class="errbox"><b>Perhitungan gagal.</b> ' +
+        A.esc(err && err.message || "Penyimpanan perangkat menolak akses.") + '</div>';
+    });
+  }
+})();
+</script>
+</body>
+</html>

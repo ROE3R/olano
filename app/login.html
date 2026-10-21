@@ -12,6 +12,7 @@
 <link rel="preload" href="../assets/css/main.css" as="style">
 <style>/* [launch] critical: ukuran ikon sebelum main.css tiba (cegah SVG 300x150 -> CLS) */svg.ic{width:20px;height:20px;flex:none}svg.ic.sm{width:15px;height:15px}.feat-ic svg.ic{width:22px;height:22px}</style>
 <link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/interactions.css">
 </head>
 <body>
 <a class="skip" href="#auth-card">Langsung ke form</a>
@@ -44,12 +45,12 @@
       <form id="form-login" novalidate>
         <div class="callout light warn" id="login-error" role="alert" style="display:none;margin-bottom:14px"></div>
         <div class="field">
-          <label for="login-user">Username</label>
-          <input id="login-user" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+          <div class="lbi"><label for="login-user">Username</label>
+          <input id="login-user" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required></div>
         </div>
         <div class="field">
-          <label for="login-pass">Password</label>
-          <input id="login-pass" name="password" type="password" autocomplete="current-password" required>
+          <div class="lbi"><label for="login-pass">Password</label>
+          <input id="login-pass" name="password" type="password" autocomplete="current-password" required></div>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Masuk</button>
       </form>
@@ -58,22 +59,23 @@
       <form id="form-reg" style="display:none" novalidate>
         <div class="callout light warn" id="reg-error" role="alert" style="display:none;margin-bottom:14px"></div>
         <div class="field">
-          <label for="reg-store">Nama toko</label>
-          <input id="reg-store" name="store" type="text" autocomplete="organization" required>
+          <div class="lbi"><label for="reg-store">Nama toko</label>
+          <input id="reg-store" name="store" type="text" autocomplete="organization" required></div>
         </div>
         <div class="field">
-          <label for="reg-user">Username</label>
-          <input id="reg-user" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+          <div class="lbi"><label for="reg-user">Username</label>
+          <input id="reg-user" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required></div>
         </div>
         <div class="field">
-          <label for="reg-pass">Password</label>
-          <input id="reg-pass" name="password" type="password" autocomplete="new-password" required>
+          <div class="lbi"><label for="reg-pass">Password</label>
+          <input id="reg-pass" name="password" type="password" autocomplete="new-password" required></div>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Daftar &amp; masuk</button>
       </form>
 
       <div class="auth-demo" id="auth-demo">Akun demo: <b>demo</b> / <b>olano</b> &middot; Kopi Senja</div>
       <p class="small" style="text-align:center;margin-top:12px"><a href="kasir.html#demo" style="color:var(--blue-700);font-weight:600">Tidak mau daftar dulu? Buka kasir demo &rarr;</a></p>
+      <p class="small" style="text-align:center;margin-top:6px"><a href="dashboard.html" style="color:var(--blue-700);font-weight:600">Lihat dashboard usaha &rarr;</a></p>
       <p class="auth-note">Akun tersimpan di perangkat ini (localStorage, password di-hash + salt).
         Tanpa server, tetap jalan offline. <a href="../index.html">olano.xyz</a></p>
     </div>
@@ -81,6 +83,7 @@
 </main>
 
 <script src="../assets/js/config.js"></script>
+<script src="../assets/js/interactions.js"></script>
 <script>
 (function(){
   "use strict";
@@ -156,7 +159,7 @@
     post("login", {username:u, password:p}).then(function(j){
       if(btn) btn.disabled = false;
       if(!j.ok){ showErr("login-error", msg(j.error)); return; }
-      location.replace("kasir.html");
+      location.replace("dashboard.html");
     });
   });
 
@@ -174,15 +177,26 @@
     post("register", {username:u, password:p, store:store.slice(0,40)}).then(function(j){
       if(btn) btn.disabled = false;
       if(!j.ok){ showErr("reg-error", msg(j.error)); return; }
-      location.replace("kasir.html");
+      location.replace("dashboard.html");
     });
   });
 
   /* ---------- init: sesi sekarang dari cookie server ---------- */
   fetch("/api/auth?action=me", {credentials:"same-origin"})
     .then(function(r){ return r.ok ? r.json() : null; })
-    .then(function(j){ if(j && j.ok) location.replace("kasir.html"); })
+    .then(function(j){ if(j && j.ok) location.replace("dashboard.html"); })
     .catch(function(){});
+})();
+</script>
+<script>
+/* bencho PRO label-input: label mengambang di kelima field auth. Satu input
+   asli per field, jadi paste/autofill/screen reader tetap native. */
+(function(){
+  if(!window.OlanoField) return;
+  ["login-user","login-pass","reg-store","reg-user","reg-pass"].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) window.OlanoField(el);
+  });
 })();
 </script>
 </body>

@@ -1,0 +1,177 @@
+/* ============================================================================
+   Olano — bencho-farm/interactions.css
+   Port vanilla dari blok Bencho PRO yang diambil 2026-10-21 lewat /api/block-source
+   (akun Pro-owner). Sumber TSX mentah: /root/bencho-farm/src/*.tsx.
+   Yang dipakai di Olano: rolling-counter, label-input, magnet-select.
+   Angka & rumus diambil apa adanya dari sumber — bukan tafsiran.
+   ----------------------------------------------------------------------------
+   • Counter: tiap kolom menghitung JUMLAH PULUHAN, bukan digitnya. 1284 → kolom
+     satuan target 1284, puluhan 128, ratusan 12. Jadi 9→10 kolom satuan maju satu
+     langkah (9→0), puluhan maju satu — strip tak pernah mundur 8 digit.
+     (rolling-counter.tsx `bump` + `tick`)
+   • Spring per-frame: damping DIPANGKATKAN dt, bukan dikali — frame drop tidak
+     mengubah perilaku. k 0.08..0.24, d 0.62..0.82. (sama dengan springOf Bencho)
+   • Digit blur saat bergerak: min(3, |vel|*2.4) px, dinormalkan ke knob blur/50.
+   • Label input: satu <input> asli, label mengambang; notch SVG dibuka dari tengah
+     keluar, bukan outline digambar ulang. (label-input.tsx)
+   • Magnet select: tiap opsi tertarik ke pointer dalam radius, magnitudo dibatasi
+     `pull` px, lalu spring balik. (magnet-select.tsx)
+   ========================================================================== */
+
+/* ------------------------------------------------ 1. Rolling counter (qty) --- */
+/* Dipakai di keranjang kasir menggantikan tombol −/n/+ biasa. */
+.rct {
+  --rct-r: 12px;
+  --rct-in: 8px;
+  --rct-cell: 30px;
+  display: inline-flex;
+  align-items: stretch;
+  height: calc(var(--rct-cell) + var(--rct-in) * 2);
+  padding: 0;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--rct-r);
+  background: var(--white);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  user-select: none;
+  -webkit-user-select: none;
+}
+.rct-btn {
+  flex: none;
+  width: 32px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-700);
+  font: inherit;
+  font-size: 15px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  touch-action: none;
+}
+.rct-btn:active { background: var(--blue-50); color: var(--blue-700); }
+.rct-btn:focus-visible { outline: 2px solid var(--blue-600); outline-offset: -2px; }
+.rct-win {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: var(--rct-cell);
+  min-width: 20px;              /* satu digit = 20px; tanpa ini flex menekan jendela jadi 7px */
+  padding: 0 2px;
+  margin: var(--rct-in) 0;
+  cursor: grab;
+  touch-action: none;
+}
+.rct-win:active { cursor: grabbing; }
+.rct-cell {
+  display: block;
+  overflow: hidden;
+}
+.rct-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  will-change: transform;
+}
+.rct-d {
+  height: var(--rct-cell);
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+/* cadangan angka 0 di ujung strip: 9→0 tidak perlu memutar balik 9 digit */
+.rct-d:last-child { opacity: 1; }
+.rct[data-live="0"] .rct-strip { transition: transform 180ms var(--ease-standard); }
+@media (prefers-reduced-motion: reduce) {
+  .rct[data-live="0"] .rct-strip { transition: none; }
+}
+
+/* ------------------------------------------- 2. Label input (float label) --- */
+/* Dipakai di form login/daftar: label naik ke tepi atas saat fokus, garis atas
+   membuka celah dari tengah keluar. Outline selalu utuh (bukan digambar ulang). */
+.lbi { position: relative; }
+.lbi-field {
+  width: 100%;
+  min-height: 52px;
+  padding: 18px var(--sp-4) 6px;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--r-md);
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  transition: border-color var(--dur-fast);
+}
+.lbi-field:focus { outline: none; border-color: var(--blue-600); }
+.lbi-label {
+  position: absolute;
+  left: var(--sp-4);
+  top: 50%;
+  translate: 0 -50%;
+  font-size: 15px;
+  color: var(--gray-500);
+  font-family: var(--font-sans);
+  pointer-events: none;
+  min-height: 0;            /* override aturan target-sentuh global */
+  padding: 0;
+  margin: 0;
+  line-height: 1.2;
+  transition: top var(--dur-fast) var(--ease-emphasized),
+              font-size var(--dur-fast) var(--ease-emphasized),
+              color var(--dur-fast) linear,
+              translate var(--dur-fast) var(--ease-emphasized);
+}
+.lbi[data-float="1"] .lbi-label {
+  top: 12px;
+  translate: 0 0;
+  font-size: 11px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  color: var(--blue-600);
+}
+.lbi-field:focus-visible { box-shadow: 0 0 0 4px var(--blue-100); }
+
+/* --------------------------------------------- 3. Magnet select (opsi tarik) --- */
+/* Dipakai di segmen "Jenis wajib pajak" kalkulator PPh: kandidat terdekat
+   tertarik sedikit ke pointer, lalu spring balik. Batas `pull` 4px supaya
+   tidak pernah menjauh dari jari. */
+.msel { display: flex; flex-wrap: wrap; gap: 8px; }
+.msel-opt {
+  position: relative;
+  padding: 9px 15px;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--r-full);
+  background: var(--white);
+  color: var(--gray-700);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  will-change: translate;
+}
+.msel-opt[aria-pressed="true"] {
+  background: var(--blue-600);
+  border-color: var(--blue-600);
+  color: #fff;
+}
+.msel-opt:focus-visible { outline: 2px solid var(--blue-600); outline-offset: 3px; }
+
+/* --------------------------------------------------- 4. Toast (undo stack) --- */
+/* Sumber: toast-stack.tsx — tumpukan tiga, yang depan paling baru, dua di
+   belakang mengintip 14px dan 5% lebih kecil; menunjuk tumpukan membukanya
+   jadi daftar, menjauh menggumpal lagi. Versi Olano: satu toast DOM yang
+   sudah ada dipakai ulang, jadi di sini hanya perilaku tumpuk untuk kasus
+   dua notifikasi beruntun (simpan + sinkron). */
+.toast-stack { position: fixed; left: 50%; bottom: calc(88px + env(safe-area-inset-bottom)); translate: -50% 0; z-index: 230; pointer-events: none; }

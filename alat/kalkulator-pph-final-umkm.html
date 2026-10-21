@@ -14,6 +14,7 @@
 <link rel="preload" href="../assets/css/main.css" as="style">
 <style>/* [launch] critical: ukuran ikon sebelum main.css tiba (cegah SVG 300x150 -> CLS) */svg.ic{width:20px;height:20px;flex:none}svg.ic.sm{width:15px;height:15px}.feat-ic svg.ic{width:22px;height:22px}</style>
 <link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/interactions.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Kalkulator PPh Final UMKM","url":"https://olano.xyz/alat/kalkulator-pph-final-umkm.html","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"IDR"},"description":"Kalkulator PPh final 0,5% UMKM sesuai PP 20/2026. Masukkan omzet, keluar jumlah pajak. Orang pribadi bebas s.d. Rp500 juta; di atas Rp4,8 miliar wajib skema umum. Gratis, tanpa akun."}
 </script>
@@ -227,6 +228,7 @@
 </footer>
 
 <script src="../assets/js/config.js"></script>
+<script src="../assets/js/interactions.js"></script>
 <script src="../assets/js/shared.js"></script>
   <script src="../assets/js/motion.js"></script>
 <script>
@@ -234,6 +236,15 @@
   var T = window.OLANO_CONFIG.tax;
   var om = document.getElementById("omzet"), o12 = document.getElementById("omzet-12b"),
       kel = document.getElementById("keluarga"), fam = document.getElementById("omzet-keluarga");
+  /* bencho PRO magnet-select: tiap opsi jenis WP tertarik sedikit ke pointer
+     (maks 4px, radius 56px), lalu spring balik. Klik/ketukan tidak berubah. */
+  (function(){
+    var seg = document.getElementById("seg-wp");
+    if(seg && window.OlanoMagnet){
+      seg.classList.add("msel");
+      window.OlanoMagnet(seg, {reach: 56, pull: 4});
+    }
+  })();
   var wpSeg = document.getElementById("seg-wp");
 
   // toggle fields berdasarkan jenis WP

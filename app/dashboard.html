@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ringkasan: Olano</title>
+<meta name="description" content="Ringkasan usaha: omzet hari ini, arus kas, target bulanan, produk terlaris, dan stok menipis.">
+<meta name="theme-color" content="#2453EB">
+<meta name="robots" content="noindex,follow">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon-192.png">
+<link rel="preload" href="../assets/css/app.css" as="style">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="sh">
+<div id="app-shell"></div>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/shared.js"></script>
+<script src="../assets/js/store.js"></script>
+<script src="../assets/js/app-shell.js"></script>
+<script>
+(function(){
+  "use strict";
+  var A = window.OlanoApp, S = window.OlanoStore;
+
+  A.mount({
+    active: "dashboard",
+    title: "Ringkasan",
+    sub: "Keadaan usaha hari ini",
+    mount: render
+  });
+
+  function render(body){
+    body.innerHTML =
+      '<p class="loading" id="rLoading"><i aria-hidden="true"></i>Membaca transaksi…</p>' +
+      '<div id="rMain" hidden></div>' +
+      '<div id="rError" hidden></div>';
+
+    S.sales().then(function(list){
+      document.getElementById("rLoading").hidden = true;
+      var main = document.getElementById("rMain");
+      main.hidden = false;
+      paint(main, list || []);
+    }).catch(function(err){
+      document.getElementById("rLoading").hidden = true;
+      document.getElementById("rError").hidden = false;
+      document.getElementById("rError").innerHTML =
+        '<div class="errbox"><b>Rekap tidak bisa dibaca.</b> ' + A.esc(err && err.message || "Penyimpanan perangkat menolak akses.") +
+        ' Transaksi tetap tercatat di kasir; coba muat ulang halaman.</div>';
+    });
+  }
+
+  function paint(main, list){
+    var st = S.settings();
+    var today = S.startOfDay(Date.now());
+    var tFrom = today, tTo = today + 86400000;
+    var yFrom = today - 86400000, yTo = today;
+
+    var todayRows = list.filter(function(s){ return s.ts >= tFrom && s.ts < tTo; });
+    var yRows = list.filter(function(s){ return s.ts >= yFrom && s.ts < yTo; });
+    var todayTotal = S.sum(todayRows);
+    var yTotal = S.sum(yRows);
+    var todayCount = todayRows.length;
+    var avg = todayCount ? todayTotal / todayCount : 0;
+    var delta = yTotal > 0 ? Math.round(((todayTotal - yTotal) / yTotal) * 100) : null;
+
+    /* target bulanan */
+    var mStart = new Date(); mStart.setDate(1); mStart.setHours(0,0,0,0);
+    var mTotal = S.sum(list.filter(function(s){ return s.ts >= mStart.getTime(); }));
+    var target = Number(st.monthlyTarget) || 10000000;
+    var pct = Math.min(100, Math.round((mTotal / target) * 100));
+    var left = Math.max(0, target - mTotal);
+
+    var series = S.daySeries(list, 7);
+    var maxDay = series.reduce(function(a,d){ return Math.max(a, d.total); }, 0);
+    var tops = S.topProducts(list, 5);
+    var low = S.lowStock(S.products(), 3);
+    var recent = list.slice().sort(function(a,b){ return b.ts - a.ts; }).slice(0, 5);
+
+    var html = "";
+
+    /* 1 + 2: angka utama dan arus */
+    html += '<div class="grid grid--main">';
+
+    html += '<section class="card">' +
+      '<div class="card__head"><h2>Omzet hari ini</h2>' +
+        '<a class="more" href="transaksi.html">Rincian</a></div>' +
+      '<p class="metric__big">' + A.rp(todayTotal) + '</p>' +
+      '<div class="metric__delta">' +
+        (delta === null
+          ? '<span class="flat">Belum ada pembanding kemarin</span>'
+          : '<span class="' + (delta >= 0 ? "up" : "down") + '">' + (delta >= 0 ? "▲ " : "▼ ") + Math.abs(delta) + '%</span>' +
+            '<span class="flat">dibanding kemarin (' + A.rp(yTotal) + ')</span>') +
+      '</div>' +
+      '<div class="rows" style="margin-top:14px">' +
+        '<div class="rowline"><span class="k">Transaksi hari ini</span><span class="v">' + todayCount + '</span></div>' +
+        '<div class="rowline"><span class="k">Rata-rata per transaksi</span><span class="v">' + (todayCount ? A.rp(avg) : "Belum ada") + '</span></div>' +
+        '<div class="rowline"><span class="k">Item terjual hari ini</span><span class="v">' + S.itemCount(todayRows) + '</span></div>' +
+      '</div>' +
+    '</section>';
+
+    /* 3: target bulanan */
+    html += '<section class="card">' +
+      '<div class="card__head"><h2>Target bulan ini</h2>' +
+        '<a class="more" href="pengaturan.html">Ubah</a></div>' +
+      '<p class="metric__label">Terkumpul</p>' +
+      '<div class="target__hd"><b>' + A.rp(mTotal) + '</b><span>dari ' + A.rp(target) + '</span></div>' +
+      '<div class="prog' + (pct >= 100 ? " is-done" : "") + '" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="Progres target bulanan">' +
+        '<i style="width:' + pct + '%"></i></div>' +
+      '<div class="target__foot"><span>' + (mTotal ? pct + '% tercapai' : 'Belum ada omzet bulan ini') + '</span><span>' +
+        (left > 0 ? 'Sisa ' + A.rp(left) : "Target terlampaui") + '</span></div>' +
+      '<div class="rows" style="margin-top:12px">' +
+        '<div class="rowline"><span class="k">Transaksi bulan ini</span><span class="v">' +
+          list.filter(function(s){ return s.ts >= mStart.getTime(); }).length + '</span></div>' +
+        '<div class="rowline"><span class="k">Status</span><span class="v">' +
+          (pct >= 100 ? '<span class="tag tag--ok">Tercapai</span>' : pct >= 60 ? '<span class="tag tag--blue">Sesuai jalur</span>' : '<span class="tag tag--warn">Perlu dorongan</span>') +
+        '</span></div>' +
+      '</div>' +
+    '</section>';
+    html += '</div>';
+
+    /* 4: grafik 7 hari */
+    html += '<section class="card">' +
+      '<div class="card__head"><h2>Tujuh hari terakhir</h2>' +
+        '<a class="more" href="transaksi.html">Lihat transaksi</a></div>';
+    if (maxDay === 0) {
+      html += '<div class="chart__empty">Belum ada transaksi dalam 7 hari terakhir. Angka muncul setelah kasir dipakai.</div>';
+    } else {
+      html += '<div class="chart" role="img" aria-label="Grafik omzet tujuh hari terakhir">';
+      series.forEach(function(d, i){
+        var h = Math.max(3, Math.round((d.total / maxDay) * 100));
+        var isToday = i === series.length - 1;
+        html += '<div class="chart__col' + (isToday ? ' is-today' : '') + '">' +
+          '<span class="chart__v">' + (d.total ? Math.round(d.total/1000) + 'rb' : '') + '</span>' +
+          '<div class="chart__track"><div class="chart__bar" style="height:' + h + '%" title="' +
+            A.esc(A.dayLabel(d.from) + ', ' + A.rp(d.total) + ' (' + d.count + ' transaksi)') + '"></div></div>' +
+          '<span class="chart__x">' + A.dayLabel(d.from) + '</span>' +
+        '</div>';
+      });
+      html += '</div>';
+    }
+    html += '</section>';
+
+    /* 5 + 6: terlaris & stok */
+    html += '<div class="grid grid--2">';
+
+    html += '<section class="card"><div class="card__head"><h2>Produk terlaris</h2>' +
+      '<a class="more" href="produk.html">Kelola produk</a></div>';
+    if (!tops.length) {
+      html += '<div class="empty"><b>Belum ada yang terjual</b><p>Setelah transaksi pertama, daftar ini terisi sendiri.</p>' +
+        '<a class="btn btn-line btn-sm" href="kasir.html">Buka kasir</a></div>';
+    } else {
+      html += '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Produk</th><th class="num">Terjual</th><th class="num">Omzet</th></tr></thead><tbody>';
+      tops.forEach(function(t){
+        html += '<tr><td>' + A.esc(t.name) + '</td><td class="num">' + t.qty + '</td><td class="num">' + A.rp(t.revenue) + '</td></tr>';
+      });
+      html += '</tbody></table></div>';
+    }
+    html += '</section>';
+
+    html += '<section class="card"><div class="card__head"><h2>Stok menipis</h2>' +
+      '<a class="more" href="produk.html">Tambah stok</a></div>';
+    if (!low.length) {
+      html += '<div class="empty"><b>Stok aman</b><p>Tidak ada produk dengan sisa 3 atau kurang.</p></div>';
+    } else {
+      html += '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Produk</th><th class="num">Sisa</th></tr></thead><tbody>';
+      low.slice(0,6).forEach(function(p){
+        html += '<tr><td>' + A.esc(p.name) + '</td><td class="num">' +
+          (p.stock <= 0 ? '<span class="tag tag--no">habis</span>' : '<span class="tag tag--warn">' + p.stock + '</span>') +
+          '</td></tr>';
+      });
+      html += '</tbody></table></div>';
+    }
+    html += '</section>';
+    html += '</div>';
+
+    /* 7: transaksi terakhir */
+    html += '<section class="card"><div class="card__head"><h2>Transaksi terakhir</h2>' +
+      '<a class="more" href="transaksi.html">Semua transaksi</a></div>';
+    if (!recent.length) {
+      html += '<div class="empty"><b>Belum ada transaksi</b><p>Mulai dari kasir. Data tersimpan di perangkat ini dan tetap ada saat offline.</p>' +
+        '<a class="btn btn-primary btn-sm" href="kasir.html">Buka kasir</a></div>';
+    } else {
+      html += '<div class="tbl-wrap"><table class="tbl"><thead><tr>' +
+        '<th>Waktu</th><th class="hide-m">Item</th><th>Metode</th><th class="num">Total</th></tr></thead><tbody>';
+      recent.forEach(function(s){
+        var items = (s.items || []).map(function(i){ return i.name + " ×" + i.qty; }).join(", ");
+        html += '<tr>' +
+          '<td class="nowrap">' + A.dateShort(s.ts) + ' · ' + A.timeHM(s.ts) + '</td>' +
+          '<td class="hide-m">' + A.esc(items) + '</td>' +
+          '<td><span class="tag">' + A.esc(s.method || "TUNAI") + '</span></td>' +
+          '<td class="num">' + A.rp(s.total) + '</td>' +
+        '</tr>';
+      });
+      html += '</tbody></table></div>';
+    }
+    html += '</section>';
+
+    main.innerHTML = html;
+  }
+})();
+</script>
+</body>
+</html>

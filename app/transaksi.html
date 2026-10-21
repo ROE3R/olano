@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Transaksi: Olano</title>
+<meta name="description" content="Daftar transaksi kasir: filter periode, cari, ringkasan, dan ekspor CSV.">
+<meta name="theme-color" content="#2453EB">
+<meta name="robots" content="noindex,follow">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon-192.png">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="sh">
+<div id="app-shell"></div>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/shared.js"></script>
+<script src="../assets/js/store.js"></script>
+<script src="../assets/js/app-shell.js"></script>
+<script>
+(function(){
+  "use strict";
+  var A = window.OlanoApp, S = window.OlanoStore;
+  var range = 7, q = "", all = [];
+
+  A.mount({ active: "transaksi", title: "Transaksi", sub: "Riwayat penjualan dari kasir", mount: render });
+
+  function render(body){
+    body.innerHTML =
+      '<p class="loading" id="tLoad"><i aria-hidden="true"></i>Membaca transaksi…</p>' +
+      '<div id="tWrap" hidden>' +
+        '<section class="card" style="margin-bottom:16px">' +
+          '<div class="bar-actions">' +
+            '<label for="tCari" style="position:absolute;left:-9999px">Cari transaksi</label>' +
+            '<input class="input input--text" id="tCari" type="search" placeholder="Cari nama produk atau metode" style="max-width:280px">' +
+            '<select class="input input--text" id="tRange" style="max-width:170px" aria-label="Periode">' +
+              '<option value="7">7 hari terakhir</option>' +
+              '<option value="30">30 hari terakhir</option>' +
+              '<option value="all">Semua</option>' +
+            '</select>' +
+            '<span class="spacer"></span>' +
+            '<button type="button" class="btn btn-line btn-sm" id="tCsv">Ekspor CSV</button>' +
+            '<a class="btn btn-primary btn-sm" href="kasir.html">Transaksi baru</a>' +
+          '</div>' +
+          '<div class="rows grid grid--3" style="margin-top:14px;gap:18px" id="tStats"></div>' +
+        '</section>' +
+        '<section class="card"><div id="tList"></div></section>' +
+      '</div>';
+
+    document.getElementById("tCari").addEventListener("input", function(e){ q = e.target.value.trim().toLowerCase(); paint(); });
+    document.getElementById("tRange").addEventListener("change", function(e){ range = e.target.value; paint(); });
+    document.getElementById("tCsv").addEventListener("click", exportCsv);
+
+    S.sales().then(function(list){
+      all = (list || []).slice().sort(function(a, b){ return b.ts - a.ts; });
+      document.getElementById("tLoad").hidden = true;
+      document.getElementById("tWrap").hidden = false;
+      paint();
+    }).catch(function(err){
+      document.getElementById("tLoad").hidden = true;
+      document.getElementById("tWrap").hidden = false;
+      document.getElementById("tList").innerHTML =
+        '<div class="errbox"><b>Riwayat tidak terbaca.</b> ' + A.esc(err && err.message || "Penyimpanan perangkat menolak akses.") + '</div>';
+    });
+  }
+
+  function filtered(){
+    var from = 0;
+    if (range !== "all") {
+      from = S.startOfDay(Date.now()) - (Number(range) - 1) * 86400000;
+    }
+    return all.filter(function(s){
+      if (s.ts < from) return false;
+      if (!q) return true;
+      var hay = (s.items || []).map(function(i){ return i.name; }).join(" ").toLowerCase() + " " + String(s.method || "").toLowerCase();
+      return hay.indexOf(q) > -1;
+    });
+  }
+
+  function paint(){
+    var rows = filtered();
+    var total = S.sum(rows);
+    var count = rows.length;
+    var items = S.itemCount(rows);
+    var avg = count ? total / count : 0;
+
+    document.getElementById("tStats").innerHTML =
+      '<div><p class="metric__label">Omzet periode</p><p class="metric__big" style="font-size:26px">' + A.rp(total) + '</p></div>' +
+      '<div><p class="metric__label">Transaksi</p><p class="metric__big" style="font-size:26px">' + count + '</p></div>' +
+      '<div><p class="metric__label">Rata-rata</p><p class="metric__big" style="font-size:26px">' + (count ? A.rp(avg) : "Belum ada") + '</p></div>';
+
+    var host = document.getElementById("tList");
+    if (!rows.length) {
+      host.innerHTML = '<div class="empty"><b>Belum ada transaksi pada periode ini</b>' +
+        '<p>Transaksi dari kasir akan muncul di sini, termasuk yang tercatat saat offline.</p>' +
+        '<a class="btn btn-primary btn-sm" href="kasir.html">Buka kasir</a></div>';
+      return;
+    }
+    var html = '<div class="tbl-wrap"><table class="tbl"><thead><tr>' +
+      '<th>Waktu</th><th>Item</th><th class="hide-m">Metode</th><th class="num">Total</th></tr></thead><tbody>';
+    rows.slice(0, 200).forEach(function(s){
+      var itemsTxt = (s.items || []).map(function(i){ return A.esc(i.name) + " ×" + i.qty; }).join(", ");
+      html += '<tr>' +
+        '<td class="nowrap">' + A.dateShort(s.ts) + ' · ' + A.timeHM(s.ts) + '</td>' +
+        '<td>' + itemsTxt + '</td>' +
+        '<td class="hide-m"><span class="tag">' + A.esc(s.method || "TUNAI") + '</span>' +
+          (s.synced ? '' : ' <span class="tag tag--warn">lokal</span>') + '</td>' +
+        '<td class="num">' + A.rp(s.total) + '</td>' +
+      '</tr>';
+    });
+    html += '</tbody></table></div>';
+    if (rows.length > 200) {
+      html += '<p class="hint">Menampilkan 200 dari ' + rows.length + ' transaksi. Persempit periode atau ekspor CSV untuk sisanya.</p>';
+    }
+    host.innerHTML = html;
+  }
+
+  function exportCsv(){
+    var rows = filtered();
+    if (!rows.length) return;
+    var head = "waktu,uuid,metode,total,item\n";
+    var body = rows.map(function(s){
+      var items = (s.items || []).map(function(i){ return i.name + " x" + i.qty; }).join(" | ");
+      var cells = [
+        new Date(s.ts).toISOString(),
+        s.uuid || "",
+        s.method || "TUNAI",
+        String(s.total || 0),
+        items
+      ].map(function(c){ return '"' + String(c).replace(/"/g, '""') + '"'; });
+      return cells.join(",");
+    }).join("\n");
+    var blob = new Blob([head + body], { type: "text/csv;charset=utf-8" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "olano-transaksi-" + new Date().toISOString().slice(0, 10) + ".csv";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  }
+})();
+</script>
+</body>
+</html>

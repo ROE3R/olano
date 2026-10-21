@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Produk: Olano</title>
+<meta name="description" content="Kelola katalog produk: tambah, ubah harga dan stok, hapus, filter kategori.">
+<meta name="theme-color" content="#2453EB">
+<meta name="robots" content="noindex,follow">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../assets/icon-192.png">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="sh">
+<div id="app-shell"></div>
+
+<div class="modal" id="mEdit" hidden role="dialog" aria-modal="true" aria-labelledby="mEditT">
+  <div class="modal__bg" data-close></div>
+  <div class="modal__panel">
+    <h2 id="mEditT">Tambah produk</h2>
+    <form id="fEdit" novalidate>
+      <div class="field">
+        <label for="eNama">Nama produk</label>
+        <input class="input input--text" id="eNama" name="name" type="text" required maxlength="60" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="eKat">Kategori</label>
+        <select class="input input--text" id="eKat" name="cat">
+          <option value="MINUM">Minuman</option>
+          <option value="MAKANAN">Makanan</option>
+          <option value="KEREK">Kerekan</option>
+          <option value="LAIN">Lainnya</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="eHarga">Harga jual (Rp)</label>
+        <input class="input" id="eHarga" name="price" type="number" min="0" step="500" required inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="eStok">Stok</label>
+        <input class="input" id="eStok" name="stock" type="number" min="0" step="1" required inputmode="numeric">
+      </div>
+      <p class="errbox" id="eErr" hidden></p>
+      <div class="modal__foot">
+        <button type="button" class="btn btn-line btn-sm" data-close>Batal</button>
+        <button type="submit" class="btn btn-primary btn-sm" id="eSave">Simpan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/shared.js"></script>
+<script src="../assets/js/store.js"></script>
+<script src="../assets/js/app-shell.js"></script>
+<script>
+(function(){
+  "use strict";
+  var A = window.OlanoApp, S = window.OlanoStore;
+  var q = "", cat = "SEMUA", editId = null;
+
+  A.mount({ active: "produk", title: "Produk", sub: "Katalog dan stok", mount: render });
+
+  function render(body){
+    body.innerHTML =
+      '<section class="card">' +
+        '<div class="bar-actions" style="margin-bottom:14px">' +
+          '<label class="sr-only" for="fCari" style="position:absolute;left:-9999px">Cari produk</label>' +
+          '<input class="input input--text" id="fCari" type="search" placeholder="Cari nama produk" style="max-width:260px">' +
+          '<select class="input input--text" id="fKat" style="max-width:170px" aria-label="Filter kategori">' +
+            '<option value="SEMUA">Semua kategori</option>' +
+            '<option value="MINUM">Minuman</option>' +
+            '<option value="MAKANAN">Makanan</option>' +
+            '<option value="KEREK">Kerekan</option>' +
+            '<option value="LAIN">Lainnya</option>' +
+          '</select>' +
+          '<span class="spacer"></span>' +
+          '<button type="button" class="btn btn-primary btn-sm" id="bAdd">Tambah produk</button>' +
+        '</div>' +
+        '<div id="pTable"></div>' +
+      '</section>';
+
+    document.getElementById("fCari").addEventListener("input", function(e){ q = e.target.value.trim().toLowerCase(); paint(); });
+    document.getElementById("fKat").addEventListener("change", function(e){ cat = e.target.value; paint(); });
+    document.getElementById("bAdd").addEventListener("click", function(){ openEdit(null); });
+
+    paint();
+  }
+
+  function list(){
+    return S.products().filter(function(p){
+      var okCat = cat === "SEMUA" || p.cat === cat;
+      var okQ = !q || p.name.toLowerCase().indexOf(q) > -1;
+      return okCat && okQ;
+    });
+  }
+
+  function paint(){
+    var rows = list();
+    var host = document.getElementById("pTable");
+    if (!rows.length) {
+      host.innerHTML = '<div class="empty"><b>Tidak ada produk yang cocok</b>' +
+        '<p>Ubah kata kunci atau kategori, atau tambahkan produk baru.</p>' +
+        '<button type="button" class="btn btn-line btn-sm" id="bAdd2">Tambah produk</button></div>';
+      var a2 = document.getElementById("bAdd2");
+      if (a2) a2.addEventListener("click", function(){ openEdit(null); });
+      return;
+    }
+    var html = '<div class="tbl-wrap"><table class="tbl"><thead><tr>' +
+      '<th>Produk</th><th class="hide-m">Kategori</th><th class="num">Harga</th><th class="num">Stok</th><th></th>' +
+      '</tr></thead><tbody>';
+    rows.forEach(function(p){
+      var tag = p.stock <= 0 ? '<span class="tag tag--no">habis</span>'
+        : p.stock <= 3 ? '<span class="tag tag--warn">' + p.stock + '</span>'
+        : '<span class="tag tag--ok">' + p.stock + '</span>';
+      html += '<tr data-id="' + p.id + '">' +
+        '<td>' + A.esc(p.name) + '</td>' +
+        '<td class="hide-m"><span class="tag">' + A.esc(p.cat) + '</span></td>' +
+        '<td class="num">' + A.rp(p.price) + '</td>' +
+        '<td class="num">' + tag + '</td>' +
+        '<td class="num nowrap">' +
+          '<button type="button" class="btn btn-line btn-sm" data-edit="' + p.id + '" aria-label="Ubah ' + A.esc(p.name) + '">Ubah</button> ' +
+          '<button type="button" class="btn btn-danger btn-sm" data-del="' + p.id + '" aria-label="Hapus ' + A.esc(p.name) + '">Hapus</button>' +
+        '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+    host.innerHTML = html;
+
+    host.querySelectorAll("[data-edit]").forEach(function(b){
+      b.addEventListener("click", function(){ openEdit(b.dataset.edit); });
+    });
+    host.querySelectorAll("[data-del]").forEach(function(b){
+      b.addEventListener("click", function(){ onDelete(b.dataset.del, b); });
+    });
+  }
+
+  function onDelete(id, btn){
+    var p = S.products().find(function(x){ return x.id === id; });
+    if (!p) return;
+    if (btn.dataset.armed !== "1") {
+      btn.dataset.armed = "1";
+      btn.textContent = "Yakin?";
+      setTimeout(function(){
+        btn.dataset.armed = "0"; btn.textContent = "Hapus";
+      }, 4000);
+      return;
+    }
+    S.removeProduct(id);
+    paint();
+  }
+
+  var modal = document.getElementById("mEdit");
+  var form = document.getElementById("fEdit");
+  var err = document.getElementById("eErr");
+  var lastFocus = null;
+
+  function openEdit(id){
+    editId = id;
+    lastFocus = document.activeElement;
+    err.hidden = true;
+    if (id) {
+      var p = S.products().find(function(x){ return x.id === id; });
+      document.getElementById("mEditT").textContent = "Ubah produk";
+      document.getElementById("eNama").value = p.name;
+      document.getElementById("eKat").value = p.cat;
+      document.getElementById("eHarga").value = p.price;
+      document.getElementById("eStok").value = p.stock;
+    } else {
+      document.getElementById("mEditT").textContent = "Tambah produk";
+      form.reset();
+      document.getElementById("eKat").value = "MINUM";
+      document.getElementById("eHarga").value = "";
+      document.getElementById("eStok").value = "0";
+    }
+    modal.hidden = false;
+    document.getElementById("eNama").focus();
+  }
+  function closeEdit(){
+    modal.hidden = true;
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  modal.querySelectorAll("[data-close]").forEach(function(el){
+    el.addEventListener("click", closeEdit);
+  });
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape" && !modal.hidden) closeEdit();
+  });
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var name = document.getElementById("eNama").value.trim();
+    var price = Number(document.getElementById("eHarga").value);
+    var stock = Number(document.getElementById("eStok").value);
+    var category = document.getElementById("eKat").value;
+    if (!name) { err.hidden = false; err.textContent = "Nama produk belum diisi."; return; }
+    if (!(price >= 0)) { err.hidden = false; err.textContent = "Harga harus angka nol atau lebih."; return; }
+    if (!(stock >= 0)) { err.hidden = false; err.textContent = "Stok harus angka nol atau lebih."; return; }
+    if (editId) S.updateProduct(editId, { name: name, cat: category, price: price, stock: stock });
+    else S.addProduct({ name: name, cat: category, price: price, stock: stock });
+    closeEdit();
+    paint();
+  });
+})();
+</script>
+</body>
+</html>

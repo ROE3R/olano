@@ -1,0 +1,450 @@
+/* ============================================================================
+   Olano — app.css : shell, tabel, kartu, grafik. Hanya untuk halaman di app/.
+   Di-load SETELAH main.css supaya token marketing tetap dipakai.
+   Token & bentuk mengikuti DESIGN.md §10 (surface #F6F7F9, kartu radius 14
+   tanpa shadow di light, warm #FF9705 hanya untuk seri data + satu highlight).
+   ========================================================================== */
+
+/* ------------------------------------------------------------- 1. shell --- */
+body.sh {
+  background: var(--surface, #F6F7F9);
+  margin: 0;
+  min-height: 100vh;
+}
+#app-shell {
+  display: grid;
+  grid-template-columns: 248px 1fr;
+  min-height: 100vh;
+}
+
+.sh-side {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 12px;
+  background: var(--white, #fff);
+  border-right: 1px solid var(--gray-100, #E8ECF3);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+.sh-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px 18px;
+  text-decoration: none;
+  color: var(--ink, #0B1220);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+}
+.sh-mark {
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border-radius: 9px;
+  background: var(--blue-600, #2453EB);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+.sh-nav { display: flex; flex-direction: column; gap: 2px; }
+.sh-nav__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 9px;
+  color: var(--gray-700, #343C4F);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+}
+.sh-nav__item .ico { color: var(--gray-500, #4E586B); flex: none; }
+.sh-nav__item:hover { background: var(--gray-50, #F4F6FA); }
+.sh-nav__item.is-on {
+  background: var(--blue-50, #EFF5FF);
+  color: var(--blue-700, #1C40D8);
+  font-weight: 600;
+}
+.sh-nav__item.is-on .ico { color: var(--blue-600, #2453EB); }
+.sh-nav__item.is-on::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 9px; bottom: 9px;
+  width: 2px; border-radius: 2px;
+  background: var(--blue-600, #2453EB);
+}
+.sh-nav__item:focus-visible { outline: 2px solid var(--blue-600); outline-offset: 2px; }
+
+.sh-side__foot {
+  margin-top: auto;
+  padding: 12px 10px 4px;
+  border-top: 1px solid var(--gray-100, #E8ECF3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+.sh-store {
+  font-family: var(--font-mono);
+  color: var(--gray-500, #4E586B);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sh-out {
+  color: var(--gray-700, #343C4F);
+  text-decoration: none;
+  min-height: 36px;
+  display: flex; align-items: center;
+  border-radius: 8px;
+}
+.sh-out:hover { color: var(--blue-700, #1C40D8); }
+
+.sh-main { display: flex; flex-direction: column; min-width: 0; }
+.sh-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 24px;
+  background: var(--white, #fff);
+  border-bottom: 1px solid var(--gray-100, #E8ECF3);
+  position: sticky; top: 0; z-index: 20;
+}
+.sh-title { min-width: 0; }
+.sh-title h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink, #0B1220);
+}
+.sh-sub { margin: 2px 0 0; font-size: 12.5px; color: var(--gray-500, #4E586B); }
+.sh-actions { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.sh-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  height: 32px; padding: 0 12px;
+  border: 1px solid var(--gray-100, #E8ECF3);
+  border-radius: 999px;
+  font-size: 12px; font-weight: 500;
+  color: var(--gray-700, #343C4F);
+  background: var(--white, #fff);
+  white-space: nowrap;
+}
+.sh-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok, #1B9E5A); }
+.sh-pill[data-off="1"] .sh-dot { background: var(--warn, #B26B00); }
+.sh-burger { display: none; }
+
+.sh-body {
+  padding: 24px;
+  max-width: 1180px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.sh-scrim { display: none; }
+
+/* -------------------------------------------------------------- 2. kartu --- */
+.card {
+  background: var(--white, #fff);
+  border: 1px solid var(--gray-100, #E8ECF3);
+  border-radius: 14px;
+  padding: 18px 20px;
+  min-width: 0;
+}
+.card--pad0 { padding: 0; }
+.card__head {
+  display: flex; align-items: baseline; gap: 10px;
+  margin-bottom: 14px;
+}
+.card__head h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink, #0B1220);
+}
+.card__head .more { margin-left: auto; font-size: 12.5px; color: var(--blue-700, #1C40D8); text-decoration: none; }
+.card__head .more:hover { text-decoration: underline; }
+
+.grid { display: grid; gap: 16px; }
+.grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid--main { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
+
+/* ---------------------------------------------------- 3. angka & metrik --- */
+.metric__label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray-500, #4E586B);
+  margin: 0 0 6px;
+}
+.metric__big {
+  font-family: var(--font-mono);
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink, #0B1220);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+  margin: 0;
+}
+.metric__delta { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 12.5px; }
+.up { color: var(--ok, #1B9E5A); font-weight: 600; }
+.down { color: var(--danger, #C0392B); font-weight: 600; }
+.flat { color: var(--gray-500, #4E586B); font-weight: 500; }
+
+.rows { display: flex; flex-direction: column; }
+.rowline {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  border-bottom: 1px solid var(--gray-100, #E8ECF3);
+  font-size: 13.5px;
+}
+.rowline:last-child { border-bottom: 0; }
+.rowline .k { color: var(--gray-500, #4E586B); }
+.rowline .v {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--ink, #0B1220);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------- 4. grafik --- */
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 176px;
+  padding-top: 8px;
+}
+.chart__col { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; height: 100%; }
+/* Trek WAJIB punya tinggi pasti: tanpa ini `height:X%` pada batang dihitung
+   terhadap tinggi auto dan semua batang runtuh jadi 3px (min-height). */
+.chart__track {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.chart__bar {
+  width: 100%;
+  max-width: 40px;
+  border-radius: 6px 6px 2px 2px;
+  background: rgba(36, 83, 235, 0.28);
+  min-height: 3px;
+  transition: background 150ms linear;
+}
+.chart__col:hover .chart__bar { background: rgba(36, 83, 235, 0.45); }
+.chart__col.is-today .chart__bar { background: var(--accent-warm, #FF9705); }
+.chart__col.is-today .chart__bar:hover { filter: brightness(0.94); }
+.chart__x { font-size: 11px; color: var(--gray-500, #4E586B); font-family: var(--font-mono); }
+.chart__v {
+  font-size: 11px; color: var(--gray-700, #343C4F);
+  font-family: var(--font-mono); font-variant-numeric: tabular-nums;
+  white-space: nowrap; min-height: 14px;
+}
+.chart__empty {
+  display: grid; place-items: center;
+  height: 176px; color: var(--gray-500, #4E586B); font-size: 13px;
+  border: 1px dashed var(--gray-300, #C3CBD9); border-radius: 12px;
+}
+
+/* -------------------------------------------------------------- 5. tabel --- */
+.tbl-wrap { overflow-x: auto; }
+table.tbl { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.tbl th {
+  text-align: left;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gray-500, #4E586B);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--gray-100, #E8ECF3);
+  white-space: nowrap;
+}
+.tbl td {
+  padding: 12px;
+  border-bottom: 1px solid var(--gray-100, #E8ECF3);
+  vertical-align: middle;
+}
+.tbl tr:last-child td { border-bottom: 0; }
+.tbl .num { text-align: right; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.tbl .nowrap { white-space: nowrap; }
+.tbl tbody tr:hover { background: var(--gray-25, #FAFBFD); }
+
+.tag {
+  display: inline-flex; align-items: center;
+  height: 22px; padding: 0 8px;
+  border-radius: 6px;
+  font-size: 11.5px; font-weight: 600;
+  background: var(--gray-50, #F4F6FA);
+  color: var(--gray-700, #343C4F);
+  white-space: nowrap;
+}
+.tag--ok { background: #E7F6EE; color: #0E7A3D; }
+.tag--warn { background: #FFF4DC; color: #8A5400; }
+.tag--no { background: #FDEBEC; color: #A3211F; }
+.tag--blue { background: var(--blue-50, #EFF5FF); color: var(--blue-700, #1C40D8); }
+
+/* ------------------------------------------------------ 6. form & tombol --- */
+.field { margin-bottom: 14px; }
+.field label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--gray-700, #343C4F);
+  margin-bottom: 6px;
+  min-height: 0;
+  padding: 0;
+}
+.input, select.input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--gray-300, #C3CBD9);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink, #0B1220);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  box-sizing: border-box;
+}
+.input:focus { outline: none; border-color: var(--blue-600, #2453EB); box-shadow: 0 0 0 3px var(--blue-100, #DBE8FE); }
+.input--text { font-family: var(--font-sans); }
+.hint { font-size: 12px; color: var(--gray-500, #4E586B); margin: 6px 0 0; }
+
+.btn-sm { min-height: 36px; font-size: 13px; padding: 0 14px; display: inline-flex; align-items: center; }
+.btn-line {
+  background: #fff;
+  border: 1px solid var(--gray-300, #C3CBD9);
+  color: var(--gray-700, #343C4F);
+}
+.btn-line:hover { border-color: var(--blue-400, #6094FA); color: var(--blue-700, #1C40D8); }
+.btn-danger { background: #fff; border: 1px solid #F5B5B0; color: #A3211F; }
+.btn-danger:hover { background: #FDEBEC; }
+
+.bar-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.bar-actions .spacer { flex: 1 1 auto; }
+
+/* ------------------------------------------------------------- 7. states --- */
+.empty {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; padding: 36px 20px; text-align: center;
+  border: 1px dashed var(--gray-300, #C3CBD9); border-radius: 12px;
+  color: var(--gray-500, #4E586B);
+  background: var(--gray-25, #FAFBFD);
+}
+.empty b { color: var(--ink, #0B1220); font-size: 14px; font-weight: 600; }
+.empty p { margin: 0; font-size: 13px; max-width: 40ch; }
+.empty .btn { margin-top: 6px; }
+
+.loading {
+  display: flex; align-items: center; gap: 10px;
+  padding: 28px 0; justify-content: center;
+  color: var(--gray-500, #4E586B); font-size: 13px;
+}
+.loading i {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid var(--gray-100, #E8ECF3);
+  border-top-color: var(--blue-600, #2453EB);
+  animation: spin 700ms linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.errbox {
+  border: 1px solid #F5B5B0; background: #FDEBEC; color: #A3211F;
+  border-radius: 10px; padding: 12px 14px; font-size: 13px;
+}
+.errbox b { font-weight: 700; }
+
+/* --------------------------------------------------- 8. progres target --- */
+.prog { height: 8px; border-radius: 999px; background: var(--gray-100, #E8ECF3); overflow: hidden; }
+.prog > i { display: block; height: 100%; background: var(--blue-600, #2453EB); border-radius: 999px; transition: width 220ms var(--ease-standard, ease); }
+.prog.is-done > i { background: var(--ok, #1B9E5A); }
+.target__hd { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+.target__hd b { font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.target__hd span { font-size: 12.5px; color: var(--gray-500, #4E586B); }
+.target__foot { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--gray-500, #4E586B); }
+
+/* ------------------------------------------------------------ 9. modal --- */
+.modal { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 16px; }
+.modal[hidden] { display: none; }
+.modal__bg { position: absolute; inset: 0; background: rgba(11, 18, 32, 0.42); }
+.modal__panel {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  width: 100%; max-width: 420px;
+  padding: 20px;
+  box-shadow: 0 24px 64px -16px rgba(14, 26, 74, 0.28);
+  box-sizing: border-box;
+}
+.modal__panel h2 { margin: 0 0 14px; font-size: 17px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+.modal__foot { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; }
+
+/* --------------------------------------------------------- 10. responsif --- */
+@media (max-width: 1080px) {
+  #app-shell { grid-template-columns: 64px 1fr; }
+  .sh-brand__t, .sh-nav__item span, .sh-side__foot { display: none; }
+  .sh-nav__item { justify-content: center; padding: 0; }
+  .sh-brand { padding: 6px 0 18px; justify-content: center; }
+  .grid--main { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 860px) {
+  .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  #app-shell { grid-template-columns: 1fr; }
+  .sh-side {
+    position: fixed; z-index: 40; left: 0; top: 0; bottom: 0;
+    width: 264px; height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 180ms var(--ease-standard, ease);
+    box-shadow: 0 24px 64px -16px rgba(14, 26, 74, 0.28);
+  }
+  .sh-side.is-open { transform: none; }
+  .sh-brand__t, .sh-nav__item span, .sh-side__foot { display: revert; }
+  .sh-nav__item { justify-content: flex-start; padding: 0 10px; }
+  .sh-brand { padding: 6px 8px 18px; justify-content: flex-start; }
+  .sh-scrim { display: block; position: fixed; inset: 0; z-index: 30; background: rgba(11, 18, 32, 0.4); }
+  .sh-scrim[hidden] { display: none; }
+  .sh-burger {
+    display: grid; place-items: center; gap: 3px;
+    width: 40px; height: 40px; min-width: 40px;
+    border: 1px solid var(--gray-100, #E8ECF3); border-radius: 10px;
+    background: #fff; cursor: pointer; padding: 0;
+  }
+  .sh-burger span { display: block; width: 16px; height: 2px; background: var(--ink, #0B1220); border-radius: 2px; }
+  .sh-top { padding: 12px 16px; gap: 10px; flex-wrap: wrap; }
+  .sh-actions .btn-primary { display: none; }
+  .sh-body { padding: 16px; gap: 16px; }
+  .grid--2, .grid--3 { grid-template-columns: minmax(0, 1fr); }
+  .card { padding: 16px; }
+  .metric__big { font-size: 30px; }
+  .chart { gap: 6px; height: 130px; }
+  .tbl .hide-m { display: none; }
+}
+@media (max-width: 760px) {
+  /* Tap 44px: di layar sentuh tidak ada hover, jadi tombol kecil di dalam
+     tabel harus naik ke 44px. Di desktop 36px sudah cukup (R-03 / R-32). */
+  .btn-sm { min-height: 44px; }
+  .input { min-height: 46px; }
+  .tbl td, .tbl th { padding: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sh-side { transition: none; }
+  .prog > i { transition: none; }
+  .chart__bar { transition: none; }
+  .loading i { animation: none; }
+}
