@@ -52,19 +52,23 @@ const consoleErrors = [];
 /* /api/* adalah fungsi serverless Vercel. Di dev server statis endpoint itu
    tidak ada, jadi 404 dari sana BUKAN cacat aplikasi: kasir memang dirancang
    jatuh ke mode demo saat /api/auth tidak menjawab. Semua 404 lain tetap gagal. */
-/* Pesan console untuk resource 404 tidak menyertakan URL, jadi hitung saja:
-   kalau jumlah pesan 404 generik <= jumlah respons /api/* 404 yang tercatat,
-   semuanya berasal dari endpoint serverless yang tidak ada di dev. */
-const api404 = [];
-const generic404 = [];
+/* Pesan console untuk resource yang gagal tidak menyertakan URL, jadi hitung:
+   kalau jumlah pesan <= jumlah respons /api/* yang memang diharapkan, semuanya
+   berasal dari endpoint auth, bukan aset hilang.
+   Dua status yang SAH dan bukan cacat:
+   - 404 di dev server statis (fungsi serverless tidak ada)
+   - 401 di produksi untuk /api/auth?action=me saat pengunjung belum login */
+const apiExpected = [];
+const genericHttpFail = [];
 page.on("response", (r) => {
-  if (r.status() === 404 && /\/api\//.test(r.url())) api404.push(r.url());
+  if (!/\/api\//.test(r.url())) return;
+  if (r.status() === 404 || r.status() === 401) apiExpected.push(r.status() + " " + r.url());
 });
 page.on("console", (m) => {
   if (m.type() !== "error") return;
   const txt = m.text();
-  if (/status of 404/.test(txt) && !/\/api\//.test(txt)) { generic404.push(txt); return; }
-  if (/\/api\//.test(txt)) return;                  /* endpoint dev, dihitung terpisah */
+  if (/status of \d{3}/.test(txt) && !/\/api\//.test(txt)) { genericHttpFail.push(txt); return; }
+  if (/\/api\//.test(txt)) return;                  /* endpoint, dihitung terpisah */
   consoleErrors.push(txt);
 });
 page.on("pageerror", (e) => consoleErrors.push(String(e)));
@@ -224,15 +228,15 @@ try {
   ok("ekspor cadangan", "JSON valid");
 
   /* console bersih */
-  assert.ok(generic404.length <= api404.length,
-    `${generic404.length} resource 404 tapi hanya ${api404.length} panggilan /api/* (ada aset hilang)`);
+  assert.ok(genericHttpFail.length <= apiExpected.length,
+    `${genericHttpFail.length} resource gagal tapi hanya ${apiExpected.length} respons /api/* yang sah (ada aset hilang)`);
   assert.strictEqual(consoleErrors.length, 0, "console error: " + consoleErrors.slice(0, 3).join(" | "));
   /* mode demo harus tetap hidup walau /api/auth tidak ada (dev / offline) */
   await page.goto(`${BASE}/app/kasir.html#demo`, { waitUntil: "load" });
   await page.waitForTimeout(1500);
   const demoOk = await page.evaluate(() => document.querySelectorAll(".pos-item").length);
   assert.ok(demoOk > 0, "kasir tidak jatuh ke mode demo saat /api/auth 404");
-  ok("console bersih", `0 error; ${api404.length} panggilan /api/* 404 di dev, ${generic404.length} pesan 404 generik cocok`);
+  ok("console bersih", `0 error; ${apiExpected.length} respons /api/* yang sah (401/404), ${genericHttpFail.length} pesan cocok`);
   ok("degradasi tanpa backend", `${demoOk} produk tampil`);
 } catch (e) {
   fail("runtime", e.message);
